@@ -117,6 +117,7 @@ api	K0153	api	lemma	batch-004
 apotek	K0516	apotek	lemma	batch-011
 apresiasi	K1217	apresiasi	lemma	batch-025
 arah	K0381	arah	lemma	batch-008
+arem-arem	K2002	arem-arem	lemma	batch-041
 arisan	K0517	arisan	lemma	batch-011
 arogan	K0714	arogan	lemma	batch-015
 arsip	K1842	arsip	lemma	batch-037
@@ -128,6 +129,7 @@ asap	K0518	asap	lemma	batch-011
 asbak	K1817	asbak	lemma	batch-037
 aset	K1844	aset	lemma	batch-037
 asin	K0459	asin	lemma	batch-010
+asinan	K2003	asinan	lemma	batch-041
 asisten	K1218	asisten	lemma	batch-025
 asli	K0715	asli	lemma	batch-015
 aspek	K1845	aspek	lemma	batch-037
@@ -152,9 +154,11 @@ ayah	K0105	ayah	lemma	batch-003
 ayam	K0169	ayam	lemma	batch-004
 ayam-ayam	K0169	ayam	derived_form	batch-004
 ayunan	K1851	ayunan	lemma	batch-037
+babat	K2004	babat	lemma	batch-041
 babi	K0521	babi	lemma	batch-011
 baca	K0076	baca	lemma	batch-002
 bacaan	K0076	baca	derived_form	batch-002
+bacem	K2005	bacem	lemma	batch-041
 bacot	K0717	bacot	lemma	batch-015
 badai	K0314	badai	lemma	batch-007
 badan	K0124	badan	lemma	batch-003
@@ -162,6 +166,7 @@ bagus	K0041	bagus	lemma	batch-001
 bagusan	K0041	bagus	derived_form	batch-001
 bahan	K1223	bahan	lemma	batch-025
 bahaya	K0331	bahaya	lemma	batch-007
+bajigur	K2006	bajigur	lemma	batch-041
 bajingan	K0718	bajingan	lemma	batch-015
 baju	K0266	baju	lemma	batch-006
 bakar	K0467	bakar	lemma	batch-010
@@ -176,6 +181,7 @@ bandara	K0394	bandara	lemma	batch-008
 bandel	K0720	bandel	lemma	batch-015
 bandeng	K1953	bandeng	lemma	batch-040
 banding	K1226	banding	lemma	batch-025
+bandrek	K2007	bandrek	lemma	batch-041
 banget	K0048	banget	lemma	batch-001
 bangga	K0336	bangga	lemma	batch-007
 bangkrut	K0721	bangkrut	lemma	batch-015
@@ -203,6 +209,9 @@ bawa	K0060	bawa	lemma	batch-002
 bawaan	K0060	bawa	derived_form	batch-002
 bawah	K0375	bawah	lemma	batch-008
 bawang	K0484	bawang	lemma	batch-010
+bawang bombai	K2008	bawang bombai	lemma	batch-041
+bawang merah	K2010	bawang merah	lemma	batch-041
+bawang putih	K2009	bawang putih	lemma	batch-041
 bawel	K0724	bawel	lemma	batch-015
 bayam	K1954	bayam	lemma	batch-040
 bayar	K0353	bayar	lemma	batch-008
@@ -366,6 +375,8 @@ buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
 buatan	K0205	buat	derived_form	batch-005
 bubur	K1908	bubur	lemma	batch-039
+bubur ayam	K2011	bubur ayam	lemma	batch-041
+bubur kacang hijau	K2012	bubur kacang hijau	lemma	batch-041
 bucin	K0099	bucin	lemma	batch-002
 budaya	K1244	budaya	lemma	batch-025
 bujet	K1245	bujet	lemma	batch-025
@@ -386,6 +397,7 @@ butuh	K0230	butuh	lemma	batch-005
 cabai	K0483	cabai	lemma	batch-010
 cabut	K0553	cabut	lemma	batch-012
 cair	K0541	cair	lemma	batch-011
+cakwe	K2013	cakwe	lemma	batch-041
 camilan	K0453	camilan	lemma	batch-010
 campur	K0475	campur	lemma	batch-010
 canda	K0752	canda	lemma	batch-016
@@ -393,6 +405,7 @@ canggih	K0749	canggih	lemma	batch-015
 canggung	K0748	canggung	lemma	batch-015
 cantik	K0542	cantik	lemma	batch-011
 capai	K0753	capai	lemma	batch-016
+capcai	K2014	capcai	lemma	batch-041
 cape	K0047	capek	variant	batch-001
 capek	K0047	capek	lemma	batch-001
 caper	K0679	caper	lemma	batch-014
@@ -415,10 +428,13 @@ cetak	K0756	cetak	lemma	batch-016
 cewek	K0654	cewek	lemma	batch-014
 cicil	K0751	cicil	lemma	batch-015
 cicip	K0476	cicip	lemma	batch-010
+cincau	K2015	cincau	lemma	batch-041
 cinta	K0114	cinta	lemma	batch-003
+cireng	K2016	cireng	lemma	batch-041
 coba	K0228	coba	lemma	batch-005
 cocok	K0554	cocok	lemma	batch-012
 cokelat	K1910	cokelat	lemma	batch-039
+combro	K2017	combro	lemma	batch-041
 cowok	K0655	cowok	lemma	batch-014
 cuaca	K0310	cuaca	lemma	batch-007
 cuan	K0759	cuan	lemma	batch-016
