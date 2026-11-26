@@ -273,3 +273,12 @@ Aturan integrasi:
 Verifikasi GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908285217): validator 60 kalimat/314 token; evaluasi development 148 token resolved, 107 benar, coverage 72,3%, accuracy 72,3%, selective accuracy 100%; regression suite 141/141 lulus. Satu gold ambiguous tetap ditahan dan tidak dipaksakan. Test split 24 kalimat tidak digunakan.
 
 Angka coverage 72,3% adalah hasil pada 36 kalimat development yang tersedia, bukan akurasi umum. POS kontekstual belum menambah metrik di atas POS leksikal.
+
+
+## 15. Batch ketujuh dan verifikasi — 27 November 2026
+
+Batch ketujuh menambahkan 10 record (`pos_0061`–`pos_0070`), enam development dan empat test. Dataset menjadi 70 kalimat, 374 token, 42 development dan 28 test. Cakupan development meliputi numeralia, preposisi tujuan, konjungsi pilihan/subordinatif, penanda aspek/modalitas, demonstrativa, dan adverbia derajat.
+
+GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211) memvalidasi dataset: 70 kalimat, 374 token, 42 development, 28 test. Evaluator development-only memuat 174 token resolved, 131 benar, coverage 75,3%, accuracy 75,3%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan. Regression suite: 141/141 lulus. Test split tetap tertahan dan tidak digunakan.
+
+Angka evaluasi hanya berlaku untuk development set yang berisi 42 kalimat; bukan estimasi akurasi umum. Jangan menganggap perubahan persentase antarbatch sebagai tren kualitas tanpa memperhatikan komposisi sampel.
