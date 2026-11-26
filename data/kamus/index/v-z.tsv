@@ -2,5 +2,7 @@
 # token\tid\tlemma\ttype\tbatch
 wajah	K0127	wajah	lemma	batch-003
 waktu	K0302	waktu	lemma	batch-007
+warung	K0360	warung	lemma	batch-008
+wilayah	K0385	wilayah	lemma	batch-008
 ya	K0030	iya	variant	batch-001
 yakin	K0242	yakin	lemma	batch-005
