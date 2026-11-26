@@ -64,7 +64,7 @@ Branch kerja: `main`
 - Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
 - 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
 - Prototipe morfologi tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Versi terbaru menambahkan kandidat konfiks ke-an, per-an, peN-an, bentuk menge-, serta perapian urutan prefiks. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
-- Versi terbaru memiliki 20 regression tests morfologi dan seluruhnya telah dijalankan pada lingkungan Python lokal terisolasi: **20 lulus, 0 gagal**. Dua puluh lima tes morfologi versi terbaru telah dijalankan pada lingkungan Python lokal terisolasi: **25 lulus, 0 gagal**. Tujuh tes negatif memastikan bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, dan `perang` tidak salah dipotong sebagai imbuhan.
+- Versi morfologi terkini memiliki **27 regression tests yang telah dijalankan pada lingkungan Python lokal terisolasi: 27 lulus, 0 gagal**. Tes negatif mencakup bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, `perang`, `terapi`, dan `mereka` agar tidak salah dipotong sebagai imbuhan.
 - Total pengujian komponen yang telah dijalankan secara terpisah kini **80 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 27 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes.
 - Belum ada integrasi Android.
 
