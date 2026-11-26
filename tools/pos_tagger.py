@@ -18,7 +18,13 @@ def _morphological_verbal_pos(morphology_candidates: list[dict[str, Any]]) -> li
         return []
     for morphology in morphology_candidates:
         rule = morphology.get("rule", "")
-        if not any(rule == prefix or rule.startswith(prefix + "+") for prefix in _VERBAL_MORPHOLOGY_RULES):
+        is_verbal_rule = (
+            rule == "prefix_meN" or rule.startswith("prefix_meN+")
+            or rule == "prefix_di" or rule.startswith("prefix_di+")
+            or rule.startswith("nasal_restoration_m")
+            or rule.startswith("nasal_retention_meny")
+        )
+        if not is_verbal_rule:
             return []
         matches = morphology.get("candidates", [])
         if not matches:
