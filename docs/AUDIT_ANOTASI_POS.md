@@ -264,3 +264,29 @@ GitHub Actions [run #13](https://github.com/semoliginon-ops/Sistem_bahasa/action
 Perubahan `tools/pos_supplement.py` hanya menambah `itu` (PRON), `dan` (CONJ), `ketika` (CONJ), dan `wah` (INTJ). Kata polifungsi seperti `baru`, `dulu`, dan `tetap` sengaja tidak dimasukkan sebagai fallback satu-label. Hasil hanya berlaku pada development set; 40 kalimat test tetap tertahan.
 
 **Prioritas berikutnya:** audit pipeline morfologi untuk bentuk verba berimbuhan (mis. `membaca`, `bekerja`, `menanam`) dan periksa cakupan lema nomina yang hilang. Jangan mengubah aturan berdasarkan test.
+
+## Integrasi morfologi ke POS tagger — 27 November 2026
+
+### Perubahan pipeline
+
+1. `analyze_text()` kini memanggil `analyze_morphology()` untuk setiap token kata dan menyertakan `morphology_candidates` pada hasil analisis.
+2. `analyze_morphology()` dapat menganalisis bentuk yang sudah tercatat sebagai `derived_form`, tetapi tetap tidak memecah lema utuh atau variasi ejaan.
+3. POS tagger menerima label VERB hanya dari pola verbal yang didukung dan kandidat lema dasar yang tervalidasi kamus serta memiliki POS VERB.
+4. Jika bukti tidak memadai atau kandidat morfologi saling bertentangan, sistem tetap abstain. Contoh pengamanan: `bekerja` tidak diprediksi otomatis sebagai VERB hanya dari awalan `ber-` karena lema `kerja` berlabel NOUN.
+
+### Hasil verifikasi
+
+GitHub Actions [run #26](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910648622) berhasil. Dataset tetap 100 kalimat/543 token (60 development, 40 test), dan seluruh **147/147 regression tests lulus**.
+
+| Evaluasi development | Prediksi benar | Coverage | Selective accuracy |
+|---|---:|---:|---:|
+| POS leksikal | 215/255 | 84,3% | 100% |
+| POS kontekstual | 216/255 | 84,7% | 100% |
+
+Tidak ada salah prediksi pada token yang diputuskan oleh kedua jalur. Abstention kontekstual kini ADJ 2, ADV 3, NOUN 19, VERB 15. Dibanding hasil sebelumnya (VERB 23 abstention), integrasi morfologi mengurangi delapan abstention VERB. Satu token gold ambiguous tetap ditahan, tidak dipaksakan.
+
+### Sisa audit
+
+Sisa contoh VERB yang belum diputuskan mencakup `bekerja`, `memasak`, `membeli`, `menjelaskan`, `bermain`, `ditunda`, `letakkan`, `berteduh`, dan `hinggap`. Penyebabnya tidak seragam: sebagian memerlukan aturan alomorf/imbuhan tambahan, sebagian memerlukan pemeriksaan lema dasar atau metadata POS bentuk turunan. Jangan menambahkan aturan umum hanya untuk menaikkan coverage.
+
+**Batas evaluasi:** semua angka di atas hanya memakai development split. Empat puluh kalimat test tetap tertahan dan tidak digunakan untuk penyetelan.
