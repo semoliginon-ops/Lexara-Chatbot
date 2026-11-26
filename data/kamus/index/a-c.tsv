@@ -62,6 +62,7 @@ aktor	K1822	aktor	lemma	batch-037
 aktual	K1823	aktual	lemma	batch-037
 aku	K0001	aku	lemma	batch-001
 akun	K1208	akun	lemma	batch-025
+akuntan	K2452	akuntan	lemma	batch-050
 akurat	K1209	akurat	lemma	batch-025
 alam	K1824	alam	lemma	batch-037
 alamat	K0367	alamat	lemma	batch-008
@@ -135,6 +136,8 @@ apel	K1905	apel	lemma	batch-039
 apem	K2056	apem	lemma	batch-042
 api	K0153	api	lemma	batch-004
 apotek	K0516	apotek	lemma	batch-011
+apoteker	K2457	apoteker	lemma	batch-050
+apoteker rumah sakit	K2484	apoteker rumah sakit	lemma	batch-050
 apresiasi	K1217	apresiasi	lemma	batch-025
 arah	K0381	arah	lemma	batch-008
 arem-arem	K2002	arem-arem	lemma	batch-041
@@ -143,7 +146,10 @@ arloji	K2303	arloji	lemma	batch-047
 arloji digital	K2356	arloji digital	lemma	batch-048
 arogan	K0714	arogan	lemma	batch-015
 arsip	K1842	arsip	lemma	batch-037
+arsiparis	K2498	arsiparis	lemma	batch-050
+arsitek	K2453	arsitek	lemma	batch-050
 arti	K0444	arti	lemma	batch-009
+artis	K2454	artis	lemma	batch-050
 arus	K1843	arus	lemma	batch-037
 asalkan	K1830	asalkan	lemma	batch-037
 asam	K0462	asam	lemma	batch-010
@@ -163,6 +169,7 @@ asyik	K0519	asyik	lemma	batch-011
 atap	K0260	atap	lemma	batch-006
 atas	K0374	atas	lemma	batch-008
 atasan	K0438	atasan	lemma	batch-009
+atlet	K2456	atlet	lemma	batch-050
 aturan	K1847	aturan	lemma	batch-037
 audit	K1221	audit	lemma	batch-025
 avokad	K1906	avokad	lemma	batch-039
@@ -240,6 +247,7 @@ baper	K0093	baper	lemma	batch-002
 barangkali	K0608	barangkali	lemma	batch-013
 bareng	K0552	bareng	lemma	batch-012
 baris	K1228	baris	lemma	batch-025
+barista	K2485	barista	lemma	batch-050
 barusan	K0652	barusan	lemma	batch-014
 basah	K0320	basah	lemma	batch-007
 basi	K0723	basi	lemma	batch-015
@@ -393,6 +401,7 @@ biawak	K2208	biawak	lemma	batch-045
 biaya	K0354	biaya	lemma	batch-008
 bibir	K1239	bibir	lemma	batch-025
 bicara	K0036	bicara	lemma	batch-001
+bidan	K2458	bidan	lemma	batch-050
 bihun	K1957	bihun	lemma	batch-040
 bihun goreng	K2064	bihun goreng	lemma	batch-042
 bijak	K0736	bijak	lemma	batch-015
@@ -466,6 +475,7 @@ buntut	K0746	buntut	lemma	batch-015
 buram	K1247	buram	lemma	batch-025
 buru-buru	K0350	buru-buru	lemma	batch-007
 buruan	K0747	buruan	lemma	batch-015
+buruh pabrik	K2499	buruh pabrik	lemma	batch-050
 burung	K2210	burung	lemma	batch-045
 burung beo	K2248	burung beo	lemma	batch-045
 burung gereja	K2259	burung gereja	lemma	batch-046
