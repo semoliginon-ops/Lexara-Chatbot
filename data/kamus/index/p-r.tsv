@@ -6,6 +6,7 @@ paham	K0040	paham	lemma	batch-001
 pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
 panas	K0251	panas	lemma	batch-005
+panci	K0282	panci	lemma	batch-006
 papa	K0107	papa	lemma	batch-003
 pasti	K0235	pasti	lemma	batch-005
 pegunungan	K0158	gunung	derived_form	batch-004
@@ -65,6 +66,8 @@ pengenalan	K0215	kenal	derived_form	batch-005
 pengetahuan	K0039	tahu	derived_form	batch-001
 pengganti	K0221	ganti	derived_form	batch-005
 penggaraman	K0171	garam	derived_form	batch-004
+penggaris	K0300	penggaris	lemma	batch-006
+penghapus	K0299	penghapus	lemma	batch-006
 penghilangan	K0223	hilang	derived_form	batch-005
 penghubung	K0217	hubungi	derived_form	batch-005
 penghubungan	K0217	hubungi	derived_form	batch-005
@@ -85,6 +88,7 @@ penolak	K0245	tolak	derived_form	batch-005
 penolakan	K0245	tolak	derived_form	batch-005
 penolong	K0032	tolong	derived_form	batch-001
 penonton	K0075	nonton	derived_form	batch-002
+pensil	K0297	pensil	lemma	batch-006
 penulis	K0077	tulis	derived_form	batch-002
 penulisan	K0077	tulis	derived_form	batch-002
 penunggu	K0064	tunggu	derived_form	batch-002
@@ -133,13 +137,18 @@ pikiran	K0080	pikir	derived_form	batch-002
 pilih	K0219	pilih	lemma	batch-005
 pilihan	K0219	pilih	derived_form	batch-005
 pindah	K0207	pindah	lemma	batch-005
+pintu	K0256	pintu	lemma	batch-006
+piring	K0277	piring	lemma	batch-006
+pisau	K0281	pisau	lemma	batch-006
 pohon	K0159	pohon	lemma	batch-004
 ponsel	K0196	ponsel	lemma	batch-004
 pulang	K0019	pulang	lemma	batch-001
+pulpen	K0298	pulpen	lemma	batch-006
 punya	K0202	punya	lemma	batch-005
 ragu	K0243	ragu	lemma	batch-005
 ramai	K0249	ramai	lemma	batch-005
 rambut	K0126	rambut	lemma	batch-003
+remote	K0287	remote	lemma	batch-006
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
 rumah	K0012	rumah	lemma	batch-001
