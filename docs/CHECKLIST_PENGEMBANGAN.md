@@ -507,3 +507,13 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 **Catatan evaluasi:** terdapat setidaknya satu prediksi keliru pada token yang diputuskan sistem; selective accuracy 99,5% menandakan hasil yang diputuskan tidak sempurna. Jangan menyebut akurasi 100%. Seluruh 40 kalimat test tetap tertahan untuk evaluasi terpisah.
 
 **Titik lanjut:** audit menyeluruh dataset v1, analisis kesalahan development, dan rencana evaluasi test yang terkontrol. Jangan menyetel aturan menggunakan test sebelum protokol evaluasi ditetapkan.
+
+
+### Pelaporan kesalahan evaluator POS — 27 November 2026
+
+- [x] Memperluas `tools/evaluasi_pos.py` agar menampilkan token development yang salah diprediksi beserta ID record, kalimat, gold, dan prediksi.
+- [x] Menambahkan regression test untuk struktur dan ketepatan daftar kesalahan.
+- [x] GitHub Actions [run #10](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909498360): validator 100 kalimat/543 token berhasil; regression suite **142/142 lulus**.
+- [x] Menemukan kesalahan konkret: `pos_0093`, token `disiplin`, gold ADJ, prediksi NOUN pada evaluator leksikal dan kontekstual.
+
+**Titik lanjut:** audit entri kamus `disiplin` dan konteks kalimat sebelum mengubah aturan atau anotasi. Jangan memakai split test.
