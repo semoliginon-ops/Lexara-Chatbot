@@ -585,3 +585,14 @@ GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 ## Audit cakupan indeks leksikal POS — 27 November 2026
 
 Setelah batch keenam, token resolved pada 36 kalimat development dibandingkan dengan delapan shard indeks kamus. Gap unik yang tercatat antara lain numeralia `dua` dan `tiga`; preposisi `di`, `ke`, `pada`; konjungsi `atau`, `kalau`, `tetapi`; adverbia `akan`, `dulu`, `sangat`, `sedang`, `sekali`, `tetap`; serta beberapa lema nomina/verba/adjektiva dan interjeksi `wah`. Kata tugas `untuk` dan `dari` sudah tersedia di kamus. Temuan ini mendukung suplementasi terfokus atau evaluasi closed-class, bukan perubahan massal terhadap kamus 3.000 lema. Belum ada perubahan kamus atau kode pada audit ini.
+
+
+## Suplementasi POS terfokus — 27 November 2026
+
+Dibuat fallback leksikal terpisah di `tools/pos_supplement.py` untuk 12 kata yang teridentifikasi dari audit gap development: dua/tiga (NUM), di/ke/pada (PREP), atau/kalau/tetapi (CONJ), serta akan/sedang/sangat/sekali (ADV sesuai konvensi proyek v1). Fallback hanya berlaku jika tidak ada kandidat POS dari kamus. Kamus 3.000 lema tidak diubah. Kata yang berpotensi polifungsi seperti `dulu` dan `tetap` sengaja dibiarkan tanpa fallback.
+
+Regression tests menguji 12 kata, prioritas kandidat kamus, dan pelestarian ambiguitas. GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908285217) berhasil: validator 60 kalimat/314 token (36 development, 24 test); evaluator development 148 token resolved, 107 benar, coverage 72,3%, accuracy 72,3%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan; regression suite **141/141 lulus**.
+
+Kenaikan coverage dari 60,8% menjadi 72,3% dihitung pada development set yang sama setelah fallback; ini bukan akurasi umum. POS kontekstual dan leksikal tetap menghasilkan angka identik. Test split tetap ditahan.
+
+**Titik lanjut:** Batch 7 (`pos_0061`–`pos_0070`), enam development dan empat test. Setelah batch ditambahkan, validator, evaluator development-only, dan regression suite dijalankan kembali melalui GitHub Actions.
