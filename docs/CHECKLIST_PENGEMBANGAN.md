@@ -266,3 +266,11 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [x] Konfirmasi seluruh 100 tes komponen sebelumnya tetap lulus bersama 10 tes POS baru.
 
 **Titik lanjut aktif:** Tahap 2.5 belum selesai. Berikutnya adalah menambahkan petunjuk konteks kalimat untuk disambiguasi POS, kemudian membuat dataset kalimat berlabel dan mengukur akurasi. Disambiguasi belum boleh diklaim tersedia sebelum implementasi dan evaluasi dilakukan.
+
+
+### Verifikasi dataset POS batch kedua dan regression suite penuh — 27 November 2026
+- [x] Validasi dataset POS dari Termux: 20 kalimat, 91 token, 12 development, 8 test; seluruh pemeriksaan struktur dan kecocokan tokenizer lulus.
+- [x] Jalankan `python -m unittest discover -s tests -v` setelah batch kedua ditarik: **Ran 132 tests — OK**, 0 gagal, waktu 0,087 detik.
+- [x] Konfirmasi regression suite mencakup analyzer, loader kamus, morfologi, normalisasi, pencocokan kamus, POS kontekstual, POS leksikal, tokenizer, dan validator dataset POS.
+
+**Titik lanjut:** audit mutu anotasi pada development set dan perluas dataset secara bertahap. Jangan gunakan test split untuk menyetel aturan POS.
