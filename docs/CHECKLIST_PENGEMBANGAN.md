@@ -107,7 +107,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat 13 regression tests pada `tests/test_pos_context.py`; seluruhnya lulus pada checkout Termux (27 November 2026).
 - [x] Menjalankan regression suite gabungan dari checkout Termux: **123 tes lulus, 0 gagal** (27 November 2026).
 - [x] Menetapkan format JSONL, pembagian development/test, pedoman anotasi, dan metrik evaluasi pada [`docs/DATASET_POS.md`](DATASET_POS.md).
-- [ ] Mengumpulkan dan menganotasi dataset kalimat berlabel; target awal 100 kalimat.
+- [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
+- [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
+- [ ] Memvalidasi token dan label serta mengukur akurasi POS.
 - [ ] Membuat validator dataset dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
