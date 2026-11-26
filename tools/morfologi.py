@@ -59,6 +59,10 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         left, right = surface.split("-", 1)
         if left and left == right:
             add_candidate(left, "reduplication_identical")
+        # Reduplikasi dengan prefiks ber- pada unsur pertama,
+        # misalnya berjalan-jalan atau berlari-lari.
+        elif left.startswith("ber") and left[3:] == right:
+            add_candidate(right, "reduplication_prefix_ber")
 
     if surface.startswith("ke") and surface.endswith("an") and len(surface) > 5:
         add_candidate(surface[2:-2], "confix_ke_an")
