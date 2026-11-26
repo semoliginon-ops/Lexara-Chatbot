@@ -65,6 +65,17 @@ def disambiguate_pos_context(analysis: dict[str, Any]) -> dict[str, Any]:
             if following_text in _DEMONSTRATIVES and "NOUN" in candidates:
                 evidence.append({"rule": "demonstrative_after", "pos": "NOUN", "cue_token": following_text})
 
+            if previous_text in {"dan", "serta", "maupun"} and index >= 2:
+                left_conjunct = source_tokens[index - 2]
+                left_labels = _labels(left_conjunct)
+                shared_labels = set(candidates).intersection(left_labels)
+                if len(shared_labels) == 1:
+                    evidence.append({
+                        "rule": "coordination_with_previous_conjunct",
+                        "pos": next(iter(shared_labels)),
+                        "cue_token": left_conjunct.get("token", "").casefold(),
+                    })
+
             if token.casefold() == "bisa" and following:
                 if "VERB" in following_pos and "VERB" in candidates:
                     evidence.append({"rule": "bisa_before_verb", "pos": "VERB", "cue_token": following_text})
