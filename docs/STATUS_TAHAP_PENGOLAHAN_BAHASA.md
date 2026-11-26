@@ -580,3 +580,8 @@ Dataset POS bertambah dari 50 menjadi 60 kalimat (`pos_0051`–`pos_0060`), terd
 ## Verifikasi batch keenam — 27 November 2026
 
 GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) selesai dengan status sukses. Validator Python: 60 kalimat, 314 token, 36 development, 24 test. Evaluator development-only: 148 token resolved, 90 benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%; satu gold ambiguous ditahan dan tidak dipaksakan. Coverage per label memperlihatkan NUM 0/2, PREP 1/7, ADV 4/13, CONJ 3/6 (format benar/prediksi atau abstain dijelaskan di audit). Regression suite: 137/137 lulus. Test split tetap ditahan.
+
+
+## Audit cakupan indeks leksikal POS — 27 November 2026
+
+Setelah batch keenam, token resolved pada 36 kalimat development dibandingkan dengan delapan shard indeks kamus. Gap unik yang tercatat antara lain numeralia `dua` dan `tiga`; preposisi `di`, `ke`, `pada`; konjungsi `atau`, `kalau`, `tetapi`; adverbia `akan`, `dulu`, `sangat`, `sedang`, `sekali`, `tetap`; serta beberapa lema nomina/verba/adjektiva dan interjeksi `wah`. Kata tugas `untuk` dan `dari` sudah tersedia di kamus. Temuan ini mendukung suplementasi terfokus atau evaluasi closed-class, bukan perubahan massal terhadap kamus 3.000 lema. Belum ada perubahan kamus atau kode pada audit ini.
