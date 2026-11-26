@@ -403,3 +403,12 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [ ] Jalankan validator Python resmi, evaluator development, dan regression suite setelah batch kelima; belum ada hasil eksekusi Python yang terkonfirmasi.
 
 **Titik lanjut:** verifikasi batch kelima melalui pemeriksaan otomatis yang tersedia. Jangan gunakan 20 record test untuk penyetelan.
+
+
+### Otomatisasi validasi POS di GitHub Actions
+
+- [x] Menambahkan `.github/workflows/pos-validation.yml` untuk menjalankan validator dataset, evaluator development-only, dan seluruh regression suite pada perubahan `data/dataset_pos/`, `data/kamus/`, `tools/`, atau `tests/` di branch `main`/pull request.
+- [x] Menambahkan pemicu manual `workflow_dispatch`.
+- [ ] Menunggu eksekusi pertama pada perubahan dataset/kode berikutnya; workflow baru dibuat dan belum ada hasil run yang diklaim.
+
+Catatan kuota: workflow hanya terpicu pada perubahan file dataset/kamus/kode/tes, bukan perubahan dokumentasi saja. Setiap run memakai kuota GitHub Actions.
