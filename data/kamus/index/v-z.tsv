@@ -1,13 +1,15 @@
 # Token index — v-z
-# token\tid\tlemma\ttype\tbatch
 cek	K0442	cek	lemma	batch-009
 lulus	K0422	lulus	lemma	batch-009
 rapat	K0436	rapat	lemma	batch-009
 rekan	K0439	rekan	lemma	batch-009
 rencana	K0449	rencana	lemma	batch-009
 wajah	K0127	wajah	lemma	batch-003
+wajar	K0644	wajar	lemma	batch-013
 waktu	K0302	waktu	lemma	batch-007
+walaupun	K0643	walaupun	lemma	batch-013
 warung	K0360	warung	lemma	batch-008
 wilayah	K0385	wilayah	lemma	batch-008
 ya	K0030	iya	variant	batch-001
 yakin	K0242	yakin	lemma	batch-005
+yuk	K0645	yuk	lemma	batch-013
