@@ -689,3 +689,20 @@ Pengguna menarik commit hingga `0d37b01` dan menjalankan regression suite lokal 
 Dibanding hasil sebelumnya (215/255 leksikal dan 216/255 kontekstual), kedua jalur bertambah tujuh prediksi benar pada development. Ini peningkatan coverage/accuracy pada set yang sama, bukan klaim akurasi umum.
 
 **Sisa audit VERB development:** delapan kemunculan token abstain terdiri dari `bekerja` (3), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Status diagnostik: `bekerja` dan `menjelaskan` memerlukan analisis morfologi; empat bentuk lainnya belum memiliki kandidat leksikal/morfologis yang dapat dipakai. Audit berikutnya harus memeriksa lema dasar, bentuk turunan yang tercatat, serta pola pasif dan imperatif secara terpisah. Jangan menggunakan split test untuk menyetel aturan.
+
+
+## Verifikasi POS bentuk turunan eksplisit — 27 November 2026
+
+Pengguna menarik pembaruan terbaru ke Termux dan menjalankan seluruh rangkaian pemeriksaan lokal:
+
+- Regression suite: **152/152 lulus**.
+- Validator dataset: **100 kalimat, 543 token; 60 development dan 40 test — berhasil**.
+- POS leksikal development: **227/255 benar**, coverage/accuracy **89,0%**, selective accuracy **100%**.
+- POS kontekstual development: **228/255 benar**, coverage/accuracy **89,4%**, selective accuracy **100%**.
+- Kesalahan prediksi pada token yang diputuskan: **0** untuk kedua jalur.
+- Gold ambiguous: **1 ditahan, 0 dipaksakan**.
+- Abstention VERB tersisa: `ditunda`, `hinggap`, dan `berteduh`.
+
+Perubahan metadata bentuk turunan menyelesaikan prediksi untuk `bekerja`, `menjelaskan`, dan `letakkan` pada contoh development yang diaudit. Hasil ini terbatas pada development set dan bukan estimasi akurasi umum. Seluruh 40 record test tetap tertahan.
+
+**Titik lanjut:** audit keberadaan lema `tunda`, `hinggap`, dan `teduh` serta gap kosakata NOUN. Jangan menyetel aturan menggunakan test split.
