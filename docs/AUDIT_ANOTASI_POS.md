@@ -97,3 +97,12 @@ Pengguna menjalankan perintah verifikasi dari checkout Termux setelah menarik pe
 - Regression suite penuh: **137 tes lulus, 0 gagal, 0 error**.
 
 Koreksi metadata berhasil memperbaiki penanganan kasus ambigu yang ditemukan. Hasil ini tidak membuktikan akurasi umum; cakupan evaluasi masih 18 kalimat development. Test split tetap ditahan.
+
+
+## Audit setelah batch keempat — 27 November 2026
+
+Evaluasi development setelah batch keempat menemukan satu mismatch prediksi pada `pos_0031`: kalimat `Gue mau makan dulu.`. Token `mau` diberi gold `ADV`, tetapi sistem memprediksi `VERB`. Pedoman v1 secara eksplisit memberi `ADV` pada daftar penanda aspek/modalitas `sedang`, `akan`, `telah`, `sudah`, dan `lagi`; `mau` belum ditetapkan secara eksplisit. Karena `mau` dapat berfungsi sebagai verba modal, jangan langsung mengubah gold atau menambah aturan hanya untuk menyesuaikan satu contoh. Tinjau dulu konvensi taksonomi yang akan dipakai secara konsisten.
+
+Token `wah` pada kalimat development baru berlabel `INTJ` tetapi tidak mendapat prediksi tunggal. Ini menurunkan coverage, bukan selective accuracy. Evaluasi menunjukkan leksikal dan konteks lokal sama-sama 55/102 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%. Gold ambiguous `Jalan.` tetap ditahan (1 abstained, 0 forced).
+
+Validasi dataset 40 kalimat/215 token berhasil dan regression suite penuh lulus 137/137. Split test tidak digunakan untuk audit atau penyetelan.
