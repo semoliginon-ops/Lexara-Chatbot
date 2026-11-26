@@ -1,7 +1,7 @@
 # Indeks Utama Kamus — Sistem Bahasa
 
-**Status:** Register awal; belum berisi entri kosakata yang disetujui  
-**Target:** 3.000 lemma unik untuk Kamus v1.0  
+**Status:** Batch 001 disetujui dan terdaftar
+**Target:** 3.000 lemma unik untuk Kamus v1.0
 **Sumber aturan:** ../../docs/KAMUS.md
 
 File ini adalah daftar induk untuk melacak semua lemma yang masuk ke kamus. Setiap kosakata baru harus diperiksa terhadap indeks ini sebelum ditambahkan ke data kamus. Tujuannya mencegah duplikasi, menjaga ID tetap unik, dan memastikan variasi ejaan diarahkan ke entri kanonis yang benar.
@@ -9,72 +9,108 @@ File ini adalah daftar induk untuk melacak semua lemma yang masuk ke kamus. Seti
 ## 1. Aturan wajib sebelum menambah kata
 
 1. Normalisasikan kandidat untuk pencarian duplikat: Unicode NFC, hapus spasi di awal/akhir, dan gunakan huruf kecil untuk pencocokan dasar.
-2. Jangan menghapus tanda hubung atau apostrof secara otomatis; tanda tersebut bisa membedakan bentuk kata.
-3. Periksa apakah bentuk itu sudah tercatat sebagai lemma, variant, derived_form, atau redirect.
-4. Jika hanya beda kapitalisasi atau salah ketik, jangan buat lemma baru. Catat sebagai variasi jika memang berguna.
-5. Jika dua bentuk berbeda tetapi maknanya sama/berhubungan, jangan otomatis menggabungkannya. Tinjau sebagai kemungkinan sinonim atau kata terkait.
-6. Satu lemma boleh mempunyai beberapa POS dan beberapa sense. Jangan membuat entri lemma baru hanya karena maknanya berbeda.
-7. Homograf atau bentuk sama dengan asal/fungsi berbeda harus dicatat dengan sense terpisah dan catatan pembeda.
-8. Jangan menganggap bentuk turunan berimbuhan sebagai lemma baru secara otomatis. Tambahkan sebagai lemma tersendiri hanya jika dibutuhkan sebagai bentuk leksikal mandiri; jika tidak, simpan di derived_forms.
-9. Semua entri baru harus diberi ID stabil dan tidak boleh menggunakan ulang ID yang pernah dipakai.
-10. Jika status kata masih meragukan, masukkan ke daftar tinjauan, bukan daftar lemma disetujui.
+2. Jangan menghapus tanda hubung atau apostrof secara otomatis.
+3. Periksa kandidat terhadap lemma, variants, derived_forms, dan alias yang sudah ada.
+4. Satu lemma dapat memiliki beberapa sense dan POS; jangan membuat lemma terpisah hanya karena maknanya berbeda.
+5. Bentuk turunan tidak otomatis dihitung sebagai lemma baru.
+6. ID harus unik dan stabil.
+7. Kandidat yang belum jelas harus ditandai untuk tinjauan, bukan langsung disahkan.
 
 ## 2. Status entri
 
 | Status | Arti |
 |---|---|
-| approved | Sudah diperiksa dan masuk hitungan target 3.000 |
-| review | Masih perlu verifikasi makna, POS, atau keunikan |
-| rejected | Tidak digunakan; simpan alasan agar tidak diajukan ulang |
-| merged | Digabung/diarahkan ke lemma kanonis lain |
+| approved | Sudah diperiksa dan masuk hitungan target |
+| review | Masih perlu verifikasi |
+| rejected | Tidak digunakan |
+| merged | Digabung atau diarahkan ke lemma kanonis lain |
 
 Hanya status approved yang dihitung ke target 3.000 lemma.
 
 ## 3. Indeks lemma kanonis
 
-Tambahkan satu baris untuk setiap lemma kanonis. Urutkan alfabetis berdasarkan lemma yang sudah dinormalisasi.
-
-| ID | Lemma kanonis | POS | Register | Variasi/alias | Status | Catatan |
+| ID | Lemma kanonis | POS | Register | Variasi/bentuk turunan | Status | Catatan |
 |---|---|---|---|---|---|---|
-| — | Belum ada entri | — | — | — | — | Indeks akan diisi setelah kurasi kosakata dimulai. |
+| K0001 | aku | PRON | neutral, informal | — | approved | Batch 001 |
+| K0041 | bagus | ADJ | neutral, informal | bagusan | approved | Batch 001 |
+| K0048 | banget | ADV | informal, slang | — | approved | Batch 001 |
+| K0016 | bangun | VERB | neutral | membangunkan, terbangun, bangunkan | approved | Batch 001 |
+| K0033 | bantu | VERB | neutral | membantu, dibantu, bantuan, pembantu | approved | Batch 001 |
+| K0043 | besar | ADJ | neutral | membesar, besaran, kebesaran | approved | Batch 001 |
+| K0036 | bicara | VERB | neutral | berbicara, pembicaraan, membicarakan, pembicara | approved | Batch 001 |
+| K0026 | bisa | VERB, NOUN | neutral, informal | kemampuan | approved | Batch 001 |
+| K0047 | capek | ADJ | informal | cape | approved | Batch 001 |
+| K0045 | cepat | ADJ | neutral | mempercepat, kecepatan, tercepat | approved | Batch 001 |
+| K0018 | datang | VERB | neutral | kedatangan, mendatangi | approved | Batch 001 |
+| K0035 | dengar | VERB | neutral | mendengar, terdengar, pendengaran, kedengaran | approved | Batch 001 |
+| K0004 | dia | PRON | neutral | — | approved | Batch 001 |
+| K0049 | dong | PART | informal, slang | — | approved | Batch 001 |
+| K0023 | duit | NOUN | informal, slang | — | approved | Batch 001 |
+| K0029 | enggak | ADV | informal, slang | nggak, gak, ga | approved | Batch 001 |
+| K0008 | gue | PRON | slang, informal | gw, gua | approved | Batch 001 |
+| K0025 | ingin | VERB | neutral | keinginan, menginginkan | approved | Batch 001 |
+| K0030 | iya | INTJ | neutral, informal | ya | approved | Batch 001 |
+| K0020 | jalan | NOUN | neutral | jalanan, perjalanan, berjalan | approved | Batch 001 |
+| K0042 | jelek | ADJ | informal, neutral | kejelekan | approved | Batch 001 |
+| K0006 | kami | PRON | neutral, formal | — | approved | Batch 001 |
+| K0003 | kamu | PRON | neutral, informal | — | approved | Batch 001 |
+| K0044 | kecil | ADJ | neutral | mengecil, kecil-kecilan | approved | Batch 001 |
+| K0021 | kerja | NOUN | neutral | bekerja, pekerjaan, pekerja, mengerjakan | approved | Batch 001 |
+| K0005 | kita | PRON | neutral | — | approved | Batch 001 |
+| K0046 | lambat | ADJ | neutral | melambat, memperlambat, kelambatan | approved | Batch 001 |
+| K0034 | lihat | VERB | neutral | melihat, terlihat, penglihatan, kelihatan | approved | Batch 001 |
+| K0009 | lu | PRON | slang, informal | lo, elu | approved | Batch 001 |
+| K0013 | makan | VERB | neutral | memakan, dimakan, makanan, pemakan | approved | Batch 001 |
+| K0024 | mau | VERB | neutral, informal | kemauan, menghendaki | approved | Batch 001 |
+| K0007 | mereka | PRON | neutral | — | approved | Batch 001 |
+| K0014 | minum | VERB | neutral | meminum, diminum, minuman, peminum | approved | Batch 001 |
+| K0038 | ngobrol | VERB | informal, slang | obrolan, mengobrol | approved | Batch 001 |
+| K0031 | oke | INTJ | informal | ok, okay | approved | Batch 001 |
+| K0037 | omong | NOUN | informal | mengomong, omongan | approved | Batch 001 |
+| K0010 | orang | NOUN | neutral | perorangan | approved | Batch 001 |
+| K0040 | paham | VERB | neutral | memahami, pemahaman, dipahami | approved | Batch 001 |
+| K0017 | pergi | VERB | neutral | kepergian, bepergian | approved | Batch 001 |
+| K0019 | pulang | VERB | neutral | kepulangan, memulangkan | approved | Batch 001 |
+| K0012 | rumah | NOUN | neutral | perumahan, berumah | approved | Batch 001 |
+| K0002 | saya | PRON | formal, neutral | — | approved | Batch 001 |
+| K0050 | sih | PART | informal, slang | — | approved | Batch 001 |
+| K0039 | tahu | VERB | neutral, informal | mengetahui, pengetahuan, ketahuan | approved | Batch 001 |
+| K0011 | teman | NOUN | neutral | berteman, pertemanan | approved | Batch 001 |
+| K0028 | tidak | ADV | neutral, formal | — | approved | Batch 001 |
+| K0015 | tidur | VERB | neutral | tertidur, menidurkan, tiduran | approved | Batch 001 |
+| K0032 | tolong | VERB | neutral | menolong, pertolongan, penolong | approved | Batch 001 |
+| K0022 | uang | NOUN | neutral | keuangan, menguangkan | approved | Batch 001 |
 
-## 4. Daftar kandidat yang perlu ditinjau
+## 4. Kandidat yang digabung atau diperlakukan sebagai variasi
 
-Gunakan tabel ini untuk kata yang berpotensi duplikat, memiliki ejaan tidak baku, atau belum jelas kelas/maknanya.
+| Bentuk kandidat | Perlakuan | Catatan |
+|---|---|---|
+| bisa (mampu), bisa (racun) | Satu lemma: K0026 | Dua sense dengan POS VERB dan NOUN |
+| gw, gua | Variasi lemma gue | Tidak dihitung sebagai lemma terpisah |
+| lo, elu | Variasi lemma lu | Tidak dihitung sebagai lemma terpisah |
+| nggak, gak, ga | Variasi lemma enggak | Tidak dihitung sebagai lemma terpisah |
+| ok, okay | Variasi lemma oke | Tidak dihitung sebagai lemma terpisah |
+| ya | Variasi lemma iya | Tidak dihitung sebagai lemma terpisah |
+| cape | Variasi lemma capek | Tidak dihitung sebagai lemma terpisah |
+| memakan, dimakan, makanan, dan bentuk turunan lain | Bentuk turunan lemma masing-masing | Tidak dihitung sebagai lemma terpisah |
 
-| Kandidat | Kemungkinan lemma kanonis | Jenis pemeriksaan | Status | Catatan |
-|---|---|---|---|---|
-| — | — | — | — | Belum ada kandidat. |
+## 5. Hitungan progres
 
-## 5. Aturan pencatatan variasi
-
-Contoh konseptual (bukan entri kamus yang sudah disahkan):
-
-| Bentuk ditemukan | Perlakuan indeks |
-|---|---|
-| gak, nggak, enggak | Evaluasi sebagai variasi/alias atau lemma terpisah jika makna/fungsinya berbeda; jangan otomatis menghitung semuanya sebagai tiga lemma. |
-| makan, memakan, dimakan | Umumnya satu lemma dasar dengan bentuk turunan, kecuali ada alasan leksikal untuk entri mandiri. |
-| bisa (mampu), bisa (racun) | Satu bentuk lemma dengan sense berbeda; POS dapat berbeda. |
-| gue, aku | Jangan digabung sebagai duplikat; keduanya bentuk leksikal berbeda dengan relasi makna/pronomina. |
-
-## 6. Hitungan progres
-
-- Lemma disetujui: **0 / 3.000**
+- Lemma disetujui: **49 / 3.000**
 - Kandidat dalam tinjauan: **0**
 - Ditolak: **0**
-- Digabung/alias: **0**
+- Digabung/alias: **7 kelompok variasi/polisemi tercatat**
 
-Hitungan harus diperbarui setiap batch kosakata selesai diperiksa. Jangan memperkirakan jumlah secara manual jika data sumber belum dihitung.
+Catatan: 50 kandidat yang direview menghasilkan 49 lemma kanonis karena dua kandidat "bisa" digabung menjadi satu lemma dengan dua sense dan dua POS.
 
-## 7. Alur kerja setiap batch
+## 6. Alur kerja setiap batch
 
-1. Kumpulkan batch kandidat.
-2. Normalisasikan ejaan untuk pencocokan.
-3. Cari kandidat terhadap lemma, variasi, bentuk turunan, dan alias yang sudah ada.
-4. Periksa makna dan POS; tandai homograf atau polisemi.
-5. Putuskan: lemma baru, variasi, bentuk turunan, relasi, atau ditolak.
-6. Berikan ID stabil hanya setelah kandidat disetujui.
-7. Tambahkan ke indeks ini dan data kamus dalam perubahan yang sama.
-8. Jalankan pemeriksaan duplikat dan validasi skema sebelum commit.
+1. Ambil indeks dan data kamus terbaru dari repository.
+2. Normalisasikan ejaan dan cari duplikasi terhadap lemma, variasi, dan bentuk turunan.
+3. Periksa makna dan POS; pisahkan sense untuk polisemi/homograf.
+4. Tetapkan ID setelah disetujui.
+5. Tambahkan data batch dan perbarui indeks.
+6. Jalankan validasi JSONL, ID unik, lemma kanonis unik, dan kode POS/register.
+7. Catat perubahan dalam commit.
 
-**Prinsip:** indeks adalah sumber rujukan utama untuk pemeriksaan duplikat. Jangan menambahkan batch baru hanya berdasarkan ingatan atau percakapan; periksa file indeks dan data kamus terbaru di repository terlebih dahulu.
+**Prinsip:** indeks dan data kamus di repository adalah sumber rujukan utama. Jangan mengandalkan ingatan percakapan untuk pemeriksaan duplikat.
