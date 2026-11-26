@@ -1,5 +1,7 @@
 # Token index — j-l
 # token\tid\tlemma\ttype\tbatch
+jajan	K0454	jajan	lemma	batch-010
+jajanan	K0455	jajanan	lemma	batch-010
 jaket	K0271	jaket	lemma	batch-006
 jalan	K0020	jalan	lemma	batch-001
 jalanan	K0020	jalan	derived_form	batch-001
@@ -95,6 +97,7 @@ kenaikan	K0069	naik	derived_form	batch-002
 kenal	K0215	kenal	lemma	batch-005
 kenalan	K0215	kenal	derived_form	batch-005
 kendaraan	K0399	kendaraan	lemma	batch-008
+kentang	K0486	kentang	lemma	batch-010
 kenyang	K0178	kenyang	lemma	batch-004
 kepagian	K0131	pagi	derived_form	batch-003
 kepala	K0117	kepala	lemma	batch-003
@@ -145,9 +148,11 @@ komputer	K0198	komputer	lemma	batch-004
 kopi	K0173	kopi	lemma	batch-004
 kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
+kukus	K0468	kukus	lemma	batch-010
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
 kunjung	K0418	kunjung	lemma	batch-009
+kunyah	K0477	kunyah	lemma	batch-010
 kurang	K0233	kurang	lemma	batch-005
 kursi	K0253	kursi	lemma	batch-006
 lambat	K0046	lambat	lemma	batch-001
@@ -160,6 +165,7 @@ lantai	K0258	lantai	lemma	batch-006
 lapar	K0176	lapar	lemma	batch-004
 lari	K0073	lari	lemma	batch-002
 larian	K0073	lari	derived_form	batch-002
+lauk	K0456	lauk	lemma	batch-010
 laut	K0156	laut	lemma	batch-004
 lautan	K0156	laut	derived_form	batch-004
 lebay	K0097	lebay	lemma	batch-002
