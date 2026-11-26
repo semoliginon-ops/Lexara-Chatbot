@@ -106,3 +106,8 @@ Evaluasi development setelah batch keempat menemukan mismatch pada `pos_0031`: k
 Token `wah` pada kalimat development baru berlabel `INTJ` tetapi tidak mendapat prediksi tunggal. Ini menurunkan coverage, bukan selective accuracy. Evaluasi menunjukkan leksikal dan konteks lokal sama-sama 55/102 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%. Gold ambiguous `Jalan.` tetap ditahan (1 abstained, 0 forced).
 
 Validasi dataset 40 kalimat/215 token dan regression suite penuh 137/137 telah berhasil sebelum koreksi label `mau`. Koreksi hanya menyentuh satu token development; validasi, evaluasi, dan regression suite harus dijalankan ulang dari Termux sebelum dinyatakan terverifikasi. Split test tidak diubah dan tidak digunakan untuk penyetelan.
+
+
+## Audit cakupan interjeksi — 27 November 2026
+
+Kasus `wah` pada `pos_0034` tidak mendapat prediksi tunggal. Pemeriksaan indeks kamus tidak menemukan lemma `wah`, sehingga penyebab yang paling mungkin adalah kata tersebut belum tercakup dalam kamus. Sebaliknya, lemma `aduh` ditemukan sebagai entri `K0602` dengan POS `INTJ`. Batch kelima menambahkan `Aduh, anak itu jatuh!` (`pos_0041`) pada development untuk menguji interjeksi yang memang sudah tersedia. Tidak ada perubahan pada `pos_tagger.py`, `pos_context.py`, atau entri kamus. Split test tetap ditahan.
