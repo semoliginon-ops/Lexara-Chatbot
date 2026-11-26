@@ -21,6 +21,7 @@ def _morphological_verbal_pos(morphology_candidates: list[dict[str, Any]]) -> li
         is_verbal_rule = (
             rule == "prefix_meN" or rule.startswith("prefix_meN+")
             or rule == "prefix_di" or rule.startswith("prefix_di+")
+            or (rule == "prefix_ber" and morphology.get("recorded_derived_form") is True)
             or rule.startswith("nasal_restoration_m")
             or rule.startswith("nasal_retention_meny")
         )
