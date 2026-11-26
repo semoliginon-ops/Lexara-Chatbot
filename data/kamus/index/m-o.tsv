@@ -246,6 +246,8 @@ merica	K0982	merica	lemma	batch-020
 merpati	K0983	merpati	lemma	batch-020
 merusak	K0222	rusak	derived_form	batch-005
 mesin	K0984	mesin	lemma	batch-020
+mesin fax	K2387	mesin fax	lemma	batch-048
+mesin fotokopi	K2386	mesin fotokopi	lemma	batch-048
 meski	K1468	meski	lemma	batch-030
 meskipun	K1469	meskipun	lemma	batch-030
 mesra	K0985	mesra	lemma	batch-020
@@ -259,6 +261,8 @@ mi goreng	K2138	mi goreng	lemma	batch-043
 mi rebus	K2139	mi rebus	lemma	batch-043
 microwave	K2322	microwave	lemma	batch-047
 mikrofon	K0987	mikrofon	lemma	batch-020
+mikrofon kabel	K2377	mikrofon kabel	lemma	batch-048
+mikrofon nirkabel	K2376	mikrofon nirkabel	lemma	batch-048
 milik	K0988	milik	lemma	batch-020
 militer	K0989	militer	lemma	batch-020
 minat	K1471	minat	lemma	batch-030
@@ -277,14 +281,17 @@ mitos	K0993	mitos	lemma	batch-020
 mobil	K0201	mobil	lemma	batch-004
 modal	K0994	modal	lemma	batch-020
 model	K0995	model	lemma	batch-020
+modem	K2392	modem	lemma	batch-048
 modern	K0996	modern	lemma	batch-020
 modus	K0687	modus	lemma	batch-014
 mogok	K0501	mogok	lemma	batch-010
 mohon	K1474	mohon	lemma	batch-030
+monitor komputer	K2380	monitor komputer	lemma	batch-048
 monyet	K0997	monyet	lemma	batch-020
 motivasi	K0998	motivasi	lemma	batch-020
 motor	K0200	motor	lemma	batch-004
 motoris	K0200	motor	derived_form	batch-004
+mouse komputer	K2379	mouse komputer	lemma	batch-048
 mual	K1480	mual	lemma	batch-030
 muat	K1481	muat	lemma	batch-030
 muatan	K0999	muatan	lemma	batch-020
