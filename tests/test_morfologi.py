@@ -18,6 +18,7 @@ class MorphologyTests(unittest.TestCase):
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
+            "ambil", "kambil", "erti", "kerti", "kunci",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -32,6 +33,16 @@ class MorphologyTests(unittest.TestCase):
     def test_nasal_restoration_mem(self): self.assertIn("pukul", self.bases("memukul"))
     def test_nasal_restoration_men(self): self.assertIn("tulis", self.bases("menulis"))
     def test_nasal_restoration_meny(self): self.assertIn("sapu", self.bases("menyapu"))
+    def test_meng_prefix_restores_k_when_required(self):
+        self.assertIn("kunci", self.bases("mengunci"))
+    def test_meng_prefix_does_not_add_k_to_known_vowel_lemma(self):
+        bases = self.bases("mengambil")
+        self.assertIn("ambil", bases)
+        self.assertNotIn("kambil", bases)
+    def test_meng_prefix_does_not_add_k_to_another_known_vowel_lemma(self):
+        bases = self.bases("mengerti")
+        self.assertIn("erti", bases)
+        self.assertNotIn("kerti", bases)
     def test_prefix_and_suffix_combination(self): self.assertIn("ajar", self.bases("mengajarkan"))
     def test_identical_reduplication(self): self.assertIn("anak", self.bases("anak-anak"))
     def test_non_identical_reduplication_not_guessed(self): self.assertEqual(self.bases("sayur-mayur"), set())
