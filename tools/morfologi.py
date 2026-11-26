@@ -47,6 +47,33 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
     if surface in _LEXICALIZED_GUARDS:
         return []
 
+    # Recorded derived forms are authoritative evidence of the lemma link.
+    # Prefer them over speculative segmentations (e.g. membeli -> bel/beli).
+    recorded = [item for item in known_surface if item.get("match_type") == "derived_form"]
+    if recorded:
+        recorded_rule = None
+        for prefix, rule in _PREFIXES:
+            if surface.startswith(prefix):
+                recorded_rule = rule
+                break
+        if recorded_rule:
+            grouped: dict[str, list[dict[str, Any]]] = {}
+            for match in recorded:
+                lemma = match.get("lemma")
+                if isinstance(lemma, str) and lemma:
+                    grouped.setdefault(lemma, []).append(match)
+            if grouped:
+                return [
+                    {
+                        "surface": surface,
+                        "base_form": lemma,
+                        "rule": recorded_rule,
+                        "candidates": matches,
+                        "recorded_derived_form": True,
+                    }
+                    for lemma, matches in grouped.items()
+                ]
+
     found: dict[tuple[str, str], dict[str, Any]] = {}
 
     def add_candidate(base: str, rule: str) -> None:
