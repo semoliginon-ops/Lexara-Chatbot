@@ -338,3 +338,16 @@ Dari checkout repository `~/Sistem_bahasa` di Termux, perintah `python -m unitte
 - Cakupan tambahan meliputi adjektiva, adverbia derajat/cara, numeralia, imbuhan, partikel tanya, interjeksi, demonstrativa, dan nama diri.
 - File dataset sudah diperbarui di branch `main`. Validasi batch kedua dan regression suite setelah penarikan perubahan masih menunggu dijalankan dari Termux. Hasil 132/132 tes sebelumnya tetap merupakan hasil terakhir yang benar-benar dijalankan, bukan klaim verifikasi untuk perubahan data terbaru.
 - **Titik lanjut:** `git pull`, lalu `python -m tools.validasi_dataset_pos`; pastikan hasil menunjukkan 20 kalimat, 91 token, 12 development, dan 8 test.
+
+
+### Verifikasi batch kedua dataset POS — 27 November 2026
+
+Dari checkout `~/Sistem_bahasa` di Termux, pengguna menjalankan `python -m tools.validasi_dataset_pos` setelah menarik commit batch kedua.
+
+- Hasil: **VALIDASI DATASET POS BERHASIL**.
+- Jumlah: **20 kalimat, 91 token, 12 development, 8 test**.
+- Pemeriksaan JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer semuanya lulus.
+- Status dataset: **20/100 kalimat** telah lolos validasi struktur. Evaluasi kualitas anotasi dan akurasi prediksi POS belum dilakukan.
+- Regression suite penuh terakhir yang terverifikasi tetap **132/132 lulus** sebelum batch data kedua ditambahkan; jalankan ulang untuk konfirmasi setelah sinkronisasi terbaru.
+
+**Titik lanjut:** jalankan regression suite penuh, lalu audit dan perluas data development secara bertahap. Test split tetap ditahan dan tidak dipakai untuk menyetel aturan.
