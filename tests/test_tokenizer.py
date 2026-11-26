@@ -21,7 +21,7 @@ class TokenizerTests(unittest.TestCase):
         self.assertEqual(tokenize("Anak-anak makan-makan"), ["anak-anak", "makan-makan"])
 
     def test_keeps_internal_apostrophes(self):
-        self.assertEqual(tokenize("ku'u dan 'ku'"), ["ku'u", "'", "ku", "'"])
+        self.assertEqual(tokenize("ku'u dan 'ku'"), ["ku'u", "dan", "'", "ku", "'"])
 
     def test_keeps_curly_apostrophe_inside_word(self):
         self.assertEqual(tokenize("Jum’at"), ["jum’at"])
