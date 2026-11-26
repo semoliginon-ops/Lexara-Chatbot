@@ -400,7 +400,7 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Memperluas dataset dari 40 menjadi **50 kalimat**; komposisi menjadi **30 development dan 20 test**.
 - [x] Menambahkan contoh interjeksi `aduh` (INTJ) yang sudah tersedia pada kamus, serta variasi kalimat sederhana, demonstrativa, adjektiva, verba, dan preposisi.
 - [x] Pemeriksaan struktural awal langsung pada file GitHub: 50 kalimat, 266 token, 30 development, 20 test; JSON, ID, label/status POS, dan kecocokan token diperiksa tanpa temuan.
-- [ ] Jalankan validator Python resmi, evaluator development, dan regression suite setelah batch kelima; belum ada hasil eksekusi Python yang terkonfirmasi.
+- [x] GitHub Actions run [#1](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45906966948): validator dataset berhasil (50 kalimat, 266 token, 30 development, 20 test); evaluator development berhasil; regression suite **137/137 lulus**.
 
 **Titik lanjut:** verifikasi batch kelima melalui pemeriksaan otomatis yang tersedia. Jangan gunakan 20 record test untuk penyetelan.
 
@@ -412,3 +412,14 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [ ] Menunggu eksekusi pertama pada perubahan dataset/kode berikutnya; workflow baru dibuat dan belum ada hasil run yang diklaim.
 
 Catatan kuota: workflow hanya terpicu pada perubahan file dataset/kamus/kode/tes, bukan perubahan dokumentasi saja. Setiap run memakai kuota GitHub Actions.
+
+
+### Hasil verifikasi otomatis batch kelima
+
+- [x] Validator Python resmi: **50 kalimat, 266 token, 30 development, 20 test — berhasil**.
+- [x] Evaluator development: 125 token resolved; 72 benar; coverage 57,6%; accuracy 57,6%; selective accuracy 100%.
+- [x] INTJ: `aduh` terprediksi benar; `wah` abstain karena belum tercakup dalam indeks kamus.
+- [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- [x] Regression suite penuh: **137/137 lulus, 0 gagal, 0 error**.
+
+Catatan: POS kontekstual dan leksikal masih menghasilkan metrik identik. Kenaikan angka terhadap batch sebelumnya tidak boleh dianggap bukti tren peningkatan karena komposisi dan jumlah sampel berubah. Test split 20 kalimat tetap ditahan.
