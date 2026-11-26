@@ -25,7 +25,7 @@ _NASAL_RESTORATIONS = (
 
 # Bentuk leksikal yang kebetulan diawali rangkaian huruf mirip prefiks.
 # Jangan analisis sebagai imbuhan jika bentuk utuh ini belum menjadi lema kamus.
-_LEXICALIZED_GUARDS = {"beranda", "kemari", "kemarin", "terima", "terus", "perlu", "pernah"}
+_LEXICALIZED_GUARDS = {"beranda", "kemari", "kemarin", "terima", "terus", "perlu", "pernah", "terong", "selalu", "melati", "kelapa", "perang"}
 
 
 def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[str, Any]]:
