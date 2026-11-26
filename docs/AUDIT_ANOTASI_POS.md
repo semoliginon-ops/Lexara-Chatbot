@@ -121,3 +121,8 @@ GitHub Actions run [#1](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 ## Audit anotasi batch keenam — 27 November 2026
 
 Record `pos_0051`–`pos_0060` dianotasi mengikuti konvensi POS v1 yang telah ditetapkan: `tidak` sebagai ADV, `untuk` dan `dari` sebagai PREP, `karena` sebagai CONJ, dan `jangan` sebagai PART. Bentuk `membeli`, `bekerja`, `membaca`, `memasak`, dan `membawa` diberi VERB. Kalimat test baru hanya ditambahkan sebagai data tertahan dan tidak digunakan untuk menyesuaikan aturan. Preflight struktur dilakukan sebelum commit; validasi Python dan evaluasi setelah commit menunggu workflow otomatis.
+
+
+## Hasil evaluasi batch keenam — 27 November 2026
+
+GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) berhasil. Evaluasi development-only mencakup 36 kalimat: 148 token resolved, 90 diprediksi benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%. Per label, prediksi yang benar/abstain: ADJ 14/1; ADV 4/9; CONJ 3/3; INTJ 1/1; NOUN 36/11; NUM 0/2; PART 1/0; PREP 1/6; PRON 14/9; VERB 16/16. POS leksikal dan kontekstual menghasilkan angka identik. Gold ambiguous: 1 ditahan, 0 dipaksakan. Regression suite 137/137 lulus. Coverage NUM masih 0/2 dan PREP 1/7; ADV 4/13. Ini menunjukkan area cakupan untuk audit berikutnya, bukan alasan langsung mengubah aturan. Test split tidak digunakan.
