@@ -529,3 +529,15 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Evaluasi development: POS konteks lokal 187/255 benar, coverage/accuracy 73,3%, selective accuracy 100%, dan 0 kesalahan prediksi yang diputuskan.
 
 **Catatan:** POS leksikal masih abstain pada sebagian token ambigu; hasil kontekstual tidak boleh dianggap akurasi umum. Seluruh 40 kalimat test tetap tertahan.
+
+
+### Diagnostik abstention POS dan suplementasi fungsi kata — 27 November 2026
+
+- [x] Memperluas evaluator agar melaporkan abstention development menurut gold POS, sumber/status, kandidat, ID, dan kalimat.
+- [x] Menambahkan regression test untuk konsistensi laporan abstention.
+- [x] Menambahkan fallback terkurasi `itu` (PRON), `dan`/`ketika` (CONJ), dan `wah` (INTJ); kata polifungsi `baru`, `dulu`, dan `tetap` tetap tidak dipaksa.
+- [x] GitHub Actions [run #13](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910106880): validator 100 kalimat/543 token berhasil; regression suite **144/144 lulus**.
+- [x] Evaluasi development: contextual POS 208/255 benar, coverage/accuracy 81,6%, selective accuracy 100%, tanpa salah prediksi pada token yang diputuskan.
+- [x] Audit sisa abstention: ADJ 2, ADV 3, NOUN 19, VERB 23.
+
+**Titik lanjut:** audit integrasi morfologi untuk verba berimbuhan dan cakupan lema NOUN. Jangan gunakan 40 record test untuk penyetelan.
