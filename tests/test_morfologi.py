@@ -80,6 +80,9 @@ class MorphologyTests(unittest.TestCase):
         self.assertEqual(candidate["pos"], ["VERB", "NOUN"])
         self.assertEqual(len(candidate["senses"]), 2)
 
+    def test_nested_di_per_suffix_i(self):
+        self.assertIn("baik", self.bases("diperbaiki"))
+
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
 
