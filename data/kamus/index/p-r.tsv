@@ -13,6 +13,7 @@ pegunungan	K0158	gunung	derived_form	batch-004
 pekerja	K0021	kerja	derived_form	batch-001
 pekerjaan	K0021	kerja	derived_form	batch-001
 pelajar	K0187	belajar	derived_form	batch-004
+pelan	K0349	pelan	lemma	batch-007
 pelari	K0073	lari	derived_form	batch-002
 pemaafan	K0247	maaf	derived_form	batch-005
 pemahaman	K0040	paham	derived_form	batch-001
@@ -142,12 +143,15 @@ piring	K0277	piring	lemma	batch-006
 pisau	K0281	pisau	lemma	batch-006
 pohon	K0159	pohon	lemma	batch-004
 ponsel	K0196	ponsel	lemma	batch-004
+puas	K0343	puas	lemma	batch-007
 pulang	K0019	pulang	lemma	batch-001
 pulpen	K0298	pulpen	lemma	batch-006
 punya	K0202	punya	lemma	batch-005
 ragu	K0243	ragu	lemma	batch-005
+ramah	K0347	ramah	lemma	batch-007
 ramai	K0249	ramai	lemma	batch-005
 rambut	K0126	rambut	lemma	batch-003
+rapi	K0323	rapi	lemma	batch-007
 remote	K0287	remote	lemma	batch-006
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
