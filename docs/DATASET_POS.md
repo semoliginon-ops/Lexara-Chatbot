@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Batch ketiga telah lolos validasi di Termux; dataset berisi 30 kalimat (18 development, 12 test; 156 token). Regression suite penuh setelah batch ketiga juga lulus 132/132. Audit awal anotasi development telah dicatat di [`AUDIT_ANOTASI_POS.md`](AUDIT_ANOTASI_POS.md); belum ada label dataset yang diubah.  
+**Status:** Dataset berisi 30 kalimat (18 development, 12 test; 156 token), lolos validasi Termux; regression suite pascakoreksi anotasi lulus 132/132. Satu label `jangan` pada development dikoreksi menjadi `PART`. Evaluator development telah dibuat, tetapi belum dijalankan di Termux. 
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -187,3 +187,19 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 
 
 **Pembaruan pedoman 27 November 2026:** subbagian 5.1 menetapkan konvensi operasional untuk demonstrativa atributif (`PRON`), penanda aspek/modalitas (`ADV`), penanda larangan (`PART`), gelar/sapaan nominal (`NOUN`), kata sebab (`CONJ`), dan penanda tanya (`PART`). Konvensi ini berlaku untuk konsistensi anotasi dataset v1 dan tidak menambah kode POS baru.
+
+
+## 11. Evaluator development — 27 November 2026
+
+File `tools/evaluasi_pos.py` membandingkan prediksi POS leksikal dan kontekstual terhadap gold label pada split development saja. Evaluator melaporkan coverage, accuracy terhadap seluruh token resolved, selective accuracy, confusion counts, dan penanganan token gold ambiguous. Record test tidak dimuat oleh CLI dan fungsi evaluasi menolak record yang bukan development.
+
+Empat regression tests awal tersedia di `tests/test_evaluasi_pos.py`. Kode dan tes masih menunggu eksekusi Termux; belum ada skor akurasi yang boleh dilaporkan.
+
+Perintah:
+```bash
+python -m unittest discover -s tests -p "test_evaluasi_pos.py" -v
+python -m tools.evaluasi_pos
+python -m unittest discover -s tests -v
+```
+
+Hasil evaluasi hanya menggambarkan sampel development yang tersedia (saat ini 18 kalimat). Jangan gunakan test split untuk menyetel aturan.
