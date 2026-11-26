@@ -38,6 +38,8 @@ class MorphologyTests(unittest.TestCase):
     def test_exact_lexical_match_is_not_stemmed(self): self.assertEqual(analyze_morphology("makan", self.lexicon), [])
     def test_unknown_form_is_not_forced(self): self.assertEqual(analyze_morphology("memperxyz", self.lexicon), [])
     def test_prefix_memper(self): self.assertIn("indah", self.bases("memperindah"))
+    def test_memper_prefix_with_suffix_i(self): self.assertIn("baik", self.bases("memperbaiki"))
+    def test_memper_prefix_with_suffix_kan(self): self.assertIn("main", self.bases("mempermainkan"))
     def test_confix_ke_an(self): self.assertIn("indah", self.bases("keindahan"))
     def test_confix_ke_an_second_example(self): self.assertIn("baik", self.bases("kebaikan"))
     def test_confix_per_an(self): self.assertIn("main", self.bases("permainan"))
