@@ -109,8 +109,10 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menetapkan format JSONL, pembagian development/test, pedoman anotasi, dan metrik evaluasi pada [`docs/DATASET_POS.md`](DATASET_POS.md).
 - [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
 - [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
-- [ ] Memvalidasi token dan label serta mengukur akurasi POS.
-- [ ] Membuat validator dataset dan mengevaluasi akurasi POS.
+- [x] Membuat `tools/validasi_dataset_pos.py` untuk validasi struktur, label, status, ID, dan kecocokan token.
+- [x] Membuat 8 regression tests pada `tests/test_validasi_dataset_pos.py`.
+- [~] Menjalankan validator dan 8 regression tests dari checkout Termux; hasil masih menunggu.
+- [ ] Memperluas dataset hingga target 100 kalimat dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
 
