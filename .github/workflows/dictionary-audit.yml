@@ -20,7 +20,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: dictionary-audit-\${{ github.ref }}
+  group: dictionary-audit-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
