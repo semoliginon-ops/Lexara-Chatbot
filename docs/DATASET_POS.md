@@ -50,7 +50,7 @@ Satu baris adalah satu kalimat berupa objek JSON. Simpan sebagai UTF-8 di:
 
 `data/dataset_pos/kalimat_pos_v1.jsonl`
 
-**Progres:** 40/100 kalimat telah dianotasi (24 development, 16 test; 215 token berdasarkan jumlah token anotasi). Batch 1–3 telah divalidasi di Termux; batch keempat menunggu validasi struktur dan kecocokan tokenizer. Regression suite terakhir sebelum batch keempat: 137/137 lulus. Sampel ini belum cukup untuk menyimpulkan akurasi umum.
+**Progres:** 40/100 kalimat telah dianotasi (24 development, 16 test; 215 token terverifikasi validator Termux). Batch keempat lolos validasi struktur/tokenizer dan regression suite penuh 137/137. Evaluasi POS terakhir pada 24 kalimat development: 102 token resolved, 55 prediksi benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%. Hasil terbatas pada development set.
 
 Skema record:
 
@@ -223,3 +223,16 @@ Catatan hasil eksekusi: regression suite penuh dari Termux menjalankan **136 tes
 Audit hasil evaluasi menemukan bahwa entri `K0020` mencatat `jalan` hanya sebagai `NOUN`, padahal catatan penggunaan sebelumnya sudah menyebut fungsi verba. Metadata diperbaiki menjadi `NOUN` dan `VERB` dengan dua sense terpisah dan label POS pada masing-masing sense. Fragmen "Jalan." pada development kini seharusnya tetap ambigu karena tidak menyediakan konteks pemilih.
 
 Regression test integrasi ditambahkan untuk memastikan token gold ambiguous tersebut ditahan, bukan dipaksakan. Perubahan dan tes masih menunggu verifikasi Termux. Split test tidak disentuh.
+
+
+## 12. Verifikasi batch keempat dan evaluasi development — 27 November 2026
+
+Batch keempat (`pos_0031`–`pos_0040`) telah ditarik dan diverifikasi dari Termux. Validator melaporkan **40 kalimat, 215 token, 24 development, 16 test** dan berhasil memeriksa JSONL, ID, split, label/status POS, serta kecocokan token dengan tokenizer. Regression suite penuh: **137 tes lulus, 0 gagal, 0 error**.
+
+Evaluasi hanya menggunakan 24 kalimat development (102 token `resolved`, 1 `ambiguous`, 29 `not_applicable`):
+- POS leksikal: 56 diprediksi, 55 benar; coverage **54,9%**, accuracy **53,9%**, selective accuracy **98,2%**.
+- POS dengan konteks lokal: hasil identik.
+- Gold ambiguous: **1 ditahan, 0 dipaksakan**.
+- Confusion menunjukkan satu token gold `ADV` diprediksi `VERB`; token tersebut adalah `mau` pada kalimat informal `Gue mau makan dulu.`. Label dan kebijakan POS untuk modalitas `mau` perlu ditinjau terhadap pedoman proyek sebelum perubahan apa pun. `wah` berlabel `INTJ` belum mendapat prediksi; ini merupakan abstention, bukan prediksi salah.
+
+Interpretasi: penambahan batch menurunkan metrik dibanding sampel sebelumnya, tetapi sampel development juga bertambah dan mencakup fenomena baru. Jangan membandingkan angka sebagai tren kualitas tanpa mempertimbangkan perubahan komposisi. POS kontekstual belum menunjukkan peningkatan dibanding leksikal. Test split 16 kalimat tetap tertahan dan tidak digunakan.
