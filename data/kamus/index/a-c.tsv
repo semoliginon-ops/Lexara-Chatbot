@@ -15,6 +15,7 @@ acuh	K0702	acuh	lemma	batch-015
 adab	K1807	adab	lemma	batch-037
 adakalanya	K0703	adakalanya	lemma	batch-015
 adaptasi	K1808	adaptasi	lemma	batch-037
+adaptor	K2352	adaptor	lemma	batch-048
 adat	K1809	adat	lemma	batch-037
 adegan	K1810	adegan	lemma	batch-037
 adik	K0109	adik	lemma	batch-003
@@ -86,6 +87,7 @@ ambruk	K0708	ambruk	lemma	batch-015
 ambyar	K1214	ambyar	lemma	batch-025
 ampas	K1811	ampas	lemma	batch-037
 ampela	K1904	ampela	lemma	batch-039
+amplifier	K2354	amplifier	lemma	batch-048
 amplop	K1215	amplop	lemma	batch-025
 ampun	K0512	ampun	lemma	batch-011
 anai-anai	K2239	anai-anai	lemma	batch-045
@@ -116,6 +118,7 @@ anjung	K1837	anjung	lemma	batch-037
 antar	K0416	antar	lemma	batch-009
 antarmuka	K1838	antarmuka	lemma	batch-037
 antena	K1839	antena	lemma	batch-037
+antena parabola	K2355	antena parabola	lemma	batch-048
 anting	K1814	anting	lemma	batch-037
 antre	K0352	antre	lemma	batch-008
 antusias	K0713	antusias	lemma	batch-015
@@ -132,6 +135,7 @@ arah	K0381	arah	lemma	batch-008
 arem-arem	K2002	arem-arem	lemma	batch-041
 arisan	K0517	arisan	lemma	batch-011
 arloji	K2303	arloji	lemma	batch-047
+arloji digital	K2356	arloji digital	lemma	batch-048
 arogan	K0714	arogan	lemma	batch-015
 arsip	K1842	arsip	lemma	batch-037
 arti	K0444	arti	lemma	batch-009
@@ -237,6 +241,10 @@ basi	K0723	basi	lemma	batch-015
 baskom	K2304	baskom	lemma	batch-047
 batal	K0522	batal	lemma	batch-011
 baterai	K1229	baterai	lemma	batch-025
+baterai AA	K2360	baterai AA	lemma	batch-048
+baterai AAA	K2361	baterai AAA	lemma	batch-048
+baterai isi ulang	K2359	baterai isi ulang	lemma	batch-048
+baterai lithium	K2362	baterai lithium	lemma	batch-048
 bathtub	K2305	bathtub	lemma	batch-047
 batin	K1230	batin	lemma	batch-025
 batuk	K0523	batuk	lemma	batch-011
@@ -396,8 +404,10 @@ bising	K0327	bising	lemma	batch-007
 biskuit	K1958	biskuit	lemma	batch-040
 biskuit cokelat	K2066	biskuit cokelat	lemma	batch-042
 blender	K2306	blender	lemma	batch-047
+bluetooth	K2357	bluetooth	lemma	batch-048
 bocah	K0536	bocah	lemma	batch-011
 bocor	K0738	bocor	lemma	batch-015
+bohlam LED	K2358	bohlam LED	lemma	batch-048
 bohong	K0239	bohong	lemma	batch-005
 boikot	K0739	boikot	lemma	batch-015
 bokek	K0095	bokek	lemma	batch-002
@@ -506,6 +516,7 @@ cermin	K0292	cermin	lemma	batch-006
 ceroboh	K0755	ceroboh	lemma	batch-016
 cetak	K0756	cetak	lemma	batch-016
 cewek	K0654	cewek	lemma	batch-014
+charger	K2368	charger	lemma	batch-048
 cheesecake	K2070	cheesecake	lemma	batch-042
 churros	K2071	churros	lemma	batch-042
 cicak	K2216	cicak	lemma	batch-045
