@@ -70,9 +70,9 @@ Branch kerja: `main`
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap 2.1–2.4 telah memiliki fondasi dan regression suite yang lulus. Validasi seluruh kamus dan regression suite checkout penuh selesai pada 27 November 2026 melalui Termux. Tahap berikutnya: POS (2.5).**
+**Subtahap 2.1–2.4 telah memiliki fondasi dan regression suite yang lulus. Validasi seluruh kamus, implementasi POS awal, dan regression suite gabungan 110 tes telah diverifikasi pada checkout Termux pada 27 November 2026. Tahap 2.5 berlanjut pada disambiguasi POS berbasis konteks dan evaluasi dataset berlabel.**
 
-Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, pencocokan kamus 13/13, analyzer 8/8, dan morfologi 47/47. Pada 27 November 2026, validator memuat seluruh 60 batch (3.000 entri) dan regression suite gabungan dari checkout penuh menjalankan 100 tes; seluruhnya lulus. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
+Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, pencocokan kamus 13/13, analyzer 8/8, morfologi 47/47, dan POS awal 10/10. Pada 27 November 2026, validator memuat seluruh 60 batch (3.000 entri). Regression suite gabungan dari checkout Termux setelah POS ditambahkan menjalankan **110 tes; seluruhnya lulus, 0 gagal**. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
@@ -141,8 +141,8 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [ ] Lengkapi inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan hasil uji.
 
 ### 5.5 Pengenalan kelas kata (POS)
-- [ ] Gunakan kode POS resmi dalam `docs/KAMUS.md`.
-- [ ] Pertahankan kemungkinan lebih dari satu POS/sense untuk kata ambigu.
+- [x] Gunakan kode POS resmi dalam `docs/KAMUS.md`.
+- [x] Pertahankan kemungkinan lebih dari satu POS/sense untuk kata ambigu.
 - [ ] Mulai dari identifikasi leksikal, kemudian tambahkan petunjuk konteks kalimat.
 - [ ] Ukur hasil pada kumpulan kalimat uji yang diberi label.
 
@@ -220,7 +220,7 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut (diperbarui 27 November 2026):** validasi loader seluruh 60 batch dan regression suite checkout penuh telah berhasil dijalankan melalui Termux. `python -m tools.validasi_kamus_lengkap` memuat 60 batch/3.000 entri; `python -m unittest discover -s tests -v` menghasilkan 100 tes lulus, 0 gagal. Lanjutkan ke Tahap 2.5 — POS. Catatan lama setelah bagian ini adalah riwayat perkembangan dan tidak mengesampingkan hasil validasi checkout penuh terbaru. Versi morfologi terbaru memperbaiki konflik prefiks bertumpuk agar prefiks terpanjang yang cocok dipakai dan kandidat palsu dari pemotongan prefiks pendek tidak ikut dihasilkan. Aturan prefiks `memper-` juga ditambahkan agar bentuk seperti `memperindah` dapat menghasilkan kandidat lema `indah`; tes negatif untuk bentuk tak dikenal menggunakan `memperxyz`. Sebanyak 38 tes morfologi lulus; total 91 tes komponen lulus secara terpisah. Tes imbuhan bertingkat `diperbaiki` ditambahkan dan dijalankan bersama seluruh suite: 33 lulus, 0 gagal. Aturan baru mengurai lapisan `di-`, lalu `per-`, lalu sufiks `-i`, dengan kandidat akhir tetap harus ditemukan di kamus. Pengujian dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan sumber repository. 
+**Titik lanjut (diperbarui 27 November 2026):** validasi loader seluruh 60 batch dan regression suite checkout penuh telah berhasil dijalankan melalui Termux. `python -m tools.validasi_kamus_lengkap` memuat 60 batch/3.000 entri. Setelah implementasi POS ditambahkan, 10 tes POS lulus dan `python -m unittest discover -s tests -v` menghasilkan **110 tes lulus, 0 gagal**. Lanjutkan Tahap 2.5 pada disambiguasi berbasis konteks dan evaluasi dataset berlabel. Catatan lama setelah bagian ini adalah riwayat perkembangan dan tidak mengesampingkan hasil validasi checkout penuh terbaru. Versi morfologi terbaru memperbaiki konflik prefiks bertumpuk agar prefiks terpanjang yang cocok dipakai dan kandidat palsu dari pemotongan prefiks pendek tidak ikut dihasilkan. Aturan prefiks `memper-` juga ditambahkan agar bentuk seperti `memperindah` dapat menghasilkan kandidat lema `indah`; tes negatif untuk bentuk tak dikenal menggunakan `memperxyz`. Sebanyak 38 tes morfologi lulus; total 91 tes komponen lulus secara terpisah. Tes imbuhan bertingkat `diperbaiki` ditambahkan dan dijalankan bersama seluruh suite: 33 lulus, 0 gagal. Aturan baru mengurai lapisan `di-`, lalu `per-`, lalu sufiks `-i`, dengan kandidat akhir tetap harus ditemukan di kamus. Pengujian dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan sumber repository. 
 
 
 **Pembaruan imbuhan bertingkat:** aturan `di- + per- + sufiks` dibatasi ke sufiks `-i` dan `-kan`; sufiks `-an` dikecualikan agar pola nominal tidak dianggap sebagai bentuk pasif. Tes negatif `diperkerjaan` telah ditambahkan untuk memastikan lema `kerja` tidak dihasilkan. Suite terbaru telah dijalankan setelah penambahan tes negatif: 34 lulus, 0 gagal. Pengujian menggunakan salinan terkini dari `tools/morfologi.py`, `tools/pencocokan_kamus.py`, dan `tests/test_morfologi.py` dalam lingkungan Python lokal terisolasi.
@@ -278,8 +278,19 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 ### Status verifikasi
 - [x] Kode POS diselaraskan dengan dokumentasi kamus.
 - [x] Modul POS awal dan 10 regression tests telah ditambahkan ke branch `main`.
-- [ ] Regression tests POS belum dijalankan pada checkout Termux. Setelah `git pull`, jalankan `python -m unittest tests.test_pos_tagger -v` dan kirim hasilnya untuk diperiksa.
+- [x] `git pull` berhasil pada checkout Termux; `python -m unittest discover -s tests -p "test_pos_tagger.py" -v` menghasilkan **10 tes lulus, 0 gagal**.
+- [x] Regression suite gabungan setelah POS ditambahkan: `python -m unittest discover -s tests -v` menghasilkan **110 tes lulus, 0 gagal** pada checkout Termux (27 November 2026).
 - [ ] Petunjuk konteks kalimat dan disambiguasi POS belum dibuat.
 - [ ] Dataset kalimat berlabel dan evaluasi akurasi belum dibuat.
 
-**Batas klaim:** implementasi POS awal sudah ditulis dan didokumentasikan, tetapi belum boleh dianggap lulus sampai 10 tes baru benar-benar dijalankan pada checkout lokal.
+**Batas klaim:** implementasi POS leksikal awal dan 10 tes khususnya sudah lulus, serta seluruh 110 tes gabungan tetap lulus. Disambiguasi kontekstual, dataset kalimat berlabel, dan evaluasi akurasi belum tersedia.
+
+
+### Verifikasi POS pada checkout Termux — 27 November 2026
+
+- `git pull` berhasil mengambil implementasi POS dan dokumentasi terbaru dari `main`.
+- `python -m unittest discover -s tests -p "test_pos_tagger.py" -v` → **Ran 10 tests — OK**, 0 gagal.
+- `python -m unittest discover -s tests -v` → **Ran 110 tests — OK**, 0 gagal.
+- 100 tes fondasi/komponen yang sebelumnya lulus tetap lulus setelah modul POS ditambahkan.
+
+**Status terbaru:** POS leksikal awal terverifikasi pada checkout repository penuh. POS belum dianggap selesai: petunjuk konteks kalimat, disambiguasi, dataset kalimat berlabel, dan pengukuran akurasi masih menjadi pekerjaan berikutnya. Parser kalimat belum dimulai.
