@@ -113,7 +113,7 @@ Karena taksonomi proyek hanya menyediakan 10 kode POS dan tidak memiliki kelas d
 | Fenomena | Konvensi proyek | Contoh dan batasan |
 |---|---|---|
 | Demonstrativa atributif | `PRON` | `itu` pada “rumah itu” dan `ini` pada “buku ini” diberi `PRON`. Ini penyederhanaan taksonomi proyek; jangan membuat label DET baru pada dataset v1. |
-| Penanda aspek/modalitas | `ADV` | `sedang`, `akan`, `telah`, `sudah`, dan `lagi` diberi `ADV` ketika berfungsi sebagai penanda aspek/modalitas sebelum verba. |
+| Penanda aspek/modalitas yang ditetapkan v1 | `ADV` | `sedang`, `akan`, `telah`, `sudah`, dan `lagi` diberi `ADV` ketika berfungsi sebagai penanda aspek/modalitas sebelum verba. Daftar ini adalah konvensi terbatas, bukan aturan bahwa semua kata bermakna modalitas otomatis `ADV`. |\n| Verba modal kehendak | `VERB` | `mau` pada “Gue mau makan dulu” diberi `VERB`: kata ini menyatakan kehendak dan berfungsi sebagai verba modal yang mengambil komplemen verba. Jangan samakan semua bentuk modalitas ke satu POS. |
 | Penanda larangan | `PART` | `jangan` diberi `PART` ketika menandai larangan dalam konstruksi imperatif, misalnya “Jangan pergi!”. |
 | Gelar atau sapaan nominal | `NOUN` | `Pak`, `Bu`, dan gelar sejenis diberi `NOUN` ketika dipakai sebagai sapaan/gelar yang mendahului nama atau nomina. |
 | Kata sebab | `CONJ` | `karena` diberi `CONJ` ketika menghubungkan klausa sebab dengan klausa lain. |
@@ -233,6 +233,6 @@ Evaluasi hanya menggunakan 24 kalimat development (102 token `resolved`, 1 `ambi
 - POS leksikal: 56 diprediksi, 55 benar; coverage **54,9%**, accuracy **53,9%**, selective accuracy **98,2%**.
 - POS dengan konteks lokal: hasil identik.
 - Gold ambiguous: **1 ditahan, 0 dipaksakan**.
-- Confusion menunjukkan satu token gold `ADV` diprediksi `VERB`; token tersebut adalah `mau` pada kalimat informal `Gue mau makan dulu.`. Label dan kebijakan POS untuk modalitas `mau` perlu ditinjau terhadap pedoman proyek sebelum perubahan apa pun. `wah` berlabel `INTJ` belum mendapat prediksi; ini merupakan abstention, bukan prediksi salah.
+- Audit menetapkan `mau` pada `Gue mau makan dulu` sebagai `VERB` (verba modal kehendak), selaras dengan entri kamus `K0024`. Label dataset dikoreksi dari `ADV` menjadi `VERB`; tidak ada perubahan kamus atau aturan program. Setelah koreksi, metrik perlu dihitung ulang di Termux. `wah` berlabel `INTJ` belum mendapat prediksi; ini merupakan abstention, bukan prediksi salah.
 
 Interpretasi: penambahan batch menurunkan metrik dibanding sampel sebelumnya, tetapi sampel development juga bertambah dan mencakup fenomena baru. Jangan membandingkan angka sebagai tren kualitas tanpa mempertimbangkan perubahan komposisi. POS kontekstual belum menunjukkan peningkatan dibanding leksikal. Test split 16 kalimat tetap tertahan dan tidak digunakan.
