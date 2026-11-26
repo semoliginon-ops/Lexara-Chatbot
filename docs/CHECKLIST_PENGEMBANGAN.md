@@ -210,7 +210,7 @@ Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan ka
 - [x] Tambahkan regression test untuk memastikan 11 lema kanonis tersebut tidak dipecah sebagai imbuhan, termasuk pemeriksaan kapitalisasi `PENGUIN`.
 - [x] Jalankan ulang seluruh suite morfologi terbaru (47 tes) pada salinan terisolasi yang direkonstruksi dari file GitHub; 47/47 lulus. Catatan: belum dijalankan dari checkout repository penuh.
 
-Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hanya menambah cakupan regression test; aturan morfologi tidak diubah. File tes kini berisi 47 metode uji, tetapi angka terverifikasi tetap 42 tes morfologi dan 95 tes komponen total sampai suite terbaru dijalankan.
+Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hanya menambah cakupan regression test; aturan morfologi tidak diubah. File tes berisi 47 metode dan suite terbaru telah dijalankan: 47/47 lulus; total komponen terpisah 100/100 lulus.
 
 
 ### Hasil eksekusi suite morfologi terbaru (27 November 2026)
