@@ -60,6 +60,7 @@ akun	K1208	akun	lemma	batch-025
 akurat	K1209	akurat	lemma	batch-025
 alam	K1824	alam	lemma	batch-037
 alamat	K0367	alamat	lemma	batch-008
+alap-alap	K2252	alap-alap	lemma	batch-046
 alarm	K1210	alarm	lemma	batch-025
 alas	K0510	alas	lemma	batch-011
 alasan	K1805	alasan	lemma	batch-037
@@ -164,6 +165,7 @@ ayam bakar	K2057	ayam bakar	lemma	batch-042
 ayam betutu	K2058	ayam betutu	lemma	batch-042
 ayam geprek	K2059	ayam geprek	lemma	batch-042
 ayam goreng	K2060	ayam goreng	lemma	batch-042
+ayam hutan	K2253	ayam hutan	lemma	batch-046
 ayam kecap	K2160	ayam kecap	lemma	batch-044
 ayam kremes	K2161	ayam kremes	lemma	batch-044
 ayam opor	K2159	ayam opor	lemma	batch-044
@@ -187,6 +189,7 @@ bagusan	K0041	bagus	derived_form	batch-001
 bahan	K1223	bahan	lemma	batch-025
 bahaya	K0331	bahaya	lemma	batch-007
 bajigur	K2006	bajigur	lemma	batch-041
+bajing	K2254	bajing	lemma	batch-046
 bajingan	K0718	bajingan	lemma	batch-015
 baju	K0266	baju	lemma	batch-006
 bakar	K0467	bakar	lemma	batch-010
@@ -205,6 +208,7 @@ bandel	K0720	bandel	lemma	batch-015
 bandeng	K1953	bandeng	lemma	batch-040
 banding	K1226	banding	lemma	batch-025
 bandrek	K2007	bandrek	lemma	batch-041
+bangau	K2255	bangau	lemma	batch-046
 banget	K0048	banget	lemma	batch-001
 bangga	K0336	bangga	lemma	batch-007
 bangkrut	K0721	bangkrut	lemma	batch-015
@@ -244,6 +248,7 @@ beban	K0725	beban	lemma	batch-015
 bebek	K1955	bebek	lemma	batch-040
 begadang	K0726	begadang	lemma	batch-015
 bekal	K0525	bekal	lemma	batch-011
+bekantan	K2256	bekantan	lemma	batch-046
 bekas	K1231	bekas	lemma	batch-025
 bekerja	K0021	kerja	derived_form	batch-001
 bekicot	K2241	bekicot	lemma	batch-045
@@ -259,6 +264,7 @@ belas	K1234	belas	lemma	batch-025
 belepotan	K0729	belepotan	lemma	batch-015
 beli	K0055	beli	lemma	batch-002
 belibet	K0730	belibet	lemma	batch-015
+belibis	K2257	belibis	lemma	batch-046
 belimbing	K1956	belimbing	lemma	batch-040
 belok	K0211	belok	lemma	batch-005
 belokan	K0211	belok	derived_form	batch-005
@@ -375,6 +381,7 @@ bikinin	K0204	bikin	derived_form	batch-005
 bilang	K0610	bilang	lemma	batch-013
 bimbang	K0737	bimbang	lemma	batch-015
 bintang	K0535	bintang	lemma	batch-011
+bintang laut	K2258	bintang laut	lemma	batch-046
 bisa	K0026	bisa	lemma	batch-001
 bisik	K0432	bisik	lemma	batch-009
 bising	K0327	bising	lemma	batch-007
@@ -421,6 +428,7 @@ buka	K0065	buka	lemma	batch-002
 bukti	K0744	bukti	lemma	batch-015
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
+bulu babi	K2298	bulu babi	lemma	batch-046
 bumbu	K0482	bumbu	lemma	batch-010
 bumbu kacang	K2068	bumbu kacang	lemma	batch-042
 bumbu rendang	K2069	bumbu rendang	lemma	batch-042
@@ -434,11 +442,20 @@ buru-buru	K0350	buru-buru	lemma	batch-007
 buruan	K0747	buruan	lemma	batch-015
 burung	K2210	burung	lemma	batch-045
 burung beo	K2248	burung beo	lemma	batch-045
+burung gereja	K2259	burung gereja	lemma	batch-046
 burung hantu	K2211	burung hantu	lemma	batch-045
+burung jalak	K2260	burung jalak	lemma	batch-046
+burung kakatua	K2261	burung kakatua	lemma	batch-046
+burung kasuari	K2262	burung kasuari	lemma	batch-046
 burung kenari	K2243	burung kenari	lemma	batch-045
+burung kolibri	K2263	burung kolibri	lemma	batch-046
 burung merpati	K2212	burung merpati	lemma	batch-045
+burung pelatuk	K2264	burung pelatuk	lemma	batch-046
 burung pipit	K2213	burung pipit	lemma	batch-045
+burung rajawali	K2265	burung rajawali	lemma	batch-046
+burung tekukur	K2266	burung tekukur	lemma	batch-046
 burung unta	K2244	burung unta	lemma	batch-045
+burung walet	K2267	burung walet	lemma	batch-046
 butuh	K0230	butuh	lemma	batch-005
 cabai	K0483	cabai	lemma	batch-010
 cabai rawit	K2106	cabai rawit	lemma	batch-043
@@ -466,6 +483,7 @@ celana	K0267	celana	lemma	batch-006
 cemas	K0333	cemas	lemma	batch-007
 cemburu	K0341	cemburu	lemma	batch-007
 cendol	K1250	cendol	lemma	batch-025
+cendrawasih	K2268	cendrawasih	lemma	batch-046
 cengkih	K1251	cengkih	lemma	batch-025
 cepat	K0045	cepat	lemma	batch-001
 cerdas	K0754	cerdas	lemma	batch-016
