@@ -193,3 +193,16 @@ GitHub Actions run [#7](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 - Regression suite: **141/141 lulus**.
 
 Metrik hanya menggambarkan development set yang kini berisi 48 kalimat. Penurunan persentase dibanding batch sebelumnya bukan bukti regresi atau peningkatan tanpa analisis komposisi dan contoh. Test split 32 kalimat tetap tidak digunakan.
+
+
+## Batch kesembilan dan evaluasi development — 27 November 2026
+
+Batch kesembilan menambahkan enam record development (`pos_0081`–`pos_0086`) dan empat record test (`pos_0087`–`pos_0090`). Fenomena development meliputi negasi, verba transitif, nomina/verba berimbuhan, interjeksi, adjektiva atributif/predikatif, numeralia, preposisi lokatif/tujuan, dan konjungsi penambahan. Empat record test hanya ditambahkan sebagai data tertahan.
+
+GitHub Actions run [#8](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909135531) berhasil:
+- Validator: 90 kalimat, 485 token, 54 development, 36 test.
+- Evaluator development-only: 227 token resolved; 167 benar; coverage 73,6%; accuracy 73,6%; selective accuracy 100%.
+- Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- Regression suite: **141/141 lulus**.
+
+Metrik hanya menggambarkan development set yang kini berisi 54 kalimat. Jangan membandingkan persentase antarbatch sebagai tren kualitas tanpa analisis komposisi. Test split 36 kalimat tetap tidak digunakan.
