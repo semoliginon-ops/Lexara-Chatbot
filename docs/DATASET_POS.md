@@ -300,3 +300,12 @@ Batch kesembilan menambahkan 10 record (`pos_0081`–`pos_0090`), enam developme
 GitHub Actions run [#8](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909135531) memvalidasi dataset: 90 kalimat, 485 token, 54 development, 36 test. Evaluator development-only memuat 227 token resolved, 167 benar, coverage 73,6%, accuracy 73,6%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan. Regression suite: 141/141 lulus. Test split tetap tertahan dan tidak digunakan.
 
 Angka evaluasi hanya berlaku untuk development set 54 kalimat; bukan estimasi akurasi umum. Perubahan persentase antarbatch tidak boleh langsung ditafsirkan sebagai tren kualitas tanpa memperhatikan komposisi sampel.
+
+
+## 18. Batch kesepuluh dan pencapaian target dataset v1 — 27 November 2026
+
+Batch kesepuluh menambahkan 10 record (`pos_0091`–`pos_0100`), enam development dan empat test. Dataset mencapai **100 kalimat, 543 token, 60 development, dan 40 test**. Fenomena development meliputi adverbia aspek/negasi, adjektiva atributif, adverbia derajat, konjungsi penambahan/subordinatif waktu, verba berimbuhan/transitif, serta preposisi lokatif/peruntukan.
+
+GitHub Actions run [#9](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909322818) memvalidasi dataset: 100 kalimat, 543 token, 60 development, 40 test. Evaluator development-only melaporkan 255 token resolved, 186 benar, coverage 73,3%, accuracy 72,9%, selective accuracy 99,5%; satu gold ambiguous ditahan dan nol dipaksakan. Regression suite: **141/141 lulus**.
+
+Selective accuracy 99,5% menunjukkan masih ada prediksi keliru pada token yang diputuskan sistem. Pencapaian target 100 kalimat adalah pencapaian kuantitas dataset, bukan klaim bahwa POS sudah sempurna. Empat puluh kalimat test tetap tertahan dan tidak boleh digunakan untuk penyetelan aturan.
