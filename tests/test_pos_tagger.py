@@ -89,11 +89,16 @@ class PosTaggerTests(unittest.TestCase):
         self.assertEqual(token["pos_source"], "dictionary")
 
     def test_ambiguous_words_not_in_supplement_remain_unknown(self):
-        for word in ("dulu", "tetap", "jalan"):
+        for word in ("dulu", "tetap"):
             with self.subTest(word=word):
                 token = self.analyze_and_tag(word)["tokens"][0]
                 self.assertEqual(token["pos"], [])
                 self.assertEqual(token["pos_status"], "unknown")
+
+    def test_dictionary_ambiguity_is_preserved(self):
+        token = self.analyze_and_tag("jalan")["tokens"][0]
+        self.assertEqual(token["pos"], ["NOUN", "VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
 
     def test_punctuation_is_not_applicable(self):
         token = self.analyze_and_tag("!")["tokens"][0]
