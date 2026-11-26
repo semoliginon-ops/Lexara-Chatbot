@@ -111,3 +111,8 @@ Validasi dataset 40 kalimat/215 token dan regression suite penuh 137/137 telah b
 ## Audit cakupan interjeksi — 27 November 2026
 
 Kasus `wah` pada `pos_0034` tidak mendapat prediksi tunggal. Pemeriksaan indeks kamus tidak menemukan lemma `wah`, sehingga penyebab yang paling mungkin adalah kata tersebut belum tercakup dalam kamus. Sebaliknya, lemma `aduh` ditemukan sebagai entri `K0602` dengan POS `INTJ`. Batch kelima menambahkan `Aduh, anak itu jatuh!` (`pos_0041`) pada development untuk menguji interjeksi yang memang sudah tersedia. Tidak ada perubahan pada `pos_tagger.py`, `pos_context.py`, atau entri kamus. Split test tetap ditahan.
+
+
+## Verifikasi batch kelima dan cakupan INTJ — 27 November 2026
+
+GitHub Actions run [#1](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45906966948) menjalankan validator, evaluator development-only, dan regression suite dengan hasil sukses. Evaluator memuat 30 kalimat development: 125 token `resolved`, 1 `ambiguous`, dan 36 `not_applicable`. INTJ: `aduh` berhasil diprediksi benar (1), sedangkan `wah` tidak diprediksi (1), konsisten dengan temuan bahwa `wah` belum ada pada indeks kamus. POS leksikal dan kontekstual sama-sama menghasilkan 72 prediksi benar, coverage 57,6%, accuracy 57,6%, selective accuracy 100%. Gold ambiguous: 1 ditahan, 0 dipaksakan. Regression suite: 137/137 lulus. Angka ini khusus sampel development 30 kalimat; bukan akurasi umum. Test split 20 kalimat tetap tidak digunakan.
