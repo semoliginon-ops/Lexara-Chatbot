@@ -57,7 +57,7 @@ class ContextualPosTests(unittest.TestCase):
         self.assertEqual(token["pos_context_status"], "ambiguous")
 
     def test_conflicting_cues_remain_unresolved(self):
-        token = self.token(self.analyze("di jalan itu"), "jalan")
+        token = self.token(self.analyze("sedang jalan itu"), "jalan")
         self.assertIsNone(token["context_pos"])
         self.assertEqual(token["pos_context_status"], "ambiguous")
 
