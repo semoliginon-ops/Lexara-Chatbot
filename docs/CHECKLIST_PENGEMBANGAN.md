@@ -49,10 +49,12 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 - [x] Memeriksa format JSONL batch kamus aktual pada sampel Batch 001 dan Batch 006.
 - [x] Membuat loader kamus baca-saja di `tools/kamus_loader.py`.
-- [ ] Membuat pencocokan token terhadap lema dan indeks.
-- [ ] Membedakan lema, variasi, bentuk turunan, dan kata tak dikenal.
-- [ ] Menangani kata dengan beberapa POS atau sense.
-- [ ] Membuat regression tests pencocokan leksikal.
+- [x] Membuat pencocokan token terhadap lema, variants, dan derived_forms di `tools/pencocokan_kamus.py`.
+- [x] Membedakan hasil lema, variasi, bentuk turunan, dan token tak dikenal.
+- [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
+- [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
+- [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
+- [ ] Menjalankan loader Python secara langsung terhadap seluruh 60 file batch aktual.
 
 ### 2.4 Analisis morfologi
 
