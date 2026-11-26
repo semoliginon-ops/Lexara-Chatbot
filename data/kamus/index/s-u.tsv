@@ -151,6 +151,7 @@ setuju	K0244	setuju	lemma	batch-005
 setujuan	K1621	setujuan	lemma	batch-033
 seumur	K0129	umur	derived_form	batch-003
 sewa	K0411	sewa	lemma	batch-009
+SheJek	K2516	SheJek	lemma	batch-051
 siaga	K1622	siaga	lemma	batch-033
 siang	K0132	siang	lemma	batch-003
 siaran	K1596	siaran	lemma	batch-032
@@ -242,6 +243,7 @@ sunyi	K0328	sunyi	lemma	batch-007
 supaya	K0651	supaya	lemma	batch-013
 surat	K1651	surat	lemma	batch-033
 susah	K0088	susah	lemma	batch-002
+suspend	K2547	suspend	lemma	batch-051
 susu	K0175	susu	lemma	batch-004
 susu bubuk	K2197	susu bubuk	lemma	batch-044
 susu cokelat	K2199	susu cokelat	lemma	batch-044
@@ -442,6 +444,8 @@ tiru	K1735	tiru	lemma	batch-035
 tisu	K1736	tisu	lemma	batch-035
 titah	K1737	titah	lemma	batch-035
 titik	K1738	titik	lemma	batch-035
+titik antar	K2541	titik antar	lemma	batch-051
+titik jemput	K2540	titik jemput	lemma	batch-051
 titip	K0412	titip	lemma	batch-009
 toh	K0641	toh	lemma	batch-013
 toko	K0361	toko	lemma	batch-008
@@ -453,7 +457,9 @@ tombol	K1740	tombol	lemma	batch-035
 tongseng	K1994	tongseng	lemma	batch-040
 tonjol	K1741	tonjol	lemma	batch-035
 tontonan	K0075	nonton	derived_form	batch-002
+top up	K2550	top up	lemma	batch-051
 topi	K0270	topi	lemma	batch-006
+TopJek	K2525	TopJek	lemma	batch-051
 tripod	K2418	tripod	lemma	batch-049
 tua	K1742	tua	lemma	batch-035
 tuang	K0474	tuang	lemma	batch-010
@@ -484,6 +490,7 @@ tutup	K0066	tutup	lemma	batch-002
 uang	K0022	uang	lemma	batch-001
 ubah	K0220	ubah	lemma	batch-005
 ubek-ubek	K1152	ubek-ubek	lemma	batch-024
+Uber	K2524	Uber	lemma	batch-051
 ubi	K1996	ubi	lemma	batch-040
 ubur-ubur	K1153	ubur-ubur	lemma	batch-024
 ucap	K1154	ucap	lemma	batch-024
