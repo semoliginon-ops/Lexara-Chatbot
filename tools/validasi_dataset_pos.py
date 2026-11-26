@@ -66,7 +66,7 @@ def validate_pos_dataset(path: str | Path) -> dict[str, int]:
             seen_ids.add(record_id)
 
             split = record["split"]
-            if split not in SPLITS:
+            if not isinstance(split, str) or split not in SPLITS:
                 _fail(line_number, "split harus development atau test")
             split_counts[split] += 1
 
@@ -92,9 +92,9 @@ def validate_pos_dataset(path: str | Path) -> dict[str, int]:
 
                 status = annotation["gold_status"]
                 label = annotation["gold_pos"]
-                if status not in GOLD_STATUSES:
+                if not isinstance(status, str) or status not in GOLD_STATUSES:
                     _fail(line_number, f"status gold tidak dikenal pada token {token_index}")
-                if label is not None and label not in POS_LABELS:
+                if label is not None and (not isinstance(label, str) or label not in POS_LABELS):
                     _fail(line_number, f"label POS tidak resmi pada token {token_index}")
 
                 if status == "resolved" and label is None:
