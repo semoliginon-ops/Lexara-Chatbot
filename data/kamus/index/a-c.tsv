@@ -7,6 +7,7 @@ abdi	K1804	abdi	lemma	batch-037
 abon	K1952	abon	lemma	batch-040
 abrasi	K2680	abrasi	lemma	batch-054
 absen	K0503	absen	lemma	batch-011
+abstain	K2902	abstain	lemma	batch-059
 abu	K0504	abu	lemma	batch-011
 abu vulkanik	K2737	abu vulkanik	lemma	batch-055
 acak	K1806	acak	lemma	batch-037
@@ -98,6 +99,7 @@ ambisi	K0707	ambisi	lemma	batch-015
 ambruk	K0708	ambruk	lemma	batch-015
 ambulans	K2557	ambulans	lemma	batch-052
 ambyar	K1214	ambyar	lemma	batch-025
+amnesti	K2950	amnesti	lemma	batch-059
 ampas	K1811	ampas	lemma	batch-037
 ampela	K1904	ampela	lemma	batch-039
 amplifier	K2354	amplifier	lemma	batch-048
@@ -118,7 +120,10 @@ andil	K0711	andil	lemma	batch-015
 aneh	K0513	aneh	lemma	batch-011
 anggap	K0445	anggap	lemma	batch-009
 anggaran	K1832	anggaran	lemma	batch-037
+anggaran daerah	K2905	anggaran daerah	lemma	batch-059
+anggaran negara	K2904	anggaran negara	lemma	batch-059
 anggota	K1833	anggota	lemma	batch-037
+anggota dewan	K2903	anggota dewan	lemma	batch-059
 anggur	K2055	anggur	lemma	batch-042
 angin	K0313	angin	lemma	batch-007
 angin darat	K2704	angin darat	lemma	batch-055
@@ -226,6 +231,9 @@ badai pasir	K2708	badai pasir	lemma	batch-055
 badai tropis	K2707	badai tropis	lemma	batch-055
 badak	K2204	badak	lemma	batch-045
 badan	K0124	badan	lemma	batch-003
+badan eksekutif	K2907	badan eksekutif	lemma	batch-059
+badan legislatif	K2906	badan legislatif	lemma	batch-059
+badan yudikatif	K2908	badan yudikatif	lemma	batch-059
 bagus	K0041	bagus	lemma	batch-001
 bagusan	K0041	bagus	derived_form	batch-001
 bahan	K1223	bahan	lemma	batch-025
@@ -273,6 +281,8 @@ bantu	K0033	bantu	lemma	batch-001
 bantuan	K0033	bantu	derived_form	batch-001
 bapak	K0103	bapak	lemma	batch-003
 baper	K0093	baper	lemma	batch-002
+barang bukti	K2934	barang bukti	lemma	batch-059
+barang curian	K2935	barang curian	lemma	batch-059
 barangkali	K0608	barangkali	lemma	batch-013
 bareng	K0552	bareng	lemma	batch-012
 baris	K1228	baris	lemma	batch-025
@@ -447,6 +457,7 @@ bilang	K0610	bilang	lemma	batch-013
 bimbang	K0737	bimbang	lemma	batch-015
 bintang	K0535	bintang	lemma	batch-011
 bintang laut	K2258	bintang laut	lemma	batch-046
+birokrasi	K2909	birokrasi	lemma	batch-059
 bisa	K0026	bisa	lemma	batch-001
 bisik	K0432	bisik	lemma	batch-009
 bising	K0327	bising	lemma	batch-007
