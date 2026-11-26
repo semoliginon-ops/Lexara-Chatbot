@@ -242,3 +242,8 @@ Interpretasi: penambahan batch menurunkan metrik dibanding sampel sebelumnya, te
 ## 5.2 Cakupan interjeksi (INTJ)
 
 Kata `aduh` pada `pos_0041` diberi `INTJ` dan memiliki entri kamus `K0602`. Kata `wah` pada `pos_0034` tetap diberi gold `INTJ`, tetapi belum ditemukan pada indeks kamus saat audit 27 November 2026; ini dicatat sebagai kekurangan cakupan leksikal, bukan alasan untuk mengubah label gold atau menambah aturan POS. Jangan mengubah `wah` menjadi kelas lain demi menyesuaikan prediksi. Penambahan kosakata interjeksi dapat dipertimbangkan dalam pengembangan kamus berikutnya setelah evaluasi cakupan.
+
+
+## 12. Batch kelima — 27 November 2026
+
+Batch kelima menambahkan `pos_0041`–`pos_0050`: enam kalimat development dan empat test. Dataset menjadi 50 kalimat, 266 token, 30 development, dan 20 test. Pemeriksaan struktural berbasis salinan file GitHub memastikan seluruh baris JSON dapat dibaca, ID unik, label/status POS valid, dan urutan token sesuai pola tokenizer. Ini adalah preflight struktural, bukan pengganti eksekusi `tools.validasi_dataset_pos`, evaluator Python, atau regression suite. Eksekusi Python resmi setelah batch kelima belum dikonfirmasi.
