@@ -1,5 +1,6 @@
 # Token index — a-c
 # token\tid\tlemma\ttype\tbatch
+acara	K0450	acara	lemma	batch-009
 adik	K0109	adik	lemma	batch-003
 adik-adik	K0109	adik	derived_form	batch-003
 air	K0152	air	lemma	batch-004
@@ -14,13 +15,17 @@ ambil	K0058	ambil	lemma	batch-002
 anak	K0102	anak	lemma	batch-003
 anak-anak	K0102	anak	derived_form	batch-003
 anakan	K0102	anak	derived_form	batch-003
+anggap	K0445	anggap	lemma	batch-009
 angin	K0313	angin	lemma	batch-007
 angkot	K0401	angkot	lemma	batch-008
+antar	K0416	antar	lemma	batch-009
 antre	K0352	antre	lemma	batch-008
 api	K0153	api	lemma	batch-004
 arah	K0381	arah	lemma	batch-008
+arti	K0444	arti	lemma	batch-009
 atap	K0260	atap	lemma	batch-006
 atas	K0374	atas	lemma	batch-008
+atasan	K0438	atasan	lemma	batch-009
 awan	K0312	awan	lemma	batch-007
 ayah	K0105	ayah	lemma	batch-003
 ayam	K0169	ayam	lemma	batch-004
@@ -87,6 +92,7 @@ berhari-hari	K0130	hari	derived_form	batch-003
 berhati	K0116	hati	derived_form	batch-003
 berhenti	K0209	berhenti	lemma	batch-005
 berhidung	K0120	hidung	derived_form	batch-003
+beri	K0409	beri	lemma	batch-009
 beristri	K0112	istri	derived_form	batch-003
 berita	K0192	berita	lemma	batch-004
 berjalan	K0020	jalan	derived_form	batch-001
@@ -137,6 +143,7 @@ bicara	K0036	bicara	lemma	batch-001
 bikin	K0204	bikin	lemma	batch-005
 bikinin	K0204	bikin	derived_form	batch-005
 bisa	K0026	bisa	lemma	batch-001
+bisik	K0432	bisik	lemma	batch-009
 bising	K0327	bising	lemma	batch-007
 bohong	K0239	bohong	lemma	batch-005
 bokek	K0095	bokek	lemma	batch-002
@@ -144,6 +151,7 @@ boleh	K0144	boleh	lemma	batch-003
 bosan	K0086	bosan	lemma	batch-002
 buah	K0162	buah	lemma	batch-004
 buah-buahan	K0162	buah	derived_form	batch-004
+buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
 buatan	K0205	buat	derived_form	batch-005
 bucin	K0099	bucin	lemma	batch-002
