@@ -136,7 +136,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Tahap 2.3 — Pencocokan token ke kamus.**
 
-Normalisasi: 8 tes lulus. Tokenizer: 12 tes lulus. Seluruh 20 tes dari kedua komponen lulus pada lingkungan Python lokal terisolasi menggunakan salinan file yang dibaca dari GitHub. GitHub Actions tidak dijalankan. Berikutnya periksa format JSONL batch kamus aktual sebelum merancang loader dan pencocokan leksikal.
+Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati 45 regression tests pada lingkungan Python lokal terisolasi: 45 lulus, 0 gagal. Struktur dasar 60 batch (3.000 entri) juga telah diperiksa melalui konten GitHub. Pengujian langsung fungsi loader terhadap seluruh 60 file aktual masih belum dilakukan. GitHub Actions tidak dijalankan.
 
 ## Dokumen rujukan
 
