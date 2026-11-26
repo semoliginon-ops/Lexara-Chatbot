@@ -6,6 +6,7 @@ jadwal	K1376	jadwal	lemma	batch-028
 jaga	K0903	jaga	lemma	batch-019
 jago	K0565	jago	lemma	batch-012
 jagung	K0904	jagung	lemma	batch-019
+jagung manis	K2031	jagung manis	lemma	batch-041
 jahat	K1377	jahat	lemma	batch-028
 jahe	K1913	jahe	lemma	batch-039
 jahit	K0905	jahit	lemma	batch-019
@@ -17,6 +18,7 @@ jalan	K0020	jalan	lemma	batch-001
 jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jamin	K1378	jamin	lemma	batch-028
+jamu	K2032	jamu	lemma	batch-041
 jamur	K1997	jamur	lemma	batch-040
 jangan	K0145	jangan	lemma	batch-003
 jangka	K1379	jangka	lemma	batch-028
@@ -61,6 +63,8 @@ julid	K0096	julid	lemma	batch-002
 jumlah	K1388	jumlah	lemma	batch-028
 jumpa	K1389	jumpa	lemma	batch-028
 jurnal	K1390	jurnal	lemma	batch-028
+jus alpukat	K2046	jus alpukat	lemma	batch-041
+jus mangga	K2047	jus mangga	lemma	batch-041
 kabar	K0193	kabar	lemma	batch-004
 kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
@@ -112,6 +116,7 @@ katak	K0927	katak	lemma	batch-019
 kaya	K0928	kaya	lemma	batch-019
 kayak	K0623	kayak	lemma	batch-013
 kayaknya	K0661	kayaknya	lemma	batch-014
+kebab	K2033	kebab	lemma	batch-041
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
 kebenaran	K0236	benar	derived_form	batch-005
@@ -160,6 +165,7 @@ kelanjutan	K0226	lanjut	derived_form	batch-005
 kelapa	K0933	kelapa	lemma	batch-019
 kelaparan	K0176	lapar	derived_form	batch-004
 kelebihan	K0234	lebih	derived_form	batch-005
+kelengkeng	K2034	kelengkeng	lemma	batch-041
 kelihatan	K0034	lihat	derived_form	batch-001
 kelinci	K0934	kelinci	lemma	batch-019
 keluar	K0068	keluar	lemma	batch-002
@@ -202,6 +208,7 @@ kepulangan	K0019	pulang	derived_form	batch-001
 kepunyaan	K0202	punya	derived_form	batch-005
 keraguan	K0243	ragu	derived_form	batch-005
 keramaian	K0249	ramai	derived_form	batch-005
+kerang	K2037	kerang	lemma	batch-041
 keranjang	K0939	keranjang	lemma	batch-019
 kerbau	K0940	kerbau	lemma	batch-019
 keren	K0574	keren	lemma	batch-012
@@ -261,11 +268,13 @@ komputer	K0198	komputer	lemma	batch-004
 kondisi	K0578	kondisi	lemma	batch-012
 kontrak	K0579	kontrak	lemma	batch-012
 kopi	K0173	kopi	lemma	batch-004
+kopi susu	K2045	kopi susu	lemma	batch-041
 kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
 kualitas	K1400	kualitas	lemma	batch-028
 kucing	K0946	kucing	lemma	batch-019
 kue	K1923	kue	lemma	batch-039
+kue lapis	K2035	kue lapis	lemma	batch-041
 kukus	K0468	kukus	lemma	batch-010
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
@@ -273,6 +282,7 @@ kunjung	K0418	kunjung	lemma	batch-009
 kunjungan	K1401	kunjungan	lemma	batch-028
 kunyah	K0477	kunyah	lemma	batch-010
 kunyit	K1924	kunyit	lemma	batch-039
+kunyit asam	K2036	kunyit asam	lemma	batch-041
 kurang	K0233	kurang	lemma	batch-005
 kursi	K0253	kursi	lemma	batch-006
 kuy	K0580	kuy	lemma	batch-012
@@ -310,6 +320,7 @@ larang	K1414	larang	lemma	batch-029
 lari	K0073	lari	lemma	batch-002
 larian	K0073	lari	derived_form	batch-002
 laris	K1415	laris	lemma	batch-029
+lasagna	K2050	lasagna	lemma	batch-041
 laser	K1416	laser	lemma	batch-029
 latih	K1417	latih	lemma	batch-029
 lauk	K0456	lauk	lemma	batch-010
