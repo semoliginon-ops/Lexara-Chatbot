@@ -27,6 +27,7 @@ gapapa	K0659	gapapa	lemma	batch-014
 gaplek	K1965	gaplek	lemma	batch-040
 gara-gara	K0617	gara-gara	lemma	batch-013
 garam	K0171	garam	lemma	batch-004
+garam dapur	K2110	garam dapur	lemma	batch-043
 garansi	K1311	garansi	lemma	batch-027
 garis	K0855	garis	lemma	batch-018
 garpu	K0280	garpu	lemma	batch-006
@@ -96,6 +97,9 @@ gugatan	K1345	gugatan	lemma	batch-027
 gugup	K0873	gugup	lemma	batch-018
 gugur	K0874	gugur	lemma	batch-018
 gula	K0172	gula	lemma	batch-004
+gula aren	K2111	gula aren	lemma	batch-043
+gula batu	K2112	gula batu	lemma	batch-043
+gula merah	K2113	gula merah	lemma	batch-043
 gulai	K1912	gulai	lemma	batch-039
 gulai ayam	K2085	gulai ayam	lemma	batch-042
 gulir	K1325	gulir	lemma	batch-027
@@ -177,7 +181,13 @@ ikan	K0168	ikan	lemma	batch-004
 ikan asin	K2028	ikan asin	lemma	batch-041
 ikan bakar	K2029	ikan bakar	lemma	batch-041
 ikan goreng	K2030	ikan goreng	lemma	batch-041
+ikan kakap	K2114	ikan kakap	lemma	batch-043
+ikan kembung	K2115	ikan kembung	lemma	batch-043
 ikan lele	K2086	ikan lele	lemma	batch-042
+ikan nila	K2118	ikan nila	lemma	batch-043
+ikan patin	K2116	ikan patin	lemma	batch-043
+ikan pindang	K2119	ikan pindang	lemma	batch-043
+ikan salmon	K2117	ikan salmon	lemma	batch-043
 ikan teri	K2088	ikan teri	lemma	batch-042
 ikan tongkol	K2087	ikan tongkol	lemma	batch-042
 iklan	K1365	iklan	lemma	batch-028
