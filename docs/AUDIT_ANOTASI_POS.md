@@ -290,3 +290,12 @@ Tidak ada salah prediksi pada token yang diputuskan oleh kedua jalur. Abstention
 Sisa contoh VERB yang belum diputuskan mencakup `bekerja`, `memasak`, `membeli`, `menjelaskan`, `bermain`, `ditunda`, `letakkan`, `berteduh`, dan `hinggap`. Penyebabnya tidak seragam: sebagian memerlukan aturan alomorf/imbuhan tambahan, sebagian memerlukan pemeriksaan lema dasar atau metadata POS bentuk turunan. Jangan menambahkan aturan umum hanya untuk menaikkan coverage.
 
 **Batas evaluasi:** semua angka di atas hanya memakai development split. Empat puluh kalimat test tetap tertahan dan tidak digunakan untuk penyetelan.
+
+
+## Audit lanjutan bentuk turunan tercatat — 27 November 2026
+
+Perubahan morfologi terbaru mengutamakan relasi `derived_form` yang telah dicatat di kamus. Ini menghindari segmentasi keliru seperti kandidat dasar yang terlalu pendek pada bentuk seperti `membeli`. POS VERB dari bentuk turunan tidak diwariskan secara otomatis: bukti imbuhan dan POS lema dasar tetap harus lolos validasi. Untuk pola `ber-`, sistem hanya menerima VERB jika relasi turunan tercatat dan lema dasarnya ber-POS VERB; karena itu `bermain` dapat divalidasi dari lema `main`, sedangkan `bekerja` tidak otomatis diterima dari lema NOUN `kerja`.
+
+Verifikasi lokal Termux pada 27 November 2026: **149/149 regression tests lulus**. Evaluasi development: POS leksikal 222/255 benar (87,1%); POS kontekstual 223/255 benar (87,5%); selective accuracy keduanya 100%, tanpa kesalahan pada prediksi yang dikeluarkan. Satu gold ambiguous ditahan, tidak dipaksakan. Angka hanya berlaku untuk 60 kalimat development; 40 kalimat test tetap tertahan.
+
+Sisa abstention VERB pada development berjumlah delapan token: `bekerja` tiga kali, serta `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh` masing-masing sekali. Dua bentuk berstatus `requires_morphology` (`bekerja`, `menjelaskan`); bentuk lainnya belum memiliki kandidat. Audit berikutnya perlu memisahkan metadata bentuk turunan, pola pasif `di-`, imperatif `-kan`, dan lema dasar yang belum terdaftar. Jangan menambah aturan umum hanya untuk menaikkan coverage dan jangan menyetel menggunakan test split.
