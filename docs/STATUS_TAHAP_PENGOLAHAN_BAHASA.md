@@ -291,10 +291,11 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - [x] Menyusun 10 kalimat sampel berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk validasi JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer.
 - [x] Membuat `tests/test_validasi_dataset_pos.py` berisi 8 regression tests.
-- [~] Menjalankan validator dan 8 tes khusus dari checkout Termux; hasil verifikasi belum diterima.
+- [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: **VALIDASI DATASET POS BERHASIL**; 10 kalimat, 43 token, 6 development, 4 test.
+- [~] Menjalankan 8 tes khusus validator dari checkout Termux; hasil masih menunggu.
 - [ ] Memperluas dataset menuju target 100 kalimat dan mengukur akurasi POS.
 
-**Batas klaim:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif sudah tersedia; 13 tes khusus konteks dan seluruh 123 tes gabungan lulus pada checkout Termux. Aturan ini masih terbatas dan belum mewakili tata bahasa Indonesia secara menyeluruh. Dataset awal 10 kalimat sudah tersedia; validator dan 8 regression tests sudah dibuat tetapi belum diverifikasi di Termux. Evaluasi akurasi belum dilakukan.
+**Batas klaim:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif sudah tersedia; 13 tes khusus konteks dan seluruh 123 tes gabungan lulus pada checkout Termux. Aturan ini masih terbatas dan belum mewakili tata bahasa Indonesia secara menyeluruh. Dataset awal 10 kalimat sudah tersedia; validator sudah dijalankan dan berhasil memvalidasi 10 kalimat/43 token di Termux; 8 regression tests masih menunggu dijalankan. Evaluasi akurasi belum dilakukan.
 
 
 ### Verifikasi POS pada checkout Termux — 27 November 2026
@@ -305,4 +306,4 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - `python -m unittest discover -s tests -v` → **Ran 123 tests — OK**, 0 gagal.
 - Seluruh 110 tes sebelumnya tetap lulus setelah penambahan 13 tes POS kontekstual.
 
-**Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas. Spesifikasi dataset POS, batch sampel 10 kalimat, validator, dan 8 regression tests sudah dibuat. Verifikasi lokal validator masih menunggu; berikutnya perluasan data dan evaluasi akurasi. Parser kalimat belum dimulai.
+**Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas. Spesifikasi dataset POS, batch sampel 10 kalimat, validator, dan 8 regression tests sudah dibuat. Verifikasi validator dataset berhasil pada checkout Termux; verifikasi 8 regression tests masih menunggu. Berikutnya perluasan data dan evaluasi akurasi. Parser kalimat belum dimulai.
