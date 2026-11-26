@@ -8,6 +8,7 @@ abon	K1952	abon	lemma	batch-040
 abrasi	K2680	abrasi	lemma	batch-054
 absen	K0503	absen	lemma	batch-011
 abu	K0504	abu	lemma	batch-011
+abu vulkanik	K2737	abu vulkanik	lemma	batch-055
 acak	K1806	acak	lemma	batch-037
 acar	K1902	acar	lemma	batch-039
 acara	K0450	acara	lemma	batch-009
@@ -120,6 +121,11 @@ anggaran	K1832	anggaran	lemma	batch-037
 anggota	K1833	anggota	lemma	batch-037
 anggur	K2055	anggur	lemma	batch-042
 angin	K0313	angin	lemma	batch-007
+angin darat	K2704	angin darat	lemma	batch-055
+angin kencang	K2706	angin kencang	lemma	batch-055
+angin laut	K2705	angin laut	lemma	batch-055
+angin puting beliung	K2703	angin puting beliung	lemma	batch-055
+angin topan	K2702	angin topan	lemma	batch-055
 angka	K1834	angka	lemma	batch-037
 angkasa	K1835	angkasa	lemma	batch-037
 angkatan	K0712	angkatan	lemma	batch-015
@@ -190,6 +196,7 @@ awak	K1848	awak	lemma	batch-037
 awal	K1849	awal	lemma	batch-037
 awam	K1850	awam	lemma	batch-037
 awan	K0312	awan	lemma	batch-007
+awan panas	K2738	awan panas	lemma	batch-055
 awas	K0520	awas	lemma	batch-011
 awet	K1222	awet	lemma	batch-025
 ayah	K0105	ayah	lemma	batch-003
@@ -215,6 +222,8 @@ bacaan	K0076	baca	derived_form	batch-002
 bacem	K2005	bacem	lemma	batch-041
 bacot	K0717	bacot	lemma	batch-015
 badai	K0314	badai	lemma	batch-007
+badai pasir	K2708	badai pasir	lemma	batch-055
+badai tropis	K2707	badai tropis	lemma	batch-055
 badak	K2204	badak	lemma	batch-045
 badan	K0124	badan	lemma	batch-003
 bagus	K0041	bagus	lemma	batch-001
@@ -255,6 +264,8 @@ bangku	K1227	bangku	lemma	batch-025
 bangun	K0016	bangun	lemma	batch-001
 bangunkan	K0016	bangun	derived_form	batch-001
 banjir	K0315	banjir	lemma	batch-007
+banjir bandang	K2709	banjir bandang	lemma	batch-055
+banjir rob	K2710	banjir rob	lemma	batch-055
 bantal	K0289	bantal	lemma	batch-006
 banteng	K2205	banteng	lemma	batch-045
 banting	K0722	banting	lemma	batch-015
@@ -492,6 +503,7 @@ bujet	K1245	bujet	lemma	batch-025
 bujuk	K0745	bujuk	lemma	batch-015
 buka	K0065	buka	lemma	batch-002
 bukit	K2656	bukit	lemma	batch-054
+bukit pasir	K2729	bukit pasir	lemma	batch-055
 bukti	K0744	bukti	lemma	batch-015
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
