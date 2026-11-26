@@ -7,6 +7,7 @@ pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
 panas	K0251	panas	lemma	batch-005
 panci	K0282	panci	lemma	batch-006
+panggil	K0433	panggil	lemma	batch-009
 papa	K0107	papa	lemma	batch-003
 parkir	K0397	parkir	lemma	batch-008
 pasar	K0362	pasar	lemma	batch-008
@@ -113,11 +114,13 @@ percobaan	K0228	coba	derived_form	batch-005
 pergantian	K0221	ganti	derived_form	batch-005
 pergi	K0017	pergi	lemma	batch-001
 perikanan	K0168	ikan	derived_form	batch-004
+periksa	K0441	periksa	lemma	batch-009
 perizinan	K0246	izin	derived_form	batch-005
 perjalanan	K0020	jalan	derived_form	batch-001
 perkenalan	K0215	kenal	derived_form	batch-005
 perlu	K0231	perlu	lemma	batch-005
 permainan	K0074	main	derived_form	batch-002
+permisi	K0404	permisi	lemma	batch-009
 permulaan	K0225	mulai	derived_form	batch-005
 perorangan	K0010	orang	derived_form	batch-001
 perpindahan	K0207	pindah	derived_form	batch-005
@@ -137,11 +140,13 @@ perut	K0125	perut	lemma	batch-003
 pesan	K0194	pesan	lemma	batch-004
 pesanan	K0194	pesan	derived_form	batch-004
 pesepeda	K0199	sepeda	derived_form	batch-004
+pesta	K0451	pesta	lemma	batch-009
 pikir	K0080	pikir	lemma	batch-002
 pikiran	K0080	pikir	derived_form	batch-002
 pilih	K0219	pilih	lemma	batch-005
 pilihan	K0219	pilih	derived_form	batch-005
 pindah	K0207	pindah	lemma	batch-005
+pinjam	K0410	pinjam	lemma	batch-009
 pintu	K0256	pintu	lemma	batch-006
 piring	K0277	piring	lemma	batch-006
 pisau	K0281	pisau	lemma	batch-006
