@@ -17,6 +17,7 @@ panas	K0251	panas	lemma	batch-005
 pancake	K1983	pancake	lemma	batch-040
 panci	K0282	panci	lemma	batch-006
 pancing	K1505	pancing	lemma	batch-031
+panda	K2288	panda	lemma	batch-046
 panen	K1506	panen	lemma	batch-031
 panggang	K0470	panggang	lemma	batch-010
 panggil	K0433	panggil	lemma	batch-009
@@ -38,6 +39,7 @@ pastel	K1984	pastel	lemma	batch-040
 pasti	K0235	pasti	lemma	batch-005
 patuh	K1510	patuh	lemma	batch-031
 patung	K1511	patung	lemma	batch-031
+paus	K2289	paus	lemma	batch-046
 payah	K1512	payah	lemma	batch-031
 pecah	K1513	pecah	lemma	batch-031
 pecat	K1514	pecat	lemma	batch-031
@@ -121,6 +123,7 @@ pengiriman	K0061	kirim	derived_form	batch-002
 penglihatan	K0034	lihat	derived_form	batch-001
 pengobatan	K0182	obat	derived_form	batch-004
 pengubahan	K0220	ubah	derived_form	batch-005
+penguin	K2291	penguin	lemma	batch-046
 pengulangan	K0227	ulang	derived_form	batch-005
 pengundang	K0214	undang	derived_form	batch-005
 pengurangan	K0233	kurang	derived_form	batch-005
@@ -147,6 +150,7 @@ penyakit	K0180	sakit	derived_form	batch-004
 penyampaian	K0210	sampai	derived_form	batch-005
 penyelamat	K0248	selamat	derived_form	batch-005
 penyelesaian	K0224	selesai	derived_form	batch-005
+penyu	K2290	penyu	lemma	batch-046
 penyuka	K0081	suka	derived_form	batch-002
 pepaya	K1935	pepaya	lemma	batch-039
 pepohonan	K0159	pohon	derived_form	batch-004
@@ -317,6 +321,7 @@ ronda	K1097	ronda	lemma	batch-022
 rontok	K1098	rontok	lemma	batch-022
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
+rubah	K2293	rubah	lemma	batch-046
 rugi	K1099	rugi	lemma	batch-022
 rujak	K1942	rujak	lemma	batch-039
 rumah	K0012	rumah	lemma	batch-001
