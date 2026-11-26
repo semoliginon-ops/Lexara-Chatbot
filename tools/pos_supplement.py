@@ -22,6 +22,11 @@ SUPPLEMENTARY_POS = {
     "sedang": "ADV",
     "sangat": "ADV",
     "sekali": "ADV",
+    # High-confidence demonstrative, conjunction, and interjection forms
+    "itu": "PRON",
+    "dan": "CONJ",
+    "ketika": "CONJ",
+    "wah": "INTJ",
 }
 
 
