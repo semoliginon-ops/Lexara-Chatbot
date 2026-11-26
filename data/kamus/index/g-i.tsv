@@ -54,6 +54,7 @@ gemas	K0861	gemas	lemma	batch-018
 gembira	K0885	gembira	lemma	batch-018
 gembok	K2312	gembok	lemma	batch-047
 gempa	K1316	gempa	lemma	batch-027
+gempa bumi	K2681	gempa bumi	lemma	batch-054
 gemuk	K0862	gemuk	lemma	batch-018
 genap	K0863	genap	lemma	batch-018
 generasi	K1317	generasi	lemma	batch-027
@@ -125,6 +126,7 @@ gundul	K0875	gundul	lemma	batch-018
 gunjing	K1340	gunjing	lemma	batch-027
 gunting	K0876	gunting	lemma	batch-018
 gunung	K0158	gunung	lemma	batch-004
+gunung berapi	K2683	gunung berapi	lemma	batch-054
 gurame	K1968	gurame	lemma	batch-040
 gurih	K1327	gurih	lemma	batch-027
 gurita	K2219	gurita	lemma	batch-045
@@ -195,9 +197,13 @@ hub USB	K2396	hub USB	lemma	batch-048
 hubung	K1362	hubung	lemma	batch-028
 hubungi	K0217	hubungi	lemma	batch-005
 hujan	K0311	hujan	lemma	batch-007
+hujan badai	K2701	hujan badai	lemma	batch-054
 hukum	K0896	hukum	lemma	batch-018
 humor	K1363	humor	lemma	batch-028
 huruf	K0897	huruf	lemma	batch-018
+hutan	K2658	hutan	lemma	batch-054
+hutan bakau	K2696	hutan bakau	lemma	batch-054
+hutan hujan	K2695	hutan hujan	lemma	batch-054
 ibadah	K0898	ibadah	lemma	batch-018
 ibarat	K0563	ibarat	lemma	batch-012
 ibu	K0104	ibu	lemma	batch-003
