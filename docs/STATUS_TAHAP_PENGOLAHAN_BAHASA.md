@@ -370,9 +370,21 @@ Pengguna menjalankan `python -m unittest discover -s tests -v` dari checkout `~/
 
 - Commit dataset: `9bba4ee49ecb4e071126c2e7d33c0e3fac87e9f5`.
 - Ditambahkan 10 record dengan ID `pos_0021`–`pos_0030`: 6 development dan 4 test.
-- Total rancangan dataset menjadi **30 kalimat, 155 token, 18 development, 12 test**.
+- Total rancangan dataset menjadi **30 kalimat, 156 token, 18 development, 12 test**.
 - Fenomena tambahan mencakup kalimat perintah, konjungsi subordinatif, negasi, numeralia, kata ulang, bentuk berimbuhan, dan pronomina interogatif.
-- **Validasi batch ketiga belum dijalankan pengguna di Termux.** Jalankan `python -m tools.validasi_dataset_pos` setelah `git pull`; target keluaran 30 kalimat, 155 token, 18 development, 12 test.
+- Pengguna menjalankan `python -m tools.validasi_dataset_pos` di Termux setelah `git pull`; hasil **VALIDASI DATASET POS BERHASIL**: 30 kalimat, 156 token, 18 development, 12 test. Pemeriksaan JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer lulus (27 November 2026).
 - Regression suite penuh 132/132 lulus pada verifikasi sebelumnya, sebelum batch ketiga ditambahkan. Belum ada klaim regression test setelah perubahan data ini.
 
-**Titik lanjut:** validasi batch ketiga di Termux, lalu audit mutu anotasi pada development set. Test split tetap ditahan.
+**Titik lanjut:** jalankan ulang regression suite penuh setelah batch ketiga, lalu audit mutu anotasi pada development set. Test split tetap ditahan.
+
+
+### Verifikasi validasi dataset POS batch ketiga — 27 November 2026
+
+Dari Termux, pengguna menjalankan `python -m tools.validasi_dataset_pos` setelah menarik commit batch ketiga.
+
+- Hasil: **VALIDASI DATASET POS BERHASIL**.
+- Jumlah aktual: **30 kalimat, 156 token, 18 development, 12 test**.
+- Seluruh pemeriksaan JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer lulus.
+- Jumlah token aktual 156; angka 155 sebelumnya merupakan perkiraan sebelum validator dijalankan.
+- Regression suite penuh terakhir yang dikonfirmasi masih 132/132 sebelum batch ketiga ditambahkan. Jalankan ulang untuk verifikasi terbaru.
+
