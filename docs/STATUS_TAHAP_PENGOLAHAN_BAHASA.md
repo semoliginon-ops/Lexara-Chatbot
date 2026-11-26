@@ -575,3 +575,8 @@ Workflow `.github/workflows/pos-validation.yml` ditambahkan. Pada perubahan data
 ## Penambahan batch keenam — 27 November 2026
 
 Dataset POS bertambah dari 50 menjadi 60 kalimat (`pos_0051`–`pos_0060`), terdiri dari 36 development dan 24 test, dengan 314 token berdasarkan anotasi. Cakupan baru mencakup negasi, verba berimbuhan, preposisi tujuan/asal, konjungsi sebab, demonstrativa, dan adjektiva predikatif. Preflight struktural sebelum commit lulus. Validator Python, evaluator development, dan regression suite setelah perubahan masih menunggu hasil GitHub Actions. Test split tetap ditahan.
+
+
+## Verifikasi batch keenam — 27 November 2026
+
+GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) selesai dengan status sukses. Validator Python: 60 kalimat, 314 token, 36 development, 24 test. Evaluator development-only: 148 token resolved, 90 benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%; satu gold ambiguous ditahan dan tidak dipaksakan. Coverage per label memperlihatkan NUM 0/2, PREP 1/7, ADV 4/13, CONJ 3/6 (format benar/prediksi atau abstain dijelaskan di audit). Regression suite: 137/137 lulus. Test split tetap ditahan.
