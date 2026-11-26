@@ -441,7 +441,7 @@ Catatan: POS kontekstual dan leksikal masih menghasilkan metrik identik. Kenaika
 - [x] Evaluator development: 148 token resolved; 90 benar; coverage 60,8%; accuracy 60,8%; selective accuracy 100%.
 - [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
 - [x] Regression suite: 137/137 lulus.
-- [ ] Audit cakupan kelas dengan abstention tinggi: NUM (0/2), PREP (1/7), ADV (4/13), dan CONJ (3/6). Jangan mengubah aturan atau kamus massal sebelum akar penyebab tiap contoh diperiksa.
+- [x] Audit cakupan kelas dengan abstention tinggi: NUM (0/2), PREP (1/7), ADV (4/13), dan CONJ (3/6); gap indeks dicatat tanpa mengubah label gold.
 
 Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang terukur dibanding batch kelima karena ukuran dan komposisi development berubah. POS kontekstual masih identik dengan POS leksikal.
 
@@ -450,6 +450,18 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 
 - [x] Bandingkan token resolved pada 36 kalimat development dengan delapan shard indeks kamus.
 - [x] Catat gap untuk ADV, PRON, PREP, CONJ, ADJ, NUM, NOUN, VERB, dan INTJ pada `docs/AUDIT_ANOTASI_POS.md`.
-- [ ] Tentukan desain suplementasi kata tugas dan numeralia yang terfokus; pertahankan entri kamus yang ada dan hindari audit massal.
-- [ ] Tambahkan regression tests untuk setiap penanganan closed-class/numeralia sebelum mengubah implementasi.
+- [x] Menentukan suplementasi POS terpisah untuk 12 kata tugas/numeralia terpilih; kamus 3.000 lema tidak diubah.
+- [x] Menambahkan regression tests untuk suplementasi, prioritas kamus, dan pelestarian ambiguitas; workflow GitHub Actions berhasil.
 - [ ] Lanjutkan batch ketujuh setelah strategi cakupan diputuskan; test split tetap ditahan.
+
+
+### Implementasi suplementasi POS terfokus — 27 November 2026
+
+- [x] Membuat `tools/pos_supplement.py` sebagai daftar fallback terpisah dari kamus inti.
+- [x] Menambahkan 12 bentuk terpilih: `dua`, `tiga` (NUM); `di`, `ke`, `pada` (PREP); `atau`, `kalau`, `tetapi` (CONJ); `akan`, `sedang`, `sangat`, `sekali` (ADV).
+- [x] Mengintegrasikan fallback ke `tools/pos_tagger.py`; hanya digunakan ketika tidak ada kandidat kamus. Kandidat kamus tetap lebih utama dan bentuk turunan yang memerlukan morfologi tidak dipaksa.
+- [x] Menambahkan tes untuk semua 12 kata, prioritas kandidat kamus, ambiguitas `jalan`, serta kata polifungsi yang sengaja belum disuplementasi (`dulu`, `tetap`).
+- [x] GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908285217): validator 60 kalimat/314 token berhasil; evaluator development berhasil; regression suite **141/141 lulus**.
+- [x] Evaluasi development setelah suplementasi: 107/148 benar, coverage 72,3%, accuracy 72,3%, selective accuracy 100%. POS leksikal dan kontekstual sama. Satu gold ambiguous tetap ditahan, tidak dipaksakan.
+
+**Titik lanjut:** lanjutkan Batch 7 (`pos_0061`–`pos_0070`) dengan 6 development dan 4 test. Test split tetap tertahan; jangan menyetel aturan berdasarkan test.
