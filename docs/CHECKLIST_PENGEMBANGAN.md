@@ -110,9 +110,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
 - [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk validasi struktur, label, status, ID, dan kecocokan token.
-- [x] Membuat 8 regression tests pada `tests/test_validasi_dataset_pos.py`.
+- [x] Membuat 9 regression tests pada `tests/test_validasi_dataset_pos.py`.
 - [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: **VALIDASI DATASET POS BERHASIL**, 10 kalimat, 43 token (6 development, 4 test), seluruh pemeriksaan struktur dan kesesuaian tokenizer lulus.
-- [~] Menjalankan 8 regression tests validator dari checkout Termux; hasil masih menunggu.
+- [x] Menjalankan 9 regression tests validator dari checkout Termux: 9 lulus, 0 gagal (27 November 2026).
 - [ ] Memperluas dataset hingga target 100 kalimat dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
