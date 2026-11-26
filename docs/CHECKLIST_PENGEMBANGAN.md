@@ -274,3 +274,12 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [x] Konfirmasi regression suite mencakup analyzer, loader kamus, morfologi, normalisasi, pencocokan kamus, POS kontekstual, POS leksikal, tokenizer, dan validator dataset POS.
 
 **Titik lanjut:** audit mutu anotasi pada development set dan perluas dataset secara bertahap. Jangan gunakan test split untuk menyetel aturan POS.
+
+
+### Penambahan batch ketiga dataset POS — 27 November 2026
+- [x] Tambahkan 10 kalimat baru (`pos_0021`–`pos_0030`): 6 development dan 4 test.
+- [x] Perbarui dataset menjadi **30 kalimat / 155 token**, dengan komposisi 18 development dan 12 test.
+- [ ] Tarik perubahan batch ketiga ke Termux dan jalankan `python -m tools.validasi_dataset_pos`; target 30 kalimat, 155 token, 18 development, 12 test.
+- [ ] Setelah validasi, lanjutkan audit anotasi development set. Jangan gunakan test split untuk menyetel aturan.
+
+Catatan: regression suite penuh terakhir yang dikonfirmasi pengguna adalah 132/132 lulus sebelum batch ketiga ditambahkan. Jangan menganggap hasil itu sebagai verifikasi setelah perubahan data batch ketiga.
