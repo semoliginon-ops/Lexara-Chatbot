@@ -54,7 +54,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
-- [ ] Menjalankan loader Python secara langsung terhadap seluruh 60 file batch aktual.
+- [ ] Menjalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk memuat 60 batch (3.000 entri) melalui loader Python; skrip validasi sudah tersedia.
 
 ### 2.4 Analisis morfologi
 
