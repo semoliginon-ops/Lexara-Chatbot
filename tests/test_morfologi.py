@@ -39,6 +39,14 @@ class MorphologyTests(unittest.TestCase):
         bases = self.bases("mengambil")
         self.assertIn("ambil", bases)
         self.assertNotIn("kambil", bases)
+
+    def test_peng_prefix_does_not_add_k_to_known_vowel_lemma(self):
+        bases = self.bases("pengambil")
+        self.assertIn("ambil", bases)
+        self.assertNotIn("kambil", bases)
+
+    def test_peng_prefix_restores_k_when_required(self):
+        self.assertIn("kunci", self.bases("pengunci"))
     def test_prefix_and_suffix_combination(self): self.assertIn("ajar", self.bases("mengajarkan"))
     def test_identical_reduplication(self): self.assertIn("anak", self.bases("anak-anak"))
     def test_non_identical_reduplication_not_guessed(self): self.assertEqual(self.bases("sayur-mayur"), set())
