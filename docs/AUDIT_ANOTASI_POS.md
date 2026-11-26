@@ -36,14 +36,19 @@ Tidak ada label yang diubah dalam audit awal ini. Kasus yang bergantung pada ped
 - Tanda baca diberi `not_applicable` dan `gold_pos: null`.
 - `Jalan.` tetap `ambiguous`; jangan dipaksa menjadi satu kelas kata tanpa konteks tambahan.
 
-## 5. Keputusan sementara
+## 5. Keputusan dan tindak lanjut pedoman
 
 1. Jangan mengubah label dataset hanya berdasarkan perbedaan istilah antar-skema POS.
-2. Tambahkan konvensi eksplisit untuk demonstrativa, aspek, larangan, dan gelar sapaan ke pedoman anotasi sebelum memperluas dataset terlalu jauh.
-3. Setelah pedoman disepakati, audit ulang seluruh development set menggunakan pedoman yang sama.
+2. Konvensi operasional untuk demonstrativa, aspek/modalitas, larangan, gelar/sapaan, kata sebab, dan penanda tanya telah ditetapkan dalam subbagian 5.1 `docs/DATASET_POS.md`.
+3. Audit ulang seluruh development set menggunakan pedoman tersebut; koreksi label hanya jika fungsi token jelas tidak sesuai konvensi.
 4. Jangan membuka atau menggunakan split test untuk menyetel aturan.
 5. Jalankan kembali validator dataset dan seluruh regression tests setelah ada perubahan data atau kode.
 
 ## 6. Titik lanjut
 
-Langkah berikutnya adalah menyelaraskan aturan anotasi yang belum eksplisit dengan taksonomi resmi di `docs/KAMUS.md`, lalu memperbarui pedoman `docs/DATASET_POS.md`. Setelah itu, audit development set sekali lagi sebelum menambah batch dataset berikutnya.
+Konvensi operasional telah ditambahkan ke `docs/DATASET_POS.md` tanpa menambah kode POS baru. Langkah berikutnya adalah menarik pembaruan, audit ulang development set menurut pedoman tersebut, lalu baru memutuskan apakah label perlu dikoreksi. Split test tetap ditahan.
+
+
+## 7. Pembaruan pedoman — 27 November 2026
+
+Pedoman operasional ditetapkan di `docs/DATASET_POS.md` subbagian 5.1: demonstrativa atributif `PRON`; penanda aspek/modalitas `ADV`; penanda larangan `PART`; gelar/sapaan nominal `NOUN`; kata sebab `CONJ`; penanda tanya `PART`. Pemetaan ini merupakan konvensi internal dataset v1. Belum ada label pada JSONL yang diubah. Audit ulang development masih harus dilakukan setelah pedoman ditarik ke checkout lokal.
