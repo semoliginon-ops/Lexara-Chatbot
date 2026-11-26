@@ -389,6 +389,16 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Evaluasi development: 102 token resolved; leksikal dan kontekstual sama-sama 55 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%.
 - [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
 - [x] Audit `mau` pada `pos_0031`: ditetapkan sebagai `VERB` (verba modal kehendak), sesuai entri kamus `K0024`; label gold development dikoreksi dari `ADV` menjadi `VERB` tanpa mengubah kamus atau aturan program. Menunggu validasi ulang di Termux.
-- [ ] Audit coverage kelas POS yang belum diprediksi, termasuk `INTJ`; prioritaskan penambahan contoh development yang representatif.
+- [x] Audit awal kasus `INTJ`: `wah` belum ditemukan pada indeks kamus; `aduh` tersedia sebagai `K0602`/`INTJ`. Ditambahkan contoh development `aduh` untuk menguji interjeksi yang sudah tersedia; tidak perlu mengubah aturan POS hanya untuk `wah`.
 
 **Titik lanjut aktif:** tarik koreksi anotasi `mau`, jalankan ulang validator, evaluator, dan regression suite; setelah itu audit cakupan prediksi kelas POS. Jangan gunakan 16 record test untuk penyetelan. Setelah verifikasi, lanjutkan batch kelima menuju 50 kalimat.
+
+
+### Penambahan batch kelima dataset POS — 27 November 2026
+
+- [x] Menambahkan 10 record baru (`pos_0041`–`pos_0050`): 6 development dan 4 test.
+- [x] Memperluas dataset dari 40 menjadi **50 kalimat**; komposisi menjadi **30 development dan 20 test**.
+- [x] Menambahkan contoh interjeksi `aduh` (INTJ) yang sudah tersedia pada kamus, serta variasi kalimat sederhana, demonstrativa, adjektiva, verba, dan preposisi.
+- [ ] Validasi dataset, evaluasi development, dan regression suite setelah batch kelima; hasil otomatis belum dijalankan.
+
+**Titik lanjut:** verifikasi batch kelima melalui pemeriksaan otomatis yang tersedia. Jangan gunakan 20 record test untuk penyetelan.
