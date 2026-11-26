@@ -10,11 +10,15 @@ panas	K0251	panas	lemma	batch-005
 panci	K0282	panci	lemma	batch-006
 panggang	K0470	panggang	lemma	batch-010
 panggil	K0433	panggil	lemma	batch-009
+pantas	K0597	pantas	lemma	batch-012
 papa	K0107	papa	lemma	batch-003
+parah	K0598	parah	lemma	batch-012
 parkir	K0397	parkir	lemma	batch-008
 pasar	K0362	pasar	lemma	batch-008
+pasrah	K0599	pasrah	lemma	batch-012
 pasti	K0235	pasti	lemma	batch-005
 pedas	K0458	pedas	lemma	batch-010
+pede	K0600	pede	lemma	batch-012
 pegunungan	K0158	gunung	derived_form	batch-004
 pekerja	K0021	kerja	derived_form	batch-001
 pekerjaan	K0021	kerja	derived_form	batch-001
@@ -23,6 +27,7 @@ pelajar	K0187	belajar	derived_form	batch-004
 pelan	K0349	pelan	lemma	batch-007
 pelanggan	K0366	pelanggan	lemma	batch-008
 pelari	K0073	lari	derived_form	batch-002
+pelit	K0601	pelit	lemma	batch-012
 pemaafan	K0247	maaf	derived_form	batch-005
 pemahaman	K0040	paham	derived_form	batch-001
 pemain	K0074	main	derived_form	batch-002
