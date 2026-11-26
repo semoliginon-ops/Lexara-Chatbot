@@ -39,11 +39,11 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ### 2.2 Tokenisasi
 
-- [ ] Membuat `tools/tokenizer.py`.
-- [ ] Memisahkan kata dan tanda baca menjadi token.
-- [ ] Mempertahankan tanda baca sebagai token tersendiri.
-- [ ] Menentukan dan menguji perilaku kata bertanda hubung dan apostrof.
-- [ ] Membuat regression tests tokenizer.
+- [x] Membuat `tools/tokenizer.py`.
+- [x] Memisahkan kata dan tanda baca menjadi token.
+- [x] Mempertahankan tanda baca sebagai token tersendiri.
+- [x] Menentukan dan menguji perilaku kata bertanda hubung dan apostrof.
+- [x] Membuat 12 regression tests tokenizer; seluruhnya lulus.
 
 ### 2.3 Pencocokan token ke kamus
 
@@ -132,9 +132,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Tahap 2.2 — Tokenisasi.**
+**Tahap 2.3 — Pencocokan token ke kamus.**
 
-Validasi normalisasi telah dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan isi modul dan tes yang diambil dari GitHub. Hasil: 8 tes lulus, 0 gagal. GitHub Actions tidak dijalankan. Lanjutkan dengan merancang dan membuat tokenizer.
+Normalisasi: 8 tes lulus. Tokenizer: 12 tes lulus. Seluruh 20 tes dari kedua komponen lulus pada lingkungan Python lokal terisolasi menggunakan salinan file yang dibaca dari GitHub. GitHub Actions tidak dijalankan. Berikutnya periksa format JSONL batch kamus aktual sebelum merancang loader dan pencocokan leksikal.
 
 ## Dokumen rujukan
 
