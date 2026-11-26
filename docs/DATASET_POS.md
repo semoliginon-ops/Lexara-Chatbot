@@ -148,7 +148,8 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk memeriksa struktur JSONL, label, status, ID, dan kecocokan token dengan tokenizer.
 - [x] Membuat 8 regression tests pada `tests/test_validasi_dataset_pos.py`.
-- [~] Menjalankan validator dan 8 regression tests dari checkout Termux; hasil verifikasi masih menunggu.
+- [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: berhasil; 10 kalimat dan 43 token tervalidasi (6 development, 4 test).
+- [~] Menjalankan 8 regression tests validator dari checkout Termux; hasil verifikasi masih menunggu.
 - [ ] Mengevaluasi development set dan mencatat kesalahan.
 - [ ] Mengunci test set dan mengukur metrik tanpa penyetelan khusus terhadap test.
 - [ ] Memperbarui dokumentasi status dan checklist berdasarkan hasil nyata.
