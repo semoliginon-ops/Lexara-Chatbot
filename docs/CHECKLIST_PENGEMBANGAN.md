@@ -399,6 +399,7 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Menambahkan 10 record baru (`pos_0041`–`pos_0050`): 6 development dan 4 test.
 - [x] Memperluas dataset dari 40 menjadi **50 kalimat**; komposisi menjadi **30 development dan 20 test**.
 - [x] Menambahkan contoh interjeksi `aduh` (INTJ) yang sudah tersedia pada kamus, serta variasi kalimat sederhana, demonstrativa, adjektiva, verba, dan preposisi.
-- [ ] Validasi dataset, evaluasi development, dan regression suite setelah batch kelima; hasil otomatis belum dijalankan.
+- [x] Pemeriksaan struktural awal langsung pada file GitHub: 50 kalimat, 266 token, 30 development, 20 test; JSON, ID, label/status POS, dan kecocokan token diperiksa tanpa temuan.
+- [ ] Jalankan validator Python resmi, evaluator development, dan regression suite setelah batch kelima; belum ada hasil eksekusi Python yang terkonfirmasi.
 
 **Titik lanjut:** verifikasi batch kelima melalui pemeriksaan otomatis yang tersedia. Jangan gunakan 20 record test untuk penyetelan.
