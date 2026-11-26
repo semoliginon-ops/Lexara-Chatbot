@@ -494,4 +494,16 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] GitHub Actions run [#8](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909135531): validator berhasil; regression suite **141/141 lulus**.
 - [x] Evaluator development-only: 227 token resolved, 167 benar, coverage 73,6%, accuracy 73,6%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan.
 
-**Titik lanjut:** Batch 10 (`pos_0091`–`pos_0100`), enam development dan empat test. Pertahankan seluruh 36 kalimat test sebagai data tertahan.
+**Catatan:** Batch 10 (`pos_0091`–`pos_0100`) sudah selesai dan diverifikasi; lihat bagian “Batch kesepuluh dan verifikasi otomatis” di bawah. Seluruh 40 kalimat test tetap tertahan.
+
+
+### Batch kesepuluh dan verifikasi otomatis — 27 November 2026
+
+- [x] Menambahkan `pos_0091`–`pos_0100`: enam kalimat development dan empat kalimat test.
+- [x] Dataset mencapai target v1: **100 kalimat, 543 token, 60 development, 40 test**.
+- [x] GitHub Actions run [#9](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909322818): validator berhasil; regression suite **141/141 lulus**.
+- [x] Evaluator development-only: 255 token resolved, 186 benar, coverage 73,3%, accuracy 72,9%, selective accuracy 99,5%; satu gold ambiguous ditahan dan nol dipaksakan.
+
+**Catatan evaluasi:** terdapat setidaknya satu prediksi keliru pada token yang diputuskan sistem; selective accuracy 99,5% menandakan hasil yang diputuskan tidak sempurna. Jangan menyebut akurasi 100%. Seluruh 40 kalimat test tetap tertahan untuk evaluasi terpisah.
+
+**Titik lanjut:** audit menyeluruh dataset v1, analisis kesalahan development, dan rencana evaluasi test yang terkontrol. Jangan menyetel aturan menggunakan test sebelum protokol evaluasi ditetapkan.
