@@ -555,3 +555,8 @@ Pengguna menarik perubahan ke Termux dan menjalankan validator, regression suite
 ## Audit kata `mau` — 27 November 2026
 
 Pada kalimat development `Gue mau makan dulu`, `mau` ditetapkan sebagai `VERB` karena menyatakan kehendak dan berfungsi sebagai verba modal yang mengambil komplemen verba. Keputusan ini selaras dengan POS entri kamus `K0024`. Label gold pada `pos_0031` dikoreksi dari `ADV` menjadi `VERB`; pedoman `ADV` untuk `sedang`, `akan`, `telah`, `sudah`, dan `lagi` tetap dibatasi pada daftar tersebut. Kamus dan kode POS tidak diubah. Perubahan dataset serta dokumentasi menunggu validasi, evaluasi, dan regression suite ulang dari Termux. Split test tidak disentuh.
+
+
+## Penambahan batch kelima dan audit INTJ — 27 November 2026
+
+Dataset POS diperluas dari 40 menjadi 50 kalimat (`pos_0041`–`pos_0050`), terdiri dari 30 development dan 20 test. Batch menambahkan enam kalimat development dan empat test. Contoh `aduh` diberi `INTJ`, sesuai entri kamus `K0602`. Audit indeks menemukan `wah` belum tercakup dalam kamus; ini merupakan gap kosakata, bukan alasan mengubah POS atau menambah heuristik. Tidak ada perubahan kode POS atau kamus. Validasi dataset, evaluasi development, dan regression suite setelah batch kelima belum dijalankan. Test split tetap ditahan.
