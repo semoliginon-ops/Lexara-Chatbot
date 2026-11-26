@@ -11,8 +11,8 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 
 | Rentang | File |
 |---|---|
-| a-c | [a-c.tsv](./index/a-c.tsv) — 189 token |
-| d-f | [d-f.tsv](./index/d-f.tsv) — 134 token |
+| a-c | [a-c.tsv](./index/a-c.tsv) — 231 token |
+| d-f | [d-f.tsv](./index/d-f.tsv) — 142 token |
 | g-i | [g-i.tsv](./index/g-i.tsv) — 49 token |
 | j-l | [j-l.tsv](./index/j-l.tsv) — 180 token |
 | m-o | [m-o.tsv](./index/m-o.tsv) — 214 token |
