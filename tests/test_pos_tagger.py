@@ -66,6 +66,35 @@ class PosTaggerTests(unittest.TestCase):
         self.assertEqual(token["pos"], [])
         self.assertEqual(token["pos_status"], "unknown")
 
+    def test_audited_function_words_use_supplement(self):
+        expected = {
+            "dua": "NUM", "tiga": "NUM",
+            "di": "PREP", "ke": "PREP", "pada": "PREP",
+            "atau": "CONJ", "kalau": "CONJ", "tetapi": "CONJ",
+            "akan": "ADV", "sedang": "ADV",
+            "sangat": "ADV", "sekali": "ADV",
+        }
+        for word, label in expected.items():
+            with self.subTest(word=word):
+                token = self.analyze_and_tag(word)["tokens"][0]
+                self.assertEqual(token["pos"], [label])
+                self.assertEqual(token["pos_status"], "identified")
+                self.assertEqual(token["pos_source"], "supplement")
+                self.assertEqual(token["pos_candidates"], [])
+
+    def test_dictionary_match_takes_precedence_over_supplement(self):
+        lexicon = build_lexicon(self.entries + [entry("K0005", "dua", ["NOUN"])])
+        token = tag_pos(analyze_text("dua", lexicon))["tokens"][0]
+        self.assertEqual(token["pos"], ["NOUN"])
+        self.assertEqual(token["pos_source"], "dictionary")
+
+    def test_ambiguous_words_not_in_supplement_remain_unknown(self):
+        for word in ("dulu", "tetap", "jalan"):
+            with self.subTest(word=word):
+                token = self.analyze_and_tag(word)["tokens"][0]
+                self.assertEqual(token["pos"], [])
+                self.assertEqual(token["pos_status"], "unknown")
+
     def test_punctuation_is_not_applicable(self):
         token = self.analyze_and_tag("!")["tokens"][0]
         self.assertEqual(token["pos_status"], "not_applicable")
