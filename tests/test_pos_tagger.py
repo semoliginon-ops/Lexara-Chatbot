@@ -75,6 +75,22 @@ class PosTaggerTests(unittest.TestCase):
         self.assertEqual(token["pos"], [])
         self.assertEqual(token["pos_status"], "requires_morphology")
 
+    def test_recorded_mem_derived_form_uses_its_validated_verb_lemma(self):
+        lexicon = build_lexicon([
+            entry("K9101", "masak", ["VERB"], derived_forms=["memasak"]),
+        ])
+        token = tag_pos(analyze_text("memasak", lexicon))["tokens"][0]
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "morphology")
+
+    def test_recorded_ber_derived_form_uses_its_validated_verb_lemma(self):
+        lexicon = build_lexicon([
+            entry("K9102", "main", ["VERB"], derived_forms=["bermain"]),
+        ])
+        token = tag_pos(analyze_text("bermain", lexicon))["tokens"][0]
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "morphology")
+
     def test_unknown_word_has_unknown_status(self):
         token = self.analyze_and_tag("xyzabc")["tokens"][0]
         self.assertEqual(token["pos"], [])
