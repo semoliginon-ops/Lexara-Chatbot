@@ -83,3 +83,17 @@ Seluruh 18 kalimat development diperiksa ulang terhadap konvensi operasional pad
 **Pengamanan:** ditambahkan regression test integrasi yang memuat kamus dan development dataset sebenarnya, lalu memastikan satu token gold ambiguous `jalan` ditahan (abstained) dan tidak dipaksakan.
 
 Perubahan ini hanya memperbaiki metadata entri dan tes. Tidak ada aturan konteks yang dilonggarkan, tidak ada data test yang dipakai, dan token index tidak berubah karena lemma serta token indeks tetap sama. Hasil akhir tetap menunggu verifikasi di Termux.
+
+
+## Verifikasi setelah koreksi metadata lema "jalan" — 27 November 2026
+
+Pengguna menjalankan perintah verifikasi dari checkout Termux setelah menarik pembaruan:
+
+- 5 tes evaluator POS lulus, 0 gagal.
+- Evaluator memuat 18 kalimat development; split test tidak digunakan.
+- Gold ambiguous pada `pos_0006` (`Jalan.`) kini ditahan: **1 abstained, 0 forced**.
+- Metrik token resolved tetap 42 prediksi benar dari 72; coverage 58,3%, accuracy 58,3%, selective accuracy 100% untuk token yang diprediksi.
+- POS leksikal dan POS dengan konteks lokal menghasilkan metrik identik pada sampel ini.
+- Regression suite penuh: **137 tes lulus, 0 gagal, 0 error**.
+
+Koreksi metadata berhasil memperbaiki penanganan kasus ambigu yang ditemukan. Hasil ini tidak membuktikan akurasi umum; cakupan evaluasi masih 18 kalimat development. Test split tetap ditahan.
