@@ -1,7 +1,9 @@
 # Token index — m-o
 # token\tid\tlemma\ttype\tbatch
 maaf	K0247	maaf	lemma	batch-005
+macet	K0398	macet	lemma	batch-008
 mager	K0091	mager	lemma	batch-002
+mahal	K0357	mahal	lemma	batch-008
 main	K0074	main	lemma	batch-002
 makan	K0013	makan	lemma	batch-001
 makanan	K0013	makan	derived_form	batch-001
@@ -178,6 +180,7 @@ motoris	K0200	motor	derived_form	batch-004
 mulai	K0225	mulai	lemma	batch-005
 mulut	K0121	mulut	lemma	batch-003
 mungkin	K0142	mungkin	lemma	batch-003
+murah	K0356	murah	lemma	batch-008
 murid	K0186	murid	lemma	batch-004
 musim	K0309	musim	lemma	batch-007
 naik	K0069	naik	lemma	batch-002
@@ -192,6 +195,7 @@ nyaman	K0329	nyaman	lemma	batch-007
 obat	K0182	obat	lemma	batch-004
 obatan	K0182	obat	derived_form	batch-004
 obrolan	K0038	ngobrol	derived_form	batch-001
+ojek	K0402	ojek	lemma	batch-008
 ok	K0031	oke	variant	batch-001
 okay	K0031	oke	variant	batch-001
 oke	K0031	oke	lemma	batch-001
