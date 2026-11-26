@@ -706,3 +706,12 @@ Pengguna menarik pembaruan terbaru ke Termux dan menjalankan seluruh rangkaian p
 Perubahan metadata bentuk turunan menyelesaikan prediksi untuk `bekerja`, `menjelaskan`, dan `letakkan` pada contoh development yang diaudit. Hasil ini terbatas pada development set dan bukan estimasi akurasi umum. Seluruh 40 record test tetap tertahan.
 
 **Titik lanjut:** audit keberadaan lema `tunda`, `hinggap`, dan `teduh` serta gap kosakata NOUN. Jangan menyetel aturan menggunakan test split.
+
+
+## Audit indeks untuk sisa verba — 27 November 2026
+
+Pemeriksaan seluruh delapan shard token index tidak menemukan entri token persis tunda, hinggap, teduh, ditunda, maupun berteduh. Karena index merupakan alat navigasi dan pemeriksaan duplikasi, ketiga lema dasar dicatat sebagai kandidat penambahan kamus yang perlu ditinjau, bukan langsung ditambahkan tanpa pemeriksaan skema.
+
+Aturan kamus saat ini menetapkan setiap batch berisi tepat 50 lema baru dengan ID berurutan. Karena itu tidak dibuat batch parsial untuk tiga kata. Rencana berikutnya adalah mengumpulkan lema prioritas lain dari abstention NOUN, lalu memasukkannya ke batch lengkap setelah audit duplikasi dan penetapan POS/sense. Untuk teduh, POS dasar perlu ditinjau sebagai ADJ; bentuk berteduh memerlukan anotasi POS bentuk turunan VERB yang eksplisit jika relasinya disetujui.
+
+Tidak ada perubahan kode atau data kamus pada audit ini. Evaluasi tetap hanya pada development set; 40 kalimat test tetap tertahan.
