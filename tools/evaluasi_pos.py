@@ -75,6 +75,7 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
     contextual_predictions: list[str | None] = []
     lexical_errors: list[dict[str, Any]] = []
     contextual_errors: list[dict[str, Any]] = []
+    contextual_abstentions: list[dict[str, Any]] = []
     gold_status_counts: Counter[str] = Counter()
     ambiguous_abstained = 0
     ambiguous_forced = 0
@@ -117,6 +118,14 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
                     lexical_errors.append({**error_context, "predicted": lexical_prediction})
                 if contextual_prediction is not None and contextual_prediction != gold_label:
                     contextual_errors.append({**error_context, "predicted": contextual_prediction})
+                elif contextual_prediction is None:
+                    contextual_abstentions.append({
+                        **error_context,
+                        "pos_source": contextual_item.get("pos_source"),
+                        "pos_status": contextual_item.get("pos_status"),
+                        "context_status": contextual_item.get("pos_context_status"),
+                        "candidates": contextual_item.get("pos", []),
+                    })
             elif status == "ambiguous":
                 ambiguous_abstained += contextual_prediction is None
                 ambiguous_forced += contextual_prediction is not None
@@ -131,6 +140,7 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
             "lexical": lexical_errors,
             "contextual": contextual_errors,
         },
+        "contextual_abstentions": contextual_abstentions,
         "ambiguous": {
             "total": ambiguous_abstained + ambiguous_forced,
             "abstained": ambiguous_abstained,
@@ -169,6 +179,20 @@ def main() -> int:
     print(f"Token resolved     : {result['resolved']}")
     _print_score("POS LEKSIKAL", result["lexical"])
     _print_score("POS DENGAN KONTEKS LOKAL", result["contextual"])
+    print("ABSTENTION POS KONTEKSTUAL MENURUT GOLD")
+    abstentions_by_gold: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for item in result["contextual_abstentions"]:
+        abstentions_by_gold[item["gold"]].append(item)
+    for label, items in sorted(abstentions_by_gold.items()):
+        print(f"  {label}: {len(items)}")
+        for item in items:
+            print(
+                "    "
+                f"{item['record_id']} | {item['token']!r} | "
+                f"source={item['pos_source']} | status={item['pos_status']} | "
+                f"context={item['context_status']} | candidates={item['candidates']} | "
+                f"kalimat={item['text']}"
+            )
     print("KESALAHAN PREDIKSI PADA DEVELOPMENT")
     for method in ("lexical", "contextual"):
         errors = result["misclassifications"][method]
