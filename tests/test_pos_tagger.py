@@ -73,6 +73,7 @@ class PosTaggerTests(unittest.TestCase):
             "atau": "CONJ", "kalau": "CONJ", "tetapi": "CONJ",
             "akan": "ADV", "sedang": "ADV",
             "sangat": "ADV", "sekali": "ADV",
+            "itu": "PRON", "dan": "CONJ", "ketika": "CONJ", "wah": "INTJ",
         }
         for word, label in expected.items():
             with self.subTest(word=word):
