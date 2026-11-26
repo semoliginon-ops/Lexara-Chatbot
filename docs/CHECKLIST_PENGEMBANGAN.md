@@ -96,10 +96,14 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ### 2.5 Pengenalan kelas kata (POS)
 
-- [ ] Menggunakan kode POS resmi dari dokumentasi kamus.
-- [ ] Menangani kata yang memiliki lebih dari satu kemungkinan POS.
-- [ ] Menambahkan petunjuk konteks kalimat.
-- [ ] Membuat data berlabel dan regression tests POS.
+- [x] Menggunakan kode POS resmi dari `docs/KAMUS.md` (NOUN, VERB, ADJ, ADV, PRON, NUM, PREP, CONJ, INTJ, PART).
+- [x] Membuat `tools/pos_tagger.py` untuk identifikasi POS berbasis kandidat leksikal.
+- [x] Mempertahankan seluruh POS dan POS spesifik-sense tanpa memilih satu label secara otomatis.
+- [x] Menahan pewarisan POS lema pada `derived_form` karena bentuk turunan dapat berubah kelas kata; tandai `requires_morphology`.
+- [x] Membuat `tests/test_pos_tagger.py` dengan 10 regression tests.
+- [ ] Menjalankan dan memeriksa regression tests POS pada checkout Termux.
+- [ ] Menambahkan petunjuk konteks kalimat untuk disambiguasi POS.
+- [ ] Membuat dataset kalimat berlabel dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
 
@@ -230,3 +234,12 @@ Catatan historis: sebelum validasi Termux, 47 tes morfologi dijalankan pada ling
 - [x] Tutup celah validasi loader seluruh kamus dan regression suite checkout penuh.
 
 Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan melalui GitHub Actions. Hasil ini tidak berarti Tahap 2.5–2.7 sudah selesai.
+
+
+### Progres awal Tahap 2.5 — POS (27 November 2026)
+- [x] Taksonomi POS diambil dari dokumentasi kamus yang sudah ada; tidak membuat kode baru.
+- [x] Implementasi awal `tools/pos_tagger.py` dan 10 tes regresi `tests/test_pos_tagger.py` telah ditambahkan ke branch `main`.
+- [x] Implementasi mempertahankan beberapa POS dan POS per-sense, tidak melakukan disambiguasi konteks.
+- [x] Bentuk turunan tercatat tidak mewarisi POS lema secara otomatis karena dapat berubah kelas kata (contoh: `makan` → `makanan`); statusnya `requires_morphology`.
+- [ ] Tes POS belum dijalankan pada checkout Termux; lakukan `git pull` lalu jalankan tes sebelum menganggap implementasi terverifikasi.
+
