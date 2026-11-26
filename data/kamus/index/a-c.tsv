@@ -3,6 +3,7 @@
 acara	K0450	acara	lemma	batch-009
 adik	K0109	adik	lemma	batch-003
 adik-adik	K0109	adik	derived_form	batch-003
+aduk	K0473	aduk	lemma	batch-010
 air	K0152	air	lemma	batch-004
 ajak	K0213	ajak	lemma	batch-005
 ajakan	K0213	ajak	derived_form	batch-005
@@ -23,6 +24,8 @@ antre	K0352	antre	lemma	batch-008
 api	K0153	api	lemma	batch-004
 arah	K0381	arah	lemma	batch-008
 arti	K0444	arti	lemma	batch-009
+asam	K0462	asam	lemma	batch-010
+asin	K0459	asin	lemma	batch-010
 atap	K0260	atap	lemma	batch-006
 atas	K0374	atas	lemma	batch-008
 atasan	K0438	atasan	lemma	batch-009
@@ -38,6 +41,8 @@ bagus	K0041	bagus	lemma	batch-001
 bagusan	K0041	bagus	derived_form	batch-001
 bahaya	K0331	bahaya	lemma	batch-007
 baju	K0266	baju	lemma	batch-006
+bakar	K0467	bakar	lemma	batch-010
+bakso	K0488	bakso	lemma	batch-010
 balas	K0218	balas	lemma	batch-005
 balasan	K0218	balas	derived_form	batch-005
 bandara	K0394	bandara	lemma	batch-008
@@ -55,6 +60,7 @@ basah	K0320	basah	lemma	batch-007
 bawa	K0060	bawa	lemma	batch-002
 bawaan	K0060	bawa	derived_form	batch-002
 bawah	K0375	bawah	lemma	batch-008
+bawang	K0484	bawang	lemma	batch-010
 bayar	K0353	bayar	lemma	batch-008
 bekerja	K0021	kerja	derived_form	batch-001
 belajar	K0187	belajar	lemma	batch-004
@@ -65,6 +71,8 @@ belok	K0211	belok	lemma	batch-005
 belokan	K0211	belok	derived_form	batch-005
 belum	K0147	belum	lemma	batch-003
 benar	K0236	benar	lemma	batch-005
+bengkel	K0500	bengkel	lemma	batch-010
+bensin	K0495	bensin	lemma	batch-010
 bepergian	K0017	pergi	derived_form	batch-001
 berair	K0152	air	derived_form	batch-004
 berambut	K0126	rambut	derived_form	batch-003
@@ -158,9 +166,13 @@ bucin	K0099	bucin	lemma	batch-002
 buka	K0065	buka	lemma	batch-002
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
+bumbu	K0482	bumbu	lemma	batch-010
 bunga	K0160	bunga	lemma	batch-004
 buru-buru	K0350	buru-buru	lemma	batch-007
 butuh	K0230	butuh	lemma	batch-005
+cabai	K0483	cabai	lemma	batch-010
+camilan	K0453	camilan	lemma	batch-010
+campur	K0475	campur	lemma	batch-010
 cape	K0047	capek	variant	batch-001
 capek	K0047	capek	lemma	batch-001
 cari	K0063	cari	lemma	batch-002
@@ -170,6 +182,7 @@ cemburu	K0341	cemburu	lemma	batch-007
 cepat	K0045	cepat	lemma	batch-001
 cerita	K0191	cerita	lemma	batch-004
 cermin	K0292	cermin	lemma	batch-006
+cicip	K0476	cicip	lemma	batch-010
 cinta	K0114	cinta	lemma	batch-003
 coba	K0228	coba	lemma	batch-005
 cuaca	K0310	cuaca	lemma	batch-007
