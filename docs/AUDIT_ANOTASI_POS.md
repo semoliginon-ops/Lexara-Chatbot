@@ -316,3 +316,12 @@ Pengguna menarik pembaruan ke Termux dan menjalankan regression suite, validator
 Anotasi POS eksplisit pada bentuk turunan memperbaiki pengenalan `bekerja`, `menjelaskan`, dan `letakkan` tanpa mewarisi POS lemma secara membabi buta. Pemeriksaan token index kamus menunjukkan lema `tunda`, `hinggap`, dan `teduh` belum ditemukan pada delapan shard indeks. Ini merupakan gap cakupan kamus; belum ada alasan untuk menambah aturan morfologi spekulatif. Perlu ditinjau apakah ketiganya akan ditambahkan pada pengembangan kamus berikutnya atau ditangani melalui mekanisme kosakata yang tervalidasi.
 
 Angka evaluasi hanya berlaku untuk 60 kalimat development. Tidak ada data test yang digunakan untuk penyetelan; 40 kalimat test tetap tertahan.
+
+
+## Audit indeks untuk sisa VERB development — 27 November 2026
+
+Pemeriksaan dilakukan pada seluruh delapan shard token index (a-c.tsv, d-f.tsv, g-i.tsv, j-l.tsv, m-o.tsv, p-r.tsv, s-u.tsv, v-z.tsv). Tidak ditemukan token persis tunda, hinggap, teduh, ditunda, atau berteduh.
+
+Temuan ini menunjukkan ketiganya belum tersedia sebagai token pada indeks saat ini. Namun, sesuai aturan kamus, penambahan harus menunggu pemeriksaan duplikasi lengkap dan disusun dalam batch tepat 50 lema dengan ID berurutan; tidak dibuat batch kecil hanya untuk tiga kata. Kandidat anotasi awal untuk ditinjau: tunda VERB, hinggap VERB, dan teduh ADJ. Jika berteduh dimasukkan sebagai bentuk turunan dari teduh, POS VERB-nya harus dinyatakan eksplisit melalui derived_forms_pos, bukan diwariskan dari lemma ADJ.
+
+Tiga abstention VERB ini tidak ditangani dengan aturan imbuhan spekulatif. Tahap berikutnya adalah audit 19 abstention NOUN agar kandidat lema yang paling berguna dapat dikumpulkan bersama sebelum batch kamus baru disusun. Seluruh temuan berasal dari development; 40 kalimat test tetap tertahan.
