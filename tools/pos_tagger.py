@@ -100,9 +100,21 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
             ):
                 raise ValueError("field pos pada entri harus berupa array teks")
             match_type = candidate.get("match_type")
-            # A recorded derivative may change POS (makan -> makanan).
-            # Do not copy the lemma POS onto it without morphological evidence.
-            inherited_pos = [] if match_type == "derived_form" else list(dict.fromkeys(pos))
+            # A derived form may change POS. Never inherit the lemma label;
+            # use only an explicitly audited surface-form annotation.
+            if match_type == "derived_form":
+                derived_pos_map = entry.get("derived_forms_pos", {})
+                if not isinstance(derived_pos_map, dict):
+                    raise ValueError("derived_forms_pos harus berupa objek")
+                inherited_pos = derived_pos_map.get(candidate.get("matched_form"), [])
+                if (
+                    not isinstance(inherited_pos, list)
+                    or not all(isinstance(label, str) and label for label in inherited_pos)
+                ):
+                    raise ValueError("POS bentuk turunan harus berupa array label teks")
+                inherited_pos = list(dict.fromkeys(inherited_pos))
+            else:
+                inherited_pos = list(dict.fromkeys(pos))
             pos_candidates.append({
                 "entry_id": candidate.get("entry_id"),
                 "lemma": candidate.get("lemma"),
