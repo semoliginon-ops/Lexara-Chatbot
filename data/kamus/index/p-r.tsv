@@ -6,6 +6,7 @@ padahal	K0629	padahal	lemma	batch-013
 padu	K1502	padu	lemma	batch-031
 paduan	K1503	paduan	lemma	batch-031
 pagi	K0131	pagi	lemma	batch-003
+paha	K2582	paha	lemma	batch-052
 paham	K0040	paham	lemma	batch-001
 pahit	K0461	pahit	lemma	batch-010
 pakai	K0057	pakai	lemma	batch-002
@@ -24,6 +25,7 @@ panggil	K0433	panggil	lemma	batch-009
 panik	K1039	panik	lemma	batch-021
 pantai	K1040	pantai	lemma	batch-021
 pantas	K0597	pantas	lemma	batch-012
+pantat	K2581	pantat	lemma	batch-052
 papa	K0107	papa	lemma	batch-003
 papan	K1507	papan	lemma	batch-031
 parah	K0598	parah	lemma	batch-012
@@ -59,6 +61,7 @@ pelanggan	K0366	pelanggan	lemma	batch-008
 pelari	K0073	lari	derived_form	batch-002
 pelatih	K2474	pelatih	lemma	batch-050
 pelaut	K2497	pelaut	lemma	batch-050
+pelipis	K2597	pelipis	lemma	batch-052
 pelit	K0601	pelit	lemma	batch-012
 peluang	K1042	peluang	lemma	batch-021
 peluk	K1516	peluk	lemma	batch-031
@@ -178,6 +181,7 @@ penyu	K2290	penyu	lemma	batch-046
 penyuka	K0081	suka	derived_form	batch-002
 pepaya	K1935	pepaya	lemma	batch-039
 pepohonan	K0159	pohon	derived_form	batch-004
+perahu	K2573	perahu	lemma	batch-052
 peran	K1518	peran	lemma	batch-031
 perang	K1519	perang	lemma	batch-031
 perapian	K0153	api	derived_form	batch-004
@@ -224,6 +228,7 @@ perusak	K0222	rusak	derived_form	batch-005
 perut	K0125	perut	lemma	batch-003
 pesan	K0194	pesan	lemma	batch-004
 pesanan	K0194	pesan	derived_form	batch-004
+pesawat	K2574	pesawat	lemma	batch-052
 pesepeda	K0199	sepeda	derived_form	batch-004
 pesta	K0451	pesta	lemma	batch-009
 petai	K1936	petai	lemma	batch-039
@@ -235,6 +240,7 @@ piagam	K1531	piagam	lemma	batch-031
 piala	K1532	piala	lemma	batch-031
 pijak	K1534	pijak	lemma	batch-031
 pijat	K1533	pijat	lemma	batch-031
+pikap	K2561	pikap	lemma	batch-052
 piket	K1535	piket	lemma	batch-031
 pikir	K0080	pikir	lemma	batch-002
 pikiran	K0080	pikir	derived_form	batch-002
@@ -243,6 +249,7 @@ pilih	K0219	pilih	lemma	batch-005
 pilihan	K0219	pilih	derived_form	batch-005
 pilot	K2493	pilot	lemma	batch-050
 pindah	K0207	pindah	lemma	batch-005
+pinggang	K2592	pinggang	lemma	batch-052
 pingsan	K1537	pingsan	lemma	batch-031
 pinjam	K0410	pinjam	lemma	batch-009
 pintar	K1538	pintar	lemma	batch-031
@@ -286,8 +293,10 @@ pucat	K1050	pucat	lemma	batch-021
 puding	K1939	puding	lemma	batch-039
 pulang	K0019	pulang	lemma	batch-001
 pulpen	K0298	pulpen	lemma	batch-006
+punggung	K2591	punggung	lemma	batch-052
 punya	K0202	punya	lemma	batch-005
 pura-pura	K1051	pura-pura	lemma	batch-021
+pusar	K2579	pusar	lemma	batch-052
 pusat	K1048	pusat	lemma	batch-021
 pusing	K1047	pusing	lemma	batch-021
 putus	K1049	putus	lemma	batch-021
@@ -298,6 +307,7 @@ radio	K1055	radio	lemma	batch-022
 radio mobil	K2407	radio mobil	lemma	batch-049
 radio portabel	K2408	radio portabel	lemma	batch-049
 ragu	K0243	ragu	lemma	batch-005
+rahang	K2596	rahang	lemma	batch-052
 rahasia	K1056	rahasia	lemma	batch-022
 rajin	K1057	rajin	lemma	batch-022
 rak	K1058	rak	lemma	batch-022
