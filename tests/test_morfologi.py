@@ -18,7 +18,7 @@ class MorphologyTests(unittest.TestCase):
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
-            "ambil", "kambil", "kunci",
+            "ambil", "kambil", "kunci", "ari", "tari",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -32,6 +32,10 @@ class MorphologyTests(unittest.TestCase):
     def test_prefix_di(self): self.assertIn("tulis", self.bases("ditulis"))
     def test_nasal_restoration_mem(self): self.assertIn("pukul", self.bases("memukul"))
     def test_nasal_restoration_men(self): self.assertIn("tulis", self.bases("menulis"))
+    def test_men_prefix_prefers_restored_t_over_coincidental_vowel_lemma(self):
+        bases = self.bases("menari")
+        self.assertIn("tari", bases)
+        self.assertNotIn("ari", bases)
     def test_nasal_restoration_meny(self): self.assertIn("sapu", self.bases("menyapu"))
     def test_meng_prefix_restores_k_when_required(self):
         self.assertIn("kunci", self.bases("mengunci"))
