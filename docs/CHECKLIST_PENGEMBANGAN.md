@@ -541,3 +541,16 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Audit sisa abstention: ADJ 2, ADV 3, NOUN 19, VERB 23.
 
 **Titik lanjut:** audit integrasi morfologi untuk verba berimbuhan dan cakupan lema NOUN. Jangan gunakan 40 record test untuk penyetelan.
+
+### Integrasi morfologi ke POS tagger — 27 November 2026
+
+- [x] Menghubungkan `analyze_morphology()` ke `analyze_text()`; setiap token kata kini membawa kandidat morfologi yang tervalidasi oleh kamus.
+- [x] Mengizinkan bentuk turunan yang memang tercatat di kamus untuk dianalisis morfologinya, tanpa melakukan stemming pada lema utuh atau variasi ejaan.
+- [x] Mengintegrasikan bukti morfologi ke POS tagger secara konservatif: label VERB hanya diberikan untuk pola verbal yang didukung dan seluruh kandidat lema dasarnya memiliki POS VERB.
+- [x] Mempertahankan abstention untuk pola yang belum cukup kuat; tes khusus memastikan `bekerja` dari lema `kerja` (NOUN) tidak otomatis dipaksa menjadi VERB.
+- [x] Menambahkan regression tests untuk analisis bentuk turunan tercatat dan penetapan POS berbasis morfologi.
+- [x] GitHub Actions [run #26](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910648622): validator 100 kalimat/543 token berhasil; regression suite **147/147 lulus**.
+- [x] Evaluasi development-only: POS leksikal 215/255 benar (coverage/accuracy 84,3%); POS kontekstual 216/255 benar (coverage/accuracy 84,7%); selective accuracy 100%, tanpa salah prediksi pada token yang diputuskan.
+- [x] Abstention VERB turun dari 23 menjadi 15; sisa total: ADJ 2, ADV 3, NOUN 19, VERB 15. Satu gold ambiguous tetap ditahan dan tidak dipaksakan.
+
+**Titik lanjut:** audit pola morfologi yang belum tercakup (termasuk bentuk ber- dan bentuk dengan perubahan/penambahan konsonan), lalu audit lema NOUN yang belum ada di indeks. Jangan memakai 40 record test untuk menyetel aturan.
