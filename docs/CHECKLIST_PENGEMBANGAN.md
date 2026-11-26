@@ -65,7 +65,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memperbaiki urutan percobaan prefiks dan menghapus aturan prefiks duplikat yang tidak tepat.
 - [x] Menambahkan kandidat konfiks ke-an, per-an, dan peN-an dengan validasi terhadap lema kamus.
 - [x] Menambahkan kandidat bentuk menge- untuk pola seperti mengecat; cakupan tetap terbatas.
-- [ ] Menjalankan 18 regression tests morfologi versi terbaru; tes sudah ditambahkan tetapi hasil eksekusi belum diverifikasi.
+- [x] Menjalankan 18 regression tests morfologi versi terbaru pada lingkungan Python lokal terisolasi; 18 lulus, 0 gagal.
 - [ ] Memperluas inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan pengujian.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 
