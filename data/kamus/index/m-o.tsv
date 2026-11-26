@@ -351,6 +351,7 @@ nyebelin	K1022	nyebelin	lemma	batch-021
 nyeleneh	K1023	nyeleneh	lemma	batch-021
 nyolong	K1024	nyolong	lemma	batch-021
 nyusul	K1025	nyusul	lemma	batch-021
+oatmeal	K1979	oatmeal	lemma	batch-040
 obat	K0182	obat	lemma	batch-004
 obatan	K0182	obat	derived_form	batch-004
 objek	K1498	objek	lemma	batch-030
@@ -365,6 +366,8 @@ oleh-oleh	K1028	oleh-oleh	lemma	batch-021
 ombak	K1499	ombak	lemma	batch-030
 omong	K0037	omong	lemma	batch-001
 omongan	K0037	omong	derived_form	batch-001
+oncom	K1980	oncom	lemma	batch-040
+onde-onde	K1981	onde-onde	lemma	batch-040
 ongkos	K1029	ongkos	lemma	batch-021
 operasi	K1030	operasi	lemma	batch-021
 opini	K1031	opini	lemma	batch-021
@@ -375,5 +378,6 @@ oranye	K1033	oranye	lemma	batch-021
 organ	K1500	organ	lemma	batch-030
 organisasi	K1034	organisasi	lemma	batch-021
 otak	K1035	otak	lemma	batch-021
+otak-otak	K1982	otak-otak	lemma	batch-040
 otomatis	K1036	otomatis	lemma	batch-021
 otot	K1037	otot	lemma	batch-021
