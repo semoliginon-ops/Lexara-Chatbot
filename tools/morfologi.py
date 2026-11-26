@@ -17,7 +17,6 @@ _PREFIXES = (
     ("meng", "prefix_meN"),
     ("men", "prefix_meN"),
     ("mem", "prefix_meN"),
-    ("menge", "prefix_peN"),
     ("penge", "prefix_peN"),
     ("peny", "prefix_peN"),
     ("peng", "prefix_peN"),
