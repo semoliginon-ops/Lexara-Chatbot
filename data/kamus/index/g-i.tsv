@@ -74,6 +74,7 @@ gerobak	K0871	gerobak	lemma	batch-018
 gerombol	K1351	gerombol	lemma	batch-027
 geser	K0865	geser	lemma	batch-018
 gesit	K1333	gesit	lemma	batch-027
+Get Indonesia	K2520	Get Indonesia	lemma	batch-051
 getah	K1322	getah	lemma	batch-027
 getar	K0866	getar	lemma	batch-018
 getol	K1334	getol	lemma	batch-027
@@ -88,6 +89,7 @@ gini	K0620	gini	lemma	batch-013
 gitu	K0619	gitu	lemma	batch-013
 gituan	K0660	gituan	lemma	batch-014
 gizi	K1324	gizi	lemma	batch-027
+Gojek	K2502	Gojek	lemma	batch-051
 gokil	K0681	gokil	lemma	batch-014
 gorden	K1343	gorden	lemma	batch-027
 goreng	K0465	goreng	lemma	batch-010
@@ -95,7 +97,9 @@ gorengan	K1342	gorengan	lemma	batch-027
 gotong-royong	K0872	gotong-royong	lemma	batch-018
 goyah	K1335	goyah	lemma	batch-027
 goyang	K1336	goyang	lemma	batch-027
+Grab	K2503	Grab	lemma	batch-051
 gratis	K0358	gratis	lemma	batch-008
+Green SM Bike	K2507	Green SM Bike	lemma	batch-051
 grill	K2315	grill	lemma	batch-047
 gua	K0008	gue	variant	batch-001
 gubuk	K1337	gubuk	lemma	batch-027
@@ -232,11 +236,13 @@ imbang	K0564	imbang	lemma	batch-012
 imbas	K1369	imbas	lemma	batch-028
 impor	K1370	impor	lemma	batch-028
 indah	K1371	indah	lemma	batch-028
+inDrive	K2505	inDrive	lemma	batch-051
 induk	K1372	induk	lemma	batch-028
 informasi	K1373	informasi	lemma	batch-028
 ingat	K0078	ingat	lemma	batch-002
 ingatan	K0078	ingat	derived_form	batch-002
 ingin	K0025	ingin	lemma	batch-001
+insentif	K2545	insentif	lemma	batch-051
 internet	K0197	internet	lemma	batch-004
 iri	K0342	iri	lemma	batch-007
 iris	K0472	iris	lemma	batch-010
