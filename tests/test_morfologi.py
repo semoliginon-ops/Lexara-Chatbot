@@ -18,7 +18,7 @@ class MorphologyTests(unittest.TestCase):
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
-            "ambil", "kambil", "kunci", "ari", "tari",
+            "ambil", "kambil", "kunci", "ari", "tari", "nyanyi", "anyi", "sanyi",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -42,6 +42,17 @@ class MorphologyTests(unittest.TestCase):
         self.assertIn("tari", bases)
         self.assertNotIn("ari", bases)
     def test_nasal_restoration_meny(self): self.assertIn("sapu", self.bases("menyapu"))
+    def test_meny_prefix_retains_ny_when_root_is_known(self):
+        bases = self.bases("menyanyi")
+        self.assertIn("nyanyi", bases)
+        self.assertNotIn("anyi", bases)
+        self.assertNotIn("sanyi", bases)
+
+    def test_meny_prefix_with_suffix_retains_ny(self):
+        bases = self.bases("menyanyikan")
+        self.assertIn("nyanyi", bases)
+        self.assertNotIn("anyi", bases)
+        self.assertNotIn("sanyi", bases)
     def test_meng_prefix_restores_k_when_required(self):
         self.assertIn("kunci", self.bases("mengunci"))
     def test_meng_prefix_does_not_add_k_to_known_vowel_lemma(self):
