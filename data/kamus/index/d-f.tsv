@@ -80,6 +80,8 @@ derita	K0778	derita	lemma	batch-016
 dermaga	K1258	dermaga	lemma	batch-026
 desa	K0387	desa	lemma	batch-008
 desain	K0779	desain	lemma	batch-016
+desainer grafis	K2486	desainer grafis	lemma	batch-050
+desainer interior	K2487	desainer interior	lemma	batch-050
 desak	K0780	desak	lemma	batch-016
 desas-desus	K0781	desas-desus	lemma	batch-016
 desember	K1886	desember	lemma	batch-038
@@ -221,6 +223,8 @@ doa	K0447	doa	lemma	batch-009
 doang	K0656	doang	lemma	batch-014
 dodol	K2077	dodol	lemma	batch-042
 dokter	K0183	dokter	lemma	batch-004
+dokter gigi	K2490	dokter gigi	lemma	batch-050
+dokter hewan	K2491	dokter hewan	lemma	batch-050
 dokumen	K1267	dokumen	lemma	batch-026
 domba	K0802	domba	lemma	batch-017
 dominan	K1268	dominan	lemma	batch-026
@@ -261,6 +265,7 @@ duta	K1273	duta	lemma	batch-026
 e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
+editor	K2461	editor	lemma	batch-050
 efek	K0792	efek	lemma	batch-016
 efektif	K0793	efektif	lemma	batch-016
 efisien	K0794	efisien	lemma	batch-016
@@ -385,6 +390,7 @@ format	K0845	format	lemma	batch-017
 formulir	K1901	formulir	lemma	batch-038
 forum	K0846	forum	lemma	batch-017
 foto	K0847	foto	lemma	batch-017
+fotografer	K2462	fotografer	lemma	batch-050
 fotokopi	K0848	fotokopi	lemma	batch-017
 frasa	K1883	frasa	lemma	batch-038
 fresh	K1884	fresh	lemma	batch-038
