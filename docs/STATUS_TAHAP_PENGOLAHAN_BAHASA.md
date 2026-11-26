@@ -351,3 +351,16 @@ Dari checkout `~/Sistem_bahasa` di Termux, pengguna menjalankan `python -m tools
 - Regression suite penuh terakhir yang terverifikasi tetap **132/132 lulus** sebelum batch data kedua ditambahkan; jalankan ulang untuk konfirmasi setelah sinkronisasi terbaru.
 
 **Titik lanjut:** jalankan regression suite penuh, lalu audit dan perluas data development secara bertahap. Test split tetap ditahan dan tidak dipakai untuk menyetel aturan.
+
+
+### Verifikasi regression suite setelah batch kedua dataset POS — 27 November 2026
+
+Pengguna menjalankan `python -m unittest discover -s tests -v` dari checkout `~/Sistem_bahasa` di Termux setelah batch kedua dataset ditarik dan divalidasi.
+
+- Hasil: **Ran 132 tests in 0.087s — OK**.
+- Jumlah kegagalan dan error: **0**.
+- Cakupan: analisis teks, loader kamus, morfologi, normalisasi, pencocokan kamus, POS kontekstual, POS leksikal, tokenizer, dan validator dataset POS.
+- Bersama validasi dataset yang baru saja berhasil, status dataset adalah **20 kalimat/91 token**, terdiri dari 12 development dan 8 test.
+- Ini memverifikasi regresi kode dan struktur dataset pada checkout saat ini; hasil ini **belum mengukur akurasi POS** atau membuktikan kualitas semua anotasi gold.
+
+**Titik lanjut:** audit anotasi dan perluas dataset, utamakan variasi kasus pada development set. Pertahankan test split sebagai data evaluasi tertahan.
