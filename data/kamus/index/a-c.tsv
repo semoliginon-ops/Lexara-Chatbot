@@ -76,6 +76,7 @@ bantu	K0033	bantu	lemma	batch-001
 bantuan	K0033	bantu	derived_form	batch-001
 bapak	K0103	bapak	lemma	batch-003
 baper	K0093	baper	lemma	batch-002
+bareng	K0552	bareng	lemma	batch-012
 basah	K0320	basah	lemma	batch-007
 batal	K0522	batal	lemma	batch-011
 batuk	K0523	batuk	lemma	batch-011
@@ -210,6 +211,7 @@ bunga	K0160	bunga	lemma	batch-004
 buru-buru	K0350	buru-buru	lemma	batch-007
 butuh	K0230	butuh	lemma	batch-005
 cabai	K0483	cabai	lemma	batch-010
+cabut	K0553	cabut	lemma	batch-012
 cair	K0541	cair	lemma	batch-011
 camilan	K0453	camilan	lemma	batch-010
 campur	K0475	campur	lemma	batch-010
@@ -226,8 +228,10 @@ cermin	K0292	cermin	lemma	batch-006
 cicip	K0476	cicip	lemma	batch-010
 cinta	K0114	cinta	lemma	batch-003
 coba	K0228	coba	lemma	batch-005
+cocok	K0554	cocok	lemma	batch-012
 cuaca	K0310	cuaca	lemma	batch-007
 cuci	K0053	cuci	lemma	batch-002
 cucian	K0053	cuci	derived_form	batch-002
 cukup	K0232	cukup	lemma	batch-005
 curhat	K0543	curhat	lemma	batch-011
+curiga	K0555	curiga	lemma	batch-012
