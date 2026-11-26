@@ -57,6 +57,26 @@ class MorphologyTests(unittest.TestCase):
         self.assertIn("cat", bases)
         self.assertNotIn("gecat", bases)
 
+    def test_ambiguous_base_keeps_all_pos_and_senses(self):
+        ambiguous = {
+            "id": "K9000",
+            "lemma": "bisa",
+            "pos": ["VERB", "NOUN"],
+            "senses": [
+                {"sense_id": "K9000-S1", "definition": "Mampu."},
+                {"sense_id": "K9000-S2", "definition": "Racun."},
+            ],
+            "register": ["neutral"],
+            "variants": [],
+            "derived_forms": [],
+        }
+        lexicon = build_lexicon([ambiguous])
+        results = analyze_morphology("membisa", lexicon)
+        self.assertEqual(len(results), 1)
+        candidate = results[0]["candidates"][0]["entry"]
+        self.assertEqual(candidate["pos"], ["VERB", "NOUN"])
+        self.assertEqual(len(candidate["senses"]), 2)
+
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
 
