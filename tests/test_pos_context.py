@@ -25,6 +25,7 @@ class ContextualPosTests(unittest.TestCase):
             entry("K0003", "makan", ["VERB"]), entry("K0004", "ular", ["NOUN"]),
             entry("K0005", "sedang", ["ADV"]), entry("K0006", "di", ["PREP"]),
             entry("K0007", "itu", ["PRON"]), entry("K0008", "aku", ["PRON"]),
+            entry("K0009", "rajin", ["ADJ"]), entry("K0010", "disiplin", ["NOUN", "ADJ"]),
         ]
         self.lexicon = build_lexicon(self.entries)
 
@@ -50,6 +51,14 @@ class ContextualPosTests(unittest.TestCase):
 
     def test_bisa_before_noun_selects_noun(self):
         self.assertEqual(self.token(self.analyze("bisa ular"), "bisa")["context_pos"], "NOUN")
+
+    def test_coordination_with_previous_adjective_selects_adjective(self):
+        result = self.analyze("Dia sangat rajin dan disiplin")
+        token = self.token(result, "disiplin")
+        self.assertEqual(token["pos"], ["NOUN", "ADJ"])
+        self.assertEqual(token["context_pos"], "ADJ")
+        self.assertEqual(token["pos_context_status"], "selected_by_context")
+        self.assertEqual(token["pos_context_evidence"][0]["rule"], "coordination_with_previous_conjunct")
 
     def test_ambiguous_without_cue_remains_unresolved(self):
         token = self.token(self.analyze("jalan"), "jalan")
