@@ -252,3 +252,8 @@ Batch kelima menambahkan `pos_0041`–`pos_0050`: enam kalimat development dan e
 ## 13. Batch keenam — 27 November 2026
 
 Batch keenam menambahkan `pos_0051`–`pos_0060`: enam kalimat development dan empat test. Dataset menjadi 60 kalimat, 314 token, 36 development, dan 24 test. Cakupan tambahan meliputi negasi, verba berimbuhan, preposisi tujuan dan asal, konjungsi sebab, demonstrativa, serta adjektiva predikatif. Preflight struktural sebelum commit memeriksa JSON, ID, split, label/status POS, dan kecocokan token dengan pola tokenizer. Menunggu eksekusi workflow GitHub Actions untuk validasi Python, evaluasi development, dan regression suite. Test split tetap ditahan.
+
+
+### Verifikasi otomatis batch keenam
+
+GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) berhasil menjalankan validator Python, evaluator development-only, dan regression suite. Validator: **60 kalimat, 314 token, 36 development, 24 test**. Evaluator memuat 36 kalimat development, 148 token resolved, 90 prediksi benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan. Regression suite: **137/137 lulus**. Angka ini hanya untuk development set dan tidak mewakili akurasi umum; test split 24 kalimat tetap tidak digunakan.
