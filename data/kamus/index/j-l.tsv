@@ -5,6 +5,7 @@ jack audio	K2435	jack audio	lemma	batch-049
 jadinya	K0622	jadinya	lemma	batch-013
 jadwal	K1376	jadwal	lemma	batch-028
 jaga	K0903	jaga	lemma	batch-019
+Jagakarsa	K2838	Jagakarsa	lemma	batch-057
 jago	K0565	jago	lemma	batch-012
 jagung	K0904	jagung	lemma	batch-019
 jagung bakar	K2120	jagung bakar	lemma	batch-043
@@ -39,6 +40,7 @@ jaring	K1382	jaring	lemma	batch-028
 jarum	K2317	jarum	lemma	batch-047
 jas	K2648	jas	lemma	batch-053
 jas hujan	K2620	jas hujan	lemma	batch-053
+Jatinegara	K2842	Jatinegara	lemma	batch-057
 jatuh	K0907	jatuh	lemma	batch-019
 jauh	K0369	jauh	lemma	batch-008
 jawab	K0190	jawab	lemma	batch-004
@@ -67,6 +69,7 @@ jimat	K1386	jimat	lemma	batch-028
 jip	K2559	jip	lemma	batch-052
 joget	K0913	joget	lemma	batch-019
 JogjaKita	K2521	JogjaKita	lemma	batch-051
+Johar Baru	K2815	Johar Baru	lemma	batch-057
 jomblo	K0569	jomblo	lemma	batch-012
 jongkok	K0914	jongkok	lemma	batch-019
 jorok	K0915	jorok	lemma	batch-019
@@ -91,6 +94,7 @@ kabel audio	K2433	kabel audio	lemma	batch-049
 kabel HDMI	K2395	kabel HDMI	lemma	batch-048
 kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
+Kabupaten Administrasi Kepulauan Seribu	K2807	Kabupaten Administrasi Kepulauan Seribu	lemma	batch-057
 kabur	K0421	kabur	lemma	batch-009
 kabut	K2659	kabut	lemma	batch-054
 kabut asap	K2715	kabut asap	lemma	batch-055
@@ -120,6 +124,7 @@ kaldu	K1915	kaldu	lemma	batch-039
 kalender	K0294	kalender	lemma	batch-006
 kaleng	K0917	kaleng	lemma	batch-019
 kali	K0918	kali	lemma	batch-019
+Kalideres	K2827	Kalideres	lemma	batch-057
 kalimat	K1391	kalimat	lemma	batch-028
 kalkulator	K2319	kalkulator	lemma	batch-047
 kalkun	K2227	kalkun	lemma	batch-045
@@ -185,6 +190,8 @@ kebakaran hutan	K2735	kebakaran hutan	lemma	batch-055
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
 kebaya encim	K2651	kebaya encim	lemma	batch-053
+Kebayoran Baru	K2835	Kebayoran Baru	lemma	batch-057
+Kebayoran Lama	K2834	Kebayoran Lama	lemma	batch-057
 kebenaran	K0236	benar	derived_form	batch-005
 keberangkatan	K0208	berangkat	derived_form	batch-005
 kebesaran	K0043	besar	derived_form	batch-001
@@ -192,6 +199,7 @@ kebetulan	K0571	kebetulan	lemma	batch-012
 kebohongan	K0239	bohong	derived_form	batch-005
 kebokekan	K0095	bokek	derived_form	batch-002
 kebolehan	K0144	boleh	derived_form	batch-003
+Kebon Jeruk	K2826	Kebon Jeruk	lemma	batch-057
 kebosanan	K0086	bosan	derived_form	batch-002
 kebucinan	K0099	bucin	derived_form	batch-002
 kebun	K0929	kebun	lemma	batch-019
@@ -233,6 +241,7 @@ kekurangan	K0233	kurang	derived_form	batch-005
 kelambatan	K0046	lambat	derived_form	batch-001
 kelanjutan	K0226	lanjut	derived_form	batch-005
 kelapa	K0933	kelapa	lemma	batch-019
+Kelapa Gading	K2821	Kelapa Gading	lemma	batch-057
 kelaparan	K0176	lapar	derived_form	batch-004
 kelebihan	K0234	lebih	derived_form	batch-005
 keledai	K2279	keledai	lemma	batch-046
@@ -252,8 +261,10 @@ kemarahan	K0082	marah	derived_form	batch-002
 kemarin	K0137	kemarin	lemma	batch-003
 kemasukan	K0067	masuk	derived_form	batch-002
 kemauan	K0024	mau	derived_form	batch-001
+Kemayoran	K2810	Kemayoran	lemma	batch-057
 kembang kol	K1971	kembang kol	lemma	batch-040
 kembang tahu	K2094	kembang tahu	lemma	batch-042
+Kembangan	K2829	Kembangan	lemma	batch-057
 kemeja	K0936	kemeja	lemma	batch-019
 kemiri	K2189	kemiri	lemma	batch-044
 kemungkinan	K0142	mungkin	derived_form	batch-003
@@ -282,6 +293,8 @@ kepiting	K2231	kepiting	lemma	batch-045
 kepo	K0094	kepo	lemma	batch-002
 kepo-kepoan	K0094	kepo	derived_form	batch-002
 kepulangan	K0019	pulang	derived_form	batch-001
+Kepulauan Seribu Selatan	K2851	Kepulauan Seribu Selatan	lemma	batch-057
+Kepulauan Seribu Utara	K2850	Kepulauan Seribu Utara	lemma	batch-057
 kepunyaan	K0202	punya	derived_form	batch-005
 kera	K2232	kera	lemma	batch-045
 keraguan	K0243	ragu	derived_form	batch-005
@@ -353,6 +366,7 @@ kismis	K1922	kismis	lemma	batch-039
 kita	K0005	kita	lemma	batch-001
 KlikGo	K2518	KlikGo	lemma	batch-051
 kobra	K2281	kobra	lemma	batch-046
+Koja	K2818	Koja	lemma	batch-057
 kok	K0625	kok	lemma	batch-013
 koki	K2468	koki	lemma	batch-050
 kol	K1973	kol	lemma	batch-040
@@ -372,7 +386,13 @@ kopi susu	K2045	kopi susu	lemma	batch-041
 kornet	K2099	kornet	lemma	batch-042
 korset	K2617	korset	lemma	batch-053
 kota	K0386	kota	lemma	batch-008
+Kota Administrasi Jakarta Barat	K2804	Kota Administrasi Jakarta Barat	lemma	batch-057
+Kota Administrasi Jakarta Pusat	K2802	Kota Administrasi Jakarta Pusat	lemma	batch-057
+Kota Administrasi Jakarta Selatan	K2805	Kota Administrasi Jakarta Selatan	lemma	batch-057
+Kota Administrasi Jakarta Timur	K2806	Kota Administrasi Jakarta Timur	lemma	batch-057
+Kota Administrasi Jakarta Utara	K2803	Kota Administrasi Jakarta Utara	lemma	batch-057
 kotor	K0322	kotor	lemma	batch-007
+Kramat Jati	K2843	Kramat Jati	lemma	batch-057
 krimer	K2100	krimer	lemma	batch-042
 kroket	K2101	kroket	lemma	batch-042
 kuah kaldu	K2130	kuah kaldu	lemma	batch-043
