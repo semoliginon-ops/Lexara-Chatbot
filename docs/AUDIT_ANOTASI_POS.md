@@ -167,3 +167,16 @@ GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 - Regression suite: **141/141 lulus**.
 
 Perubahan coverage dari 60,8% ke 72,3% berlaku pada development set yang sama (36 kalimat) setelah fallback ditambahkan. Ini menunjukkan gap yang diaudit berhasil ditangani pada contoh yang tercakup, tetapi bukan estimasi akurasi umum. Test split 24 kalimat tetap tidak digunakan.
+
+
+## Batch ketujuh dan evaluasi development — 27 November 2026
+
+Batch ketujuh menambahkan enam record development (`pos_0061`–`pos_0066`) dan empat record test (`pos_0067`–`pos_0070`). Fenomena development meliputi numeralia, preposisi tujuan, konjungsi pilihan/subordinatif, penanda aspek/modalitas, demonstrativa, dan adverbia derajat. Empat record test hanya ditambahkan sebagai data tertahan dan tidak digunakan untuk penyetelan.
+
+GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211) berhasil:
+- Validator: 70 kalimat, 374 token, 42 development, 28 test.
+- Evaluator development-only: 174 token resolved; 131 benar; coverage 75,3%; accuracy 75,3%; selective accuracy 100%.
+- Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- Regression suite: **141/141 lulus**.
+
+Hasil batch ketujuh mencakup development yang lebih besar; jangan membandingkan persentase dengan batch sebelumnya sebagai tren kualitas tanpa mempertimbangkan perubahan komposisi. Test split 28 kalimat tetap tidak digunakan.
