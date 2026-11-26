@@ -1,9 +1,9 @@
 # Index Kamus — Sistem Bahasa
 
 **Target:** 3.000 lemma  
-**Disetujui:** 2450 lemma  
-**Batch aktif:** 001–049  
-**Token terindeks:** 3047
+**Disetujui:** 2500 lemma  
+**Batch aktif:** 001–050  
+**Token terindeks:** 3097
 
 Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, register, varian, bentuk turunan, contoh, dan informasi leksikal lengkap berada di file batch.
 
@@ -11,14 +11,14 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 
 | Rentang | File |
 |---|---|
-| a-c | [a-c.tsv](./index/a-c.tsv) — 553 token |
-| d-f | [d-f.tsv](./index/d-f.tsv) — 391 token |
-| g-i | [g-i.tsv](./index/g-i.tsv) — 245 token |
-| j-l | [j-l.tsv](./index/j-l.tsv) — 476 token |
-| m-o | [m-o.tsv](./index/m-o.tsv) — 423 token |
-| p-r | [p-r.tsv](./index/p-r.tsv) — 351 token |
-| s-u | [s-u.tsv](./index/s-u.tsv) — 520 token |
-| v-z | [v-z.tsv](./index/v-z.tsv) — 88 token |
+| a-c | [a-c.tsv](./index/a-c.tsv) — 563 token |
+| d-f | [d-f.tsv](./index/d-f.tsv) — 397 token |
+| g-i | [g-i.tsv](./index/g-i.tsv) — 246 token |
+| j-l | [j-l.tsv](./index/j-l.tsv) — 482 token |
+| m-o | [m-o.tsv](./index/m-o.tsv) — 426 token |
+| p-r | [p-r.tsv](./index/p-r.tsv) — 369 token |
+| s-u | [s-u.tsv](./index/s-u.tsv) — 525 token |
+| v-z | [v-z.tsv](./index/v-z.tsv) — 89 token |
 
 ## Data kamus
 
@@ -72,6 +72,7 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 - [Batch 047](./batch-047.jsonl)
 - [Batch 048](./batch-048.jsonl)
 - [Batch 049](./batch-049.jsonl)
+- [Batch 050](./batch-050.jsonl)
 
 ## Aturan singkat
 
