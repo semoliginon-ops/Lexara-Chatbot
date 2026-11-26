@@ -24,6 +24,7 @@ jamu	K2032	jamu	lemma	batch-041
 jamur	K1997	jamur	lemma	batch-040
 jangan	K0145	jangan	lemma	batch-003
 jangka	K1379	jangka	lemma	batch-028
+jangkrik	K2277	jangkrik	lemma	batch-046
 janji	K0448	janji	lemma	batch-009
 jantung	K1380	jantung	lemma	batch-028
 jarak	K1381	jarak	lemma	batch-028
@@ -96,6 +97,7 @@ kalimat	K1391	kalimat	lemma	batch-028
 kalkun	K2227	kalkun	lemma	batch-045
 kamar	K0254	kamar	lemma	batch-006
 kambing	K0919	kambing	lemma	batch-019
+kambing hutan	K2278	kambing hutan	lemma	batch-046
 kamera	K1392	kamera	lemma	batch-028
 kami	K0006	kami	lemma	batch-001
 kampung	K0388	kampung	lemma	batch-008
@@ -180,6 +182,7 @@ kelanjutan	K0226	lanjut	derived_form	batch-005
 kelapa	K0933	kelapa	lemma	batch-019
 kelaparan	K0176	lapar	derived_form	batch-004
 kelebihan	K0234	lebih	derived_form	batch-005
+keledai	K2279	keledai	lemma	batch-046
 kelengkeng	K2034	kelengkeng	lemma	batch-041
 kelihatan	K0034	lihat	derived_form	batch-001
 kelinci	K0934	kelinci	lemma	batch-019
@@ -277,6 +280,7 @@ ketupat	K1972	ketupat	lemma	batch-040
 keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
 khawatir	K0334	khawatir	lemma	batch-007
+kijang	K2280	kijang	lemma	batch-046
 kikil	K1921	kikil	lemma	batch-039
 kimchi	K2097	kimchi	lemma	batch-042
 kipas	K0285	kipas	lemma	batch-006
@@ -286,6 +290,7 @@ kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
 kismis	K1922	kismis	lemma	batch-039
 kita	K0005	kita	lemma	batch-001
+kobra	K2281	kobra	lemma	batch-046
 kok	K0625	kok	lemma	batch-013
 kol	K1973	kol	lemma	batch-040
 kolak	K1974	kolak	lemma	batch-040
@@ -307,7 +312,10 @@ kroket	K2101	kroket	lemma	batch-042
 kuah kaldu	K2130	kuah kaldu	lemma	batch-043
 kualitas	K1400	kualitas	lemma	batch-028
 kucing	K0946	kucing	lemma	batch-019
+kucing hutan	K2282	kucing hutan	lemma	batch-046
 kuda	K2249	kuda	lemma	batch-045
+kuda laut	K2297	kuda laut	lemma	batch-046
+kuda nil	K2292	kuda nil	lemma	batch-046
 kue	K1923	kue	lemma	batch-039
 kue lapis	K2035	kue lapis	lemma	batch-041
 kukus	K0468	kukus	lemma	batch-010
@@ -323,6 +331,7 @@ kupu-kupu	K2234	kupu-kupu	lemma	batch-045
 kura-kura	K2233	kura-kura	lemma	batch-045
 kurang	K0233	kurang	lemma	batch-005
 kursi	K0253	kursi	lemma	batch-006
+kuskus	K2283	kuskus	lemma	batch-046
 kuy	K0580	kuy	lemma	batch-012
 kwetiau	K1975	kwetiau	lemma	batch-040
 laba-laba	K2235	laba-laba	lemma	batch-045
@@ -370,6 +379,7 @@ layak	K1418	layak	lemma	batch-029
 layan	K1419	layan	lemma	batch-029
 layar	K1420	layar	lemma	batch-029
 lebah	K1421	lebah	lemma	batch-029
+lebah madu	K2284	lebah madu	lemma	batch-046
 lebar	K1422	lebar	lemma	batch-029
 lebay	K0097	lebay	lemma	batch-002
 lebih	K0234	lebih	lemma	batch-005
@@ -402,6 +412,7 @@ lidah kucing	K2133	lidah kucing	lemma	batch-043
 lihat	K0034	lihat	lemma	batch-001
 limbah	K1438	limbah	lemma	batch-029
 limun	K1439	limun	lemma	batch-029
+lintah	K2285	lintah	lemma	batch-046
 lintas	K1440	lintas	lemma	batch-029
 lipat	K1441	lipat	lemma	batch-029
 lipstik	K1442	lipstik	lemma	batch-029
@@ -425,3 +436,4 @@ lumayan	K0585	lumayan	lemma	batch-012
 lumba-lumba	K2236	lumba-lumba	lemma	batch-045
 lumpia	K1978	lumpia	lemma	batch-040
 lupa	K0079	lupa	lemma	batch-002
+luwak	K2286	luwak	lemma	batch-046
