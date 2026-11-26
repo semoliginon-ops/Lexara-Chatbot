@@ -1,5 +1,6 @@
 # Token index — s-u
 # token\tid\tlemma\ttype\tbatch
+sabana	K2697	sabana	lemma	batch-054
 sabar	K0345	sabar	lemma	batch-007
 sabun	K0273	sabun	lemma	batch-006
 sah	K1554	sah	lemma	batch-032
@@ -14,6 +15,7 @@ saku	K1558	saku	lemma	batch-032
 salah	K0237	salah	lemma	batch-005
 salam	K0403	salam	lemma	batch-009
 salfok	K0690	salfok	lemma	batch-014
+salju	K2669	salju	lemma	batch-054
 salon	K1559	salon	lemma	batch-032
 sambal	K0457	sambal	lemma	batch-010
 sambal bawang	K2180	sambal bawang	lemma	batch-044
@@ -242,6 +244,7 @@ sulit	K1119	sulit	lemma	batch-023
 sulut	K1647	sulut	lemma	batch-033
 sumbang	K1599	sumbang	lemma	batch-032
 sumber	K1120	sumber	lemma	batch-023
+sumber air	K2686	sumber air	lemma	batch-054
 sumur	K1648	sumur	lemma	batch-033
 sunat	K1649	sunat	lemma	batch-033
 sungai	K0157	sungai	lemma	batch-004
@@ -295,6 +298,10 @@ tampias	K1667	tampias	lemma	batch-034
 tampil	K1129	tampil	lemma	batch-023
 tampung	K1668	tampung	lemma	batch-034
 tanah	K0154	tanah	lemma	batch-004
+tanah liat	K2671	tanah liat	lemma	batch-054
+tanah longsor	K2670	tanah longsor	lemma	batch-054
+tanah pasir	K2672	tanah pasir	lemma	batch-054
+tanah subur	K2694	tanah subur	lemma	batch-054
 tanah-tanah	K0154	tanah	derived_form	batch-004
 tanam	K1669	tanam	lemma	batch-034
 tanda	K1130	tanda	lemma	batch-023
@@ -477,6 +484,7 @@ TopJek	K2525	TopJek	lemma	batch-051
 trailer	K2572	trailer	lemma	batch-052
 traktor	K2571	traktor	lemma	batch-052
 tripod	K2418	tripod	lemma	batch-049
+tsunami	K2673	tsunami	lemma	batch-054
 tua	K1742	tua	lemma	batch-035
 tuang	K0474	tuang	lemma	batch-010
 tubuh	K1743	tubuh	lemma	batch-035
@@ -504,6 +512,7 @@ tumpah	K1749	tumpah	lemma	batch-035
 tumpang	K1750	tumpang	lemma	batch-035
 tumpuk	K1751	tumpuk	lemma	batch-035
 tuna	K1995	tuna	lemma	batch-040
+tundra	K2698	tundra	lemma	batch-054
 tunggu	K0064	tunggu	lemma	batch-002
 tunik	K2605	tunik	lemma	batch-053
 turun	K0070	turun	lemma	batch-002
