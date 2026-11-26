@@ -1,6 +1,5 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
-DVD	K2438	DVD	lemma	batch-049
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
 daerah	K0384	daerah	lemma	batch-008
@@ -240,8 +239,10 @@ dosa	K0547	dosa	lemma	batch-011
 dosen	K1888	dosen	lemma	batch-038
 dosis	K1270	dosis	lemma	batch-026
 doyan	K0548	doyan	lemma	batch-011
+Draiv	K2513	Draiv	lemma	batch-051
 drama	K1271	drama	lemma	batch-026
 drastis	K1272	drastis	lemma	batch-026
+driver	K2536	driver	lemma	batch-051
 duduk	K0071	duduk	lemma	batch-002
 duduk-duduk	K0071	duduk	derived_form	batch-002
 dugaan	K1274	dugaan	lemma	batch-026
@@ -262,6 +263,7 @@ durian	K0791	durian	lemma	batch-016
 durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
+DVD	K2438	DVD	lemma	batch-049
 e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
