@@ -1,6 +1,7 @@
 # Token index — j-l
 # token\tid\tlemma\ttype\tbatch
 jabatan	K0902	jabatan	lemma	batch-019
+jack audio	K2435	jack audio	lemma	batch-049
 jadinya	K0622	jadinya	lemma	batch-013
 jadwal	K1376	jadwal	lemma	batch-028
 jaga	K0903	jaga	lemma	batch-019
@@ -74,7 +75,10 @@ jus mangga	K2047	jus mangga	lemma	batch-041
 kabar	K0193	kabar	lemma	batch-004
 kabel	K2339	kabel	lemma	batch-047
 kabel HDMI	K2395	kabel HDMI	lemma	batch-048
+kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
+kabel antena	K2434	kabel antena	lemma	batch-049
+kabel audio	K2433	kabel audio	lemma	batch-049
 kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
 kacang	K1914	kacang	lemma	batch-039
@@ -108,8 +112,12 @@ kamar	K0254	kamar	lemma	batch-006
 kambing	K0919	kambing	lemma	batch-019
 kambing hutan	K2278	kambing hutan	lemma	batch-046
 kamera	K1392	kamera	lemma	batch-028
+kamera CCTV	K2415	kamera CCTV	lemma	batch-049
+kamera aksi	K2413	kamera aksi	lemma	batch-049
 kamera digital	K2363	kamera digital	lemma	batch-048
+kamera instan	K2414	kamera instan	lemma	batch-049
 kamera pengawas	K2365	kamera pengawas	lemma	batch-048
+kamera saku	K2416	kamera saku	lemma	batch-049
 kamera web	K2364	kamera web	lemma	batch-048
 kami	K0006	kami	lemma	batch-001
 kampung	K0388	kampung	lemma	batch-008
@@ -135,8 +143,11 @@ karier	K1394	karier	lemma	batch-028
 karpet	K2342	karpet	lemma	batch-047
 kartu	K0926	kartu	lemma	batch-019
 kartu SIM	K2367	kartu SIM	lemma	batch-048
+kartu grafis	K2420	kartu grafis	lemma	batch-049
+kartu jaringan	K2430	kartu jaringan	lemma	batch-049
 kartu memori	K2366	kartu memori	lemma	batch-048
 kasar	K0348	kasar	lemma	batch-007
+kaset audio	K2441	kaset audio	lemma	batch-049
 kasih	K0408	kasih	lemma	batch-009
 kasihan	K1395	kasihan	lemma	batch-028
 kasir	K0363	kasir	lemma	batch-008
@@ -304,6 +315,7 @@ kikil	K1921	kikil	lemma	batch-039
 kimchi	K2097	kimchi	lemma	batch-042
 kipas	K0285	kipas	lemma	batch-006
 kipas angin	K2321	kipas angin	lemma	batch-047
+kipas komputer	K2425	kipas komputer	lemma	batch-049
 kira-kira	K0576	kira-kira	lemma	batch-012
 kiri	K0371	kiri	lemma	batch-008
 kirim	K0061	kirim	lemma	batch-002
@@ -424,6 +436,7 @@ lengah	K0583	lengah	lemma	batch-012
 lengkap	K1427	lengkap	lemma	batch-029
 lengkuas	K2187	lengkuas	lemma	batch-044
 lensa	K1428	lensa	lemma	batch-029
+lensa kamera	K2417	lensa kamera	lemma	batch-049
 lentera	K1429	lentera	lemma	batch-029
 lepas	K1430	lepas	lemma	batch-029
 lereng	K1431	lereng	lemma	batch-029
