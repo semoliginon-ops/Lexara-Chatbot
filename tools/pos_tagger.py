@@ -65,12 +65,16 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
                 isinstance(label, str) and label for label in pos
             ):
                 raise ValueError("field pos pada entri harus berupa array teks")
+            match_type = candidate.get("match_type")
+            # A recorded derivative may change POS (makan -> makanan).
+            # Do not copy the lemma POS onto it without morphological evidence.
+            inherited_pos = [] if match_type == "derived_form" else list(dict.fromkeys(pos))
             pos_candidates.append({
                 "entry_id": candidate.get("entry_id"),
                 "lemma": candidate.get("lemma"),
-                "match_type": candidate.get("match_type"),
-                "pos": list(dict.fromkeys(pos)),
-                "senses": _sense_pos(entry),
+                "match_type": match_type,
+                "pos": inherited_pos,
+                "senses": [] if match_type == "derived_form" else _sense_pos(entry),
             })
 
         all_labels = []
@@ -81,8 +85,13 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
 
         updated["pos_candidates"] = pos_candidates
         updated["pos"] = all_labels
+        has_unresolved_derivative = any(
+            candidate.get("match_type") == "derived_form"
+            for candidate in candidates
+        )
         updated["pos_status"] = (
             "identified" if all_labels else
+            "requires_morphology" if has_unresolved_derivative else
             "unknown" if item.get("kind") == "word" else
             "not_applicable"
         )
