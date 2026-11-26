@@ -278,8 +278,12 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 
 ### Penambahan batch ketiga dataset POS — 27 November 2026
 - [x] Tambahkan 10 kalimat baru (`pos_0021`–`pos_0030`): 6 development dan 4 test.
-- [x] Perbarui dataset menjadi **30 kalimat / 155 token**, dengan komposisi 18 development dan 12 test.
-- [ ] Tarik perubahan batch ketiga ke Termux dan jalankan `python -m tools.validasi_dataset_pos`; target 30 kalimat, 155 token, 18 development, 12 test.
+- [x] Perbarui dataset menjadi **30 kalimat / 156 token**, dengan komposisi 18 development dan 12 test.
+- [x] Tarik perubahan batch ketiga ke Termux dan jalankan `python -m tools.validasi_dataset_pos`: **VALIDASI DATASET POS BERHASIL**, 30 kalimat, 156 token, 18 development, 12 test (27 November 2026).
 - [ ] Setelah validasi, lanjutkan audit anotasi development set. Jangan gunakan test split untuk menyetel aturan.
 
 Catatan: regression suite penuh terakhir yang dikonfirmasi pengguna adalah 132/132 lulus sebelum batch ketiga ditambahkan. Jangan menganggap hasil itu sebagai verifikasi setelah perubahan data batch ketiga.
+
+
+### Regression suite setelah validasi batch ketiga
+- [ ] Jalankan `python -m unittest discover -s tests -v` dari Termux setelah batch ketiga; hasil terakhir sebelum batch ketiga adalah 132/132 lulus.
