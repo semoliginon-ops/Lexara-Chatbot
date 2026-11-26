@@ -2,6 +2,7 @@
 # token\tid\tlemma\ttype\tbatch
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
+gado-gado	K1966	gado-gado	lemma	batch-040
 gagah	K1302	gagah	lemma	batch-027
 gagal	K0423	gagal	lemma	batch-009
 gairah	K1303	gairah	lemma	batch-027
@@ -23,6 +24,7 @@ ganteng	K1310	ganteng	lemma	batch-027
 ganti	K0221	ganti	lemma	batch-005
 gantian	K0221	ganti	derived_form	batch-005
 gapapa	K0659	gapapa	lemma	batch-014
+gaplek	K1965	gaplek	lemma	batch-040
 gara-gara	K0617	gara-gara	lemma	batch-013
 garam	K0171	garam	lemma	batch-004
 garansi	K1311	garansi	lemma	batch-027
@@ -67,6 +69,7 @@ gesit	K1333	gesit	lemma	batch-027
 getah	K1322	getah	lemma	batch-027
 getar	K0866	getar	lemma	batch-018
 getol	K1334	getol	lemma	batch-027
+getuk	K1967	getuk	lemma	batch-040
 giat	K0867	giat	lemma	batch-018
 gigi	K0868	gigi	lemma	batch-018
 gigih	K1323	gigih	lemma	batch-027
@@ -101,6 +104,7 @@ gundul	K0875	gundul	lemma	batch-018
 gunjing	K1340	gunjing	lemma	batch-027
 gunting	K0876	gunting	lemma	batch-018
 gunung	K0158	gunung	lemma	batch-004
+gurame	K1968	gurame	lemma	batch-040
 gurih	K1327	gurih	lemma	batch-027
 guru	K0185	guru	lemma	batch-004
 gurun	K1341	gurun	lemma	batch-027
