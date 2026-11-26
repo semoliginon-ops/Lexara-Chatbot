@@ -12,8 +12,10 @@ datang	K0018	datang	lemma	batch-001
 daun	K0161	daun	lemma	batch-004
 debat	K0434	debat	lemma	batch-009
 dedaunan	K0161	daun	derived_form	batch-004
+deh	K0556	deh	lemma	batch-012
 dekat	K0090	dekat	lemma	batch-002
 demam	K0181	demam	lemma	batch-004
+demi	K0557	demi	lemma	batch-012
 denda	K0546	denda	lemma	batch-011
 dengar	K0035	dengar	lemma	batch-001
 depan	K0372	depan	lemma	batch-008
@@ -141,4 +143,5 @@ dukung	K0549	dukung	lemma	batch-011
 durasi	K0550	durasi	lemma	batch-011
 elu	K0009	lu	variant	batch-001
 enggak	K0029	enggak	lemma	batch-001
+enggan	K0558	enggan	lemma	batch-012
 entah	K0551	entah	lemma	batch-011
