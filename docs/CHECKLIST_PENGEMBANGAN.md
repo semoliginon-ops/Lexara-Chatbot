@@ -582,3 +582,14 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 **Catatan:** hasil di atas berasal dari eksekusi lokal pengguna, bukan klaim hasil GitHub Actions. Evaluasi hanya menggunakan 60 kalimat development. Empat puluh kalimat test tetap ditahan.
 
 **Titik lanjut:** audit apakah lema `tunda`, `hinggap`, dan `teduh` tersedia di kamus, lalu audit abstention NOUN/ADJ/ADV secara terpisah. Jangan menambah aturan hanya untuk mengejar skor development dan jangan menggunakan test split untuk penyetelan.
+
+
+### Audit indeks lema untuk sisa VERB — 27 November 2026
+
+- [x] Memeriksa seluruh delapan shard token index (a-c sampai v-z) untuk tunda, hinggap, teduh, ditunda, dan berteduh.
+- [x] Tidak ditemukan token persis tersebut pada indeks kamus saat ini.
+- [x] Memeriksa aturan penyusunan kamus: batch baru harus berisi tepat 50 lema ber-ID berurutan; tidak membuat batch parsial hanya untuk tiga kata.
+- [ ] Masukkan ketiga lema ke daftar kandidat batch kamus berikutnya setelah audit duplikasi dan penetapan POS/sense: tunda (VERB), hinggap (VERB), teduh (ADJ; bentuk berteduh perlu anotasi VERB eksplisit jika disetujui).
+- [ ] Lanjutkan audit 19 abstention NOUN development untuk menyusun prioritas lema yang benar-benar dibutuhkan.
+
+Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perlu ditindaklanjuti, bukan alasan untuk menebak bentuk turunan atau mengubah aturan morfologi. Split test tetap tidak digunakan.
