@@ -55,6 +55,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
 - [ ] Menjalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk memuat 60 batch (3.000 entri) melalui loader Python; skrip validasi sudah tersedia.
+- [x] Mengintegrasikan normalisasi, tokenizer, dan pencocokan kamus dalam `tools/analisis_teks.py`.
+- [x] Membuat 8 regression tests analyzer; seluruhnya lulus pada lingkungan Python lokal terisolasi.
 
 ### 2.4 Analisis morfologi
 
@@ -136,7 +138,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Tahap 2.3 — Pencocokan token ke kamus.**
 
-Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati 45 regression tests pada lingkungan Python lokal terisolasi: 45 lulus, 0 gagal. Struktur dasar 60 batch (3.000 entri) juga telah diperiksa melalui konten GitHub. Pengujian langsung fungsi loader terhadap seluruh 60 file aktual masih belum dilakukan. GitHub Actions tidak dijalankan.
+Normalisasi, tokenizer, loader, pencocokan kamus, dan analyzer telah melewati total 53 regression tests pada pengujian lokal terisolasi (45 tes fondasi + 8 tes analyzer; seluruhnya lulus). Integrasi tersedia di `tools/analisis_teks.py`. Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. GitHub Actions tidak dijalankan.
 
 ## Dokumen rujukan
 
