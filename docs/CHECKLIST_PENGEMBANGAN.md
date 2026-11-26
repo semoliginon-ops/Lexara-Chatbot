@@ -315,3 +315,14 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [ ] Jalankan validator dataset dan regression suite setelah koreksi data.
 
 **Titik lanjut:** pengguna menjalankan `git pull`, lalu audit ulang development. Belum ada label JSONL yang diubah dan belum ada klaim akurasi POS.
+
+
+### Audit ulang anotasi POS development — 27 November 2026
+- [x] Konvensi anotasi POS v1 ditetapkan pada `docs/DATASET_POS.md` subbagian 5.1.
+- [x] Audit ulang seluruh 18 kalimat development berdasarkan konvensi tersebut.
+- [x] Koreksi label `jangan` pada record `pos_0024` dari `ADV` menjadi `PART`; split test tidak diubah.
+- [x] Catat hasil dan batasan audit pada `docs/AUDIT_ANOTASI_POS.md`.
+- [ ] Tarik perubahan ke Termux dan jalankan `python -m tools.validasi_dataset_pos`.
+- [ ] Jalankan `python -m unittest discover -s tests -v` setelah validasi.
+
+**Titik lanjut:** verifikasi perubahan dataset dari checkout Termux. Belum ada klaim akurasi POS.
