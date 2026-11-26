@@ -200,4 +200,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** uji `tools/kamus_loader.py` terhadap seluruh 60 batch aktual, lalu buat pencocokan token ke lemma, variants, dan derived_forms. Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati total 45 tes lokal tanpa kegagalan.
+**Titik lanjut:** jalankan `tools/kamus_loader.py` secara langsung terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri sudah diperiksa; pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati total 45 tes lokal tanpa kegagalan.
