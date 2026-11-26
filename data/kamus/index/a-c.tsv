@@ -1,5 +1,4 @@
 # Token index — a-c
-# token\tid\tlemma\ttype\tbatch
 abang	K0502	abang	lemma	batch-011
 absen	K0503	absen	lemma	batch-011
 abu	K0504	abu	lemma	batch-011
@@ -7,12 +6,16 @@ acara	K0450	acara	lemma	batch-009
 adik	K0109	adik	lemma	batch-003
 adik-adik	K0109	adik	derived_form	batch-003
 adil	K0505	adil	lemma	batch-011
+aduh	K0602	aduh	lemma	batch-013
 aduk	K0473	aduk	lemma	batch-010
+agak	K0603	agak	lemma	batch-013
 air	K0152	air	lemma	batch-004
 ajak	K0213	ajak	lemma	batch-005
 ajakan	K0213	ajak	derived_form	batch-005
 ajar	K0188	ajar	lemma	batch-004
 ajaran	K0188	ajar	derived_form	batch-004
+akhir	K0605	akhir	lemma	batch-013
+akibat	K0604	akibat	lemma	batch-013
 akrab	K0506	akrab	lemma	batch-011
 aktif	K0507	aktif	lemma	batch-011
 aktivitas	K0508	aktivitas	lemma	batch-011
@@ -27,6 +30,7 @@ ampun	K0512	ampun	lemma	batch-011
 anak	K0102	anak	lemma	batch-003
 anak-anak	K0102	anak	derived_form	batch-003
 anakan	K0102	anak	derived_form	batch-003
+andai	K0606	andai	lemma	batch-013
 aneh	K0513	aneh	lemma	batch-011
 anggap	K0445	anggap	lemma	batch-009
 angin	K0313	angin	lemma	batch-007
@@ -34,6 +38,7 @@ angkot	K0401	angkot	lemma	batch-008
 anjing	K0514	anjing	lemma	batch-011
 antar	K0416	antar	lemma	batch-009
 antre	K0352	antre	lemma	batch-008
+apaan	K0607	apaan	lemma	batch-013
 apalagi	K0515	apalagi	lemma	batch-011
 api	K0153	api	lemma	batch-004
 apotek	K0516	apotek	lemma	batch-011
@@ -76,6 +81,7 @@ bantu	K0033	bantu	lemma	batch-001
 bantuan	K0033	bantu	derived_form	batch-001
 bapak	K0103	bapak	lemma	batch-003
 baper	K0093	baper	lemma	batch-002
+barangkali	K0608	barangkali	lemma	batch-013
 bareng	K0552	bareng	lemma	batch-012
 basah	K0320	basah	lemma	batch-007
 batal	K0522	batal	lemma	batch-011
@@ -176,14 +182,17 @@ berusaha	K0229	usaha	derived_form	batch-005
 berwajah	K0127	wajah	derived_form	batch-003
 besar	K0043	besar	lemma	batch-001
 besaran	K0043	besar	derived_form	batch-001
+beserta	K0609	beserta	lemma	batch-013
 besok	K0138	besok	lemma	batch-003
 betah	K0532	betah	lemma	batch-011
 bete	K0533	bete	lemma	batch-011
+biar	K0646	biar	lemma	batch-013
 biasa	K0534	biasa	lemma	batch-011
 biaya	K0354	biaya	lemma	batch-008
 bicara	K0036	bicara	lemma	batch-001
 bikin	K0204	bikin	lemma	batch-005
 bikinin	K0204	bikin	derived_form	batch-005
+bilang	K0610	bilang	lemma	batch-013
 bintang	K0535	bintang	lemma	batch-011
 bisa	K0026	bisa	lemma	batch-001
 bisik	K0432	bisik	lemma	batch-009
@@ -233,5 +242,6 @@ cuaca	K0310	cuaca	lemma	batch-007
 cuci	K0053	cuci	lemma	batch-002
 cucian	K0053	cuci	derived_form	batch-002
 cukup	K0232	cukup	lemma	batch-005
+cuma	K0611	cuma	lemma	batch-013
 curhat	K0543	curhat	lemma	batch-011
 curiga	K0555	curiga	lemma	batch-012
