@@ -81,6 +81,7 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
     for prefix, rule in _PREFIXES:
         if surface.startswith(prefix) and len(surface) > len(prefix) + 1:
             add_candidate(surface[len(prefix):], rule)
+            break
 
     for prefix, restored in _NASAL_RESTORATIONS:
         if surface.startswith(prefix) and len(surface) > len(prefix):
@@ -93,6 +94,7 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         for prefix, prefix_rule in _PREFIXES:
             if middle.startswith(prefix) and len(middle) > len(prefix) + 1:
                 add_candidate(middle[len(prefix):], f"{prefix_rule}+{suffix_rule}")
+                break
         for prefix, restored in _NASAL_RESTORATIONS:
             if middle.startswith(prefix) and len(middle) > len(prefix):
                 add_candidate(restored + middle[len(prefix):], f"nasal_restoration_{prefix}+{suffix_rule}")
