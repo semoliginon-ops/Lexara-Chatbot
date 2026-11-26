@@ -364,3 +364,15 @@ Pengguna menjalankan `python -m unittest discover -s tests -v` dari checkout `~/
 - Ini memverifikasi regresi kode dan struktur dataset pada checkout saat ini; hasil ini **belum mengukur akurasi POS** atau membuktikan kualitas semua anotasi gold.
 
 **Titik lanjut:** audit anotasi dan perluas dataset, utamakan variasi kasus pada development set. Pertahankan test split sebagai data evaluasi tertahan.
+
+
+### Penambahan batch ketiga dataset POS — 27 November 2026
+
+- Commit dataset: `9bba4ee49ecb4e071126c2e7d33c0e3fac87e9f5`.
+- Ditambahkan 10 record dengan ID `pos_0021`–`pos_0030`: 6 development dan 4 test.
+- Total rancangan dataset menjadi **30 kalimat, 155 token, 18 development, 12 test**.
+- Fenomena tambahan mencakup kalimat perintah, konjungsi subordinatif, negasi, numeralia, kata ulang, bentuk berimbuhan, dan pronomina interogatif.
+- **Validasi batch ketiga belum dijalankan pengguna di Termux.** Jalankan `python -m tools.validasi_dataset_pos` setelah `git pull`; target keluaran 30 kalimat, 155 token, 18 development, 12 test.
+- Regression suite penuh 132/132 lulus pada verifikasi sebelumnya, sebelum batch ketiga ditambahkan. Belum ada klaim regression test setelah perubahan data ini.
+
+**Titik lanjut:** validasi batch ketiga di Termux, lalu audit mutu anotasi pada development set. Test split tetap ditahan.
