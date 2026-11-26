@@ -79,7 +79,7 @@ Skema record:
 | `split` | Hanya `development` atau `test`. |
 | `text` | Kalimat asli; jangan dinormalisasi atau diperbaiki diam-diam. |
 | `tokens` | Daftar token sesuai urutan keluaran tokenizer proyek. |
-| `token` | Bentuk token persis seperti keluaran tokenizer, termasuk kapitalisasi/tanda baca. |
+| `token` | Bentuk token persis seperti keluaran `tokenize(text)`. Tokenizer melakukan casefold, sehingga token kata biasanya huruf kecil; tanda baca tetap dipertahankan. |
 | `gold_pos` | Satu kode POS resmi atau `null` bila tidak ada label POS tunggal yang tepat. |
 | `gold_status` | Salah satu status di bawah. |
 | `phenomena` | Array tag cakupan fenomena; boleh kosong jika belum ditentukan. |
@@ -146,10 +146,11 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [x] Menetapkan rancangan format dan pedoman anotasi versi 1.0.
 - [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
 - [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
-- [ ] Memeriksa konsistensi token dengan tokenizer.
-- [ ] Membuat validator dataset dan regression tests.
+- [x] Membuat `tools/validasi_dataset_pos.py` untuk memeriksa struktur JSONL, label, status, ID, dan kecocokan token dengan tokenizer.
+- [x] Membuat 8 regression tests pada `tests/test_validasi_dataset_pos.py`.
+- [~] Menjalankan validator dan 8 regression tests dari checkout Termux; hasil verifikasi masih menunggu.
 - [ ] Mengevaluasi development set dan mencatat kesalahan.
 - [ ] Mengunci test set dan mengukur metrik tanpa penyetelan khusus terhadap test.
 - [ ] Memperbarui dokumentasi status dan checklist berdasarkan hasil nyata.
 
-**Titik lanjut:** mulai dari batch kecil 10 kalimat untuk memastikan skema dan pedoman mudah digunakan sebelum memperluas menuju target 100 kalimat.
+**Titik lanjut:** jalankan validator dataset dan tes khususnya dari Termux. Setelah lolos, perluas dataset secara bertahap menuju target 100 kalimat.
