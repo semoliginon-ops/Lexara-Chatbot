@@ -1,5 +1,5 @@
 # Token index — j-l
-# token\tid\tlemma\ttype\tbatch
+jadinya	K0622	jadinya	lemma	batch-013
 jago	K0565	jago	lemma	batch-012
 jajan	K0454	jajan	lemma	batch-010
 jajanan	K0455	jajanan	lemma	batch-010
@@ -43,11 +43,13 @@ kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
 kanan	K0370	kanan	lemma	batch-008
 kantor	K0437	kantor	lemma	batch-009
+kapan	K0647	kapan	lemma	batch-013
 karena	K0151	karena	lemma	batch-003
 kasar	K0348	kasar	lemma	batch-007
 kasih	K0408	kasih	lemma	batch-009
 kasir	K0363	kasir	lemma	batch-008
 kasur	K0288	kasur	lemma	batch-006
+kayak	K0623	kayak	lemma	batch-013
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
 kebenaran	K0236	benar	derived_form	batch-005
@@ -105,6 +107,7 @@ kemungkinan	K0142	mungkin	derived_form	batch-003
 kenaikan	K0069	naik	derived_form	batch-002
 kenal	K0215	kenal	lemma	batch-005
 kenalan	K0215	kenal	derived_form	batch-005
+kenapa	K0624	kenapa	lemma	batch-013
 kendaraan	K0399	kendaraan	lemma	batch-008
 kentang	K0486	kentang	lemma	batch-010
 kenyang	K0178	kenyang	lemma	batch-004
@@ -154,6 +157,7 @@ kiri	K0371	kiri	lemma	batch-008
 kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
 kita	K0005	kita	lemma	batch-001
+kok	K0625	kok	lemma	batch-013
 komplain	K0577	komplain	lemma	batch-012
 kompor	K0283	kompor	lemma	batch-006
 komputasi	K0198	komputer	derived_form	batch-004
@@ -178,6 +182,8 @@ langit-langit	K0155	langit	derived_form	batch-004
 lanjut	K0226	lanjut	lemma	batch-005
 lanjutan	K0226	lanjut	derived_form	batch-005
 lantai	K0258	lantai	lemma	batch-006
+lantaran	K0649	lantaran	lemma	batch-013
+lantas	K0648	lantas	lemma	batch-013
 lapar	K0176	lapar	lemma	batch-004
 lari	K0073	lari	lemma	batch-002
 larian	K0073	lari	derived_form	batch-002
