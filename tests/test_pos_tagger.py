@@ -6,7 +6,7 @@ from tools.pencocokan_kamus import build_lexicon
 from tools.pos_tagger import tag_pos
 
 
-def entry(entry_id, lemma, pos, senses=None, derived_forms=None):
+def entry(entry_id, lemma, pos, senses=None, derived_forms=None, derived_forms_pos=None):
     return {
         "id": entry_id,
         "lemma": lemma,
@@ -17,6 +17,7 @@ def entry(entry_id, lemma, pos, senses=None, derived_forms=None):
         "register": ["neutral"],
         "variants": [],
         "derived_forms": derived_forms or [],
+        "derived_forms_pos": derived_forms_pos or {},
     }
 
 
@@ -62,6 +63,42 @@ class PosTaggerTests(unittest.TestCase):
         token = self.analyze_and_tag("makanan")["tokens"][0]
         self.assertEqual(token["pos"], [])
         self.assertEqual(token["pos_status"], "requires_morphology")
+
+    def test_explicit_derived_form_pos_can_differ_from_noun_lemma(self):
+        lexicon = build_lexicon([
+            entry(
+                "K9103", "kerja", ["NOUN"], derived_forms=["bekerja"],
+                derived_forms_pos={"bekerja": ["VERB"]},
+            ),
+        ])
+        token = tag_pos(analyze_text("bekerja", lexicon))["tokens"][0]
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
+        self.assertEqual(token["pos_status"], "identified")
+
+    def test_explicit_derived_form_pos_can_differ_from_adjective_lemma(self):
+        lexicon = build_lexicon([
+            entry(
+                "K9104", "jelas", ["ADJ"], derived_forms=["menjelaskan"],
+                derived_forms_pos={"menjelaskan": ["VERB"]},
+            ),
+        ])
+        token = tag_pos(analyze_text("menjelaskan", lexicon))["tokens"][0]
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
+
+    def test_derived_form_pos_does_not_leak_to_other_derived_forms(self):
+        lexicon = build_lexicon([
+            entry(
+                "K9105", "kerja", ["NOUN"],
+                derived_forms=["bekerja", "pekerjaan"],
+                derived_forms_pos={"bekerja": ["VERB"]},
+            ),
+        ])
+        tokens = tag_pos(analyze_text("bekerja pekerjaan", lexicon))["tokens"]
+        self.assertEqual(tokens[0]["pos"], ["VERB"])
+        self.assertEqual(tokens[1]["pos"], [])
+        self.assertEqual(tokens[1]["pos_status"], "requires_morphology")
 
     def test_recorded_meN_derived_form_uses_validated_verbal_morphology(self):
         token = self.analyze_and_tag("menanam")["tokens"][0]
