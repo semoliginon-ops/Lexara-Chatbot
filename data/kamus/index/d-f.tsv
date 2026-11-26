@@ -4,6 +4,7 @@ dada	K2590	dada	lemma	batch-052
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
 daerah	K0384	daerah	lemma	batch-008
+daerah pemilihan	K2910	daerah pemilihan	lemma	batch-059
 daftar	K0766	daftar	lemma	batch-016
 dagang	K0365	dagang	lemma	batch-008
 daging	K0170	daging	lemma	batch-004
@@ -15,6 +16,7 @@ dagu	K0761	dagu	lemma	batch-016
 dahaga	K0762	dahaga	lemma	batch-016
 dahsyat	K0763	dahsyat	lemma	batch-016
 dahulu	K1852	dahulu	lemma	batch-038
+dakwaan	K2947	dakwaan	lemma	batch-059
 dalam	K0379	dalam	lemma	batch-008
 dalang	K1853	dalang	lemma	batch-038
 dalih	K0764	dalih	lemma	batch-016
@@ -97,6 +99,8 @@ deteksi	K1870	deteksi	lemma	batch-038
 detektif	K1869	detektif	lemma	batch-038
 detik	K0304	detik	lemma	batch-007
 dewa	K1871	dewa	lemma	batch-038
+dewan perwakilan daerah	K2912	dewan perwakilan daerah	lemma	batch-059
+dewan perwakilan rakyat	K2911	dewan perwakilan rakyat	lemma	batch-059
 dewasa	K0783	dewasa	lemma	batch-016
 dia	K0004	dia	lemma	batch-001
 diabetes	K1872	diabetes	lemma	batch-038
@@ -186,6 +190,7 @@ dipesan	K0194	pesan	derived_form	batch-004
 dipikirkan	K0080	pikir	derived_form	batch-002
 dipilih	K0219	pilih	derived_form	batch-005
 dipindahkan	K0207	pindah	derived_form	batch-005
+diplomasi	K2913	diplomasi	lemma	batch-059
 dipunyai	K0202	punya	derived_form	batch-005
 diragukan	K0243	ragu	derived_form	batch-005
 diramaikan	K0249	ramai	derived_form	batch-005
