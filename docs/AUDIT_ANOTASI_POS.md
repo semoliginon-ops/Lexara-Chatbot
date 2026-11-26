@@ -299,3 +299,20 @@ Perubahan morfologi terbaru mengutamakan relasi `derived_form` yang telah dicata
 Verifikasi lokal Termux pada 27 November 2026: **149/149 regression tests lulus**. Evaluasi development: POS leksikal 222/255 benar (87,1%); POS kontekstual 223/255 benar (87,5%); selective accuracy keduanya 100%, tanpa kesalahan pada prediksi yang dikeluarkan. Satu gold ambiguous ditahan, tidak dipaksakan. Angka hanya berlaku untuk 60 kalimat development; 40 kalimat test tetap tertahan.
 
 Sisa abstention VERB pada development berjumlah delapan token: `bekerja` tiga kali, serta `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh` masing-masing sekali. Dua bentuk berstatus `requires_morphology` (`bekerja`, `menjelaskan`); bentuk lainnya belum memiliki kandidat. Audit berikutnya perlu memisahkan metadata bentuk turunan, pola pasif `di-`, imperatif `-kan`, dan lema dasar yang belum terdaftar. Jangan menambah aturan umum hanya untuk menaikkan coverage dan jangan menyetel menggunakan test split.
+
+
+## Verifikasi anotasi POS bentuk turunan eksplisit — 27 November 2026
+
+Pengguna menarik pembaruan ke Termux dan menjalankan regression suite, validator dataset, serta evaluator development-only secara berurutan.
+
+- Regression suite: **152/152 tes lulus**.
+- Validator: **100 kalimat, 543 token, 60 development, 40 test — berhasil**.
+- POS leksikal: 227/255 benar; coverage/accuracy 89,0%; selective accuracy 100%.
+- POS kontekstual: 228/255 benar; coverage/accuracy 89,4%; selective accuracy 100%.
+- Kedua jalur menghasilkan **0 kesalahan prediksi** pada token yang diputuskan.
+- Gold ambiguous: 1 ditahan dan 0 dipaksakan.
+- Sisa abstention VERB: `ditunda`, `hinggap`, `berteduh` (masing-masing satu kemunculan).
+
+Anotasi POS eksplisit pada bentuk turunan memperbaiki pengenalan `bekerja`, `menjelaskan`, dan `letakkan` tanpa mewarisi POS lemma secara membabi buta. Pemeriksaan token index kamus menunjukkan lema `tunda`, `hinggap`, dan `teduh` belum ditemukan pada delapan shard indeks. Ini merupakan gap cakupan kamus; belum ada alasan untuk menambah aturan morfologi spekulatif. Perlu ditinjau apakah ketiganya akan ditambahkan pada pengembangan kamus berikutnya atau ditangani melalui mekanisme kosakata yang tervalidasi.
+
+Angka evaluasi hanya berlaku untuk 60 kalimat development. Tidak ada data test yang digunakan untuk penyetelan; 40 kalimat test tetap tertahan.
