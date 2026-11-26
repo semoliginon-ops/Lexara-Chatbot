@@ -282,3 +282,12 @@ Batch ketujuh menambahkan 10 record (`pos_0061`–`pos_0070`), enam development 
 GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211) memvalidasi dataset: 70 kalimat, 374 token, 42 development, 28 test. Evaluator development-only memuat 174 token resolved, 131 benar, coverage 75,3%, accuracy 75,3%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan. Regression suite: 141/141 lulus. Test split tetap tertahan dan tidak digunakan.
 
 Angka evaluasi hanya berlaku untuk development set yang berisi 42 kalimat; bukan estimasi akurasi umum. Jangan menganggap perubahan persentase antarbatch sebagai tren kualitas tanpa memperhatikan komposisi sampel.
+
+
+## 16. Batch kedelapan dan verifikasi — 27 November 2026
+
+Batch kedelapan menambahkan 10 record (`pos_0071`–`pos_0080`), enam development dan empat test. Dataset menjadi 80 kalimat, 428 token, 48 development dan 32 test. Cakupan development meliputi numeralia atributif, preposisi lokatif/tujuan, konjungsi pertentangan, penanda aspek, demonstrativa, nomina berimbuhan, dan adverbia derajat.
+
+GitHub Actions run [#7](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908957782) memvalidasi dataset: 80 kalimat, 428 token, 48 development, 32 test. Evaluator development-only memuat 199 token resolved, 149 benar, coverage 74,9%, accuracy 74,9%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan. Regression suite: 141/141 lulus. Test split tetap tertahan dan tidak digunakan.
+
+Angka evaluasi hanya berlaku untuk development set 48 kalimat. Perubahan persentase antarbatch tidak boleh langsung ditafsirkan sebagai tren kualitas tanpa memperhatikan komposisi sampel.
