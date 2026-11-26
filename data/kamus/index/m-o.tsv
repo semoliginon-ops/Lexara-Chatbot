@@ -13,6 +13,7 @@ makan	K0013	makan	lemma	batch-001
 makanan	K0013	makan	derived_form	batch-001
 makanya	K0626	makanya	lemma	batch-013
 makaroni	K1927	makaroni	lemma	batch-039
+makaroni goreng	K2134	makaroni goreng	lemma	batch-043
 makasih	K0406	makasih	lemma	batch-009
 makhluk	K1455	makhluk	lemma	batch-030
 makna	K1456	makna	lemma	batch-030
@@ -49,6 +50,8 @@ maret	K1462	maret	lemma	batch-030
 margarin	K1928	margarin	lemma	batch-039
 marmer	K0962	marmer	lemma	batch-020
 martabak	K0963	martabak	lemma	batch-020
+martabak manis	K2136	martabak manis	lemma	batch-043
+martabak telur	K2135	martabak telur	lemma	batch-043
 martil	K0964	martil	lemma	batch-020
 masa	K0627	masa	lemma	batch-013
 masak	K0052	masak	lemma	batch-002
@@ -249,6 +252,9 @@ mewah	K1470	mewah	lemma	batch-030
 meyakini	K0242	yakin	derived_form	batch-005
 meyakinkan	K0242	yakin	derived_form	batch-005
 mi	K0487	mi	lemma	batch-010
+mi ayam	K2137	mi ayam	lemma	batch-043
+mi goreng	K2138	mi goreng	lemma	batch-043
+mi rebus	K2139	mi rebus	lemma	batch-043
 mikrofon	K0987	mikrofon	lemma	batch-020
 milik	K0988	milik	lemma	batch-020
 militer	K0989	militer	lemma	batch-020
@@ -259,6 +265,8 @@ minimal	K0991	minimal	lemma	batch-020
 minta	K0407	minta	lemma	batch-009
 minum	K0014	minum	lemma	batch-001
 minuman	K0014	minum	derived_form	batch-001
+minyak goreng	K2140	minyak goreng	lemma	batch-043
+minyak wijen	K2141	minyak wijen	lemma	batch-043
 mirip	K1472	mirip	lemma	batch-030
 misi	K0992	misi	lemma	batch-020
 miskin	K1473	miskin	lemma	batch-030
@@ -308,6 +316,16 @@ nanti	K0136	nanti	lemma	batch-003
 napas	K1002	napas	lemma	batch-021
 narasumber	K1488	narasumber	lemma	batch-030
 nasi	K0164	nasi	lemma	batch-004
+nasi bakar	K2149	nasi bakar	lemma	batch-043
+nasi goreng	K2144	nasi goreng	lemma	batch-043
+nasi kebuli	K2151	nasi kebuli	lemma	batch-043
+nasi kuning	K2143	nasi kuning	lemma	batch-043
+nasi liwet	K2145	nasi liwet	lemma	batch-043
+nasi merah	K2148	nasi merah	lemma	batch-043
+nasi padang	K2146	nasi padang	lemma	batch-043
+nasi pecel	K2150	nasi pecel	lemma	batch-043
+nasi putih	K2147	nasi putih	lemma	batch-043
+nasi uduk	K2142	nasi uduk	lemma	batch-043
 nasib	K1004	nasib	lemma	batch-021
 nasihat	K1489	nasihat	lemma	batch-030
 nasional	K1490	nasional	lemma	batch-030
