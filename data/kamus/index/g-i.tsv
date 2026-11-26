@@ -1,5 +1,4 @@
 # Token index — g-i
-# token\tid\tlemma\ttype\tbatch
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
 gagal	K0423	gagal	lemma	batch-009
@@ -8,11 +7,15 @@ gampang	K0559	gampang	lemma	batch-012
 gang	K0389	gang	lemma	batch-008
 ganti	K0221	ganti	lemma	batch-005
 gantian	K0221	ganti	derived_form	batch-005
+gara-gara	K0617	gara-gara	lemma	batch-013
 garam	K0171	garam	lemma	batch-004
 garpu	K0280	garpu	lemma	batch-006
 gelap	K0326	gelap	lemma	batch-007
 gelas	K0278	gelas	lemma	batch-006
 gercep	K0100	gercep	lemma	batch-002
+gimana	K0618	gimana	lemma	batch-013
+gini	K0620	gini	lemma	batch-013
+gitu	K0619	gitu	lemma	batch-013
 goreng	K0465	goreng	lemma	batch-010
 gratis	K0358	gratis	lemma	batch-008
 gua	K0008	gue	variant	batch-001
@@ -20,6 +23,7 @@ gue	K0008	gue	lemma	batch-001
 gula	K0172	gula	lemma	batch-004
 gunung	K0158	gunung	lemma	batch-004
 guru	K0185	guru	lemma	batch-004
+guys	K0621	guys	lemma	batch-013
 gw	K0008	gue	variant	batch-001
 halte	K0391	halte	lemma	batch-008
 hampir	K0560	hampir	lemma	batch-012
