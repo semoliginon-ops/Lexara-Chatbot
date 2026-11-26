@@ -3,6 +3,8 @@ from __future__ import annotations
 
 from typing import Any
 
+from tools.pos_supplement import supplementary_pos
+
 
 def _sense_pos(entry: dict[str, Any]) -> list[dict[str, Any]]:
     """Return POS labels per sense, falling back to the entry-level POS."""
@@ -83,12 +85,29 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
                 if label not in all_labels:
                     all_labels.append(label)
 
-        updated["pos_candidates"] = pos_candidates
-        updated["pos"] = all_labels
         has_unresolved_derivative = any(
             candidate.get("match_type") == "derived_form"
             for candidate in candidates
         )
+
+        # Use the small audited supplement only when the dictionary has no
+        # POS candidate and the token is not an unresolved derived form.
+        supplement_label = None
+        if not all_labels and not candidates and item.get("kind") == "word":
+            supplement_label = supplementary_pos(item.get("token", ""))
+
+        if supplement_label:
+            all_labels = [supplement_label]
+            updated["pos_source"] = "supplement"
+        elif all_labels:
+            updated["pos_source"] = "dictionary"
+        elif has_unresolved_derivative:
+            updated["pos_source"] = "requires_morphology"
+        else:
+            updated["pos_source"] = "unknown" if item.get("kind") == "word" else "not_applicable"
+
+        updated["pos_candidates"] = pos_candidates
+        updated["pos"] = all_labels
         updated["pos_status"] = (
             "identified" if all_labels else
             "requires_morphology" if has_unresolved_derivative else
