@@ -44,6 +44,7 @@ sarapan	K0452	sarapan	lemma	batch-010
 sarden	K2041	sarden	lemma	batch-041
 saringan	K1568	saringan	lemma	batch-032
 sarung	K1569	sarung	lemma	batch-032
+sarung tangan	K2637	sarung tangan	lemma	batch-053
 sasaran	K1570	sasaran	lemma	batch-032
 sate	K0490	sate	lemma	batch-010
 satpam	K1571	satpam	lemma	batch-032
@@ -94,10 +95,12 @@ selalu	K0140	selalu	lemma	batch-003
 selamat	K0248	selamat	lemma	batch-005
 selasar	K1609	selasar	lemma	batch-033
 seleksi	K1586	seleksi	lemma	batch-032
+selendang	K2633	selendang	lemma	batch-053
 selera	K1587	selera	lemma	batch-032
 selesai	K0224	selesai	lemma	batch-005
 selimut	K0290	selimut	lemma	batch-006
 selisih	K1639	selisih	lemma	batch-033
+selop	K2626	selop	lemma	batch-053
 semalaman	K0134	malam	derived_form	batch-003
 semangka	K1947	semangka	lemma	batch-039
 sembarangan	K0675	sembarangan	lemma	batch-014
@@ -180,6 +183,7 @@ singgah	K0420	singgah	lemma	batch-009
 singkat	K1105	singkat	lemma	batch-023
 singkir	K1631	singkir	lemma	batch-033
 singkong	K1106	singkong	lemma	batch-023
+singlet	K2625	singlet	lemma	batch-053
 sinyal	K1107	sinyal	lemma	batch-023
 siomay	K1990	siomay	lemma	batch-040
 siram	K1108	siram	lemma	batch-023
@@ -255,7 +259,9 @@ susu kedelai	K2198	susu kedelai	lemma	batch-044
 susu kental manis	K2196	susu kental manis	lemma	batch-044
 susun	K1122	susun	lemma	batch-023
 sutradara	K2455	sutradara	lemma	batch-050
+sweater	K2603	sweater	lemma	batch-053
 switch jaringan	K2432	switch jaringan	lemma	batch-049
+syal	K2634	syal	lemma	batch-053
 tabah	K1123	tabah	lemma	batch-023
 tablet gambar	K2450	tablet gambar	lemma	batch-049
 tabrak	K1124	tabrak	lemma	batch-023
@@ -499,6 +505,7 @@ tumpang	K1750	tumpang	lemma	batch-035
 tumpuk	K1751	tumpuk	lemma	batch-035
 tuna	K1995	tuna	lemma	batch-040
 tunggu	K0064	tunggu	lemma	batch-002
+tunik	K2605	tunik	lemma	batch-053
 turun	K0070	turun	lemma	batch-002
 tutup	K0066	tutup	lemma	batch-002
 uang	K0022	uang	lemma	batch-001
