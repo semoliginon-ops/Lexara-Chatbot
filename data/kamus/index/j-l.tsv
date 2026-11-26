@@ -5,9 +5,11 @@ jalan	K0020	jalan	lemma	batch-001
 jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jangan	K0145	jangan	lemma	batch-003
+jauh	K0369	jauh	lemma	batch-008
 jawab	K0190	jawab	lemma	batch-004
 jawaban	K0190	jawab	derived_form	batch-004
 jelek	K0042	jelek	lemma	batch-001
+jembatan	K0390	jembatan	lemma	batch-008
 jendela	K0257	jendela	lemma	batch-006
 jual	K0056	jual	lemma	batch-002
 jualan	K0056	jual	derived_form	batch-002
@@ -25,9 +27,12 @@ kaki	K0123	kaki	lemma	batch-003
 kalender	K0294	kalender	lemma	batch-006
 kamar	K0254	kamar	lemma	batch-006
 kami	K0006	kami	lemma	batch-001
+kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
+kanan	K0370	kanan	lemma	batch-008
 karena	K0151	karena	lemma	batch-003
 kasar	K0348	kasar	lemma	batch-007
+kasir	K0363	kasir	lemma	batch-008
 kasur	K0288	kasur	lemma	batch-006
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
@@ -83,6 +88,7 @@ kemungkinan	K0142	mungkin	derived_form	batch-003
 kenaikan	K0069	naik	derived_form	batch-002
 kenal	K0215	kenal	lemma	batch-005
 kenalan	K0215	kenal	derived_form	batch-005
+kendaraan	K0399	kendaraan	lemma	batch-008
 kenyang	K0178	kenyang	lemma	batch-004
 kepagian	K0131	pagi	derived_form	batch-003
 kepala	K0117	kepala	lemma	batch-003
@@ -122,6 +128,7 @@ keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
 khawatir	K0334	khawatir	lemma	batch-007
 kipas	K0285	kipas	lemma	batch-006
+kiri	K0371	kiri	lemma	batch-008
 kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
 kita	K0005	kita	lemma	batch-001
@@ -129,6 +136,7 @@ kompor	K0283	kompor	lemma	batch-006
 komputasi	K0198	komputer	derived_form	batch-004
 komputer	K0198	komputer	lemma	batch-004
 kopi	K0173	kopi	lemma	batch-004
+kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
@@ -154,5 +162,7 @@ lembap	K0318	lembap	lemma	batch-007
 lihat	K0034	lihat	lemma	batch-001
 listrik	K0262	listrik	lemma	batch-006
 lo	K0009	lu	variant	batch-001
+lokasi	K0368	lokasi	lemma	batch-008
 lu	K0009	lu	lemma	batch-001
+luar	K0378	luar	lemma	batch-008
 lupa	K0079	lupa	lemma	batch-002
