@@ -354,3 +354,14 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [ ] Perluas dataset secara bertahap; tambah contoh development yang mewakili kelas kata dan ambiguitas. Test split tetap ditahan.
 
 **Catatan:** skor hanya berlaku untuk 18 kalimat development yang ada, bukan akurasi umum. POS kontekstual belum meningkatkan hasil dibanding POS leksikal pada sampel ini. Jangan memakai test split untuk menyetel aturan.
+
+
+## Koreksi metadata POS lema "jalan" — 27 November 2026
+
+- [x] Menemukan penyebab: entri `K0020` hanya mencantumkan `NOUN` walau catatan penggunaan menyebut fungsi verba.
+- [x] Memperbarui POS lema menjadi `NOUN` dan `VERB`, dengan dua sense yang masing-masing memiliki POS spesifik.
+- [x] Menambahkan regression test integrasi agar token gold ambiguous `jalan` pada development tidak dipaksakan menjadi satu POS.
+- [ ] Jalankan tes evaluator, evaluasi development, dan regression suite penuh dari Termux setelah pull.
+- [ ] Periksa bahwa token ambiguous kini ditahan dan catat metrik evaluasi baru. Jangan menyetel aturan menggunakan test split.
+
+**Status:** koreksi metadata dan tes sudah dikirim ke branch `main`; belum dianggap terverifikasi sampai hasil Termux diterima.
