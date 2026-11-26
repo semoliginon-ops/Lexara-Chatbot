@@ -2,6 +2,7 @@
 # token\tid\tlemma\ttype\tbatch
 maaf	K0247	maaf	lemma	batch-005
 macet	K0398	macet	lemma	batch-008
+madu	K1926	madu	lemma	batch-039
 mager	K0091	mager	lemma	batch-002
 mahal	K0357	mahal	lemma	batch-008
 mahkota	K1452	mahkota	lemma	batch-030
@@ -11,6 +12,7 @@ makam	K1454	makam	lemma	batch-030
 makan	K0013	makan	lemma	batch-001
 makanan	K0013	makan	derived_form	batch-001
 makanya	K0626	makanya	lemma	batch-013
+makaroni	K1927	makaroni	lemma	batch-039
 makasih	K0406	makasih	lemma	batch-009
 makhluk	K1455	makhluk	lemma	batch-030
 makna	K1456	makna	lemma	batch-030
@@ -44,6 +46,7 @@ map	K0301	map	lemma	batch-006
 marah	K0082	marah	lemma	batch-002
 marah-marah	K1461	marah-marah	lemma	batch-030
 maret	K1462	maret	lemma	batch-030
+margarin	K1928	margarin	lemma	batch-039
 marmer	K0962	marmer	lemma	batch-020
 martabak	K0963	martabak	lemma	batch-020
 martil	K0964	martil	lemma	batch-020
@@ -64,6 +67,7 @@ matematika	K0969	matematika	lemma	batch-020
 materi	K0968	materi	lemma	batch-020
 mati	K1464	mati	lemma	batch-030
 mau	K0024	mau	lemma	batch-001
+mayones	K1929	mayones	lemma	batch-039
 medali	K0970	medali	lemma	batch-020
 medan	K0971	medan	lemma	batch-020
 media	K0972	media	lemma	batch-020
@@ -77,6 +81,7 @@ melati	K0975	melati	lemma	batch-020
 melebihi	K0234	lebih	derived_form	batch-005
 melihat	K0034	lihat	derived_form	batch-001
 melodi	K0976	melodi	lemma	batch-020
+melon	K1930	melon	lemma	batch-039
 melupakan	K0079	lupa	derived_form	batch-002
 memaafkan	K0247	maaf	derived_form	batch-005
 memacari	K0113	pacar	derived_form	batch-003
@@ -294,8 +299,10 @@ nalar	K1003	nalar	lemma	batch-021
 nama	K0128	nama	lemma	batch-003
 nampak	K1005	nampak	lemma	batch-021
 namun	K0650	namun	lemma	batch-013
+nanas	K1931	nanas	lemma	batch-039
 nanggung	K0591	nanggung	lemma	batch-012
 nangis	K0426	nangis	lemma	batch-009
+nangka	K1932	nangka	lemma	batch-039
 nanti	K0136	nanti	lemma	batch-003
 napas	K1002	napas	lemma	batch-021
 narasumber	K1488	narasumber	lemma	batch-030
@@ -361,6 +368,7 @@ omongan	K0037	omong	derived_form	batch-001
 ongkos	K1029	ongkos	lemma	batch-021
 operasi	K1030	operasi	lemma	batch-021
 opini	K1031	opini	lemma	batch-021
+opor	K1933	opor	lemma	batch-039
 optimis	K1032	optimis	lemma	batch-021
 orang	K0010	orang	lemma	batch-001
 oranye	K1033	oranye	lemma	batch-021
