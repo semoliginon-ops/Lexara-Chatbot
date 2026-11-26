@@ -655,3 +655,21 @@ Evaluator kini menampilkan semua token development yang belum diputuskan beserta
 GitHub Actions [run #13](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910106880) sukses: validator 100 kalimat/543 token; contextual POS development 208/255 benar, coverage/accuracy 81,6%, selective accuracy 100%, nol kesalahan prediksi yang diputuskan; regression suite **144/144 lulus**. Abstention tersisa: ADJ 2, ADV 3, NOUN 19, VERB 23. Sebagian besar VERB membutuhkan morfologi; sebagian nomina belum ada dalam indeks kamus.
 
 Angka ini hanya dari development, bukan estimasi performa umum. Test split 40 kalimat tetap tertahan. Tahap berikutnya: audit integrasi morfologi verba dan kelengkapan lema nomina.
+
+## Integrasi morfologi dan POS — 27 November 2026
+
+Pipeline kini menghubungkan `analyze_morphology()` dengan `analyze_text()` dan `tag_pos()`. Token kata menyertakan kandidat morfologi yang hanya diterima jika bentuk dasarnya ditemukan pada indeks kamus. Bentuk turunan yang tercatat di kamus juga dapat dianalisis morfologinya; lema utuh dan variasi ejaan tetap dilindungi dari stemming.
+
+POS tagger menggunakan aturan konservatif untuk pola verbal yang telah didukung. Label VERB hanya diberikan jika aturan imbuhan sesuai dan semua kandidat lema dasar yang ditemukan memiliki POS VERB. Pola yang belum cukup kuat tetap abstain; misalnya `bekerja` tidak dipaksakan menjadi VERB hanya karena berawalan `ber-`, sebab lema `kerja` tercatat sebagai NOUN dan pola itu belum memiliki bukti POS turunan eksplisit.
+
+GitHub Actions [run #26](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910648622) sukses:
+- Validator: 100 kalimat, 543 token; 60 development dan 40 test.
+- POS leksikal development: 215/255 benar, coverage/accuracy 84,3%, selective accuracy 100%.
+- POS kontekstual development: 216/255 benar, coverage/accuracy 84,7%, selective accuracy 100%.
+- Kesalahan prediksi pada token yang diputuskan: 0 untuk leksikal dan 0 untuk kontekstual.
+- Abstention: ADJ 2, ADV 3, NOUN 19, VERB 15. Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- Regression suite: **147/147 lulus**.
+
+Hasil ini khusus 60 kalimat development; bukan estimasi akurasi umum. Dibanding evaluasi sebelumnya, abstention VERB turun dari 23 menjadi 15. Empat puluh record test tetap ditahan dan tidak digunakan dalam perubahan ini.
+
+**Titik lanjut:** audit residual VERB (terutama `bekerja`, `memasak`, `membeli`, `menjelaskan`, `bermain`, `ditunda`, `letakkan`, `berteduh`) dan lengkapi lema NOUN yang benar-benar dibutuhkan. Bedakan gap kamus, keterbatasan aturan morfologi, dan kasus POS yang memerlukan metadata bentuk turunan.
