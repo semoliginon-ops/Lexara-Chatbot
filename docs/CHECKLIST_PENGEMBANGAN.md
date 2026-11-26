@@ -370,3 +370,14 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 **Interpretasi:** koreksi metadata membuat fragmen `Jalan.` tetap ambigu sesuai gold label. Hasil POS kontekstual belum lebih baik daripada POS leksikal pada sampel ini. Selective accuracy 100% hanya berlaku pada prediksi yang dikeluarkan; coverage 58,3% dan accuracy keseluruhan 58,3%. Hasil hanya berlaku untuk development set kecil, bukan estimasi akurasi umum.
 
 **Titik lanjut aktif:** perluas dataset POS dari 30 menuju 100 kalimat, dengan penambahan development set yang representatif. Pertahankan test split sebagai data tertahan dan jangan mulai parser kalimat sebelum evaluasi POS development memadai.
+
+
+### Penambahan batch keempat dataset POS — 27 November 2026
+- [x] Menambahkan 10 kalimat baru (`pos_0031`–`pos_0040`): 6 development dan 4 test.
+- [x] Memperluas dataset dari 30 menjadi **40 kalimat**; komposisi menjadi 24 development dan 16 test.
+- [x] Menambahkan variasi percakapan informal, modalitas, imbuhan, konjungsi, interjeksi, demonstrativa, adjektiva, numeralia, dan preposisi.
+- [ ] Tarik batch keempat ke Termux dan jalankan `python -m tools.validasi_dataset_pos`.
+- [ ] Jalankan regression suite penuh setelah validasi: `python -m unittest discover -s tests -v`.
+- [ ] Evaluasi development set setelah validasi; test split tetap ditahan dan tidak digunakan untuk penyetelan.
+
+**Titik lanjut:** verifikasi batch keempat dari checkout Termux. Jumlah token 215 adalah hitungan anotasi sebelum validator dijalankan; jangan tandai batch ini terverifikasi sampai output Termux diterima.
