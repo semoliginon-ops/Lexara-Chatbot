@@ -535,3 +535,18 @@ Dataset POS diperluas dengan 10 record baru (`pos_0031`–`pos_0040`): 6 develop
 4. `python -m tools.evaluasi_pos`
 
 Evaluator hanya memakai split development. Jangan gunakan 16 record test untuk menyetel aturan.
+
+
+## Verifikasi batch keempat dataset POS — 27 November 2026
+
+Pengguna menarik perubahan ke Termux dan menjalankan validator, regression suite, serta evaluator secara berurutan.
+
+- Validator: **40 kalimat, 215 token, 24 development, 16 test — VALIDASI DATASET POS BERHASIL**.
+- Regression suite penuh: **137 tes lulus, 0 gagal, 0 error** (`Ran 137 tests in 0.330s — OK`).
+- Evaluator hanya memakai development: 24 kalimat; 102 resolved, 1 ambiguous, 29 not_applicable.
+- POS leksikal: 56 diprediksi, 55 benar; coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%.
+- POS konteks lokal: hasil identik; belum ada peningkatan terukur.
+- Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- Satu mismatch tercatat: token `mau` pada `pos_0031` berlabel gold `ADV`, sementara sistem memprediksi `VERB`. Perlu audit kebijakan label modalitas sebelum koreksi. Token `wah` (INTJ) tidak diprediksi; ini abstention.
+
+**Titik lanjut:** audit `mau` serta cakupan prediksi kelas POS. Hasil hanya berlaku pada development set 24 kalimat; 16 kalimat test tetap ditahan.
