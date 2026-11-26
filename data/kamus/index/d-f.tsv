@@ -1,6 +1,9 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
+daerah	K0384	daerah	lemma	batch-008
+dagang	K0365	dagang	lemma	batch-008
 daging	K0170	daging	lemma	batch-004
+dalam	K0379	dalam	lemma	batch-008
 dapat	K0203	dapat	lemma	batch-005
 dapur	K0255	dapur	lemma	batch-006
 datang	K0018	datang	lemma	batch-001
@@ -9,6 +12,8 @@ dedaunan	K0161	daun	derived_form	batch-004
 dekat	K0090	dekat	lemma	batch-002
 demam	K0181	demam	lemma	batch-004
 dengar	K0035	dengar	lemma	batch-001
+depan	K0372	depan	lemma	batch-008
+desa	K0387	desa	lemma	batch-008
 detik	K0304	detik	lemma	batch-007
 dia	K0004	dia	lemma	batch-001
 diajak	K0213	ajak	derived_form	batch-005
@@ -98,6 +103,7 @@ disenangi	K0084	senang	derived_form	batch-002
 diseriusi	K0238	serius	derived_form	batch-005
 disetujui	K0244	setuju	derived_form	batch-005
 disibukkan	K0087	sibuk	derived_form	batch-002
+diskon	K0359	diskon	lemma	batch-008
 disukai	K0081	suka	derived_form	batch-002
 ditakuti	K0083	takut	derived_form	batch-002
 ditangani	K0122	tangan	derived_form	batch-003
