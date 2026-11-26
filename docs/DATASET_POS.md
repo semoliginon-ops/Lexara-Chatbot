@@ -237,3 +237,8 @@ Evaluasi hanya menggunakan 24 kalimat development (102 token `resolved`, 1 `ambi
 - Audit menetapkan `mau` pada `Gue mau makan dulu` sebagai `VERB` (verba modal kehendak), selaras dengan entri kamus `K0024`. Label dataset dikoreksi dari `ADV` menjadi `VERB`; tidak ada perubahan kamus atau aturan program. Setelah koreksi, metrik perlu dihitung ulang di Termux. `wah` berlabel `INTJ` belum mendapat prediksi; ini merupakan abstention, bukan prediksi salah.
 
 Interpretasi: penambahan batch menurunkan metrik dibanding sampel sebelumnya, tetapi sampel development juga bertambah dan mencakup fenomena baru. Jangan membandingkan angka sebagai tren kualitas tanpa mempertimbangkan perubahan komposisi. POS kontekstual belum menunjukkan peningkatan dibanding leksikal. Test split 16 kalimat tetap tertahan dan tidak digunakan.
+
+
+## 5.2 Cakupan interjeksi (INTJ)
+
+Kata `aduh` pada `pos_0041` diberi `INTJ` dan memiliki entri kamus `K0602`. Kata `wah` pada `pos_0034` tetap diberi gold `INTJ`, tetapi belum ditemukan pada indeks kamus saat audit 27 November 2026; ini dicatat sebagai kekurangan cakupan leksikal, bukan alasan untuk mengubah label gold atau menambah aturan POS. Jangan mengubah `wah` menjadi kelas lain demi menyesuaikan prediksi. Penambahan kosakata interjeksi dapat dipertimbangkan dalam pengembangan kamus berikutnya setelah evaluasi cakupan.
