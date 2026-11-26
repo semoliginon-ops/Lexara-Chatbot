@@ -303,3 +303,15 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [ ] Evaluasi prediksi POS pada development set; jangan gunakan test untuk penyetelan aturan.
 
 **Titik lanjut:** perjelas pedoman anotasi berdasarkan audit awal. Belum ada label dataset yang diubah dan belum ada klaim akurasi POS.
+
+
+### Pembaruan pedoman anotasi POS — 27 November 2026
+
+- [x] Menetapkan konvensi operasional POS untuk demonstrativa, aspek/modalitas, larangan, gelar/sapaan, kata sebab, dan penanda tanya dalam `docs/DATASET_POS.md` subbagian 5.1.
+- [x] Mencatat keputusan konvensi pada `docs/AUDIT_ANOTASI_POS.md`.
+- [ ] Menarik pembaruan pedoman ke Termux.
+- [ ] Audit ulang 18 kalimat development menggunakan konvensi baru.
+- [ ] Koreksi label gold hanya jika ada ketidaksesuaian yang jelas; jangan mengubah split test.
+- [ ] Jalankan validator dataset dan regression suite setelah koreksi data.
+
+**Titik lanjut:** pengguna menjalankan `git pull`, lalu audit ulang development. Belum ada label JSONL yang diubah dan belum ada klaim akurasi POS.
