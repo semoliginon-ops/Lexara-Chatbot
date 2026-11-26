@@ -15,7 +15,7 @@ import re
 from tools.normalisasi import normalize_text
 
 
-_TOKEN_RE = re.compile(r"(?:[^\W_]+(?:[-'’][^\W_]+)*)|[^\w\s]", re.UNICODE)
+_TOKEN_RE = re.compile(r"(?:[^\W_]+(?:[-'’][^\W_]+)*)|_|[^\w\s]", re.UNICODE)
 
 
 def tokenize(text: str) -> list[str]:
