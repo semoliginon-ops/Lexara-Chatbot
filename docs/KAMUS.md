@@ -134,6 +134,18 @@ Contoh kata bisa memiliki sekurangnya dua makna:
 
 Kedua makna harus disimpan sebagai sense terpisah agar mesin tidak mencampuradukkan makna.
 
+### Anotasi POS khusus bentuk turunan
+
+POS pada bentuk turunan tidak boleh otomatis diwariskan dari lemma. Jika bentuk permukaan mengubah kelas kata atau memiliki fungsi gramatikal yang berbeda, entri dapat menambahkan field opsional `derived_forms_pos`. Field ini berupa objek yang memetakan bentuk turunan persis ke satu atau lebih label POS yang telah ditinjau, misalnya:
+
+    "derived_forms": ["bekerja", "pekerjaan"],
+    "derived_forms_pos": {
+      "bekerja": ["VERB"],
+      "pekerjaan": ["NOUN"]
+    }
+
+Pemetaan hanya berlaku untuk bentuk yang disebutkan secara eksplisit. Bentuk turunan lain tetap berstatus belum diketahui sampai dianotasi. Jangan mengisi field ini berdasarkan tebakan dari imbuhan saja.
+
 ## 7. Prinsip kualitas data
 
 - Satu entri harus memiliki definisi yang jelas dan tidak melingkar.
