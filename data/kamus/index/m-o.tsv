@@ -7,6 +7,7 @@ madu	K1926	madu	lemma	batch-039
 mager	K0091	mager	lemma	batch-002
 magma	K2684	magma	lemma	batch-054
 mahal	K0357	mahal	lemma	batch-008
+mahkamah konstitusi	K2930	mahkamah konstitusi	lemma	batch-059
 mahkota	K1452	mahkota	lemma	batch-030
 main	K0074	main	lemma	batch-002
 maju	K1453	maju	lemma	batch-030
@@ -59,6 +60,7 @@ martabak manis	K2136	martabak manis	lemma	batch-043
 martabak telur	K2135	martabak telur	lemma	batch-043
 martil	K0964	martil	lemma	batch-020
 masa	K0627	masa	lemma	batch-013
+masa jabatan	K2924	masa jabatan	lemma	batch-059
 masak	K0052	masak	lemma	batch-002
 masakan	K0052	masak	derived_form	batch-002
 masalah	K0628	masalah	lemma	batch-013
@@ -378,6 +380,7 @@ nasihat	K1489	nasihat	lemma	batch-030
 nasional	K1490	nasional	lemma	batch-030
 natal	K1491	natal	lemma	batch-030
 negara	K1492	negara	lemma	batch-030
+negara hukum	K2925	negara hukum	lemma	batch-059
 negeri	K1493	negeri	lemma	batch-030
 negosiasi	K1487	negosiasi	lemma	batch-030
 nelayan	K1494	nelayan	lemma	batch-030
