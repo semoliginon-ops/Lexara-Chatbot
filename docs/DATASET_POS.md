@@ -257,3 +257,19 @@ Batch keenam menambahkan `pos_0051`–`pos_0060`: enam kalimat development dan e
 ### Verifikasi otomatis batch keenam
 
 GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) berhasil menjalankan validator Python, evaluator development-only, dan regression suite. Validator: **60 kalimat, 314 token, 36 development, 24 test**. Evaluator memuat 36 kalimat development, 148 token resolved, 90 prediksi benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan. Regression suite: **137/137 lulus**. Angka ini hanya untuk development set dan tidak mewakili akurasi umum; test split 24 kalimat tetap tidak digunakan.
+
+
+## 14. Suplementasi POS terfokus — 27 November 2026
+
+Untuk menangani gap kosakata yang ditemukan pada development set, proyek menambahkan fallback terpisah dari kamus inti melalui `tools/pos_supplement.py`. Fallback ini bukan entri kamus dan tidak mengubah jumlah 3.000 lema. Daftar awal dibatasi pada 12 bentuk yang didukung contoh development dan konvensi POS v1: `dua`, `tiga` (NUM); `di`, `ke`, `pada` (PREP); `atau`, `kalau`, `tetapi` (CONJ); `akan`, `sedang`, `sangat`, `sekali` (ADV).
+
+Aturan integrasi:
+1. Kandidat dari kamus selalu diprioritaskan.
+2. Fallback hanya digunakan jika token kata tidak memiliki kandidat kamus.
+3. Bentuk turunan yang ditandai `requires_morphology` tidak diberi POS melalui fallback.
+4. Kata yang berpotensi memiliki fungsi berbeda tidak dimasukkan hanya demi menaikkan coverage; `dulu` dan `tetap` tetap di luar daftar awal.
+5. Sumber keputusan dicatat melalui `pos_source` (`dictionary`, `supplement`, `unknown`, atau status terkait).
+
+Verifikasi GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908285217): validator 60 kalimat/314 token; evaluasi development 148 token resolved, 107 benar, coverage 72,3%, accuracy 72,3%, selective accuracy 100%; regression suite 141/141 lulus. Satu gold ambiguous tetap ditahan dan tidak dipaksakan. Test split 24 kalimat tidak digunakan.
+
+Angka coverage 72,3% adalah hasil pada 36 kalimat development yang tersedia, bukan akurasi umum. POS kontekstual belum menambah metrik di atas POS leksikal.
