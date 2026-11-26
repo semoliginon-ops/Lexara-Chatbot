@@ -373,9 +373,9 @@ Pengguna menjalankan `python -m unittest discover -s tests -v` dari checkout `~/
 - Total rancangan dataset menjadi **30 kalimat, 156 token, 18 development, 12 test**.
 - Fenomena tambahan mencakup kalimat perintah, konjungsi subordinatif, negasi, numeralia, kata ulang, bentuk berimbuhan, dan pronomina interogatif.
 - Pengguna menjalankan `python -m tools.validasi_dataset_pos` di Termux setelah `git pull`; hasil **VALIDASI DATASET POS BERHASIL**: 30 kalimat, 156 token, 18 development, 12 test. Pemeriksaan JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer lulus (27 November 2026).
-- Regression suite penuh 132/132 lulus pada verifikasi sebelumnya, sebelum batch ketiga ditambahkan. Belum ada klaim regression test setelah perubahan data ini.
+- Setelah batch ketiga ditarik dan divalidasi, pengguna menjalankan `python -m unittest discover -s tests -v`: **Ran 132 tests in 0.105s — OK**, 0 gagal dan 0 error (27 November 2026).
 
-**Titik lanjut:** jalankan ulang regression suite penuh setelah batch ketiga, lalu audit mutu anotasi pada development set. Test split tetap ditahan.
+**Titik lanjut:** audit mutu anotasi pada development set. Test split tetap ditahan.
 
 
 ### Verifikasi validasi dataset POS batch ketiga — 27 November 2026
@@ -388,3 +388,17 @@ Dari Termux, pengguna menjalankan `python -m tools.validasi_dataset_pos` setelah
 - Jumlah token aktual 156; angka 155 sebelumnya merupakan perkiraan sebelum validator dijalankan.
 - Regression suite penuh terakhir yang dikonfirmasi masih 132/132 sebelum batch ketiga ditambahkan. Jalankan ulang untuk verifikasi terbaru.
 
+
+
+### Verifikasi regression suite setelah batch ketiga — 27 November 2026
+
+Pengguna menjalankan `git pull && python -m unittest discover -s tests -v` dari Termux setelah dokumentasi validasi batch ketiga diperbarui.
+
+- `git pull` berhasil fast-forward ke commit dokumentasi terbaru.
+- Hasil: **Ran 132 tests in 0.105s — OK**.
+- Jumlah kegagalan: 0; jumlah error: 0.
+- Seluruh kelompok tes analisis teks, loader kamus, morfologi, normalisasi, pencocokan kamus, POS kontekstual, POS leksikal, tokenizer, dan validator dataset POS lulus.
+- Dataset pada checkout ini telah lolos validasi: 30 kalimat, 156 token, 18 development, 12 test.
+- Hasil ini membuktikan regresi tes yang tersedia tetap lulus; belum mengukur akurasi POS atau memvalidasi kebenaran semantik seluruh anotasi gold.
+
+**Titik lanjut:** audit kualitas anotasi pada development set, pertahankan test split sebagai data tertahan.
