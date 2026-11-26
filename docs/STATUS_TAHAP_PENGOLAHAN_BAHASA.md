@@ -57,20 +57,20 @@ Branch kerja: `main`
 - Tokenizer: 12 tes lulus, 0 gagal.
 - Loader kamus: 12 tes lulus, 0 gagal.
 - Pencocokan kamus: 13 tes lulus, 0 gagal.
-- Total: **45 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
+- Total fondasi: **45 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
 - Struktur dasar seluruh 60 file batch (3.000 entri) telah diperiksa melalui konten GitHub: format JSON, field wajib, ID, lema, dan struktur sense. Ini bukan pengganti eksekusi langsung loader Python terhadap seluruh file.
 - Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat.
 - Integrasi normalisasi, tokenizer, dan pencocokan kamus tersedia di `tools/analisis_teks.py` melalui fungsi `analyze_text(text, lexicon)`. Indeks leksikal dibangun sekali dengan `build_lexicon(entries)` lalu dapat digunakan ulang untuk beberapa masukan.
 - Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
 - 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
 - Prototipe morfologi tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Versi terbaru menambahkan kandidat konfiks ke-an, per-an, peN-an, bentuk menge-, serta perapian urutan prefiks. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
-- Versi morfologi terkini memiliki **42 regression tests yang telah dijalankan pada lingkungan Python lokal terisolasi: 42 lulus, 0 gagal**. Tes negatif mencakup bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, `perang`, `terapi`, dan `mereka` agar tidak salah dipotong sebagai imbuhan. Tes tambahan juga memastikan prefiks `penge-` tidak menghasilkan kandidat palsu melalui pemotongan `pen-`, mempertahankan seluruh POS dan sense ketika lema dasar ambigu, serta mencakup bentuk `memperindah`. Kasus `memperbaiki` dan `mempermainkan` telah dijalankan bersama suite. Tes baru `diperbaiki` memverifikasi imbuhan bertingkat `di- + per- + -i` dan menghasilkan kandidat `baik`.
-- Total pengujian komponen yang telah dijalankan secara terpisah kini **95 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 42 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan Python lokal terisolasi.
+- Versi morfologi terkini memiliki **47 regression tests yang telah dijalankan pada lingkungan Python lokal terisolasi: 47 lulus, 0 gagal**. Tes negatif mencakup bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, `perang`, `terapi`, dan `mereka` agar tidak salah dipotong sebagai imbuhan. Tes tambahan juga memastikan prefiks `penge-` tidak menghasilkan kandidat palsu melalui pemotongan `pen-`, mempertahankan seluruh POS dan sense ketika lema dasar ambigu, serta mencakup bentuk `memperindah`. Kasus `memperbaiki` dan `mempermainkan` telah dijalankan bersama suite. Tes baru `diperbaiki` memverifikasi imbuhan bertingkat `di- + per- + -i` dan menghasilkan kandidat `baik`.
+- Total pengujian komponen yang telah dijalankan secara terpisah kini **100 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 47 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan Python lokal terisolasi.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap 2.1 dan 2.2 selesai; fondasi loader untuk 2.3 sudah tersedia.**
+**Subtahap 2.1 dan 2.2 selesai; integrasi analyzer 2.3 tersedia; validasi loader seluruh kamus masih terbuka. Prototipe morfologi 2.4 memiliki 47/47 tes lulus pada lingkungan terisolasi.**
 
 Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, dan pencocokan kamus 13/13. Total 45/45 regression tests lulus pada lingkungan Python lokal terisolasi. Struktur dasar seluruh 60 batch (3.000 entri) juga telah diperiksa dari konten GitHub. Namun, eksekusi fungsi loader Python terhadap seluruh 60 file aktual belum dilakukan. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
 
