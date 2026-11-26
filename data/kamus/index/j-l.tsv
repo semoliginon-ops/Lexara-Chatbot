@@ -5,11 +5,13 @@ jalan	K0020	jalan	lemma	batch-001
 jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jangan	K0145	jangan	lemma	batch-003
+janji	K0448	janji	lemma	batch-009
 jauh	K0369	jauh	lemma	batch-008
 jawab	K0190	jawab	lemma	batch-004
 jawaban	K0190	jawab	derived_form	batch-004
 jelek	K0042	jelek	lemma	batch-001
 jembatan	K0390	jembatan	lemma	batch-008
+jemput	K0415	jemput	lemma	batch-009
 jendela	K0257	jendela	lemma	batch-006
 jual	K0056	jual	lemma	batch-002
 jualan	K0056	jual	derived_form	batch-002
@@ -17,6 +19,7 @@ juga	K0150	juga	lemma	batch-003
 jujur	K0240	jujur	lemma	batch-005
 julid	K0096	julid	lemma	batch-002
 kabar	K0193	kabar	lemma	batch-004
+kabur	K0421	kabur	lemma	batch-009
 kadang	K0141	kadang	lemma	batch-003
 kadang-kadang	K0141	kadang	derived_form	batch-003
 kaget	K0339	kaget	lemma	batch-007
@@ -24,14 +27,17 @@ kain	K0272	kain	lemma	batch-006
 kakak	K0108	kakak	lemma	batch-003
 kakak-kakak	K0108	kakak	derived_form	batch-003
 kaki	K0123	kaki	lemma	batch-003
+kalah	K0425	kalah	lemma	batch-009
 kalender	K0294	kalender	lemma	batch-006
 kamar	K0254	kamar	lemma	batch-006
 kami	K0006	kami	lemma	batch-001
 kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
 kanan	K0370	kanan	lemma	batch-008
+kantor	K0437	kantor	lemma	batch-009
 karena	K0151	karena	lemma	batch-003
 kasar	K0348	kasar	lemma	batch-007
+kasih	K0408	kasih	lemma	batch-009
 kasir	K0363	kasir	lemma	batch-008
 kasur	K0288	kasur	lemma	batch-006
 kebapakan	K0103	bapak	derived_form	batch-003
@@ -123,6 +129,7 @@ kesukaan	K0081	suka	derived_form	batch-002
 kesusahan	K0088	susah	derived_form	batch-002
 ketahuan	K0039	tahu	derived_form	batch-001
 ketakutan	K0083	takut	derived_form	batch-002
+ketawa	K0427	ketawa	lemma	batch-009
 ketemu	K0216	ketemu	lemma	batch-005
 keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
@@ -140,6 +147,7 @@ kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
+kunjung	K0418	kunjung	lemma	batch-009
 kurang	K0233	kurang	lemma	batch-005
 kursi	K0253	kursi	lemma	batch-006
 lambat	K0046	lambat	lemma	batch-001
