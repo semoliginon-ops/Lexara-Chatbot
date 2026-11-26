@@ -1,6 +1,7 @@
 # Token index — j-l
 # token\tid\tlemma\ttype\tbatch
 jabatan	K0902	jabatan	lemma	batch-019
+jabatan publik	K2917	jabatan publik	lemma	batch-059
 jack audio	K2435	jack audio	lemma	batch-049
 jadinya	K0622	jadinya	lemma	batch-013
 jadwal	K1376	jadwal	lemma	batch-028
@@ -37,6 +38,7 @@ jarak	K1381	jarak	lemma	batch-028
 jarang	K0566	jarang	lemma	batch-012
 jari	K0906	jari	lemma	batch-019
 jaring	K1382	jaring	lemma	batch-028
+jaringan kriminal	K2936	jaringan kriminal	lemma	batch-059
 jarum	K2317	jarum	lemma	batch-047
 jas	K2648	jas	lemma	batch-053
 jas hujan	K2620	jas hujan	lemma	batch-053
@@ -83,6 +85,7 @@ jumlah	K1388	jumlah	lemma	batch-028
 jumpa	K1389	jumpa	lemma	batch-028
 jurang	K2730	jurang	lemma	batch-055
 jurnal	K1390	jurnal	lemma	batch-028
+juru kampanye	K2918	juru kampanye	lemma	batch-059
 juru masak	K2466	juru masak	lemma	batch-050
 juru parkir	K2479	juru parkir	lemma	batch-050
 jus alpukat	K2046	jus alpukat	lemma	batch-041
@@ -143,6 +146,7 @@ kamera saku	K2416	kamera saku	lemma	batch-049
 kamera web	K2364	kamera web	lemma	batch-048
 kami	K0006	kami	lemma	batch-001
 kampanye	K2865	kampanye	lemma	batch-058
+kampanye hitam	K2919	kampanye hitam	lemma	batch-059
 kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
 kanan	K0370	kanan	lemma	batch-008
@@ -174,6 +178,7 @@ kartu memori	K2366	kartu memori	lemma	batch-048
 kartu SIM	K2367	kartu SIM	lemma	batch-048
 karyawan	K2467	karyawan	lemma	batch-050
 kasar	K0348	kasar	lemma	batch-007
+kasasi	K2946	kasasi	lemma	batch-059
 kaset audio	K2441	kaset audio	lemma	batch-049
 kasih	K0408	kasih	lemma	batch-009
 kasihan	K1395	kasihan	lemma	batch-028
@@ -222,6 +227,7 @@ kecuali	K0573	kecuali	lemma	batch-012
 kecukupan	K0232	cukup	derived_form	batch-005
 kedai	K0931	kedai	lemma	batch-019
 kedatangan	K0018	datang	derived_form	batch-001
+kedaulatan	K2920	kedaulatan	lemma	batch-059
 kedekatan	K0090	dekat	derived_form	batch-002
 kedengaran	K0035	dengar	derived_form	batch-001
 kedokteran	K0183	dokter	derived_form	batch-004
@@ -235,6 +241,8 @@ keibuan	K0104	ibu	derived_form	batch-003
 keikutsertaan	K0212	ikut	derived_form	batch-005
 keinginan	K0025	ingin	derived_form	batch-001
 kejahatan	K2878	kejahatan	lemma	batch-058
+kejahatan seksual	K2938	kejahatan seksual	lemma	batch-059
+kejahatan siber	K2937	kejahatan siber	lemma	batch-059
 kejar	K0932	kejar	lemma	batch-019
 kejelekan	K0042	jelek	derived_form	batch-001
 keju	K1917	keju	lemma	batch-039
@@ -242,6 +250,7 @@ kejujuran	K0240	jujur	derived_form	batch-005
 kejulidan	K0096	julid	derived_form	batch-002
 kekeluargaan	K0101	keluarga	derived_form	batch-003
 kekenyangan	K0178	kenyang	derived_form	batch-004
+kekerasan	K2939	kekerasan	lemma	batch-059
 kekurangan	K0233	kurang	derived_form	batch-005
 kelambatan	K0046	lambat	derived_form	batch-001
 kelanjutan	K0226	lanjut	derived_form	batch-005
@@ -290,6 +299,7 @@ kenyang	K0178	kenyang	lemma	batch-004
 kenyataan	K1396	kenyataan	lemma	batch-028
 kepagian	K0131	pagi	derived_form	batch-003
 kepala	K0117	kepala	lemma	batch-003
+kepala daerah	K2921	kepala daerah	lemma	batch-059
 kepanasan	K0251	panas	derived_form	batch-005
 kepastian	K0235	pasti	derived_form	batch-005
 kepercayaan	K0241	percaya	derived_form	batch-005
@@ -302,6 +312,7 @@ kepulangan	K0019	pulang	derived_form	batch-001
 Kepulauan Seribu Selatan	K2851	Kepulauan Seribu Selatan	lemma	batch-057
 Kepulauan Seribu Utara	K2850	Kepulauan Seribu Utara	lemma	batch-057
 kepunyaan	K0202	punya	derived_form	batch-005
+keputusan politik	K2922	keputusan politik	lemma	batch-059
 kera	K2232	kera	lemma	batch-045
 keraguan	K0243	ragu	derived_form	batch-005
 keramaian	K0249	ramai	derived_form	batch-005
@@ -502,6 +513,7 @@ lekas	K1424	lekas	lemma	batch-029
 lelah	K0581	lelah	lemma	batch-012
 lelet	K0582	lelet	lemma	batch-012
 lemari	K0291	lemari	lemma	batch-006
+lembaga negara	K2923	lembaga negara	lemma	batch-059
 lembah	K2664	lembah	lemma	batch-054
 lembap	K0318	lembap	lemma	batch-007
 lembut	K1425	lembut	lemma	batch-029
