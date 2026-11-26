@@ -3,11 +3,13 @@
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
 gagal	K0423	gagal	lemma	batch-009
+gaje	K0680	gaje	lemma	batch-014
 gak	K0029	enggak	variant	batch-001
 gampang	K0559	gampang	lemma	batch-012
 gang	K0389	gang	lemma	batch-008
 ganti	K0221	ganti	lemma	batch-005
 gantian	K0221	ganti	derived_form	batch-005
+gapapa	K0659	gapapa	lemma	batch-014
 gara-gara	K0617	gara-gara	lemma	batch-013
 garam	K0171	garam	lemma	batch-004
 garpu	K0280	garpu	lemma	batch-006
@@ -17,6 +19,8 @@ gercep	K0100	gercep	lemma	batch-002
 gimana	K0618	gimana	lemma	batch-013
 gini	K0620	gini	lemma	batch-013
 gitu	K0619	gitu	lemma	batch-013
+gituan	K0660	gituan	lemma	batch-014
+gokil	K0681	gokil	lemma	batch-014
 goreng	K0465	goreng	lemma	batch-010
 gratis	K0358	gratis	lemma	batch-008
 gua	K0008	gue	variant	batch-001
@@ -50,6 +54,7 @@ ibarat	K0563	ibarat	lemma	batch-012
 ibu	K0104	ibu	lemma	batch-003
 ikan	K0168	ikan	lemma	batch-004
 ikut	K0212	ikut	lemma	batch-005
+ilfeel	K0682	ilfeel	lemma	batch-014
 imbang	K0564	imbang	lemma	batch-012
 ingat	K0078	ingat	lemma	batch-002
 ingatan	K0078	ingat	derived_form	batch-002
@@ -57,6 +62,7 @@ ingin	K0025	ingin	lemma	batch-001
 internet	K0197	internet	lemma	batch-004
 iri	K0342	iri	lemma	batch-007
 iris	K0472	iris	lemma	batch-010
+iseng	K0697	iseng	lemma	batch-014
 istri	K0112	istri	lemma	batch-003
 iya	K0030	iya	lemma	batch-001
 izin	K0246	izin	lemma	batch-005
