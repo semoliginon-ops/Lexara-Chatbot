@@ -33,9 +33,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 - [x] Membuat modul `tools/normalisasi.py`.
 - [x] Membuat 8 regression tests di `tests/test_normalisasi.py`.
-- [ ] Menjalankan seluruh tes normalisasi.
-- [ ] Memeriksa hasil tes dan memperbaiki jika ditemukan kegagalan.
-- [ ] Menetapkan normalisasi sebagai baseline yang tervalidasi.
+- [x] Menjalankan seluruh tes normalisasi pada lingkungan Python lokal terisolasi.
+- [x] Memeriksa hasil: 8 tes lulus, 0 gagal; tidak ditemukan masalah.
+- [x] Menetapkan normalisasi sebagai baseline awal yang tervalidasi.
 
 ### 2.2 Tokenisasi
 
@@ -132,15 +132,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Tahap 2.1 — Validasi normalisasi teks.**
+**Tahap 2.2 — Tokenisasi.**
 
-Jalankan perintah berikut dari root repository:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-Setelah hasilnya dicatat dan tes tervalidasi, lanjutkan ke Tahap 2.2 — Tokenisasi.
+Validasi normalisasi telah dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan isi modul dan tes yang diambil dari GitHub. Hasil: 8 tes lulus, 0 gagal. GitHub Actions tidak dijalankan. Lanjutkan dengan merancang dan membuat tokenizer.
 
 ## Dokumen rujukan
 
