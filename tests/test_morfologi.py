@@ -19,15 +19,12 @@ def entry(entry_id, lemma):
 
 class MorphologyTests(unittest.TestCase):
     def setUp(self):
+        lemmas = [
+            "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
+            "main", "indah", "baik", "bangun", "cat", "kerja",
+        ]
         self.lexicon = build_lexicon([
-            entry("K0001", "makan"),
-            entry("K0002", "ajar"),
-            entry("K0003", "pukul"),
-            entry("K0004", "tulis"),
-            entry("K0005", "sapu"),
-            entry("K0006", "lari"),
-            entry("K0007", "anak"),
-            entry("K0008", "main"),
+            entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
         ])
 
     def bases(self, token):
@@ -65,6 +62,24 @@ class MorphologyTests(unittest.TestCase):
 
     def test_unknown_form_is_not_forced(self):
         self.assertEqual(analyze_morphology("memperindah", self.lexicon), [])
+
+    def test_confix_ke_an(self):
+        self.assertIn("indah", self.bases("keindahan"))
+
+    def test_confix_ke_an_second_example(self):
+        self.assertIn("baik", self.bases("kebaikan"))
+
+    def test_confix_per_an(self):
+        self.assertIn("main", self.bases("permainan"))
+
+    def test_confix_peN_an_nasal_p(self):
+        self.assertIn("bangun", self.bases("pembangunan"))
+
+    def test_confix_peN_an_nasal_k(self):
+        self.assertIn("ajar", self.bases("pengajaran"))
+
+    def test_prefix_menge(self):
+        self.assertIn("cat", self.bases("mengecat"))
 
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError):
