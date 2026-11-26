@@ -73,6 +73,8 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
     gold: list[str] = []
     lexical_predictions: list[str | None] = []
     contextual_predictions: list[str | None] = []
+    lexical_errors: list[dict[str, Any]] = []
+    contextual_errors: list[dict[str, Any]] = []
     gold_status_counts: Counter[str] = Counter()
     ambiguous_abstained = 0
     ambiguous_forced = 0
@@ -101,9 +103,20 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
             contextual_prediction = contextual_item.get("context_pos")
 
             if status == "resolved":
-                gold.append(annotation["gold_pos"])
+                gold_label = annotation["gold_pos"]
+                gold.append(gold_label)
                 lexical_predictions.append(lexical_prediction)
                 contextual_predictions.append(contextual_prediction)
+                error_context = {
+                    "record_id": record.get("id"),
+                    "text": record["text"],
+                    "token": annotation["token"],
+                    "gold": gold_label,
+                }
+                if lexical_prediction is not None and lexical_prediction != gold_label:
+                    lexical_errors.append({**error_context, "predicted": lexical_prediction})
+                if contextual_prediction is not None and contextual_prediction != gold_label:
+                    contextual_errors.append({**error_context, "predicted": contextual_prediction})
             elif status == "ambiguous":
                 ambiguous_abstained += contextual_prediction is None
                 ambiguous_forced += contextual_prediction is not None
@@ -114,6 +127,10 @@ def evaluate_records(records: list[dict[str, Any]], lexicon: dict) -> dict[str, 
         "resolved": len(gold),
         "lexical": _score(gold, lexical_predictions),
         "contextual": _score(gold, contextual_predictions),
+        "misclassifications": {
+            "lexical": lexical_errors,
+            "contextual": contextual_errors,
+        },
         "ambiguous": {
             "total": ambiguous_abstained + ambiguous_forced,
             "abstained": ambiguous_abstained,
@@ -152,6 +169,17 @@ def main() -> int:
     print(f"Token resolved     : {result['resolved']}")
     _print_score("POS LEKSIKAL", result["lexical"])
     _print_score("POS DENGAN KONTEKS LOKAL", result["contextual"])
+    print("KESALAHAN PREDIKSI PADA DEVELOPMENT")
+    for method in ("lexical", "contextual"):
+        errors = result["misclassifications"][method]
+        print(f"  {method}: {len(errors)} kesalahan")
+        for error in errors:
+            print(
+                "    "
+                f"{error['record_id']} | {error['token']!r} | "
+                f"gold={error['gold']} | prediksi={error['predicted']} | "
+                f"kalimat={error['text']}"
+            )
     print("PENANGANAN GOLD AMBIGUOUS")
     print(f"  Total     : {result['ambiguous']['total']}")
     print(f"  Ditahan   : {result['ambiguous']['abstained']}")
