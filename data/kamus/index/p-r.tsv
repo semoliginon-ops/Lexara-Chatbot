@@ -11,6 +11,8 @@ paham	K0040	paham	lemma	batch-001
 pahit	K0461	pahit	lemma	batch-010
 pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
+pakaian dalam	K2615	pakaian dalam	lemma	batch-053
+pakaian olahraga	K2616	pakaian olahraga	lemma	batch-053
 paling	K0630	paling	lemma	batch-013
 pamer	K1504	pamer	lemma	batch-031
 pamit	K1038	pamit	lemma	batch-021
@@ -46,6 +48,7 @@ payah	K1512	payah	lemma	batch-031
 payung	K2324	payung	lemma	batch-047
 pecah	K1513	pecah	lemma	batch-031
 pecat	K1514	pecat	lemma	batch-031
+peci	K2627	peci	lemma	batch-053
 pedagang	K2473	pedagang	lemma	batch-050
 pedas	K0458	pedas	lemma	batch-010
 pede	K0600	pede	lemma	batch-012
@@ -153,6 +156,7 @@ pengundang	K0214	undang	derived_form	batch-005
 pengurangan	K0233	kurang	derived_form	batch-005
 pengusaha	K0229	usaha	derived_form	batch-005
 peninggalan	K0206	tinggal	derived_form	batch-005
+peniti	K2650	peniti	lemma	batch-053
 penjahit	K2477	penjahit	lemma	batch-050
 penjemputan	K2542	penjemputan	lemma	batch-051
 penjual	K0056	jual	derived_form	batch-002
@@ -259,6 +263,7 @@ piring	K0277	piring	lemma	batch-006
 pisang	K1937	pisang	lemma	batch-039
 pisang goreng	K2039	pisang goreng	lemma	batch-041
 pisau	K0281	pisau	lemma	batch-006
+piyama	K2621	piyama	lemma	batch-053
 pizza	K1938	pizza	lemma	batch-039
 pohon	K0159	pohon	lemma	batch-004
 pokoknya	K0631	pokoknya	lemma	batch-013
@@ -368,7 +373,10 @@ risoles	K1988	risoles	lemma	batch-040
 riwayat	K1094	riwayat	lemma	batch-022
 robek	K1095	robek	lemma	batch-022
 roda	K0497	roda	lemma	batch-010
+rok panjang	K2613	rok panjang	lemma	batch-053
+rok pendek	K2614	rok pendek	lemma	batch-053
 rombak	K1096	rombak	lemma	batch-022
+rompi	K2618	rompi	lemma	batch-053
 ronda	K1097	ronda	lemma	batch-022
 rontok	K1098	rontok	lemma	batch-022
 roti	K0166	roti	lemma	batch-004
