@@ -58,21 +58,21 @@ Branch kerja: `main`
 - Loader kamus: 12 tes lulus, 0 gagal.
 - Pencocokan kamus: 13 tes lulus, 0 gagal.
 - Total fondasi: **45 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
-- Struktur dasar seluruh 60 file batch (3.000 entri) telah diperiksa melalui konten GitHub: format JSON, field wajib, ID, lema, dan struktur sense. Ini bukan pengganti eksekusi langsung loader Python terhadap seluruh file.
+- **Validasi langsung checkout penuh melalui Termux (27 November 2026):** `python -m tools.validasi_kamus_lengkap` menghasilkan `VALIDASI BERHASIL`; 60 batch dan 3.000 entri dimuat. Pemeriksaan JSONL, field wajib, format ID, array wajib, ID duplikat, dan lema duplikat lulus.
 - Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat.
 - Integrasi normalisasi, tokenizer, dan pencocokan kamus tersedia di `tools/analisis_teks.py` melalui fungsi `analyze_text(text, lexicon)`. Indeks leksikal dibangun sekali dengan `build_lexicon(entries)` lalu dapat digunakan ulang untuk beberapa masukan.
 - Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
 - 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
 - Prototipe morfologi tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Versi terbaru menambahkan kandidat konfiks ke-an, per-an, peN-an, bentuk menge-, serta perapian urutan prefiks. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
 - Versi morfologi terkini memiliki **47 regression tests yang telah dijalankan pada lingkungan Python lokal terisolasi: 47 lulus, 0 gagal**. Tes negatif mencakup bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, `perang`, `terapi`, dan `mereka` agar tidak salah dipotong sebagai imbuhan. Tes tambahan juga memastikan prefiks `penge-` tidak menghasilkan kandidat palsu melalui pemotongan `pen-`, mempertahankan seluruh POS dan sense ketika lema dasar ambigu, serta mencakup bentuk `memperindah`. Kasus `memperbaiki` dan `mempermainkan` telah dijalankan bersama suite. Tes baru `diperbaiki` memverifikasi imbuhan bertingkat `di- + per- + -i` dan menghasilkan kandidat `baik`.
-- Total pengujian komponen yang telah dijalankan secara terpisah kini **100 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 47 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan Python lokal terisolasi.
+- **Regression suite checkout penuh melalui Termux (27 November 2026):** `python -m unittest discover -s tests -v` dijalankan dari root repository dan menghasilkan `Ran 100 tests ... OK` — **100 lulus, 0 gagal**. Rinciannya: analyzer 8, loader 12, morfologi 47, normalisasi 8, pencocokan kamus 13, tokenizer 12. Ini merupakan satu kali eksekusi gabungan dari checkout penuh, berbeda dari pengujian komponen terisolasi sebelumnya.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap 2.1 dan 2.2 selesai; integrasi analyzer 2.3 tersedia; validasi loader seluruh kamus masih terbuka. Prototipe morfologi 2.4 memiliki 47/47 tes lulus pada lingkungan terisolasi.**
+**Subtahap 2.1–2.4 telah memiliki fondasi dan regression suite yang lulus. Validasi seluruh kamus dan regression suite checkout penuh selesai pada 27 November 2026 melalui Termux. Tahap berikutnya: POS (2.5).**
 
-Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, dan pencocokan kamus 13/13. Total 45/45 regression tests lulus pada lingkungan Python lokal terisolasi. Struktur dasar seluruh 60 batch (3.000 entri) juga telah diperiksa dari konten GitHub. Namun, eksekusi fungsi loader Python terhadap seluruh 60 file aktual belum dilakukan. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
+Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, pencocokan kamus 13/13, analyzer 8/8, dan morfologi 47/47. Pada 27 November 2026, validator memuat seluruh 60 batch (3.000 entri) dan regression suite gabungan dari checkout penuh menjalankan 100 tes; seluruhnya lulus. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
@@ -111,7 +111,7 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Buat `tools/kamus_loader.py` sebagai loader baca-saja; isi entri dipertahankan tanpa modifikasi.
 - [x] Tambahkan 12 regression tests untuk pemuatan batch, urutan batch, validasi struktur, serta deteksi ID/lemma duplikat.
 - [x] Hasil uji lokal loader: 12 lulus, 0 gagal.
-- [ ] Jalankan fungsi loader Python langsung terhadap seluruh 60 file batch aktual; audit struktur melalui konten GitHub saja belum mencukupi.
+- [x] Jalankan fungsi loader Python langsung terhadap seluruh 60 file batch aktual dari checkout Termux; 60 batch/3.000 entri berhasil dimuat.
 - [x] Buat pencocokan token terhadap lemma, variants, dan derived_forms.
 - [x] Pertahankan seluruh kandidat dan sense/POS; jangan putuskan makna tanpa konteks.
 - [x] Integrasikan normalisasi, tokenizer, dan pencocokan leksikal dalam `tools/analisis_teks.py`.
@@ -220,7 +220,7 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru memperbaiki konflik prefiks bertumpuk agar prefiks terpanjang yang cocok dipakai dan kandidat palsu dari pemotongan prefiks pendek tidak ikut dihasilkan. Aturan prefiks `memper-` juga ditambahkan agar bentuk seperti `memperindah` dapat menghasilkan kandidat lema `indah`; tes negatif untuk bentuk tak dikenal menggunakan `memperxyz`. Sebanyak 38 tes morfologi lulus; total 91 tes komponen lulus secara terpisah. Tes imbuhan bertingkat `diperbaiki` ditambahkan dan dijalankan bersama seluruh suite: 33 lulus, 0 gagal. Aturan baru mengurai lapisan `di-`, lalu `per-`, lalu sufiks `-i`, dengan kandidat akhir tetap harus ditemukan di kamus. Pengujian dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan sumber repository. 
+**Titik lanjut (diperbarui 27 November 2026):** validasi loader seluruh 60 batch dan regression suite checkout penuh telah berhasil dijalankan melalui Termux. `python -m tools.validasi_kamus_lengkap` memuat 60 batch/3.000 entri; `python -m unittest discover -s tests -v` menghasilkan 100 tes lulus, 0 gagal. Lanjutkan ke Tahap 2.5 — POS. Catatan lama setelah bagian ini adalah riwayat perkembangan dan tidak mengesampingkan hasil validasi checkout penuh terbaru. Versi morfologi terbaru memperbaiki konflik prefiks bertumpuk agar prefiks terpanjang yang cocok dipakai dan kandidat palsu dari pemotongan prefiks pendek tidak ikut dihasilkan. Aturan prefiks `memper-` juga ditambahkan agar bentuk seperti `memperindah` dapat menghasilkan kandidat lema `indah`; tes negatif untuk bentuk tak dikenal menggunakan `memperxyz`. Sebanyak 38 tes morfologi lulus; total 91 tes komponen lulus secara terpisah. Tes imbuhan bertingkat `diperbaiki` ditambahkan dan dijalankan bersama seluruh suite: 33 lulus, 0 gagal. Aturan baru mengurai lapisan `di-`, lalu `per-`, lalu sufiks `-i`, dengan kandidat akhir tetap harus ditemukan di kamus. Pengujian dilakukan pada lingkungan Python lokal terisolasi menggunakan salinan sumber repository. 
 
 
 **Pembaruan imbuhan bertingkat:** aturan `di- + per- + sufiks` dibatasi ke sufiks `-i` dan `-kan`; sufiks `-an` dikecualikan agar pola nominal tidak dianggap sebagai bentuk pasif. Tes negatif `diperkerjaan` telah ditambahkan untuk memastikan lema `kerja` tidak dihasilkan. Suite terbaru telah dijalankan setelah penambahan tes negatif: 34 lulus, 0 gagal. Pengujian menggunakan salinan terkini dari `tools/morfologi.py`, `tools/pencocokan_kamus.py`, dan `tests/test_morfologi.py` dalam lingkungan Python lokal terisolasi.
@@ -250,3 +250,14 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 
 **Pembaruan hasil eksekusi suite morfologi (27 November 2026):** file tes terbaru yang berisi 47 metode berhasil dijalankan pada lingkungan Python terisolasi dengan salinan terbaru `tests/test_morfologi.py`, `tools/morfologi.py`, dan `tools/pencocokan_kamus.py` yang diambil dari GitHub. Hasil: **47/47 lulus, 0 gagal**. Dengan hasil komponen sebelumnya (45 tes fondasi + 8 tes analisis teks), total tes komponen terverifikasi secara terpisah kini **100/100 lulus**. Batasan: eksekusi ini bukan dari checkout repository penuh. Validasi seluruh 60 batch kamus dan pengujian integrasi dari checkout penuh tetap belum selesai.
+
+
+## 9. Validasi checkout penuh melalui Termux — 27 November 2026
+
+Repository `semoliginon-ops/Sistem_bahasa` berhasil di-clone ke perangkat Android dan seluruh perintah dijalankan dari direktori root checkout.
+
+1. `python -m tools.validasi_kamus_lengkap` → **VALIDASI BERHASIL**; 60 batch, 3.000 entri. Pemeriksaan mencakup JSONL, field wajib, format ID, array wajib, ID duplikat, dan lema duplikat.
+2. `python -m unittest discover -s tests -v` → **Ran 100 tests — OK**, 0 gagal.
+3. Rincian tes: analyzer 8, loader 12, morfologi 47, normalisasi 8, pencocokan kamus 13, tokenizer 12.
+
+Validasi ini dijalankan lokal pada Android melalui Termux; GitHub Actions tidak digunakan. Hasil ini menutup pekerjaan validasi loader seluruh kamus dan regression suite checkout penuh. Ini belum menyelesaikan POS, parser kalimat, atau dataset uji terpadu.
