@@ -77,6 +77,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menambahkan aturan prefiks `memper-` agar bentuk seperti `memperindah` dapat menghasilkan kandidat lema `indah`.
 - [x] Mengganti tes negatif yang keliru: `memperindah` bukan bentuk tak dikenal; memakai `memperxyz` untuk memastikan bentuk tanpa lema tetap ditolak.
 - [x] Menjalankan 30 regression tests morfologi pada lingkungan Python lokal terisolasi; 30 lulus, 0 gagal.
+- [x] Menambahkan dua kasus regresi kombinasi prefiks `memper-` dengan sufiks `-i` dan `-kan` (`memperbaiki`, `mempermainkan`).
+- [ ] Menjalankan ulang seluruh 32 regression tests setelah penambahan dua kasus tersebut.
 - [ ] Memperluas inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan pengujian.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 
