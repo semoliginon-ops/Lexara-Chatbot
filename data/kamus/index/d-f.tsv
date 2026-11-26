@@ -1,5 +1,6 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
+DVD	K2438	DVD	lemma	batch-049
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
 daerah	K0384	daerah	lemma	batch-008
@@ -257,6 +258,7 @@ durian	K0791	durian	lemma	batch-016
 durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
+e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
 efek	K0792	efek	lemma	batch-016
@@ -311,6 +313,7 @@ enteng	K0616	enteng	lemma	batch-013
 entok	K2270	entok	lemma	batch-046
 entri	K1292	entri	lemma	batch-026
 episode	K1293	episode	lemma	batch-026
+equalizer	K2444	equalizer	lemma	batch-049
 era	K1294	era	lemma	batch-026
 erat	K0813	erat	lemma	batch-017
 eror	K0814	eror	lemma	batch-017
@@ -370,6 +373,7 @@ fit	K1898	fit	lemma	batch-038
 fitnah	K0840	fitnah	lemma	batch-017
 fitur	K0841	fitur	lemma	batch-017
 flamingo	K2271	flamingo	lemma	batch-046
+flash kamera	K2419	flash kamera	lemma	batch-049
 flashdisk	K2388	flashdisk	lemma	batch-048
 fleksibel	K0842	fleksibel	lemma	batch-017
 fleksibilitas	K1301	fleksibilitas	lemma	batch-026
