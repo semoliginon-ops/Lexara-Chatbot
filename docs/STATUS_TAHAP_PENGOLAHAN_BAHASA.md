@@ -416,3 +416,16 @@ Catatan ini menjadi status verifikasi terbaru dan mengesampingkan catatan histor
 - Hasil validasi struktur dan regression tests tidak boleh ditafsirkan sebagai skor akurasi POS.
 
 **Titik lanjut:** perjelas konvensi anotasi, audit ulang development set, lalu ukur kinerja POS pada development. Test split tetap ditahan.
+
+
+## Pembaruan pedoman anotasi POS — 27 November 2026
+
+Konvensi operasional telah ditetapkan dalam `docs/DATASET_POS.md` subbagian 5.1 agar taksonomi 10 label proyek diterapkan konsisten:
+- Demonstrativa atributif: `PRON`.
+- Penanda aspek/modalitas: `ADV`.
+- Penanda larangan: `PART`.
+- Gelar/sapaan nominal: `NOUN`.
+- Penghubung sebab: `CONJ`.
+- Penanda tanya: `PART`.
+
+Keputusan ini merupakan penyederhanaan internal dataset v1, bukan klaim universal linguistik. Belum ada label gold dalam JSONL yang diubah. Audit ulang 18 kalimat development masih menunggu pembaruan pedoman ditarik ke Termux. Split test tetap ditahan.
