@@ -19,7 +19,7 @@ class MorphologyTests(unittest.TestCase):
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
             "ambil", "kambil", "kunci", "ari", "tari", "nyanyi", "anyi", "sanyi", "kajar",
-            "tanam", "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
+            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
             "penjara", "peniti", "penipuan", "penasaran", "penyanyi", "penyu",
         ]
         entries = [entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)]
