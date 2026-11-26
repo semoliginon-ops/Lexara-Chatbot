@@ -196,6 +196,31 @@ Komponen pencarian semantik berbasis embedding dapat ditambahkan sebagai modul o
 - [ ] Menguji salah ketik, bahasa informal, kalimat ambigu, dan percakapan panjang.
 - [ ] Menyusun dokumentasi dan versi rilis.
 
+### Pengembangan terpisah — Adaptive Lexicon (setelah sistem inti selesai)
+
+Fitur ini merupakan **pengembangan lanjutan yang terpisah**, bukan bagian dari target penyelesaian sistem inti dan kamus versi pertama. Pengerjaannya baru dimulai setelah fondasi sistem, kamus 3.000 entri, pengolahan kata, tata bahasa, hubungan makna, pemrosesan konteks, dan integrasi offline selesai disempurnakan serta diuji.
+
+**Tujuan:** memungkinkan sistem menemukan kosakata yang belum tercatat, mempelajari penggunaannya dari konteks, lalu memperbarui kamus lokal secara terkontrol.
+
+Rancangan kemampuan:
+
+1. **Deteksi kata tak dikenal** — menemukan token atau bentuk kata yang belum cocok dengan lema, variasi, maupun aturan morfologi yang tersedia.
+2. **Pengumpulan konteks** — menyimpan contoh kalimat dan konteks lokal yang relevan, dengan perlindungan privasi serta kendali pengguna.
+3. **Analisis kandidat** — memperkirakan kelas kata, makna, dan kemungkinan hubungan berdasarkan konteks serta pengetahuan bahasa yang sudah ada.
+4. **Pemeriksaan duplikasi dan kualitas** — memastikan kandidat bukan salah ketik, variasi ejaan, bentuk turunan, atau lema yang sudah tercatat.
+5. **Validasi bertahap** — mengumpulkan bukti dari beberapa penggunaan. Kandidat dengan keyakinan rendah tetap ditandai sebagai belum terverifikasi dan tidak langsung menjadi entri resmi.
+6. **Pembaruan kamus lokal** — setelah memenuhi aturan validasi, kandidat dapat dipromosikan ke kamus perangkat. Perubahan harus memiliki jejak asal, versi, dan mekanisme koreksi/pembatalan.
+
+**Prinsip teknis:**
+
+- Dirancang **offline-first** dan tidak mewajibkan AI cloud, LLM, atau API berbayar.
+- Deteksi kata baru, pencatatan konteks, pencocokan bentuk, dan pemeriksaan duplikasi dapat dilakukan dengan aturan serta data lokal.
+- Penafsiran makna kata yang benar-benar baru atau sangat ambigu akan memiliki keterbatasan tanpa model/pengetahuan tambahan. Sistem harus boleh menunda keputusan, meminta konfirmasi, atau menandai kandidat untuk tinjauan—bukan mengarang definisi.
+- Sinkronisasi atau bantuan layanan eksternal, jika kelak dipertimbangkan, bersifat opsional dan harus mendapat persetujuan pengguna; bukan syarat agar fitur inti bekerja.
+- Kamus dasar yang sudah tervalidasi tidak boleh tertimpa otomatis oleh hasil pembelajaran yang belum pasti.
+
+**Kriteria penerimaan fitur:** kata baru dapat dideteksi dan dikumpulkan, kandidat dapat diperiksa dari konteks, duplikasi dapat dicegah, dan hanya entri yang lolos validasi yang dapat memperbarui kamus lokal. Fitur ini baru dirancang dan dibangun setelah sistem inti serta kamus versi pertama selesai disempurnakan.
+
 ## 6. Strategi pengujian
 
 Pengujian harus membedakan kemampuan mengenali kata, menganalisis struktur, dan menafsirkan makna. Contoh uji meliputi:
