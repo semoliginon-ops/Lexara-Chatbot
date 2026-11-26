@@ -85,6 +85,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Tambahkan analisis konservatif reduplikasi berprefiks `ber-` (berjalan-jalan/berlari-lari) beserta regression tests.
 - [ ] Perluas inventaris imbuhan dan perubahan morfofonemik berdasarkan pengujian.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
+- [x] Menambahkan perlindungan restorasi nasal `peng-`: jangan membuat kandidat `k+akar` jika sisa setelah prefiks sudah merupakan lema kamus.
+- [x] Menambahkan tes positif `pengunci → kunci` dan tes negatif `pengambil → ambil`, bukan `kambil`.
+- [x] Menjalankan ulang 40 regression tests morfologi; 40 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
 
 ### 2.5 Pengenalan kelas kata (POS)
 
@@ -173,3 +176,6 @@ Pembaruan reduplikasi: analisis konservatif kini mengenali pola `ber-` pada unsu
 
 
 Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan kandidat berawalan `k` secara spekulatif apabila sisa bentuk setelah `meng-` sudah cocok dengan lema kamus. Contoh yang diuji: `mengambil` menghasilkan `ambil`, bukan `kambil`; `mengunci` tetap dapat menghasilkan `kunci`. Suite morfologi: 38 lulus, 0 gagal.
+
+
+**Pembaruan restorasi nasal `peng-`:** aturan restorasi `peng-` kini mengikuti perlindungan konservatif yang sebelumnya diterapkan pada `meng-`. Jika sisa bentuk setelah prefiks sudah cocok dengan lema kamus, kandidat tambahan `k+akar` tidak dibuat. Tes memastikan `pengambil` menghasilkan `ambil`, bukan `kambil`, sedangkan `pengunci` tetap dapat menghasilkan `kunci`. Suite morfologi terbaru: 40 lulus, 0 gagal; total tes komponen terpisah: 93 lulus, 0 gagal (45 fondasi + 8 analyzer + 40 morfologi).
