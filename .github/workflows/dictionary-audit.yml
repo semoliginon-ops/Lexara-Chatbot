@@ -1,19 +1,7 @@
 name: Dictionary Audit
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "data/kamus/**"
-      - "docs/KAMUS.md"
-      - "tools/audit_dictionary.py"
-      - ".github/workflows/dictionary-audit.yml"
-  pull_request:
-    paths:
-      - "data/kamus/**"
-      - "docs/KAMUS.md"
-      - "tools/audit_dictionary.py"
-      - ".github/workflows/dictionary-audit.yml"
+  # Audit dijalankan manual saat kamus mencapai 3.000 entri atau ketika audit besar diperlukan.
   workflow_dispatch:
 
 permissions:
