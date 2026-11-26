@@ -141,7 +141,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — perluasan morfologi sedang berjalan dan tes versi terbaru menunggu eksekusi.**
 
-Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 65 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 65 lulus, 0 gagal (45 fondasi + 8 analyzer + 12 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap. GitHub Actions tidak dijalankan.
+Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 71 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 71 lulus, 0 gagal (45 fondasi + 8 analyzer + 18 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap. GitHub Actions tidak dijalankan.
 
 ## Dokumen rujukan
 
