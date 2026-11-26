@@ -58,7 +58,7 @@ Branch kerja: `main`
 - Loader kamus: 12 tes lulus, 0 gagal.
 - Pencocokan kamus: 13 tes lulus, 0 gagal.
 - Total: **32 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
-- Sampel entri JSONL aktual dari Batch 001 berhasil dimuat dan seluruh field tetap terjaga.
+- Struktur dasar seluruh 60 file batch (3.000 entri) telah diperiksa melalui konten GitHub: format JSON, field wajib, ID, lema, dan struktur sense. Ini bukan pengganti eksekusi langsung loader Python terhadap seluruh file.
 - Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
 - Belum ada integrasi Android.
 
@@ -66,7 +66,7 @@ Branch kerja: `main`
 
 **Subtahap 2.1 dan 2.2 selesai; fondasi loader untuk 2.3 sudah tersedia.**
 
-Normalisasi lulus 8/8 tes, tokenizer 12/12, dan loader kamus 12/12. Total 32/32 tes lulus pada lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. Satu sampel entri JSONL aktual juga berhasil dibaca. Cakupan ini memvalidasi perilaku yang diuji, bukan seluruh kemungkinan data. Pekerjaan aktif berikutnya adalah menguji loader terhadap seluruh batch dan membangun pencocokan token.
+Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, dan pencocokan kamus 13/13. Total 45/45 regression tests lulus pada lingkungan Python lokal terisolasi. Struktur dasar seluruh 60 batch (3.000 entri) juga telah diperiksa dari konten GitHub. Namun, eksekusi fungsi loader Python terhadap seluruh 60 file aktual belum dilakukan. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
@@ -105,13 +105,13 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Buat `tools/kamus_loader.py` sebagai loader baca-saja; isi entri dipertahankan tanpa modifikasi.
 - [x] Tambahkan 12 regression tests untuk pemuatan batch, urutan batch, validasi struktur, serta deteksi ID/lemma duplikat.
 - [x] Hasil uji lokal loader: 12 lulus, 0 gagal.
-- [ ] Uji loader pada seluruh 60 file batch aktual.
+- [ ] Jalankan fungsi loader Python langsung terhadap seluruh 60 file batch aktual; audit struktur melalui konten GitHub saja belum mencukupi.
 - [x] Buat pencocokan token terhadap lemma, variants, dan derived_forms.
 - [x] Pertahankan seluruh kandidat dan sense/POS; jangan putuskan makna tanpa konteks.
-- [ ] Buat pencarian token terhadap lemma dan token index yang relevan.
-- [ ] Bedakan hasil: lemma ditemukan, varian ditemukan, bentuk turunan tercatat, atau tidak dikenal.
-- [ ] Tangani satu kata dengan beberapa sense atau POS tanpa memilih makna secara gegabah.
-- [ ] Buat tes menggunakan contoh nyata dari kamus.
+- [ ] Integrasikan pencocokan leksikal dengan tokenizer dalam satu fungsi analisis teks.
+- [x] Bedakan hasil: lemma ditemukan, varian ditemukan, bentuk turunan tercatat, atau tidak dikenal.
+- [x] Tangani kandidat dengan beberapa sense atau POS dengan mempertahankan seluruh kandidat tanpa memilih makna otomatis.
+- [x] Buat 13 regression tests pencocokan leksikal untuk perilaku inti dan validasi input.
 
 ### 5.4 Analisis morfologi
 - [ ] Susun inventaris pola imbuhan Bahasa Indonesia berdasarkan dokumentasi dan data.
@@ -200,4 +200,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** jalankan `tools/kamus_loader.py` secara langsung terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri sudah diperiksa; pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati total 45 tes lokal tanpa kegagalan.
+**Titik lanjut:** jalankan `tools/kamus_loader.py` secara langsung terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat; total regression suite 45 tes lulus, 0 gagal.
