@@ -61,12 +61,13 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 ### 2.4 Analisis morfologi
 
 - [x] Membuat prototipe awal `tools/morfologi.py` dengan pendekatan kandidat yang harus divalidasi kamus.
-- [x] Membuat dan menjalankan 12 regression tests morfologi pada lingkungan Python lokal terisolasi; 12 lulus, 0 gagal.
-- [ ] Memperluas inventaris aturan imbuhan Bahasa Indonesia berdasarkan dokumentasi dan data.
-- [ ] Melengkapi prefiks, sufiks, konfiks, reduplikasi, dan perubahan bentuk yang relevan; prototipe saat ini baru mencakup pola terpilih.
-- [ ] Menggunakan kamus untuk memeriksa kandidat lema.
-- [ ] Menghindari pemotongan kata yang bukan bentuk berimbuhan.
-- [ ] Membuat regression tests morfologi.
+- [x] Membuat prototipe dan menjalankan 12 regression tests morfologi awal; 12 lulus, 0 gagal.
+- [x] Memperbaiki urutan percobaan prefiks dan menghapus aturan prefiks duplikat yang tidak tepat.
+- [x] Menambahkan kandidat konfiks ke-an, per-an, dan peN-an dengan validasi terhadap lema kamus.
+- [x] Menambahkan kandidat bentuk menge- untuk pola seperti mengecat; cakupan tetap terbatas.
+- [ ] Menjalankan 17 regression tests morfologi versi terbaru; tes sudah ditambahkan tetapi hasil eksekusi belum diverifikasi.
+- [ ] Memperluas inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan pengujian.
+- [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 
 ### 2.5 Pengenalan kelas kata (POS)
 
@@ -138,7 +139,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — prototipe morfologi awal tersedia.**
+**Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — perluasan morfologi sedang berjalan dan tes versi terbaru menunggu eksekusi.**
 
 Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 65 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 65 lulus, 0 gagal (45 fondasi + 8 analyzer + 12 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap. GitHub Actions tidak dijalankan.
 
