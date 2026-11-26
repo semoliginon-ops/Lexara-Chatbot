@@ -20,6 +20,7 @@ mandi	K0051	mandi	lemma	batch-002
 mandian	K0051	mandi	derived_form	batch-002
 manis	K0460	manis	lemma	batch-010
 manja	K0588	manja	lemma	batch-012
+mantap	K0668	mantap	lemma	batch-014
 map	K0301	map	lemma	batch-006
 marah	K0082	marah	lemma	batch-002
 masa	K0627	masa	lemma	batch-013
@@ -193,6 +194,7 @@ minta	K0407	minta	lemma	batch-009
 minum	K0014	minum	lemma	batch-001
 minuman	K0014	minum	derived_form	batch-001
 mobil	K0201	mobil	lemma	batch-004
+modus	K0687	modus	lemma	batch-014
 mogok	K0501	mogok	lemma	batch-010
 motor	K0200	motor	lemma	batch-004
 motoris	K0200	motor	derived_form	batch-004
@@ -210,12 +212,14 @@ nangis	K0426	nangis	lemma	batch-009
 nanti	K0136	nanti	lemma	batch-003
 nasi	K0164	nasi	lemma	batch-004
 ngaret	K0098	ngaret	lemma	batch-002
+ngaruh	K0669	ngaruh	lemma	batch-014
 ngebut	K0592	ngebut	lemma	batch-012
 ngeh	K0593	ngeh	lemma	batch-012
 ngeri	K0594	ngeri	lemma	batch-012
 nggak	K0029	enggak	variant	batch-001
 ngobrol	K0038	ngobrol	lemma	batch-001
 niat	K0595	niat	lemma	batch-012
+nolep	K0688	nolep	lemma	batch-014
 nonton	K0075	nonton	lemma	batch-002
 numpang	K0417	numpang	lemma	batch-009
 nyaman	K0329	nyaman	lemma	batch-007
@@ -223,6 +227,7 @@ nyaris	K0596	nyaris	lemma	batch-012
 obat	K0182	obat	lemma	batch-004
 obatan	K0182	obat	derived_form	batch-004
 obrolan	K0038	ngobrol	derived_form	batch-001
+ogah	K0699	ogah	lemma	batch-014
 ok	K0031	oke	variant	batch-001
 okay	K0031	oke	variant	batch-001
 oke	K0031	oke	lemma	batch-001
