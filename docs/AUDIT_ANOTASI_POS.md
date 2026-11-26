@@ -52,3 +52,19 @@ Konvensi operasional telah ditambahkan ke `docs/DATASET_POS.md` tanpa menambah k
 ## 7. Pembaruan pedoman — 27 November 2026
 
 Pedoman operasional ditetapkan di `docs/DATASET_POS.md` subbagian 5.1: demonstrativa atributif `PRON`; penanda aspek/modalitas `ADV`; penanda larangan `PART`; gelar/sapaan nominal `NOUN`; kata sebab `CONJ`; penanda tanya `PART`. Pemetaan ini merupakan konvensi internal dataset v1. Belum ada label pada JSONL yang diubah. Audit ulang development masih harus dilakukan setelah pedoman ditarik ke checkout lokal.
+
+
+## 8. Audit ulang development setelah pedoman ditetapkan — 27 November 2026
+
+Seluruh 18 kalimat development diperiksa ulang terhadap konvensi operasional pada subbagian 5.1 `docs/DATASET_POS.md`. Split test tetap ditahan dan tidak digunakan dalam audit ini.
+
+- Demonstrativa atributif `itu` pada contoh development tetap `PRON`, sesuai konvensi proyek.
+- Penanda aspek/modalitas `sedang` dan `akan` tetap `ADV`.
+- Gelar/sapaan `Pak` tetap `NOUN`.
+- Penghubung sebab `karena` tetap `CONJ`.
+- Penanda larangan `jangan` pada `Jangan letakkan tas di lantai!` dikoreksi dari `ADV` menjadi `PART`, sesuai konvensi yang telah dipilih. Catatan record juga menjelaskan alasan label.
+- Fragmen `Jalan.` tetap `ambiguous` karena konteksnya tidak cukup.
+
+**Hasil:** satu koreksi label gold pada record `pos_0024`; tidak ada perubahan pada record test. Audit ini adalah pemeriksaan konsistensi internal oleh satu peninjau, bukan adjudikasi multi-anotator atau bukti akurasi prediksi POS.
+
+**Verifikasi berikutnya:** tarik perubahan ke Termux, jalankan validator dataset dan seluruh regression tests. Hasil eksekusi setelah perubahan ini masih menunggu pengguna.
