@@ -565,3 +565,8 @@ Dataset POS diperluas dari 40 menjadi 50 kalimat (`pos_0041`–`pos_0050`), terd
 ## Pemeriksaan awal batch kelima — 27 November 2026
 
 File dataset yang telah di-commit dibaca ulang dari GitHub dan diperiksa secara struktural: 50 kalimat, 266 token, 30 development, 20 test; tidak ditemukan JSON rusak, ID duplikat, label/status POS tidak valid, atau ketidakcocokan token terhadap pola tokenizer. Pemeriksaan ini dilakukan melalui pembacaan dan validasi data di sisi GitHub, bukan dengan menjalankan modul Python proyek. Karena itu `tools.validasi_dataset_pos`, `tools.evaluasi_pos`, dan regression suite tetap berstatus menunggu eksekusi otomatis yang benar-benar menjalankan Python. Tidak ada klaim bahwa tes Python telah lulus.
+
+
+## Otomatisasi verifikasi tanpa Termux — 27 November 2026
+
+Workflow `.github/workflows/pos-validation.yml` ditambahkan. Pada perubahan dataset POS, kamus, tools, atau tests di branch utama maupun pull request, GitHub Actions akan menjalankan validator dataset, evaluator yang hanya memuat development split, dan seluruh regression suite menggunakan Python 3.12. Workflow juga menyediakan pemicu manual. Workflow baru dibuat dan belum menjalani run; hasil pertama baru dapat dinilai setelah ada pemicu yang sesuai. Perubahan dokumentasi saja tidak memicu workflow agar penggunaan kuota Actions lebih hemat.
