@@ -3,15 +3,18 @@
 pacar	K0113	pacar	lemma	batch-003
 pagi	K0131	pagi	lemma	batch-003
 paham	K0040	paham	lemma	batch-001
+pahit	K0461	pahit	lemma	batch-010
 pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
 panas	K0251	panas	lemma	batch-005
 panci	K0282	panci	lemma	batch-006
+panggang	K0470	panggang	lemma	batch-010
 panggil	K0433	panggil	lemma	batch-009
 papa	K0107	papa	lemma	batch-003
 parkir	K0397	parkir	lemma	batch-008
 pasar	K0362	pasar	lemma	batch-008
 pasti	K0235	pasti	lemma	batch-005
+pedas	K0458	pedas	lemma	batch-010
 pegunungan	K0158	gunung	derived_form	batch-004
 pekerja	K0021	kerja	derived_form	batch-001
 pekerjaan	K0021	kerja	derived_form	batch-001
@@ -68,6 +71,7 @@ pengajaran	K0188	ajar	derived_form	batch-004
 pengambil	K0058	ambil	derived_form	batch-002
 pengambilan	K0058	ambil	derived_form	batch-002
 pengeluaran	K0068	keluar	derived_form	batch-002
+pengemudi	K0494	pengemudi	lemma	batch-010
 pengenalan	K0215	kenal	derived_form	batch-005
 pengetahuan	K0039	tahu	derived_form	batch-001
 pengganti	K0221	ganti	derived_form	batch-005
@@ -97,6 +101,7 @@ penonton	K0075	nonton	derived_form	batch-002
 pensil	K0297	pensil	lemma	batch-006
 penulis	K0077	tulis	derived_form	batch-002
 penulisan	K0077	tulis	derived_form	batch-002
+penumpang	K0492	penumpang	lemma	batch-010
 penunggu	K0064	tunggu	derived_form	batch-002
 penurunan	K0070	turun	derived_form	batch-002
 penutup	K0066	tutup	derived_form	batch-002
@@ -152,6 +157,8 @@ piring	K0277	piring	lemma	batch-006
 pisau	K0281	pisau	lemma	batch-006
 pohon	K0159	pohon	lemma	batch-004
 ponsel	K0196	ponsel	lemma	batch-004
+porsi	K0479	porsi	lemma	batch-010
+potong	K0471	potong	lemma	batch-010
 puas	K0343	puas	lemma	batch-007
 pulang	K0019	pulang	lemma	batch-001
 pulpen	K0298	pulpen	lemma	batch-006
@@ -161,7 +168,11 @@ ramah	K0347	ramah	lemma	batch-007
 ramai	K0249	ramai	lemma	batch-005
 rambut	K0126	rambut	lemma	batch-003
 rapi	K0323	rapi	lemma	batch-007
+rebus	K0466	rebus	lemma	batch-010
+rem	K0498	rem	lemma	batch-010
 remote	K0287	remote	lemma	batch-006
+resep	K0481	resep	lemma	batch-010
+roda	K0497	roda	lemma	batch-010
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
 rumah	K0012	rumah	lemma	batch-001
