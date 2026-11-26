@@ -1,5 +1,4 @@
 # Token index — m-o
-# token\tid\tlemma\ttype\tbatch
 maaf	K0247	maaf	lemma	batch-005
 macet	K0398	macet	lemma	batch-008
 mager	K0091	mager	lemma	batch-002
@@ -7,6 +6,7 @@ mahal	K0357	mahal	lemma	batch-008
 main	K0074	main	lemma	batch-002
 makan	K0013	makan	lemma	batch-001
 makanan	K0013	makan	derived_form	batch-001
+makanya	K0626	makanya	lemma	batch-013
 makasih	K0406	makasih	lemma	batch-009
 maksud	K0443	maksud	lemma	batch-009
 malah	K0586	malah	lemma	batch-012
@@ -21,8 +21,10 @@ manis	K0460	manis	lemma	batch-010
 manja	K0588	manja	lemma	batch-012
 map	K0301	map	lemma	batch-006
 marah	K0082	marah	lemma	batch-002
+masa	K0627	masa	lemma	batch-013
 masak	K0052	masak	lemma	batch-002
 masakan	K0052	masak	derived_form	batch-002
+masalah	K0628	masalah	lemma	batch-013
 masih	K0148	masih	lemma	batch-003
 masuk	K0067	masuk	lemma	batch-002
 masukan	K0067	masuk	derived_form	batch-002
@@ -201,6 +203,7 @@ murid	K0186	murid	lemma	batch-004
 musim	K0309	musim	lemma	batch-007
 naik	K0069	naik	lemma	batch-002
 nama	K0128	nama	lemma	batch-003
+namun	K0650	namun	lemma	batch-013
 nanggung	K0591	nanggung	lemma	batch-012
 nangis	K0426	nangis	lemma	batch-009
 nanti	K0136	nanti	lemma	batch-003
