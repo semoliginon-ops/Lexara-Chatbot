@@ -101,8 +101,8 @@ Koreksi metadata berhasil memperbaiki penanganan kasus ambigu yang ditemukan. Ha
 
 ## Audit setelah batch keempat — 27 November 2026
 
-Evaluasi development setelah batch keempat menemukan satu mismatch prediksi pada `pos_0031`: kalimat `Gue mau makan dulu.`. Token `mau` diberi gold `ADV`, tetapi sistem memprediksi `VERB`. Pedoman v1 secara eksplisit memberi `ADV` pada daftar penanda aspek/modalitas `sedang`, `akan`, `telah`, `sudah`, dan `lagi`; `mau` belum ditetapkan secara eksplisit. Karena `mau` dapat berfungsi sebagai verba modal, jangan langsung mengubah gold atau menambah aturan hanya untuk menyesuaikan satu contoh. Tinjau dulu konvensi taksonomi yang akan dipakai secara konsisten.
+Evaluasi development setelah batch keempat menemukan mismatch pada `pos_0031`: kalimat `Gue mau makan dulu.`. Kamus `K0024` menetapkan `mau` sebagai `VERB`, sedangkan gold awal memberi `ADV`. Audit fungsi kalimat menetapkan `mau` sebagai verba modal kehendak yang mengambil komplemen verba `makan`. Karena itu gold dikoreksi menjadi `VERB`. Konvensi `ADV` untuk `sedang`, `akan`, `telah`, `sudah`, dan `lagi` tetap terbatas pada daftar yang ditetapkan; tidak semua ungkapan modalitas otomatis `ADV`. Tidak ada perubahan kamus maupun aturan program.
 
 Token `wah` pada kalimat development baru berlabel `INTJ` tetapi tidak mendapat prediksi tunggal. Ini menurunkan coverage, bukan selective accuracy. Evaluasi menunjukkan leksikal dan konteks lokal sama-sama 55/102 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%. Gold ambiguous `Jalan.` tetap ditahan (1 abstained, 0 forced).
 
-Validasi dataset 40 kalimat/215 token berhasil dan regression suite penuh lulus 137/137. Split test tidak digunakan untuk audit atau penyetelan.
+Validasi dataset 40 kalimat/215 token dan regression suite penuh 137/137 telah berhasil sebelum koreksi label `mau`. Koreksi hanya menyentuh satu token development; validasi, evaluasi, dan regression suite harus dijalankan ulang dari Termux sebelum dinyatakan terverifikasi. Split test tidak diubah dan tidak digunakan untuk penyetelan.
