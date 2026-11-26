@@ -90,6 +90,12 @@ pemilihan	K0219	pilih	derived_form	batch-005
 pemindai	K2385	pemindai	lemma	batch-048
 peminum	K0014	minum	derived_form	batch-001
 pempek	K1985	pempek	lemma	batch-040
+pemutar Blu-ray	K2410	pemutar Blu-ray	lemma	batch-049
+pemutar DVD	K2409	pemutar DVD	lemma	batch-049
+pemutar MP3	K2412	pemutar MP3	lemma	batch-049
+pemutar kaset	K2440	pemutar kaset	lemma	batch-049
+pemutar musik digital	K2411	pemutar musik digital	lemma	batch-049
+pen tablet	K2449	pen tablet	lemma	batch-049
 penakut	K0083	takut	derived_form	batch-002
 penamaan	K0128	nama	derived_form	batch-003
 penanganan	K0122	tangan	derived_form	batch-003
@@ -101,6 +107,7 @@ penceritaan	K0191	cerita	derived_form	batch-004
 pencucian	K0053	cuci	derived_form	batch-002
 pendapatan	K0203	dapat	derived_form	batch-005
 pendengaran	K0035	dengar	derived_form	batch-001
+pendingin prosesor	K2426	pendingin prosesor	lemma	batch-049
 pendirian	K0072	berdiri	derived_form	batch-002
 penerima	K0062	terima	derived_form	batch-002
 penerimaan	K0062	terima	derived_form	batch-002
@@ -240,15 +247,18 @@ polusi	K1542	polusi	lemma	batch-031
 ponsel	K0196	ponsel	lemma	batch-004
 populer	K1543	populer	lemma	batch-031
 porsi	K0479	porsi	lemma	batch-010
+port USB	K2428	port USB	lemma	batch-049
 potensi	K1544	potensi	lemma	batch-031
 potong	K0471	potong	lemma	batch-010
 power bank	K2397	power bank	lemma	batch-048
+power supply	K2427	power supply	lemma	batch-049
 praktis	K1545	praktis	lemma	batch-031
 pribadi	K1546	pribadi	lemma	batch-031
 produk	K1547	produk	lemma	batch-031
 profesi	K1548	profesi	lemma	batch-031
 program	K1549	program	lemma	batch-031
 proses	K1550	proses	lemma	batch-031
+prosesor	K2421	prosesor	lemma	batch-049
 protes	K1551	protes	lemma	batch-031
 proyektor	K2384	proyektor	lemma	batch-048
 puas	K0343	puas	lemma	batch-007
@@ -265,6 +275,8 @@ rabu	K1052	rabu	lemma	batch-022
 racun	K1053	racun	lemma	batch-022
 radar	K1054	radar	lemma	batch-022
 radio	K1055	radio	lemma	batch-022
+radio mobil	K2407	radio mobil	lemma	batch-049
+radio portabel	K2408	radio portabel	lemma	batch-049
 ragu	K0243	ragu	lemma	batch-005
 rahasia	K1056	rahasia	lemma	batch-022
 rajin	K1057	rajin	lemma	batch-022
@@ -301,6 +313,7 @@ rem	K0498	rem	lemma	batch-010
 remang	K1078	remang	lemma	batch-022
 remas	K1079	remas	lemma	batch-022
 remote	K0287	remote	lemma	batch-006
+remote televisi	K2405	remote televisi	lemma	batch-049
 rempah	K1080	rempah	lemma	batch-022
 renang	K1082	renang	lemma	batch-022
 rendah	K1083	rendah	lemma	batch-022
