@@ -145,3 +145,25 @@ Pemeriksaan dilakukan pada token berstatus `resolved` dari 36 kalimat developmen
 | INTJ | `wah` |
 
 Temuan paling relevan untuk cakupan kelas kata tertutup: dua contoh `NUM` (`dua`, `tiga`) tidak memiliki entri indeks; tiga preposisi (`di`, `ke`, `pada`) dan tiga konjungsi (`atau`, `kalau`, `tetapi`) juga belum terindeks. Entri `untuk` dan `dari` sudah ada dan POS kamusnya `PREP`. Kata `itu` belum terindeks tetapi dipertahankan sebagai `PRON` sesuai konvensi dataset v1. Jangan mengubah gold hanya agar cocok dengan prediksi. Langkah lanjutan adalah merancang suplementasi kosakata terfokus atau aturan closed-class yang dapat diuji; jangan mengubah 3.000 entri secara massal.
+
+
+## Suplementasi POS terfokus dan evaluasi ulang — 27 November 2026
+
+Audit gap indeks mendorong fallback kecil di luar kamus inti, bukan perubahan massal pada 3.000 lema. Implementasi berada di `tools/pos_supplement.py` dan dipanggil oleh `tools/pos_tagger.py` hanya ketika token tidak memiliki kandidat dari kamus. Kandidat kamus selalu menang; bentuk turunan yang memerlukan morfologi tetap tidak diberi POS otomatis.
+
+Daftar awal berisi 12 bentuk:
+- NUM: `dua`, `tiga`.
+- PREP: `di`, `ke`, `pada`.
+- CONJ: `atau`, `kalau`, `tetapi`.
+- ADV sesuai konvensi anotasi proyek v1: `akan`, `sedang`, `sangat`, `sekali`.
+
+Kata `dulu` dan `tetap` sengaja belum dimasukkan karena berpotensi memiliki fungsi berbeda. Tes memastikan keduanya tetap tidak dikenal oleh fallback. Tes juga memastikan lema `jalan` tetap membawa kandidat NOUN dan VERB dari kamus.
+
+GitHub Actions run [#5](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908285217) sukses:
+- Validator: 60 kalimat, 314 token, 36 development, 24 test.
+- Evaluator development-only: 148 token resolved; 107 benar; coverage 72,3%; accuracy 72,3%; selective accuracy 100%.
+- POS leksikal dan kontekstual menghasilkan metrik identik.
+- Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- Regression suite: **141/141 lulus**.
+
+Perubahan coverage dari 60,8% ke 72,3% berlaku pada development set yang sama (36 kalimat) setelah fallback ditambahkan. Ini menunjukkan gap yang diaudit berhasil ditangani pada contoh yang tercakup, tetapi bukan estimasi akurasi umum. Test split 24 kalimat tetap tidak digunakan.
