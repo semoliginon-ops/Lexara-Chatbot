@@ -103,7 +103,16 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
 
     for prefix, rule in _PREFIXES:
         if surface.startswith(prefix) and len(surface) > len(prefix) + 1:
-            add_candidate(surface[len(prefix):], rule)
+            remainder = surface[len(prefix):]
+            # Untuk alomorf nasal yang meluluhkan konsonan awal t/p,
+            # prioritaskan hasil restorasi jika bentuk itu memang ada di kamus.
+            # Bentuk seperti menyanyi tetap dapat memakai remainder "nyanyi"
+            # jika kandidat restorasi s+nyanyi tidak dikenal.
+            restoration = {
+                "men": "t", "mem": "p", "pen": "t", "pem": "p",
+            }.get(prefix)
+            if not (restoration and _known(restoration + remainder, lexicon)):
+                add_candidate(remainder, rule)
             break
 
     for prefix, restored in _NASAL_RESTORATIONS:
