@@ -54,7 +54,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
-- [ ] Menjalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk memuat 60 batch (3.000 entri) melalui loader Python; skrip validasi sudah tersedia.
+- [x] Menjalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository melalui Termux; hasil aktual: 60 batch dan 3.000 entri berhasil dimuat dan seluruh pemeriksaan lulus.
 - [x] Mengintegrasikan normalisasi, tokenizer, dan pencocokan kamus dalam `tools/analisis_teks.py`.
 - [x] Membuat 8 regression tests analyzer; seluruhnya lulus pada lingkungan Python lokal terisolasi.
 
@@ -164,7 +164,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Tahap 2.3 — validasi loader terhadap seluruh 60 batch masih terbuka. Tahap 2.4 — prototipe morfologi telah mencapai 47/47 regression tests lulus pada lingkungan Python lokal terisolasi.**
+**Validasi checkout penuh selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri dan regression suite gabungan menjalankan 100 tes; seluruhnya lulus. Tahap berikutnya adalah memulai POS (Tahap 2.5).
 
 Hasil tes komponen yang tercatat dan dijalankan terpisah:
 - Fondasi (normalisasi, tokenizer, loader, pencocokan kamus): 45 lulus.
@@ -172,9 +172,9 @@ Hasil tes komponen yang tercatat dan dijalankan terpisah:
 - Morfologi: 47 lulus.
 - **Total: 100 lulus, 0 gagal.**
 
-Pengujian tersebut menggunakan salinan kode dan tes dari GitHub dalam lingkungan Python terisolasi, bukan checkout repository penuh. Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi loader Python belum dijalankan langsung terhadap seluruh batch. Karena itu, validasi penuh kamus dan pengujian dari checkout repository penuh tetap belum selesai. Jangan mencentang kedua pekerjaan tersebut sebelum benar-benar dijalankan.
+Catatan historis: sebelum 27 November 2026, tes komponen dijalankan terpisah pada salinan terisolasi. Pada 27 November 2026, validasi diulang langsung dari checkout repository penuh di Termux: validator 60 batch/3.000 entri berhasil dan `python -m unittest discover -s tests -v` menjalankan 100 tes dengan hasil OK, 0 gagal.
 
-Langkah berikutnya: siapkan lingkungan checkout repository penuh untuk menjalankan validasi loader 60 batch dan regression suite. Jangan mulai implementasi POS sebelum celah validasi ini ditutup.
+Langkah berikutnya: mulai Tahap 2.5 — pengenalan kelas kata (POS), dengan tetap mempertahankan hasil validasi checkout penuh sebagai baseline.
 
 ## Dokumen rujukan
 
@@ -220,3 +220,13 @@ Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hany
 - [ ] Eksekusi dari checkout repository penuh dan validasi seluruh 60 batch kamus masih belum dilakukan.
 
 Batas validasi: eksekusi 47 tes dilakukan pada lingkungan Python terisolasi menggunakan salinan kode dan tes terbaru dari GitHub, bukan checkout repository lengkap. Karena itu hasil ini mengonfirmasi perilaku salinan sumber tersebut, tetapi tidak menggantikan validasi integrasi penuh di repository.
+
+
+### Validasi checkout penuh melalui Termux (27 November 2026)
+- [x] Clone repository `Sistem_bahasa` pada perangkat Android menggunakan Git.
+- [x] Jalankan `python -m tools.validasi_kamus_lengkap`: **VALIDASI BERHASIL**, 60 batch, 3.000 entri; JSONL, field wajib, format ID, array wajib, ID duplikat, dan lema duplikat diperiksa.
+- [x] Jalankan `python -m unittest discover -s tests -v` dari root checkout: **Ran 100 tests — OK**, 0 gagal.
+- [x] Konfirmasi hasil gabungan komponen: analyzer 8, loader 12, morfologi 47, normalisasi 8, pencocokan kamus 13, tokenizer 12.
+- [x] Tutup celah validasi loader seluruh kamus dan regression suite checkout penuh.
+
+Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan melalui GitHub Actions. Hasil ini tidak berarti Tahap 2.5–2.7 sudah selesai.
