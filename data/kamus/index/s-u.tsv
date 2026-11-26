@@ -1,5 +1,5 @@
 # Token index — s-u
-# token	id	lemma	type	batch
+# token\tid\tlemma\ttype\tbatch
 sabar	K0345	sabar	lemma	batch-007
 sabun	K0273	sabun	lemma	batch-006
 sakit	K0180	sakit	lemma	batch-004
