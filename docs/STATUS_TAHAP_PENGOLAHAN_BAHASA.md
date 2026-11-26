@@ -632,3 +632,10 @@ Dataset POS mencapai 100 kalimat (`pos_0001`–`pos_0100`), 543 token, terdiri d
 GitHub Actions run [#9](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909322818) sukses: validator 100 kalimat/543 token; evaluator development-only 255 token resolved, 186 benar, coverage 73,3%, accuracy 72,9%, selective accuracy 99,5%; satu gold ambiguous ditahan dan nol dipaksakan; regression suite **141/141 lulus**.
 
 **Penting:** selective accuracy bukan 100%; terdapat prediksi keliru di antara token yang diputuskan sistem. Dataset telah mencapai target kuantitas, bukan berarti kualitas POS sudah final. Tahap berikutnya adalah audit kesalahan development dan penetapan protokol evaluasi terpisah untuk 40 kalimat test. Test tidak boleh digunakan untuk menyetel aturan.
+
+
+## Audit kesalahan development pertama — 27 November 2026
+
+`tools/evaluasi_pos.py` kini melaporkan contoh salah prediksi secara eksplisit. Perubahan diverifikasi pada GitHub Actions [run #10](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909498360): dataset tetap valid (100 kalimat, 543 token; 60 development, 40 test) dan regression suite **142/142 lulus**.
+
+Kesalahan yang ditemukan: `pos_0093`, kalimat “Dia sangat rajin dan disiplin.”, token `disiplin`; gold `ADJ`, prediksi `NOUN` pada POS leksikal maupun kontekstual. Jangan ubah anotasi gold sekadar mengikuti prediksi. Audit entri kamus dan konteks harus mendahului perubahan. Test split 40 kalimat tetap tertahan.
