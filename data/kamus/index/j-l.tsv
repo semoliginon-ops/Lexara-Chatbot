@@ -78,6 +78,7 @@ jujur	K0240	jujur	lemma	batch-005
 julid	K0096	julid	lemma	batch-002
 jumlah	K1388	jumlah	lemma	batch-028
 jumpa	K1389	jumpa	lemma	batch-028
+jurang	K2730	jurang	lemma	batch-055
 jurnal	K1390	jurnal	lemma	batch-028
 juru masak	K2466	juru masak	lemma	batch-050
 juru parkir	K2479	juru parkir	lemma	batch-050
@@ -92,6 +93,7 @@ kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
 kabur	K0421	kabur	lemma	batch-009
 kabut	K2659	kabut	lemma	batch-054
+kabut asap	K2715	kabut asap	lemma	batch-055
 kacamata	K0916	kacamata	lemma	batch-019
 kacamata hitam	K2645	kacamata hitam	lemma	batch-053
 kacang	K1914	kacang	lemma	batch-039
@@ -178,6 +180,7 @@ kaya	K0928	kaya	lemma	batch-019
 kayak	K0623	kayak	lemma	batch-013
 kayaknya	K0661	kayaknya	lemma	batch-014
 kebab	K2033	kebab	lemma	batch-041
+kebakaran hutan	K2735	kebakaran hutan	lemma	batch-055
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
 kebaya encim	K2651	kebaya encim	lemma	batch-053
@@ -407,6 +410,9 @@ lada	K0947	lada	lemma	batch-019
 ladang	K0948	ladang	lemma	batch-019
 LadyJek	K2528	LadyJek	lemma	batch-051
 lah	K0666	lah	lemma	batch-014
+lahar	K2739	lahar	lemma	batch-055
+lahar dingin	K2740	lahar dingin	lemma	batch-055
+lahar panas	K2741	lahar panas	lemma	batch-055
 lahir	K1404	lahir	lemma	batch-029
 laju	K1412	laju	lemma	batch-029
 lakon	K1405	lakon	lemma	batch-029
