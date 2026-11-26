@@ -151,7 +151,26 @@ Komponen pencarian semantik berbasis embedding dapat ditambahkan sebagai modul o
 - [ ] Memeriksa duplikasi, kelengkapan, dan konsistensi setiap entri.
 - [ ] Membuat pencarian kata dan bentuk variasinya.
 
-**Kriteria selesai:** tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data.
+#### Penyempurnaan metadata kamus
+
+Setelah 3.000 lema terkumpul, metadata kamus disempurnakan secara bertahap per batch. Pengayaan ini merupakan bagian dari penyelesaian kualitas kamus versi 1.0, bukan penambahan target jumlah lema.
+
+Metadata yang diperiksa dan dilengkapi jika relevan:
+- Variasi bentuk atau ejaan yang benar-benar digunakan.
+- Bentuk turunan yang terbentuk secara morfologis.
+- Sinonim yang benar-benar sepadan dalam konteks makna.
+- Antonim yang merupakan lawan makna yang tepat.
+- Kata atau istilah yang memiliki hubungan semantik atau konteks.
+- Catatan penggunaan untuk menjelaskan ragam, konteks, ambiguitas, atau perbedaan makna.
+
+Aturan penyempurnaan:
+1. Akurasi linguistik lebih penting daripada banyaknya kolom yang terisi.
+2. Kolom metadata boleh tetap kosong jika tidak ada informasi yang dapat dipastikan.
+3. Jangan mengisi sinonim dengan kata yang hanya berhubungan, atau bentuk turunan dengan gabungan kata yang tidak terbentuk secara morfologis.
+4. Penyempurnaan metadata tidak boleh mengubah ID, lema, kelas kata, ragam, maupun definisi yang sudah ada. Perubahan pada data inti harus melalui pemeriksaan dan revisi tersendiri.
+5. Setiap batch diperiksa kembali setelah diperbarui untuk memastikan struktur dan data inti tetap konsisten.
+
+**Kriteria selesai:** tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data, termasuk penyempurnaan metadata yang relevan dan akurat. tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data.
 
 ### Tahap 2 — Pengolahan kata dan tata bahasa dasar
 - [ ] Membuat normalisasi teks.
