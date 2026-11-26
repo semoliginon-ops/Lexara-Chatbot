@@ -83,6 +83,9 @@ class MorphologyTests(unittest.TestCase):
     def test_nested_di_per_suffix_i(self):
         self.assertIn("baik", self.bases("diperbaiki"))
 
+    def test_nested_di_per_rejects_nominal_suffix_an(self):
+        self.assertNotIn("kerja", self.bases("diperkerjaan"))
+
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
 
