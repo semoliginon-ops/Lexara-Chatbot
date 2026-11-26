@@ -64,6 +64,7 @@ penakut	K0083	takut	derived_form	batch-002
 penamaan	K0128	nama	derived_form	batch-003
 penanganan	K0122	tangan	derived_form	batch-003
 penantian	K0064	tunggu	derived_form	batch-002
+penasaran	K0670	penasaran	lemma	batch-014
 pencari	K0063	cari	derived_form	batch-002
 pencarian	K0063	cari	derived_form	batch-002
 penceritaan	K0191	cerita	derived_form	batch-004
@@ -106,6 +107,7 @@ penolakan	K0245	tolak	derived_form	batch-005
 penolong	K0032	tolong	derived_form	batch-001
 penonton	K0075	nonton	derived_form	batch-002
 pensil	K0297	pensil	lemma	batch-006
+penting	K0671	penting	lemma	batch-014
 penulis	K0077	tulis	derived_form	batch-002
 penulisan	K0077	tulis	derived_form	batch-002
 penumpang	K0492	penumpang	lemma	batch-010
@@ -121,6 +123,7 @@ penyuka	K0081	suka	derived_form	batch-002
 pepohonan	K0159	pohon	derived_form	batch-004
 perapian	K0153	api	derived_form	batch-004
 percaya	K0241	percaya	lemma	batch-005
+percaya diri	K0672	percaya diri	lemma	batch-014
 percintaan	K0114	cinta	derived_form	batch-003
 percobaan	K0228	coba	derived_form	batch-005
 pergantian	K0221	ganti	derived_form	batch-005
@@ -177,9 +180,12 @@ ramai	K0249	ramai	lemma	batch-005
 rambut	K0126	rambut	lemma	batch-003
 rapi	K0323	rapi	lemma	batch-007
 rebus	K0466	rebus	lemma	batch-010
+receh	K0689	receh	lemma	batch-014
 rem	K0498	rem	lemma	batch-010
 remote	K0287	remote	lemma	batch-006
+resah	K0700	resah	lemma	batch-014
 resep	K0481	resep	lemma	batch-010
+ribet	K0673	ribet	lemma	batch-014
 roda	K0497	roda	lemma	batch-010
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
