@@ -1,8 +1,11 @@
 # Token index — s-u
 # token\tid\tlemma\ttype\tbatch
+sabun	K0273	sabun	lemma	batch-006
 sakit	K0180	sakit	lemma	batch-004
 salah	K0237	salah	lemma	batch-005
 sampai	K0210	sampai	lemma	batch-005
+sampo	K0274	sampo	lemma	batch-006
+sandal	K0269	sandal	lemma	batch-006
 sapu	K0054	sapu	lemma	batch-002
 sapuan	K0054	sapu	derived_form	batch-002
 saudara	K0110	saudara	lemma	batch-003
@@ -20,8 +23,11 @@ sekolah	K0184	sekolah	lemma	batch-004
 selalu	K0140	selalu	lemma	batch-003
 selamat	K0248	selamat	lemma	batch-005
 selesai	K0224	selesai	lemma	batch-005
+selimut	K0290	selimut	lemma	batch-006
 semalaman	K0134	malam	derived_form	batch-003
 senang	K0084	senang	lemma	batch-002
+sendok	K0279	sendok	lemma	batch-006
+sepatu	K0268	sepatu	lemma	batch-006
 sepeda	K0199	sepeda	lemma	batch-004
 sepi	K0250	sepi	lemma	batch-005
 sering	K0089	sering	lemma	batch-002
@@ -31,6 +37,7 @@ seumur	K0129	umur	derived_form	batch-003
 siang	K0132	siang	lemma	batch-003
 sibuk	K0087	sibuk	lemma	batch-002
 sih	K0050	sih	lemma	batch-001
+sikat	K0275	sikat	lemma	batch-006
 sore	K0133	sore	lemma	batch-003
 sore-sore	K0133	sore	derived_form	batch-003
 suami	K0111	suami	lemma	batch-003
@@ -48,9 +55,11 @@ tangan	K0122	tangan	lemma	batch-003
 tanya	K0189	tanya	lemma	batch-004
 taruh	K0059	taruh	lemma	batch-002
 taruhan	K0059	taruh	derived_form	batch-002
+tas	K0264	tas	lemma	batch-006
 teh	K0174	teh	lemma	batch-004
 telepon	K0195	telepon	lemma	batch-004
 teleponan	K0195	telepon	derived_form	batch-004
+televisi	K0286	televisi	lemma	batch-006
 telinga	K0119	telinga	lemma	batch-003
 telur	K0167	telur	lemma	batch-004
 teman	K0011	teman	lemma	batch-001
@@ -79,6 +88,7 @@ tinggal	K0206	tinggal	lemma	batch-005
 tolak	K0245	tolak	lemma	batch-005
 tolong	K0032	tolong	lemma	batch-001
 tontonan	K0075	nonton	derived_form	batch-002
+topi	K0270	topi	lemma	batch-006
 tulis	K0077	tulis	lemma	batch-002
 tulisan	K0077	tulis	derived_form	batch-002
 tunggu	K0064	tunggu	lemma	batch-002
