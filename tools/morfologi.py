@@ -81,6 +81,10 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
     if surface.startswith("di"):
         inner = surface[2:]
         for suffix, suffix_rule in _SUFFIXES:
+            # Bentuk pasif turunan memper- memakai -i atau -kan;
+            # jangan menganggap konfiks nominal -an sebagai pola ini.
+            if suffix not in ("i", "kan"):
+                continue
             if inner.endswith(suffix) and len(inner) > len(suffix) + 3:
                 middle = inner[:-len(suffix)]
                 if middle.startswith("per") and len(middle) > 4:
