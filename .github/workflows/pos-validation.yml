@@ -1,0 +1,48 @@
+name: POS Dataset and Regression Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/dataset_pos/**"
+      - "data/kamus/**"
+      - "tools/**"
+      - "tests/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "data/dataset_pos/**"
+      - "data/kamus/**"
+      - "tools/**"
+      - "tests/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pos-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Dataset, evaluator, and regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate POS dataset
+        run: python -m tools.validasi_dataset_pos
+
+      - name: Evaluate development split only
+        run: python -m tools.evaluasi_pos
+
+      - name: Run full regression suite
+        run: python -m unittest discover -s tests -v
