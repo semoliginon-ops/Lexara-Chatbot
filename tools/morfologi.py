@@ -131,7 +131,12 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         middle = surface[:-len(suffix)]
         for prefix, prefix_rule in _PREFIXES:
             if middle.startswith(prefix) and len(middle) > len(prefix) + 1:
-                add_candidate(middle[len(prefix):], f"{prefix_rule}+{suffix_rule}")
+                remainder = middle[len(prefix):]
+                restoration = {
+                    "men": "t", "mem": "p", "pen": "t", "pem": "p",
+                }.get(prefix)
+                if not (restoration and _known(restoration + remainder, lexicon)):
+                    add_candidate(remainder, f"{prefix_rule}+{suffix_rule}")
                 break
         for prefix, restored in _NASAL_RESTORATIONS:
             if middle.startswith(prefix) and len(middle) > len(prefix):
