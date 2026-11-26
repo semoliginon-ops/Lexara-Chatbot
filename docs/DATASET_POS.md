@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Dataset berisi 30 kalimat (18 development, 12 test; 156 token), lolos validasi Termux; regression suite pascakoreksi anotasi lulus 132/132. Satu label `jangan` pada development dikoreksi menjadi `PART`. Evaluator development telah dibuat, tetapi belum dijalankan di Termux. 
+**Status:** Dataset berisi 30 kalimat (18 development, 12 test; 156 token), lolos validasi Termux. Evaluator telah dijalankan di Termux: POS leksikal dan kontekstual masing-masing 42/72 benar pada token resolved (coverage/accuracy 58,3%; selective accuracy 100%). Regression suite penuh lulus 136/136. Satu token gold ambiguous (`jalan`, `pos_0006`) justru dipaksakan menjadi satu POS dan perlu diaudit. 
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -193,7 +193,7 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 
 File `tools/evaluasi_pos.py` membandingkan prediksi POS leksikal dan kontekstual terhadap gold label pada split development saja. Evaluator melaporkan coverage, accuracy terhadap seluruh token resolved, selective accuracy, confusion counts, dan penanganan token gold ambiguous. Record test tidak dimuat oleh CLI dan fungsi evaluasi menolak record yang bukan development.
 
-Empat regression tests awal tersedia di `tests/test_evaluasi_pos.py`. Kode dan tes masih menunggu eksekusi Termux; belum ada skor akurasi yang boleh dilaporkan.
+Empat regression tests di `tests/test_evaluasi_pos.py` telah dijalankan dari Termux: **4/4 lulus**. Evaluasi pada 18 kalimat development menghasilkan 72 token resolved. POS leksikal dan POS kontekstual sama-sama mencatat 42 prediksi benar, coverage 58,3%, accuracy 58,3%, dan selective accuracy 100%. Hasil ini hanya berlaku untuk sampel development kecil, bukan akurasi umum.
 
 Perintah:
 ```bash
@@ -203,3 +203,16 @@ python -m unittest discover -s tests -v
 ```
 
 Hasil evaluasi hanya menggambarkan sampel development yang tersedia (saat ini 18 kalimat). Jangan gunakan test split untuk menyetel aturan.
+
+
+### 11.1 Temuan audit pertama setelah evaluasi
+
+Evaluator menemukan 1 token gold berstatus `ambiguous`, yaitu `jalan` pada record `pos_0006` (“Jalan.”), tetapi sistem memaksakan satu POS (`forced: 1`, `abstained: 0`). Karena fragmen tersebut memang tidak memberi konteks untuk memilih antara NOUN dan VERB, perilaku ini perlu diperiksa.
+
+Langkah audit berikutnya:
+1. Periksa seluruh kandidat POS lema `jalan` dalam kamus dan apakah metadata entri/sense mempertahankan NOUN serta VERB.
+2. Telusuri mengapa `tools/pos_context.py` memberi keputusan tunggal pada token tersebut.
+3. Tambahkan regression test agar contoh ambigu tanpa konteks tidak dipaksa menjadi satu POS ketika kandidat leksikal memang jamak.
+4. Jangan mengubah split test atau memakai hasil test untuk menyetel aturan.
+
+Catatan hasil eksekusi: regression suite penuh dari Termux menjalankan **136 tes dan seluruhnya lulus** pada 27 November 2026. Evaluasi development menunjukkan POS kontekstual belum meningkatkan metrik dibanding POS leksikal pada sampel yang tersedia.
