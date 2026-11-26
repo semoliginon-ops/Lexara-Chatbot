@@ -216,3 +216,10 @@ Langkah audit berikutnya:
 4. Jangan mengubah split test atau memakai hasil test untuk menyetel aturan.
 
 Catatan hasil eksekusi: regression suite penuh dari Termux menjalankan **136 tes dan seluruhnya lulus** pada 27 November 2026. Evaluasi development menunjukkan POS kontekstual belum meningkatkan metrik dibanding POS leksikal pada sampel yang tersedia.
+
+
+### 11.2 Koreksi metadata lema "jalan"
+
+Audit hasil evaluasi menemukan bahwa entri `K0020` mencatat `jalan` hanya sebagai `NOUN`, padahal catatan penggunaan sebelumnya sudah menyebut fungsi verba. Metadata diperbaiki menjadi `NOUN` dan `VERB` dengan dua sense terpisah dan label POS pada masing-masing sense. Fragmen "Jalan." pada development kini seharusnya tetap ambigu karena tidak menyediakan konteks pemilih.
+
+Regression test integrasi ditambahkan untuk memastikan token gold ambiguous tersebut ditahan, bukan dipaksakan. Perubahan dan tes masih menunggu verifikasi Termux. Split test tidak disentuh.
