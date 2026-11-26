@@ -444,3 +444,12 @@ Catatan: POS kontekstual dan leksikal masih menghasilkan metrik identik. Kenaika
 - [ ] Audit cakupan kelas dengan abstention tinggi: NUM (0/2), PREP (1/7), ADV (4/13), dan CONJ (3/6). Jangan mengubah aturan atau kamus massal sebelum akar penyebab tiap contoh diperiksa.
 
 Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang terukur dibanding batch kelima karena ukuran dan komposisi development berubah. POS kontekstual masih identik dengan POS leksikal.
+
+
+### Audit cakupan indeks leksikal POS
+
+- [x] Bandingkan token resolved pada 36 kalimat development dengan delapan shard indeks kamus.
+- [x] Catat gap untuk ADV, PRON, PREP, CONJ, ADJ, NUM, NOUN, VERB, dan INTJ pada `docs/AUDIT_ANOTASI_POS.md`.
+- [ ] Tentukan desain suplementasi kata tugas dan numeralia yang terfokus; pertahankan entri kamus yang ada dan hindari audit massal.
+- [ ] Tambahkan regression tests untuk setiap penanganan closed-class/numeralia sebelum mengubah implementasi.
+- [ ] Lanjutkan batch ketujuh setelah strategi cakupan diputuskan; test split tetap ditahan.
