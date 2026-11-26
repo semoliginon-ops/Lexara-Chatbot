@@ -80,6 +80,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menambahkan dua kasus regresi kombinasi prefiks `memper-` dengan sufiks `-i` dan `-kan` (`memperbaiki`, `mempermainkan`).
 - [x] Menjalankan ulang seluruh 32 regression tests setelah penambahan dua kasus tersebut; 32 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
 - [x] Tambahkan aturan imbuhan bertingkat `di- + per- + -i` dan regression test `diperbaiki`; 33/33 tes morfologi lulus.
+- [x] Batasi aturan imbuhan bertingkat agar hanya menerima sufiks `-i` dan `-kan`, bukan `-an`.
+- [ ] Jalankan ulang suite morfologi setelah penambahan tes negatif `diperkerjaan`.
 - [ ] Memperluas inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan pengujian.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 
