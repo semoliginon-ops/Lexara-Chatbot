@@ -16,7 +16,7 @@ class MorphologyTests(unittest.TestCase):
     def setUp(self):
         lemmas = [
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
-            "main", "indah", "baik", "bangun", "cat", "kerja", "anda", "mari",
+            "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
         ]
         self.lexicon = build_lexicon([
@@ -35,6 +35,10 @@ class MorphologyTests(unittest.TestCase):
     def test_prefix_and_suffix_combination(self): self.assertIn("ajar", self.bases("mengajarkan"))
     def test_identical_reduplication(self): self.assertIn("anak", self.bases("anak-anak"))
     def test_non_identical_reduplication_not_guessed(self): self.assertEqual(self.bases("sayur-mayur"), set())
+    def test_reduplication_with_prefix_ber(self):
+        self.assertIn("jalan", self.bases("berjalan-jalan"))
+    def test_reduplication_with_prefix_ber_second_example(self):
+        self.assertIn("lari", self.bases("berlari-lari"))
     def test_exact_lexical_match_is_not_stemmed(self): self.assertEqual(analyze_morphology("makan", self.lexicon), [])
     def test_unknown_form_is_not_forced(self): self.assertEqual(analyze_morphology("memperxyz", self.lexicon), [])
     def test_prefix_memper(self): self.assertIn("indah", self.bases("memperindah"))
