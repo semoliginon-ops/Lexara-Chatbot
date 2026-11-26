@@ -347,7 +347,10 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Membatasi pemuatan data evaluator pada split `development`; evaluator menolak record split lain.
 - [x] Menyertakan coverage, accuracy terhadap seluruh token resolved, selective accuracy, confusion counts, dan penanganan gold ambiguous.
 - [x] Membuat 4 regression tests awal pada `tests/test_evaluasi_pos.py`.
-- [~] Menjalankan tes evaluator, evaluasi development, dan regression suite penuh dari Termux setelah sinkronisasi.
-- [ ] Audit kesalahan evaluasi development dan perluas dataset secara bertahap sebelum mengunci test set.
+- [x] Menjalankan 4 regression tests evaluator dari Termux: **4 lulus, 0 gagal** (27 November 2026).
+- [x] Menjalankan evaluator pada 18 kalimat development: 72 token resolved; POS leksikal dan kontekstual sama-sama menghasilkan 42 prediksi benar, coverage 58,3%, accuracy 58,3%, selective accuracy 100%.
+- [x] Menjalankan regression suite penuh dari Termux: **136 tes lulus, 0 gagal, 0 error** (`Ran 136 tests in 0.106s — OK`, 27 November 2026).
+- [!] Audit satu token gold `ambiguous` (`jalan` pada `pos_0006`) yang justru dipaksakan menjadi satu POS oleh sistem; telusuri kandidat POS kamus dan perilaku konteks sebelum memperbaiki aturan.
+- [ ] Perluas dataset secara bertahap; tambah contoh development yang mewakili kelas kata dan ambiguitas. Test split tetap ditahan.
 
-**Catatan:** file evaluator dan tes sudah masuk branch `main`, tetapi belum dianggap terverifikasi sampai dijalankan di Termux. Jangan memakai hasil evaluator sebagai klaim akurasi umum.
+**Catatan:** skor hanya berlaku untuk 18 kalimat development yang ada, bukan akurasi umum. POS kontekstual belum meningkatkan hasil dibanding POS leksikal pada sampel ini. Jangan memakai test split untuk menyetel aturan.
