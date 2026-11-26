@@ -64,8 +64,8 @@ Branch kerja: `main`
 - Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
 - 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
 - Prototipe morfologi tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Versi terbaru menambahkan kandidat konfiks ke-an, per-an, peN-an, bentuk menge-, serta perapian urutan prefiks. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
-- Versi awal memiliki 12 regression tests yang lulus pada lingkungan Python lokal terisolasi. Versi terbaru menambahkan 17 kasus tes, tetapi eksekusi ulang terhadap versi terbaru belum diverifikasi.
-- Total yang sudah benar-benar lulus sebelumnya tetap **65 tes komponen, 0 gagal** (45 fondasi + 8 analyzer + 12 morfologi awal). Jangan menghitung 17 tes tambahan sebagai lulus sebelum dijalankan.
+- Versi awal memiliki 12 regression tests yang lulus pada lingkungan Python lokal terisolasi. Versi terbaru menambahkan 18 kasus tes, tetapi eksekusi ulang terhadap versi terbaru belum diverifikasi.
+- Total yang sudah benar-benar lulus sebelumnya tetap **65 tes komponen, 0 gagal** (45 fondasi + 8 analyzer + 12 morfologi awal). Jangan menghitung 18 tes tambahan sebagai lulus sebelum dijalankan.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
@@ -210,4 +210,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perluasan tes; 17 tes versi terbaru belum dieksekusi, sehingga total 65 tes lulus sebelumnya tidak berubah. Berikutnya jalankan tes versi terbaru dan periksa kandidat palsu sebelum memperluas aturan lebih jauh.
+**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perluasan tes; 18 tes versi terbaru belum dieksekusi, sehingga total 65 tes lulus sebelumnya tidak berubah. Berikutnya jalankan tes versi terbaru dan periksa kandidat palsu sebelum memperluas aturan lebih jauh.
