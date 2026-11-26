@@ -9,7 +9,7 @@ from tools.pencocokan_kamus import lookup_token
 from tools.tokenizer import tokenize
 
 
-_WORD_TOKEN_RE = re.compile(r"^[^\\W_]+(?:[-'’][^\\W_]+)*$", re.UNICODE)
+_WORD_TOKEN_RE = re.compile(r"^[^\W_]+(?:[-'’][^\W_]+)*$", re.UNICODE)
 
 
 def analyze_text(text: str, lexicon: dict[str, list[dict]]) -> dict[str, Any]:
