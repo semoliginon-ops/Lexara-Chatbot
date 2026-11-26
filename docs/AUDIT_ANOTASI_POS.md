@@ -233,3 +233,18 @@ Satu kesalahan terdeteksi pada kedua jalur (leksikal dan konteks lokal):
 - Prediksi: `NOUN`
 
 Ini adalah bukti konkret bahwa evaluasi development belum sempurna. Jangan mengubah gold label untuk menyesuaikan prediksi. Langkah berikutnya adalah memeriksa entri kamus dan bukti leksikal/morfologis `disiplin`, lalu memutuskan apakah representasi POS kamus perlu diperluas atau contoh ini memerlukan penanganan konteks yang lebih tepat. Jangan gunakan 40 record test untuk penyetelan.
+
+
+## Perbaikan kesalahan `disiplin` — 27 November 2026
+
+Audit menunjukkan entri `disiplin` hanya memiliki POS `NOUN`, padahal pada penggunaan predikatif/koordinatif seperti “rajin dan disiplin” kata tersebut berfungsi sebagai `ADJ`. Entri kamus `K0788` kini mencatat dua sense terpisah: NOUN (ketaatan terhadap aturan) dan ADJ (taat pada aturan/tertib). Bentuk POS leksikal tetap mempertahankan kedua kandidat; pemilihan konteks tidak menghapus ambiguitas kamus.
+
+Aturan konteks lokal ditambah secara konservatif: pada koordinasi dengan `dan`, `serta`, atau `maupun`, jika konjungsi kiri memiliki tepat satu label POS yang sama dengan kandidat token kanan, label yang sama dapat dipilih dengan bukti eksplisit. Regression test mencakup “Dia sangat rajin dan disiplin”.
+
+GitHub Actions [run #11](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909687815) berhasil:
+- Validator: 100 kalimat, 543 token, 60 development, 40 test.
+- POS leksikal: 255 resolved, 186 benar, coverage 72,9%, accuracy 72,9%, selective accuracy 100%; 0 kesalahan terprediksi (lebih banyak abstention).
+- POS konteks lokal: 255 resolved, 187 benar, coverage 73,3%, accuracy 73,3%, selective accuracy 100%; 0 kesalahan terprediksi.
+- Regression suite: **143/143 lulus**.
+
+Perbaikan menaikkan satu prediksi kontekstual menjadi benar dan tidak menghasilkan salah prediksi pada development yang dievaluasi. Ini bukan bukti generalisasi; 40 kalimat test tetap tertahan dan tidak digunakan.
