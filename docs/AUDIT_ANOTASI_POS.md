@@ -219,3 +219,17 @@ GitHub Actions run [#9](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 - Regression suite: **141/141 lulus**.
 
 Selective accuracy 99,5% berarti prediksi yang diputuskan sistem belum seluruhnya benar. Angka ini harus dipertahankan apa adanya; jangan mengklaim akurasi sempurna. Audit kesalahan pada development perlu dilakukan sebelum perubahan aturan. Test split 40 kalimat tetap tertahan.
+
+
+## Audit kesalahan pertama pada development set v1 — 27 November 2026
+
+Evaluator kini menampilkan contoh token yang salah diprediksi, bukan hanya confusion matrix. Penambahan pelaporan ini dan regression test terkait diverifikasi pada GitHub Actions [run #10](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909498360): validator tetap berhasil untuk 100 kalimat/543 token dan regression suite meningkat menjadi **142/142 lulus**.
+
+Satu kesalahan terdeteksi pada kedua jalur (leksikal dan konteks lokal):
+- Record: `pos_0093`
+- Kalimat: “Dia sangat rajin dan disiplin.”
+- Token: `disiplin`
+- Gold: `ADJ`
+- Prediksi: `NOUN`
+
+Ini adalah bukti konkret bahwa evaluasi development belum sempurna. Jangan mengubah gold label untuk menyesuaikan prediksi. Langkah berikutnya adalah memeriksa entri kamus dan bukti leksikal/morfologis `disiplin`, lalu memutuskan apakah representasi POS kamus perlu diperluas atau contoh ini memerlukan penanganan konteks yang lebih tepat. Jangan gunakan 40 record test untuk penyetelan.
