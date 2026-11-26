@@ -4,6 +4,7 @@
 **Tahap roadmap:** Tahap 2 — Pengolahan kata dan tata bahasa dasar  
 **Status keseluruhan:** Sedang dikerjakan  
 **Dokumen induk:** [README.md](../README.md)  
+**Checklist utama:** [CHECKLIST_PENGEMBANGAN.md](CHECKLIST_PENGEMBANGAN.md)  
 **Dokumentasi kamus:** [KAMUS.md](KAMUS.md)
 
 Dokumen ini adalah catatan kesinambungan kerja. Jika percakapan atau sesi pengembangan terputus, gunakan dokumen ini bersama README dan kondisi repository terbaru untuk melanjutkan pekerjaan tanpa mengulang langkah yang sudah selesai.
