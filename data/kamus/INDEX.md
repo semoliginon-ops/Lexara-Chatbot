@@ -1,9 +1,9 @@
 # Index Kamus — Sistem Bahasa
 
 **Target:** 3.000 lemma  
-**Disetujui:** 1000 lemma  
-**Batch aktif:** 001–020  
-**Token terindeks:** 1597
+**Disetujui:** 1050 lemma  
+**Batch aktif:** 001–021  
+**Token terindeks:** 1647
 
 Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, register, varian, bentuk turunan, contoh, dan informasi leksikal lengkap berada di file batch.
 
@@ -15,8 +15,8 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 | d-f | [d-f.tsv](./index/d-f.tsv) — 246 token |
 | g-i | [g-i.tsv](./index/g-i.tsv) — 116 token |
 | j-l | [j-l.tsv](./index/j-l.tsv) — 270 token |
-| m-o | [m-o.tsv](./index/m-o.tsv) — 284 token |
-| p-r | [p-r.tsv](./index/p-r.tsv) — 191 token |
+| m-o | [m-o.tsv](./index/m-o.tsv) — 320 token |
+| p-r | [p-r.tsv](./index/p-r.tsv) — 205 token |
 | s-u | [s-u.tsv](./index/s-u.tsv) — 165 token |
 | v-z | [v-z.tsv](./index/v-z.tsv) — 15 token |
 
@@ -43,6 +43,7 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 - [Batch 018](./batch-018.jsonl)
 - [Batch 019](./batch-019.jsonl)
 - [Batch 020](./batch-020.jsonl)
+- [Batch 021](./batch-021.jsonl)
 
 ## Aturan singkat
 
