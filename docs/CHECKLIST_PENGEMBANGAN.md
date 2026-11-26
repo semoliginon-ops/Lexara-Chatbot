@@ -376,8 +376,19 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Menambahkan 10 kalimat baru (`pos_0031`–`pos_0040`): 6 development dan 4 test.
 - [x] Memperluas dataset dari 30 menjadi **40 kalimat**; komposisi menjadi 24 development dan 16 test.
 - [x] Menambahkan variasi percakapan informal, modalitas, imbuhan, konjungsi, interjeksi, demonstrativa, adjektiva, numeralia, dan preposisi.
-- [ ] Tarik batch keempat ke Termux dan jalankan `python -m tools.validasi_dataset_pos`.
-- [ ] Jalankan regression suite penuh setelah validasi: `python -m unittest discover -s tests -v`.
-- [ ] Evaluasi development set setelah validasi; test split tetap ditahan dan tidak digunakan untuk penyetelan.
+- [x] Tarik batch keempat ke Termux dan jalankan `python -m tools.validasi_dataset_pos`: **40 kalimat, 215 token, 24 development, 16 test — berhasil**.
+- [x] Jalankan regression suite penuh setelah validasi: **137/137 lulus, 0 gagal, 0 error**.
+- [x] Evaluasi development set setelah validasi; test split tetap ditahan dan tidak digunakan untuk penyetelan.
 
 **Titik lanjut:** verifikasi batch keempat dari checkout Termux. Jumlah token 215 adalah hitungan anotasi sebelum validator dijalankan; jangan tandai batch ini terverifikasi sampai output Termux diterima.
+
+
+### Verifikasi batch keempat dan evaluasi POS — 27 November 2026
+- [x] Validasi dataset di Termux: **40 kalimat, 215 token, 24 development, 16 test**.
+- [x] Regression suite penuh: **137 tes lulus, 0 gagal, 0 error**.
+- [x] Evaluasi development: 102 token resolved; leksikal dan kontekstual sama-sama 55 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%.
+- [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- [!] Tinjau anotasi/kebijakan POS kata `mau` pada `pos_0031`: gold `ADV`, prediksi `VERB`. Jangan ubah label atau aturan sebelum menilai fungsi dan pedoman secara konsisten.
+- [ ] Audit coverage kelas POS yang belum diprediksi, termasuk `INTJ`; prioritaskan penambahan contoh development yang representatif.
+
+**Titik lanjut aktif:** audit kasus `mau` dan cakupan kelas POS berdasarkan development set. Jangan gunakan 16 record test untuk penyetelan. Setelah audit, lanjutkan batch kelima menuju 50 kalimat.
