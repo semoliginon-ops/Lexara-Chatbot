@@ -157,4 +157,4 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [ ] Mengunci test set dan mengukur metrik tanpa penyetelan khusus terhadap test.
 - [x] Memperbarui dokumentasi status dan checklist berdasarkan hasil verifikasi Termux.
 
-**Titik lanjut:** tarik batch kedua ke Termux, jalankan validator untuk memastikan 20 kalimat/91 token cocok dengan tokenizer, lalu lanjutkan perluasan menuju 100 kalimat. Evaluasi development set dilakukan setelah validasi dan audit anotasi.
+**Titik lanjut:** dataset 20/100 kalimat telah lolos validasi struktur/tokenizer dan regression suite penuh terbaru 132/132 lulus di Termux (27 November 2026). Berikutnya audit kualitas anotasi dan perluas dataset menuju 100 kalimat. Evaluasi development set dilakukan setelah audit; test split tetap ditahan.
