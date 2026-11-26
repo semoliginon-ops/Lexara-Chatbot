@@ -60,9 +60,9 @@ Branch kerja: `main`
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap aktif: normalisasi teks versi awal.**
+**Subtahap 2.1 selesai: normalisasi teks versi awal tervalidasi.**
 
-Implementasi awal sudah ada. Pekerjaan berikutnya adalah menjalankan regression tests di lingkungan yang tersedia, meninjau hasilnya, lalu memperbaiki jika ditemukan masalah. Setelah itu tetapkan perilaku normalisasi sebagai baseline sebelum tokenizer dibuat.
+Delapan regression tests telah dijalankan pada lingkungan Python lokal terisolasi menggunakan salinan isi file dari GitHub. Hasilnya 8 lulus dan 0 gagal. Tidak ditemukan masalah pada delapan kasus yang diuji. Ini memvalidasi perilaku dasar, bukan menjamin seluruh kemungkinan masukan Bahasa Indonesia. Langkah aktif berikutnya adalah membuat tokenizer.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
@@ -75,11 +75,11 @@ Perhatian khusus:
 
 Ikuti urutan ini. Jangan melompat ke parser kalimat sebelum komponen sebelumnya tersedia dan diuji.
 
-### 5.1 Validasi normalisasi
-- [ ] Jalankan `python -m unittest discover -s tests -v` dari root repository.
-- [ ] Catat hasil nyata: jumlah tes lulus/gagal.
-- [ ] Perbaiki implementasi atau tes bila diperlukan.
-- [ ] Tambahkan kasus regresi untuk setiap bug yang ditemukan.
+### 5.1 Validasi normalisasi — selesai
+- [x] Jalankan 8 regression tests pada lingkungan Python lokal terisolasi menggunakan salinan isi file dari GitHub.
+- [x] Catat hasil: 8 tes lulus, 0 gagal.
+- [x] Tidak ditemukan bug pada kasus yang diuji; tidak ada perubahan kode yang diperlukan.
+- [x] Tetapkan normalisasi sebagai baseline awal. Pengujian ulang tetap dilakukan saat regression suite terpadu tersedia.
 
 ### 5.2 Tokenizer
 - [ ] Buat `tools/tokenizer.py`.
@@ -189,4 +189,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut saat dokumen ini dibuat:** jalankan dan validasi 8 tes normalisasi yang sudah disiapkan. Setelah hasilnya dicatat, lanjutkan ke tokenizer.
+**Titik lanjut:** buat `tools/tokenizer.py` dan `tests/test_tokenizer.py`. Normalisasi awal sudah diuji secara lokal: 8 lulus, 0 gagal.
