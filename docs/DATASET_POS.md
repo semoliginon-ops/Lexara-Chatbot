@@ -247,3 +247,8 @@ Kata `aduh` pada `pos_0041` diberi `INTJ` dan memiliki entri kamus `K0602`. Kata
 ## 12. Batch kelima — 27 November 2026
 
 Batch kelima menambahkan `pos_0041`–`pos_0050`: enam kalimat development dan empat test. Dataset menjadi 50 kalimat, 266 token, 30 development, dan 20 test. Pemeriksaan struktural berbasis salinan file GitHub memastikan seluruh baris JSON dapat dibaca, ID unik, label/status POS valid, dan urutan token sesuai pola tokenizer. Setelah workflow GitHub Actions ditambahkan, eksekusi resmi berhasil pada run [#1](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45906966948): validator Python lulus, evaluator development selesai, dan regression suite 137/137 lulus. Evaluasi memakai 30 kalimat development (125 token resolved); leksikal dan kontekstual sama-sama 72 benar, coverage 57,6%, accuracy 57,6%, selective accuracy 100%. Gold ambiguous: 1 ditahan, 0 dipaksakan. Split test tidak digunakan.
+
+
+## 13. Batch keenam — 27 November 2026
+
+Batch keenam menambahkan `pos_0051`–`pos_0060`: enam kalimat development dan empat test. Dataset menjadi 60 kalimat, 314 token, 36 development, dan 24 test. Cakupan tambahan meliputi negasi, verba berimbuhan, preposisi tujuan dan asal, konjungsi sebab, demonstrativa, serta adjektiva predikatif. Preflight struktural sebelum commit memeriksa JSON, ID, split, label/status POS, dan kecocokan token dengan pola tokenizer. Menunggu eksekusi workflow GitHub Actions untuk validasi Python, evaluasi development, dan regression suite. Test split tetap ditahan.
