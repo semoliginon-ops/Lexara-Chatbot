@@ -402,3 +402,17 @@ Pengguna menjalankan `git pull && python -m unittest discover -s tests -v` dari 
 - Hasil ini membuktikan regresi tes yang tersedia tetap lulus; belum mengukur akurasi POS atau memvalidasi kebenaran semantik seluruh anotasi gold.
 
 **Titik lanjut:** audit kualitas anotasi pada development set, pertahankan test split sebagai data tertahan.
+
+
+## Koreksi status terbaru Tahap 2.5 — 27 November 2026
+
+Catatan ini menjadi status verifikasi terbaru dan mengesampingkan catatan historis yang menyebut batch ketiga atau regression suite masih menunggu.
+
+- Dataset POS: **30 kalimat, 156 token, 18 development, 12 test**.
+- `python -m tools.validasi_dataset_pos` dijalankan pengguna dari Termux dan menghasilkan **VALIDASI DATASET POS BERHASIL**.
+- `python -m unittest discover -s tests -v` dijalankan pengguna setelah `git pull` dan menghasilkan **132 tests — OK**, 0 gagal, 0 error (0,105 detik).
+- Audit awal kualitas anotasi pada 18 kalimat development telah dicatat di `docs/AUDIT_ANOTASI_POS.md`. Split test tidak diperiksa.
+- Belum ada label gold yang diubah. Demonstrativa `itu`, aspek `sedang`, larangan `jangan`, dan gelar `Pak` perlu konvensi anotasi eksplisit.
+- Hasil validasi struktur dan regression tests tidak boleh ditafsirkan sebagai skor akurasi POS.
+
+**Titik lanjut:** perjelas konvensi anotasi, audit ulang development set, lalu ukur kinerja POS pada development. Test split tetap ditahan.
