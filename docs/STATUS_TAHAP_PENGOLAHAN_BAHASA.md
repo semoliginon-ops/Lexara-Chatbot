@@ -596,3 +596,12 @@ Regression tests menguji 12 kata, prioritas kandidat kamus, dan pelestarian ambi
 Kenaikan coverage dari 60,8% menjadi 72,3% dihitung pada development set yang sama setelah fallback; ini bukan akurasi umum. POS kontekstual dan leksikal tetap menghasilkan angka identik. Test split tetap ditahan.
 
 **Titik lanjut:** Batch 7 (`pos_0061`–`pos_0070`), enam development dan empat test. Setelah batch ditambahkan, validator, evaluator development-only, dan regression suite dijalankan kembali melalui GitHub Actions.
+
+
+## Batch ketujuh — 27 November 2026
+
+Dataset POS diperluas menjadi 70 kalimat (`pos_0001`–`pos_0070`), 374 token, 42 development dan 28 test. Batch ketujuh menambahkan enam development dan empat test dengan cakupan numeralia, preposisi tujuan, konjungsi, penanda aspek/modalitas, demonstrativa, dan adverbia derajat.
+
+GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211) sukses: validator 70 kalimat/374 token; evaluator development-only 174 token resolved, 131 benar, coverage 75,3%, accuracy 75,3%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan; regression suite **141/141 lulus**. Test split 28 kalimat tidak digunakan.
+
+**Titik lanjut:** Batch 8 (`pos_0071`–`pos_0080`), enam development dan empat test. Jangan menggunakan split test untuk mengubah aturan.
