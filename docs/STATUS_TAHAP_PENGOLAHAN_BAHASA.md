@@ -458,3 +458,21 @@ Bagian ini merupakan acuan status terkini dan mengesampingkan catatan historis y
 **Status:** audit anotasi development, validasi dataset, dan regression suite pascakoreksi telah diverifikasi. Dataset masih 30/100 kalimat. Evaluasi prediksi POS terhadap gold label belum dibuat.
 
 **Titik lanjut:** perluas development set secara bertahap, kemudian buat evaluasi POS yang melaporkan hasil per label dan kasus ambigu. Jangan gunakan 12 record test untuk menyetel aturan; jangan mulai parser kalimat sebelum evaluasi POS development memadai.
+
+
+## Pembuatan evaluator POS development — 27 November 2026
+
+Dibuat `tools/evaluasi_pos.py` untuk membandingkan keluaran POS leksikal dan POS dengan konteks lokal terhadap gold label pada split development. Evaluator:
+- hanya memuat record `development` dan mengabaikan record `test`;
+- menolak record non-development jika diberikan langsung ke fungsi evaluasi;
+- melaporkan jumlah token resolved, coverage, accuracy terhadap semua token resolved, selective accuracy, confusion counts, dan apakah gold ambiguous tetap ditahan atau dipaksakan;
+- memisahkan prediksi yang abstain dari prediksi yang benar, sehingga token tanpa prediksi tidak dihitung benar.
+
+Empat regression tests awal dibuat pada `tests/test_evaluasi_pos.py`. **Kode dan tes belum dijalankan di Termux**; status masih menunggu verifikasi pengguna. Evaluator belum menghasilkan skor aktual.
+
+**Perintah verifikasi berikutnya:**
+1. `python -m unittest discover -s tests -p "test_evaluasi_pos.py" -v`
+2. `python -m tools.evaluasi_pos`
+3. `python -m unittest discover -s tests -v`
+
+Hasil evaluasi hanya berlaku untuk 18 kalimat development saat ini. Jangan menyetel aturan berdasarkan test split.
