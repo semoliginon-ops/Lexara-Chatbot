@@ -116,7 +116,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: **VALIDASI DATASET POS BERHASIL**, batch pertama: 10 kalimat, 43 token (6 development, 4 test), seluruh pemeriksaan struktur dan kesesuaian tokenizer lulus. Batch kedua (20 kalimat total) telah lolos validasi ulang di Termux: 20 kalimat, 91 token, 12 development, 8 test (27 November 2026).
 - [x] Menjalankan 9 regression tests validator dari checkout Termux: 9 lulus, 0 gagal (27 November 2026).
 - [x] Menjalankan ulang seluruh regression suite dari checkout Termux setelah validator POS ditambahkan: **132 tes lulus, 0 gagal** (27 November 2026).
-- [ ] Memvalidasi batch kedua (20 kalimat, target 91 token; 12 development, 8 test) dari checkout Termux.
+- [x] Memvalidasi dataset POS terbaru dari checkout Termux: 30 kalimat, 156 token, 18 development, 12 test (27 November 2026).
 - [ ] Memperluas dataset hingga target 100 kalimat dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
@@ -326,3 +326,16 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [ ] Jalankan `python -m unittest discover -s tests -v` setelah validasi.
 
 **Titik lanjut:** verifikasi perubahan dataset dari checkout Termux. Belum ada klaim akurasi POS.
+
+
+## Verifikasi terbaru setelah koreksi anotasi — 27 November 2026
+
+Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih menyebut verifikasi menunggu atau jumlah tes yang lebih lama.
+
+- [x] Audit ulang 18 record development dan koreksi gold label `jangan` pada `pos_0024` dari `ADV` menjadi `PART`; split test tidak diubah.
+- [x] Jalankan `python -m tools.validasi_dataset_pos` dari Termux setelah koreksi: **30 kalimat, 156 token, 18 development, 12 test — VALIDASI DATASET POS BERHASIL**.
+- [x] Jalankan `python -m unittest discover -s tests -v` dari Termux setelah koreksi: **132 tes lulus, 0 gagal, 0 error** (`Ran 132 tests in 0.093s — OK`).
+- [ ] Perluas dataset secara bertahap menuju 100 kalimat; utamakan development set dan tetap tahan test split.
+- [ ] Bangun evaluasi POS yang mengukur prediksi terhadap gold label pada development set. Validasi struktur dan regression suite bukan skor akurasi.
+
+**Titik lanjut aktif:** perluasan development dataset dan persiapan evaluasi POS yang terukur. Jangan mulai parser kalimat atau menggunakan test split untuk menyetel aturan sebelum evaluasi development memadai.
