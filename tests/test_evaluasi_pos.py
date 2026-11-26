@@ -2,6 +2,8 @@
 import unittest
 
 from tools.evaluasi_pos import _score, evaluate_records, load_development_records
+from tools.kamus_loader import load_dictionary_directory
+from tools.pencocokan_kamus import build_lexicon
 
 
 class PosEvaluationTests(unittest.TestCase):
@@ -25,6 +27,14 @@ class PosEvaluationTests(unittest.TestCase):
     def test_rejects_test_records(self):
         with self.assertRaisesRegex(ValueError, "development"):
             evaluate_records([{"split": "test"}], {})
+
+    def test_real_development_ambiguous_jalan_is_not_forced(self):
+        records = load_development_records()
+        lexicon = build_lexicon(load_dictionary_directory("data/kamus"))
+        result = evaluate_records(records, lexicon)
+        self.assertEqual(result["ambiguous"]["total"], 1)
+        self.assertEqual(result["ambiguous"]["abstained"], 1)
+        self.assertEqual(result["ambiguous"]["forced"], 0)
 
     def test_loads_only_development_records(self):
         import json
