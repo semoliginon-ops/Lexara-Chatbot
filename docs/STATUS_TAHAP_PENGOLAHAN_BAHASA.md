@@ -55,14 +55,14 @@ Branch kerja: `main`
 
 - Kedua file telah dibuat di GitHub dan dibaca ulang untuk memastikan isi tersimpan.
 - **Tes otomatis belum dieksekusi.** Jangan menyebut seluruh tes lulus sebelum benar-benar dijalankan pada lingkungan Python.
-- Belum ada tokenizer, pencocokan kamus, analyzer morfologi, POS tagger, atau parser kalimat.
+- Tokenizer awal sudah dibuat dan diuji. Pencocokan kamus, analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap 2.1 selesai: normalisasi teks versi awal tervalidasi.**
+**Subtahap 2.1 dan 2.2 selesai: normalisasi dan tokenizer awal tervalidasi.**
 
-Delapan regression tests telah dijalankan pada lingkungan Python lokal terisolasi menggunakan salinan isi file dari GitHub. Hasilnya 8 lulus dan 0 gagal. Tidak ditemukan masalah pada delapan kasus yang diuji. Ini memvalidasi perilaku dasar, bukan menjamin seluruh kemungkinan masukan Bahasa Indonesia. Langkah aktif berikutnya adalah membuat tokenizer.
+Normalisasi lulus 8/8 tes. Tokenizer lulus 12/12 tes. Total 20/20 tes lulus pada lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. Cakupan ini memvalidasi perilaku dasar yang diuji, bukan seluruh kemungkinan bahasa atau format masukan. Langkah aktif berikutnya adalah pencocokan token ke kamus.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
@@ -81,12 +81,14 @@ Ikuti urutan ini. Jangan melompat ke parser kalimat sebelum komponen sebelumnya 
 - [x] Tidak ditemukan bug pada kasus yang diuji; tidak ada perubahan kode yang diperlukan.
 - [x] Tetapkan normalisasi sebagai baseline awal. Pengujian ulang tetap dilakukan saat regression suite terpadu tersedia.
 
-### 5.2 Tokenizer
-- [ ] Buat `tools/tokenizer.py`.
-- [ ] Pecah teks hasil normalisasi menjadi kata dan tanda baca.
-- [ ] Pertahankan tanda baca sebagai token tersendiri.
-- [ ] Pertahankan bentuk bertanda hubung sesuai kebijakan awal; jangan memecahnya tanpa aturan yang disengaja.
-- [ ] Buat tes untuk spasi, tanda baca berulang, angka, kata berimbuhan, kata ulang, apostrof, dan teks kosong.
+### 5.2 Tokenizer — selesai
+- [x] Buat `tools/tokenizer.py` dengan fungsi `tokenize(text: str) -> list[str]`.
+- [x] Pecah teks menjadi token kata dan tanda baca; whitespace tidak menghasilkan token.
+- [x] Tanda baca dikeluarkan sebagai token tersendiri, termasuk tanda baca berulang.
+- [x] Bentuk bertanda hubung dan apostrof internal dipertahankan; apostrof di tepi menjadi token tanda baca.
+- [x] Buat 12 regression tests; hasil pengujian lokal 12 lulus, 0 gagal.
+
+Perilaku tambahan yang diuji: angka, underscore sebagai token tersendiri, teks kosong, kosakata informal, dan input non-string.
 
 Contoh target awal:
 - Masukan: `Aku mau makan nasi!`
@@ -189,4 +191,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** buat `tools/tokenizer.py` dan `tests/test_tokenizer.py`. Normalisasi awal sudah diuji secara lokal: 8 lulus, 0 gagal.
+**Titik lanjut:** periksa format JSONL batch kamus aktual, lalu rancang loader dan pencocokan leksikal. Normalisasi dan tokenizer sudah diuji secara lokal: total 20 lulus, 0 gagal.
