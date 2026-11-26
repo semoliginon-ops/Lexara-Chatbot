@@ -429,3 +429,17 @@ Konvensi operasional telah ditetapkan dalam `docs/DATASET_POS.md` subbagian 5.1 
 - Penanda tanya: `PART`.
 
 Keputusan ini merupakan penyederhanaan internal dataset v1, bukan klaim universal linguistik. Belum ada label gold dalam JSONL yang diubah. Audit ulang 18 kalimat development masih menunggu pembaruan pedoman ditarik ke Termux. Split test tetap ditahan.
+
+
+## Audit ulang anotasi POS development — 27 November 2026
+
+- Pedoman anotasi POS v1 sudah ditetapkan pada `docs/DATASET_POS.md` subbagian 5.1.
+- Seluruh 18 kalimat development diperiksa ulang; split test tetap ditahan dan tidak disentuh.
+- Satu koreksi gold label dilakukan: `jangan` pada record `pos_0024` berubah dari `ADV` menjadi `PART`, sesuai konvensi penanda larangan.
+- Label demonstrativa `itu`, aspek/modalitas `sedang/akan`, gelar `Pak`, dan penghubung sebab `karena` dipertahankan sesuai pedoman.
+- Fragmen `Jalan.` tetap berstatus ambigu.
+- Audit adalah pemeriksaan konsistensi internal oleh satu peninjau; bukan bukti akurasi model.
+
+**Status verifikasi:** perubahan dataset dan dokumentasi sudah masuk ke branch `main`. Validasi dataset dan regression suite setelah perubahan masih menunggu dijalankan dari Termux.
+
+**Titik lanjut:** `git pull`, kemudian `python -m tools.validasi_dataset_pos` dan `python -m unittest discover -s tests -v`.
