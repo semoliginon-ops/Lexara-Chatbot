@@ -287,7 +287,8 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - [x] Petunjuk konteks lokal konservatif dan disambiguasi POS awal tersedia melalui `tools/pos_context.py`.
 - [x] `tests/test_pos_context.py` berisi 13 regression tests; **13/13 lulus** pada checkout Termux.
 - [x] Regression suite gabungan terbaru: **123 tes lulus, 0 gagal**.
-- [ ] Dataset kalimat berlabel dan evaluasi akurasi belum dibuat.
+- [x] Menetapkan spesifikasi dataset POS versi 1.0 pada [`DATASET_POS.md`](DATASET_POS.md): skema JSONL, pedoman anotasi, pembagian development/test, validasi, dan metrik.
+- [ ] Mengumpulkan dataset awal (target 100 kalimat), membuat validator, dan mengukur akurasi POS.
 
 **Batas klaim:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif sudah tersedia; 13 tes khusus konteks dan seluruh 123 tes gabungan lulus pada checkout Termux. Aturan ini masih terbatas dan belum mewakili tata bahasa Indonesia secara menyeluruh. Dataset kalimat berlabel dan evaluasi akurasi belum tersedia.
 
@@ -300,4 +301,4 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - `python -m unittest discover -s tests -v` → **Ran 123 tests — OK**, 0 gagal.
 - Seluruh 110 tes sebelumnya tetap lulus setelah penambahan 13 tes POS kontekstual.
 
-**Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas; dataset kalimat berlabel dan pengukuran akurasi menjadi pekerjaan berikutnya. Parser kalimat belum dimulai.
+**Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas. Spesifikasi dataset POS sudah dibuat; pengumpulan/anotasi kalimat, validator dataset, dan pengukuran akurasi menjadi pekerjaan berikutnya. Parser kalimat belum dimulai.
