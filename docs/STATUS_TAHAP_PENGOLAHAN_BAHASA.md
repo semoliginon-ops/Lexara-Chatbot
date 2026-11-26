@@ -261,3 +261,25 @@ Repository `semoliginon-ops/Sistem_bahasa` berhasil di-clone ke perangkat Androi
 3. Rincian tes: analyzer 8, loader 12, morfologi 47, normalisasi 8, pencocokan kamus 13, tokenizer 12.
 
 Validasi ini dijalankan lokal pada Android melalui Termux; GitHub Actions tidak digunakan. Hasil ini menutup pekerjaan validasi loader seluruh kamus dan regression suite checkout penuh. Ini belum menyelesaikan POS, parser kalimat, atau dataset uji terpadu.
+
+
+## 10. Tahap 2.5 — Pengenalan kelas kata (POS), progres awal — 27 November 2026
+
+### Taksonomi yang digunakan
+Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `ADV`, `PRON`, `NUM`, `PREP`, `CONJ`, `INTJ`, dan `PART`. Implementasi menggunakan kode yang sudah ada; tidak membuat label alternatif.
+
+### Implementasi awal
+- `tools/pos_tagger.py` menambahkan identifikasi POS berbasis kandidat leksikal dari hasil `analyze_text`.
+- Hasil menyimpan seluruh kandidat POS per entri dan POS per sense. Kata dengan lebih dari satu POS tidak dipaksa menjadi satu label.
+- Belum ada disambiguasi berbasis konteks kalimat. Metadata hasil secara eksplisit menyatakan `pos_contextual_disambiguation: false`.
+- Bentuk `derived_form` tidak otomatis mewarisi POS lema karena kelas kata dapat berubah, misalnya `makan` (VERB) menjadi `makanan` (NOUN). Bentuk turunan ditandai `requires_morphology` untuk diproses setelah analisis morfologi.
+- `tests/test_pos_tagger.py` berisi 10 regression tests untuk POS entri, POS ganda, POS per-sense, ambiguitas, bentuk turunan, token tak dikenal, tanda baca, pelestarian hasil analisis, dan validasi input.
+
+### Status verifikasi
+- [x] Kode POS diselaraskan dengan dokumentasi kamus.
+- [x] Modul POS awal dan 10 regression tests telah ditambahkan ke branch `main`.
+- [ ] Regression tests POS belum dijalankan pada checkout Termux. Setelah `git pull`, jalankan `python -m unittest tests.test_pos_tagger -v` dan kirim hasilnya untuk diperiksa.
+- [ ] Petunjuk konteks kalimat dan disambiguasi POS belum dibuat.
+- [ ] Dataset kalimat berlabel dan evaluasi akurasi belum dibuat.
+
+**Batas klaim:** implementasi POS awal sudah ditulis dan didokumentasikan, tetapi belum boleh dianggap lulus sampai 10 tes baru benar-benar dijalankan pada checkout lokal.
