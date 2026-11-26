@@ -560,3 +560,8 @@ Pada kalimat development `Gue mau makan dulu`, `mau` ditetapkan sebagai `VERB` k
 ## Penambahan batch kelima dan audit INTJ — 27 November 2026
 
 Dataset POS diperluas dari 40 menjadi 50 kalimat (`pos_0041`–`pos_0050`), terdiri dari 30 development dan 20 test. Batch menambahkan enam kalimat development dan empat test. Contoh `aduh` diberi `INTJ`, sesuai entri kamus `K0602`. Audit indeks menemukan `wah` belum tercakup dalam kamus; ini merupakan gap kosakata, bukan alasan mengubah POS atau menambah heuristik. Tidak ada perubahan kode POS atau kamus. Validasi dataset, evaluasi development, dan regression suite setelah batch kelima belum dijalankan. Test split tetap ditahan.
+
+
+## Pemeriksaan awal batch kelima — 27 November 2026
+
+File dataset yang telah di-commit dibaca ulang dari GitHub dan diperiksa secara struktural: 50 kalimat, 266 token, 30 development, 20 test; tidak ditemukan JSON rusak, ID duplikat, label/status POS tidak valid, atau ketidakcocokan token terhadap pola tokenizer. Pemeriksaan ini dilakukan melalui pembacaan dan validasi data di sisi GitHub, bukan dengan menjalankan modul Python proyek. Karena itu `tools.validasi_dataset_pos`, `tools.evaluasi_pos`, dan regression suite tetap berstatus menunggu eksekusi otomatis yang benar-benar menjalankan Python. Tidak ada klaim bahwa tes Python telah lulus.
