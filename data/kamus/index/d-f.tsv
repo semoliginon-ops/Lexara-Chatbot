@@ -1,5 +1,4 @@
 # Token index — d-f
-# token\tid\tlemma\ttype\tbatch
 daerah	K0384	daerah	lemma	batch-008
 dagang	K0365	dagang	lemma	batch-008
 daging	K0170	daging	lemma	batch-004
@@ -8,6 +7,7 @@ damai	K0544	damai	lemma	batch-011
 dandan	K0545	dandan	lemma	batch-011
 dapat	K0203	dapat	lemma	batch-005
 dapur	K0255	dapur	lemma	batch-006
+daripada	K0612	daripada	lemma	batch-013
 datang	K0018	datang	lemma	batch-001
 daun	K0161	daun	lemma	batch-004
 debat	K0434	debat	lemma	batch-009
@@ -16,6 +16,7 @@ deh	K0556	deh	lemma	batch-012
 dekat	K0090	dekat	lemma	batch-002
 demam	K0181	demam	lemma	batch-004
 demi	K0557	demi	lemma	batch-012
+demikian	K0613	demikian	lemma	batch-013
 denda	K0546	denda	lemma	batch-011
 dengar	K0035	dengar	lemma	batch-001
 depan	K0372	depan	lemma	batch-008
@@ -140,8 +141,11 @@ duduk	K0071	duduk	lemma	batch-002
 duduk-duduk	K0071	duduk	derived_form	batch-002
 duit	K0023	duit	lemma	batch-001
 dukung	K0549	dukung	lemma	batch-011
+duluan	K0614	duluan	lemma	batch-013
 durasi	K0550	durasi	lemma	batch-011
 elu	K0009	lu	variant	batch-001
+emang	K0615	emang	lemma	batch-013
 enggak	K0029	enggak	lemma	batch-001
 enggan	K0558	enggan	lemma	batch-012
 entah	K0551	entah	lemma	batch-011
+enteng	K0616	enteng	lemma	batch-013
