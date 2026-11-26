@@ -5,6 +5,7 @@ sabun	K0273	sabun	lemma	batch-006
 sakit	K0180	sakit	lemma	batch-004
 salah	K0237	salah	lemma	batch-005
 salam	K0403	salam	lemma	batch-009
+sambal	K0457	sambal	lemma	batch-010
 sampai	K0210	sampai	lemma	batch-005
 samping	K0376	samping	lemma	batch-008
 sampo	K0274	sampo	lemma	batch-006
@@ -12,6 +13,8 @@ sandal	K0269	sandal	lemma	batch-006
 sapa	K0402	sapa	lemma	batch-009
 sapu	K0054	sapu	lemma	batch-002
 sapuan	K0054	sapu	derived_form	batch-002
+sarapan	K0452	sarapan	lemma	batch-010
+sate	K0490	sate	lemma	batch-010
 saudara	K0110	saudara	lemma	batch-003
 saya	K0002	saya	lemma	batch-001
 sayang	K0115	sayang	lemma	batch-003
@@ -51,8 +54,11 @@ silakan	K0405	silakan	lemma	batch-009
 simpan	K0413	simpan	lemma	batch-009
 singgah	K0420	singgah	lemma	batch-009
 sopan	K0346	sopan	lemma	batch-007
+sopir	K0493	sopir	lemma	batch-010
 sore	K0133	sore	lemma	batch-003
 sore-sore	K0133	sore	derived_form	batch-003
+soto	K0489	soto	lemma	batch-010
+spion	K0499	spion	lemma	batch-010
 stasiun	K0393	stasiun	lemma	batch-008
 suami	K0111	suami	lemma	batch-003
 sudah	K0146	sudah	lemma	batch-003
@@ -76,6 +82,7 @@ taruhan	K0059	taruh	derived_form	batch-002
 tas	K0264	tas	lemma	batch-006
 tawa	K0429	tawa	lemma	batch-009
 teh	K0174	teh	lemma	batch-004
+telan	K0478	telan	lemma	batch-010
 telepon	K0195	telepon	lemma	batch-004
 teleponan	K0195	telepon	derived_form	batch-004
 televisi	K0286	televisi	lemma	batch-006
@@ -83,6 +90,7 @@ telinga	K0119	telinga	lemma	batch-003
 telur	K0167	telur	lemma	batch-004
 teman	K0011	teman	lemma	batch-001
 tempat	K0383	tempat	lemma	batch-008
+tempe	K0491	tempe	lemma	batch-010
 tenang	K0351	tenang	lemma	batch-007
 tengah	K0377	tengah	lemma	batch-008
 terang	K0325	terang	lemma	batch-007
@@ -116,11 +124,14 @@ titip	K0412	titip	lemma	batch-009
 toko	K0361	toko	lemma	batch-008
 tolak	K0245	tolak	lemma	batch-005
 tolong	K0032	tolong	lemma	batch-001
+tomat	K0485	tomat	lemma	batch-010
 tontonan	K0075	nonton	derived_form	batch-002
 topi	K0270	topi	lemma	batch-006
+tuang	K0474	tuang	lemma	batch-010
 tujuan	K0382	tujuan	lemma	batch-008
 tulis	K0077	tulis	lemma	batch-002
 tulisan	K0077	tulis	derived_form	batch-002
+tumis	K0469	tumis	lemma	batch-010
 tunggu	K0064	tunggu	lemma	batch-002
 turun	K0070	turun	lemma	batch-002
 tutup	K0066	tutup	lemma	batch-002
