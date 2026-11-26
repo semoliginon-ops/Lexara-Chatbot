@@ -129,6 +129,7 @@ serbuk	K1606	serbuk	lemma	batch-033
 sereal	K2038	sereal	lemma	batch-041
 serempak	K1608	serempak	lemma	batch-033
 seret	K1594	seret	lemma	batch-032
+serigala	K2294	serigala	lemma	batch-046
 sering	K0089	sering	lemma	batch-002
 serius	K0238	serius	lemma	batch-005
 serum	K1610	serum	lemma	batch-033
@@ -299,6 +300,7 @@ tatap	K1686	tatap	lemma	batch-034
 tatar	K1685	tatar	lemma	batch-034
 tawa	K0429	tawa	lemma	batch-009
 tawar	K1687	tawar	lemma	batch-034
+tawon	K2295	tawon	lemma	batch-046
 tawuran	K1688	tawuran	lemma	batch-034
 tebal	K1136	tebal	lemma	batch-023
 tebar	K1689	tebar	lemma	batch-034
@@ -459,11 +461,14 @@ ubi	K1996	ubi	lemma	batch-040
 ubur-ubur	K1153	ubur-ubur	lemma	batch-024
 ucap	K1154	ucap	lemma	batch-024
 udang	K1156	udang	lemma	batch-024
+udang galah	K2299	udang galah	lemma	batch-046
 udara	K1155	udara	lemma	batch-024
 ujar	K0642	ujar	lemma	batch-013
 ujung-ujungnya	K0678	ujung-ujungnya	lemma	batch-014
 ulang	K0227	ulang	lemma	batch-005
 ulangan	K0227	ulang	derived_form	batch-005
+ular piton	K2300	ular piton	lemma	batch-046
+ular sawah	K2301	ular sawah	lemma	batch-046
 ulat	K1158	ulat	lemma	batch-024
 ulek	K1157	ulek	lemma	batch-024
 ulir	K1159	ulir	lemma	batch-024
