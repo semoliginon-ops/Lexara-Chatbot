@@ -476,3 +476,20 @@ Empat regression tests awal dibuat pada `tests/test_evaluasi_pos.py`. **Kode dan
 3. `python -m unittest discover -s tests -v`
 
 Hasil evaluasi hanya berlaku untuk 18 kalimat development saat ini. Jangan menyetel aturan berdasarkan test split.
+
+
+## Verifikasi evaluator POS di Termux — 27 November 2026
+
+Pengguna menjalankan rangkaian perintah setelah menarik commit evaluator ke Termux. Seluruh langkah berhasil:
+
+- 4 regression tests khusus evaluator: **4 lulus, 0 gagal**.
+- Evaluasi hanya memuat **18 kalimat development**; split test tidak dipakai.
+- Token berstatus: 72 resolved, 1 ambiguous, dan 21 not_applicable.
+- POS leksikal: 42/72 prediksi benar; coverage 58,3%; accuracy 58,3%; selective accuracy 100%.
+- POS dengan konteks lokal: hasil identik dengan POS leksikal (42/72; coverage 58,3%; accuracy 58,3%; selective accuracy 100%). Pada sampel kecil ini, konteks lokal belum memberi peningkatan terukur.
+- Penanganan gold ambiguous: 1 total, 0 ditahan, 1 dipaksakan. Kasusnya adalah token `jalan` pada record development `pos_0006` (“Jalan.”). Gold menyatakan ambigu antara NOUN dan VERB, tetapi keluaran sistem menetapkan satu POS. Ini adalah temuan yang harus diaudit, bukan keberhasilan disambiguasi.
+- Regression suite penuh: **136 tes lulus, 0 gagal, 0 error** (`Ran 136 tests in 0.106s — OK`).
+
+**Interpretasi:** selective accuracy 100% hanya berarti seluruh 42 prediksi yang dikeluarkan pada token resolved cocok dengan gold label. Coverage 58,3% menunjukkan 30 dari 72 token resolved tidak diberi prediksi. Accuracy 58,3% menghitung abstain sebagai tidak benar. Hasil ini terbatas pada development set kecil dan bukan estimasi akurasi umum.
+
+**Titik lanjut:** audit kandidat POS lema `jalan` di kamus dan alasan sistem menganggapnya tidak ambigu. Periksa apakah masalah berasal dari metadata kamus atau aturan POS. Tambahkan regression test yang memastikan fragmen tanpa konteks tidak dipaksakan menjadi satu POS jika kamus/pedoman mengakui beberapa fungsi. Setelah itu, perluas dataset development secara bertahap. Jangan gunakan split test untuk menyetel aturan.
