@@ -474,4 +474,14 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211): validator berhasil; regression suite **141/141 lulus**.
 - [x] Evaluator development-only: 174 token resolved, 131 benar, coverage 75,3%, accuracy 75,3%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan.
 
-**Titik lanjut:** Batch 8 (`pos_0071`–`pos_0080`), enam development dan empat test. Pertahankan seluruh 28 kalimat test sebagai data tertahan.
+**Catatan:** Batch 8 (`pos_0071`–`pos_0080`) sudah selesai dan diverifikasi; lihat bagian “Batch kedelapan dan verifikasi otomatis” di bawah. Seluruh 32 kalimat test tetap tertahan.
+
+
+### Batch kedelapan dan verifikasi otomatis — 27 November 2026
+
+- [x] Menambahkan `pos_0071`–`pos_0080`: enam kalimat development dan empat kalimat test.
+- [x] Dataset menjadi **80 kalimat, 428 token, 48 development, 32 test**.
+- [x] GitHub Actions run [#7](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908957782): validator berhasil; regression suite **141/141 lulus**.
+- [x] Evaluator development-only: 199 token resolved, 149 benar, coverage 74,9%, accuracy 74,9%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan.
+
+**Titik lanjut:** Batch 9 (`pos_0081`–`pos_0090`), enam development dan empat test. Pertahankan seluruh 32 kalimat test sebagai data tertahan.
