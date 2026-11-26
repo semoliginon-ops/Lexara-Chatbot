@@ -53,16 +53,19 @@ Branch kerja: `main`
 
 ### Status verifikasi
 
-- Kedua file telah dibuat di GitHub dan dibaca ulang untuk memastikan isi tersimpan.
-- **Tes otomatis belum dieksekusi.** Jangan menyebut seluruh tes lulus sebelum benar-benar dijalankan pada lingkungan Python.
-- Tokenizer awal sudah dibuat dan diuji. Pencocokan kamus, analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
+- Normalisasi: 8 tes lulus, 0 gagal.
+- Tokenizer: 12 tes lulus, 0 gagal.
+- Loader kamus: 12 tes lulus, 0 gagal.
+- Total: **32 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
+- Sampel entri JSONL aktual dari Batch 001 berhasil dimuat dan seluruh field tetap terjaga.
+- Pencocokan token ke kamus, analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
 
-**Subtahap 2.1 dan 2.2 selesai: normalisasi dan tokenizer awal tervalidasi.**
+**Subtahap 2.1 dan 2.2 selesai; fondasi loader untuk 2.3 sudah tersedia.**
 
-Normalisasi lulus 8/8 tes. Tokenizer lulus 12/12 tes. Total 20/20 tes lulus pada lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. Cakupan ini memvalidasi perilaku dasar yang diuji, bukan seluruh kemungkinan bahasa atau format masukan. Langkah aktif berikutnya adalah pencocokan token ke kamus.
+Normalisasi lulus 8/8 tes, tokenizer 12/12, dan loader kamus 12/12. Total 32/32 tes lulus pada lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. Satu sampel entri JSONL aktual juga berhasil dibaca. Cakupan ini memvalidasi perilaku yang diuji, bukan seluruh kemungkinan data. Pekerjaan aktif berikutnya adalah menguji loader terhadap seluruh batch dan membangun pencocokan token.
 
 Perhatian khusus:
 - Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
