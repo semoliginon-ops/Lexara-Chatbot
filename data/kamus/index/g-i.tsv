@@ -6,6 +6,8 @@ gak	K0029	enggak	variant	batch-001
 ganti	K0221	ganti	lemma	batch-005
 gantian	K0221	ganti	derived_form	batch-005
 garam	K0171	garam	lemma	batch-004
+garpu	K0280	garpu	lemma	batch-006
+gelas	K0278	gelas	lemma	batch-006
 gercep	K0100	gercep	lemma	batch-002
 gua	K0008	gue	variant	batch-001
 gue	K0008	gue	lemma	batch-001
@@ -13,6 +15,7 @@ gula	K0172	gula	lemma	batch-004
 gunung	K0158	gunung	lemma	batch-004
 guru	K0185	guru	lemma	batch-004
 gw	K0008	gue	variant	batch-001
+handuk	K0276	handuk	lemma	batch-006
 hanya	K0149	hanya	lemma	batch-003
 hari	K0130	hari	lemma	batch-003
 harian	K0130	hari	derived_form	batch-003
