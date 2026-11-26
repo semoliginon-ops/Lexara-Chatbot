@@ -5,6 +5,7 @@ pacar	K0113	pacar	lemma	batch-003
 padahal	K0629	padahal	lemma	batch-013
 padang pasir	K2675	padang pasir	lemma	batch-054
 padang rumput	K2674	padang rumput	lemma	batch-054
+Pademangan	K2820	Pademangan	lemma	batch-057
 padu	K1502	padu	lemma	batch-031
 paduan	K1503	paduan	lemma	batch-031
 pagi	K0131	pagi	lemma	batch-003
@@ -16,12 +17,14 @@ pakaian	K0057	pakai	derived_form	batch-002
 pakaian dalam	K2615	pakaian dalam	lemma	batch-053
 pakaian olahraga	K2616	pakaian olahraga	lemma	batch-053
 paling	K0630	paling	lemma	batch-013
+Palmerah	K2828	Palmerah	lemma	batch-057
 pamer	K1504	pamer	lemma	batch-031
 pamit	K1038	pamit	lemma	batch-021
 panas	K0251	panas	lemma	batch-005
 pancake	K1983	pancake	lemma	batch-040
 panci	K0282	panci	lemma	batch-006
 pancing	K1505	pancing	lemma	batch-031
+Pancoran	K2837	Pancoran	lemma	batch-057
 panda	K2288	panda	lemma	batch-046
 panen	K1506	panen	lemma	batch-031
 panggang	K0470	panggang	lemma	batch-010
@@ -38,6 +41,8 @@ parfum	K1041	parfum	lemma	batch-021
 parkir	K0397	parkir	lemma	batch-008
 paruh	K1508	paruh	lemma	batch-031
 pasar	K0362	pasar	lemma	batch-008
+Pasar Minggu	K2833	Pasar Minggu	lemma	batch-057
+Pasar Rebo	K2844	Pasar Rebo	lemma	batch-057
 pasien	K1509	pasien	lemma	batch-031
 pasir	K2692	pasir	lemma	batch-054
 pasrah	K0599	pasrah	lemma	batch-012
@@ -163,6 +168,7 @@ pengusaha	K0229	usaha	derived_form	batch-005
 peninggalan	K0206	tinggal	derived_form	batch-005
 peniti	K2650	peniti	lemma	batch-053
 penjahit	K2477	penjahit	lemma	batch-050
+Penjaringan	K2816	Penjaringan	lemma	batch-057
 penjemputan	K2542	penjemputan	lemma	batch-051
 penjual	K0056	jual	derived_form	batch-002
 penjualan	K0056	jual	derived_form	batch-002
@@ -237,6 +243,7 @@ perusak	K0222	rusak	derived_form	batch-005
 perut	K0125	perut	lemma	batch-003
 pesan	K0194	pesan	lemma	batch-004
 pesanan	K0194	pesan	derived_form	batch-004
+Pesanggrahan	K2839	Pesanggrahan	lemma	batch-057
 pesawat	K2574	pesawat	lemma	batch-052
 pesepeda	K0199	sepeda	derived_form	batch-004
 pesisir	K2723	pesisir	lemma	batch-055
@@ -304,6 +311,7 @@ pucat	K1050	pucat	lemma	batch-021
 puding	K1939	puding	lemma	batch-039
 pulang	K0019	pulang	lemma	batch-001
 pulau	K2667	pulau	lemma	batch-054
+Pulo Gadung	K2841	Pulo Gadung	lemma	batch-057
 pulpen	K0298	pulpen	lemma	batch-006
 Puncak Jaya	K2752	Puncak Jaya	lemma	batch-056
 Puncak Mandala	K2754	Puncak Mandala	lemma	batch-056
