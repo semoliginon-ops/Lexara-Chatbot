@@ -210,4 +210,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perluasan tes; 18 tes versi terbaru belum dieksekusi, sehingga total 65 tes lulus sebelumnya tidak berubah. Berikutnya jalankan tes versi terbaru dan periksa kandidat palsu sebelum memperluas aturan lebih jauh.
+**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perluasan tes; 18 tes morfologi versi terbaru telah dieksekusi dan lulus. Total 71 tes komponen telah lulus secara terpisah. Berikutnya periksa kandidat palsu dan perluas aturan morfologi secara konservatif.
