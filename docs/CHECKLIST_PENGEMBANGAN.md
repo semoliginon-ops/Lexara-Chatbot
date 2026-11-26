@@ -158,7 +158,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — perbaikan kandidat palsu morfologi berlanjut.**
 
-Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 89 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 89 lulus, 0 gagal (45 fondasi + 8 analyzer + 36 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap dan sejumlah bentuk leksikal umum dilindungi dari pemotongan prefiks keliru. Tes morfologi terbaru kini 36/36 lulus. Pengujian baru menemukan dan memperbaiki konflik prefiks bertumpuk: `penge-` sebelumnya juga dapat menghasilkan kandidat keliru melalui pemotongan `pen-`. Total pengujian komponen terbaru menjadi 89 tes lulus, 0 gagal (45 fondasi + 8 analyzer + 36 morfologi), dijalankan terpisah. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan lokal terisolasi. GitHub Actions tidak dijalankan.
+Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 91 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 91 lulus, 0 gagal (45 fondasi + 8 analyzer + 38 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap dan sejumlah bentuk leksikal umum dilindungi dari pemotongan prefiks keliru. Tes morfologi terbaru kini 38/38 lulus. Pengujian baru menemukan dan memperbaiki konflik prefiks bertumpuk: `penge-` sebelumnya juga dapat menghasilkan kandidat keliru melalui pemotongan `pen-`. Total pengujian komponen terbaru menjadi 91 tes lulus, 0 gagal (45 fondasi + 8 analyzer + 38 morfologi), dijalankan terpisah. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan lokal terisolasi. GitHub Actions tidak dijalankan.
 
 ## Dokumen rujukan
 
@@ -170,3 +170,6 @@ Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe m
 
 
 Pembaruan reduplikasi: analisis konservatif kini mengenali pola `ber-` pada unsur pertama dalam bentuk seperti `berjalan-jalan` dan `berlari-lari`, hanya jika unsur dasar kedua cocok dengan lema kamus. Dua regression tests baru dijalankan bersama suite morfologi: 36 lulus, 0 gagal.
+
+
+Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan kandidat berawalan `k` secara spekulatif apabila sisa bentuk setelah `meng-` sudah cocok dengan lema kamus. Contoh yang diuji: `mengambil` menghasilkan `ambil`, bukan `kambil`; `mengunci` tetap dapat menghasilkan `kunci`. Suite morfologi: 38 lulus, 0 gagal.
