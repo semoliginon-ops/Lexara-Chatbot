@@ -64,7 +64,9 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
     if surface.startswith("per") and surface.endswith("an") and len(surface) > 6:
         add_candidate(surface[3:-2], "confix_per_an")
 
-    for prefix in ("peng", "peny", "pen", "pem", "penge"):
+    # Periksa bentuk terpanjang lebih dahulu agar "penge-" tidak
+    # tertangkap terlalu dini sebagai "pen-" atau "peng-".
+    for prefix in ("penge", "peng", "peny", "pem", "pen"):
         if surface.startswith(prefix) and surface.endswith("an") and len(surface) > len(prefix) + 2:
             stem = surface[len(prefix):-2]
             add_candidate(stem, "confix_peN_an")
