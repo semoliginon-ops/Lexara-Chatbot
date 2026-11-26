@@ -1,11 +1,12 @@
 # Token index — p-r
-# token\tid\tlemma\ttype\tbatch
 pacar	K0113	pacar	lemma	batch-003
+padahal	K0629	padahal	lemma	batch-013
 pagi	K0131	pagi	lemma	batch-003
 paham	K0040	paham	lemma	batch-001
 pahit	K0461	pahit	lemma	batch-010
 pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
+paling	K0630	paling	lemma	batch-013
 panas	K0251	panas	lemma	batch-005
 panci	K0282	panci	lemma	batch-006
 panggang	K0470	panggang	lemma	batch-010
@@ -161,6 +162,7 @@ pintu	K0256	pintu	lemma	batch-006
 piring	K0277	piring	lemma	batch-006
 pisau	K0281	pisau	lemma	batch-006
 pohon	K0159	pohon	lemma	batch-004
+pokoknya	K0631	pokoknya	lemma	batch-013
 ponsel	K0196	ponsel	lemma	batch-004
 porsi	K0479	porsi	lemma	batch-010
 potong	K0471	potong	lemma	batch-010
