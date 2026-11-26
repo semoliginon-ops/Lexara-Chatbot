@@ -6,6 +6,7 @@ main	K0074	main	lemma	batch-002
 makan	K0013	makan	lemma	batch-001
 makanan	K0013	makan	derived_form	batch-001
 malam	K0134	malam	lemma	batch-003
+malu	K0337	malu	lemma	batch-007
 mama	K0106	mama	lemma	batch-003
 mandi	K0051	mandi	lemma	batch-002
 mandian	K0051	mandi	derived_form	batch-002
@@ -133,6 +134,7 @@ mengusahakan	K0229	usaha	derived_form	batch-005
 menidurkan	K0015	tidur	derived_form	batch-001
 meninggali	K0206	tinggal	derived_form	batch-005
 meninggalkan	K0206	tinggal	derived_form	batch-005
+menit	K0303	menit	lemma	batch-007
 menjawab	K0190	jawab	derived_form	batch-004
 menjual	K0056	jual	derived_form	batch-002
 menjulid	K0096	julid	derived_form	batch-002
@@ -167,6 +169,7 @@ mereka	K0007	mereka	lemma	batch-001
 merusak	K0222	rusak	derived_form	batch-005
 meyakini	K0242	yakin	derived_form	batch-005
 meyakinkan	K0242	yakin	derived_form	batch-005
+minggu	K0306	minggu	lemma	batch-007
 minum	K0014	minum	lemma	batch-001
 minuman	K0014	minum	derived_form	batch-001
 mobil	K0201	mobil	lemma	batch-004
@@ -176,6 +179,7 @@ mulai	K0225	mulai	lemma	batch-005
 mulut	K0121	mulut	lemma	batch-003
 mungkin	K0142	mungkin	lemma	batch-003
 murid	K0186	murid	lemma	batch-004
+musim	K0309	musim	lemma	batch-007
 naik	K0069	naik	lemma	batch-002
 nama	K0128	nama	lemma	batch-003
 nanti	K0136	nanti	lemma	batch-003
@@ -184,6 +188,7 @@ ngaret	K0098	ngaret	lemma	batch-002
 nggak	K0029	enggak	variant	batch-001
 ngobrol	K0038	ngobrol	lemma	batch-001
 nonton	K0075	nonton	lemma	batch-002
+nyaman	K0329	nyaman	lemma	batch-007
 obat	K0182	obat	lemma	batch-004
 obatan	K0182	obat	derived_form	batch-004
 obrolan	K0038	ngobrol	derived_form	batch-001
