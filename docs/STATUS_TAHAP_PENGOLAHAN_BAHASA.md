@@ -504,3 +504,19 @@ Metadata diperbaiki dengan dua kelas kata (`NOUN`, `VERB`) dan dua sense ber-POS
 Satu regression test integrasi baru memuat kamus dan dataset development sebenarnya, lalu memeriksa bahwa token gold ambiguous `jalan` ditahan dan tidak dipaksakan. Tidak ada perubahan pada split test atau aturan konteks.
 
 **Status:** perubahan sudah masuk branch `main`, menunggu verifikasi Termux. Jalankan tes evaluator, evaluator development, lalu seluruh regression suite.
+
+
+## Verifikasi koreksi metadata POS lema "jalan" — 27 November 2026
+
+Pengguna menarik enam pembaruan terbaru ke checkout Termux dengan `git pull` (fast-forward ke `0ff5ddb`).
+
+- 5 regression tests khusus evaluator: **5 lulus, 0 gagal**.
+- Evaluator hanya menggunakan 18 kalimat development: 72 token resolved, 1 ambiguous, 21 not_applicable.
+- POS leksikal: 42 prediksi benar dari 72 token resolved; coverage 58,3%; accuracy 58,3%; selective accuracy 100%.
+- POS dengan konteks lokal: hasil identik; belum ada peningkatan terukur pada sampel ini.
+- Gold ambiguous: **1 ditahan (abstained), 0 dipaksakan (forced)**. Fragmen `Jalan.` kini tidak dipaksa menjadi satu POS.
+- Regression suite penuh: **137 tests in 0.325s — OK**, 0 gagal dan 0 error.
+
+Interpretasi: selective accuracy 100% hanya berlaku untuk 42 token yang diprediksi. Coverage 58,3% dan accuracy 58,3% menunjukkan masih banyak token resolved yang belum diprediksi. Evaluasi ini terbatas pada development set kecil dan bukan estimasi akurasi umum. Split test tetap tidak digunakan.
+
+**Titik lanjut:** perluas dataset POS secara bertahap dari 30 menuju target 100 kalimat, utamakan variasi kasus pada development set, dan pertahankan test split sebagai data tertahan.
