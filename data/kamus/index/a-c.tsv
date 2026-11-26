@@ -87,6 +87,7 @@ ambang	K1829	ambang	lemma	batch-037
 ambil	K0058	ambil	lemma	batch-002
 ambisi	K0707	ambisi	lemma	batch-015
 ambruk	K0708	ambruk	lemma	batch-015
+ambulans	K2557	ambulans	lemma	batch-052
 ambyar	K1214	ambyar	lemma	batch-025
 ampas	K1811	ampas	lemma	batch-037
 ampela	K1904	ampela	lemma	batch-039
@@ -211,6 +212,8 @@ bagus	K0041	bagus	lemma	batch-001
 bagusan	K0041	bagus	derived_form	batch-001
 bahan	K1223	bahan	lemma	batch-025
 bahaya	K0331	bahaya	lemma	batch-007
+bahu	K2589	bahu	lemma	batch-052
+bajaj	K2553	bajaj	lemma	batch-052
 bajigur	K2006	bajigur	lemma	batch-041
 bajing	K2254	bajing	lemma	batch-046
 bajingan	K0718	bajingan	lemma	batch-015
@@ -277,6 +280,7 @@ bayar	K0353	bayar	lemma	batch-008
 bayi	K0524	bayi	lemma	batch-011
 beban	K0725	beban	lemma	batch-015
 bebek	K1955	bebek	lemma	batch-040
+becak	K2552	becak	lemma	batch-052
 begadang	K0726	begadang	lemma	batch-015
 bekal	K0525	bekal	lemma	batch-011
 bekantan	K2256	bekantan	lemma	batch-046
@@ -395,6 +399,7 @@ besi	K1237	besi	lemma	batch-025
 besok	K0138	besok	lemma	batch-003
 betah	K0532	betah	lemma	batch-011
 bete	K0533	bete	lemma	batch-011
+betis	K2583	betis	lemma	batch-052
 beton	K1238	beton	lemma	batch-025
 betulan	K0653	betulan	lemma	batch-014
 biadab	K0735	biadab	lemma	batch-015
@@ -431,6 +436,7 @@ bohlam LED	K2358	bohlam LED	lemma	batch-048
 bohong	K0239	bohong	lemma	batch-005
 boikot	K0739	boikot	lemma	batch-015
 bokek	K0095	bokek	lemma	batch-002
+bokong	K2580	bokong	lemma	batch-052
 boks	K2334	boks	lemma	batch-047
 bolak-balik	K0537	bolak-balik	lemma	batch-011
 boleh	K0144	boleh	lemma	batch-003
@@ -471,6 +477,7 @@ bukti	K0744	bukti	lemma	batch-015
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
 bulu babi	K2298	bulu babi	lemma	batch-046
+bulu mata	K2599	bulu mata	lemma	batch-052
 bumbu	K0482	bumbu	lemma	batch-010
 bumbu kacang	K2068	bumbu kacang	lemma	batch-042
 bumbu rendang	K2069	bumbu rendang	lemma	batch-042
@@ -500,6 +507,9 @@ burung rajawali	K2265	burung rajawali	lemma	batch-046
 burung tekukur	K2266	burung tekukur	lemma	batch-046
 burung unta	K2244	burung unta	lemma	batch-045
 burung walet	K2267	burung walet	lemma	batch-046
+bus kota	K2568	bus kota	lemma	batch-052
+bus sekolah	K2569	bus sekolah	lemma	batch-052
+busway	K2570	busway	lemma	batch-052
 butuh	K0230	butuh	lemma	batch-005
 cabai	K0483	cabai	lemma	batch-010
 cabai rawit	K2106	cabai rawit	lemma	batch-043
