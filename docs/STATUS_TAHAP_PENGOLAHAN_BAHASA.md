@@ -646,3 +646,12 @@ Kesalahan yang ditemukan: `pos_0093`, kalimat “Dia sangat rajin dan disiplin.�
 Entri kamus `disiplin` diperluas dengan sense ADJ selain NOUN. Aturan konteks lokal kini dapat memakai kesesuaian POS konjung kiri dan token kanan pada koordinasi `dan`/`serta`/`maupun`, hanya bila irisan label tepat satu. Perubahan diuji dengan kalimat development “Dia sangat rajin dan disiplin.”
 
 GitHub Actions [run #11](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909687815) sukses: validator 100 kalimat/543 token; POS kontekstual 187/255 benar, coverage 73,3%, accuracy 73,3%, selective accuracy 100%, nol kesalahan prediksi yang diputuskan; regression suite **143/143 lulus**. POS leksikal menghasilkan 186/255 benar dan lebih banyak abstention. Ini hanya evaluasi development, bukan skor test atau akurasi umum. Test split 40 kalimat tetap ditahan.
+
+
+## Diagnostik abstention POS dan perluasan fungsi kata — 27 November 2026
+
+Evaluator kini menampilkan semua token development yang belum diputuskan beserta alasan dan sumber leksikalnya. Suplementasi terkurasi menambahkan `itu` (PRON), `dan`/`ketika` (CONJ), serta `wah` (INTJ), tanpa memasukkan kata polifungsi `baru`, `dulu`, dan `tetap` sebagai fallback tunggal.
+
+GitHub Actions [run #13](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910106880) sukses: validator 100 kalimat/543 token; contextual POS development 208/255 benar, coverage/accuracy 81,6%, selective accuracy 100%, nol kesalahan prediksi yang diputuskan; regression suite **144/144 lulus**. Abstention tersisa: ADJ 2, ADV 3, NOUN 19, VERB 23. Sebagian besar VERB membutuhkan morfologi; sebagian nomina belum ada dalam indeks kamus.
+
+Angka ini hanya dari development, bukan estimasi performa umum. Test split 40 kalimat tetap tertahan. Tahap berikutnya: audit integrasi morfologi verba dan kelengkapan lema nomina.
