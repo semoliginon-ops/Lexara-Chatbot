@@ -88,6 +88,10 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menambahkan perlindungan restorasi nasal `peng-`: jangan membuat kandidat `k+akar` jika sisa setelah prefiks sudah merupakan lema kamus.
 - [x] Menambahkan tes positif `pengunci → kunci` dan tes negatif `pengambil → ambil`, bukan `kambil`.
 - [x] Menjalankan ulang 40 regression tests morfologi; 40 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
+- [x] Memprioritaskan restorasi konsonan `t`/`p` pada prefiks nasal `men-`, `mem-`, `pen-`, dan `pem-` jika bentuk hasil restorasi cocok dengan lema kamus.
+- [x] Menerapkan prioritas yang sama pada analisis gabungan prefiks+sufiks.
+- [x] Menambahkan tes negatif `menari` dan `menarikan`: pilih `tari`, bukan kandidat kebetulan `ari`.
+- [x] Menjalankan ulang 42 regression tests morfologi; 42 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
 
 ### 2.5 Pengenalan kelas kata (POS)
 
@@ -179,3 +183,5 @@ Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan ka
 
 
 **Pembaruan restorasi nasal `peng-`:** aturan restorasi `peng-` kini mengikuti perlindungan konservatif yang sebelumnya diterapkan pada `meng-`. Jika sisa bentuk setelah prefiks sudah cocok dengan lema kamus, kandidat tambahan `k+akar` tidak dibuat. Tes memastikan `pengambil` menghasilkan `ambil`, bukan `kambil`, sedangkan `pengunci` tetap dapat menghasilkan `kunci`. Suite morfologi terbaru: 40 lulus, 0 gagal; total tes komponen terpisah: 93 lulus, 0 gagal (45 fondasi + 8 analyzer + 40 morfologi).
+
+**Pembaruan prioritas restorasi nasal `men-/mem-/pen-/pem-`:** bila kandidat hasil pemulihan konsonan awal `t` atau `p` tersedia di kamus, kandidat mentah yang kebetulan cocok tidak lagi ikut ditambahkan. Perlindungan berlaku untuk analisis prefiks tunggal dan gabungan prefiks+sufiks. Kasus `menari` serta `menarikan` diuji: `tari` dipilih, bukan `ari`. Suite morfologi: 42 lulus, 0 gagal; total komponen terpisah: 95 lulus, 0 gagal (45 fondasi + 8 analyzer + 42 morfologi).
