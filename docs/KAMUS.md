@@ -1,0 +1,209 @@
+# Dokumentasi Kamus — Sistem Bahasa
+
+**Status:** Rancangan awal  
+**Versi:** 1.0-draft  
+**Target awal:** 3.000 entri leksikal  
+**Bahasa utama:** Bahasa Indonesia sehari-hari, termasuk ragam informal dan bahasa gaul
+
+Dokumen ini khusus mengatur kamus leksikal Sistem Bahasa. Dokumen ini bukan kumpulan dialog, percakapan siap pakai, atau daftar jawaban chatbot.
+
+## 1. Tujuan
+
+Membangun basis kosakata terstruktur agar mesin bahasa dapat mengenali bentuk kata, makna, kelas kata, variasi pemakaian, dan hubungan antarkata. Kamus menjadi salah satu fondasi bagi pemrosesan kata, tata bahasa, pemahaman makna, dan pembentukan kalimat pada tahap berikutnya.
+
+Kamus bukan mesin pemahaman lengkap. Kemampuan memahami kalimat tetap membutuhkan komponen lain seperti normalisasi, analisis morfologi, tata bahasa, representasi makna, konteks, dan aturan pemrosesan.
+
+## 2. Ruang lingkup versi pertama
+
+Target 3.000 entri adalah sasaran awal, bukan batas akhir bahasa yang dapat dipahami sistem.
+
+Prioritas isi:
+- Kosakata yang sering muncul dalam kehidupan sehari-hari.
+- Kata benda, tindakan, sifat, keterangan, kata tugas, dan ekspresi.
+- Bentuk baku dan bentuk informal.
+- Bahasa gaul Indonesia yang umum digunakan.
+- Singkatan, variasi ejaan, dan bentuk penulisan digital yang relevan.
+- Bentuk turunan melalui imbuhan dan perubahan bentuk kata.
+- Makna berbeda dari kata yang sama, jika memang ada.
+
+Tidak termasuk sebagai entri utama:
+- Dialog lengkap atau percakapan siap pakai.
+- Kalimat jawaban chatbot.
+- Paragraf contoh yang hanya mengulang dialog.
+- Kata yang dibuat-buat tanpa penggunaan atau definisi yang dapat dipertanggungjawabkan.
+
+Contoh kalimat boleh digunakan sebagai contoh pemakaian untuk menjelaskan makna, tetapi bukan sebagai entri kamus tersendiri.
+
+## 3. Kelas kata (POS)
+
+Untuk rancangan awal, kamus menggunakan 10 kelompok kelas kata kerja berikut. Klasifikasi ini merupakan taksonomi proyek dan dapat disempurnakan setelah diuji dengan data bahasa Indonesia nyata.
+
+| Kode | Kelas kata | Keterangan | Contoh |
+|---|---|---|---|
+| NOUN | Nomina | Kata benda atau penamaan | rumah, meja, orang |
+| VERB | Verba | Kata kerja atau tindakan | makan, tidur, berjalan |
+| ADJ | Adjektiva | Kata sifat atau keadaan | besar, baik, malas |
+| ADV | Adverbia | Kata yang menerangkan unsur lain | sangat, mungkin, selalu |
+| PRON | Pronomina | Kata ganti | aku, kamu, mereka |
+| NUM | Numeralia | Kata bilangan | satu, kedua, sepuluh |
+| PREP | Preposisi | Kata depan/penanda relasi | di, ke, dari, untuk |
+| CONJ | Konjungsi | Kata penghubung | dan, tetapi, karena |
+| INTJ | Interjeksi | Kata seru atau ungkapan spontan | wah, aduh, eh |
+| PART | Partikel/Artikula | Partikel penegas atau penanda tertentu | -lah, -kah, pun, si, sang |
+
+Satu bentuk kata dapat memiliki lebih dari satu kelas kata atau makna. Setiap penggunaan yang berbeda harus dicatat sebagai sense/makna terpisah, bukan dipaksakan menjadi satu definisi.
+
+## 4. Bahasa gaul dan ragam pemakaian
+
+Bahasa gaul bukan kelas kata tersendiri. Bahasa gaul dicatat sebagai **ragam/register** atau penanda penggunaan, sementara kelas katanya tetap ditentukan berdasarkan fungsi kata tersebut.
+
+Contoh:
+- **gue**: PRON, register informal/gaul; padanan umum: saya atau aku sesuai konteks.
+- **nongkrong**: VERB, register informal.
+- **bokek**: ADJ, register informal/gaul.
+- **mager**: bentuk leksikal informal yang bermakna malas bergerak atau enggan beraktivitas; kelas/fungsi dapat diberi catatan sesuai pemakaiannya.
+
+Penanda register yang dapat digunakan:
+- formal
+- neutral
+- informal
+- slang
+- regional
+- technical
+- archaic
+
+Untuk bahasa daerah atau istilah regional, cantumkan wilayah jika diketahui. Jangan menganggap satu istilah berlaku di seluruh Indonesia.
+
+## 5. Struktur data setiap entri
+
+Setiap entri sebaiknya memiliki bidang berikut. Bidang wajib harus tersedia; bidang opsional boleh kosong jika informasinya belum diketahui.
+
+| Field | Wajib | Fungsi |
+|---|---|---|
+| id | Ya | ID stabil dan unik |
+| lemma | Ya | Bentuk dasar/kepala entri |
+| pos | Ya | Satu atau lebih kode kelas kata |
+| senses | Ya | Daftar makna; minimal satu |
+| register | Ya | Ragam pemakaian |
+| variants | Tidak | Ejaan atau bentuk variasi |
+| derived_forms | Tidak | Bentuk berimbuhan/turunan |
+| synonyms | Tidak | Sinonim yang sesuai makna |
+| antonyms | Tidak | Antonim jika tersedia |
+| related_terms | Tidak | Kata yang berkaitan secara konsep |
+| usage_notes | Tidak | Catatan batasan dan konteks pemakaian |
+| examples | Tidak | Contoh pemakaian singkat |
+| source_notes | Tidak | Asal verifikasi atau catatan penyunting |
+
+Contoh struktur JSON:
+
+    {
+      "id": "idn_verb_000001",
+      "lemma": "makan",
+      "pos": ["VERB"],
+      "senses": [
+        {
+          "sense_id": "idn_verb_000001_s1",
+          "definition": "Memasukkan makanan ke dalam mulut lalu menelannya.",
+          "domain": ["aktivitas_sehari_hari"]
+        }
+      ],
+      "register": ["neutral"],
+      "variants": [],
+      "derived_forms": ["memakan", "dimakan", "makanan"],
+      "synonyms": ["menyantap"],
+      "antonyms": [],
+      "related_terms": ["makanan", "minum"],
+      "usage_notes": [],
+      "examples": ["Anak itu sedang makan."]
+    }
+
+Contoh di atas hanya ilustrasi skema, bukan keputusan bahwa semua relasi kata selalu saling dapat menggantikan. Sinonim, antonim, dan kata terkait harus diverifikasi berdasarkan makna tertentu.
+
+## 6. Pemisahan bentuk kata dan makna
+
+Kamus harus membedakan:
+1. **Lemma:** bentuk kepala entri, misalnya kata bisa.
+2. **Bentuk turunan:** bentuk yang mengalami imbuhan atau proses morfologi, misalnya memakan dari makan.
+3. **Sense:** satu makna tertentu dari sebuah lemma.
+4. **POS:** fungsi gramatikal kata pada penggunaan tertentu.
+5. **Register:** tingkat/formalitas atau ragam penggunaan.
+
+Contoh kata bisa memiliki sekurangnya dua makna:
+- bisa = mampu atau sanggup; fungsi umumnya verba/modalitas.
+- bisa = racun; nomina.
+
+Kedua makna harus disimpan sebagai sense terpisah agar mesin tidak mencampuradukkan makna.
+
+## 7. Prinsip kualitas data
+
+- Satu entri harus memiliki definisi yang jelas dan tidak melingkar.
+- Hindari duplikasi lemma yang hanya berbeda kapitalisasi, kecuali ada alasan linguistik.
+- Jangan menyamakan sinonim dengan kata yang sekadar berkaitan.
+- Catat kelas kata berdasarkan fungsi, bukan hanya bentuk permukaan.
+- Pisahkan makna yang berbeda.
+- Beri label ragam informal/gaul secara konsisten.
+- Tandai informasi yang belum terverifikasi; jangan mengarang definisi atau asal kata.
+- Gunakan ejaan Unicode yang konsisten dan simpan bentuk asli variasi penulisan.
+- Setiap perubahan data harus dapat ditinjau melalui version control.
+
+## 8. Strategi pengumpulan 3.000 entri
+
+Pengisian dilakukan bertahap per kelompok dan diperiksa sebelum digabungkan. Angka pembagian kategori tidak ditetapkan secara kaku di awal karena distribusi kelas kata harus mengikuti kebutuhan percakapan nyata dan hasil inventarisasi.
+
+Urutan kerja yang disarankan:
+1. Tetapkan skema data dan kode kelas kata.
+2. Kumpulkan kosakata umum yang paling sering dipakai.
+3. Tambahkan bentuk informal dan bahasa gaul yang terverifikasi.
+4. Tambahkan variasi ejaan dan singkatan digital.
+5. Lengkapi makna, kelas kata, bentuk turunan, dan relasi.
+6. Deteksi duplikasi dan konflik makna.
+7. Jalankan validasi otomatis dan tinjauan manual.
+8. Bekukan rilis awal setelah target dan pemeriksaan kualitas terpenuhi.
+
+Jangan mengejar jumlah 3.000 dengan mengorbankan ketepatan. Entri yang belum jelas lebih baik ditandai untuk ditinjau daripada dipaksakan masuk.
+
+## 9. Validasi dan pengujian
+
+Pemeriksaan minimum:
+- Semua ID unik.
+- Semua entri memiliki lemma, POS, dan minimal satu sense.
+- Semua kode POS termasuk daftar yang diizinkan.
+- Semua label register termasuk daftar yang diizinkan.
+- Tidak ada referensi sinonim/antonim yang menunjuk ke ID yang tidak ada (jika relasi memakai ID).
+- Bentuk turunan tidak otomatis dianggap sinonim dari lemma.
+- Makna ganda tercatat sebagai sense berbeda.
+- Variasi gaul memiliki label register dan, bila relevan, padanan atau catatan pemakaian.
+- Data dapat dibaca dan dimuat secara offline di perangkat Android.
+
+## 10. Format penyimpanan dan integrasi
+
+Format sumber yang disarankan adalah JSON atau JSONL UTF-8 agar mudah diperiksa, divalidasi, dan diproses. Format final belum dikunci; pemilihan antara satu berkas JSON, beberapa berkas JSONL, atau SQLite dilakukan setelah ukuran dan pola akses data diuji.
+
+Kamus harus dapat digunakan tanpa koneksi internet saat runtime. Pengembangan dan penyimpanan kode/data dilakukan di repository; aplikasi tidak boleh bergantung pada GitHub untuk menjalankan pencarian kamus.
+
+## 11. Hubungan dengan komponen Sistem Bahasa
+
+Kamus menyediakan data leksikal bagi komponen lain:
+- Normalisasi teks: menghubungkan variasi ejaan dengan bentuk yang dikenali.
+- Analisis morfologi: mengenali imbuhan dan bentuk turunan.
+- Analisis POS: memperkirakan fungsi kata dalam kalimat.
+- Mesin tata bahasa: memakai informasi kelas kata dan relasi sintaksis.
+- Mesin makna: memakai sense dan hubungan konsep.
+- Mesin konteks: membantu memilih makna yang tepat berdasarkan kalimat sekitar.
+
+Embedding tidak menjadi prasyarat untuk menyusun kamus. Kebutuhannya akan dievaluasi setelah pencarian berbasis kamus dan aturan dasar diuji. Jika kelak dipakai, embedding hanya komponen pencarian kemiripan semantik dan bukan pengganti kamus atau mesin pembentukan jawaban.
+
+## 12. Kriteria selesai untuk Kamus v1.0
+
+Kamus v1.0 dapat dinyatakan siap ketika:
+- Target 3.000 entri telah dicapai.
+- Struktur data konsisten dan tervalidasi.
+- Duplikasi utama telah diperiksa.
+- Makna ganda dan kelas kata telah ditangani.
+- Bahasa informal/gaul diberi label yang sesuai.
+- Data dapat dimuat dan dicari secara offline.
+- Tersedia catatan versi dan daftar isu data yang masih perlu diperbaiki.
+
+---
+
+**Catatan:** Kamus v1.0 adalah fondasi leksikal, bukan klaim bahwa Sistem Bahasa sudah mampu memahami seluruh bahasa Indonesia atau percakapan manusia.
