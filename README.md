@@ -3,6 +3,8 @@
 > **Status:** Perencanaan dan perancangan fondasi  
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
+> **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
+
 > **Status pekerjaan tahap pengolahan kata:** lihat [Dokumen Status Pengembangan](docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md) untuk progres, file yang sudah dibuat, pengujian, dan urutan pekerjaan berikutnya.
 
 ## 1. Gambaran proyek
