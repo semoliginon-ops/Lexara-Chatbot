@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Batch ketiga telah ditambahkan; dataset berisi 30 kalimat (18 development, 12 test; 156 token) dan menunggu validasi di Termux. Batch pertama dan kedua telah lolos validasi; regression suite penuh terakhir 132/132 lulus sebelum batch ketiga.  
+**Status:** Batch ketiga telah lolos validasi di Termux; dataset berisi 30 kalimat (18 development, 12 test; 156 token). Regression suite penuh setelah batch ketiga juga lulus 132/132. Audit awal anotasi development telah dicatat di [`AUDIT_ANOTASI_POS.md`](AUDIT_ANOTASI_POS.md); belum ada label dataset yang diubah.  
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -50,7 +50,7 @@ Satu baris adalah satu kalimat berupa objek JSON. Simpan sebagai UTF-8 di:
 
 `data/dataset_pos/kalimat_pos_v1.jsonl`
 
-**Progres:** 30/100 kalimat telah dianotasi (18 development, 12 test; 156 token berdasarkan rancangan anotasi). Batch pertama (10/43) dan kedua (20/91 total) telah lolos validator di Termux. Batch ketiga menambahkan 10 kalimat (6 development, 4 test) dan menunggu validasi struktur/tokenizer di Termux. Sampel ini belum cukup untuk menyimpulkan akurasi umum; kualitas label dan akurasi prediksi tetap perlu dievaluasi.
+**Progres:** 30/100 kalimat telah dianotasi (18 development, 12 test; 156 token aktual dari validator Termux). Ketiga batch telah lolos validasi struktur/tokenizer. Regression suite setelah batch ketiga: 132/132 lulus. Sampel ini belum cukup untuk menyimpulkan akurasi umum; kualitas label dan akurasi prediksi tetap perlu dievaluasi.
 
 Skema record:
 
@@ -158,3 +158,14 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [x] Memperbarui dokumentasi status dan checklist berdasarkan hasil verifikasi Termux.
 
 **Titik lanjut:** batch ketiga telah lolos validasi struktur/tokenizer di Termux: 30 kalimat/156 token (18 development, 12 test). Regression suite penuh terakhir 132/132 lulus sebelum batch ketiga ditambahkan. Berikutnya jalankan regression suite penuh, lalu audit kualitas anotasi pada development set; test split tetap ditahan.
+
+
+## 10. Audit awal kualitas anotasi — 27 November 2026
+
+- Audit awal telah dilakukan pada seluruh 18 kalimat development; split test tidak diperiksa.
+- Hasil audit dan kasus yang memerlukan konvensi taksonomi eksplisit dicatat dalam [`AUDIT_ANOTASI_POS.md`](AUDIT_ANOTASI_POS.md).
+- Belum ada label gold yang diubah. Kasus demonstrativa `itu`, penanda aspek `sedang`, larangan `jangan`, dan gelar `Pak` dipertahankan sementara sambil pedoman diperjelas.
+- Validasi dataset: 30 kalimat, 156 token, 18 development, 12 test — lulus di Termux.
+- Regression suite setelah batch ketiga: 132/132 lulus di Termux.
+
+**Titik lanjut:** pertegas konvensi anotasi di pedoman, lalu audit ulang development set. Test split tetap ditahan.
