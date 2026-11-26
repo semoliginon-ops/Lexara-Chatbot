@@ -87,6 +87,7 @@ pembukaan	K0065	buka	derived_form	batch-002
 pemesanan	K0194	pesan	derived_form	batch-004
 pemikiran	K0080	pikir	derived_form	batch-002
 pemilihan	K0219	pilih	derived_form	batch-005
+pemindai	K2385	pemindai	lemma	batch-048
 peminum	K0014	minum	derived_form	batch-001
 pempek	K1985	pempek	lemma	batch-040
 penakut	K0083	takut	derived_form	batch-002
@@ -122,6 +123,7 @@ penghubungan	K0217	hubungi	derived_form	batch-005
 pengikut	K0212	ikut	derived_form	batch-005
 pengirim	K0061	kirim	derived_form	batch-002
 pengiriman	K0061	kirim	derived_form	batch-002
+pengisi daya nirkabel	K2398	pengisi daya nirkabel	lemma	batch-048
 penglihatan	K0034	lihat	derived_form	batch-001
 pengobatan	K0182	obat	derived_form	batch-004
 pengubahan	K0220	ubah	derived_form	batch-005
@@ -240,6 +242,7 @@ populer	K1543	populer	lemma	batch-031
 porsi	K0479	porsi	lemma	batch-010
 potensi	K1544	potensi	lemma	batch-031
 potong	K0471	potong	lemma	batch-010
+power bank	K2397	power bank	lemma	batch-048
 praktis	K1545	praktis	lemma	batch-031
 pribadi	K1546	pribadi	lemma	batch-031
 produk	K1547	produk	lemma	batch-031
@@ -247,6 +250,7 @@ profesi	K1548	profesi	lemma	batch-031
 program	K1549	program	lemma	batch-031
 proses	K1550	proses	lemma	batch-031
 protes	K1551	protes	lemma	batch-031
+proyektor	K2384	proyektor	lemma	batch-048
 puas	K0343	puas	lemma	batch-007
 pucat	K1050	pucat	lemma	batch-021
 puding	K1939	puding	lemma	batch-039
@@ -303,6 +307,7 @@ rendah	K1083	rendah	lemma	batch-022
 rendam	K1081	rendam	lemma	batch-022
 rendang	K1941	rendang	lemma	batch-039
 rentan	K1084	rentan	lemma	batch-022
+repeater Wi-Fi	K2393	repeater Wi-Fi	lemma	batch-048
 repot	K1085	repot	lemma	batch-022
 resah	K0700	resah	lemma	batch-014
 resep	K0481	resep	lemma	batch-010
@@ -324,6 +329,7 @@ ronda	K1097	ronda	lemma	batch-022
 rontok	K1098	rontok	lemma	batch-022
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
+router Wi-Fi	K2391	router Wi-Fi	lemma	batch-048
 rubah	K2293	rubah	lemma	batch-046
 rugi	K1099	rugi	lemma	batch-022
 rujak	K1942	rujak	lemma	batch-039
