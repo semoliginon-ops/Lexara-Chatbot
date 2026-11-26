@@ -329,3 +329,12 @@ Dari checkout repository `~/Sistem_bahasa` di Termux, perintah `python -m unitte
 - Verifikasi khusus validator sebelumnya: 9/9 tes lulus; validasi dataset: 10 kalimat dan 43 token berhasil.
 
 **Status:** regression suite checkout penuh terbaru terverifikasi 132/132 lulus. Evaluasi akurasi POS belum dilakukan; dataset masih 10 dari target 100 kalimat. Titik lanjut adalah memperluas dataset secara bertahap dan mengevaluasi development set.
+
+
+### Pembaruan dataset POS — batch kedua (27 November 2026)
+
+- Batch kedua menambahkan 10 kalimat baru dengan ID `pos_0011`–`pos_0020` ke `data/dataset_pos/kalimat_pos_v1.jsonl`.
+- Komposisi total saat ini: **20/100 kalimat**, 12 development dan 8 test; rancangan anotasi berjumlah 91 token.
+- Cakupan tambahan meliputi adjektiva, adverbia derajat/cara, numeralia, imbuhan, partikel tanya, interjeksi, demonstrativa, dan nama diri.
+- File dataset sudah diperbarui di branch `main`. Validasi batch kedua dan regression suite setelah penarikan perubahan masih menunggu dijalankan dari Termux. Hasil 132/132 tes sebelumnya tetap merupakan hasil terakhir yang benar-benar dijalankan, bukan klaim verifikasi untuk perubahan data terbaru.
+- **Titik lanjut:** `git pull`, lalu `python -m tools.validasi_dataset_pos`; pastikan hasil menunjukkan 20 kalimat, 91 token, 12 development, dan 8 test.
