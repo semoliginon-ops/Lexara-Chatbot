@@ -37,7 +37,12 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         raise TypeError("lexicon harus berupa dictionary hasil build_lexicon")
 
     surface = normalize_lookup_key(token)
-    if not surface or _known(surface, lexicon):
+    if not surface:
+        return []
+    known_surface = _known(surface, lexicon)
+    # A recorded derived form may also be analyzed morphologically. Exact
+    # lemmas and spelling variants remain protected from accidental stemming.
+    if known_surface and any(item.get("match_type") != "derived_form" for item in known_surface):
         return []
     if surface in _LEXICALIZED_GUARDS:
         return []
