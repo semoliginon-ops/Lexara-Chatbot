@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Batch awal 10 kalimat dan validator struktur telah diverifikasi di Termux; evaluasi akurasi POS belum dilakukan  
+**Status:** Batch awal 10 kalimat dan validator struktur telah diverifikasi di Termux; 9 tes validator dan 132 tes suite penuh lulus; evaluasi akurasi POS belum dilakukan  
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
