@@ -41,6 +41,7 @@ parfum	K1041	parfum	lemma	batch-021
 parkir	K0397	parkir	lemma	batch-008
 parlemen	K2875	parlemen	lemma	batch-058
 partai politik	K2862	partai politik	lemma	batch-058
+partisipasi politik	K2926	partisipasi politik	lemma	batch-059
 paruh	K1508	paruh	lemma	batch-031
 pasar	K0362	pasar	lemma	batch-008
 Pasar Minggu	K2833	Pasar Minggu	lemma	batch-057
@@ -94,6 +95,7 @@ pemarah	K0082	marah	derived_form	batch-002
 pemasak	K0052	masak	derived_form	batch-002
 pembaca	K0076	baca	derived_form	batch-002
 pembacaan	K0076	baca	derived_form	batch-002
+pembakaran	K2940	pembakaran	lemma	batch-059
 pembalasan	K0218	balas	derived_form	batch-005
 pembantu	K0033	bantu	derived_form	batch-001
 pembawa	K0060	bawa	derived_form	batch-002
@@ -113,6 +115,7 @@ pembuka	K0065	buka	derived_form	batch-002
 pembukaan	K0065	buka	derived_form	batch-002
 pembunuhan	K2884	pembunuhan	lemma	batch-058
 pemerasan	K2883	pemerasan	lemma	batch-058
+pemeriksaan	K2944	pemeriksaan	lemma	batch-059
 pemerintah	K2853	pemerintah	lemma	batch-058
 pemerintahan	K2854	pemerintahan	lemma	batch-058
 pemesanan	K0194	pesan	derived_form	batch-004
@@ -130,6 +133,7 @@ pemutar kaset	K2440	pemutar kaset	lemma	batch-049
 pemutar MP3	K2412	pemutar MP3	lemma	batch-049
 pemutar musik digital	K2411	pemutar musik digital	lemma	batch-049
 pen tablet	K2449	pen tablet	lemma	batch-049
+penadahan	K2942	penadahan	lemma	batch-059
 penahanan	K2899	penahanan	lemma	batch-058
 penakut	K0083	takut	derived_form	batch-002
 penamaan	K0128	nama	derived_form	batch-003
@@ -137,6 +141,7 @@ penanganan	K0122	tangan	derived_form	batch-003
 penangkapan	K2898	penangkapan	lemma	batch-058
 penantian	K0064	tunggu	derived_form	batch-002
 penasaran	K0670	penasaran	lemma	batch-014
+penasihat hukum	K2932	penasihat hukum	lemma	batch-059
 penata rambut	K2496	penata rambut	lemma	batch-050
 penata rias	K2489	penata rias	lemma	batch-050
 pencari	K0063	cari	derived_form	batch-002
@@ -151,6 +156,10 @@ pendingin prosesor	K2426	pendingin prosesor	lemma	batch-049
 pendirian	K0072	berdiri	derived_form	batch-002
 penerima	K0062	terima	derived_form	batch-002
 penerimaan	K0062	terima	derived_form	batch-002
+pengacara	K2931	pengacara	lemma	batch-059
+pengadilan	K2927	pengadilan	lemma	batch-059
+pengadilan negeri	K2928	pengadilan negeri	lemma	batch-059
+pengadilan tinggi	K2929	pengadilan tinggi	lemma	batch-059
 pengairan	K0152	air	derived_form	batch-004
 pengajaran	K0188	ajar	derived_form	batch-004
 pengambil	K0058	ambil	derived_form	batch-002
@@ -165,6 +174,7 @@ pengganti	K0221	ganti	derived_form	batch-005
 penggaraman	K0171	garam	derived_form	batch-004
 penggaris	K0300	penggaris	lemma	batch-006
 penggelapan	K2882	penggelapan	lemma	batch-058
+penggerebekan	K2943	penggerebekan	lemma	batch-059
 penggorengan	K2325	penggorengan	lemma	batch-047
 penghapus	K0299	penghapus	lemma	batch-006
 penghilangan	K0223	hilang	derived_form	batch-005
@@ -232,6 +242,7 @@ percaya diri	K0672	percaya diri	lemma	batch-014
 percintaan	K0114	cinta	derived_form	batch-003
 percobaan	K0228	coba	derived_form	batch-005
 perdagangan manusia	K2888	perdagangan manusia	lemma	batch-058
+perdagangan narkoba	K2941	perdagangan narkoba	lemma	batch-059
 pergantian	K0221	ganti	derived_form	batch-005
 pergi	K0017	pergi	lemma	batch-001
 perhatian	K1045	perhatian	lemma	batch-021
@@ -353,6 +364,7 @@ pusaran angin	K2716	pusaran angin	lemma	batch-055
 pusat	K1048	pusat	lemma	batch-021
 pusing	K1047	pusing	lemma	batch-021
 putus	K1049	putus	lemma	batch-021
+putusan	K2945	putusan	lemma	batch-059
 rabu	K1052	rabu	lemma	batch-022
 racun	K1053	racun	lemma	batch-022
 radar	K1054	radar	lemma	batch-022
