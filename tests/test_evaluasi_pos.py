@@ -36,6 +36,17 @@ class PosEvaluationTests(unittest.TestCase):
         self.assertEqual(result["ambiguous"]["abstained"], 1)
         self.assertEqual(result["ambiguous"]["forced"], 0)
 
+    def test_reports_only_actual_misclassifications(self):
+        records = load_development_records()
+        lexicon = build_lexicon(load_dictionary_directory("data/kamus"))
+        result = evaluate_records(records, lexicon)
+        for method in ("lexical", "contextual"):
+            for error in result["misclassifications"][method]:
+                self.assertNotEqual(error["gold"], error["predicted"])
+                self.assertIn("record_id", error)
+                self.assertIn("token", error)
+                self.assertIn("text", error)
+
     def test_loads_only_development_records(self):
         import json
         import tempfile
