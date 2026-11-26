@@ -3,6 +3,8 @@
 > **Status:** Perencanaan dan perancangan fondasi  
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
+> **Status pekerjaan tahap pengolahan kata:** lihat [Dokumen Status Pengembangan](docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md) untuk progres, file yang sudah dibuat, pengujian, dan urutan pekerjaan berikutnya.
+
 ## 1. Gambaran proyek
 
 **Sistem Bahasa** adalah proyek untuk membangun fondasi pengolahan Bahasa Indonesia agar sistem dapat mengenali kata, memahami hubungan makna, mengolah struktur kalimat, menggunakan konteks, dan pada tahap berikutnya menyusun jawaban.
