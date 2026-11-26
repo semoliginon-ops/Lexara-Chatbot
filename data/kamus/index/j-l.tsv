@@ -94,6 +94,7 @@ kabel audio	K2433	kabel audio	lemma	batch-049
 kabel HDMI	K2395	kabel HDMI	lemma	batch-048
 kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
+kabinet	K2852	kabinet	lemma	batch-058
 Kabupaten Administrasi Kepulauan Seribu	K2807	Kabupaten Administrasi Kepulauan Seribu	lemma	batch-057
 kabur	K0421	kabur	lemma	batch-009
 kabut	K2659	kabut	lemma	batch-054
@@ -141,12 +142,14 @@ kamera pengawas	K2365	kamera pengawas	lemma	batch-048
 kamera saku	K2416	kamera saku	lemma	batch-049
 kamera web	K2364	kamera web	lemma	batch-048
 kami	K0006	kami	lemma	batch-001
+kampanye	K2865	kampanye	lemma	batch-058
 kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
 kanan	K0370	kanan	lemma	batch-008
 kancil	K2228	kancil	lemma	batch-045
 kancing	K0920	kancing	lemma	batch-019
 kandang	K0921	kandang	lemma	batch-019
+kandidat	K2867	kandidat	lemma	batch-058
 Kang Ojek	K2522	Kang Ojek	lemma	batch-051
 kangen	K0686	kangen	lemma	batch-014
 kangkung	K1916	kangkung	lemma	batch-039
@@ -196,6 +199,7 @@ kebenaran	K0236	benar	derived_form	batch-005
 keberangkatan	K0208	berangkat	derived_form	batch-005
 kebesaran	K0043	besar	derived_form	batch-001
 kebetulan	K0571	kebetulan	lemma	batch-012
+kebijakan	K2872	kebijakan	lemma	batch-058
 kebohongan	K0239	bohong	derived_form	batch-005
 kebokekan	K0095	bokek	derived_form	batch-002
 kebolehan	K0144	boleh	derived_form	batch-003
@@ -230,6 +234,7 @@ kehilangan	K0223	hilang	derived_form	batch-005
 keibuan	K0104	ibu	derived_form	batch-003
 keikutsertaan	K0212	ikut	derived_form	batch-005
 keinginan	K0025	ingin	derived_form	batch-001
+kejahatan	K2878	kejahatan	lemma	batch-058
 kejar	K0932	kejar	lemma	batch-019
 kejelekan	K0042	jelek	derived_form	batch-001
 keju	K1917	keju	lemma	batch-039
@@ -266,6 +271,7 @@ kembang kol	K1971	kembang kol	lemma	batch-040
 kembang tahu	K2094	kembang tahu	lemma	batch-042
 Kembangan	K2829	Kembangan	lemma	batch-057
 kemeja	K0936	kemeja	lemma	batch-019
+kementerian	K2858	kementerian	lemma	batch-058
 kemiri	K2189	kemiri	lemma	batch-044
 kemungkinan	K0142	mungkin	derived_form	batch-003
 kenaikan	K0069	naik	derived_form	batch-002
@@ -365,6 +371,7 @@ kiriman	K0061	kirim	derived_form	batch-002
 kismis	K1922	kismis	lemma	batch-039
 kita	K0005	kita	lemma	batch-001
 KlikGo	K2518	KlikGo	lemma	batch-051
+koalisi	K2874	koalisi	lemma	batch-058
 kobra	K2281	kobra	lemma	batch-046
 Koja	K2818	Koja	lemma	batch-057
 kok	K0625	kok	lemma	batch-013
@@ -380,11 +387,14 @@ komputasi	K0198	komputer	derived_form	batch-004
 komputer	K0198	komputer	lemma	batch-004
 kondisi	K0578	kondisi	lemma	batch-012
 konsol game	K2401	konsol game	lemma	batch-048
+konstitusi	K2870	konstitusi	lemma	batch-058
 kontrak	K0579	kontrak	lemma	batch-012
 kopi	K0173	kopi	lemma	batch-004
 kopi susu	K2045	kopi susu	lemma	batch-041
+korban	K2893	korban	lemma	batch-058
 kornet	K2099	kornet	lemma	batch-042
 korset	K2617	korset	lemma	batch-053
+korupsi	K2889	korupsi	lemma	batch-058
 kota	K0386	kota	lemma	batch-008
 Kota Administrasi Jakarta Barat	K2804	Kota Administrasi Jakarta Barat	lemma	batch-057
 Kota Administrasi Jakarta Pusat	K2802	Kota Administrasi Jakarta Pusat	lemma	batch-057
@@ -394,6 +404,7 @@ Kota Administrasi Jakarta Utara	K2803	Kota Administrasi Jakarta Utara	lemma	batc
 kotor	K0322	kotor	lemma	batch-007
 Kramat Jati	K2843	Kramat Jati	lemma	batch-057
 krimer	K2100	krimer	lemma	batch-042
+kriminalitas	K2877	kriminalitas	lemma	batch-058
 kroket	K2101	kroket	lemma	batch-042
 kuah kaldu	K2130	kuah kaldu	lemma	batch-043
 kualitas	K1400	kualitas	lemma	batch-028
@@ -485,6 +496,7 @@ lebay	K0097	lebay	lemma	batch-002
 lebih	K0234	lebih	lemma	batch-005
 lega	K0344	lega	lemma	batch-007
 legging	K2606	legging	lemma	batch-053
+legislatif	K2876	legislatif	lemma	batch-058
 leher	K1423	leher	lemma	batch-029
 lekas	K1424	lekas	lemma	batch-029
 lelah	K0581	lelah	lemma	batch-012
