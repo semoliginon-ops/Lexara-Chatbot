@@ -126,3 +126,22 @@ Record `pos_0051`–`pos_0060` dianotasi mengikuti konvensi POS v1 yang telah di
 ## Hasil evaluasi batch keenam — 27 November 2026
 
 GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287) berhasil. Evaluasi development-only mencakup 36 kalimat: 148 token resolved, 90 diprediksi benar, coverage 60,8%, accuracy 60,8%, selective accuracy 100%. Per label, prediksi yang benar/abstain: ADJ 14/1; ADV 4/9; CONJ 3/3; INTJ 1/1; NOUN 36/11; NUM 0/2; PART 1/0; PREP 1/6; PRON 14/9; VERB 16/16. POS leksikal dan kontekstual menghasilkan angka identik. Gold ambiguous: 1 ditahan, 0 dipaksakan. Regression suite 137/137 lulus. Coverage NUM masih 0/2 dan PREP 1/7; ADV 4/13. Ini menunjukkan area cakupan untuk audit berikutnya, bukan alasan langsung mengubah aturan. Test split tidak digunakan.
+
+
+## Audit cakupan indeks leksikal terhadap development — 27 November 2026
+
+Pemeriksaan dilakukan pada token berstatus `resolved` dari 36 kalimat development dan dibandingkan dengan seluruh delapan shard indeks kamus. Daftar berikut adalah bentuk kata yang belum ditemukan pada indeks; ini mengidentifikasi kandidat gap cakupan, bukan otomatis membuktikan bahwa seluruhnya harus ditambahkan ke kamus.
+
+| Gold POS | Bentuk yang belum ditemukan pada indeks |
+|---|---|
+| ADV | `akan`, `dulu`, `sangat`, `sedang`, `sekali`, `tetap` |
+| PRON | `itu` |
+| PREP | `di`, `ke`, `pada` |
+| CONJ | `atau`, `kalau`, `tetapi` |
+| ADJ | `baru` |
+| NUM | `dua`, `tiga` |
+| NOUN | `dodi`, `kilogram`, `padi`, `pagar`, `pak`, `pelajaran`, `pemandangan`, `pertandingan`, `rina`, `siswa`, `tikus` |
+| VERB | `ditunda`, `hinggap`, `letakkan`, `menanam`, `mengejar`, `menjelaskan` |
+| INTJ | `wah` |
+
+Temuan paling relevan untuk cakupan kelas kata tertutup: dua contoh `NUM` (`dua`, `tiga`) tidak memiliki entri indeks; tiga preposisi (`di`, `ke`, `pada`) dan tiga konjungsi (`atau`, `kalau`, `tetapi`) juga belum terindeks. Entri `untuk` dan `dari` sudah ada dan POS kamusnya `PREP`. Kata `itu` belum terindeks tetapi dipertahankan sebagai `PRON` sesuai konvensi dataset v1. Jangan mengubah gold hanya agar cocok dengan prediksi. Langkah lanjutan adalah merancang suplementasi kosakata terfokus atau aturan closed-class yang dapat diuji; jangan mengubah 3.000 entri secara massal.
