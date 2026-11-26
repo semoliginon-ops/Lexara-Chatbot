@@ -1,5 +1,7 @@
 # Token index — a-c
 # token\tid\tlemma\ttype\tbatch
+Blu-ray	K2439	Blu-ray	lemma	batch-049
+CD	K2437	CD	lemma	batch-049
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
 abang	K0502	abang	lemma	batch-011
@@ -10,6 +12,7 @@ abu	K0504	abu	lemma	batch-011
 acak	K1806	acak	lemma	batch-037
 acar	K1902	acar	lemma	batch-039
 acara	K0450	acara	lemma	batch-009
+access point	K2431	access point	lemma	batch-049
 acuan	K1202	acuan	lemma	batch-025
 acuh	K0702	acuh	lemma	batch-015
 adab	K1807	adab	lemma	batch-037
@@ -88,6 +91,7 @@ ambyar	K1214	ambyar	lemma	batch-025
 ampas	K1811	ampas	lemma	batch-037
 ampela	K1904	ampela	lemma	batch-039
 amplifier	K2354	amplifier	lemma	batch-048
+amplifier gitar	K2442	amplifier gitar	lemma	batch-049
 amplop	K1215	amplop	lemma	batch-025
 ampun	K0512	ampun	lemma	batch-011
 anai-anai	K2239	anai-anai	lemma	batch-045
@@ -119,6 +123,7 @@ antar	K0416	antar	lemma	batch-009
 antarmuka	K1838	antarmuka	lemma	batch-037
 antena	K1839	antena	lemma	batch-037
 antena parabola	K2355	antena parabola	lemma	batch-048
+antena televisi	K2406	antena televisi	lemma	batch-049
 anting	K1814	anting	lemma	batch-037
 antre	K0352	antre	lemma	batch-008
 antusias	K0713	antusias	lemma	batch-015
@@ -498,6 +503,7 @@ capek	K0047	capek	lemma	batch-001
 caper	K0679	caper	lemma	batch-014
 capung	K2215	capung	lemma	batch-045
 cari	K0063	cari	lemma	batch-002
+casing komputer	K2424	casing komputer	lemma	batch-049
 cecak	K1248	cecak	lemma	batch-025
 cekatan	K1249	cekatan	lemma	batch-025
 ceker	K1961	ceker	lemma	batch-040
