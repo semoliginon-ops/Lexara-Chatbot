@@ -128,6 +128,7 @@ memilih	K0219	pilih	derived_form	batch-005
 memindahkan	K0207	pindah	derived_form	batch-005
 meminum	K0014	minum	derived_form	batch-001
 memori	K0977	memori	lemma	batch-020
+memori RAM	K2422	memori RAM	lemma	batch-049
 mempelajari	K0187	belajar	derived_form	batch-004
 mempercepat	K0045	cepat	derived_form	batch-001
 memperlambat	K0046	lambat	derived_form	batch-001
@@ -259,9 +260,11 @@ mi	K0487	mi	lemma	batch-010
 mi ayam	K2137	mi ayam	lemma	batch-043
 mi goreng	K2138	mi goreng	lemma	batch-043
 mi rebus	K2139	mi rebus	lemma	batch-043
+microSD	K2436	microSD	lemma	batch-049
 microwave	K2322	microwave	lemma	batch-047
 mikrofon	K0987	mikrofon	lemma	batch-020
 mikrofon kabel	K2377	mikrofon kabel	lemma	batch-048
+mikrofon kondenser	K2447	mikrofon kondenser	lemma	batch-049
 mikrofon nirkabel	K2376	mikrofon nirkabel	lemma	batch-048
 milik	K0988	milik	lemma	batch-020
 militer	K0989	militer	lemma	batch-020
@@ -278,6 +281,7 @@ mirip	K1472	mirip	lemma	batch-030
 misi	K0992	misi	lemma	batch-020
 miskin	K1473	miskin	lemma	batch-030
 mitos	K0993	mitos	lemma	batch-020
+mixer audio	K2443	mixer audio	lemma	batch-049
 mobil	K0201	mobil	lemma	batch-004
 modal	K0994	modal	lemma	batch-020
 model	K0995	model	lemma	batch-020
@@ -288,6 +292,7 @@ mogok	K0501	mogok	lemma	batch-010
 mohon	K1474	mohon	lemma	batch-030
 monitor komputer	K2380	monitor komputer	lemma	batch-048
 monyet	K0997	monyet	lemma	batch-020
+motherboard	K2423	motherboard	lemma	batch-049
 motivasi	K0998	motivasi	lemma	batch-020
 motor	K0200	motor	lemma	batch-004
 motoris	K0200	motor	derived_form	batch-004
