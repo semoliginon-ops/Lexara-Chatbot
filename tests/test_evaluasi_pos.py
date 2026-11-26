@@ -36,6 +36,19 @@ class PosEvaluationTests(unittest.TestCase):
         self.assertEqual(result["ambiguous"]["abstained"], 1)
         self.assertEqual(result["ambiguous"]["forced"], 0)
 
+    def test_reports_contextual_abstentions_with_reasons(self):
+        records = load_development_records()
+        lexicon = build_lexicon(load_dictionary_directory("data/kamus"))
+        result = evaluate_records(records, lexicon)
+        abstentions = result["contextual_abstentions"]
+        self.assertEqual(len(abstentions), result["resolved"] - result["contextual"]["predicted"])
+        for item in abstentions:
+            self.assertIn(item["gold"], {"NOUN", "VERB", "PRON", "ADV", "ADJ", "CONJ", "INTJ", "NUM", "PREP", "PART"})
+            self.assertIn("record_id", item)
+            self.assertIn("token", item)
+            self.assertIn("pos_source", item)
+            self.assertIn("context_status", item)
+
     def test_reports_only_actual_misclassifications(self):
         records = load_development_records()
         lexicon = build_lexicon(load_dictionary_directory("data/kamus"))
