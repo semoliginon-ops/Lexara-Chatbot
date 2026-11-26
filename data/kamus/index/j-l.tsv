@@ -59,6 +59,7 @@ jeruk	K0912	jeruk	lemma	batch-019
 jijik	K0684	jijik	lemma	batch-014
 jimat	K1386	jimat	lemma	batch-028
 joget	K0913	joget	lemma	batch-019
+JogjaKita	K2521	JogjaKita	lemma	batch-051
 jomblo	K0569	jomblo	lemma	batch-012
 jongkok	K0914	jongkok	lemma	batch-019
 jorok	K0915	jorok	lemma	batch-019
@@ -77,11 +78,11 @@ jus alpukat	K2046	jus alpukat	lemma	batch-041
 jus mangga	K2047	jus mangga	lemma	batch-041
 kabar	K0193	kabar	lemma	batch-004
 kabel	K2339	kabel	lemma	batch-047
+kabel antena	K2434	kabel antena	lemma	batch-049
+kabel audio	K2433	kabel audio	lemma	batch-049
 kabel HDMI	K2395	kabel HDMI	lemma	batch-048
 kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
-kabel antena	K2434	kabel antena	lemma	batch-049
-kabel audio	K2433	kabel audio	lemma	batch-049
 kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
 kacang	K1914	kacang	lemma	batch-039
@@ -115,8 +116,8 @@ kamar	K0254	kamar	lemma	batch-006
 kambing	K0919	kambing	lemma	batch-019
 kambing hutan	K2278	kambing hutan	lemma	batch-046
 kamera	K1392	kamera	lemma	batch-028
-kamera CCTV	K2415	kamera CCTV	lemma	batch-049
 kamera aksi	K2413	kamera aksi	lemma	batch-049
+kamera CCTV	K2415	kamera CCTV	lemma	batch-049
 kamera digital	K2363	kamera digital	lemma	batch-048
 kamera instan	K2414	kamera instan	lemma	batch-049
 kamera pengawas	K2365	kamera pengawas	lemma	batch-048
@@ -129,6 +130,7 @@ kanan	K0370	kanan	lemma	batch-008
 kancil	K2228	kancil	lemma	batch-045
 kancing	K0920	kancing	lemma	batch-019
 kandang	K0921	kandang	lemma	batch-019
+Kang Ojek	K2522	Kang Ojek	lemma	batch-051
 kangen	K0686	kangen	lemma	batch-014
 kangkung	K1916	kangkung	lemma	batch-039
 kanguru	K2229	kanguru	lemma	batch-045
@@ -145,10 +147,10 @@ karena	K0151	karena	lemma	batch-003
 karier	K1394	karier	lemma	batch-028
 karpet	K2342	karpet	lemma	batch-047
 kartu	K0926	kartu	lemma	batch-019
-kartu SIM	K2367	kartu SIM	lemma	batch-048
 kartu grafis	K2420	kartu grafis	lemma	batch-049
 kartu jaringan	K2430	kartu jaringan	lemma	batch-049
 kartu memori	K2366	kartu memori	lemma	batch-048
+kartu SIM	K2367	kartu SIM	lemma	batch-048
 karyawan	K2467	karyawan	lemma	batch-050
 kasar	K0348	kasar	lemma	batch-007
 kaset audio	K2441	kaset audio	lemma	batch-049
@@ -326,12 +328,14 @@ kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
 kismis	K1922	kismis	lemma	batch-039
 kita	K0005	kita	lemma	batch-001
+KlikGo	K2518	KlikGo	lemma	batch-051
 kobra	K2281	kobra	lemma	batch-046
 kok	K0625	kok	lemma	batch-013
 koki	K2468	koki	lemma	batch-050
 kol	K1973	kol	lemma	batch-040
 kolak	K1974	kolak	lemma	batch-040
 kolak pisang	K2098	kolak pisang	lemma	batch-042
+komisi	K2544	komisi	lemma	batch-051
 komodo	K2250	komodo	lemma	batch-045
 komplain	K0577	komplain	lemma	batch-012
 kompor	K0283	kompor	lemma	batch-006
@@ -369,6 +373,7 @@ kupu-kupu	K2234	kupu-kupu	lemma	batch-045
 kura-kura	K2233	kura-kura	lemma	batch-045
 kurang	K0233	kurang	lemma	batch-005
 kurir	K2469	kurir	lemma	batch-050
+Kuririo	K2514	Kuririo	lemma	batch-051
 kursi	K0253	kursi	lemma	batch-006
 kuskus	K2283	kuskus	lemma	batch-046
 kuy	K0580	kuy	lemma	batch-012
@@ -378,6 +383,7 @@ label	K1402	label	lemma	batch-029
 labu	K1403	labu	lemma	batch-029
 lada	K0947	lada	lemma	batch-019
 ladang	K0948	ladang	lemma	batch-019
+LadyJek	K2528	LadyJek	lemma	batch-051
 lah	K0666	lah	lemma	batch-014
 lahir	K1404	lahir	lemma	batch-029
 laju	K1412	laju	lemma	batch-029
@@ -457,6 +463,7 @@ lidah kucing	K2133	lidah kucing	lemma	batch-043
 lihat	K0034	lihat	lemma	batch-001
 limbah	K1438	limbah	lemma	batch-029
 limun	K1439	limun	lemma	batch-029
+Linkaran	K2511	Linkaran	lemma	batch-051
 lintah	K2285	lintah	lemma	batch-046
 lintas	K1440	lintas	lemma	batch-029
 lipat	K1441	lipat	lemma	batch-029
