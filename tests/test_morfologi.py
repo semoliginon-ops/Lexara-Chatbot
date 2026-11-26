@@ -1,19 +1,14 @@
 """Regression tests for conservative Indonesian morphology."""
 import unittest
-
 from tools.morfologi import analyze_morphology
 from tools.pencocokan_kamus import build_lexicon
 
 
 def entry(entry_id, lemma):
     return {
-        "id": entry_id,
-        "lemma": lemma,
-        "pos": ["VERB"],
+        "id": entry_id, "lemma": lemma, "pos": ["VERB"],
         "senses": [{"sense_id": f"{entry_id}-S1", "definition": "Makna."}],
-        "register": ["neutral"],
-        "variants": [],
-        "derived_forms": [],
+        "register": ["neutral"], "variants": [], "derived_forms": [],
     }
 
 
@@ -21,7 +16,7 @@ class MorphologyTests(unittest.TestCase):
     def setUp(self):
         lemmas = [
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
-            "main", "indah", "baik", "bangun", "cat", "kerja",
+            "main", "indah", "baik", "bangun", "cat", "kerja", "anda", "mari",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -30,60 +25,27 @@ class MorphologyTests(unittest.TestCase):
     def bases(self, token):
         return {item["base_form"] for item in analyze_morphology(token, self.lexicon)}
 
-    def test_suffix_an(self):
-        self.assertIn("makan", self.bases("makanan"))
-
-    def test_prefix_ber(self):
-        self.assertIn("lari", self.bases("berlari"))
-
-    def test_prefix_di(self):
-        self.assertIn("tulis", self.bases("ditulis"))
-
-    def test_nasal_restoration_mem(self):
-        self.assertIn("pukul", self.bases("memukul"))
-
-    def test_nasal_restoration_men(self):
-        self.assertIn("tulis", self.bases("menulis"))
-
-    def test_nasal_restoration_meny(self):
-        self.assertIn("sapu", self.bases("menyapu"))
-
-    def test_prefix_and_suffix_combination(self):
-        self.assertIn("ajar", self.bases("mengajarkan"))
-
-    def test_identical_reduplication(self):
-        self.assertIn("anak", self.bases("anak-anak"))
-
-    def test_non_identical_reduplication_not_guessed(self):
-        self.assertEqual(self.bases("sayur-mayur"), set())
-
-    def test_exact_lexical_match_is_not_stemmed(self):
-        self.assertEqual(analyze_morphology("makan", self.lexicon), [])
-
-    def test_unknown_form_is_not_forced(self):
-        self.assertEqual(analyze_morphology("memperindah", self.lexicon), [])
-
-    def test_confix_ke_an(self):
-        self.assertIn("indah", self.bases("keindahan"))
-
-    def test_confix_ke_an_second_example(self):
-        self.assertIn("baik", self.bases("kebaikan"))
-
-    def test_confix_per_an(self):
-        self.assertIn("main", self.bases("permainan"))
-
-    def test_confix_peN_an_nasal_p(self):
-        self.assertIn("bangun", self.bases("pembangunan"))
-
-    def test_confix_peN_an_nasal_k(self):
-        self.assertIn("ajar", self.bases("pengajaran"))
-
-    def test_prefix_menge(self):
-        self.assertIn("cat", self.bases("mengecat"))
-
+    def test_suffix_an(self): self.assertIn("makan", self.bases("makanan"))
+    def test_prefix_ber(self): self.assertIn("lari", self.bases("berlari"))
+    def test_prefix_di(self): self.assertIn("tulis", self.bases("ditulis"))
+    def test_nasal_restoration_mem(self): self.assertIn("pukul", self.bases("memukul"))
+    def test_nasal_restoration_men(self): self.assertIn("tulis", self.bases("menulis"))
+    def test_nasal_restoration_meny(self): self.assertIn("sapu", self.bases("menyapu"))
+    def test_prefix_and_suffix_combination(self): self.assertIn("ajar", self.bases("mengajarkan"))
+    def test_identical_reduplication(self): self.assertIn("anak", self.bases("anak-anak"))
+    def test_non_identical_reduplication_not_guessed(self): self.assertEqual(self.bases("sayur-mayur"), set())
+    def test_exact_lexical_match_is_not_stemmed(self): self.assertEqual(analyze_morphology("makan", self.lexicon), [])
+    def test_unknown_form_is_not_forced(self): self.assertEqual(analyze_morphology("memperindah", self.lexicon), [])
+    def test_confix_ke_an(self): self.assertIn("indah", self.bases("keindahan"))
+    def test_confix_ke_an_second_example(self): self.assertIn("baik", self.bases("kebaikan"))
+    def test_confix_per_an(self): self.assertIn("main", self.bases("permainan"))
+    def test_confix_peN_an_nasal_p(self): self.assertIn("bangun", self.bases("pembangunan"))
+    def test_confix_peN_an_nasal_k(self): self.assertIn("ajar", self.bases("pengajaran"))
+    def test_prefix_menge(self): self.assertIn("cat", self.bases("mengecat"))
+    def test_lexicalized_beranda_not_split(self): self.assertNotIn("anda", self.bases("beranda"))
+    def test_lexicalized_kemari_not_split(self): self.assertNotIn("mari", self.bases("kemari"))
     def test_rejects_non_string(self):
-        with self.assertRaises(TypeError):
-            analyze_morphology(None, self.lexicon)
+        with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
 
 
 if __name__ == "__main__":
