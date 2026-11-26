@@ -84,7 +84,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Jalankan ulang suite morfologi setelah penambahan tes negatif `diperkerjaan`; 34 lulus, 0 gagal.
 - [x] Tambahkan analisis konservatif reduplikasi berprefiks `ber-` (berjalan-jalan/berlari-lari) beserta regression tests.
 - [ ] Perluas inventaris imbuhan dan perubahan morfofonemik berdasarkan pengujian.
-- [~] Audit alomorf `meny-/peny-`: aturan kandidat retensi `ny` dan dua regression tests `menyanyi`/`menyanyikan` sudah ditambahkan; eksekusi ulang suite 44 tes masih menunggu.
+- [x] Audit alomorf `meny-/peny-`: aturan retensi `ny` dan regression tests `menyanyi`/`menyanyikan` telah ditambahkan; suite morfologi terbaru 47/47 lulus pada lingkungan Python terisolasi.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 - [x] Menambahkan perlindungan restorasi nasal `peng-`: jangan membuat kandidat `k+akar` jika sisa setelah prefiks sudah merupakan lema kamus.
 - [x] Menambahkan tes positif `pengunci → kunci` dan tes negatif `pengambil → ambil`, bukan `kambil`.
@@ -92,7 +92,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memprioritaskan restorasi konsonan `t`/`p` pada prefiks nasal `men-`, `mem-`, `pen-`, dan `pem-` jika bentuk hasil restorasi cocok dengan lema kamus.
 - [x] Menerapkan prioritas yang sama pada analisis gabungan prefiks+sufiks.
 - [x] Menambahkan tes negatif `menari` dan `menarikan`: pilih `tari`, bukan kandidat kebetulan `ari`.
-- [x] Menjalankan ulang 42 regression tests morfologi; 42 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
+- [x] Menjalankan ulang suite morfologi terbaru yang berisi 47 regression tests; 47 lulus, 0 gagal pada lingkungan Python lokal terisolasi.
 
 ### 2.5 Pengenalan kelas kata (POS)
 
@@ -164,9 +164,17 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — perbaikan kandidat palsu morfologi berlanjut.**
+**Tahap 2.3 — validasi loader terhadap seluruh 60 batch masih terbuka. Tahap 2.4 — prototipe morfologi telah mencapai 47/47 regression tests lulus pada lingkungan Python lokal terisolasi.**
 
-Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 91 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 91 lulus, 0 gagal (45 fondasi + 8 analyzer + 38 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap dan sejumlah bentuk leksikal umum dilindungi dari pemotongan prefiks keliru. Tes morfologi terbaru kini 38/38 lulus. Pengujian baru menemukan dan memperbaiki konflik prefiks bertumpuk: `penge-` sebelumnya juga dapat menghasilkan kandidat keliru melalui pemotongan `pen-`. Total pengujian komponen terbaru menjadi 91 tes lulus, 0 gagal (45 fondasi + 8 analyzer + 38 morfologi), dijalankan terpisah. Pengujian morfologi memakai implementasi pencocokan leksikal repository dalam lingkungan lokal terisolasi. GitHub Actions tidak dijalankan.
+Hasil tes komponen yang tercatat dan dijalankan terpisah:
+- Fondasi (normalisasi, tokenizer, loader, pencocokan kamus): 45 lulus.
+- Analyzer teks: 8 lulus.
+- Morfologi: 47 lulus.
+- **Total: 100 lulus, 0 gagal.**
+
+Pengujian tersebut menggunakan salinan kode dan tes dari GitHub dalam lingkungan Python terisolasi, bukan checkout repository penuh. Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi loader Python belum dijalankan langsung terhadap seluruh batch. Karena itu, validasi penuh kamus dan pengujian dari checkout repository penuh tetap belum selesai. Jangan mencentang kedua pekerjaan tersebut sebelum benar-benar dijalankan.
+
+Langkah berikutnya: siapkan lingkungan checkout repository penuh untuk menjalankan validasi loader 60 batch dan regression suite. Jangan mulai implementasi POS sebelum celah validasi ini ditutup.
 
 ## Dokumen rujukan
 
