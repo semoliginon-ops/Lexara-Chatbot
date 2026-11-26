@@ -6,6 +6,9 @@ daerah	K0384	daerah	lemma	batch-008
 daftar	K0766	daftar	lemma	batch-016
 dagang	K0365	dagang	lemma	batch-008
 daging	K0170	daging	lemma	batch-004
+daging asap	K2074	daging asap	lemma	batch-042
+daging kambing	K2075	daging kambing	lemma	batch-042
+daging sapi	K2076	daging sapi	lemma	batch-042
 dagu	K0761	dagu	lemma	batch-016
 dahaga	K0762	dahaga	lemma	batch-016
 dahsyat	K0763	dahsyat	lemma	batch-016
@@ -208,6 +211,7 @@ diusahakan	K0229	usaha	derived_form	batch-005
 diyakini	K0242	yakin	derived_form	batch-005
 doa	K0447	doa	lemma	batch-009
 doang	K0656	doang	lemma	batch-014
+dodol	K2077	dodol	lemma	batch-042
 dokter	K0183	dokter	lemma	batch-004
 dokumen	K1267	dokumen	lemma	batch-026
 domba	K0802	domba	lemma	batch-017
@@ -215,6 +219,7 @@ dominan	K1268	dominan	lemma	batch-026
 dompet	K0265	dompet	lemma	batch-006
 donasi	K1269	donasi	lemma	batch-026
 donat	K0803	donat	lemma	batch-017
+donat kentang	K2078	donat kentang	lemma	batch-042
 dong	K0049	dong	lemma	batch-001
 dongeng	K1874	dongeng	lemma	batch-038
 dongkol	K0696	dongkol	lemma	batch-014
@@ -241,6 +246,7 @@ durasi	K0550	durasi	lemma	batch-011
 durhaka	K0807	durhaka	lemma	batch-017
 duri	K0790	duri	lemma	batch-016
 durian	K0791	durian	lemma	batch-016
+durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
 edisi	K1876	edisi	lemma	batch-038
@@ -299,12 +305,17 @@ eror	K0814	eror	lemma	batch-017
 erosi	K1295	erosi	lemma	batch-026
 es	K0815	es	lemma	batch-017
 es batu	K2022	es batu	lemma	batch-041
+es buah	K2080	es buah	lemma	batch-042
 es campur	K2023	es campur	lemma	batch-041
+es cendol	K2081	es cendol	lemma	batch-042
+es dawet	K2082	es dawet	lemma	batch-042
 es doger	K2024	es doger	lemma	batch-041
 es jeruk	K2001	es jeruk	lemma	batch-040
 es kelapa	K2025	es kelapa	lemma	batch-041
 es kopi	K2027	es kopi	lemma	batch-041
 es krim	K2026	es krim	lemma	batch-041
+es mambo	K2083	es mambo	lemma	batch-042
+es susu	K2084	es susu	lemma	batch-042
 es teh	K2000	es teh	lemma	batch-040
 esai	K0816	esai	lemma	batch-017
 esensial	K1296	esensial	lemma	batch-026
