@@ -639,3 +639,10 @@ GitHub Actions run [#9](https://github.com/semoliginon-ops/Sistem_bahasa/actions
 `tools/evaluasi_pos.py` kini melaporkan contoh salah prediksi secara eksplisit. Perubahan diverifikasi pada GitHub Actions [run #10](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909498360): dataset tetap valid (100 kalimat, 543 token; 60 development, 40 test) dan regression suite **142/142 lulus**.
 
 Kesalahan yang ditemukan: `pos_0093`, kalimat “Dia sangat rajin dan disiplin.”, token `disiplin`; gold `ADJ`, prediksi `NOUN` pada POS leksikal maupun kontekstual. Jangan ubah anotasi gold sekadar mengikuti prediksi. Audit entri kamus dan konteks harus mendahului perubahan. Test split 40 kalimat tetap tertahan.
+
+
+## Perbaikan POS koordinatif `disiplin` — 27 November 2026
+
+Entri kamus `disiplin` diperluas dengan sense ADJ selain NOUN. Aturan konteks lokal kini dapat memakai kesesuaian POS konjung kiri dan token kanan pada koordinasi `dan`/`serta`/`maupun`, hanya bila irisan label tepat satu. Perubahan diuji dengan kalimat development “Dia sangat rajin dan disiplin.”
+
+GitHub Actions [run #11](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909687815) sukses: validator 100 kalimat/543 token; POS kontekstual 187/255 benar, coverage 73,3%, accuracy 73,3%, selective accuracy 100%, nol kesalahan prediksi yang diputuskan; regression suite **143/143 lulus**. POS leksikal menghasilkan 186/255 benar dan lebih banyak abstention. Ini hanya evaluasi development, bukan skor test atau akurasi umum. Test split 40 kalimat tetap ditahan.
