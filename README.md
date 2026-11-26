@@ -237,6 +237,15 @@ GitHub digunakan untuk:
 
 GitHub **bukan tempat menjalankan chatbot**. Aplikasi berjalan di HP. GitHub Actions bersifat opsional dan proyek tidak boleh bergantung pada kuota Actions atau layanan cloud berbayar untuk menjalankan chatbot.
 
+### Alur perubahan kamus dan penggunaan Actions
+
+- Kamus disusun dalam batch berisi tepat 50 lema baru.
+- Sebelum menambahkan batch, periksa INDEX terbaru dan seluruh 8 token shard untuk mendeteksi duplikasi lema, variasi, serta bentuk turunan.
+- Setelah setiap batch, lakukan pemeriksaan manual: jumlah 50 entri, ID berurutan dan unik, lema unik, serta pembaruan INDEX dan shard sesuai.
+- Pemeriksaan batch rutin dilakukan tanpa menjalankan GitHub Actions.
+- Workflow **Dictionary Audit** hanya berjalan melalui pemicu manual (workflow_dispatch), bukan otomatis pada setiap push atau pull request.
+- Jalankan audit besar melalui GitHub Actions setelah target 3.000 entri tercapai, atau jika memang diperlukan audit menyeluruh lebih awal.
+
 Jangan memasukkan token, password, data pribadi, atau riwayat percakapan pengguna ke repository. Data kamus harus diperiksa sumber dan lisensinya sebelum dimasukkan atau didistribusikan.
 
 ## 9. Hal yang tidak menjadi target
