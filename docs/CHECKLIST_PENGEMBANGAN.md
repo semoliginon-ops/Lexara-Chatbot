@@ -356,12 +356,17 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 **Catatan:** skor hanya berlaku untuk 18 kalimat development yang ada, bukan akurasi umum. POS kontekstual belum meningkatkan hasil dibanding POS leksikal pada sampel ini. Jangan memakai test split untuk menyetel aturan.
 
 
-## Koreksi metadata POS lema "jalan" — 27 November 2026
+## Verifikasi koreksi metadata POS lema "jalan" — 27 November 2026
 
 - [x] Menemukan penyebab: entri `K0020` hanya mencantumkan `NOUN` walau catatan penggunaan menyebut fungsi verba.
 - [x] Memperbarui POS lema menjadi `NOUN` dan `VERB`, dengan dua sense yang masing-masing memiliki POS spesifik.
 - [x] Menambahkan regression test integrasi agar token gold ambiguous `jalan` pada development tidak dipaksakan menjadi satu POS.
-- [ ] Jalankan tes evaluator, evaluasi development, dan regression suite penuh dari Termux setelah pull.
-- [ ] Periksa bahwa token ambiguous kini ditahan dan catat metrik evaluasi baru. Jangan menyetel aturan menggunakan test split.
+- [x] Menarik seluruh perubahan ke Termux melalui `git pull`.
+- [x] Menjalankan 5 tes evaluator POS: **5 lulus, 0 gagal**.
+- [x] Menjalankan evaluator pada 18 kalimat development: 72 token resolved; POS leksikal dan kontekstual sama-sama menghasilkan 42 prediksi benar, coverage 58,3%, accuracy 58,3%, selective accuracy 100%.
+- [x] Memastikan penanganan token gold ambiguous: **1 ditahan, 0 dipaksakan**.
+- [x] Menjalankan regression suite penuh dari Termux: **137 tes lulus, 0 gagal, 0 error**.
 
-**Status:** koreksi metadata dan tes sudah dikirim ke branch `main`; belum dianggap terverifikasi sampai hasil Termux diterima.
+**Interpretasi:** koreksi metadata membuat fragmen `Jalan.` tetap ambigu sesuai gold label. Hasil POS kontekstual belum lebih baik daripada POS leksikal pada sampel ini. Selective accuracy 100% hanya berlaku pada prediksi yang dikeluarkan; coverage 58,3% dan accuracy keseluruhan 58,3%. Hasil hanya berlaku untuk development set kecil, bukan estimasi akurasi umum.
+
+**Titik lanjut aktif:** perluas dataset POS dari 30 menuju 100 kalimat, dengan penambahan development set yang representatif. Pertahankan test split sebagai data tertahan dan jangan mulai parser kalimat sebelum evaluasi POS development memadai.
