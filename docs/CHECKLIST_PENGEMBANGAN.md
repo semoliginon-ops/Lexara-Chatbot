@@ -388,7 +388,7 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [x] Regression suite penuh: **137 tes lulus, 0 gagal, 0 error**.
 - [x] Evaluasi development: 102 token resolved; leksikal dan kontekstual sama-sama 55 benar, coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%.
 - [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
-- [!] Tinjau anotasi/kebijakan POS kata `mau` pada `pos_0031`: gold `ADV`, prediksi `VERB`. Jangan ubah label atau aturan sebelum menilai fungsi dan pedoman secara konsisten.
+- [x] Audit `mau` pada `pos_0031`: ditetapkan sebagai `VERB` (verba modal kehendak), sesuai entri kamus `K0024`; label gold development dikoreksi dari `ADV` menjadi `VERB` tanpa mengubah kamus atau aturan program. Menunggu validasi ulang di Termux.
 - [ ] Audit coverage kelas POS yang belum diprediksi, termasuk `INTJ`; prioritaskan penambahan contoh development yang representatif.
 
-**Titik lanjut aktif:** audit kasus `mau` dan cakupan kelas POS berdasarkan development set. Jangan gunakan 16 record test untuk penyetelan. Setelah audit, lanjutkan batch kelima menuju 50 kalimat.
+**Titik lanjut aktif:** tarik koreksi anotasi `mau`, jalankan ulang validator, evaluator, dan regression suite; setelah itu audit cakupan prediksi kelas POS. Jangan gunakan 16 record test untuk penyetelan. Setelah verifikasi, lanjutkan batch kelima menuju 50 kalimat.
