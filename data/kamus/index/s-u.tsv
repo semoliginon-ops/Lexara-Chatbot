@@ -15,6 +15,11 @@ salam	K0403	salam	lemma	batch-009
 salfok	K0690	salfok	lemma	batch-014
 salon	K1559	salon	lemma	batch-032
 sambal	K0457	sambal	lemma	batch-010
+sambal bawang	K2180	sambal bawang	lemma	batch-044
+sambal ijo	K2182	sambal ijo	lemma	batch-044
+sambal matah	K2179	sambal matah	lemma	batch-044
+sambal terasi	K2178	sambal terasi	lemma	batch-044
+sambal tomat	K2181	sambal tomat	lemma	batch-044
 sambil	K0638	sambil	lemma	batch-013
 sambut	K1560	sambut	lemma	batch-032
 sampah	K1561	sampah	lemma	batch-032
@@ -29,6 +34,7 @@ sangkal	K1565	sangkal	lemma	batch-032
 sanksi	K1566	sanksi	lemma	batch-032
 santai	K0674	santai	lemma	batch-014
 santan	K1943	santan	lemma	batch-039
+santan kelapa	K2195	santan kelapa	lemma	batch-044
 santap	K1567	santap	lemma	batch-032
 sapa	K0402	sapa	lemma	batch-009
 sapu	K0054	sapu	lemma	batch-002
@@ -49,6 +55,14 @@ sayang	K0115	sayang	lemma	batch-003
 sayembara	K1573	sayembara	lemma	batch-032
 sayup	K1574	sayup	lemma	batch-032
 sayur	K0163	sayur	lemma	batch-004
+sayur asem	K2166	sayur asem	lemma	batch-044
+sayur bayam	K2169	sayur bayam	lemma	batch-044
+sayur bening	K2171	sayur bening	lemma	batch-044
+sayur kangkung	K2170	sayur kangkung	lemma	batch-044
+sayur lodeh	K2167	sayur lodeh	lemma	batch-044
+sayur nangka	K2172	sayur nangka	lemma	batch-044
+sayur oyong	K2173	sayur oyong	lemma	batch-044
+sayur sop	K2168	sayur sop	lemma	batch-044
 sayuran	K0163	sayur	derived_form	batch-004
 seandainya	K0632	seandainya	lemma	batch-013
 sebab	K0633	sebab	lemma	batch-013
@@ -103,6 +117,7 @@ sepeda motor	K0400	sepeda motor	lemma	batch-008
 sepi	K0250	sepi	lemma	batch-005
 serabi	K1989	serabi	lemma	batch-040
 seragam	K1593	seragam	lemma	batch-032
+serai	K2186	serai	lemma	batch-044
 serambi	K1601	serambi	lemma	batch-032
 serang	K1602	serang	lemma	batch-033
 serap	K1603	serap	lemma	batch-033
@@ -214,6 +229,10 @@ supaya	K0651	supaya	lemma	batch-013
 surat	K1651	surat	lemma	batch-033
 susah	K0088	susah	lemma	batch-002
 susu	K0175	susu	lemma	batch-004
+susu bubuk	K2197	susu bubuk	lemma	batch-044
+susu cokelat	K2199	susu cokelat	lemma	batch-044
+susu kedelai	K2198	susu kedelai	lemma	batch-044
+susu kental manis	K2196	susu kental manis	lemma	batch-044
 susun	K1122	susun	lemma	batch-023
 tabah	K1123	tabah	lemma	batch-023
 tabrak	K1124	tabrak	lemma	batch-023
@@ -334,6 +353,10 @@ tentara	K1713	tentara	lemma	batch-035
 tenteram	K1712	tenteram	lemma	batch-035
 tentu	K0639	tentu	lemma	batch-013
 tepung	K1148	tepung	lemma	batch-023
+tepung beras	K2191	tepung beras	lemma	batch-044
+tepung maizena	K2194	tepung maizena	lemma	batch-044
+tepung tapioka	K2193	tepung tapioka	lemma	batch-044
+tepung terigu	K2192	tepung terigu	lemma	batch-044
 terampil	K1714	terampil	lemma	batch-035
 terang	K0325	terang	lemma	batch-007
 terap	K1715	terap	lemma	batch-035
@@ -418,6 +441,10 @@ tulisan	K0077	tulis	derived_form	batch-002
 tumbang	K1747	tumbang	lemma	batch-035
 tumbuh	K1748	tumbuh	lemma	batch-035
 tumis	K0469	tumis	lemma	batch-010
+tumis buncis	K2175	tumis buncis	lemma	batch-044
+tumis kangkung	K2174	tumis kangkung	lemma	batch-044
+tumis sawi	K2177	tumis sawi	lemma	batch-044
+tumis tauge	K2176	tumis tauge	lemma	batch-044
 tumpah	K1749	tumpah	lemma	batch-035
 tumpang	K1750	tumpang	lemma	batch-035
 tumpuk	K1751	tumpuk	lemma	batch-035
