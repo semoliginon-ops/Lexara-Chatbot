@@ -68,3 +68,18 @@ Seluruh 18 kalimat development diperiksa ulang terhadap konvensi operasional pad
 **Hasil:** satu koreksi label gold pada record `pos_0024`; tidak ada perubahan pada record test. Audit ini adalah pemeriksaan konsistensi internal oleh satu peninjau, bukan adjudikasi multi-anotator atau bukti akurasi prediksi POS.
 
 **Verifikasi berikutnya:** tarik perubahan ke Termux, jalankan validator dataset dan seluruh regression tests. Hasil eksekusi setelah perubahan ini masih menunggu pengguna.
+
+
+## Audit metadata POS — lema "jalan" (27 November 2026)
+
+**Temuan:** evaluator development sebelumnya menunjukkan token `jalan` pada `pos_0006` (fragmen "Jalan.") dipaksakan menjadi satu POS. Pemeriksaan entri `K0020` di `data/kamus/batch-001.jsonl` menemukan bahwa catatan penggunaan menyebut fungsi verba, tetapi metadata hanya mencantumkan `NOUN`.
+
+**Koreksi metadata:**
+- POS entri menjadi `["NOUN", "VERB"]`.
+- Sense `K0020-S1` menyatakan makna jalur/tempat yang dilalui dan diberi POS `NOUN`.
+- Sense `K0020-S2` menyatakan makna bergerak/melangkah dengan kaki dan diberi POS `VERB`.
+- Catatan penggunaan menegaskan bahwa fungsi ditentukan oleh konteks dan fragmen tanpa konteks dapat ambigu.
+
+**Pengamanan:** ditambahkan regression test integrasi yang memuat kamus dan development dataset sebenarnya, lalu memastikan satu token gold ambiguous `jalan` ditahan (abstained) dan tidak dipaksakan.
+
+Perubahan ini hanya memperbaiki metadata entri dan tes. Tidak ada aturan konteks yang dilonggarkan, tidak ada data test yang dipakai, dan token index tidak berubah karena lemma serta token indeks tetap sama. Hasil akhir tetap menunggu verifikasi di Termux.
