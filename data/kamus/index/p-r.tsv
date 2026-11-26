@@ -8,13 +8,17 @@ pahit	K0461	pahit	lemma	batch-010
 pakai	K0057	pakai	lemma	batch-002
 pakaian	K0057	pakai	derived_form	batch-002
 paling	K0630	paling	lemma	batch-013
+pamit	K1038	pamit	lemma	batch-021
 panas	K0251	panas	lemma	batch-005
 panci	K0282	panci	lemma	batch-006
 panggang	K0470	panggang	lemma	batch-010
 panggil	K0433	panggil	lemma	batch-009
+panik	K1039	panik	lemma	batch-021
+pantai	K1040	pantai	lemma	batch-021
 pantas	K0597	pantas	lemma	batch-012
 papa	K0107	papa	lemma	batch-003
 parah	K0598	parah	lemma	batch-012
+parfum	K1041	parfum	lemma	batch-021
 parkir	K0397	parkir	lemma	batch-008
 pasar	K0362	pasar	lemma	batch-008
 pasrah	K0599	pasrah	lemma	batch-012
@@ -30,6 +34,7 @@ pelan	K0349	pelan	lemma	batch-007
 pelanggan	K0366	pelanggan	lemma	batch-008
 pelari	K0073	lari	derived_form	batch-002
 pelit	K0601	pelit	lemma	batch-012
+peluang	K1042	peluang	lemma	batch-021
 pemaafan	K0247	maaf	derived_form	batch-005
 pemahaman	K0040	paham	derived_form	batch-001
 pemain	K0074	main	derived_form	batch-002
@@ -108,6 +113,7 @@ penolong	K0032	tolong	derived_form	batch-001
 penonton	K0075	nonton	derived_form	batch-002
 pensil	K0297	pensil	lemma	batch-006
 penting	K0671	penting	lemma	batch-014
+penuh	K1043	penuh	lemma	batch-021
 penulis	K0077	tulis	derived_form	batch-002
 penulisan	K0077	tulis	derived_form	batch-002
 penumpang	K0492	penumpang	lemma	batch-010
@@ -122,12 +128,14 @@ penyelesaian	K0224	selesai	derived_form	batch-005
 penyuka	K0081	suka	derived_form	batch-002
 pepohonan	K0159	pohon	derived_form	batch-004
 perapian	K0153	api	derived_form	batch-004
+perasaan	K1044	perasaan	lemma	batch-021
 percaya	K0241	percaya	lemma	batch-005
 percaya diri	K0672	percaya diri	lemma	batch-014
 percintaan	K0114	cinta	derived_form	batch-003
 percobaan	K0228	coba	derived_form	batch-005
 pergantian	K0221	ganti	derived_form	batch-005
 pergi	K0017	pergi	lemma	batch-001
+perhatian	K1045	perhatian	lemma	batch-021
 perikanan	K0168	ikan	derived_form	batch-004
 periksa	K0441	periksa	lemma	batch-009
 perizinan	K0246	izin	derived_form	batch-005
@@ -137,6 +145,7 @@ perlu	K0231	perlu	lemma	batch-005
 permainan	K0074	main	derived_form	batch-002
 permisi	K0404	permisi	lemma	batch-009
 permulaan	K0225	mulai	derived_form	batch-005
+pernah	K1046	pernah	lemma	batch-021
 perorangan	K0010	orang	derived_form	batch-001
 perpindahan	K0207	pindah	derived_form	batch-005
 persaudaraan	K0110	saudara	derived_form	batch-003
@@ -171,9 +180,14 @@ ponsel	K0196	ponsel	lemma	batch-004
 porsi	K0479	porsi	lemma	batch-010
 potong	K0471	potong	lemma	batch-010
 puas	K0343	puas	lemma	batch-007
+pucat	K1050	pucat	lemma	batch-021
 pulang	K0019	pulang	lemma	batch-001
 pulpen	K0298	pulpen	lemma	batch-006
 punya	K0202	punya	lemma	batch-005
+pura-pura	K1051	pura-pura	lemma	batch-021
+pusat	K1048	pusat	lemma	batch-021
+pusing	K1047	pusing	lemma	batch-021
+putus	K1049	putus	lemma	batch-021
 ragu	K0243	ragu	lemma	batch-005
 ramah	K0347	ramah	lemma	batch-007
 ramai	K0249	ramai	lemma	batch-005
