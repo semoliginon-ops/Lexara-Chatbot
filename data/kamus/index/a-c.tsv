@@ -1,7 +1,5 @@
 # Token index — a-c
 # token\tid\tlemma\ttype\tbatch
-Blu-ray	K2439	Blu-ray	lemma	batch-049
-CD	K2437	CD	lemma	batch-049
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
 abang	K0502	abang	lemma	batch-011
@@ -62,6 +60,7 @@ aktor	K1822	aktor	lemma	batch-037
 aktual	K1823	aktual	lemma	batch-037
 aku	K0001	aku	lemma	batch-001
 akun	K1208	akun	lemma	batch-025
+akun driver	K2548	akun driver	lemma	batch-051
 akuntan	K2452	akuntan	lemma	batch-050
 akurat	K1209	akurat	lemma	batch-025
 alam	K1824	alam	lemma	batch-037
@@ -125,6 +124,7 @@ antarmuka	K1838	antarmuka	lemma	batch-037
 antena	K1839	antena	lemma	batch-037
 antena parabola	K2355	antena parabola	lemma	batch-048
 antena televisi	K2406	antena televisi	lemma	batch-049
+Anterin	K2508	Anterin	lemma	batch-051
 anting	K1814	anting	lemma	batch-037
 antre	K0352	antre	lemma	batch-008
 antusias	K0713	antusias	lemma	batch-015
@@ -135,6 +135,8 @@ aparat	K1841	aparat	lemma	batch-037
 apel	K1905	apel	lemma	batch-039
 apem	K2056	apem	lemma	batch-042
 api	K0153	api	lemma	batch-004
+aplikasi driver	K2549	aplikasi driver	lemma	batch-051
+aplikator	K2551	aplikator	lemma	batch-051
 apotek	K0516	apotek	lemma	batch-011
 apoteker	K2457	apoteker	lemma	batch-050
 apoteker rumah sakit	K2484	apoteker rumah sakit	lemma	batch-050
@@ -156,6 +158,7 @@ asam	K0462	asam	lemma	batch-010
 asap	K0518	asap	lemma	batch-011
 asbak	K1817	asbak	lemma	batch-037
 aset	K1844	aset	lemma	batch-037
+Asia Trans	K2509	Asia Trans	lemma	batch-051
 asin	K0459	asin	lemma	batch-010
 asinan	K2003	asinan	lemma	batch-041
 asisten	K1218	asisten	lemma	batch-025
@@ -418,6 +421,9 @@ bising	K0327	bising	lemma	batch-007
 biskuit	K1958	biskuit	lemma	batch-040
 biskuit cokelat	K2066	biskuit cokelat	lemma	batch-042
 blender	K2306	blender	lemma	batch-047
+Blu-Jek	K2530	Blu-Jek	lemma	batch-051
+Blu-ray	K2439	Blu-ray	lemma	batch-049
+Bluebird	K2506	Bluebird	lemma	batch-051
 bluetooth	K2357	bluetooth	lemma	batch-048
 bocah	K0536	bocah	lemma	batch-011
 bocor	K0738	bocor	lemma	batch-015
@@ -431,6 +437,7 @@ boleh	K0144	boleh	lemma	batch-003
 bolos	K0740	bolos	lemma	batch-015
 bolu	K1959	bolu	lemma	batch-040
 bolu kukus	K2067	bolu kukus	lemma	batch-042
+Bonceng	K2515	Bonceng	lemma	batch-051
 boncos	K0741	boncos	lemma	batch-015
 bonus	K0538	bonus	lemma	batch-011
 bor	K1240	bor	lemma	batch-025
@@ -473,6 +480,7 @@ bungkus	K1246	bungkus	lemma	batch-025
 bunglon	K2242	bunglon	lemma	batch-045
 buntut	K0746	buntut	lemma	batch-015
 buram	K1247	buram	lemma	batch-025
+Buroq	K2531	Buroq	lemma	batch-051
 buru-buru	K0350	buru-buru	lemma	batch-007
 buruan	K0747	buruan	lemma	batch-015
 buruh pabrik	K2499	buruh pabrik	lemma	batch-050
@@ -499,6 +507,7 @@ cabut	K0553	cabut	lemma	batch-012
 cacing	K2214	cacing	lemma	batch-045
 cair	K0541	cair	lemma	batch-011
 cakwe	K2013	cakwe	lemma	batch-041
+Call Jack	K2526	Call Jack	lemma	batch-051
 camilan	K0453	camilan	lemma	batch-010
 campur	K0475	campur	lemma	batch-010
 canda	K0752	canda	lemma	batch-016
@@ -514,6 +523,7 @@ caper	K0679	caper	lemma	batch-014
 capung	K2215	capung	lemma	batch-045
 cari	K0063	cari	lemma	batch-002
 casing komputer	K2424	casing komputer	lemma	batch-049
+CD	K2437	CD	lemma	batch-049
 cecak	K1248	cecak	lemma	batch-025
 cekatan	K1249	cekatan	lemma	batch-025
 ceker	K1961	ceker	lemma	batch-040
