@@ -30,6 +30,8 @@ class PosTaggerTests(unittest.TestCase):
             ]),
             entry("K0003", "jalan", ["NOUN", "VERB"]),
             entry("K0004", "gue", ["PRON"]),
+            entry("K0005", "tanam", ["VERB"], derived_forms=["menanam"]),
+            entry("K0006", "kerja", ["NOUN"], derived_forms=["bekerja"]),
         ]
         self.lexicon = build_lexicon(self.entries)
 
@@ -58,6 +60,18 @@ class PosTaggerTests(unittest.TestCase):
 
     def test_does_not_inherit_lemma_pos_for_derived_form(self):
         token = self.analyze_and_tag("makanan")["tokens"][0]
+        self.assertEqual(token["pos"], [])
+        self.assertEqual(token["pos_status"], "requires_morphology")
+
+    def test_recorded_meN_derived_form_uses_validated_verbal_morphology(self):
+        token = self.analyze_and_tag("menanam")["tokens"][0]
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_status"], "identified")
+        self.assertEqual(token["pos_source"], "morphology")
+        self.assertTrue(token["morphology_candidates"])
+
+    def test_ber_derived_form_from_noun_is_not_guessed_as_verb(self):
+        token = self.analyze_and_tag("bekerja")["tokens"][0]
         self.assertEqual(token["pos"], [])
         self.assertEqual(token["pos_status"], "requires_morphology")
 
