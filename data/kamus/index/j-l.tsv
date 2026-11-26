@@ -32,6 +32,7 @@ jamur	K1997	jamur	lemma	batch-040
 jangan	K0145	jangan	lemma	batch-003
 jangka	K1379	jangka	lemma	batch-028
 jangkrik	K2277	jangkrik	lemma	batch-046
+jangkrik tanah	K2977	jangkrik tanah	lemma	batch-060
 janji	K0448	janji	lemma	batch-009
 jantung	K1380	jantung	lemma	batch-028
 jarak	K1381	jarak	lemma	batch-028
@@ -305,6 +306,9 @@ kepastian	K0235	pasti	derived_form	batch-005
 kepercayaan	K0241	percaya	derived_form	batch-005
 kepergian	K0017	pergi	derived_form	batch-001
 keperluan	K0231	perlu	derived_form	batch-005
+kepik	K2968	kepik	lemma	batch-060
+kepik bau	K2970	kepik bau	lemma	batch-060
+kepik hijau	K2969	kepik hijau	lemma	batch-060
 kepiting	K2231	kepiting	lemma	batch-045
 kepo	K0094	kepo	lemma	batch-002
 kepo-kepoan	K0094	kepo	derived_form	batch-002
@@ -429,7 +433,16 @@ kue lapis	K2035	kue lapis	lemma	batch-041
 kukus	K0468	kukus	lemma	batch-010
 kulit pangsit	K2131	kulit pangsit	lemma	batch-043
 kulkas	K0284	kulkas	lemma	batch-006
+kumbang	K2960	kumbang	lemma	batch-060
+kumbang air	K2967	kumbang air	lemma	batch-060
+kumbang beras	K2963	kumbang beras	lemma	batch-060
+kumbang daun	K2966	kumbang daun	lemma	batch-060
+kumbang kayu	K2965	kumbang kayu	lemma	batch-060
+kumbang kelapa	K2964	kumbang kelapa	lemma	batch-060
+kumbang koksi	K2962	kumbang koksi	lemma	batch-060
+kumbang tanduk	K2961	kumbang tanduk	lemma	batch-060
 kumis	K2601	kumis	lemma	batch-052
+kunang-kunang	K2953	kunang-kunang	lemma	batch-060
 kunci	K0263	kunci	lemma	batch-006
 kunjung	K0418	kunjung	lemma	batch-009
 kunjungan	K1401	kunjungan	lemma	batch-028
@@ -444,6 +457,13 @@ kurir	K2469	kurir	lemma	batch-050
 Kuririo	K2514	Kuririo	lemma	batch-051
 kursi	K0253	kursi	lemma	batch-006
 kuskus	K2283	kuskus	lemma	batch-046
+kutu	K2982	kutu	lemma	batch-060
+kutu buku	K2988	kutu buku	lemma	batch-060
+kutu busuk	K2984	kutu busuk	lemma	batch-060
+kutu daun	K2985	kutu daun	lemma	batch-060
+kutu loncat	K2987	kutu loncat	lemma	batch-060
+kutu putih	K2986	kutu putih	lemma	batch-060
+kutu rambut	K2983	kutu rambut	lemma	batch-060
 kuy	K0580	kuy	lemma	batch-012
 kwetiau	K1975	kwetiau	lemma	batch-040
 laba-laba	K2235	laba-laba	lemma	batch-045
@@ -462,6 +482,9 @@ lakon	K1405	lakon	lemma	batch-029
 laksa	K1976	laksa	lemma	batch-040
 lalai	K1406	lalai	lemma	batch-029
 lalat	K1407	lalat	lemma	batch-029
+lalat buah	K2954	lalat buah	lemma	batch-060
+lalat hijau	K2956	lalat hijau	lemma	batch-060
+lalat rumah	K2955	lalat rumah	lemma	batch-060
 lamar	K1408	lamar	lemma	batch-029
 lambang	K1409	lambang	lemma	batch-029
 lambat	K0046	lambat	lemma	batch-001
@@ -487,6 +510,7 @@ larang	K1414	larang	lemma	batch-029
 lari	K0073	lari	lemma	batch-002
 larian	K0073	lari	derived_form	batch-002
 laris	K1415	laris	lemma	batch-029
+laron	K2981	laron	lemma	batch-060
 lasagna	K2050	lasagna	lemma	batch-041
 laser	K1416	laser	lemma	batch-029
 latih	K1417	latih	lemma	batch-029
