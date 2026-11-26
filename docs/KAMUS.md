@@ -150,6 +150,22 @@ Kedua makna harus disimpan sebagai sense terpisah agar mesin tidak mencampuraduk
 
 Pengisian dilakukan bertahap per kelompok dan diperiksa sebelum digabungkan. Angka pembagian kategori tidak ditetapkan secara kaku di awal karena distribusi kelas kata harus mengikuti kebutuhan percakapan nyata dan hasil inventarisasi.
 
+### 8.1 Prosedur batch dan pemeriksaan rutin
+
+- Setiap batch berisi tepat **50 lema baru** dengan ID berurutan.
+- Setiap lema menggunakan satu POS utama sesuai keputusan penyusunan batch.
+- Sebelum menyusun batch baru, ambil INDEX terbaru dan periksa seluruh 8 token shard (a-c.tsv, d-f.tsv, g-i.tsv, j-l.tsv, m-o.tsv, p-r.tsv, s-u.tsv, dan v-z.tsv).
+- Pemeriksaan duplikasi mencakup lema yang sudah ada, variasi ejaan, serta bentuk turunan yang tercatat.
+- Setelah batch ditambahkan, lakukan pemeriksaan manual terhadap jumlah entri, keunikan ID dan lema, rentang ID, pembaruan shard, urutan alfabetis shard, serta konsistensi jumlah pada INDEX.
+- INDEX dijaga tetap ringan sebagai ringkasan dan navigasi; definisi serta rincian linguistik tetap disimpan pada berkas batch.
+- Pemeriksaan rutin setiap batch tidak menjalankan GitHub Actions. Hasil pemeriksaan manual dicatat sebelum melanjutkan ke batch berikutnya.
+
+### 8.2 Audit menyeluruh dengan GitHub Actions
+
+Workflow **Dictionary Audit** dikonfigurasi hanya dengan pemicu manual (workflow_dispatch). Workflow tidak berjalan otomatis pada setiap push atau pull request, agar penambahan batch rutin tidak menghabiskan kuota Actions.
+
+Audit menyeluruh dijalankan setelah target **3.000 entri** tercapai. Audit lebih awal hanya dilakukan jika ada kebutuhan khusus untuk memeriksa keseluruhan data. Pemeriksaan manual per batch tetap dilakukan dan tidak digantikan oleh audit akhir.
+
 Urutan kerja yang disarankan:
 1. Tetapkan skema data dan kode kelas kata.
 2. Kumpulkan kosakata umum yang paling sering dipakai.
