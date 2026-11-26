@@ -76,6 +76,19 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
                 add_candidate(restoration + stem, "confix_peN_an_nasal_restoration")
             break
 
+    # Imbuhan bertingkat di- + per- + sufiks, misalnya diperbaiki.
+    # Analisis lapisan luar (di-) dahulu, lalu pola per-...-i/-kan.
+    if surface.startswith("di"):
+        inner = surface[2:]
+        for suffix, suffix_rule in _SUFFIXES:
+            if inner.endswith(suffix) and len(inner) > len(suffix) + 3:
+                middle = inner[:-len(suffix)]
+                if middle.startswith("per") and len(middle) > 4:
+                    add_candidate(
+                        middle[3:],
+                        f"prefix_di+prefix_per+{suffix_rule}",
+                    )
+
     for suffix, rule in _SUFFIXES:
         if surface.endswith(suffix) and len(surface) > len(suffix) + 1:
             add_candidate(surface[:-len(suffix)], rule)
