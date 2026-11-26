@@ -97,8 +97,12 @@ Contoh target awal:
 Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah dibuat.
 
 ### 5.3 Pencocokan token ke kamus
-- [ ] Baca format JSONL batch kamus yang sebenarnya sebelum membuat loader.
-- [ ] Buat loader yang dapat membaca batch tanpa mengubah sumber data.
+- [x] Periksa struktur JSONL aktual pada sampel Batch 001 dan Batch 006.
+- [x] Buat `tools/kamus_loader.py` sebagai loader baca-saja; isi entri dipertahankan tanpa modifikasi.
+- [x] Tambahkan 12 regression tests untuk pemuatan batch, urutan batch, validasi struktur, serta deteksi ID/lemma duplikat.
+- [x] Hasil uji lokal loader: 12 lulus, 0 gagal.
+- [ ] Uji loader pada seluruh 60 file batch aktual.
+- [ ] Buat pencocokan token terhadap lemma dan token index.
 - [ ] Buat pencarian token terhadap lemma dan token index yang relevan.
 - [ ] Bedakan hasil: lemma ditemukan, varian ditemukan, bentuk turunan tercatat, atau tidak dikenal.
 - [ ] Tangani satu kata dengan beberapa sense atau POS tanpa memilih makna secara gegabah.
@@ -191,4 +195,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** periksa format JSONL batch kamus aktual, lalu rancang loader dan pencocokan leksikal. Normalisasi dan tokenizer sudah diuji secara lokal: total 20 lulus, 0 gagal.
+**Titik lanjut:** uji `tools/kamus_loader.py` terhadap seluruh 60 batch aktual, lalu buat pencocokan token ke lemma, variants, dan derived_forms. Normalisasi, tokenizer, dan loader telah melewati total 32 tes lokal tanpa kegagalan.
