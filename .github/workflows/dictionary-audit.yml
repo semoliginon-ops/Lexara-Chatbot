@@ -1,0 +1,45 @@
+name: Dictionary Audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/kamus/**"
+      - "docs/KAMUS.md"
+      - "tools/audit_dictionary.py"
+      - ".github/workflows/dictionary-audit.yml"
+  pull_request:
+    paths:
+      - "data/kamus/**"
+      - "docs/KAMUS.md"
+      - "tools/audit_dictionary.py"
+      - ".github/workflows/dictionary-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dictionary-audit-\${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  audit:
+    name: Read-only dictionary checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run dictionary audit
+        run: |
+          python tools/audit_dictionary.py \
+            --docs docs/KAMUS.md \
+            --index data/kamus/INDEX.md \
+            --data-dir data/kamus
