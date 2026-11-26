@@ -36,6 +36,11 @@ class MorphologyTests(unittest.TestCase):
         bases = self.bases("menari")
         self.assertIn("tari", bases)
         self.assertNotIn("ari", bases)
+
+    def test_men_prefix_with_suffix_prefers_restored_t(self):
+        bases = self.bases("menarikan")
+        self.assertIn("tari", bases)
+        self.assertNotIn("ari", bases)
     def test_nasal_restoration_meny(self): self.assertIn("sapu", self.bases("menyapu"))
     def test_meng_prefix_restores_k_when_required(self):
         self.assertIn("kunci", self.bases("mengunci"))
