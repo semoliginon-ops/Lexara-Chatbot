@@ -47,8 +47,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ### 2.3 Pencocokan token ke kamus
 
-- [ ] Memeriksa format JSONL batch kamus aktual.
-- [ ] Membuat loader kamus.
+- [x] Memeriksa format JSONL batch kamus aktual pada sampel Batch 001 dan Batch 006.
+- [x] Membuat loader kamus baca-saja di `tools/kamus_loader.py`.
 - [ ] Membuat pencocokan token terhadap lema dan indeks.
 - [ ] Membedakan lema, variasi, bentuk turunan, dan kata tak dikenal.
 - [ ] Menangani kata dengan beberapa POS atau sense.
