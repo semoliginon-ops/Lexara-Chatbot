@@ -76,7 +76,9 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
             stem = surface[len(prefix):-2]
             add_candidate(stem, "confix_peN_an")
             restoration = {"peng": "k", "peny": "s", "pen": "t", "pem": "p"}.get(prefix)
-            if restoration:
+            # Jangan pulihkan konsonan jika bentuk tanpa restorasi sudah
+            # merupakan lema. Contoh: pengajaran -> ajar, bukan kajar.
+            if restoration and not _known(stem, lexicon):
                 add_candidate(restoration + stem, "confix_peN_an_nasal_restoration")
             break
 
@@ -154,6 +156,8 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         for prefix, restored in _NASAL_RESTORATIONS:
             if middle.startswith(prefix) and len(middle) > len(prefix):
                 remainder = middle[len(prefix):]
+                if prefix in ("meng", "peng") and _known(remainder, lexicon):
+                    continue
                 if prefix in ("meny", "peny") and _known("ny" + remainder, lexicon):
                     continue
                 add_candidate(restored + remainder, f"nasal_restoration_{prefix}+{suffix_rule}")
