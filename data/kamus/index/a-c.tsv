@@ -184,6 +184,7 @@ bakat	K1224	bakat	lemma	batch-025
 bakmi	K1907	bakmi	lemma	batch-039
 bakpao	K2062	bakpao	lemma	batch-042
 bakso	K0488	bakso	lemma	batch-010
+bakso ikan	K2102	bakso ikan	lemma	batch-043
 bakwan	K2063	bakwan	lemma	batch-042
 balas	K0218	balas	lemma	batch-005
 balasan	K0218	balas	derived_form	batch-005
@@ -390,6 +391,8 @@ buah-buahan	K0162	buah	derived_form	batch-004
 buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
 buatan	K0205	buat	derived_form	batch-005
+bubuk cabai	K2104	bubuk cabai	lemma	batch-043
+bubuk kari	K2105	bubuk kari	lemma	batch-043
 bubur	K1908	bubur	lemma	batch-039
 bubur ayam	K2011	bubur ayam	lemma	batch-041
 bubur kacang hijau	K2012	bubur kacang hijau	lemma	batch-041
@@ -413,6 +416,7 @@ buru-buru	K0350	buru-buru	lemma	batch-007
 buruan	K0747	buruan	lemma	batch-015
 butuh	K0230	butuh	lemma	batch-005
 cabai	K0483	cabai	lemma	batch-010
+cabai rawit	K2106	cabai rawit	lemma	batch-043
 cabut	K0553	cabut	lemma	batch-012
 cair	K0541	cair	lemma	batch-011
 cakwe	K2013	cakwe	lemma	batch-041
@@ -467,6 +471,7 @@ cuka	K0757	cuka	lemma	batch-016
 cukup	K0232	cukup	lemma	batch-005
 cuma	K0611	cuma	lemma	batch-013
 cumi	K1962	cumi	lemma	batch-040
+cumi asin	K2107	cumi asin	lemma	batch-043
 curhat	K0543	curhat	lemma	batch-011
 curi	K0758	curi	lemma	batch-016
 curiga	K0555	curiga	lemma	batch-012
