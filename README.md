@@ -141,7 +141,9 @@ Komponen pencarian semantik berbasis embedding dapat ditambahkan sebagai modul o
 - [ ] Menetapkan aturan penamaan, ID, deduplikasi, dan validasi data.
 - [ ] Menyiapkan contoh data kecil untuk menguji skema sebelum mengisi ribuan entri.
 
-**Hasil tahap:** spesifikasi kamus dan format data yang konsisten.
+**Hasil tahap:** spesifikasi kamus dan format data yang konsisten, disertai sampel kecil untuk menguji struktur sejak awal.
+
+**Catatan pengujian dini:** sampel kecil ini juga dipakai kembali pada tahap berikutnya sebagai uji regresi. Dengan begitu, perubahan skema, normalisasi, dan aturan bahasa dapat diketahui dampaknya sebelum diterapkan ke seluruh kamus.
 
 ### Tahap 1 — Kamus 3.000 entri
 - [ ] Mengumpulkan lema/kata sehari-hari yang relevan.
@@ -170,9 +172,11 @@ Aturan penyempurnaan:
 4. Penyempurnaan metadata tidak boleh mengubah ID, lema, kelas kata, ragam, maupun definisi yang sudah ada. Perubahan pada data inti harus melalui pemeriksaan dan revisi tersendiri.
 5. Setiap batch diperiksa kembali setelah diperbarui untuk memastikan struktur dan data inti tetap konsisten.
 
-**Kriteria selesai:** tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data, termasuk penyempurnaan metadata yang relevan dan akurat. tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data.
+**Kriteria selesai:** tersedia kamus versi 1.0 dengan target 3.000 entri yang terstruktur, dapat dicari, dan lolos pemeriksaan kualitas data, termasuk penyempurnaan metadata yang relevan dan akurat.
 
 ### Tahap 2 — Pengolahan kata dan tata bahasa dasar
+- [ ] Membuat prototipe pemrosesan awal dengan sampel kamus yang representatif.
+- [ ] Menguji sampel secara berulang untuk menemukan masalah struktur data dan aturan sedini mungkin.
 - [ ] Membuat normalisasi teks.
 - [ ] Mengenali bentuk dasar dan bentuk berimbuhan.
 - [ ] Mengidentifikasi kelas kata.
@@ -191,8 +195,11 @@ Aturan penyempurnaan:
 **Kriteria selesai:** sistem dapat mengolah sejumlah kalimat baru dari kombinasi kosakata dan aturan, serta menggunakan konteks sederhana secara konsisten.
 
 ### Tahap 4 — Evaluasi kebutuhan embedding
+Tahap ini dilakukan setelah prototipe pengolahan kata, tata bahasa, relasi makna, dan konteks dapat dijalankan pada kasus uji nyata. Embedding tidak dievaluasi hanya berdasarkan perkiraan atau sebelum mesin dasar memiliki hasil pembanding.
+
 - [ ] Menguji kemampuan pencarian dan pemrosesan tanpa embedding.
-- [ ] Mengidentifikasi kasus nyata yang belum tertangani.
+- [ ] Mengidentifikasi kasus nyata yang belum tertangani oleh prototipe dan aturan dasar.
+- [ ] Menyusun kumpulan kasus uji pembanding agar manfaat embedding dapat diukur secara objektif.
 - [ ] Membandingkan manfaat embedding dengan kompleksitas dan biaya sumber daya.
 - [ ] Jika manfaatnya terbukti, mengevaluasi model embedding Bahasa Indonesia/multibahasa dan lisensinya.
 - [ ] Mengukur kualitas, ukuran, latensi, RAM, dan kompatibilitas Android.
