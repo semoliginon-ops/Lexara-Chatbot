@@ -1,6 +1,6 @@
 # Indeks Utama Kamus — Sistem Bahasa
 
-**Status:** Batch 001 disetujui dan terdaftar
+**Status:** Batch 001 dan Batch 002 disetujui dan terdaftar
 **Target:** 3.000 lemma unik untuk Kamus v1.0
 **Sumber aturan:** ../../docs/KAMUS.md
 
@@ -32,53 +32,103 @@ Hanya status approved yang dihitung ke target 3.000 lemma.
 | ID | Lemma kanonis | POS | Register | Variasi/bentuk turunan | Status | Catatan |
 |---|---|---|---|---|---|---|
 | K0001 | aku | PRON | neutral, informal | — | approved | Batch 001 |
+| K0058 | ambil | VERB | neutral | mengambil, diambil, pengambilan, pengambil | approved | Batch 002 |
+| K0076 | baca | VERB | informal, neutral | membaca, dibaca, bacaan, pembaca, pembacaan | approved | Batch 002 |
 | K0041 | bagus | ADJ | neutral, informal | bagusan | approved | Batch 001 |
 | K0048 | banget | ADV | informal, slang | — | approved | Batch 001 |
 | K0016 | bangun | VERB | neutral | membangunkan, terbangun, bangunkan | approved | Batch 001 |
 | K0033 | bantu | VERB | neutral | membantu, dibantu, bantuan, pembantu | approved | Batch 001 |
+| K0093 | baper | ADJ | slang, informal | kebaperan | approved | Batch 002 |
+| K0060 | bawa | VERB | neutral | membawa, dibawa, bawaan, pembawa | approved | Batch 002 |
+| K0055 | beli | VERB | neutral, informal | membeli, dibeli, pembelian, pembeli | approved | Batch 002 |
+| K0072 | berdiri | VERB | neutral | mendirikan, didirikan, berdirinya, pendirian | approved | Batch 002 |
 | K0043 | besar | ADJ | neutral | membesar, besaran, kebesaran | approved | Batch 001 |
 | K0036 | bicara | VERB | neutral | berbicara, pembicaraan, membicarakan, pembicara | approved | Batch 001 |
 | K0026 | bisa | VERB, NOUN | neutral, informal | kemampuan | approved | Batch 001 |
+| K0095 | bokek | ADJ | slang, informal | kebokekan | approved | Batch 002 |
+| K0086 | bosan | ADJ | neutral, informal | membosankan, kebosanan, dibosankan | approved | Batch 002 |
+| K0099 | bucin | NOUN | slang, informal | kebucinan | approved | Batch 002 |
+| K0065 | buka | VERB | neutral | membuka, dibuka, terbuka, pembukaan, pembuka | approved | Batch 002 |
 | K0047 | capek | ADJ | informal | cape | approved | Batch 001 |
+| K0063 | cari | VERB | neutral | mencari, dicari, pencarian, pencari | approved | Batch 002 |
 | K0045 | cepat | ADJ | neutral | mempercepat, kecepatan, tercepat | approved | Batch 001 |
+| K0053 | cuci | VERB | neutral | mencuci, dicuci, cucian, pencucian | approved | Batch 002 |
 | K0018 | datang | VERB | neutral | kedatangan, mendatangi | approved | Batch 001 |
+| K0090 | dekat | ADJ | neutral | mendekat, mendekati, didekati, kedekatan | approved | Batch 002 |
 | K0035 | dengar | VERB | neutral | mendengar, terdengar, pendengaran, kedengaran | approved | Batch 001 |
 | K0004 | dia | PRON | neutral | — | approved | Batch 001 |
 | K0049 | dong | PART | informal, slang | — | approved | Batch 001 |
+| K0071 | duduk | VERB | neutral | menduduki, diduduki, duduk-duduk, kedudukan | approved | Batch 002 |
 | K0023 | duit | NOUN | informal, slang | — | approved | Batch 001 |
 | K0029 | enggak | ADV | informal, slang | nggak, gak, ga | approved | Batch 001 |
+| K0092 | gabut | ADJ | slang, informal | kegabutan | approved | Batch 002 |
+| K0100 | gercep | ADJ | slang, informal | — | approved | Batch 002 |
 | K0008 | gue | PRON | slang, informal | gw, gua | approved | Batch 001 |
+| K0078 | ingat | VERB | neutral | mengingat, diingat, ingatan, teringat, mengingatkan | approved | Batch 002 |
 | K0025 | ingin | VERB | neutral | keinginan, menginginkan | approved | Batch 001 |
 | K0030 | iya | INTJ | neutral, informal | ya | approved | Batch 001 |
 | K0020 | jalan | NOUN | neutral | jalanan, perjalanan, berjalan | approved | Batch 001 |
 | K0042 | jelek | ADJ | informal, neutral | kejelekan | approved | Batch 001 |
+| K0056 | jual | VERB | neutral | menjual, dijual, jualan, penjual, penjualan | approved | Batch 002 |
+| K0096 | julid | ADJ | slang, informal | menjulid, kejulidan | approved | Batch 002 |
 | K0006 | kami | PRON | neutral, formal | — | approved | Batch 001 |
 | K0003 | kamu | PRON | neutral, informal | — | approved | Batch 001 |
 | K0044 | kecil | ADJ | neutral | mengecil, kecil-kecilan | approved | Batch 001 |
+| K0068 | keluar | VERB | neutral | mengeluarkan, dikeluarkan, keluaran, pengeluaran | approved | Batch 002 |
+| K0094 | kepo | ADJ | slang, informal | kepo-kepoan | approved | Batch 002 |
 | K0021 | kerja | NOUN | neutral | bekerja, pekerjaan, pekerja, mengerjakan | approved | Batch 001 |
+| K0061 | kirim | VERB | neutral | mengirim, dikirim, kiriman, pengiriman, pengirim | approved | Batch 002 |
 | K0005 | kita | PRON | neutral | — | approved | Batch 001 |
 | K0046 | lambat | ADJ | neutral | melambat, memperlambat, kelambatan | approved | Batch 001 |
+| K0073 | lari | VERB | neutral, informal | berlari, melarikan, pelari, larian | approved | Batch 002 |
+| K0097 | lebay | ADJ | slang, informal | berlebihan | approved | Batch 002 |
 | K0034 | lihat | VERB | neutral | melihat, terlihat, penglihatan, kelihatan | approved | Batch 001 |
 | K0009 | lu | PRON | slang, informal | lo, elu | approved | Batch 001 |
+| K0079 | lupa | VERB | neutral, informal | melupakan, dilupakan, terlupa, kelupaan | approved | Batch 002 |
+| K0091 | mager | ADJ | slang, informal | kemageran | approved | Batch 002 |
+| K0074 | main | VERB | informal, neutral | bermain, memainkan, dimainkan, permainan, pemain | approved | Batch 002 |
 | K0013 | makan | VERB | neutral | memakan, dimakan, makanan, pemakan | approved | Batch 001 |
+| K0051 | mandi | VERB | neutral | bermandi, memandikan, mandian | approved | Batch 002 |
+| K0082 | marah | ADJ | neutral | memarahi, dimarahi, kemarahan, pemarah | approved | Batch 002 |
+| K0052 | masak | VERB | neutral, informal | memasak, dimasak, masakan, pemasak | approved | Batch 002 |
+| K0067 | masuk | VERB | neutral | memasuki, dimasuki, kemasukan, masukan | approved | Batch 002 |
 | K0024 | mau | VERB | neutral, informal | kemauan, menghendaki | approved | Batch 001 |
 | K0007 | mereka | PRON | neutral | — | approved | Batch 001 |
 | K0014 | minum | VERB | neutral | meminum, diminum, minuman, peminum | approved | Batch 001 |
+| K0069 | naik | VERB | neutral | menaiki, menaikkan, dinaikkan, kenaikan | approved | Batch 002 |
+| K0098 | ngaret | VERB | slang, informal | mengaret | approved | Batch 002 |
 | K0038 | ngobrol | VERB | informal, slang | obrolan, mengobrol | approved | Batch 001 |
+| K0075 | nonton | VERB | informal | menonton, ditonton, tontonan, penonton | approved | Batch 002 |
 | K0031 | oke | INTJ | informal | ok, okay | approved | Batch 001 |
 | K0037 | omong | NOUN | informal | mengomong, omongan | approved | Batch 001 |
 | K0010 | orang | NOUN | neutral | perorangan | approved | Batch 001 |
 | K0040 | paham | VERB | neutral | memahami, pemahaman, dipahami | approved | Batch 001 |
+| K0057 | pakai | VERB | neutral, informal | memakai, dipakai, pemakaian, pakaian | approved | Batch 002 |
 | K0017 | pergi | VERB | neutral | kepergian, bepergian | approved | Batch 001 |
+| K0080 | pikir | VERB | neutral | berpikir, memikirkan, dipikirkan, pikiran, pemikiran | approved | Batch 002 |
 | K0019 | pulang | VERB | neutral | kepulangan, memulangkan | approved | Batch 001 |
 | K0012 | rumah | NOUN | neutral | perumahan, berumah | approved | Batch 001 |
+| K0054 | sapu | VERB | neutral | menyapu, disapu, sapuan | approved | Batch 002 |
 | K0002 | saya | PRON | formal, neutral | — | approved | Batch 001 |
+| K0085 | sedih | ADJ | neutral | menyedihkan, kesedihan, bersedih | approved | Batch 002 |
+| K0084 | senang | ADJ | neutral | menyenangkan, disenangi, kesenangan, bersenang-senang | approved | Batch 002 |
+| K0089 | sering | ADV | neutral | keseringan | approved | Batch 002 |
+| K0087 | sibuk | ADJ | neutral | menyibukkan, disibukkan, kesibukan | approved | Batch 002 |
 | K0050 | sih | PART | informal, slang | — | approved | Batch 001 |
+| K0081 | suka | VERB | neutral, informal | menyukai, disukai, kesukaan, penyuka | approved | Batch 002 |
+| K0088 | susah | ADJ | neutral, informal | menyusahkan, kesusahan, dipersusah | approved | Batch 002 |
 | K0039 | tahu | VERB | neutral, informal | mengetahui, pengetahuan, ketahuan | approved | Batch 001 |
+| K0083 | takut | ADJ | neutral | menakuti, ditakuti, ketakutan, penakut | approved | Batch 002 |
+| K0059 | taruh | VERB | informal, neutral | menaruh, ditaruh, taruhan | approved | Batch 002 |
 | K0011 | teman | NOUN | neutral | berteman, pertemanan | approved | Batch 001 |
+| K0062 | terima | VERB | neutral | menerima, diterima, penerimaan, penerima | approved | Batch 002 |
 | K0028 | tidak | ADV | neutral, formal | — | approved | Batch 001 |
 | K0015 | tidur | VERB | neutral | tertidur, menidurkan, tiduran | approved | Batch 001 |
 | K0032 | tolong | VERB | neutral | menolong, pertolongan, penolong | approved | Batch 001 |
+| K0077 | tulis | VERB | neutral | menulis, ditulis, tulisan, penulis, penulisan | approved | Batch 002 |
+| K0064 | tunggu | VERB | neutral | menunggu, ditunggu, penantian, penunggu | approved | Batch 002 |
+| K0070 | turun | VERB | neutral | menuruni, menurunkan, diturunkan, penurunan | approved | Batch 002 |
+| K0066 | tutup | VERB | neutral | menutup, ditutup, tertutup, penutupan, penutup | approved | Batch 002 |
 | K0022 | uang | NOUN | neutral | keuangan, menguangkan | approved | Batch 001 |
 
 ## 4. Kandidat yang digabung atau diperlakukan sebagai variasi
@@ -96,12 +146,12 @@ Hanya status approved yang dihitung ke target 3.000 lemma.
 
 ## 5. Hitungan progres
 
-- Lemma disetujui: **49 / 3.000**
+- Lemma disetujui: **99 / 3.000**
 - Kandidat dalam tinjauan: **0**
 - Ditolak: **0**
 - Digabung/alias: **7 kelompok variasi/polisemi tercatat**
 
-Catatan: 50 kandidat yang direview menghasilkan 49 lemma kanonis karena dua kandidat "bisa" digabung menjadi satu lemma dengan dua sense dan dua POS.
+Catatan: Batch 001 menghasilkan 49 lemma kanonis. Batch 002 menambahkan 50 lemma unik yang telah disetujui.
 
 ## 6. Alur kerja setiap batch
 
