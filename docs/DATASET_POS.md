@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Dataset berisi 30 kalimat (18 development, 12 test; 156 token), lolos validasi Termux. Evaluator telah dijalankan di Termux: POS leksikal dan kontekstual masing-masing 42/72 benar pada token resolved (coverage/accuracy 58,3%; selective accuracy 100%). Regression suite penuh lulus 136/136. Satu token gold ambiguous (`jalan`, `pos_0006`) justru dipaksakan menjadi satu POS dan perlu diaudit. 
+**Status:** Batch keempat telah ditambahkan: 40 kalimat (24 development, 16 test; 215 token berdasarkan anotasi). Dataset batch keempat belum divalidasi di Termux; hasil evaluasi sebelumnya hanya mencakup 18 kalimat development sebelum batch ini.
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -50,7 +50,7 @@ Satu baris adalah satu kalimat berupa objek JSON. Simpan sebagai UTF-8 di:
 
 `data/dataset_pos/kalimat_pos_v1.jsonl`
 
-**Progres:** 30/100 kalimat telah dianotasi (18 development, 12 test; 156 token aktual dari validator Termux). Ketiga batch telah lolos validasi struktur/tokenizer. Regression suite setelah batch ketiga: 132/132 lulus. Sampel ini belum cukup untuk menyimpulkan akurasi umum; kualitas label dan akurasi prediksi tetap perlu dievaluasi.
+**Progres:** 40/100 kalimat telah dianotasi (24 development, 16 test; 215 token berdasarkan jumlah token anotasi). Batch 1–3 telah divalidasi di Termux; batch keempat menunggu validasi struktur dan kecocokan tokenizer. Regression suite terakhir sebelum batch keempat: 137/137 lulus. Sampel ini belum cukup untuk menyimpulkan akurasi umum.
 
 Skema record:
 
