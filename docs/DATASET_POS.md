@@ -113,7 +113,8 @@ Karena taksonomi proyek hanya menyediakan 10 kode POS dan tidak memiliki kelas d
 | Fenomena | Konvensi proyek | Contoh dan batasan |
 |---|---|---|
 | Demonstrativa atributif | `PRON` | `itu` pada “rumah itu” dan `ini` pada “buku ini” diberi `PRON`. Ini penyederhanaan taksonomi proyek; jangan membuat label DET baru pada dataset v1. |
-| Penanda aspek/modalitas yang ditetapkan v1 | `ADV` | `sedang`, `akan`, `telah`, `sudah`, dan `lagi` diberi `ADV` ketika berfungsi sebagai penanda aspek/modalitas sebelum verba. Daftar ini adalah konvensi terbatas, bukan aturan bahwa semua kata bermakna modalitas otomatis `ADV`. |\n| Verba modal kehendak | `VERB` | `mau` pada “Gue mau makan dulu” diberi `VERB`: kata ini menyatakan kehendak dan berfungsi sebagai verba modal yang mengambil komplemen verba. Jangan samakan semua bentuk modalitas ke satu POS. |
+| Penanda aspek/modalitas yang ditetapkan v1 | `ADV` | `sedang`, `akan`, `telah`, `sudah`, dan `lagi` diberi `ADV` ketika berfungsi sebagai penanda aspek/modalitas sebelum verba. Daftar ini adalah konvensi terbatas, bukan aturan bahwa semua kata bermakna modalitas otomatis `ADV`. |
+| Verba modal kehendak | `VERB` | `mau` pada “Gue mau makan dulu” diberi `VERB`: kata ini menyatakan kehendak dan berfungsi sebagai verba modal yang mengambil komplemen verba. Jangan samakan semua bentuk modalitas ke satu POS. |
 | Penanda larangan | `PART` | `jangan` diberi `PART` ketika menandai larangan dalam konstruksi imperatif, misalnya “Jangan pergi!”. |
 | Gelar atau sapaan nominal | `NOUN` | `Pak`, `Bu`, dan gelar sejenis diberi `NOUN` ketika dipakai sebagai sapaan/gelar yang mendahului nama atau nomina. |
 | Kata sebab | `CONJ` | `karena` diberi `CONJ` ketika menghubungkan klausa sebab dengan klausa lain. |
