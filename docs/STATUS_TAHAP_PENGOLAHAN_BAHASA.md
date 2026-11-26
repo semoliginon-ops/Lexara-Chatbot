@@ -443,3 +443,18 @@ Keputusan ini merupakan penyederhanaan internal dataset v1, bukan klaim universa
 **Status verifikasi:** perubahan dataset dan dokumentasi sudah masuk ke branch `main`. Validasi dataset dan regression suite setelah perubahan masih menunggu dijalankan dari Termux.
 
 **Titik lanjut:** `git pull`, kemudian `python -m tools.validasi_dataset_pos` dan `python -m unittest discover -s tests -v`.
+
+
+## Verifikasi terbaru setelah koreksi anotasi POS — 27 November 2026
+
+Bagian ini merupakan acuan status terkini dan mengesampingkan catatan historis yang menyebut verifikasi setelah koreksi masih menunggu.
+
+- Audit ulang mencakup seluruh **18 record development**. Test split yang berisi 12 kalimat tetap ditahan dan tidak diubah.
+- Satu koreksi gold label diterapkan pada `pos_0024`: token `jangan` diubah dari `ADV` menjadi `PART`, sesuai konvensi operasional dataset v1.
+- Pengguna menjalankan `python -m tools.validasi_dataset_pos` dari Termux: **VALIDASI DATASET POS BERHASIL**, 30 kalimat, 156 token, 18 development, 12 test.
+- Pengguna menjalankan `python -m unittest discover -s tests -v` dari Termux setelah koreksi: **Ran 132 tests in 0.093s — OK**, 0 gagal dan 0 error.
+- Hasil ini mengonfirmasi validitas struktur dataset dan kelulusan regression suite yang tersedia. Hasil tersebut **bukan pengukuran akurasi POS** dan bukan bukti bahwa seluruh anotasi gold sudah benar secara linguistik.
+
+**Status:** audit anotasi development, validasi dataset, dan regression suite pascakoreksi telah diverifikasi. Dataset masih 30/100 kalimat. Evaluasi prediksi POS terhadap gold label belum dibuat.
+
+**Titik lanjut:** perluas development set secara bertahap, kemudian buat evaluasi POS yang melaporkan hasil per label dan kasus ambigu. Jangan gunakan 12 record test untuk menyetel aturan; jangan mulai parser kalimat sebelum evaluasi POS development memadai.
