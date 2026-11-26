@@ -673,3 +673,19 @@ GitHub Actions [run #26](https://github.com/semoliginon-ops/Sistem_bahasa/action
 Hasil ini khusus 60 kalimat development; bukan estimasi akurasi umum. Dibanding evaluasi sebelumnya, abstention VERB turun dari 23 menjadi 15. Empat puluh record test tetap ditahan dan tidak digunakan dalam perubahan ini.
 
 **Titik lanjut:** audit residual VERB (terutama `bekerja`, `memasak`, `membeli`, `menjelaskan`, `bermain`, `ditunda`, `letakkan`, `berteduh`) dan lengkapi lema NOUN yang benar-benar dibutuhkan. Bedakan gap kamus, keterbatasan aturan morfologi, dan kasus POS yang memerlukan metadata bentuk turunan.
+
+
+## Verifikasi bentuk turunan tercatat dan POS — 27 November 2026
+
+Tiga pembaruan kode di branch `main` memprioritaskan relasi `derived_form` yang tercatat di kamus dibanding segmentasi morfologi spekulatif. POS tagger menerima bentuk turunan berawalan `meN-` atau `ber-` sebagai VERB hanya jika lema dasar tervalidasi memiliki POS VERB. Pengamanan untuk `bekerja` tetap dipertahankan: lema `kerja` berlabel NOUN, sehingga bentuk itu tidak dipaksakan menjadi VERB tanpa bukti morfologis yang sesuai.
+
+Pengguna menarik commit hingga `0d37b01` dan menjalankan regression suite lokal di Termux:
+- **149/149 tes lulus**, 0 gagal, 0 error.
+- POS leksikal development: **222/255 benar**, coverage/accuracy **87,1%**, selective accuracy **100%**.
+- POS kontekstual development: **223/255 benar**, coverage/accuracy **87,5%**, selective accuracy **100%**.
+- Tidak ada kesalahan pada prediksi yang dikeluarkan; 1 token gold ambiguous ditahan dan 0 dipaksakan.
+- Evaluasi hanya memakai 60 kalimat development. Empat puluh kalimat test tetap tertahan.
+
+Dibanding hasil sebelumnya (215/255 leksikal dan 216/255 kontekstual), kedua jalur bertambah tujuh prediksi benar pada development. Ini peningkatan coverage/accuracy pada set yang sama, bukan klaim akurasi umum.
+
+**Sisa audit VERB development:** delapan kemunculan token abstain terdiri dari `bekerja` (3), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Status diagnostik: `bekerja` dan `menjelaskan` memerlukan analisis morfologi; empat bentuk lainnya belum memiliki kandidat leksikal/morfologis yang dapat dipakai. Audit berikutnya harus memeriksa lema dasar, bentuk turunan yang tercatat, serta pola pasif dan imperatif secara terpisah. Jangan menggunakan split test untuk menyetel aturan.
