@@ -566,3 +566,19 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Gold ambiguous: 1 ditahan, 0 dipaksakan; tidak ada kesalahan pada prediksi yang dikeluarkan.
 
 **Titik lanjut:** audit 8 kemunculan token VERB yang masih abstain pada development: `bekerja` (3), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Pisahkan kebutuhan metadata turunan, pola morfologi pasif/imperatif, dan lema dasar yang belum ada. Jangan gunakan 40 kalimat test untuk penyetelan.
+
+
+### Verifikasi anotasi POS bentuk turunan — 27 November 2026
+
+- [x] Menambahkan anotasi POS eksplisit untuk bentuk turunan `bekerja`, `menjelaskan`, `dijelaskan`, dan `letakkan` tanpa mewarisi POS lemma secara otomatis.
+- [x] Menambahkan validasi dan regression tests untuk `derived_forms_pos`.
+- [x] Pengguna menarik pembaruan ke Termux dan menjalankan seluruh pemeriksaan lokal.
+- [x] Regression suite: **152/152 tes lulus**.
+- [x] Validator: **100 kalimat, 543 token, 60 development, 40 test — BERHASIL**.
+- [x] Evaluasi development-only: POS leksikal **227/255 benar (89,0%)**; POS kontekstual **228/255 benar (89,4%)**.
+- [x] Selective accuracy kedua jalur **100%**, tanpa kesalahan prediksi yang dikeluarkan; satu gold ambiguous ditahan dan nol dipaksakan.
+- [x] Sisa abstention VERB pada development turun menjadi **3 token**: `ditunda`, `hinggap`, dan `berteduh`.
+
+**Catatan:** hasil di atas berasal dari eksekusi lokal pengguna, bukan klaim hasil GitHub Actions. Evaluasi hanya menggunakan 60 kalimat development. Empat puluh kalimat test tetap ditahan.
+
+**Titik lanjut:** audit apakah lema `tunda`, `hinggap`, dan `teduh` tersedia di kamus, lalu audit abstention NOUN/ADJ/ADV secara terpisah. Jangan menambah aturan hanya untuk mengejar skor development dan jangan menggunakan test split untuk penyetelan.
