@@ -614,3 +614,12 @@ Dataset POS diperluas menjadi 80 kalimat (`pos_0001`–`pos_0080`), 428 token, 4
 GitHub Actions run [#7](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908957782) sukses: validator 80 kalimat/428 token; evaluator development-only 199 token resolved, 149 benar, coverage 74,9%, accuracy 74,9%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan; regression suite **141/141 lulus**. Test split 32 kalimat tidak digunakan.
 
 **Titik lanjut:** Batch 9 (`pos_0081`–`pos_0090`), enam development dan empat test. Jangan menggunakan split test untuk mengubah aturan.
+
+
+## Batch kesembilan — 27 November 2026
+
+Dataset POS diperluas menjadi 90 kalimat (`pos_0001`–`pos_0090`), 485 token, 54 development dan 36 test. Batch kesembilan menambahkan enam development dan empat test, dengan cakupan negasi, verba transitif, nomina/verba berimbuhan, interjeksi, adjektiva atributif/predikatif, numeralia, preposisi, dan konjungsi.
+
+GitHub Actions run [#8](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909135531) sukses: validator 90 kalimat/485 token; evaluator development-only 227 token resolved, 167 benar, coverage 73,6%, accuracy 73,6%, selective accuracy 100%; gold ambiguous 1 ditahan dan 0 dipaksakan; regression suite **141/141 lulus**. Test split 36 kalimat tidak digunakan.
+
+**Titik lanjut:** Batch 10 (`pos_0091`–`pos_0100`), enam development dan empat test. Jangan menggunakan split test untuk mengubah aturan.
