@@ -423,3 +423,13 @@ Catatan kuota: workflow hanya terpicu pada perubahan file dataset/kamus/kode/tes
 - [x] Regression suite penuh: **137/137 lulus, 0 gagal, 0 error**.
 
 Catatan: POS kontekstual dan leksikal masih menghasilkan metrik identik. Kenaikan angka terhadap batch sebelumnya tidak boleh dianggap bukti tren peningkatan karena komposisi dan jumlah sampel berubah. Test split 20 kalimat tetap ditahan.
+
+
+### Penambahan batch keenam dataset POS — 27 November 2026
+
+- [x] Menambahkan 10 record (`pos_0051`–`pos_0060`): 6 development dan 4 test.
+- [x] Total dataset menjadi **60 kalimat, 314 token, 36 development, 24 test**.
+- [x] Preflight struktural sebelum commit: JSON, ID, split, label/status POS, dan kecocokan token diperiksa tanpa temuan.
+- [ ] Menunggu workflow GitHub Actions menjalankan validator Python, evaluator development-only, dan regression suite.
+
+**Titik lanjut:** periksa hasil workflow; jangan gunakan 24 record test untuk menyetel aturan.
