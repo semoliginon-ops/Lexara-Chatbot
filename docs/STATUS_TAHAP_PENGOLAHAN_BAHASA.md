@@ -520,3 +520,18 @@ Pengguna menarik enam pembaruan terbaru ke checkout Termux dengan `git pull` (fa
 Interpretasi: selective accuracy 100% hanya berlaku untuk 42 token yang diprediksi. Coverage 58,3% dan accuracy 58,3% menunjukkan masih banyak token resolved yang belum diprediksi. Evaluasi ini terbatas pada development set kecil dan bukan estimasi akurasi umum. Split test tetap tidak digunakan.
 
 **Titik lanjut:** perluas dataset POS secara bertahap dari 30 menuju target 100 kalimat, utamakan variasi kasus pada development set, dan pertahankan test split sebagai data tertahan.
+
+
+## Penambahan batch keempat dataset POS — 27 November 2026
+
+Dataset POS diperluas dengan 10 record baru (`pos_0031`–`pos_0040`): 6 development dan 4 test. Jumlah sementara menjadi **40 kalimat**, terdiri dari **24 development dan 16 test**, dengan **215 token berdasarkan jumlah token anotasi**. Cakupan tambahan meliputi percakapan informal, modalitas, imbuhan, konjungsi, interjeksi, demonstrativa, adjektiva, numeralia, dan preposisi.
+
+**Status:** perubahan sudah masuk branch `main`, tetapi belum diverifikasi dari Termux. Angka token masih menunggu konfirmasi validator; regression suite 137/137 adalah hasil sebelum batch keempat.
+
+**Perintah verifikasi:**
+1. `git pull`
+2. `python -m tools.validasi_dataset_pos`
+3. `python -m unittest discover -s tests -v`
+4. `python -m tools.evaluasi_pos`
+
+Evaluator hanya memakai split development. Jangan gunakan 16 record test untuk menyetel aturan.
