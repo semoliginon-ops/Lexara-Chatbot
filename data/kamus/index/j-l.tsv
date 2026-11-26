@@ -6,7 +6,9 @@ jadwal	K1376	jadwal	lemma	batch-028
 jaga	K0903	jaga	lemma	batch-019
 jago	K0565	jago	lemma	batch-012
 jagung	K0904	jagung	lemma	batch-019
+jagung bakar	K2120	jagung bakar	lemma	batch-043
 jagung manis	K2031	jagung manis	lemma	batch-041
+jagung rebus	K2121	jagung rebus	lemma	batch-043
 jahat	K1377	jahat	lemma	batch-028
 jahe	K1913	jahe	lemma	batch-039
 jahit	K0905	jahit	lemma	batch-019
@@ -71,6 +73,8 @@ kacamata	K0916	kacamata	lemma	batch-019
 kacang	K1914	kacang	lemma	batch-039
 kacang hijau	K1970	kacang hijau	lemma	batch-040
 kacang mede	K2090	kacang mede	lemma	batch-042
+kacang merah	K2123	kacang merah	lemma	batch-043
+kacang panjang	K2122	kacang panjang	lemma	batch-043
 kacang polong	K2091	kacang polong	lemma	batch-042
 kacang tanah	K2089	kacang tanah	lemma	batch-042
 kacau	K0570	kacau	lemma	batch-012
@@ -136,6 +140,8 @@ keburu	K0572	keburu	lemma	batch-012
 kebutuhan	K0230	butuh	derived_form	batch-005
 kecambah	K2093	kecambah	lemma	batch-042
 kecap	K0930	kecap	lemma	batch-019
+kecap asin	K2124	kecap asin	lemma	batch-043
+kecap manis	K2125	kecap manis	lemma	batch-043
 kecepatan	K0045	cepat	derived_form	batch-001
 kecewa	K0335	kecewa	lemma	batch-007
 kecil	K0044	kecil	lemma	batch-001
@@ -225,6 +231,9 @@ keripik	K0942	keripik	lemma	batch-019
 kerja	K0021	kerja	lemma	batch-001
 kertas	K0295	kertas	lemma	batch-006
 kerupuk	K1919	kerupuk	lemma	batch-039
+kerupuk ikan	K2127	kerupuk ikan	lemma	batch-043
+kerupuk kulit	K2128	kerupuk kulit	lemma	batch-043
+kerupuk udang	K2126	kerupuk udang	lemma	batch-043
 kerusakan	K0222	rusak	derived_form	batch-005
 kesakitan	K0180	sakit	derived_form	batch-004
 kesal	K0340	kesal	lemma	batch-007
@@ -246,6 +255,7 @@ ketahuan	K0039	tahu	derived_form	batch-001
 ketakutan	K0083	takut	derived_form	batch-002
 ketan	K1920	ketan	lemma	batch-039
 ketan hitam	K2096	ketan hitam	lemma	batch-042
+ketan putih	K2129	ketan putih	lemma	batch-043
 ketat	K0943	ketat	lemma	batch-019
 ketawa	K0427	ketawa	lemma	batch-009
 ketemu	K0216	ketemu	lemma	batch-005
@@ -283,11 +293,13 @@ kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
 krimer	K2100	krimer	lemma	batch-042
 kroket	K2101	kroket	lemma	batch-042
+kuah kaldu	K2130	kuah kaldu	lemma	batch-043
 kualitas	K1400	kualitas	lemma	batch-028
 kucing	K0946	kucing	lemma	batch-019
 kue	K1923	kue	lemma	batch-039
 kue lapis	K2035	kue lapis	lemma	batch-041
 kukus	K0468	kukus	lemma	batch-010
+kulit pangsit	K2131	kulit pangsit	lemma	batch-043
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
 kunjung	K0418	kunjung	lemma	batch-009
@@ -354,6 +366,7 @@ lemari	K0291	lemari	lemma	batch-006
 lembap	K0318	lembap	lemma	batch-007
 lembut	K1425	lembut	lemma	batch-029
 lemon	K1925	lemon	lemma	batch-039
+lemon tea	K2132	lemon tea	lemma	batch-043
 lempar	K1426	lempar	lemma	batch-029
 lengah	K0583	lengah	lemma	batch-012
 lengkap	K1427	lengkap	lemma	batch-029
@@ -368,6 +381,7 @@ lho	K0667	lho	lemma	batch-014
 libur	K1435	libur	lemma	batch-029
 licin	K1436	licin	lemma	batch-029
 lidah	K1437	lidah	lemma	batch-029
+lidah kucing	K2133	lidah kucing	lemma	batch-043
 lihat	K0034	lihat	lemma	batch-001
 limbah	K1438	limbah	lemma	batch-029
 limun	K1439	limun	lemma	batch-029
