@@ -290,3 +290,16 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 
 
 **Status terbaru:** validasi dataset batch ketiga dan regression suite penuh telah berhasil pada checkout Termux. Berikutnya audit mutu anotasi pada development set; test split tetap ditahan.
+
+
+## Pembaruan status POS — 27 November 2026
+
+- [x] Batch ketiga dataset POS ditarik ke Termux dan lolos validasi: 30 kalimat, 156 token, 18 development, 12 test.
+- [x] Regression suite penuh dijalankan ulang setelah batch ketiga: 132/132 lulus, 0 gagal, 0 error.
+- [x] Audit awal seluruh 18 kalimat development dicatat di `docs/AUDIT_ANOTASI_POS.md`; split test tidak diperiksa.
+- [x] Mencatat kasus yang perlu konvensi anotasi lebih eksplisit: demonstrativa `itu`, penanda aspek `sedang`, larangan `jangan`, dan gelar `Pak`.
+- [ ] Menetapkan konvensi POS untuk kasus-kasus tersebut dalam `docs/DATASET_POS.md`.
+- [ ] Audit ulang development set setelah pedoman diperjelas.
+- [ ] Evaluasi prediksi POS pada development set; jangan gunakan test untuk penyetelan aturan.
+
+**Titik lanjut:** perjelas pedoman anotasi berdasarkan audit awal. Belum ada label dataset yang diubah dan belum ada klaim akurasi POS.
