@@ -3,6 +3,8 @@
 pabrik	K1501	pabrik	lemma	batch-030
 pacar	K0113	pacar	lemma	batch-003
 padahal	K0629	padahal	lemma	batch-013
+padang pasir	K2675	padang pasir	lemma	batch-054
+padang rumput	K2674	padang rumput	lemma	batch-054
 padu	K1502	padu	lemma	batch-031
 paduan	K1503	paduan	lemma	batch-031
 pagi	K0131	pagi	lemma	batch-003
@@ -37,6 +39,7 @@ parkir	K0397	parkir	lemma	batch-008
 paruh	K1508	paruh	lemma	batch-031
 pasar	K0362	pasar	lemma	batch-008
 pasien	K1509	pasien	lemma	batch-031
+pasir	K2692	pasir	lemma	batch-054
 pasrah	K0599	pasrah	lemma	batch-012
 pasta	K2048	pasta	lemma	batch-041
 pastel	K1984	pastel	lemma	batch-040
@@ -61,6 +64,7 @@ pelabuhan	K0395	pelabuhan	lemma	batch-008
 pelajar	K0187	belajar	derived_form	batch-004
 pelan	K0349	pelan	lemma	batch-007
 pelanggan	K0366	pelanggan	lemma	batch-008
+pelangi	K2666	pelangi	lemma	batch-054
 pelari	K0073	lari	derived_form	batch-002
 pelatih	K2474	pelatih	lemma	batch-050
 pelaut	K2497	pelaut	lemma	batch-050
@@ -297,6 +301,7 @@ puas	K0343	puas	lemma	batch-007
 pucat	K1050	pucat	lemma	batch-021
 puding	K1939	puding	lemma	batch-039
 pulang	K0019	pulang	lemma	batch-001
+pulau	K2667	pulau	lemma	batch-054
 pulpen	K0298	pulpen	lemma	batch-006
 punggung	K2591	punggung	lemma	batch-052
 punya	K0202	punya	lemma	batch-005
@@ -328,12 +333,14 @@ rangka	K1062	rangka	lemma	batch-022
 rangkai	K1063	rangkai	lemma	batch-022
 rangkul	K1064	rangkul	lemma	batch-022
 rantai	K1065	rantai	lemma	batch-022
+ranting	K2676	ranting	lemma	batch-054
 rapi	K0323	rapi	lemma	batch-007
 rapuh	K1066	rapuh	lemma	batch-022
 rasa	K1067	rasa	lemma	batch-022
 rasanya	K1068	rasanya	lemma	batch-022
 rating	K2546	rating	lemma	batch-051
 ratus	K1069	ratus	lemma	batch-022
+rawa	K2668	rawa	lemma	batch-054
 rawat	K1070	rawat	lemma	batch-022
 rawon	K1987	rawon	lemma	batch-040
 reaksi	K1071	reaksi	lemma	batch-022
@@ -367,6 +374,7 @@ ribet	K0673	ribet	lemma	batch-014
 rindu	K1090	rindu	lemma	batch-022
 ringan	K1091	ringan	lemma	batch-022
 ringkas	K1092	ringkas	lemma	batch-022
+rintik	K2700	rintik	lemma	batch-054
 risih	K1093	risih	lemma	batch-022
 risiko	K1087	risiko	lemma	batch-022
 risoles	K1988	risoles	lemma	batch-040
