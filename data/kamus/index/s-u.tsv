@@ -30,6 +30,7 @@ sampai	K0210	sampai	lemma	batch-005
 samping	K0376	samping	lemma	batch-008
 sampingan	K1562	sampingan	lemma	batch-032
 sampo	K0274	sampo	lemma	batch-006
+samudra	K2725	samudra	lemma	batch-055
 sandal	K0269	sandal	lemma	batch-006
 sandal jepit	K1563	sandal jepit	lemma	batch-032
 sandi	K1564	sandi	lemma	batch-032
@@ -96,6 +97,7 @@ selai	K1945	selai	lemma	batch-039
 selalu	K0140	selalu	lemma	batch-003
 selamat	K0248	selamat	lemma	batch-005
 selasar	K1609	selasar	lemma	batch-033
+selat	K2724	selat	lemma	batch-055
 seleksi	K1586	seleksi	lemma	batch-032
 selendang	K2633	selendang	lemma	batch-053
 selera	K1587	selera	lemma	batch-032
@@ -298,10 +300,13 @@ tampias	K1667	tampias	lemma	batch-034
 tampil	K1129	tampil	lemma	batch-023
 tampung	K1668	tampung	lemma	batch-034
 tanah	K0154	tanah	lemma	batch-004
+tanah gambut	K2733	tanah gambut	lemma	batch-055
 tanah liat	K2671	tanah liat	lemma	batch-054
 tanah longsor	K2670	tanah longsor	lemma	batch-054
 tanah pasir	K2672	tanah pasir	lemma	batch-054
 tanah subur	K2694	tanah subur	lemma	batch-054
+tanah tandus	K2732	tanah tandus	lemma	batch-055
+tanah vulkanik	K2734	tanah vulkanik	lemma	batch-055
 tanah-tanah	K0154	tanah	derived_form	batch-004
 tanam	K1669	tanam	lemma	batch-034
 tanda	K1130	tanda	lemma	batch-023
@@ -373,6 +378,7 @@ televisi layar datar	K2403	televisi layar datar	lemma	batch-049
 televisi pintar	K2404	televisi pintar	lemma	batch-049
 televisi tabung	K2402	televisi tabung	lemma	batch-049
 telinga	K0119	telinga	lemma	batch-003
+teluk	K2726	teluk	lemma	batch-055
 telur	K0167	telur	lemma	batch-004
 telur asin	K1992	telur asin	lemma	batch-040
 teman	K0011	teman	lemma	batch-001
@@ -439,6 +445,7 @@ terselesaikan	K0224	selesai	derived_form	batch-005
 tertidur	K0015	tidur	derived_form	batch-001
 tertinggal	K0206	tinggal	derived_form	batch-005
 tertutup	K0066	tutup	derived_form	batch-002
+terumbu karang	K2727	terumbu karang	lemma	batch-055
 terus	K0640	terus	lemma	batch-013
 terutama	K1721	terutama	lemma	batch-035
 tetangga	K0440	tetangga	lemma	batch-009
