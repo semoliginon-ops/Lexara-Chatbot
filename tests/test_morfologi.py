@@ -17,7 +17,7 @@ class MorphologyTests(unittest.TestCase):
         lemmas = [
             "makan", "ajar", "pukul", "tulis", "sapu", "lari", "anak",
             "main", "indah", "baik", "bangun", "cat", "kerja", "anda", "mari",
-            "ong", "lalu", "lati", "lapa", "ang", "api", "reka",
+            "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -52,6 +52,11 @@ class MorphologyTests(unittest.TestCase):
     def test_lexicalized_perang_not_split(self): self.assertNotIn("ang", self.bases("perang"))
     def test_lexicalized_terapi_not_split(self): self.assertNotIn("api", self.bases("terapi"))
     def test_lexicalized_mereka_not_split(self): self.assertNotIn("reka", self.bases("mereka"))
+    def test_penge_prefix_does_not_create_shorter_pen_candidate(self):
+        bases = self.bases("pengecatan")
+        self.assertIn("cat", bases)
+        self.assertNotIn("gecat", bases)
+
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
 
