@@ -339,3 +339,15 @@ Bagian ini menjadi acuan status terkini apabila catatan historis di atas masih m
 - [ ] Bangun evaluasi POS yang mengukur prediksi terhadap gold label pada development set. Validasi struktur dan regression suite bukan skor akurasi.
 
 **Titik lanjut aktif:** perluasan development dataset dan persiapan evaluasi POS yang terukur. Jangan mulai parser kalimat atau menggunakan test split untuk menyetel aturan sebelum evaluasi development memadai.
+
+
+## Evaluator POS development — 27 November 2026
+
+- [x] Membuat `tools/evaluasi_pos.py` untuk membandingkan prediksi POS leksikal dan kontekstual dengan gold label.
+- [x] Membatasi pemuatan data evaluator pada split `development`; evaluator menolak record split lain.
+- [x] Menyertakan coverage, accuracy terhadap seluruh token resolved, selective accuracy, confusion counts, dan penanganan gold ambiguous.
+- [x] Membuat 4 regression tests awal pada `tests/test_evaluasi_pos.py`.
+- [~] Menjalankan tes evaluator, evaluasi development, dan regression suite penuh dari Termux setelah sinkronisasi.
+- [ ] Audit kesalahan evaluasi development dan perluas dataset secara bertahap sebelum mengunci test set.
+
+**Catatan:** file evaluator dan tes sudah masuk branch `main`, tetapi belum dianggap terverifikasi sampai dijalankan di Termux. Jangan memakai hasil evaluator sebagai klaim akurasi umum.
