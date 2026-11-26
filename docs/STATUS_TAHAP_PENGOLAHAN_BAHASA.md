@@ -59,7 +59,10 @@ Branch kerja: `main`
 - Pencocokan kamus: 13 tes lulus, 0 gagal.
 - Total: **45 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
 - Struktur dasar seluruh 60 file batch (3.000 entri) telah diperiksa melalui konten GitHub: format JSON, field wajib, ID, lema, dan struktur sense. Ini bukan pengganti eksekusi langsung loader Python terhadap seluruh file.
-- Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
+- Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat.
+- Integrasi normalisasi, tokenizer, dan pencocokan kamus tersedia di `tools/analisis_teks.py` melalui fungsi `analyze_text(text, lexicon)`. Indeks leksikal dibangun sekali dengan `build_lexicon(entries)` lalu dapat digunakan ulang untuk beberapa masukan.
+- Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
+- 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi. Total pengujian komponen yang telah dijalankan secara terpisah: 53 tes lulus (45 fondasi + 8 analyzer), 0 gagal. Ini bukan satu kali eksekusi gabungan seluruh 53 tes.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
@@ -108,7 +111,8 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [ ] Jalankan fungsi loader Python langsung terhadap seluruh 60 file batch aktual; audit struktur melalui konten GitHub saja belum mencukupi.
 - [x] Buat pencocokan token terhadap lemma, variants, dan derived_forms.
 - [x] Pertahankan seluruh kandidat dan sense/POS; jangan putuskan makna tanpa konteks.
-- [ ] Integrasikan pencocokan leksikal dengan tokenizer dalam satu fungsi analisis teks.
+- [x] Integrasikan normalisasi, tokenizer, dan pencocokan leksikal dalam `tools/analisis_teks.py`.
+- [x] Buat 8 regression tests analyzer; hasil pengujian lokal 8 lulus, 0 gagal.
 - [x] Bedakan hasil: lemma ditemukan, varian ditemukan, bentuk turunan tercatat, atau tidak dikenal.
 - [x] Tangani kandidat dengan beberapa sense atau POS dengan mempertahankan seluruh kandidat tanpa memilih makna otomatis.
 - [x] Buat 13 regression tests pencocokan leksikal untuk perilaku inti dan validasi input.
@@ -200,4 +204,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** jalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk menguji loader terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat; total regression suite 45 tes lulus, 0 gagal.
+**Titik lanjut:** jalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk menguji loader terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Integrasi analyzer sudah dibuat dan 8 tesnya lulus; pengujian komponen secara terpisah berjumlah 53 tes lulus, 0 gagal. Setelah validasi loader selesai, lanjutkan ke analisis morfologi.
