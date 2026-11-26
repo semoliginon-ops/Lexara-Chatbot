@@ -517,3 +517,15 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Menemukan kesalahan konkret: `pos_0093`, token `disiplin`, gold ADJ, prediksi NOUN pada evaluator leksikal dan kontekstual.
 
 **Titik lanjut:** audit entri kamus `disiplin` dan konteks kalimat sebelum mengubah aturan atau anotasi. Jangan memakai split test.
+
+
+### Perbaikan ambiguitas POS `disiplin` — 27 November 2026
+
+- [x] Audit entri `K0788`: `disiplin` sebelumnya hanya berlabel NOUN.
+- [x] Menambahkan sense ADJ terpisah tanpa menghapus sense NOUN.
+- [x] Menambahkan aturan koordinasi POS yang konservatif untuk `dan`, `serta`, `maupun` ketika label POS konjung kiri dan kandidat kanan memiliki tepat satu irisan.
+- [x] Menambahkan regression test untuk “Dia sangat rajin dan disiplin”.
+- [x] GitHub Actions [run #11](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45909687815): validator 100 kalimat/543 token berhasil; regression suite **143/143 lulus**.
+- [x] Evaluasi development: POS konteks lokal 187/255 benar, coverage/accuracy 73,3%, selective accuracy 100%, dan 0 kesalahan prediksi yang diputuskan.
+
+**Catatan:** POS leksikal masih abstain pada sebagian token ambigu; hasil kontekstual tidak boleh dianggap akurasi umum. Seluruh 40 kalimat test tetap tertahan.
