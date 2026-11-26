@@ -5,6 +5,7 @@ abadi	K1803	abadi	lemma	batch-037
 abang	K0502	abang	lemma	batch-011
 abdi	K1804	abdi	lemma	batch-037
 abon	K1952	abon	lemma	batch-040
+abrasi	K2680	abrasi	lemma	batch-054
 absen	K0503	absen	lemma	batch-011
 abu	K0504	abu	lemma	batch-011
 acak	K1806	acak	lemma	batch-037
@@ -35,11 +36,18 @@ agresif	K1205	agresif	lemma	batch-025
 ahli	K1815	ahli	lemma	batch-037
 air	K0152	air	lemma	batch-004
 air fryer	K2302	air fryer	lemma	batch-047
+air hujan	K2690	air hujan	lemma	batch-054
 air jahe	K2052	air jahe	lemma	batch-042
 air kelapa	K1998	air kelapa	lemma	batch-040
+air laut	K2689	air laut	lemma	batch-054
 air mawar	K2053	air mawar	lemma	batch-042
 air mineral	K1999	air mineral	lemma	batch-040
+air pasang	K2677	air pasang	lemma	batch-054
+air payau	K2687	air payau	lemma	batch-054
 air soda	K2054	air soda	lemma	batch-042
+air surut	K2678	air surut	lemma	batch-054
+air tawar	K2688	air tawar	lemma	batch-054
+air terjun	K2652	air terjun	lemma	batch-054
 ajaib	K1816	ajaib	lemma	batch-037
 ajak	K0213	ajak	lemma	batch-005
 ajakan	K0213	ajak	derived_form	batch-005
@@ -154,6 +162,7 @@ arsitek	K2453	arsitek	lemma	batch-050
 arti	K0444	arti	lemma	batch-009
 artis	K2454	artis	lemma	batch-050
 arus	K1843	arus	lemma	batch-037
+arus laut	K2679	arus laut	lemma	batch-054
 asalkan	K1830	asalkan	lemma	batch-037
 asam	K0462	asam	lemma	batch-010
 asap	K0518	asap	lemma	batch-011
@@ -269,6 +278,10 @@ baterai isi ulang	K2359	baterai isi ulang	lemma	batch-048
 baterai lithium	K2362	baterai lithium	lemma	batch-048
 bathtub	K2305	bathtub	lemma	batch-047
 batin	K1230	batin	lemma	batch-025
+batu	K2653	batu	lemma	batch-054
+batu bara	K2654	batu bara	lemma	batch-054
+batu karang	K2655	batu karang	lemma	batch-054
+batu kerikil	K2691	batu kerikil	lemma	batch-054
 batuk	K0523	batuk	lemma	batch-011
 bawa	K0060	bawa	lemma	batch-002
 bawaan	K0060	bawa	derived_form	batch-002
@@ -478,6 +491,7 @@ budaya	K1244	budaya	lemma	batch-025
 bujet	K1245	bujet	lemma	batch-025
 bujuk	K0745	bujuk	lemma	batch-015
 buka	K0065	buka	lemma	batch-002
+bukit	K2656	bukit	lemma	batch-054
 bukti	K0744	bukti	lemma	batch-015
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
@@ -486,6 +500,7 @@ bulu mata	K2599	bulu mata	lemma	batch-052
 bumbu	K0482	bumbu	lemma	batch-010
 bumbu kacang	K2068	bumbu kacang	lemma	batch-042
 bumbu rendang	K2069	bumbu rendang	lemma	batch-042
+bumi	K2657	bumi	lemma	batch-054
 buncis	K1909	buncis	lemma	batch-039
 bunga	K0160	bunga	lemma	batch-004
 bungkus	K1246	bungkus	lemma	batch-025
