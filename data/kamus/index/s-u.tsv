@@ -352,6 +352,9 @@ tatar	K1685	tatar	lemma	batch-034
 tawa	K0429	tawa	lemma	batch-009
 tawar	K1687	tawar	lemma	batch-034
 tawon	K2295	tawon	lemma	batch-046
+tawon kertas	K2959	tawon kertas	lemma	batch-060
+tawon tanah	K2958	tawon tanah	lemma	batch-060
+tawon vespa	K2957	tawon vespa	lemma	batch-060
 tawuran	K1688	tawuran	lemma	batch-034
 tebal	K1136	tebal	lemma	batch-023
 tebar	K1689	tebar	lemma	batch-034
@@ -493,6 +496,7 @@ tolong	K0032	tolong	lemma	batch-001
 tomat	K0485	tomat	lemma	batch-010
 tombak	K1739	tombak	lemma	batch-035
 tombol	K1740	tombol	lemma	batch-035
+tonggeret	K3001	tonggeret	lemma	batch-060
 tongseng	K1994	tongseng	lemma	batch-040
 tonjol	K1741	tonjol	lemma	batch-035
 tontonan	K0075	nonton	derived_form	batch-002
@@ -553,6 +557,16 @@ ulangan	K0227	ulang	derived_form	batch-005
 ular piton	K2300	ular piton	lemma	batch-046
 ular sawah	K2301	ular sawah	lemma	batch-046
 ulat	K1158	ulat	lemma	batch-024
+ulat api	K2996	ulat api	lemma	batch-060
+ulat bulu	K2989	ulat bulu	lemma	batch-060
+ulat daun	K2990	ulat daun	lemma	batch-060
+ulat grayak	K2991	ulat grayak	lemma	batch-060
+ulat hongkong	K2993	ulat hongkong	lemma	batch-060
+ulat jengkal	K2995	ulat jengkal	lemma	batch-060
+ulat kubis	K2998	ulat kubis	lemma	batch-060
+ulat pisang	K2997	ulat pisang	lemma	batch-060
+ulat sutra	K2992	ulat sutra	lemma	batch-060
+ulat tanah	K2994	ulat tanah	lemma	batch-060
 ulek	K1157	ulek	lemma	batch-024
 ulir	K1159	ulir	lemma	batch-024
 umpan	K1160	umpan	lemma	batch-024
@@ -562,6 +576,7 @@ umur	K0129	umur	lemma	batch-003
 undang	K0214	undang	lemma	batch-005
 undang-undang	K2871	undang-undang	lemma	batch-058
 undangan	K0214	undang	derived_form	batch-005
+undur-undur	K3000	undur-undur	lemma	batch-060
 unggah	K1163	unggah	lemma	batch-024
 unggul	K1164	unggul	lemma	batch-024
 ungkit	K1165	ungkit	lemma	batch-024
