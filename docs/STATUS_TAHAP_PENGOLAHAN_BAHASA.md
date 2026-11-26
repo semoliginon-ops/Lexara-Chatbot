@@ -143,8 +143,12 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 ### 5.5 Pengenalan kelas kata (POS)
 - [x] Gunakan kode POS resmi dalam `docs/KAMUS.md`.
 - [x] Pertahankan kemungkinan lebih dari satu POS/sense untuk kata ambigu.
-- [ ] Mulai dari identifikasi leksikal, kemudian tambahkan petunjuk konteks kalimat.
-- [ ] Ukur hasil pada kumpulan kalimat uji yang diberi label.
+- [x] Buat identifikasi POS leksikal melalui `tools/pos_tagger.py`.
+- [x] Tambahkan `tools/pos_context.py` dengan aturan konteks lokal konservatif: petunjuk aspek, preposisi, demonstrativa, dan pola sederhana `bisa`.
+- [x] Pertahankan ambiguitas jika tidak ada petunjuk atau petunjuk bertentangan; jangan mengubah POS leksikal asli.
+- [x] Buat 13 regression tests POS kontekstual; **13/13 lulus** pada checkout Termux (27 November 2026).
+- [x] Jalankan regression suite gabungan pada checkout Termux: **123/123 tes lulus, 0 gagal** (27 November 2026).
+- [ ] Susun dataset kalimat berlabel dan ukur akurasi POS.
 
 ### 5.6 Analisis struktur kalimat dasar
 - [ ] Tetapkan token dan hasil POS sebagai masukan parser.
@@ -280,17 +284,20 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - [x] Modul POS awal dan 10 regression tests telah ditambahkan ke branch `main`.
 - [x] `git pull` berhasil pada checkout Termux; `python -m unittest discover -s tests -p "test_pos_tagger.py" -v` menghasilkan **10 tes lulus, 0 gagal**.
 - [x] Regression suite gabungan setelah POS ditambahkan: `python -m unittest discover -s tests -v` menghasilkan **110 tes lulus, 0 gagal** pada checkout Termux (27 November 2026).
-- [ ] Petunjuk konteks kalimat dan disambiguasi POS belum dibuat.
+- [x] Petunjuk konteks lokal konservatif dan disambiguasi POS awal tersedia melalui `tools/pos_context.py`.
+- [x] `tests/test_pos_context.py` berisi 13 regression tests; **13/13 lulus** pada checkout Termux.
+- [x] Regression suite gabungan terbaru: **123 tes lulus, 0 gagal**.
 - [ ] Dataset kalimat berlabel dan evaluasi akurasi belum dibuat.
 
-**Batas klaim:** implementasi POS leksikal awal dan 10 tes khususnya sudah lulus, serta seluruh 110 tes gabungan tetap lulus. Disambiguasi kontekstual, dataset kalimat berlabel, dan evaluasi akurasi belum tersedia.
+**Batas klaim:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif sudah tersedia; 13 tes khusus konteks dan seluruh 123 tes gabungan lulus pada checkout Termux. Aturan ini masih terbatas dan belum mewakili tata bahasa Indonesia secara menyeluruh. Dataset kalimat berlabel dan evaluasi akurasi belum tersedia.
 
 
 ### Verifikasi POS pada checkout Termux — 27 November 2026
 
 - `git pull` berhasil mengambil implementasi POS dan dokumentasi terbaru dari `main`.
 - `python -m unittest discover -s tests -p "test_pos_tagger.py" -v` → **Ran 10 tests — OK**, 0 gagal.
-- `python -m unittest discover -s tests -v` → **Ran 110 tests — OK**, 0 gagal.
-- 100 tes fondasi/komponen yang sebelumnya lulus tetap lulus setelah modul POS ditambahkan.
+- `python -m unittest discover -s tests -p "test_pos_context.py" -v` → **Ran 13 tests — OK**, 0 gagal.
+- `python -m unittest discover -s tests -v` → **Ran 123 tests — OK**, 0 gagal.
+- Seluruh 110 tes sebelumnya tetap lulus setelah penambahan 13 tes POS kontekstual.
 
-**Status terbaru:** POS leksikal awal terverifikasi pada checkout repository penuh. POS belum dianggap selesai: petunjuk konteks kalimat, disambiguasi, dataset kalimat berlabel, dan pengukuran akurasi masih menjadi pekerjaan berikutnya. Parser kalimat belum dimulai.
+**Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas; dataset kalimat berlabel dan pengukuran akurasi menjadi pekerjaan berikutnya. Parser kalimat belum dimulai.
