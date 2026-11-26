@@ -109,10 +109,10 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
     for prefix, restored in _NASAL_RESTORATIONS:
         if surface.startswith(prefix) and len(surface) > len(prefix):
             remainder = surface[len(prefix):]
-            # Jika bentuk setelah meng- sudah merupakan lema kamus,
-            # jangan tambahkan kandidat k+remainder secara spekulatif.
-            # Contoh: mengambil -> ambil, bukan kambil.
-            if prefix == "meng" and _known(remainder, lexicon):
+            # Untuk meng-/peng-, jangan tambahkan kandidat k+remainder
+            # jika remainder sendiri sudah merupakan lema kamus.
+            # Contoh: mengambil/pengambil -> ambil, bukan kambil.
+            if prefix in ("meng", "peng") and _known(remainder, lexicon):
                 continue
             add_candidate(restored + remainder, f"nasal_restoration_{prefix}")
 
