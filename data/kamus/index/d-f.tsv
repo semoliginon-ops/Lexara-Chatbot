@@ -35,6 +35,9 @@ datang	K0018	datang	lemma	batch-001
 datar	K0770	datar	lemma	batch-016
 daun	K0161	daun	lemma	batch-004
 daun bawang	K2103	daun bawang	lemma	batch-043
+daun jeruk	K2184	daun jeruk	lemma	batch-044
+daun pandan	K2185	daun pandan	lemma	batch-044
+daun salam	K2183	daun salam	lemma	batch-044
 daya	K1859	daya	lemma	batch-038
 dayung	K1860	dayung	lemma	batch-038
 debat	K0434	debat	lemma	batch-009
@@ -311,11 +314,13 @@ es batu	K2022	es batu	lemma	batch-041
 es buah	K2080	es buah	lemma	batch-042
 es campur	K2023	es campur	lemma	batch-041
 es cendol	K2081	es cendol	lemma	batch-042
+es cokelat	K2201	es cokelat	lemma	batch-044
 es dawet	K2082	es dawet	lemma	batch-042
 es doger	K2024	es doger	lemma	batch-041
 es jeruk	K2001	es jeruk	lemma	batch-040
 es kelapa	K2025	es kelapa	lemma	batch-041
 es kopi	K2027	es kopi	lemma	batch-041
+es kopi susu	K2200	es kopi susu	lemma	batch-044
 es krim	K2026	es krim	lemma	batch-041
 es mambo	K2083	es mambo	lemma	batch-042
 es susu	K2084	es susu	lemma	batch-042
