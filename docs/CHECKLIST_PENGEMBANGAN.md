@@ -101,7 +101,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Mempertahankan seluruh POS dan POS spesifik-sense tanpa memilih satu label secara otomatis.
 - [x] Menahan pewarisan POS lema pada `derived_form` karena bentuk turunan dapat berubah kelas kata; tandai `requires_morphology`.
 - [x] Membuat `tests/test_pos_tagger.py` dengan 10 regression tests.
-- [ ] Menjalankan dan memeriksa regression tests POS pada checkout Termux.
+- [x] Menjalankan 10 regression tests POS pada checkout Termux: 10 lulus, 0 gagal (27 November 2026).
+- [x] Menjalankan ulang regression suite gabungan dari checkout Termux setelah POS ditambahkan: 110 tes lulus, 0 gagal (27 November 2026).
 - [ ] Menambahkan petunjuk konteks kalimat untuk disambiguasi POS.
 - [ ] Membuat dataset kalimat berlabel dan mengevaluasi akurasi POS.
 
@@ -168,17 +169,17 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Validasi checkout penuh selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri dan regression suite gabungan menjalankan 100 tes; seluruhnya lulus. Tahap berikutnya adalah memulai POS (Tahap 2.5).
+**Validasi checkout penuh dan verifikasi POS selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri. Regression suite awal menjalankan 100 tes; setelah penambahan POS, 10 tes POS dan suite gabungan 110 tes dijalankan kembali; seluruhnya lulus. Tahap 2.5 berlanjut ke disambiguasi POS berbasis konteks dan dataset kalimat berlabel.
 
 Hasil tes komponen yang tercatat dan dijalankan terpisah:
 - Fondasi (normalisasi, tokenizer, loader, pencocokan kamus): 45 lulus.
 - Analyzer teks: 8 lulus.
 - Morfologi: 47 lulus.
-- **Total: 100 lulus, 0 gagal.**
+- **Baseline awal: 100 lulus, 0 gagal. Setelah POS: 110 lulus, 0 gagal.**
 
 Catatan historis: sebelum 27 November 2026, tes komponen dijalankan terpisah pada salinan terisolasi. Pada 27 November 2026, validasi diulang langsung dari checkout repository penuh di Termux: validator 60 batch/3.000 entri berhasil dan `python -m unittest discover -s tests -v` menjalankan 100 tes dengan hasil OK, 0 gagal.
 
-Langkah berikutnya: mulai Tahap 2.5 — pengenalan kelas kata (POS), dengan tetap mempertahankan hasil validasi checkout penuh sebagai baseline.
+Langkah berikutnya: lanjutkan Tahap 2.5 dengan petunjuk konteks kalimat, disambiguasi POS, dataset kalimat berlabel, dan evaluasi akurasi. Jangan mulai parser sebelum fondasi POS dan pengujiannya memadai.
 
 ## Dokumen rujukan
 
@@ -241,5 +242,14 @@ Catatan: validasi dilakukan lokal pada checkout repository di Termux, bukan mela
 - [x] Implementasi awal `tools/pos_tagger.py` dan 10 tes regresi `tests/test_pos_tagger.py` telah ditambahkan ke branch `main`.
 - [x] Implementasi mempertahankan beberapa POS dan POS per-sense, tidak melakukan disambiguasi konteks.
 - [x] Bentuk turunan tercatat tidak mewarisi POS lema secara otomatis karena dapat berubah kelas kata (contoh: `makan` → `makanan`); statusnya `requires_morphology`.
-- [ ] Tes POS belum dijalankan pada checkout Termux; lakukan `git pull` lalu jalankan tes sebelum menganggap implementasi terverifikasi.
+- [x] `git pull` berhasil pada checkout Termux dan 10 regression tests POS lulus (27 November 2026).
+- [x] Regression suite gabungan dijalankan ulang setelah POS ditambahkan: **110 tes lulus, 0 gagal** (`python -m unittest discover -s tests -v`).
 
+
+
+### Verifikasi POS dan regression suite gabungan — 27 November 2026
+- [x] Jalankan `python -m unittest discover -s tests -p "test_pos_tagger.py" -v`: **10 tes lulus, 0 gagal**.
+- [x] Jalankan `python -m unittest discover -s tests -v` dari checkout Termux setelah POS ditambahkan: **Ran 110 tests — OK**, 0 gagal.
+- [x] Konfirmasi seluruh 100 tes komponen sebelumnya tetap lulus bersama 10 tes POS baru.
+
+**Titik lanjut aktif:** Tahap 2.5 belum selesai. Berikutnya adalah menambahkan petunjuk konteks kalimat untuk disambiguasi POS, kemudian membuat dataset kalimat berlabel dan mengukur akurasi. Disambiguasi belum boleh diklaim tersedia sebelum implementasi dan evaluasi dilakukan.
