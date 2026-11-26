@@ -32,8 +32,11 @@ agenda	K1204	agenda	lemma	batch-025
 agresif	K1205	agresif	lemma	batch-025
 ahli	K1815	ahli	lemma	batch-037
 air	K0152	air	lemma	batch-004
+air jahe	K2052	air jahe	lemma	batch-042
 air kelapa	K1998	air kelapa	lemma	batch-040
+air mawar	K2053	air mawar	lemma	batch-042
 air mineral	K1999	air mineral	lemma	batch-040
+air soda	K2054	air soda	lemma	batch-042
 ajaib	K1816	ajaib	lemma	batch-037
 ajak	K0213	ajak	lemma	batch-005
 ajakan	K0213	ajak	derived_form	batch-005
@@ -94,6 +97,7 @@ aneh	K0513	aneh	lemma	batch-011
 anggap	K0445	anggap	lemma	batch-009
 anggaran	K1832	anggaran	lemma	batch-037
 anggota	K1833	anggota	lemma	batch-037
+anggur	K2055	anggur	lemma	batch-042
 angin	K0313	angin	lemma	batch-007
 angka	K1834	angka	lemma	batch-037
 angkasa	K1835	angkasa	lemma	batch-037
@@ -113,6 +117,7 @@ apaan	K0607	apaan	lemma	batch-013
 apalagi	K0515	apalagi	lemma	batch-011
 aparat	K1841	aparat	lemma	batch-037
 apel	K1905	apel	lemma	batch-039
+apem	K2056	apem	lemma	batch-042
 api	K0153	api	lemma	batch-004
 apotek	K0516	apotek	lemma	batch-011
 apresiasi	K1217	apresiasi	lemma	batch-025
@@ -152,6 +157,11 @@ awas	K0520	awas	lemma	batch-011
 awet	K1222	awet	lemma	batch-025
 ayah	K0105	ayah	lemma	batch-003
 ayam	K0169	ayam	lemma	batch-004
+ayam bakar	K2057	ayam bakar	lemma	batch-042
+ayam betutu	K2058	ayam betutu	lemma	batch-042
+ayam geprek	K2059	ayam geprek	lemma	batch-042
+ayam goreng	K2060	ayam goreng	lemma	batch-042
+ayam penyet	K2061	ayam penyet	lemma	batch-042
 ayam-ayam	K0169	ayam	derived_form	batch-004
 ayunan	K1851	ayunan	lemma	batch-037
 babat	K2004	babat	lemma	batch-041
@@ -172,7 +182,9 @@ baju	K0266	baju	lemma	batch-006
 bakar	K0467	bakar	lemma	batch-010
 bakat	K1224	bakat	lemma	batch-025
 bakmi	K1907	bakmi	lemma	batch-039
+bakpao	K2062	bakpao	lemma	batch-042
 bakso	K0488	bakso	lemma	batch-010
+bakwan	K2063	bakwan	lemma	batch-042
 balas	K0218	balas	lemma	batch-005
 balasan	K0218	balas	derived_form	batch-005
 balik	K0719	balik	lemma	batch-015
@@ -338,7 +350,9 @@ biaya	K0354	biaya	lemma	batch-008
 bibir	K1239	bibir	lemma	batch-025
 bicara	K0036	bicara	lemma	batch-001
 bihun	K1957	bihun	lemma	batch-040
+bihun goreng	K2064	bihun goreng	lemma	batch-042
 bijak	K0736	bijak	lemma	batch-015
+bika ambon	K2065	bika ambon	lemma	batch-042
 bikin	K0204	bikin	lemma	batch-005
 bikinin	K0204	bikin	derived_form	batch-005
 bilang	K0610	bilang	lemma	batch-013
@@ -348,6 +362,7 @@ bisa	K0026	bisa	lemma	batch-001
 bisik	K0432	bisik	lemma	batch-009
 bising	K0327	bising	lemma	batch-007
 biskuit	K1958	biskuit	lemma	batch-040
+biskuit cokelat	K2066	biskuit cokelat	lemma	batch-042
 bocah	K0536	bocah	lemma	batch-011
 bocor	K0738	bocor	lemma	batch-015
 bohong	K0239	bohong	lemma	batch-005
@@ -357,6 +372,7 @@ bolak-balik	K0537	bolak-balik	lemma	batch-011
 boleh	K0144	boleh	lemma	batch-003
 bolos	K0740	bolos	lemma	batch-015
 bolu	K1959	bolu	lemma	batch-040
+bolu kukus	K2067	bolu kukus	lemma	batch-042
 boncos	K0741	boncos	lemma	batch-015
 bonus	K0538	bonus	lemma	batch-011
 bor	K1240	bor	lemma	batch-025
@@ -386,6 +402,8 @@ bukti	K0744	bukti	lemma	batch-015
 buku	K0296	buku	lemma	batch-006
 bulan	K0305	bulan	lemma	batch-007
 bumbu	K0482	bumbu	lemma	batch-010
+bumbu kacang	K2068	bumbu kacang	lemma	batch-042
+bumbu rendang	K2069	bumbu rendang	lemma	batch-042
 buncis	K1909	buncis	lemma	batch-039
 bunga	K0160	bunga	lemma	batch-004
 bungkus	K1246	bungkus	lemma	batch-025
@@ -426,6 +444,8 @@ cermin	K0292	cermin	lemma	batch-006
 ceroboh	K0755	ceroboh	lemma	batch-016
 cetak	K0756	cetak	lemma	batch-016
 cewek	K0654	cewek	lemma	batch-014
+cheesecake	K2070	cheesecake	lemma	batch-042
+churros	K2071	churros	lemma	batch-042
 cicil	K0751	cicil	lemma	batch-015
 cicip	K0476	cicip	lemma	batch-010
 cincau	K2015	cincau	lemma	batch-041
@@ -434,6 +454,8 @@ cireng	K2016	cireng	lemma	batch-041
 coba	K0228	coba	lemma	batch-005
 cocok	K0554	cocok	lemma	batch-012
 cokelat	K1910	cokelat	lemma	batch-039
+cokelat bubuk	K2073	cokelat bubuk	lemma	batch-042
+cokelat panas	K2072	cokelat panas	lemma	batch-042
 combro	K2017	combro	lemma	batch-041
 cowok	K0655	cowok	lemma	batch-014
 cuaca	K0310	cuaca	lemma	batch-007
