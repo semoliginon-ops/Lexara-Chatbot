@@ -116,3 +116,8 @@ Kasus `wah` pada `pos_0034` tidak mendapat prediksi tunggal. Pemeriksaan indeks 
 ## Verifikasi batch kelima dan cakupan INTJ — 27 November 2026
 
 GitHub Actions run [#1](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45906966948) menjalankan validator, evaluator development-only, dan regression suite dengan hasil sukses. Evaluator memuat 30 kalimat development: 125 token `resolved`, 1 `ambiguous`, dan 36 `not_applicable`. INTJ: `aduh` berhasil diprediksi benar (1), sedangkan `wah` tidak diprediksi (1), konsisten dengan temuan bahwa `wah` belum ada pada indeks kamus. POS leksikal dan kontekstual sama-sama menghasilkan 72 prediksi benar, coverage 57,6%, accuracy 57,6%, selective accuracy 100%. Gold ambiguous: 1 ditahan, 0 dipaksakan. Regression suite: 137/137 lulus. Angka ini khusus sampel development 30 kalimat; bukan akurasi umum. Test split 20 kalimat tetap tidak digunakan.
+
+
+## Audit anotasi batch keenam — 27 November 2026
+
+Record `pos_0051`–`pos_0060` dianotasi mengikuti konvensi POS v1 yang telah ditetapkan: `tidak` sebagai ADV, `untuk` dan `dari` sebagai PREP, `karena` sebagai CONJ, dan `jangan` sebagai PART. Bentuk `membeli`, `bekerja`, `membaca`, `memasak`, dan `membawa` diberi VERB. Kalimat test baru hanya ditambahkan sebagai data tertahan dan tidak digunakan untuk menyesuaikan aturan. Preflight struktur dilakukan sebelum commit; validasi Python dan evaluasi setelah commit menunggu workflow otomatis.
