@@ -103,7 +103,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat `tests/test_pos_tagger.py` dengan 10 regression tests.
 - [x] Menjalankan 10 regression tests POS pada checkout Termux: 10 lulus, 0 gagal (27 November 2026).
 - [x] Menjalankan ulang regression suite gabungan dari checkout Termux setelah POS ditambahkan: 110 tes lulus, 0 gagal (27 November 2026).
-- [ ] Menambahkan petunjuk konteks kalimat untuk disambiguasi POS.
+- [x] Membuat `tools/pos_context.py` untuk petunjuk konteks lokal yang konservatif dan disambiguasi POS.
+- [x] Membuat 13 regression tests pada `tests/test_pos_context.py`; seluruhnya lulus pada checkout Termux (27 November 2026).
+- [x] Menjalankan regression suite gabungan dari checkout Termux: **123 tes lulus, 0 gagal** (27 November 2026).
 - [ ] Membuat dataset kalimat berlabel dan mengevaluasi akurasi POS.
 
 ### 2.6 Analisis struktur kalimat dasar
@@ -169,17 +171,17 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Validasi checkout penuh dan verifikasi POS selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri. Regression suite awal menjalankan 100 tes; setelah penambahan POS, 10 tes POS dan suite gabungan 110 tes dijalankan kembali; seluruhnya lulus. Tahap 2.5 berlanjut ke disambiguasi POS berbasis konteks dan dataset kalimat berlabel.
+**Validasi checkout penuh dan verifikasi POS hingga konteks lokal selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri. Regression suite gabungan terbaru menjalankan **123 tes dan seluruhnya lulus**. Tahap 2.5 berlanjut ke penyusunan dataset kalimat berlabel dan evaluasi akurasi POS.
 
 Hasil tes komponen yang tercatat dan dijalankan terpisah:
 - Fondasi (normalisasi, tokenizer, loader, pencocokan kamus): 45 lulus.
 - Analyzer teks: 8 lulus.
 - Morfologi: 47 lulus.
-- **Baseline awal: 100 lulus, 0 gagal. Setelah POS: 110 lulus, 0 gagal.**
+- **Baseline awal: 100 lulus, setelah POS dasar: 110 lulus, dan setelah POS kontekstual: 123 lulus; seluruhnya 0 gagal.**
 
 Catatan historis: sebelum 27 November 2026, tes komponen dijalankan terpisah pada salinan terisolasi. Pada 27 November 2026, validasi diulang langsung dari checkout repository penuh di Termux: validator 60 batch/3.000 entri berhasil dan `python -m unittest discover -s tests -v` menjalankan 100 tes dengan hasil OK, 0 gagal.
 
-Langkah berikutnya: lanjutkan Tahap 2.5 dengan petunjuk konteks kalimat, disambiguasi POS, dataset kalimat berlabel, dan evaluasi akurasi. Jangan mulai parser sebelum fondasi POS dan pengujiannya memadai.
+Langkah berikutnya: lanjutkan Tahap 2.5 dengan dataset kalimat berlabel dan evaluasi akurasi POS. Jangan mulai parser sebelum fondasi POS dan pengujiannya memadai.
 
 ## Dokumen rujukan
 
