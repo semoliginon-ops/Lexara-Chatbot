@@ -73,6 +73,7 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
             restoration = {"peng": "k", "peny": "s", "pen": "t", "pem": "p"}.get(prefix)
             if restoration:
                 add_candidate(restoration + stem, "confix_peN_an_nasal_restoration")
+            break
 
     for suffix, rule in _SUFFIXES:
         if surface.endswith(suffix) and len(surface) > len(suffix) + 1:
