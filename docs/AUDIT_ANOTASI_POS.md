@@ -248,3 +248,19 @@ GitHub Actions [run #11](https://github.com/semoliginon-ops/Sistem_bahasa/action
 - Regression suite: **143/143 lulus**.
 
 Perbaikan menaikkan satu prediksi kontekstual menjadi benar dan tidak menghasilkan salah prediksi pada development yang dievaluasi. Ini bukan bukti generalisasi; 40 kalimat test tetap tertahan dan tidak digunakan.
+
+
+## Audit abstention development dan suplementasi fungsi kata — 27 November 2026
+
+Evaluator `tools/evaluasi_pos.py` kini menampilkan daftar token development yang belum diputuskan, dikelompokkan menurut gold POS, disertai sumber/status POS, kandidat, ID record, dan kalimat. Regression test memastikan daftar abstention sesuai jumlah token yang tidak diprediksi.
+
+GitHub Actions [run #13](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45910106880) berhasil: validator 100 kalimat/543 token; regression suite **144/144 lulus**. Evaluasi development-only setelah suplementasi empat kata berkeyakinan tinggi:
+- Contextual POS: 208/255 benar; coverage/accuracy 81,6%; selective accuracy 100%; nol salah prediksi pada token yang diputuskan.
+- PRON: 39/39 diputuskan benar setelah `itu` disuplementasi.
+- CONJ: 12/12 diputuskan benar setelah `dan` dan `ketika` disuplementasi.
+- INTJ: 3/3 diputuskan benar setelah `wah` disuplementasi.
+- Abstention tersisa: ADJ 2 (`baru`), ADV 3 (`tetap`, `dulu`), NOUN 19, VERB 23. Sebagian VERB secara eksplisit `requires_morphology`; lainnya belum memiliki kandidat leksikal.
+
+Perubahan `tools/pos_supplement.py` hanya menambah `itu` (PRON), `dan` (CONJ), `ketika` (CONJ), dan `wah` (INTJ). Kata polifungsi seperti `baru`, `dulu`, dan `tetap` sengaja tidak dimasukkan sebagai fallback satu-label. Hasil hanya berlaku pada development set; 40 kalimat test tetap tertahan.
+
+**Prioritas berikutnya:** audit pipeline morfologi untuk bentuk verba berimbuhan (mis. `membaca`, `bekerja`, `menanam`) dan periksa cakupan lema nomina yang hilang. Jangan mengubah aturan berdasarkan test.
