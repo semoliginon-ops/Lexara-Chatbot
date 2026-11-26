@@ -1,7 +1,7 @@
 # Index Kamus — Sistem Bahasa
 
 **Target:** 3.000 lemma  
-**Disetujui:** 1.000 lemma  
+**Disetujui:** 1000 lemma  
 **Batch aktif:** 001–020  
 **Token terindeks:** 1597
 
