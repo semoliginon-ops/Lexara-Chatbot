@@ -106,6 +106,21 @@ Gunakan hanya kode POS resmi dari `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `ADV`,
 7. Jika anotator ragu, isi `notes` dan tandai `unknown` atau `ambiguous` sesuai penyebabnya. Jangan mengarang kepastian.
 8. Idealnya setiap label diperiksa ulang dengan pedoman dan entri kamus. Kasus yang diperselisihkan harus ditinjau sebelum dipakai untuk menghitung skor.
 
+### 5.1 Konvensi operasional untuk kasus khusus
+
+Karena taksonomi proyek hanya menyediakan 10 kode POS dan tidak memiliki kelas determinator (DET) atau aspek tersendiri, gunakan konvensi berikut secara konsisten pada dataset versi 1:
+
+| Fenomena | Konvensi proyek | Contoh dan batasan |
+|---|---|---|
+| Demonstrativa atributif | `PRON` | `itu` pada “rumah itu” dan `ini` pada “buku ini” diberi `PRON`. Ini penyederhanaan taksonomi proyek; jangan membuat label DET baru pada dataset v1. |
+| Penanda aspek/modalitas | `ADV` | `sedang`, `akan`, `telah`, `sudah`, dan `lagi` diberi `ADV` ketika berfungsi sebagai penanda aspek/modalitas sebelum verba. |
+| Penanda larangan | `PART` | `jangan` diberi `PART` ketika menandai larangan dalam konstruksi imperatif, misalnya “Jangan pergi!”. |
+| Gelar atau sapaan nominal | `NOUN` | `Pak`, `Bu`, dan gelar sejenis diberi `NOUN` ketika dipakai sebagai sapaan/gelar yang mendahului nama atau nomina. |
+| Kata sebab | `CONJ` | `karena` diberi `CONJ` ketika menghubungkan klausa sebab dengan klausa lain. |
+| Penanda tanya | `PART` | `-kah` dan bentuk seperti `apakah` diberi `PART` sesuai struktur leksikal/proyek; jangan memecah token jika tokenizer tidak memecahnya. |
+
+Konvensi ini adalah keputusan anotasi internal agar label konsisten, bukan klaim bahwa semua tata bahasa atau skema linguistik memakai pemetaan yang sama. Jika satu bentuk menjalankan fungsi berbeda dalam kalimat lain, anotasi tetap mengikuti fungsi kontekstualnya. Catat kasus yang tidak tercakup dalam `notes` dan ajukan untuk audit, jangan memperluas aturan secara otomatis.
+
 ## 6. Validasi struktur dan konsistensi
 
 Sebelum evaluasi, validator dataset harus memeriksa:
@@ -147,7 +162,7 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [x] Menyusun batch pertama 10 kalimat berlabel (6 development, 4 test).
 - [x] Menambahkan batch kedua 10 kalimat (6 development, 4 test); total rancangan 20 kalimat/91 token.
 - [x] Memvalidasi batch kedua di checkout Termux: 20 kalimat dan 91 token (12 development, 8 test), seluruh pemeriksaan lulus (27 November 2026).
-- [x] Menambahkan batch ketiga 10 kalimat (6 development, 4 test); total 30 kalimat/156 token (27 November 2026).\n- [ ] Memvalidasi batch ketiga di checkout Termux: 30 kalimat, 156 token, 18 development, 12 test; seluruh pemeriksaan lulus di Termux (27 November 2026).\n- [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
+- [x] Menambahkan batch ketiga 10 kalimat (6 development, 4 test); total 30 kalimat/156 token (27 November 2026).\n- [x] Memvalidasi batch ketiga di checkout Termux: 30 kalimat, 156 token, 18 development, 12 test; seluruh pemeriksaan lulus di Termux (27 November 2026).\n- [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk memeriksa struktur JSONL, label, status, ID, dan kecocokan token dengan tokenizer.
 - [x] Membuat 9 regression tests pada `tests/test_validasi_dataset_pos.py`.
 - [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux untuk batch pertama: 10 kalimat dan 43 token tervalidasi (6 development, 4 test).
@@ -157,7 +172,7 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - [ ] Mengunci test set dan mengukur metrik tanpa penyetelan khusus terhadap test.
 - [x] Memperbarui dokumentasi status dan checklist berdasarkan hasil verifikasi Termux.
 
-**Titik lanjut:** batch ketiga telah lolos validasi struktur/tokenizer di Termux: 30 kalimat/156 token (18 development, 12 test). Regression suite penuh terakhir 132/132 lulus sebelum batch ketiga ditambahkan. Berikutnya jalankan regression suite penuh, lalu audit kualitas anotasi pada development set; test split tetap ditahan.
+**Titik lanjut:** batch ketiga telah lolos validasi struktur/tokenizer di Termux: 30 kalimat/156 token (18 development, 12 test). Regression suite setelah batch ketiga: 132/132 lulus. Audit awal development telah dicatat; berikutnya terapkan konvensi operasional pada subbagian 5.1 dan audit ulang development set. Test split tetap ditahan.
 
 
 ## 10. Audit awal kualitas anotasi — 27 November 2026
@@ -169,3 +184,6 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 - Regression suite setelah batch ketiga: 132/132 lulus di Termux.
 
 **Titik lanjut:** pertegas konvensi anotasi di pedoman, lalu audit ulang development set. Test split tetap ditahan.
+
+
+**Pembaruan pedoman 27 November 2026:** subbagian 5.1 menetapkan konvensi operasional untuk demonstrativa atributif (`PRON`), penanda aspek/modalitas (`ADV`), penanda larangan (`PART`), gelar/sapaan nominal (`NOUN`), kata sebab (`CONJ`), dan penanda tanya (`PART`). Konvensi ini berlaku untuk konsistensi anotasi dataset v1 dan tidak menambah kode POS baru.
