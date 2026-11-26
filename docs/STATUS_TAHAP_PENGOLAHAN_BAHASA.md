@@ -65,7 +65,7 @@ Branch kerja: `main`
 - 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
 - Prototipe morfologi tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Versi terbaru menambahkan kandidat konfiks ke-an, per-an, peN-an, bentuk menge-, serta perapian urutan prefiks. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
 - Versi terbaru memiliki 20 regression tests morfologi dan seluruhnya telah dijalankan pada lingkungan Python lokal terisolasi: **20 lulus, 0 gagal**. Dua puluh lima tes morfologi versi terbaru telah dijalankan pada lingkungan Python lokal terisolasi: **25 lulus, 0 gagal**. Tujuh tes negatif memastikan bentuk leksikal `beranda`, `kemari`, `terong`, `selalu`, `melati`, `kelapa`, dan `perang` tidak salah dipotong sebagai imbuhan.
-- Total pengujian komponen yang telah dijalankan secara terpisah kini **78 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 25 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes.
+- Total pengujian komponen yang telah dijalankan secara terpisah kini **80 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 27 morfologi). Ini bukan satu kali eksekusi gabungan seluruh tes.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
@@ -132,6 +132,8 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Tambahkan tes negatif untuk bentuk beranda dan kemari agar tidak salah dianalisis sebagai bentuk berimbuhan.
 - [x] Tambahkan lima tes negatif tambahan untuk terong, selalu, melati, kelapa, dan perang.
 - [x] Jalankan 25 regression tests setelah penambahan lima kasus negatif; 25 lulus, 0 gagal.
+- [x] Tambahkan dua tes negatif untuk `terapi` dan `mereka`.
+- [x] Jalankan 27 regression tests morfologi; 27 lulus, 0 gagal.
 - [ ] Perluas pengujian untuk bentuk ambigu dan kandidat palsu lainnya.
 - [ ] Lengkapi inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan hasil uji.
 
@@ -215,4 +217,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perlindungan kata leksikal; 20 tes morfologi telah dieksekusi dan lulus. Lima tes negatif terbaru belum dijalankan. Total 78 tes komponen telah lulus secara terpisah. Berikutnya periksa kandidat palsu dan perluas aturan morfologi secara konservatif.
+**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Versi morfologi terbaru menambahkan pola konfiks dan perlindungan kata leksikal; 27 tes morfologi versi terbaru telah dieksekusi dan lulus. Total 80 tes komponen telah lulus secara terpisah. Berikutnya periksa kandidat palsu dan perluas aturan morfologi secara konservatif.
