@@ -25,6 +25,7 @@ pantas	K0597	pantas	lemma	batch-012
 papa	K0107	papa	lemma	batch-003
 papan	K1507	papan	lemma	batch-031
 parah	K0598	parah	lemma	batch-012
+pare	K1934	pare	lemma	batch-039
 parfum	K1041	parfum	lemma	batch-021
 parkir	K0397	parkir	lemma	batch-008
 paruh	K1508	paruh	lemma	batch-031
@@ -143,6 +144,7 @@ penyampaian	K0210	sampai	derived_form	batch-005
 penyelamat	K0248	selamat	derived_form	batch-005
 penyelesaian	K0224	selesai	derived_form	batch-005
 penyuka	K0081	suka	derived_form	batch-002
+pepaya	K1935	pepaya	lemma	batch-039
 pepohonan	K0159	pohon	derived_form	batch-004
 peran	K1518	peran	lemma	batch-031
 perang	K1519	perang	lemma	batch-031
@@ -191,6 +193,7 @@ pesan	K0194	pesan	lemma	batch-004
 pesanan	K0194	pesan	derived_form	batch-004
 pesepeda	K0199	sepeda	derived_form	batch-004
 pesta	K0451	pesta	lemma	batch-009
+petai	K1936	petai	lemma	batch-039
 petani	K1527	petani	lemma	batch-031
 peti	K1528	peti	lemma	batch-031
 petir	K1529	petir	lemma	batch-031
@@ -212,7 +215,9 @@ pintar	K1538	pintar	lemma	batch-031
 pintu	K0256	pintu	lemma	batch-006
 pipa	K1539	pipa	lemma	batch-031
 piring	K0277	piring	lemma	batch-006
+pisang	K1937	pisang	lemma	batch-039
 pisau	K0281	pisau	lemma	batch-006
+pizza	K1938	pizza	lemma	batch-039
 pohon	K0159	pohon	lemma	batch-004
 pokoknya	K0631	pokoknya	lemma	batch-013
 polisi	K1540	polisi	lemma	batch-031
@@ -232,6 +237,7 @@ proses	K1550	proses	lemma	batch-031
 protes	K1551	protes	lemma	batch-031
 puas	K0343	puas	lemma	batch-007
 pucat	K1050	pucat	lemma	batch-021
+puding	K1939	puding	lemma	batch-039
 pulang	K0019	pulang	lemma	batch-001
 pulpen	K0298	pulpen	lemma	batch-006
 punya	K0202	punya	lemma	batch-005
@@ -253,6 +259,7 @@ ramah	K0347	ramah	lemma	batch-007
 ramai	K0249	ramai	lemma	batch-005
 rambut	K0126	rambut	lemma	batch-003
 rambutan	K1061	rambutan	lemma	batch-022
+ramen	K1940	ramen	lemma	batch-039
 rangka	K1062	rangka	lemma	batch-022
 rangkai	K1063	rangkai	lemma	batch-022
 rangkul	K1064	rangkul	lemma	batch-022
@@ -280,6 +287,7 @@ rempah	K1080	rempah	lemma	batch-022
 renang	K1082	renang	lemma	batch-022
 rendah	K1083	rendah	lemma	batch-022
 rendam	K1081	rendam	lemma	batch-022
+rendang	K1941	rendang	lemma	batch-039
 rentan	K1084	rentan	lemma	batch-022
 repot	K1085	repot	lemma	batch-022
 resah	K0700	resah	lemma	batch-014
@@ -302,6 +310,7 @@ rontok	K1098	rontok	lemma	batch-022
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
 rugi	K1099	rugi	lemma	batch-022
+rujak	K1942	rujak	lemma	batch-039
 rumah	K0012	rumah	lemma	batch-001
 rumit	K1100	rumit	lemma	batch-022
 rumput	K1101	rumput	lemma	batch-022
