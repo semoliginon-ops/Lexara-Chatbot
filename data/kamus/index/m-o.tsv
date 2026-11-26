@@ -72,6 +72,7 @@ matematika	K0969	matematika	lemma	batch-020
 materi	K0968	materi	lemma	batch-020
 mati	K1464	mati	lemma	batch-030
 mau	K0024	mau	lemma	batch-001
+Maxim	K2504	Maxim	lemma	batch-051
 mayones	K1929	mayones	lemma	batch-039
 medali	K0970	medali	lemma	batch-020
 medan	K0971	medan	lemma	batch-020
@@ -282,6 +283,7 @@ mirip	K1472	mirip	lemma	batch-030
 misi	K0992	misi	lemma	batch-020
 miskin	K1473	miskin	lemma	batch-030
 mitos	K0993	mitos	lemma	batch-020
+mitra pengemudi	K2537	mitra pengemudi	lemma	batch-051
 mixer audio	K2443	mixer audio	lemma	batch-049
 mobil	K0201	mobil	lemma	batch-004
 modal	K0994	modal	lemma	batch-020
@@ -299,6 +301,7 @@ motivasi	K0998	motivasi	lemma	batch-020
 motor	K0200	motor	lemma	batch-004
 motoris	K0200	motor	derived_form	batch-004
 mouse komputer	K2379	mouse komputer	lemma	batch-048
+Move App	K2517	Move App	lemma	batch-051
 mual	K1480	mual	lemma	batch-030
 muat	K1481	muat	lemma	batch-030
 muatan	K0999	muatan	lemma	batch-020
@@ -383,6 +386,7 @@ normal	K1017	normal	lemma	batch-021
 notaris	K2472	notaris	lemma	batch-050
 novel	K1497	novel	lemma	batch-030
 nugget	K2040	nugget	lemma	batch-041
+Nujek	K2512	Nujek	lemma	batch-051
 numpang	K0417	numpang	lemma	batch-009
 nyala	K1018	nyala	lemma	batch-021
 nyaman	K0329	nyaman	lemma	batch-007
@@ -401,13 +405,20 @@ obatan	K0182	obat	derived_form	batch-004
 objek	K1498	objek	lemma	batch-030
 obrolan	K0038	ngobrol	derived_form	batch-001
 ogah	K0699	ogah	lemma	batch-014
+Ojek Argo	K2519	Ojek Argo	lemma	batch-051
+ojek online	K2535	ojek online	lemma	batch-051
+OjekKoe	K2527	OjekKoe	lemma	batch-051
+Ojesy	K2529	Ojesy	lemma	batch-051
+ojol	K2534	ojol	lemma	batch-051
 ok	K0031	oke	variant	batch-001
 okay	K0031	oke	variant	batch-001
 oke	K0031	oke	lemma	batch-001
+Okejek	K2510	Okejek	lemma	batch-051
 olah	K1026	olah	lemma	batch-021
 olahraga	K1027	olahraga	lemma	batch-021
 oleh-oleh	K1028	oleh-oleh	lemma	batch-021
 ombak	K1499	ombak	lemma	batch-030
+Omega	K2532	Omega	lemma	batch-051
 omong	K0037	omong	lemma	batch-001
 omongan	K0037	omong	derived_form	batch-001
 oncom	K1980	oncom	lemma	batch-040
@@ -419,6 +430,8 @@ opor	K1933	opor	lemma	batch-039
 optimis	K1032	optimis	lemma	batch-021
 orang	K0010	orang	lemma	batch-001
 oranye	K1033	oranye	lemma	batch-021
+order	K2538	order	lemma	batch-051
+orderan	K2539	orderan	lemma	batch-051
 organ	K1500	organ	lemma	batch-030
 organisasi	K1034	organisasi	lemma	batch-021
 otak	K1035	otak	lemma	batch-021
