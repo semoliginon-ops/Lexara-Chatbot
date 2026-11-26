@@ -4,11 +4,11 @@ from tools.morfologi import analyze_morphology
 from tools.pencocokan_kamus import build_lexicon
 
 
-def entry(entry_id, lemma):
+def entry(entry_id, lemma, derived_forms=None):
     return {
         "id": entry_id, "lemma": lemma, "pos": ["VERB"],
         "senses": [{"sense_id": f"{entry_id}-S1", "definition": "Makna."}],
-        "register": ["neutral"], "variants": [], "derived_forms": [],
+        "register": ["neutral"], "variants": [], "derived_forms": derived_forms or [],
     }
 
 
@@ -19,17 +19,19 @@ class MorphologyTests(unittest.TestCase):
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
             "ambil", "kambil", "kunci", "ari", "tari", "nyanyi", "anyi", "sanyi", "kajar",
-            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
+            "tanam", "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
             "penjara", "peniti", "penipuan", "penasaran", "penyanyi", "penyu",
         ]
-        self.lexicon = build_lexicon([
-            entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
-        ])
+        entries = [entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)]
+        entries.append(entry("K9001", "tanam", ["menanam"]))
+        self.lexicon = build_lexicon(entries)
 
     def bases(self, token):
         return {item["base_form"] for item in analyze_morphology(token, self.lexicon)}
 
     def test_suffix_an(self): self.assertIn("makan", self.bases("makanan"))
+    def test_recorded_derived_form_can_also_be_morphologically_analyzed(self):
+        self.assertIn("tanam", self.bases("menanam"))
     def test_prefix_ber(self): self.assertIn("lari", self.bases("berlari"))
     def test_prefix_di(self): self.assertIn("tulis", self.bases("ditulis"))
     def test_nasal_restoration_mem(self): self.assertIn("pukul", self.bases("memukul"))
