@@ -206,6 +206,7 @@ sorot	K1641	sorot	lemma	batch-033
 sosis	K1949	sosis	lemma	batch-039
 sosok	K1115	sosok	lemma	batch-023
 soto	K0489	soto	lemma	batch-010
+sound system	K2445	sound system	lemma	batch-049
 soundbar	K2375	soundbar	lemma	batch-048
 spageti	K2049	spageti	lemma	batch-041
 speaker aktif	K2373	speaker aktif	lemma	batch-048
@@ -215,10 +216,12 @@ sprei	K2345	sprei	lemma	batch-047
 stasiun	K0393	stasiun	lemma	batch-008
 steker	K2349	steker	lemma	batch-047
 stopkontak	K2348	stopkontak	lemma	batch-047
+stylus	K2448	stylus	lemma	batch-049
 suami	K0111	suami	lemma	batch-003
 suap	K1117	suap	lemma	batch-023
 suara	K1116	suara	lemma	batch-023
 subwoofer	K2374	subwoofer	lemma	batch-048
+subwoofer aktif	K2446	subwoofer aktif	lemma	batch-049
 suci	K1643	suci	lemma	batch-033
 sudah	K0146	sudah	lemma	batch-003
 suguh	K1644	suguh	lemma	batch-033
@@ -245,7 +248,9 @@ susu cokelat	K2199	susu cokelat	lemma	batch-044
 susu kedelai	K2198	susu kedelai	lemma	batch-044
 susu kental manis	K2196	susu kental manis	lemma	batch-044
 susun	K1122	susun	lemma	batch-023
+switch jaringan	K2432	switch jaringan	lemma	batch-049
 tabah	K1123	tabah	lemma	batch-023
+tablet gambar	K2450	tablet gambar	lemma	batch-049
 tabrak	K1124	tabrak	lemma	batch-023
 tabung	K1652	tabung	lemma	batch-034
 tadi	K0139	tadi	lemma	batch-003
@@ -340,6 +345,9 @@ telat	K1141	telat	lemma	batch-023
 telepon	K0195	telepon	lemma	batch-004
 teleponan	K0195	telepon	derived_form	batch-004
 televisi	K0286	televisi	lemma	batch-006
+televisi layar datar	K2403	televisi layar datar	lemma	batch-049
+televisi pintar	K2404	televisi pintar	lemma	batch-049
+televisi tabung	K2402	televisi tabung	lemma	batch-049
 telinga	K0119	telinga	lemma	batch-003
 telur	K0167	telur	lemma	batch-004
 telur asin	K1992	telur asin	lemma	batch-040
@@ -444,6 +452,7 @@ tongseng	K1994	tongseng	lemma	batch-040
 tonjol	K1741	tonjol	lemma	batch-035
 tontonan	K0075	nonton	derived_form	batch-002
 topi	K0270	topi	lemma	batch-006
+tripod	K2418	tripod	lemma	batch-049
 tua	K1742	tua	lemma	batch-035
 tuang	K0474	tuang	lemma	batch-010
 tubuh	K1743	tubuh	lemma	batch-035
