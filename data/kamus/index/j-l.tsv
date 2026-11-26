@@ -17,6 +17,7 @@ julid	K0096	julid	lemma	batch-002
 kabar	K0193	kabar	lemma	batch-004
 kadang	K0141	kadang	lemma	batch-003
 kadang-kadang	K0141	kadang	derived_form	batch-003
+kaget	K0339	kaget	lemma	batch-007
 kain	K0272	kain	lemma	batch-006
 kakak	K0108	kakak	lemma	batch-003
 kakak-kakak	K0108	kakak	derived_form	batch-003
@@ -26,6 +27,7 @@ kamar	K0254	kamar	lemma	batch-006
 kami	K0006	kami	lemma	batch-001
 kamu	K0003	kamu	lemma	batch-001
 karena	K0151	karena	lemma	batch-003
+kasar	K0348	kasar	lemma	batch-007
 kasur	K0288	kasur	lemma	batch-006
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
@@ -39,6 +41,7 @@ kebosanan	K0086	bosan	derived_form	batch-002
 kebucinan	K0099	bucin	derived_form	batch-002
 kebutuhan	K0230	butuh	derived_form	batch-005
 kecepatan	K0045	cepat	derived_form	batch-001
+kecewa	K0335	kecewa	lemma	batch-007
 kecil	K0044	kecil	lemma	batch-001
 kecil-kecilan	K0044	kecil	derived_form	batch-001
 kecukupan	K0232	cukup	derived_form	batch-005
@@ -94,10 +97,12 @@ kepulangan	K0019	pulang	derived_form	batch-001
 kepunyaan	K0202	punya	derived_form	batch-005
 keraguan	K0243	ragu	derived_form	batch-005
 keramaian	K0249	ramai	derived_form	batch-005
+kering	K0319	kering	lemma	batch-007
 kerja	K0021	kerja	lemma	batch-001
 kertas	K0295	kertas	lemma	batch-006
 kerusakan	K0222	rusak	derived_form	batch-005
 kesakitan	K0180	sakit	derived_form	batch-004
+kesal	K0340	kesal	lemma	batch-007
 kesalahan	K0237	salah	derived_form	batch-005
 kesayangan	K0115	sayang	derived_form	batch-003
 kesedihan	K0085	sedih	derived_form	batch-002
@@ -115,6 +120,7 @@ ketakutan	K0083	takut	derived_form	batch-002
 ketemu	K0216	ketemu	lemma	batch-005
 keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
+khawatir	K0334	khawatir	lemma	batch-007
 kipas	K0285	kipas	lemma	batch-006
 kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
@@ -123,6 +129,7 @@ kompor	K0283	kompor	lemma	batch-006
 komputasi	K0198	komputer	derived_form	batch-004
 komputer	K0198	komputer	lemma	batch-004
 kopi	K0173	kopi	lemma	batch-004
+kotor	K0322	kotor	lemma	batch-007
 kulkas	K0284	kulkas	lemma	batch-006
 kunci	K0263	kunci	lemma	batch-006
 kurang	K0233	kurang	lemma	batch-005
@@ -141,7 +148,9 @@ laut	K0156	laut	lemma	batch-004
 lautan	K0156	laut	derived_form	batch-004
 lebay	K0097	lebay	lemma	batch-002
 lebih	K0234	lebih	lemma	batch-005
+lega	K0344	lega	lemma	batch-007
 lemari	K0291	lemari	lemma	batch-006
+lembap	K0318	lembap	lemma	batch-007
 lihat	K0034	lihat	lemma	batch-001
 listrik	K0262	listrik	lemma	batch-006
 lo	K0009	lu	variant	batch-001
