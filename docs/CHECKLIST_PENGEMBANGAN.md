@@ -217,9 +217,9 @@ Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hany
 - [x] File `tests/test_morfologi.py` terbaru (47 metode) dijalankan bersama salinan `tools/morfologi.py` dan `tools/pencocokan_kamus.py` yang diambil dari GitHub.
 - [x] Hasil: **47 passed, 0 failed**.
 - [x] Total tes komponen terverifikasi secara terpisah menjadi **100 passed, 0 failed** (fondasi 45 + analisis teks 8 + morfologi 47).
-- [ ] Eksekusi dari checkout repository penuh dan validasi seluruh 60 batch kamus masih belum dilakukan.
+- [x] Eksekusi regression suite dari checkout repository penuh dan validasi seluruh 60 batch kamus telah dilakukan pada 27 November 2026 melalui Termux.
 
-Batas validasi: eksekusi 47 tes dilakukan pada lingkungan Python terisolasi menggunakan salinan kode dan tes terbaru dari GitHub, bukan checkout repository lengkap. Karena itu hasil ini mengonfirmasi perilaku salinan sumber tersebut, tetapi tidak menggantikan validasi integrasi penuh di repository.
+Catatan historis: sebelum validasi Termux, 47 tes morfologi dijalankan pada lingkungan terisolasi. Hasil tersebut kini dilengkapi dan diperkuat oleh eksekusi gabungan 100 tes dari checkout repository penuh.
 
 
 ### Validasi checkout penuh melalui Termux (27 November 2026)
