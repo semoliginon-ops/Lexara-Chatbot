@@ -452,7 +452,7 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Catat gap untuk ADV, PRON, PREP, CONJ, ADJ, NUM, NOUN, VERB, dan INTJ pada `docs/AUDIT_ANOTASI_POS.md`.
 - [x] Menentukan suplementasi POS terpisah untuk 12 kata tugas/numeralia terpilih; kamus 3.000 lema tidak diubah.
 - [x] Menambahkan regression tests untuk suplementasi, prioritas kamus, dan pelestarian ambiguitas; workflow GitHub Actions berhasil.
-- [ ] Lanjutkan batch ketujuh setelah strategi cakupan diputuskan; test split tetap ditahan.
+- [x] Lanjutkan batch ketujuh setelah strategi cakupan diputuskan; test split tetap ditahan.
 
 
 ### Implementasi suplementasi POS terfokus — 27 November 2026
@@ -465,3 +465,13 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Evaluasi development setelah suplementasi: 107/148 benar, coverage 72,3%, accuracy 72,3%, selective accuracy 100%. POS leksikal dan kontekstual sama. Satu gold ambiguous tetap ditahan, tidak dipaksakan.
 
 **Titik lanjut:** lanjutkan Batch 7 (`pos_0061`–`pos_0070`) dengan 6 development dan 4 test. Test split tetap tertahan; jangan menyetel aturan berdasarkan test.
+
+
+### Batch ketujuh dan verifikasi otomatis — 27 November 2026
+
+- [x] Menambahkan `pos_0061`–`pos_0070`: enam kalimat development dan empat kalimat test.
+- [x] Dataset menjadi **70 kalimat, 374 token, 42 development, 28 test**.
+- [x] GitHub Actions run [#6](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45908531211): validator berhasil; regression suite **141/141 lulus**.
+- [x] Evaluator development-only: 174 token resolved, 131 benar, coverage 75,3%, accuracy 75,3%, selective accuracy 100%; satu gold ambiguous ditahan dan nol dipaksakan.
+
+**Titik lanjut:** Batch 8 (`pos_0071`–`pos_0080`), enam development dan empat test. Pertahankan seluruh 28 kalimat test sebagai data tertahan.
