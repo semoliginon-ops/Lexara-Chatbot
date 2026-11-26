@@ -28,6 +28,7 @@ sandi	K1564	sandi	lemma	batch-032
 sangkal	K1565	sangkal	lemma	batch-032
 sanksi	K1566	sanksi	lemma	batch-032
 santai	K0674	santai	lemma	batch-014
+santan	K1943	santan	lemma	batch-039
 santap	K1567	santap	lemma	batch-032
 sapa	K0402	sapa	lemma	batch-009
 sapu	K0054	sapu	lemma	batch-002
@@ -39,6 +40,7 @@ sasaran	K1570	sasaran	lemma	batch-032
 sate	K0490	sate	lemma	batch-010
 satpam	K1571	satpam	lemma	batch-032
 saudara	K0110	saudara	lemma	batch-003
+saus	K1944	saus	lemma	batch-039
 sawah	K1572	sawah	lemma	batch-032
 saya	K0002	saya	lemma	batch-001
 sayang	K0115	sayang	lemma	batch-003
@@ -68,6 +70,8 @@ sekarang	K0135	sekarang	lemma	batch-003
 sekitar	K0380	sekitar	lemma	batch-008
 sekolah	K0184	sekolah	lemma	batch-004
 sekretaris	K1585	sekretaris	lemma	batch-032
+selada	K1946	selada	lemma	batch-039
+selai	K1945	selai	lemma	batch-039
 selalu	K0140	selalu	lemma	batch-003
 selamat	K0248	selamat	lemma	batch-005
 selasar	K1609	selasar	lemma	batch-033
@@ -77,6 +81,7 @@ selesai	K0224	selesai	lemma	batch-005
 selimut	K0290	selimut	lemma	batch-006
 selisih	K1639	selisih	lemma	batch-033
 semalaman	K0134	malam	derived_form	batch-003
+semangka	K1947	semangka	lemma	batch-039
 sembarangan	K0675	sembarangan	lemma	batch-014
 sembuh	K1588	sembuh	lemma	batch-032
 sembunyi	K1589	sembunyi	lemma	batch-032
@@ -162,6 +167,7 @@ situasi	K1111	situasi	lemma	batch-023
 slogan	K1634	slogan	lemma	batch-033
 soalnya	K0637	soalnya	lemma	batch-013
 sobek	K1635	sobek	lemma	batch-033
+soda	K1948	soda	lemma	batch-039
 sodok	K1636	sodok	lemma	batch-033
 sogok	K1637	sogok	lemma	batch-033
 sok	K0676	sok	lemma	batch-014
@@ -173,6 +179,7 @@ sore	K0133	sore	lemma	batch-003
 sore-sore	K0133	sore	derived_form	batch-003
 sorong	K1642	sorong	lemma	batch-033
 sorot	K1641	sorot	lemma	batch-033
+sosis	K1949	sosis	lemma	batch-039
 sosok	K1115	sosok	lemma	batch-023
 soto	K0489	soto	lemma	batch-010
 spion	K0499	spion	lemma	batch-010
@@ -252,6 +259,7 @@ tanjung	K1678	tanjung	lemma	batch-034
 tantang	K1134	tantang	lemma	batch-023
 tanya	K0189	tanya	lemma	batch-004
 tapak	K1679	tapak	lemma	batch-034
+tape	K1950	tape	lemma	batch-039
 tapis	K1680	tapis	lemma	batch-034
 tari	K1683	tari	lemma	batch-034
 tarif	K1681	tarif	lemma	batch-034
@@ -321,6 +329,7 @@ terampil	K1714	terampil	lemma	batch-035
 terang	K0325	terang	lemma	batch-007
 terap	K1715	terap	lemma	batch-035
 terapi	K1716	terapi	lemma	batch-035
+terasi	K1951	terasi	lemma	batch-039
 terbalas	K0218	balas	derived_form	batch-005
 terbang	K1149	terbang	lemma	batch-023
 terbangun	K0016	bangun	derived_form	batch-001
