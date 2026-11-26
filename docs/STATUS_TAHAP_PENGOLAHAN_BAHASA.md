@@ -57,7 +57,7 @@ Branch kerja: `main`
 - Tokenizer: 12 tes lulus, 0 gagal.
 - Loader kamus: 12 tes lulus, 0 gagal.
 - Pencocokan kamus: 13 tes lulus, 0 gagal.
-- Total: **32 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
+- Total: **45 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
 - Struktur dasar seluruh 60 file batch (3.000 entri) telah diperiksa melalui konten GitHub: format JSON, field wajib, ID, lema, dan struktur sense. Ini bukan pengganti eksekusi langsung loader Python terhadap seluruh file.
 - Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
 - Belum ada integrasi Android.
@@ -200,4 +200,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** jalankan `tools/kamus_loader.py` secara langsung terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat; total regression suite 45 tes lulus, 0 gagal.
+**Titik lanjut:** jalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk menguji loader terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat; total regression suite 45 tes lulus, 0 gagal.
