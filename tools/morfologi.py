@@ -108,11 +108,18 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
             # prioritaskan hasil restorasi jika bentuk itu memang ada di kamus.
             # Bentuk seperti menyanyi tetap dapat memakai remainder "nyanyi"
             # jika kandidat restorasi s+nyanyi tidak dikenal.
-            restoration = {
-                "men": "t", "mem": "p", "pen": "t", "pem": "p",
-            }.get(prefix)
-            if not (restoration and _known(restoration + remainder, lexicon)):
-                add_candidate(remainder, rule)
+            # Pada meny-/peny-, konsonan awal "ny" dapat tetap menjadi
+            # bagian lema, misalnya menyanyi -> nyanyi. Prioritaskan
+            # kandidat ini hanya jika lema tersebut benar-benar ada.
+            retained_ny = prefix in ("meny", "peny") and _known("ny" + remainder, lexicon)
+            if retained_ny:
+                add_candidate("ny" + remainder, f"nasal_retention_{prefix}")
+            else:
+                restoration = {
+                    "men": "t", "mem": "p", "pen": "t", "pem": "p",
+                }.get(prefix)
+                if not (restoration and _known(restoration + remainder, lexicon)):
+                    add_candidate(remainder, rule)
             break
 
     for prefix, restored in _NASAL_RESTORATIONS:
@@ -123,6 +130,8 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
             # Contoh: mengambil/pengambil -> ambil, bukan kambil.
             if prefix in ("meng", "peng") and _known(remainder, lexicon):
                 continue
+            if prefix in ("meny", "peny") and _known("ny" + remainder, lexicon):
+                continue
             add_candidate(restored + remainder, f"nasal_restoration_{prefix}")
 
     for suffix, suffix_rule in _SUFFIXES:
@@ -132,15 +141,22 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
         for prefix, prefix_rule in _PREFIXES:
             if middle.startswith(prefix) and len(middle) > len(prefix) + 1:
                 remainder = middle[len(prefix):]
-                restoration = {
-                    "men": "t", "mem": "p", "pen": "t", "pem": "p",
-                }.get(prefix)
-                if not (restoration and _known(restoration + remainder, lexicon)):
-                    add_candidate(remainder, f"{prefix_rule}+{suffix_rule}")
+                retained_ny = prefix in ("meny", "peny") and _known("ny" + remainder, lexicon)
+                if retained_ny:
+                    add_candidate("ny" + remainder, f"nasal_retention_{prefix}+{suffix_rule}")
+                else:
+                    restoration = {
+                        "men": "t", "mem": "p", "pen": "t", "pem": "p",
+                    }.get(prefix)
+                    if not (restoration and _known(restoration + remainder, lexicon)):
+                        add_candidate(remainder, f"{prefix_rule}+{suffix_rule}")
                 break
         for prefix, restored in _NASAL_RESTORATIONS:
             if middle.startswith(prefix) and len(middle) > len(prefix):
-                add_candidate(restored + middle[len(prefix):], f"nasal_restoration_{prefix}+{suffix_rule}")
+                remainder = middle[len(prefix):]
+                if prefix in ("meny", "peny") and _known("ny" + remainder, lexicon):
+                    continue
+                add_candidate(restored + remainder, f"nasal_restoration_{prefix}+{suffix_rule}")
 
     return list(found.values())
 
