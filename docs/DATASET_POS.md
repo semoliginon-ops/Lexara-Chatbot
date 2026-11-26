@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Batch awal 10 kalimat dan validator struktur telah diverifikasi di Termux; 9 tes validator dan 132 tes suite penuh lulus; evaluasi akurasi POS belum dilakukan  
+**Status:** Batch kedua telah menambah dataset menjadi 20 kalimat (12 development, 8 test); validasi struktur batch kedua menunggu dijalankan di Termux; regression suite penuh terakhir terverifikasi 132/132; evaluasi akurasi POS belum dilakukan  
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -50,7 +50,7 @@ Satu baris adalah satu kalimat berupa objek JSON. Simpan sebagai UTF-8 di:
 
 `data/dataset_pos/kalimat_pos_v1.jsonl`
 
-**Progres:** 10/100 kalimat awal telah dianotasi (6 development, 4 test). Batch ini adalah sampel awal untuk memeriksa pedoman, belum cukup untuk menyimpulkan akurasi umum. Seluruh 10 kalimat/43 token telah lolos validator struktur dan kesesuaian tokenizer di Termux; kualitas label dan akurasi prediksi tetap perlu dievaluasi.
+**Progres:** 20/100 kalimat telah dianotasi (12 development, 8 test; 91 token berdasarkan rancangan anotasi). Batch pertama 10 kalimat/43 token telah lolos validator di Termux. Batch kedua baru ditambahkan dan menunggu validasi struktur/tokenizer di Termux. Sampel ini belum cukup untuk menyimpulkan akurasi umum; kualitas label dan akurasi prediksi tetap perlu dievaluasi.
 
 Skema record:
 
@@ -144,14 +144,17 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 ## 9. Urutan kerja
 
 - [x] Menetapkan rancangan format dan pedoman anotasi versi 1.0.
-- [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
+- [x] Menyusun batch pertama 10 kalimat berlabel (6 development, 4 test).
+- [x] Menambahkan batch kedua 10 kalimat (6 development, 4 test); total rancangan 20 kalimat/91 token.
+- [ ] Memvalidasi batch kedua di checkout Termux.
 - [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk memeriksa struktur JSONL, label, status, ID, dan kecocokan token dengan tokenizer.
 - [x] Membuat 9 regression tests pada `tests/test_validasi_dataset_pos.py`.
-- [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: berhasil; 10 kalimat dan 43 token tervalidasi (6 development, 4 test).
+- [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux untuk batch pertama: 10 kalimat dan 43 token tervalidasi (6 development, 4 test).
+- [ ] Menjalankan ulang validator setelah batch kedua: target 20 kalimat dan 91 token (12 development, 8 test).
 - [x] Menjalankan 9 regression tests validator dari checkout Termux: 9 lulus, 0 gagal (27 November 2026).
 - [ ] Mengevaluasi development set dan mencatat kesalahan.
 - [ ] Mengunci test set dan mengukur metrik tanpa penyetelan khusus terhadap test.
 - [x] Memperbarui dokumentasi status dan checklist berdasarkan hasil verifikasi Termux.
 
-**Titik lanjut:** perluas dataset secara bertahap menuju target 100 kalimat, lalu evaluasi development set. Validator dataset dan 9 regression tests telah lulus di Termux.
+**Titik lanjut:** tarik batch kedua ke Termux, jalankan validator untuk memastikan 20 kalimat/91 token cocok dengan tokenizer, lalu lanjutkan perluasan menuju 100 kalimat. Evaluasi development set dilakukan setelah validasi dan audit anotasi.
