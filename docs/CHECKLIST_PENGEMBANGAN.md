@@ -194,3 +194,12 @@ Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan ka
 
 
 **Audit cakupan bentuk turunan pada indeks token (27 November 2026):** indeks `m-o.tsv` dan `p-r.tsv` diperiksa untuk bentuk berimbuhan yang telah direkam sebagai `derived_form`. Contoh yang ditemukan mencakup `menulis`, `mengajar`, `mengambil`, `menyapu`, `menyampaikan`, `pengambilan`, `penyakit`, `penyampaian`, `pembacaan`, dan `penolakan`. Bentuk-bentuk ini sudah terhubung ke lema kanonis pada indeks, sehingga pencocokan leksikal dapat mengenalinya sebelum analisis morfologi fallback dipanggil. Tidak ada perubahan kode atau jumlah tes pada audit ini. Tes morfologi terkini berjumlah 46 metode; eksekusi terakhir yang terverifikasi tetap 42 lulus, dan total komponen terakhir terverifikasi tetap 95 lulus, 0 gagal. Langkah berikutnya: audit cakupan alomorf `peN-` dan interaksinya dengan lema yang memang berawalan `peng-/peny-`, tanpa mengubah aturan sebelum ada kasus regresi yang sah.
+
+
+### Audit lema kanonis berawalan peN- (27 November 2026)
+- [x] Periksa indeks token untuk lema yang diawali `peng-` dan `peny-/pen-`, termasuk `pengacara`, `pengadilan`, `pengemudi`, `penggaris`, `penguin`, `penjara`, `peniti`, `penipuan`, `penasaran`, `penyanyi`, dan `penyu`.
+- [x] Verifikasi alur morfologi: token yang sudah cocok persis dengan lema/varian/bentuk turunan dikembalikan tanpa stemming.
+- [x] Tambahkan regression test untuk memastikan 11 lema kanonis tersebut tidak dipecah sebagai imbuhan, termasuk pemeriksaan kapitalisasi `PENGUIN`.
+- [ ] Jalankan ulang seluruh suite morfologi setelah penambahan tes; jangan menaikkan angka tes terverifikasi sebelum eksekusi.
+
+Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hanya menambah cakupan regression test; aturan morfologi tidak diubah. File tes kini berisi 47 metode uji, tetapi angka terverifikasi tetap 42 tes morfologi dan 95 tes komponen total sampai suite terbaru dijalankan.
