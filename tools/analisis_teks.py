@@ -5,6 +5,7 @@ import re
 from typing import Any
 
 from tools.normalisasi import normalize_text
+from tools.morfologi import analyze_morphology
 from tools.pencocokan_kamus import lookup_token
 from tools.tokenizer import tokenize
 
@@ -39,11 +40,13 @@ def analyze_text(text: str, lexicon: dict[str, list[dict]]) -> dict[str, Any]:
             continue
 
         candidates = lookup_token(token, lexicon)
+        morphology_candidates = analyze_morphology(token, lexicon)
         token_results.append({
             "token": token,
             "kind": "word",
             "status": "matched" if candidates else "unknown",
             "candidates": candidates,
+            "morphology_candidates": morphology_candidates,
         })
 
     return {
