@@ -1,6 +1,6 @@
 # Rancangan Dataset Berlabel untuk Evaluasi POS
 
-**Status:** Spesifikasi awal; dataset belum dikumpulkan atau dievaluasi  
+**Status:** Batch awal 10 kalimat telah disusun; evaluasi otomatis belum dilakukan  
 **Tahap:** 2.5 — Pengenalan kelas kata (POS)  
 **Versi skema:** 1.0
 
@@ -49,6 +49,8 @@ Untuk batch awal kecil, setiap record wajib memiliki field `split`. Jangan mengu
 Satu baris adalah satu kalimat berupa objek JSON. Simpan sebagai UTF-8 di:
 
 `data/dataset_pos/kalimat_pos_v1.jsonl`
+
+**Progres:** 10/100 kalimat awal telah dianotasi (6 development, 4 test). Batch ini adalah sampel awal untuk memeriksa pedoman, belum cukup untuk menyimpulkan akurasi umum. Semua token dan label masih perlu melewati validator otomatis sebelum metrik dihitung.
 
 Skema record:
 
@@ -142,7 +144,8 @@ Dataset harus membantu menemukan kasus yang belum ditangani. Jangan menambah atu
 ## 9. Urutan kerja
 
 - [x] Menetapkan rancangan format dan pedoman anotasi versi 1.0.
-- [ ] Mengumpulkan dan menganotasi batch awal kalimat.
+- [x] Menyusun batch awal 10 kalimat berlabel (6 development, 4 test) di `data/dataset_pos/kalimat_pos_v1.jsonl`.
+- [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
 - [ ] Memeriksa konsistensi token dengan tokenizer.
 - [ ] Membuat validator dataset dan regression tests.
 - [ ] Mengevaluasi development set dan mencatat kesalahan.
