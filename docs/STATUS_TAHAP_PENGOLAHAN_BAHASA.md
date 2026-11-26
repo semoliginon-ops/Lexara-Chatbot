@@ -62,7 +62,10 @@ Branch kerja: `main`
 - Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat.
 - Integrasi normalisasi, tokenizer, dan pencocokan kamus tersedia di `tools/analisis_teks.py` melalui fungsi `analyze_text(text, lexicon)`. Indeks leksikal dibangun sekali dengan `build_lexicon(entries)` lalu dapat digunakan ulang untuk beberapa masukan.
 - Analyzer mengembalikan teks ternormalisasi serta hasil per token: kata cocok/tidak dikenal atau tanda baca. Semua kandidat dipertahankan; POS dan sense tidak dipilih otomatis.
-- 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi. Total pengujian komponen yang telah dijalankan secara terpisah: 53 tes lulus (45 fondasi + 8 analyzer), 0 gagal. Ini bukan satu kali eksekusi gabungan seluruh 53 tes.
+- 8 regression tests analyzer lulus pada lingkungan Python lokal terisolasi.
+- Prototipe morfologi awal tersedia di `tools/morfologi.py` melalui `analyze_morphology(token, lexicon)`. Modul mencoba pola prefiks/akhiran terpilih, pemulihan konsonan nasal tertentu, kombinasi prefiks+akhiran, dan reduplikasi identik bertanda hubung. Kandidat hanya dikembalikan jika bentuk dasarnya ditemukan dalam indeks kamus.
+- 12 regression tests morfologi lulus pada lingkungan Python lokal terisolasi: 12 lulus, 0 gagal.
+- Total pengujian komponen yang dijalankan secara terpisah: **65 tes lulus, 0 gagal** (45 fondasi + 8 analyzer + 12 morfologi). Ini bukan satu kali eksekusi gabungan seluruh 65 tes.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
@@ -117,12 +120,14 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Tangani kandidat dengan beberapa sense atau POS dengan mempertahankan seluruh kandidat tanpa memilih makna otomatis.
 - [x] Buat 13 regression tests pencocokan leksikal untuk perilaku inti dan validasi input.
 
-### 5.4 Analisis morfologi
-- [ ] Susun inventaris pola imbuhan Bahasa Indonesia berdasarkan dokumentasi dan data.
-- [ ] Tangani prefiks, sufiks, konfiks, reduplikasi, dan perubahan bentuk yang relevan.
-- [ ] Hindari stemming agresif yang mengubah kata atau memotong bentuk yang bukan imbuhan.
-- [ ] Gunakan kamus sebagai pemeriksa kandidat bentuk dasar.
-- [ ] Buat tes untuk bentuk valid, bentuk ambigu, dan kata yang tidak boleh dipotong.
+### 5.4 Analisis morfologi — prototipe awal
+- [x] Buat `tools/morfologi.py` dengan fungsi `analyze_morphology(token, lexicon)`.
+- [x] Gunakan kamus sebagai pemeriksa kandidat bentuk dasar; kandidat yang tidak cocok dengan kamus tidak dilaporkan.
+- [x] Hindari stemming kata yang sudah cocok persis dengan kamus.
+- [x] Buat 12 regression tests awal; hasil lokal 12 lulus, 0 gagal.
+- [ ] Lengkapi inventaris prefiks, sufiks, konfiks, reduplikasi, dan perubahan bentuk sesuai kaidah Bahasa Indonesia.
+- [ ] Tambahkan aturan yang mempertimbangkan urutan imbuhan serta batasan morfofonemik secara lebih lengkap.
+- [ ] Perluas tes untuk bentuk valid, bentuk ambigu, kata yang tidak boleh dipotong, dan kemungkinan kandidat palsu.
 
 ### 5.5 Pengenalan kelas kata (POS)
 - [ ] Gunakan kode POS resmi dalam `docs/KAMUS.md`.
@@ -204,4 +209,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** jalankan `python -m tools.validasi_kamus_lengkap` pada checkout repository untuk menguji loader terhadap seluruh 60 batch aktual. Struktur dasar seluruh 3.000 entri telah diperiksa melalui konten GitHub. Integrasi analyzer sudah dibuat dan 8 tesnya lulus; pengujian komponen secara terpisah berjumlah 53 tes lulus, 0 gagal. Setelah validasi loader selesai, lanjutkan ke analisis morfologi.
+**Titik lanjut:** validasi loader terhadap seluruh 60 batch aktual masih perlu dijalankan dengan `python -m tools.validasi_kamus_lengkap` pada checkout repository. Struktur dasar 3.000 entri telah diperiksa melalui konten GitHub. Integrasi analyzer dan prototipe morfologi awal sudah tersedia; 65 tes komponen telah lulus secara terpisah. Lanjutkan penyempurnaan morfologi secara bertahap, terutama konfiks dan aturan morfofonemik, tanpa mengendurkan validasi kandidat melalui kamus.
