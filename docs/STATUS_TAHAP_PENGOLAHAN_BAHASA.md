@@ -547,6 +547,11 @@ Pengguna menarik perubahan ke Termux dan menjalankan validator, regression suite
 - POS leksikal: 56 diprediksi, 55 benar; coverage 54,9%, accuracy 53,9%, selective accuracy 98,2%.
 - POS konteks lokal: hasil identik; belum ada peningkatan terukur.
 - Gold ambiguous: 1 ditahan, 0 dipaksakan.
-- Satu mismatch tercatat: token `mau` pada `pos_0031` berlabel gold `ADV`, sementara sistem memprediksi `VERB`. Perlu audit kebijakan label modalitas sebelum koreksi. Token `wah` (INTJ) tidak diprediksi; ini abstention.
+- Audit lanjutan menetapkan `mau` pada `pos_0031` sebagai `VERB` (verba modal kehendak), sesuai entri kamus `K0024`; gold dikoreksi dari `ADV` menjadi `VERB`. Tidak ada perubahan kamus atau aturan program. Koreksi ini menunggu validasi dan evaluasi ulang di Termux. Token `wah` (INTJ) belum diprediksi; ini abstention.
 
 **Titik lanjut:** audit `mau` serta cakupan prediksi kelas POS. Hasil hanya berlaku pada development set 24 kalimat; 16 kalimat test tetap ditahan.
+
+
+## Audit kata `mau` — 27 November 2026
+
+Pada kalimat development `Gue mau makan dulu`, `mau` ditetapkan sebagai `VERB` karena menyatakan kehendak dan berfungsi sebagai verba modal yang mengambil komplemen verba. Keputusan ini selaras dengan POS entri kamus `K0024`. Label gold pada `pos_0031` dikoreksi dari `ADV` menjadi `VERB`; pedoman `ADV` untuk `sedang`, `akan`, `telah`, `sudah`, dan `lagi` tetap dibatasi pada daftar tersebut. Kamus dan kode POS tidak diubah. Perubahan dataset serta dokumentasi menunggu validasi, evaluasi, dan regression suite ulang dari Termux. Split test tidak disentuh.
