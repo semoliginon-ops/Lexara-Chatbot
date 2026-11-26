@@ -72,6 +72,7 @@ sebentar	K1575	sebentar	lemma	batch-032
 seberang	K1577	seberang	lemma	batch-032
 sebut	K1578	sebut	lemma	batch-032
 secukupnya	K0232	cukup	derived_form	batch-005
+sedan	K2558	sedan	lemma	batch-052
 sedih	K0085	sedih	lemma	batch-002
 sedot	K1579	sedot	lemma	batch-032
 segar	K1581	segar	lemma	batch-032
@@ -114,6 +115,7 @@ sentuh	K1592	sentuh	lemma	batch-032
 senyum	K0428	senyum	lemma	batch-009
 sepatu	K0268	sepatu	lemma	batch-006
 sepeda	K0199	sepeda	lemma	batch-004
+sepeda listrik	K2566	sepeda listrik	lemma	batch-052
 sepeda motor	K0400	sepeda motor	lemma	batch-008
 sepi	K0250	sepi	lemma	batch-005
 serabi	K1989	serabi	lemma	batch-040
@@ -164,6 +166,7 @@ sikap	K1103	sikap	lemma	batch-023
 sikat	K0275	sikat	lemma	batch-006
 sikat gigi	K1597	sikat gigi	lemma	batch-032
 siksa	K1625	siksa	lemma	batch-033
+siku	K2587	siku	lemma	batch-052
 silakan	K0405	silakan	lemma	batch-009
 silau	K1626	silau	lemma	batch-033
 silinder	K1627	silinder	lemma	batch-033
@@ -188,6 +191,7 @@ sisip	K1633	sisip	lemma	batch-033
 sisir	K1114	sisir	lemma	batch-023
 sistem	K1110	sistem	lemma	batch-023
 situasi	K1111	situasi	lemma	batch-023
+skuter	K2563	skuter	lemma	batch-052
 slogan	K1634	slogan	lemma	batch-033
 soalnya	K0637	soalnya	lemma	batch-013
 sobek	K1635	sobek	lemma	batch-033
@@ -268,6 +272,7 @@ takbir	K1655	takbir	lemma	batch-034
 takdir	K1656	takdir	lemma	batch-034
 takhta	K1657	takhta	lemma	batch-034
 takjub	K1658	takjub	lemma	batch-034
+taksi	K2576	taksi	lemma	batch-052
 taktik	K1659	taktik	lemma	batch-034
 takut	K0083	takut	lemma	batch-002
 takwa	K1660	takwa	lemma	batch-034
@@ -345,6 +350,8 @@ teks	K1700	teks	lemma	batch-034
 tekun	K1140	tekun	lemma	batch-023
 teladan	K1701	teladan	lemma	batch-034
 telan	K0478	telan	lemma	batch-010
+telapak kaki	K2585	telapak kaki	lemma	batch-052
+telapak tangan	K2586	telapak tangan	lemma	batch-052
 telat	K1141	telat	lemma	batch-023
 telepon	K0195	telepon	lemma	batch-004
 teleponan	K0195	telepon	derived_form	batch-004
@@ -373,6 +380,7 @@ tenggelam	K1706	tenggelam	lemma	batch-035
 tenggorok	K1707	tenggorok	lemma	batch-035
 tengik	K1708	tengik	lemma	batch-035
 tengkar	K1709	tengkar	lemma	batch-035
+tengkuk	K2577	tengkuk	lemma	batch-052
 tengkurap	K1710	tengkurap	lemma	batch-035
 tengok	K1711	tengok	lemma	batch-035
 tentang	K1147	tentang	lemma	batch-023
@@ -460,6 +468,8 @@ tontonan	K0075	nonton	derived_form	batch-002
 top up	K2550	top up	lemma	batch-051
 topi	K0270	topi	lemma	batch-006
 TopJek	K2525	TopJek	lemma	batch-051
+trailer	K2572	trailer	lemma	batch-052
+traktor	K2571	traktor	lemma	batch-052
 tripod	K2418	tripod	lemma	batch-049
 tua	K1742	tua	lemma	batch-035
 tuang	K0474	tuang	lemma	batch-010
@@ -471,6 +481,9 @@ tukang batu	K2482	tukang batu	lemma	batch-050
 tukang las	K2481	tukang las	lemma	batch-050
 tukang listrik	K2501	tukang listrik	lemma	batch-050
 tulang	K1746	tulang	lemma	batch-035
+tulang belakang	K2594	tulang belakang	lemma	batch-052
+tulang kering	K2595	tulang kering	lemma	batch-052
+tulang rusuk	K2593	tulang rusuk	lemma	batch-052
 tulis	K0077	tulis	lemma	batch-002
 tulisan	K0077	tulis	derived_form	batch-002
 tumbang	K1747	tumbang	lemma	batch-035
@@ -480,6 +493,7 @@ tumis buncis	K2175	tumis buncis	lemma	batch-044
 tumis kangkung	K2174	tumis kangkung	lemma	batch-044
 tumis sawi	K2177	tumis sawi	lemma	batch-044
 tumis tauge	K2176	tumis tauge	lemma	batch-044
+tumit	K2584	tumit	lemma	batch-052
 tumpah	K1749	tumpah	lemma	batch-035
 tumpang	K1750	tumpang	lemma	batch-035
 tumpuk	K1751	tumpuk	lemma	batch-035
