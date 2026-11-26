@@ -20,6 +20,7 @@ jalan	K0020	jalan	lemma	batch-001
 jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jam dinding	K2316	jam dinding	lemma	batch-047
+jam pintar	K2399	jam pintar	lemma	batch-048
 jamin	K1378	jamin	lemma	batch-028
 jamu	K2032	jamu	lemma	batch-041
 jamur	K1997	jamur	lemma	batch-040
@@ -72,6 +73,8 @@ jus alpukat	K2046	jus alpukat	lemma	batch-041
 jus mangga	K2047	jus mangga	lemma	batch-041
 kabar	K0193	kabar	lemma	batch-004
 kabel	K2339	kabel	lemma	batch-047
+kabel HDMI	K2395	kabel HDMI	lemma	batch-048
+kabel USB	K2394	kabel USB	lemma	batch-048
 kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
 kacang	K1914	kacang	lemma	batch-039
@@ -105,6 +108,9 @@ kamar	K0254	kamar	lemma	batch-006
 kambing	K0919	kambing	lemma	batch-019
 kambing hutan	K2278	kambing hutan	lemma	batch-046
 kamera	K1392	kamera	lemma	batch-028
+kamera digital	K2363	kamera digital	lemma	batch-048
+kamera pengawas	K2365	kamera pengawas	lemma	batch-048
+kamera web	K2364	kamera web	lemma	batch-048
 kami	K0006	kami	lemma	batch-001
 kampung	K0388	kampung	lemma	batch-008
 kamu	K0003	kamu	lemma	batch-001
@@ -128,6 +134,8 @@ karena	K0151	karena	lemma	batch-003
 karier	K1394	karier	lemma	batch-028
 karpet	K2342	karpet	lemma	batch-047
 kartu	K0926	kartu	lemma	batch-019
+kartu memori	K2366	kartu memori	lemma	batch-048
+kartu SIM	K2367	kartu SIM	lemma	batch-048
 kasar	K0348	kasar	lemma	batch-007
 kasih	K0408	kasih	lemma	batch-009
 kasihan	K1395	kasihan	lemma	batch-028
@@ -289,6 +297,7 @@ ketumbar	K2190	ketumbar	lemma	batch-044
 ketupat	K1972	ketupat	lemma	batch-040
 keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
+keyboard komputer	K2378	keyboard komputer	lemma	batch-048
 khawatir	K0334	khawatir	lemma	batch-007
 kijang	K2280	kijang	lemma	batch-046
 kikil	K1921	kikil	lemma	batch-039
@@ -312,6 +321,7 @@ kompor	K0283	kompor	lemma	batch-006
 komputasi	K0198	komputer	derived_form	batch-004
 komputer	K0198	komputer	lemma	batch-004
 kondisi	K0578	kondisi	lemma	batch-012
+konsol game	K2401	konsol game	lemma	batch-048
 kontrak	K0579	kontrak	lemma	batch-012
 kopi	K0173	kopi	lemma	batch-004
 kopi susu	K2045	kopi susu	lemma	batch-041
@@ -391,6 +401,9 @@ lautan	K0156	laut	derived_form	batch-004
 layak	K1418	layak	lemma	batch-029
 layan	K1419	layan	lemma	batch-029
 layar	K1420	layar	lemma	batch-029
+layar LCD	K2382	layar LCD	lemma	batch-048
+layar OLED	K2383	layar OLED	lemma	batch-048
+layar sentuh	K2381	layar sentuh	lemma	batch-048
 lebah	K1421	lebah	lemma	batch-029
 lebah madu	K2284	lebah madu	lemma	batch-046
 lebar	K1422	lebar	lemma	batch-029
