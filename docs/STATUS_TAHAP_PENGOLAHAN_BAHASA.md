@@ -493,3 +493,14 @@ Pengguna menjalankan rangkaian perintah setelah menarik commit evaluator ke Term
 **Interpretasi:** selective accuracy 100% hanya berarti seluruh 42 prediksi yang dikeluarkan pada token resolved cocok dengan gold label. Coverage 58,3% menunjukkan 30 dari 72 token resolved tidak diberi prediksi. Accuracy 58,3% menghitung abstain sebagai tidak benar. Hasil ini terbatas pada development set kecil dan bukan estimasi akurasi umum.
 
 **Titik lanjut:** audit kandidat POS lema `jalan` di kamus dan alasan sistem menganggapnya tidak ambigu. Periksa apakah masalah berasal dari metadata kamus atau aturan POS. Tambahkan regression test yang memastikan fragmen tanpa konteks tidak dipaksakan menjadi satu POS jika kamus/pedoman mengakui beberapa fungsi. Setelah itu, perluas dataset development secara bertahap. Jangan gunakan split test untuk menyetel aturan.
+
+
+## Audit dan koreksi lema "jalan" — 27 November 2026
+
+Pemeriksaan entri `K0020` di batch 001 menemukan ketidaksesuaian: `usage_notes` mengakui fungsi verba, tetapi field `pos` hanya berisi `NOUN`. Hal ini menyebabkan fragmen development "Jalan." dianggap tidak ambigu.
+
+Metadata diperbaiki dengan dua kelas kata (`NOUN`, `VERB`) dan dua sense ber-POS spesifik: jalur/tempat (`NOUN`) serta bergerak/melangkah dengan kaki (`VERB`). Catatan penggunaan kini menyatakan bahwa fragmen tanpa konteks dapat tetap ambigu.
+
+Satu regression test integrasi baru memuat kamus dan dataset development sebenarnya, lalu memeriksa bahwa token gold ambiguous `jalan` ditahan dan tidak dipaksakan. Tidak ada perubahan pada split test atau aturan konteks.
+
+**Status:** perubahan sudah masuk branch `main`, menunggu verifikasi Termux. Jalankan tes evaluator, evaluator development, lalu seluruh regression suite.
