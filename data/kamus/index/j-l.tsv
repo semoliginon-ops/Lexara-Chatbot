@@ -70,6 +70,9 @@ kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
 kacang	K1914	kacang	lemma	batch-039
 kacang hijau	K1970	kacang hijau	lemma	batch-040
+kacang mede	K2090	kacang mede	lemma	batch-042
+kacang polong	K2091	kacang polong	lemma	batch-042
+kacang tanah	K2089	kacang tanah	lemma	batch-042
 kacau	K0570	kacau	lemma	batch-012
 kadang	K0141	kadang	lemma	batch-003
 kadang-kadang	K0141	kadang	derived_form	batch-003
@@ -131,6 +134,7 @@ kebucinan	K0099	bucin	derived_form	batch-002
 kebun	K0929	kebun	lemma	batch-019
 keburu	K0572	keburu	lemma	batch-012
 kebutuhan	K0230	butuh	derived_form	batch-005
+kecambah	K2093	kecambah	lemma	batch-042
 kecap	K0930	kecap	lemma	batch-019
 kecepatan	K0045	cepat	derived_form	batch-001
 kecewa	K0335	kecewa	lemma	batch-007
@@ -181,6 +185,7 @@ kemarin	K0137	kemarin	lemma	batch-003
 kemasukan	K0067	masuk	derived_form	batch-002
 kemauan	K0024	mau	derived_form	batch-001
 kembang kol	K1971	kembang kol	lemma	batch-040
+kembang tahu	K2094	kembang tahu	lemma	batch-042
 kemeja	K0936	kemeja	lemma	batch-019
 kemungkinan	K0142	mungkin	derived_form	batch-003
 kenaikan	K0069	naik	derived_form	batch-002
@@ -193,6 +198,7 @@ kendali	K0937	kendali	lemma	batch-019
 kendaraan	K0399	kendaraan	lemma	batch-008
 kendur	K0938	kendur	lemma	batch-019
 kentang	K0486	kentang	lemma	batch-010
+kentang goreng	K2095	kentang goreng	lemma	batch-042
 kenyang	K0178	kenyang	lemma	batch-004
 kenyataan	K1396	kenyataan	lemma	batch-028
 kepagian	K0131	pagi	derived_form	batch-003
@@ -239,6 +245,7 @@ kesusahan	K0088	susah	derived_form	batch-002
 ketahuan	K0039	tahu	derived_form	batch-001
 ketakutan	K0083	takut	derived_form	batch-002
 ketan	K1920	ketan	lemma	batch-039
+ketan hitam	K2096	ketan hitam	lemma	batch-042
 ketat	K0943	ketat	lemma	batch-019
 ketawa	K0427	ketawa	lemma	batch-009
 ketemu	K0216	ketemu	lemma	batch-005
@@ -251,6 +258,7 @@ keuangan	K0022	uang	derived_form	batch-001
 keyakinan	K0242	yakin	derived_form	batch-005
 khawatir	K0334	khawatir	lemma	batch-007
 kikil	K1921	kikil	lemma	batch-039
+kimchi	K2097	kimchi	lemma	batch-042
 kipas	K0285	kipas	lemma	batch-006
 kira-kira	K0576	kira-kira	lemma	batch-012
 kiri	K0371	kiri	lemma	batch-008
@@ -261,6 +269,7 @@ kita	K0005	kita	lemma	batch-001
 kok	K0625	kok	lemma	batch-013
 kol	K1973	kol	lemma	batch-040
 kolak	K1974	kolak	lemma	batch-040
+kolak pisang	K2098	kolak pisang	lemma	batch-042
 komplain	K0577	komplain	lemma	batch-012
 kompor	K0283	kompor	lemma	batch-006
 komputasi	K0198	komputer	derived_form	batch-004
@@ -269,8 +278,11 @@ kondisi	K0578	kondisi	lemma	batch-012
 kontrak	K0579	kontrak	lemma	batch-012
 kopi	K0173	kopi	lemma	batch-004
 kopi susu	K2045	kopi susu	lemma	batch-041
+kornet	K2099	kornet	lemma	batch-042
 kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
+krimer	K2100	krimer	lemma	batch-042
+kroket	K2101	kroket	lemma	batch-042
 kualitas	K1400	kualitas	lemma	batch-028
 kucing	K0946	kucing	lemma	batch-019
 kue	K1923	kue	lemma	batch-039
