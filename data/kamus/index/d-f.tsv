@@ -4,6 +4,8 @@ daerah	K0384	daerah	lemma	batch-008
 dagang	K0365	dagang	lemma	batch-008
 daging	K0170	daging	lemma	batch-004
 dalam	K0379	dalam	lemma	batch-008
+damai	K0544	damai	lemma	batch-011
+dandan	K0545	dandan	lemma	batch-011
 dapat	K0203	dapat	lemma	batch-005
 dapur	K0255	dapur	lemma	batch-006
 datang	K0018	datang	lemma	batch-001
@@ -12,6 +14,7 @@ debat	K0434	debat	lemma	batch-009
 dedaunan	K0161	daun	derived_form	batch-004
 dekat	K0090	dekat	lemma	batch-002
 demam	K0181	demam	lemma	batch-004
+denda	K0546	denda	lemma	batch-011
 dengar	K0035	dengar	lemma	batch-001
 depan	K0372	depan	lemma	batch-008
 desa	K0387	desa	lemma	batch-008
@@ -129,8 +132,13 @@ doa	K0447	doa	lemma	batch-009
 dokter	K0183	dokter	lemma	batch-004
 dompet	K0265	dompet	lemma	batch-006
 dong	K0049	dong	lemma	batch-001
+dosa	K0547	dosa	lemma	batch-011
+doyan	K0548	doyan	lemma	batch-011
 duduk	K0071	duduk	lemma	batch-002
 duduk-duduk	K0071	duduk	derived_form	batch-002
 duit	K0023	duit	lemma	batch-001
+dukung	K0549	dukung	lemma	batch-011
+durasi	K0550	durasi	lemma	batch-011
 elu	K0009	lu	variant	batch-001
 enggak	K0029	enggak	lemma	batch-001
+entah	K0551	entah	lemma	batch-011
