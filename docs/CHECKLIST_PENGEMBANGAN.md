@@ -430,6 +430,17 @@ Catatan: POS kontekstual dan leksikal masih menghasilkan metrik identik. Kenaika
 - [x] Menambahkan 10 record (`pos_0051`–`pos_0060`): 6 development dan 4 test.
 - [x] Total dataset menjadi **60 kalimat, 314 token, 36 development, 24 test**.
 - [x] Preflight struktural sebelum commit: JSON, ID, split, label/status POS, dan kecocokan token diperiksa tanpa temuan.
-- [ ] Menunggu workflow GitHub Actions menjalankan validator Python, evaluator development-only, dan regression suite.
+- [x] GitHub Actions run [#2](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45907643287): validator 60 kalimat/314 token berhasil; evaluator development berhasil; regression suite **137/137 lulus**.
 
 **Titik lanjut:** periksa hasil workflow; jangan gunakan 24 record test untuk menyetel aturan.
+
+
+### Hasil evaluasi batch keenam
+
+- [x] Validator: 60 kalimat, 314 token, 36 development, 24 test.
+- [x] Evaluator development: 148 token resolved; 90 benar; coverage 60,8%; accuracy 60,8%; selective accuracy 100%.
+- [x] Gold ambiguous: 1 ditahan, 0 dipaksakan.
+- [x] Regression suite: 137/137 lulus.
+- [ ] Audit cakupan kelas dengan abstention tinggi: NUM (0/2), PREP (1/7), ADV (4/13), dan CONJ (3/6). Jangan mengubah aturan atau kamus massal sebelum akar penyebab tiap contoh diperiksa.
+
+Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang terukur dibanding batch kelima karena ukuran dan komposisi development berubah. POS kontekstual masih identik dengan POS leksikal.
