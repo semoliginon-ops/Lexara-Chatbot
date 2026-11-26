@@ -6,6 +6,31 @@ from typing import Any
 from tools.pos_supplement import supplementary_pos
 
 
+_VERBAL_MORPHOLOGY_RULES = (
+    "prefix_meN", "prefix_di", "nasal_restoration_m",
+    "nasal_retention_meny",
+)
+
+
+def _morphological_verbal_pos(morphology_candidates: list[dict[str, Any]]) -> list[str]:
+    """Return VERB only when every validated analysis supports verbal morphology."""
+    if not morphology_candidates:
+        return []
+    for morphology in morphology_candidates:
+        rule = morphology.get("rule", "")
+        if not any(rule == prefix or rule.startswith(prefix + "+") for prefix in _VERBAL_MORPHOLOGY_RULES):
+            return []
+        matches = morphology.get("candidates", [])
+        if not matches:
+            return []
+        for match in matches:
+            entry = match.get("entry", {})
+            labels = entry.get("pos", []) if isinstance(entry, dict) else []
+            if not isinstance(labels, list) or "VERB" not in labels:
+                return []
+    return ["VERB"]
+
+
 def _sense_pos(entry: dict[str, Any]) -> list[dict[str, Any]]:
     """Return POS labels per sense, falling back to the entry-level POS."""
     entry_pos = entry.get("pos", [])
@@ -90,17 +115,24 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
             for candidate in candidates
         )
 
+        morphology_labels = _morphological_verbal_pos(
+            item.get("morphology_candidates", [])
+        )
+
         # Use the small audited supplement only when the dictionary has no
         # POS candidate and the token is not an unresolved derived form.
         supplement_label = None
         if not all_labels and not candidates and item.get("kind") == "word":
             supplement_label = supplementary_pos(item.get("token", ""))
 
-        if supplement_label:
+        if all_labels:
+            updated["pos_source"] = "dictionary"
+        elif morphology_labels:
+            all_labels = morphology_labels
+            updated["pos_source"] = "morphology"
+        elif supplement_label:
             all_labels = [supplement_label]
             updated["pos_source"] = "supplement"
-        elif all_labels:
-            updated["pos_source"] = "dictionary"
         elif has_unresolved_derivative:
             updated["pos_source"] = "requires_morphology"
         else:
