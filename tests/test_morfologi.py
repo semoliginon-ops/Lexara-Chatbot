@@ -19,6 +19,8 @@ class MorphologyTests(unittest.TestCase):
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
             "ambil", "kambil", "kunci", "ari", "tari", "nyanyi", "anyi", "sanyi", "kajar",
+            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
+            "penjara", "peniti", "penipuan", "penasaran", "penyanyi", "penyu",
         ]
         self.lexicon = build_lexicon([
             entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)
@@ -83,6 +85,16 @@ class MorphologyTests(unittest.TestCase):
         self.assertIn("jalan", self.bases("berjalan-jalan"))
     def test_reduplication_with_prefix_ber_second_example(self):
         self.assertIn("lari", self.bases("berlari-lari"))
+    def test_exact_peN_lexical_lemmas_are_not_split(self):
+        lexicalized = (
+            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
+            "penjara", "peniti", "penipuan", "penasaran", "penyanyi", "penyu",
+        )
+        for word in lexicalized:
+            with self.subTest(word=word):
+                self.assertEqual(analyze_morphology(word, self.lexicon), [])
+        self.assertEqual(analyze_morphology("PENGUIN", self.lexicon), [])
+
     def test_exact_lexical_match_is_not_stemmed(self): self.assertEqual(analyze_morphology("makan", self.lexicon), [])
     def test_unknown_form_is_not_forced(self): self.assertEqual(analyze_morphology("memperxyz", self.lexicon), [])
     def test_prefix_memper(self): self.assertIn("indah", self.bases("memperindah"))
