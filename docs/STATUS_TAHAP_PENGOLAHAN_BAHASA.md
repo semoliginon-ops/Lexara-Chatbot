@@ -570,3 +570,8 @@ File dataset yang telah di-commit dibaca ulang dari GitHub dan diperiksa secara 
 ## Otomatisasi verifikasi tanpa Termux — 27 November 2026
 
 Workflow `.github/workflows/pos-validation.yml` ditambahkan. Pada perubahan dataset POS, kamus, tools, atau tests di branch utama maupun pull request, GitHub Actions akan menjalankan validator dataset, evaluator yang hanya memuat development split, dan seluruh regression suite menggunakan Python 3.12. Workflow juga menyediakan pemicu manual. Workflow baru dibuat dan belum menjalani run; hasil pertama baru dapat dinilai setelah ada pemicu yang sesuai. Perubahan dokumentasi saja tidak memicu workflow agar penggunaan kuota Actions lebih hemat.
+
+
+## Penambahan batch keenam — 27 November 2026
+
+Dataset POS bertambah dari 50 menjadi 60 kalimat (`pos_0051`–`pos_0060`), terdiri dari 36 development dan 24 test, dengan 314 token berdasarkan anotasi. Cakupan baru mencakup negasi, verba berimbuhan, preposisi tujuan/asal, konjungsi sebab, demonstrativa, dan adjektiva predikatif. Preflight struktural sebelum commit lulus. Validator Python, evaluator development, dan regression suite setelah perubahan masih menunggu hasil GitHub Actions. Test split tetap ditahan.
