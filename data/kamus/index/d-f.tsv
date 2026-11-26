@@ -1,6 +1,7 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
 dadakan	K0760	dadakan	lemma	batch-016
+dadar gulung	K2018	dadar gulung	lemma	batch-041
 daerah	K0384	daerah	lemma	batch-008
 daftar	K0766	daftar	lemma	batch-016
 dagang	K0365	dagang	lemma	batch-008
@@ -53,6 +54,7 @@ demonstrasi	K1254	demonstrasi	lemma	batch-026
 denah	K1864	denah	lemma	batch-038
 denda	K0546	denda	lemma	batch-011
 dendam	K0776	dendam	lemma	batch-016
+dendeng	K2019	dendeng	lemma	batch-041
 dengar	K0035	dengar	lemma	batch-001
 denting	K1865	denting	lemma	batch-038
 denyut	K1866	denyut	lemma	batch-038
@@ -144,6 +146,7 @@ dimasak	K0052	masak	derived_form	batch-002
 dimasuki	K0067	masuk	derived_form	batch-002
 dimensi	K1264	dimensi	lemma	batch-026
 diminum	K0014	minum	derived_form	batch-001
+dimsum	K2020	dimsum	lemma	batch-041
 dimulai	K0225	mulai	derived_form	batch-005
 dinaikkan	K0069	naik	derived_form	batch-002
 dinamai	K0128	nama	derived_form	batch-003
@@ -275,6 +278,7 @@ emosional	K1288	emosional	lemma	batch-026
 empal	K1964	empal	lemma	batch-040
 empat	K0800	empat	lemma	batch-016
 empati	K1289	empati	lemma	batch-026
+emping	K2021	emping	lemma	batch-041
 empuk	K1880	empuk	lemma	batch-038
 enak	K0810	enak	lemma	batch-017
 enam	K0801	enam	lemma	batch-016
@@ -294,7 +298,13 @@ erat	K0813	erat	lemma	batch-017
 eror	K0814	eror	lemma	batch-017
 erosi	K1295	erosi	lemma	batch-026
 es	K0815	es	lemma	batch-017
+es batu	K2022	es batu	lemma	batch-041
+es campur	K2023	es campur	lemma	batch-041
+es doger	K2024	es doger	lemma	batch-041
 es jeruk	K2001	es jeruk	lemma	batch-040
+es kelapa	K2025	es kelapa	lemma	batch-041
+es kopi	K2027	es kopi	lemma	batch-041
+es krim	K2026	es krim	lemma	batch-041
 es teh	K2000	es teh	lemma	batch-040
 esai	K0816	esai	lemma	batch-017
 esensial	K1296	esensial	lemma	batch-026
