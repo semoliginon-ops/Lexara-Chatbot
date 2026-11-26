@@ -84,6 +84,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Jalankan ulang suite morfologi setelah penambahan tes negatif `diperkerjaan`; 34 lulus, 0 gagal.
 - [x] Tambahkan analisis konservatif reduplikasi berprefiks `ber-` (berjalan-jalan/berlari-lari) beserta regression tests.
 - [ ] Perluas inventaris imbuhan dan perubahan morfofonemik berdasarkan pengujian.
+- [~] Audit alomorf `meny-/peny-`: aturan kandidat retensi `ny` dan dua regression tests `menyanyi`/`menyanyikan` sudah ditambahkan; eksekusi ulang suite 44 tes masih menunggu.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 - [x] Menambahkan perlindungan restorasi nasal `peng-`: jangan membuat kandidat `k+akar` jika sisa setelah prefiks sudah merupakan lema kamus.
 - [x] Menambahkan tes positif `pengunci → kunci` dan tes negatif `pengambil → ambil`, bukan `kambil`.
