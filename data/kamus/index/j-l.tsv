@@ -23,6 +23,7 @@ jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jam dinding	K2316	jam dinding	lemma	batch-047
 jam pintar	K2399	jam pintar	lemma	batch-048
+jam tangan	K2638	jam tangan	lemma	batch-053
 jamin	K1378	jamin	lemma	batch-028
 jamu	K2032	jamu	lemma	batch-041
 jamur	K1997	jamur	lemma	batch-040
@@ -36,10 +37,13 @@ jarang	K0566	jarang	lemma	batch-012
 jari	K0906	jari	lemma	batch-019
 jaring	K1382	jaring	lemma	batch-028
 jarum	K2317	jarum	lemma	batch-047
+jas	K2648	jas	lemma	batch-053
+jas hujan	K2620	jas hujan	lemma	batch-053
 jatuh	K0907	jatuh	lemma	batch-019
 jauh	K0369	jauh	lemma	batch-008
 jawab	K0190	jawab	lemma	batch-004
 jawaban	K0190	jawab	derived_form	batch-004
+jeans	K2607	jeans	lemma	batch-053
 jejak	K0908	jejak	lemma	batch-019
 jelas	K0567	jelas	lemma	batch-012
 jelek	K0042	jelek	lemma	batch-001
@@ -53,10 +57,12 @@ jengkel	K0568	jengkel	lemma	batch-012
 jengkol	K1969	jengkol	lemma	batch-040
 jenis	K1384	jenis	lemma	batch-028
 jenuh	K0698	jenuh	lemma	batch-014
+jepit rambut	K2643	jepit rambut	lemma	batch-053
 jerit	K1385	jerit	lemma	batch-028
 jernih	K0911	jernih	lemma	batch-019
 jeruk	K0912	jeruk	lemma	batch-019
 jijik	K0684	jijik	lemma	batch-014
+jilbab	K2631	jilbab	lemma	batch-053
 jimat	K1386	jimat	lemma	batch-028
 jip	K2559	jip	lemma	batch-052
 joget	K0913	joget	lemma	batch-019
@@ -86,6 +92,7 @@ kabel LAN	K2429	kabel LAN	lemma	batch-049
 kabel USB	K2394	kabel USB	lemma	batch-048
 kabur	K0421	kabur	lemma	batch-009
 kacamata	K0916	kacamata	lemma	batch-019
+kacamata hitam	K2645	kacamata hitam	lemma	batch-053
 kacang	K1914	kacang	lemma	batch-039
 kacang hijau	K1970	kacang hijau	lemma	batch-040
 kacang mede	K2090	kacang mede	lemma	batch-042
@@ -113,6 +120,7 @@ kali	K0918	kali	lemma	batch-019
 kalimat	K1391	kalimat	lemma	batch-028
 kalkulator	K2319	kalkulator	lemma	batch-047
 kalkun	K2227	kalkun	lemma	batch-045
+kalung	K2640	kalung	lemma	batch-053
 kamar	K0254	kamar	lemma	batch-006
 kambing	K0919	kambing	lemma	batch-019
 kambing hutan	K2278	kambing hutan	lemma	batch-046
@@ -160,6 +168,8 @@ kasihan	K1395	kasihan	lemma	batch-028
 kasir	K0363	kasir	lemma	batch-008
 kasur	K0288	kasur	lemma	batch-006
 katak	K0927	katak	lemma	batch-019
+kaus dalam	K2624	kaus dalam	lemma	batch-053
+kaus kaki	K2623	kaus kaki	lemma	batch-053
 kawat	K2320	kawat	lemma	batch-047
 kaya	K0928	kaya	lemma	batch-019
 kayak	K0623	kayak	lemma	batch-013
@@ -167,6 +177,7 @@ kayaknya	K0661	kayaknya	lemma	batch-014
 kebab	K2033	kebab	lemma	batch-041
 kebapakan	K0103	bapak	derived_form	batch-003
 kebaperan	K0093	baper	derived_form	batch-002
+kebaya encim	K2651	kebaya encim	lemma	batch-053
 kebenaran	K0236	benar	derived_form	batch-005
 keberangkatan	K0208	berangkat	derived_form	batch-005
 kebesaran	K0043	besar	derived_form	batch-001
@@ -278,6 +289,7 @@ kering	K0319	kering	lemma	batch-007
 keripik	K0942	keripik	lemma	batch-019
 kerja	K0021	kerja	lemma	batch-001
 kertas	K0295	kertas	lemma	batch-006
+kerudung	K2630	kerudung	lemma	batch-053
 kerupuk	K1919	kerupuk	lemma	batch-039
 kerupuk ikan	K2127	kerupuk ikan	lemma	batch-043
 kerupuk kulit	K2128	kerupuk kulit	lemma	batch-043
@@ -350,6 +362,7 @@ kontrak	K0579	kontrak	lemma	batch-012
 kopi	K0173	kopi	lemma	batch-004
 kopi susu	K2045	kopi susu	lemma	batch-041
 kornet	K2099	kornet	lemma	batch-042
+korset	K2617	korset	lemma	batch-053
 kota	K0386	kota	lemma	batch-008
 kotor	K0322	kotor	lemma	batch-007
 krimer	K2100	krimer	lemma	batch-042
@@ -373,6 +386,7 @@ kunjungan	K1401	kunjungan	lemma	batch-028
 kunyah	K0477	kunyah	lemma	batch-010
 kunyit	K1924	kunyit	lemma	batch-039
 kunyit asam	K2036	kunyit asam	lemma	batch-041
+kupluk	K2629	kupluk	lemma	batch-053
 kupu-kupu	K2234	kupu-kupu	lemma	batch-045
 kura-kura	K2233	kura-kura	lemma	batch-045
 kurang	K0233	kurang	lemma	batch-005
@@ -438,6 +452,7 @@ lebar	K1422	lebar	lemma	batch-029
 lebay	K0097	lebay	lemma	batch-002
 lebih	K0234	lebih	lemma	batch-005
 lega	K0344	lega	lemma	batch-007
+legging	K2606	legging	lemma	batch-053
 leher	K1423	leher	lemma	batch-029
 lekas	K1424	lekas	lemma	batch-029
 lelah	K0581	lelah	lemma	batch-012
