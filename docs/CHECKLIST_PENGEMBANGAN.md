@@ -200,6 +200,15 @@ Pembaruan morfofonemik nasal: aturan restorasi `meng-` kini tidak menambahkan ka
 - [x] Periksa indeks token untuk lema yang diawali `peng-` dan `peny-/pen-`, termasuk `pengacara`, `pengadilan`, `pengemudi`, `penggaris`, `penguin`, `penjara`, `peniti`, `penipuan`, `penasaran`, `penyanyi`, dan `penyu`.
 - [x] Verifikasi alur morfologi: token yang sudah cocok persis dengan lema/varian/bentuk turunan dikembalikan tanpa stemming.
 - [x] Tambahkan regression test untuk memastikan 11 lema kanonis tersebut tidak dipecah sebagai imbuhan, termasuk pemeriksaan kapitalisasi `PENGUIN`.
-- [ ] Jalankan ulang seluruh suite morfologi setelah penambahan tes; jangan menaikkan angka tes terverifikasi sebelum eksekusi.
+- [x] Jalankan ulang seluruh suite morfologi terbaru (47 tes) pada salinan terisolasi yang direkonstruksi dari file GitHub; 47/47 lulus. Catatan: belum dijalankan dari checkout repository penuh.
 
 Catatan: audit tidak menemukan bug pada alur kecocokan kata utuh. Perubahan hanya menambah cakupan regression test; aturan morfologi tidak diubah. File tes kini berisi 47 metode uji, tetapi angka terverifikasi tetap 42 tes morfologi dan 95 tes komponen total sampai suite terbaru dijalankan.
+
+
+### Hasil eksekusi suite morfologi terbaru (27 November 2026)
+- [x] File `tests/test_morfologi.py` terbaru (47 metode) dijalankan bersama salinan `tools/morfologi.py` dan `tools/pencocokan_kamus.py` yang diambil dari GitHub.
+- [x] Hasil: **47 passed, 0 failed**.
+- [x] Total tes komponen terverifikasi secara terpisah menjadi **100 passed, 0 failed** (fondasi 45 + analisis teks 8 + morfologi 47).
+- [ ] Eksekusi dari checkout repository penuh dan validasi seluruh 60 batch kamus masih belum dilakukan.
+
+Batas validasi: eksekusi 47 tes dilakukan pada lingkungan Python terisolasi menggunakan salinan kode dan tes terbaru dari GitHub, bukan checkout repository lengkap. Karena itu hasil ini mengonfirmasi perilaku salinan sumber tersebut, tetapi tidak menggantikan validasi integrasi penuh di repository.
