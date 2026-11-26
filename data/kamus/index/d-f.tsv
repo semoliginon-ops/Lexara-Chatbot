@@ -67,6 +67,7 @@ dikeluarkan	K0068	keluar	derived_form	batch-002
 dikenal	K0215	kenal	derived_form	batch-005
 dikepalai	K0117	kepala	derived_form	batch-003
 dikirim	K0061	kirim	derived_form	batch-002
+dikit	K0657	dikit	lemma	batch-014
 dikurangi	K0233	kurang	derived_form	batch-005
 dilanjutkan	K0226	lanjut	derived_form	batch-005
 dilupakan	K0079	lupa	derived_form	batch-002
@@ -133,9 +134,11 @@ diundang	K0214	undang	derived_form	batch-005
 diusahakan	K0229	usaha	derived_form	batch-005
 diyakini	K0242	yakin	derived_form	batch-005
 doa	K0447	doa	lemma	batch-009
+doang	K0656	doang	lemma	batch-014
 dokter	K0183	dokter	lemma	batch-004
 dompet	K0265	dompet	lemma	batch-006
 dong	K0049	dong	lemma	batch-001
+dongkol	K0696	dongkol	lemma	batch-014
 dosa	K0547	dosa	lemma	batch-011
 doyan	K0548	doyan	lemma	batch-011
 duduk	K0071	duduk	lemma	batch-002
@@ -149,4 +152,5 @@ emang	K0615	emang	lemma	batch-013
 enggak	K0029	enggak	lemma	batch-001
 enggan	K0558	enggan	lemma	batch-012
 entah	K0551	entah	lemma	batch-011
+entaran	K0658	entaran	lemma	batch-014
 enteng	K0616	enteng	lemma	batch-013
