@@ -65,7 +65,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memperbaiki urutan percobaan prefiks dan menghapus aturan prefiks duplikat yang tidak tepat.
 - [x] Menambahkan kandidat konfiks ke-an, per-an, dan peN-an dengan validasi terhadap lema kamus.
 - [x] Menambahkan kandidat bentuk menge- untuk pola seperti mengecat; cakupan tetap terbatas.
-- [x] Menjalankan 18 regression tests morfologi versi terbaru pada lingkungan Python lokal terisolasi; 18 lulus, 0 gagal.
+- [x] Menjalankan 20 regression tests morfologi versi terbaru pada lingkungan Python lokal terisolasi; 20 lulus, 0 gagal.
+- [x] Menambahkan perlindungan untuk bentuk leksikal beranda, kemari, kemarin, terima, terus, perlu, dan pernah agar tidak dipotong sebagai prefiks secara keliru.
+- [x] Menambahkan tes negatif untuk memastikan beranda dan kemari tidak salah dianalisis sebagai bentuk berimbuhan.
 - [ ] Memperluas inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan pengujian.
 - [x] Mempertahankan validasi kamus untuk setiap kandidat lema dan tidak melakukan stemming pada kecocokan persis.
 
@@ -141,7 +143,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Tahap 2.3 — Validasi loader seluruh kamus masih terbuka; Tahap 2.4 — perluasan morfologi sedang berjalan dan tes versi terbaru menunggu eksekusi.**
 
-Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 71 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 71 lulus, 0 gagal (45 fondasi + 8 analyzer + 18 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap. GitHub Actions tidak dijalankan.
+Normalisasi, tokenizer, loader, pencocokan kamus, analyzer teks, dan prototipe morfologi telah melewati total 73 tes komponen yang dijalankan terpisah pada lingkungan Python lokal terisolasi: 73 lulus, 0 gagal (45 fondasi + 8 analyzer + 20 morfologi). Struktur dasar 60 batch (3.000 entri) telah diperiksa melalui konten GitHub, tetapi eksekusi langsung loader Python terhadap seluruh 60 file aktual masih belum dilakukan. Prototipe morfologi hanya menghasilkan kandidat yang cocok dengan kamus; cakupan aturan belum lengkap. GitHub Actions tidak dijalankan.
 
 ## Dokumen rujukan
 
