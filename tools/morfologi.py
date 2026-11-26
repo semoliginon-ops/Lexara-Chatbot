@@ -7,6 +7,7 @@ from tools.pencocokan_kamus import lookup_token, normalize_lookup_key
 
 
 _PREFIXES = (
+    ("memper", "prefix_memper"),
     ("menge", "prefix_meN"), ("meny", "prefix_meN"),
     ("meng", "prefix_meN"), ("men", "prefix_meN"),
     ("mem", "prefix_meN"), ("penge", "prefix_peN"),
