@@ -1,6 +1,7 @@
 # Token index — m-o
 # token\tid\tlemma\ttype\tbatch
 maaf	K0247	maaf	lemma	batch-005
+macan	K2237	macan	lemma	batch-045
 macet	K0398	macet	lemma	batch-008
 madu	K1926	madu	lemma	batch-039
 mager	K0091	mager	lemma	batch-002
@@ -235,6 +236,7 @@ menyusahkan	K0088	susah	derived_form	batch-002
 menyusui	K0175	susu	derived_form	batch-004
 meragukan	K0243	ragu	derived_form	batch-005
 merah	K1467	merah	lemma	batch-030
+merak	K2238	merak	lemma	batch-045
 meramaikan	K0249	ramai	derived_form	batch-005
 merdeka	K0979	merdeka	lemma	batch-020
 merek	K0980	merek	lemma	batch-020
