@@ -313,6 +313,7 @@ motoris	K0200	motor	derived_form	batch-004
 mouse komputer	K2379	mouse komputer	lemma	batch-048
 Move App	K2517	Move App	lemma	batch-051
 mual	K1480	mual	lemma	batch-030
+muara	K2721	muara	lemma	batch-055
 muat	K1481	muat	lemma	batch-030
 muatan	K0999	muatan	lemma	batch-020
 muda	K1483	muda	lemma	batch-030
@@ -329,6 +330,12 @@ murid	K0186	murid	lemma	batch-004
 museum	K1001	museum	lemma	batch-020
 musik	K1477	musik	lemma	batch-030
 musim	K0309	musim	lemma	batch-007
+musim dingin	K2748	musim dingin	lemma	batch-055
+musim gugur	K2751	musim gugur	lemma	batch-055
+musim hujan	K2747	musim hujan	lemma	batch-055
+musim kemarau	K2746	musim kemarau	lemma	batch-055
+musim panas	K2749	musim panas	lemma	batch-055
+musim semi	K2750	musim semi	lemma	batch-055
 musuh	K1478	musuh	lemma	batch-030
 mutu	K1479	mutu	lemma	batch-030
 nada	K1485	nada	lemma	batch-030
@@ -372,6 +379,7 @@ nelayan	K1494	nelayan	lemma	batch-030
 nenek	K1495	nenek	lemma	batch-030
 netral	K1496	netral	lemma	batch-030
 ngambek	K1006	ngambek	lemma	batch-021
+ngarai	K2731	ngarai	lemma	batch-055
 ngaret	K0098	ngaret	lemma	batch-002
 ngaruh	K0669	ngaruh	lemma	batch-014
 ngebayangin	K1007	ngebayangin	lemma	batch-021
@@ -409,6 +417,7 @@ nyebelin	K1022	nyebelin	lemma	batch-021
 nyeleneh	K1023	nyeleneh	lemma	batch-021
 nyolong	K1024	nyolong	lemma	batch-021
 nyusul	K1025	nyusul	lemma	batch-021
+oase	K2722	oase	lemma	batch-055
 oatmeal	K1979	oatmeal	lemma	batch-040
 obat	K0182	obat	lemma	batch-004
 obatan	K0182	obat	derived_form	batch-004
