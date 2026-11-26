@@ -307,3 +307,13 @@ Kode POS resmi sudah ditetapkan pada `docs/KAMUS.md`: `NOUN`, `VERB`, `ADJ`, `AD
 - Seluruh 110 tes sebelumnya tetap lulus setelah penambahan 13 tes POS kontekstual.
 
 **Status terbaru:** POS leksikal dan prototipe disambiguasi konteks lokal konservatif terverifikasi pada checkout repository penuh. Aturan konteks masih terbatas. Spesifikasi dataset POS, batch sampel 10 kalimat, validator, dan 8 regression tests sudah dibuat. Verifikasi validator dataset berhasil pada checkout Termux; verifikasi 8 regression tests masih menunggu. Berikutnya perluasan data dan evaluasi akurasi. Parser kalimat belum dimulai.
+
+
+### Pembaruan verifikasi validator dataset POS — 27 November 2026
+
+- `python -m tools.validasi_dataset_pos` pada checkout Termux → **VALIDASI DATASET POS BERHASIL**; 10 kalimat, 43 token, 6 development, 4 test. Pemeriksaan JSONL, ID, split, label POS, status anotasi, dan kecocokan token dengan tokenizer lulus.
+- `python -m unittest discover -s tests -p "test_validasi_dataset_pos.py" -v` → **Ran 9 tests — OK**, 0 gagal.
+- Jumlah tes pada file validator adalah 9 metode uji (bukan 8); checklist dan spesifikasi diperbaiki agar konsisten.
+- Status validator dan tes khususnya kini terverifikasi dari checkout Termux. Evaluasi akurasi POS belum dilakukan; dataset masih 10/100 kalimat.
+
+**Titik lanjut:** perluas dataset POS secara bertahap menuju 100 kalimat. Setelah cakupan development memadai, evaluasi kesalahan pada development set sebelum mengunci dan mengukur test set. Jangan mengklaim akurasi umum dari sampel 10 kalimat.
