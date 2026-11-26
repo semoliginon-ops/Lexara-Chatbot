@@ -197,7 +197,7 @@ Hanya status approved yang dihitung ke target 3.000 lemma.
 
 ## 5. Hitungan progres
 
-- Lemma disetujui: **99 / 3.000**
+- Lemma disetujui: **150 / 3.000**
 - Kandidat dalam tinjauan: **0**
 - Ditolak: **0**
 - Digabung/alias: **7 kelompok variasi/polisemi tercatat**
