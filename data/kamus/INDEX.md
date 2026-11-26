@@ -1,9 +1,9 @@
 # Index Kamus — Sistem Bahasa
 
 **Target:** 3.000 lemma  
-**Disetujui:** 500 lemma  
-**Batch aktif:** 001–010  
-**Token terindeks:** 1097
+**Disetujui:** 550 lemma  
+**Batch aktif:** 001–011  
+**Token terindeks:** 1147
 
 Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, register, varian, bentuk turunan, contoh, dan informasi leksikal lengkap berada di file batch.
 
@@ -33,6 +33,7 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 - [Batch 008](./batch-008.jsonl)
 - [Batch 009](./batch-009.jsonl)
 - [Batch 010](./batch-010.jsonl)
+- [Batch 011](./batch-011.jsonl)
 
 ## Aturan singkat
 
