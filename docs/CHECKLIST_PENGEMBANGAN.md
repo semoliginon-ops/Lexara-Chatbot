@@ -554,3 +554,15 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [x] Abstention VERB turun dari 23 menjadi 15; sisa total: ADJ 2, ADV 3, NOUN 19, VERB 15. Satu gold ambiguous tetap ditahan dan tidak dipaksakan.
 
 **Titik lanjut:** audit pola morfologi yang belum tercakup (termasuk bentuk ber- dan bentuk dengan perubahan/penambahan konsonan), lalu audit lema NOUN yang belum ada di indeks. Jangan memakai 40 record test untuk menyetel aturan.
+
+
+### Perbaikan prioritas bentuk turunan tercatat — 27 November 2026
+
+- [x] Mengutamakan relasi `derived_form` yang sudah tercatat di kamus daripada segmentasi imbuhan spekulatif.
+- [x] Memvalidasi bentuk turunan berawalan `meN-` dan `ber-` melalui lema dasar; bentuk `ber-` hanya diberi VERB jika relasi turunannya tercatat dan lema dasarnya ber-POS VERB.
+- [x] Menambahkan dua regression tests untuk `memasak` dan `bermain`, serta mempertahankan tes negatif agar `bekerja` dari lema NOUN `kerja` tidak dipaksakan menjadi VERB.
+- [x] Verifikasi Termux pada 27 November 2026: **149/149 regression tests lulus**.
+- [x] Evaluasi development-only: POS leksikal **222/255 benar**, coverage/accuracy **87,1%**, selective accuracy **100%**; POS kontekstual **223/255 benar**, coverage/accuracy **87,5%**, selective accuracy **100%**.
+- [x] Gold ambiguous: 1 ditahan, 0 dipaksakan; tidak ada kesalahan pada prediksi yang dikeluarkan.
+
+**Titik lanjut:** audit 8 kemunculan token VERB yang masih abstain pada development: `bekerja` (3), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Pisahkan kebutuhan metadata turunan, pola morfologi pasif/imperatif, dan lema dasar yang belum ada. Jangan gunakan 40 kalimat test untuk penyetelan.
