@@ -56,9 +56,10 @@ Branch kerja: `main`
 - Normalisasi: 8 tes lulus, 0 gagal.
 - Tokenizer: 12 tes lulus, 0 gagal.
 - Loader kamus: 12 tes lulus, 0 gagal.
+- Pencocokan kamus: 13 tes lulus, 0 gagal.
 - Total: **32 tes lulus, 0 gagal**, dijalankan di lingkungan Python lokal terisolasi menggunakan salinan file dari GitHub. GitHub Actions tidak dijalankan.
 - Sampel entri JSONL aktual dari Batch 001 berhasil dimuat dan seluruh field tetap terjaga.
-- Pencocokan token ke kamus, analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
+- Pencocokan token ke lemma, variants, dan derived_forms sudah dibuat. Analyzer morfologi, POS tagger, dan parser kalimat belum dibuat.
 - Belum ada integrasi Android.
 
 ## 4. Pekerjaan yang sedang dikerjakan
@@ -105,7 +106,8 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Tambahkan 12 regression tests untuk pemuatan batch, urutan batch, validasi struktur, serta deteksi ID/lemma duplikat.
 - [x] Hasil uji lokal loader: 12 lulus, 0 gagal.
 - [ ] Uji loader pada seluruh 60 file batch aktual.
-- [ ] Buat pencocokan token terhadap lemma dan token index.
+- [x] Buat pencocokan token terhadap lemma, variants, dan derived_forms.
+- [x] Pertahankan seluruh kandidat dan sense/POS; jangan putuskan makna tanpa konteks.
 - [ ] Buat pencarian token terhadap lemma dan token index yang relevan.
 - [ ] Bedakan hasil: lemma ditemukan, varian ditemukan, bentuk turunan tercatat, atau tidak dikenal.
 - [ ] Tangani satu kata dengan beberapa sense atau POS tanpa memilih makna secara gegabah.
@@ -198,4 +200,4 @@ Tahap ini tidak berarti sistem sudah memiliki pemahaman bahasa bebas seperti LLM
 
 ---
 
-**Titik lanjut:** uji `tools/kamus_loader.py` terhadap seluruh 60 batch aktual, lalu buat pencocokan token ke lemma, variants, dan derived_forms. Normalisasi, tokenizer, dan loader telah melewati total 32 tes lokal tanpa kegagalan.
+**Titik lanjut:** uji `tools/kamus_loader.py` terhadap seluruh 60 batch aktual, lalu buat pencocokan token ke lemma, variants, dan derived_forms. Normalisasi, tokenizer, loader, dan pencocokan kamus telah melewati total 45 tes lokal tanpa kegagalan.
