@@ -122,6 +122,7 @@ halte	K0391	halte	lemma	batch-008
 halus	K0880	halus	lemma	batch-018
 hambar	K0881	hambar	lemma	batch-018
 hambat	K1328	hambat	lemma	batch-027
+hamburger	K2051	hamburger	lemma	batch-041
 hampir	K0560	hampir	lemma	batch-012
 hancur	K0882	hancur	lemma	batch-018
 handuk	K0276	handuk	lemma	batch-006
@@ -172,6 +173,9 @@ ideal	K0900	ideal	lemma	batch-018
 identitas	K1364	identitas	lemma	batch-028
 ijazah	K0901	ijazah	lemma	batch-018
 ikan	K0168	ikan	lemma	batch-004
+ikan asin	K2028	ikan asin	lemma	batch-041
+ikan bakar	K2029	ikan bakar	lemma	batch-041
+ikan goreng	K2030	ikan goreng	lemma	batch-041
 iklan	K1365	iklan	lemma	batch-028
 iklim	K1366	iklim	lemma	batch-028
 ikut	K0212	ikut	lemma	batch-005
