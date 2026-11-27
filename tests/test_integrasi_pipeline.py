@@ -7,6 +7,7 @@ from tools.kamus_loader import load_dictionary_directory
 from tools.pencocokan_kamus import build_lexicon
 from tools.pos_context import disambiguate_pos_context
 from tools.pos_tagger import tag_pos
+from tools.parser_kalimat import parse_sentence
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -69,6 +70,18 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(item["pos"], ["NOUN", "VERB"])
         self.assertIsNone(item["context_pos"])
         self.assertEqual(item["pos_context_status"], "ambiguous")
+
+    def test_simple_sentence_parser_uses_real_dictionary_pipeline(self):
+        result = self.analyze("Aku sedang bekerja di rumah.")
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["sedang", "bekerja"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"preposition": "di", "phrase": ["rumah"]}],
+        )
 
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
