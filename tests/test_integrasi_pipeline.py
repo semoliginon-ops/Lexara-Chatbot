@@ -124,7 +124,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
 
     def test_fronted_causal_subordinate_uses_real_dictionary_pipeline(self):
-        parsed = parse_sentence(self.analyze("Karena hujan turun, aku berteduh."))
+        parsed = parse_sentence(self.analyze("Karena dia makan, aku pulang."))
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
         self.assertEqual(parsed["clauses"][0]["subordinator"], "karena")
@@ -132,7 +132,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["aku"])
 
     def test_fronted_temporal_subordinate_uses_real_dictionary_pipeline(self):
-        parsed = parse_sentence(self.analyze("Ketika malam tiba, mereka pulang."))
+        parsed = parse_sentence(self.analyze("Ketika dia makan, aku pulang."))
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
         self.assertEqual(parsed["clauses"][0]["subordinator"], "ketika")
