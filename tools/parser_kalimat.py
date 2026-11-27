@@ -15,6 +15,7 @@ _NOMINAL_POS = {"NOUN", "PRON"}
 _OBJECT_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _NOMINAL_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _ADVERBIAL_PREDICATE_POS = {"ADV"}
+_NEGATION_MARKERS = {"tidak", "belum"}
 
 
 def _effective_pos(item: dict[str, Any]) -> str | None:
@@ -124,7 +125,13 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     subject_set = set(subject_positions)
     predicate_positions = [verb_pos]
     cursor = verb_pos - 1
-    while cursor >= 0 and words[cursor]["pos"] in _ADVERBIAL_PREDICATE_POS:
+    while cursor >= 0 and (
+        words[cursor]["pos"] in _ADVERBIAL_PREDICATE_POS
+        or (
+            words[cursor]["token"].casefold() in _NEGATION_MARKERS
+            and words[cursor]["pos"] in {"ADV", "PART"}
+        )
+    ):
         predicate_positions.insert(0, cursor)
         cursor -= 1
 
@@ -189,6 +196,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Pelengkap, negasi, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas; negasi predikat adjektival/nominal, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
