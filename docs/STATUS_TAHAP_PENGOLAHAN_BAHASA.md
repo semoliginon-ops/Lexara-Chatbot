@@ -933,3 +933,12 @@ Tes integrasi menggunakan kamus 3.000 lema memastikan `lelah` dikenali sebagai A
 
 
 Validasi GitHub Actions Run #97 berhasil: **229/229 regression tests lulus**. Validasi struktur kamus memuat 60 batch/3.000 lema, validasi dataset POS, evaluasi development, dan validasi relasi pada batch terpilih juga sukses. [Lihat Run #97](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956239387).
+
+
+## Parser kalimat v1.5 — klausa subordinatif setelah klausa utama — 27 November 2026
+
+Parser kini mengenali pola klausa utama yang diikuti klausa subordinatif dengan penghubung eksplisit, misalnya `Aku pulang karena hujan turun.`. Pemeriksaan subordinasi dilakukan sebelum pemisahan koordinasi agar penghubung seperti `karena`, `ketika`, dan `walaupun` tidak keliru diperlakukan sebagai konjungsi setara.
+
+Klausa utama dan klausa subordinatif disimpan terpisah. Hubungan sebab, temporal, atau konsesi dicatat hanya jika penghubungnya termasuk daftar eksplisit. Tes unit mencakup contoh sebab dan temporal; tes integrasi memakai kalimat sebab melalui kamus 3.000 lema.
+
+**Batas:** setiap sisi harus dapat dianalisis sebagai klausa `parsed` atau `partial`; elipsis pada klausa subordinatif akhir, beberapa penghubung subordinatif dalam satu kalimat, dan relasi semantik yang tidak tercantum belum dipaksakan.
