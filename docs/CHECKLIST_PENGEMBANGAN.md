@@ -660,3 +660,13 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi kelompok Batch-001–005 dan regression suite menunggu pemicu GitHub Actions.
 
 **Batas audit:** koreksi ini memperbaiki klasifikasi relasi; tidak mengubah lemma, definisi, POS, sense, atau bentuk turunan.
+
+### Validasi otomatis kelompok Batch-001–005 — 27 November 2026
+
+- [x] GitHub Actions berhasil pada run `45931208148` setelah perbaikan format nomor batch tiga digit.
+- [x] Validasi relasi leksikal: 5 batch, 250 entri; seluruh batch berhasil secara struktural.
+- [x] Validasi dataset POS: 100 kalimat, 543 token; 60 development dan 40 test.
+- [x] Evaluasi POS development: leksikal coverage/accuracy 89,0%; kontekstual 89,4%; selective accuracy 100%; tidak ada kesalahan prediksi pada development.
+- [x] Regression suite: 169 tes lulus.
+
+**Batas hasil:** validasi relasi bersifat struktural, bukan penilaian kebenaran makna. Evaluasi POS hanya pada development split; test split tetap ditahan dan bukan dasar klaim akurasi umum.
