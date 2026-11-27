@@ -986,3 +986,8 @@ Pemeriksaan pada seluruh 60 batch memastikan lema `tunda` belum tersedia. Karena
 ## Hasil verifikasi penambahan `tunda` — GitHub Actions Run #101
 
 Run #101 berhasil. Kamus memuat 60 batch dan 3.001 lema; tes integrasi mengonfirmasi `ditunda` dikenali sebagai VERB dari kamus. Regresi penuh **233/233 tes lulus**. Evaluasi POS development kini mencatat dua abstention VERB: `hinggap` dan `berteduh`; `ditunda` tidak lagi abstain. Abstention NOUN untuk `pertandingan` masih tercatat sebagai masalah morfologi terpisah dan tidak boleh disamakan dengan keberhasilan pengenalan `ditunda`. Test set tetap tidak digunakan. [GitHub Actions Run #101](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45958528991).
+
+
+## Hasil penambahan `hinggap` — GitHub Actions Run #102
+
+Pemeriksaan dilakukan melalui indeks kamus sesuai alur kerja: `hinggap` belum tercatat. Lema K3003 ditambahkan sebagai VERB pada batch-060 dan dicatat pada indeks `g-i.tsv`. Tes integrasi development `Burung hinggap pada pagar.` memastikan POS VERB berasal dari kamus. Run #102 berhasil: 60 batch, 3.002 lema, dan **234/234 tes regresi lulus**. Evaluasi development menunjukkan abstention VERB tersisa satu, yaitu `berteduh`. Test set tetap tidak digunakan untuk penyetelan. [GitHub Actions Run #102](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45958936060).
