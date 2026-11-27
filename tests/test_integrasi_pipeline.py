@@ -167,6 +167,18 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_fronted_temporal_adverb_with_modal_uses_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Besok aku akan makan nasi."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["akan", "makan"])
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"adverb": "besok", "kind": "temporal"}],
+        )
+
     def test_multiple_fronted_adjuncts_use_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Di rumah pada malam hari aku bekerja."))
         self.assertEqual(parsed["status"], "parsed")
