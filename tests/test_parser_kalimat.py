@@ -711,6 +711,31 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertIsNone(result["pattern"])
         self.assertEqual(result["roles"]["subject"], [])
 
+    def test_abstains_on_postverbal_noun_when_kps_and_subject_ellipsis_are_ambiguous(self):
+        # K-P-S candidate: postverbal noun may be the inverted subject.
+        inverted = parse_sentence(analysis(
+            token("di", ["PREP"]),
+            token("rumah", ["NOUN"]),
+            token("terdengar", ["VERB"]),
+            token("suara", ["NOUN"]),
+        ))
+        self.assertEqual(inverted["status"], "unresolved")
+        self.assertEqual(inverted["roles"]["subject"], [])
+        self.assertEqual(inverted["roles"]["object"], [])
+        self.assertEqual(inverted["unresolved_tokens"], ["suara"])
+
+        # Same surface order can also contain an omitted subject plus an object.
+        omitted_subject = parse_sentence(analysis(
+            token("di", ["PREP"]),
+            token("rumah", ["NOUN"]),
+            token("membaca", ["VERB"]),
+            token("buku", ["NOUN"]),
+        ))
+        self.assertEqual(omitted_subject["status"], "unresolved")
+        self.assertEqual(omitted_subject["roles"]["subject"], [])
+        self.assertEqual(omitted_subject["roles"]["object"], [])
+        self.assertEqual(omitted_subject["unresolved_tokens"], ["buku"])
+
     def test_does_not_guess_postverbal_subject_in_kps_inversion(self):
         # "Terjadi kecelakaan" is K-P-S; inversion is not supported yet.
         # The postverbal noun must not be relabeled as an object.
