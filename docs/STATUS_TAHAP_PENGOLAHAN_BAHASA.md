@@ -1040,3 +1040,16 @@ Tes integrasi pipeline penuh ditambahkan untuk kalimat `Aku melihat diriku.`, `K
 GitHub Actions **Run #205 selesai dengan conclusion success**; **382/382 tes regresi lulus**. Log mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dan validasi valensi serta tahapan validasi lain pada workflow berhasil. [Lihat Run #205](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46042081787).
 
 **Batas penting:** parser saat ini masih memperlakukan `-ku/-mu` pada host NOUN sebagai posesif berdasarkan POS host; ia belum memberi label fungsi refleksif pada keseluruhan frasa `diriku/dirimu`. Untuk `dirinya`, fungsi `-nya` tetap unresolved antara posesif dan definit/anforis. Tes ini memastikan pengenalan morfologi dan mendokumentasikan batas tersebut, bukan menyatakan analisis refleksif sudah selesai. Pembedaan fungsi refleksif harus ditangani pada lapisan sintaksis/konteks dengan bukti yang memadai.
+
+### Kandidat hubungan referensi refleksif untuk diri + klitik — validasi tertunda (28 November 2026)
+
+Parser diperluas untuk mengekspos kandidat hubungan referensi refleksif pada frasa objek dengan host lema `diri`. Pemeriksaan dibatasi pada kecocokan orang antara satu subjek pronominal eksplisit dan klitik:
+- `aku/saya` + `diriku`
+- `kamu/engkau/kau` + `dirimu`
+- `dia/ia/beliau` + `dirinya`
+
+Keluaran baru memakai `reference_relation: "reflexive"` dengan status `candidate_by_person_agreement` dan mencatat `antecedent_candidate`. Kandidat alternatif `reflexive/non_reflexive` tetap dipertahankan karena kecocokan orang saja belum membuktikan koreferensi secara semantik. Jika orang subjek tidak cocok atau subjek pronominal eksplisit tidak tunggal, hubungan tetap `unresolved`. Fungsi klitik yang sudah ada tidak diubah: `-ku/-mu` tetap dianalisis sebagai penanda posesif pada host NOUN, sedangkan fungsi `-nya` tetap unresolved antara posesif dan definit/anforis.
+
+Tes integrasi diperluas untuk tiga pasangan yang cocok dan satu pasangan tidak cocok (`Aku melihat dirimu.`) agar sistem tidak mengklaim refleksif hanya berdasarkan bentuk `diri` + klitik. Perubahan kode parser dan tes sudah dikomit; hasil GitHub Actions belum dapat diverifikasi pada saat pencatatan ini. Karena itu, pekerjaan tetap berstatus parsial dan tidak ada tes yang dinyatakan lulus berdasarkan perubahan ini.
+
+**Batas:** ini hanya menghasilkan kandidat koreferensi berdasarkan kesesuaian orang pada pola objek sederhana. Sistem belum melakukan resolusi anafora lintas kalimat, belum menangani frasa subjek majemuk atau pronomina plural, dan belum memutuskan semua pemakaian refleksif/nonrefleksif. Tidak ada perubahan kamus atau indeks.
