@@ -1,6 +1,9 @@
 """End-to-end checks from morphology evidence to parser predicate voice."""
 import unittest
+from pathlib import Path
 
+from tools.kamus_loader import load_batch
+from tools.pemetaan_peran_semantis import map_semantic_roles
 from tools.analisis_teks import analyze_text
 from tools.hubungkan_voice_predikat import connect_predicate_voice
 from tools.parser_kalimat import parse_sentence
@@ -37,6 +40,9 @@ class VoicePipelineIntegrationTests(unittest.TestCase):
             entry("K9001", "tulis"),
             entry("K9002", "buka"),
         ])
+        root = Path(__file__).resolve().parents[1]
+        entries = load_batch(root / "data" / "kamus" / "batch-002.jsonl")
+        cls.buka_sense = next(item for item in entries if item["id"] == "K0065")["senses"][0]
 
     def test_real_active_morphology_connects_to_parser_predicate_head(self):
         analyzed = analyze_text("Rina menulis surat.", self.lexicon)
@@ -76,6 +82,31 @@ class VoicePipelineIntegrationTests(unittest.TestCase):
         self.assertEqual(result["voice"], "passive")
         self.assertEqual(result["predicate_head"], "ditulis")
 
+    def test_confirmed_passive_voice_flows_into_semantic_role_mapping(self):
+        analyzed = analyze_text("Pintu dibuka oleh Rina.", self.lexicon)
+        parsed = parse_sentence({"tokens": [
+            parser_token("Pintu", "NOUN"),
+            parser_token("dibuka", "VERB"),
+            parser_token("oleh", "PREP"),
+            parser_token("Rina", "NOUN"),
+            {
+                "token": ".",
+                "kind": "punctuation",
+                "pos": [],
+                "pos_status": "not_applicable",
+            },
+        ]})
+        self.assertEqual(parsed["status"], "parsed")
+        voice = connect_predicate_voice(parsed, analyzed)
+        self.assertEqual(voice["status"], "identified")
+        self.assertEqual(voice["voice"], "passive")
+        mapped = map_semantic_roles(parsed, self.buka_sense, voice=voice["voice"])
+        self.assertEqual(mapped["status"], "ambiguous")
+        self.assertTrue(all(
+            frame["arguments"][1]["semantic_role"] == "PATIENT"
+            and frame["arguments"][1]["value"] == ["Pintu"]
+            for frame in mapped["candidates"]
+        ))
     def test_ter_form_remains_unresolved_through_pipeline(self):
         analyzed = analyze_text("Pintu terbuka.", self.lexicon)
         parsed = parse_sentence({"tokens": [
