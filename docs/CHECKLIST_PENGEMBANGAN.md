@@ -722,3 +722,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-021–025 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** relasi lain dipertahankan jika masih dapat dibenarkan berdasarkan definisi yang tersedia. Perubahan hanya pada relasi leksikal; lemma dan ID tidak diubah. Validasi otomatis memeriksa struktur dan regresi, bukan membuktikan seluruh makna kamus.
+
+
+### Audit dan koreksi semantik Batch-026–030 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-026 sampai Batch-030.
+- [x] Batch-026: memindahkan `olok-olok` dari sinonim `ejek` ke `related_terms`; bentuk nomina tersebut bukan padanan langsung verba.
+- [x] Batch-027: memindahkan `buas` dari sinonim `galak` ke `related_terms` karena buas menekankan sifat liar/ganas; memindahkan `ilustrasi` dari sinonim `gambaran` ke `related_terms` karena ilustrasi tidak selalu berupa uraian atau bayangan.
+- [x] Batch-028: tidak ditemukan koreksi relasi yang cukup pasti; seluruh entri dipertahankan.
+- [x] Batch-029: memindahkan `dilahirkan` dari sinonim `lahir` ke `related_terms` (bentuk pasif/kausatif); memindahkan `layani` dari sinonim `layan` ke `related_terms` (bentuk turunan/perintah); memindahkan `buang` dari sinonim `lempar` ke `related_terms` (membuang memiliki makna membuang sesuatu, tidak sekadar melontarkan); memperbaiki relasi `licin`: menghapus entri salah ketik `kesat?` dan sinonim terlalu luas `halus`, mengganti antonim `kasar` dengan `kesat`.
+- [x] Batch-030: memindahkan `berisi` dari sinonim `muat` ke `related_terms`; kemampuan menampung tidak sama dengan keadaan sudah berisi.
+- [ ] Validasi struktural Batch-026–030 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** perubahan hanya menyentuh relasi leksikal; lemma dan ID tetap. Batch-028 lulus audit manual tanpa perubahan. Validasi otomatis menguji struktur dan regresi, bukan keseluruhan ketepatan semantik kamus.
