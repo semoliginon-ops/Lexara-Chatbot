@@ -26,6 +26,11 @@ class ContextualPosTests(unittest.TestCase):
             entry("K0005", "sedang", ["ADV"]), entry("K0006", "di", ["PREP"]),
             entry("K0007", "itu", ["PRON"]), entry("K0008", "aku", ["PRON"]),
             entry("K0009", "rajin", ["ADJ"]), entry("K0010", "disiplin", ["NOUN", "ADJ"]),
+            entry("K0011", "tetap", ["ADJ", "ADV"], [
+                {"sense_id": "K0011-S1", "definition": "Tidak berubah.", "pos": "ADJ"},
+                {"sense_id": "K0011-S2", "definition": "Berlanjut.", "pos": "ADV"},
+            ]),
+            entry("K0012", "bekerja", ["VERB"]),
         ]
         self.lexicon = build_lexicon(self.entries)
 
