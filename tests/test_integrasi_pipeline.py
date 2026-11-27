@@ -706,7 +706,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         }
         for surface, (base, clitic) in cases.items():
             with self.subTest(surface=surface):
-                result = analyze_text(surface, self.lexicon)
+                result = self.analyze(surface)
                 token = self.token(result, surface)
                 self.assertEqual(token["kind"], "word")
                 self.assertEqual(token["status"], "unknown")
