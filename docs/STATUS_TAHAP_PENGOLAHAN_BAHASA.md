@@ -1012,3 +1012,13 @@ Tes integrasi pipeline kamus → POS → parser ditambahkan untuk enam bentuk `g
 GitHub Actions **Run #201 selesai dengan conclusion success**; **378/378 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil. Coverage dan accuracy POS kontekstual development tetap 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #201](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46032249459).
 
 **Batas:** pengujian baru mencakup enam bentuk informal perkotaan yang merupakan lema/varian dari dua entri PRON. Ini belum membuktikan seluruh pemakaian regional, ragam hormat, pronomina refleksif, demonstratif, interogatif, atau indefinit. Kandidat yang tidak ditemukan di indeks belum ditambahkan; perlu persetujuan eksplisit pengguna sebelum perubahan kamus.
+
+### Penambahan lema refleksif dan demonstratif — Run #203 (27 November 2026)
+
+Atas persetujuan pengguna, enam lema ditambahkan ke `data/kamus/batch-060.jsonl: `begini` (K3021, ADV), `begitu` (K3022, ADV), `diri` (K3023, NOUN), `ini` (K3024, PRON), `itu` (K3025, PRON), dan `sendiri` (K3026, ADJ+ADV). Sumber kamus, empat shard indeks terkait, dan `data/kamus/INDEX.md` diperbarui dalam satu commit. Jumlah menjadi **3.025 lema dalam 60 batch** dan **3.607 token terindeks**.
+
+POS demonstratif `ini` dan `itu` dipakai sebagai kategori PRON dalam taksonomi proyek, dengan catatan bahwa keduanya juga dapat mendampingi nomina. `begini` dan `begitu` dicatat sebagai ADV; `diri` sebagai NOUN; `sendiri` sebagai ADJ+ADV. Bentuk `diriku`, `dirimu`, dan `dirinya` belum ditambahkan sebagai lema terpisah karena perlu ditangani bersama analisis morfologi/klitik.
+
+Run #202 sempat gagal karena validator kamus lengkap dan satu assertion integrasi masih mengharapkan 3.019 entri. Ekspektasi keduanya diperbarui menjadi 3.025. **Run #203 selesai dengan conclusion success**: validasi relasi untuk batch 058–060, validasi kamus lengkap 3.025 lema, validasi valensi, validasi dataset POS, evaluasi development, dan **378/378 tes regresi lulus**. Coverage dan accuracy POS development tetap 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #203](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46034097778).
+
+**Batas:** Run #203 memvalidasi struktur kamus dan regresi yang sudah ada, tetapi belum menambahkan tes pipeline khusus untuk enam lema baru. Fungsi demonstratif sebagai penentu nomina vs pengganti frasa nominal, fungsi refleksif `diri/sendiri`, dan konstruksi adverbial `begini/begitu` masih perlu diuji sebelum cakupan sintaksisnya dinyatakan tersedia.
