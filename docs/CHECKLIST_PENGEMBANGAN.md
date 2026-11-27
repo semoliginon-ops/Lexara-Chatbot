@@ -938,3 +938,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #93: **222/222 regression tests lulus**; validasi kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas:** klasifikasi penghubung bukan pemahaman semantik lengkap. Sebab dan konsesi masih diuji dengan POS terkendali; arah hubungan, klausa awal bertanda `karena`, konstruksi bertanda koma, elipsis, dan klausa tanpa verba eksplisit belum didukung.
+
+### Parser kalimat v1.3 — klausa subordinatif awal
+
+- [x] Mengenali pola penghubung subordinatif + klausa awal berverba + koma + klausa utama.
+- [x] Menyimpan analisis kedua klausa secara terpisah dan menandai relasi pada klausa subordinatif awal.
+- [x] Menguji relasi sebab `Karena dia makan, aku pulang.` melalui kamus asli.
+- [x] Menguji relasi temporal `Ketika dia makan, aku pulang.` melalui kamus asli.
+- [x] Memastikan klausa eliptis `Walaupun lelah` tidak dipaksakan menjadi klausa lengkap.
+- [x] GitHub Actions Run #96: **227/227 regression tests lulus**; validasi kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas:** hanya satu klausa subordinatif awal dengan predikat teridentifikasi dan satu koma pemisah. Klausa eliptis, subordinasi bertingkat, dan beberapa klausa awal belum didukung.
