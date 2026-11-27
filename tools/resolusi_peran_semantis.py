@@ -72,8 +72,8 @@ def resolve_semantic_role_candidates(
             raise ValueError("setiap kandidat harus memiliki array arguments")
         candidate_states[frame_id] = {
             "candidate": candidate,
-            "supports": [],
-            "contradictions": [],
+            "supports": {},
+            "contradictions": {},
         }
 
     for evidence in normalized_evidence:
@@ -95,24 +95,39 @@ def resolve_semantic_role_candidates(
             ignored.append({**evidence, "reason": "weak_evidence_not_decisive"})
             continue
         target = "supports" if evidence["polarity"] == "supports" else "contradictions"
-        state[target].append(evidence)
+        state[target].setdefault(evidence["argument_id"], []).append(evidence)
 
-    supported = [
-        frame_id for frame_id, state in candidate_states.items()
-        if state["supports"] and not state["contradictions"]
-    ]
-    excluded = [
-        frame_id for frame_id, state in candidate_states.items()
-        if state["contradictions"] and not state["supports"]
-    ]
+    # Compare alternatives only on the same argument slot. Evidence about
+    # different arguments cannot be combined to manufacture a frame choice.
+    argument_ids = {
+        argument_id
+        for state in candidate_states.values()
+        for argument_id in (*state["supports"].keys(), *state["contradictions"].keys())
+    }
+    decisive_winners = set()
+    for argument_id in argument_ids:
+        for frame_id, state in candidate_states.items():
+            has_support = bool(state["supports"].get(argument_id))
+            has_contradiction = bool(state["contradictions"].get(argument_id))
+            if not has_support or has_contradiction:
+                continue
+            alternatives_excluded = all(
+                bool(other["contradictions"].get(argument_id))
+                and not bool(other["supports"].get(argument_id))
+                for other_id, other in candidate_states.items()
+                if other_id != frame_id
+            )
+            if alternatives_excluded:
+                decisive_winners.add(frame_id)
 
     used = [
         evidence
         for state in candidate_states.values()
-        for evidence in state["supports"] + state["contradictions"]
+        for evidence_list in (*state["supports"].values(), *state["contradictions"].values())
+        for evidence in evidence_list
     ]
-    if len(supported) == 1 and len(excluded) == len(candidate_states) - 1:
-        selected_id = supported[0]
+    if len(decisive_winners) == 1:
+        selected_id = next(iter(decisive_winners))
         result["candidates"] = [candidate_states[selected_id]["candidate"]]
         result["status"] = "mapped"
         result["reason"] = None
