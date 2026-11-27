@@ -1145,3 +1145,13 @@ Menambahkan dua tes integrasi melalui pipeline kamus/POS nyata untuk memastikan 
 GitHub Actions **Run #224 selesai dengan conclusion success**; **397/397 tes regresi lulus**. [Lihat Run #224](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081115402).
 
 Perubahan hanya menambahkan tes integrasi; tidak mengubah perilaku parser, kamus, batch, atau indeks. Inversi tetap terbatas pada syarat valensi tunggal yang sudah diterapkan.
+
+### Klausa konsesif penuh dengan penanda `meskipun` — Run #225 (28 November 2026)
+
+Menambahkan dua tes integrasi melalui pipeline kamus/POS nyata untuk klausa konsesif penuh:
+- `Aku pergi meskipun hujan turun.` — klausa utama dan subordinatif masing-masing S-P; relasi `konsesi`.
+- `Meskipun hujan turun, aku pergi.` — klausa subordinatif di depan dipisahkan koma, kedua klausa S-P; relasi `konsesi`.
+
+GitHub Actions **Run #225 selesai dengan conclusion success**; **399/399 tes regresi lulus**. [Lihat Run #225](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081250314).
+
+Tes ini menambah cakupan integrasi untuk penanda `meskipun`; tidak mengubah parser, kamus, batch, atau indeks. Bentuk konsesif eliptis tetap memiliki status `partial` sesuai bukti yang tersedia.
