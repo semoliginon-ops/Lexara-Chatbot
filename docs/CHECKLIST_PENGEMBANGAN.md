@@ -771,3 +771,17 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-041–045 dan regression suite menunggu GitHub Actions.
 
 **Catatan kualitas:** kelompok ini memuat 250 lema dengan definisi sense, tetapi belum memiliki anotasi sinonim/antonim. Kekosongan anotasi harus diperlakukan sebagai coverage gap, bukan kesalahan validasi atau relasi yang sudah benar.
+
+
+### Audit Batch-046–050 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-046 sampai Batch-050, termasuk pemeriksaan anotasi relasi dan cakupan related_terms.
+- [x] Batch-046: 50 entri; seluruhnya memiliki related_terms; tidak ada synonyms/antonyms pada tingkat entri maupun sense.
+- [x] Batch-047: 50 entri; seluruhnya memiliki related_terms; tidak ada synonyms/antonyms pada tingkat entri maupun sense.
+- [x] Batch-048: 50 entri; seluruhnya memiliki related_terms; tidak ada synonyms/antonyms pada tingkat entri maupun sense.
+- [x] Batch-049: 50 entri; seluruhnya memiliki related_terms; tidak ada synonyms/antonyms pada tingkat entri maupun sense.
+- [x] Batch-050: 50 entri; seluruhnya memiliki related_terms; tidak ada synonyms/antonyms pada tingkat entri maupun sense.
+- [x] Tidak ditemukan koreksi related_terms yang cukup pasti dalam pemeriksaan kelompok ini; tidak menambahkan sinonim/antonim tebakan.
+- [ ] Validasi struktural Batch-046–050 dan regression suite menunggu GitHub Actions.
+
+**Catatan kualitas:** kelompok ini memiliki cakupan related_terms pada seluruh 250 entri, tetapi belum memiliki anotasi sinonim/antonim. Ini dicatat sebagai coverage gap untuk relasi sinonim/antonim, bukan kegagalan struktur atau bukti bahwa relasi tersebut tidak ada dalam bahasa.
