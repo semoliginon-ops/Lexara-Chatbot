@@ -359,7 +359,7 @@ Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semolig
 - Tidak ada kesalahan pada prediksi POS kontekstual yang dikeluarkan.
 - Lima abstention yang tersisa adalah lima kemunculan dari tiga nama orang. Nama orang tidak dipaksakan menjadi lema kamus atau label POS pada tahap ini; pengenalannya ditunda ke tahap konteks/memory.
 - Test split 40 kalimat tetap ditahan dan tidak digunakan untuk penyetelan.
-- GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324) berhasil: validasi kamus, dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
+- GitHub Actions [Run #116](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324) berhasil: validasi kamus, dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
 
 ### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
