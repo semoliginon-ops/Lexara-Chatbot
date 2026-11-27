@@ -206,7 +206,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Mencakup bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang.
 - [x] Menyimpan expected POS per token pada dataset JSONL.
 - [x] Menjalankan regression suite seluruh komponen: 182/182 lulus pada GitHub Actions Run #75 (catatan historis).
-- [x] Validasi terpadu terbaru Run #113: dataset 100 kalimat/543 token tervalidasi, evaluasi development POS berhasil, dan **241/241 regression tests lulus**.
+- [x] Validasi terpadu terbaru Run #114: dataset 100 kalimat/543 token tervalidasi, evaluasi development POS berhasil, dan **242/242 regression tests lulus**.
 - [ ] Memperluas variasi dataset untuk bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang; test split yang ada tetap tersegel.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
