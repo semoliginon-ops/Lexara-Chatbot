@@ -15,6 +15,7 @@ on:
       - "tools/analisis_teks.py"
       - "tools/hubungkan_voice_predikat.py"
       - "tests/test_hubungkan_voice_predikat.py"
+      - "tests/test_voice_pipeline_integration.py"
       - "tests/test_analisis_teks.py"
       - "data/kamus/batch-*.jsonl"
       - ".github/workflows/pos-validation.yml"
