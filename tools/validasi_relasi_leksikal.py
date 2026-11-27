@@ -1,8 +1,9 @@
 """Validasi struktur relasi leksikal pada kamus Sistem Bahasa.
 
 Pemeriksaan ini bersifat struktural, bukan penilaian kebenaran linguistik.
-Jalankan untuk satu batch:
+Jalankan untuk satu atau beberapa batch:
     python -m tools.validasi_relasi_leksikal data/kamus/batch-001.jsonl
+    python -m tools.validasi_relasi_leksikal data/kamus/batch-{036..060}.jsonl
 """
 from __future__ import annotations
 
@@ -97,31 +98,56 @@ def validate_relation_batch(path: str | Path) -> tuple[int, list[str]]:
     return len(entries), validate_entries_relations(entries)
 
 
+def validate_relation_batches(paths: Iterable[str | Path]) -> list[tuple[Path, int, list[str]]]:
+    """Validate multiple batch files sequentially, retaining per-file results."""
+    results: list[tuple[Path, int, list[str]]] = []
+    for path in paths:
+        batch_path = Path(path)
+        entry_count, errors = validate_relation_batch(batch_path)
+        results.append((batch_path, entry_count, errors))
+    return results
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Validasi struktur relasi leksikal pada satu batch kamus."
+        description="Validasi struktur relasi leksikal pada satu atau beberapa batch kamus."
     )
-    parser.add_argument("batch", type=Path, help="Path ke satu file batch JSONL")
+    parser.add_argument(
+        "batches",
+        type=Path,
+        nargs="+",
+        help="Satu atau beberapa path file batch JSONL; diproses berurutan satu per satu",
+    )
     args = parser.parse_args()
 
-    try:
-        entry_count, errors = validate_relation_batch(args.batch)
-    except (OSError, ValueError) as exc:
-        parser.exit(1, f"VALIDASI RELASI GAGAL: {exc}\n")
+    failed = False
+    total_entries = 0
+    for batch_path in args.batches:
+        print(f"\\n[{batch_path}]")
+        try:
+            entry_count, errors = validate_relation_batch(batch_path)
+        except (OSError, ValueError) as exc:
+            print(f"VALIDASI RELASI GAGAL: {exc}")
+            failed = True
+            continue
 
-    if errors:
-        print("VALIDASI RELASI GAGAL")
-        for error in errors:
-            print(f"- {error}")
-        return 1
+        total_entries += entry_count
+        if errors:
+            print("VALIDASI RELASI GAGAL")
+            for error in errors:
+                print(f"- {error}")
+            failed = True
+        else:
+            print("VALIDASI RELASI BERHASIL")
+            print(f"Entri diperiksa : {entry_count}")
 
-    print("VALIDASI RELASI BERHASIL")
-    print(f"Entri diperiksa : {entry_count}")
+    print("\\nRINGKASAN VALIDASI RELASI")
+    print(f"Batch diperiksa : {len(args.batches)}")
+    print(f"Total entri     : {total_entries}")
     print("Pemeriksaan     : tipe array, teks nonkosong, duplikasi,")
     print("                  relasi terhadap lemma sendiri, dan sense_id")
     print("Catatan         : hasil ini hanya validasi struktur, bukan makna.")
-    return 0
-
+    return 1 if failed else 0
 
 if __name__ == "__main__":
     raise SystemExit(main())
