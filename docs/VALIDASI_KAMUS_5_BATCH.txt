@@ -1,2 +1,2 @@
-36 40
-# batch 036-040: audit semantik selesai; jalankan validasi kelompok
+41 45
+# batch 041-045: audit selesai; validasi struktural kelompok
