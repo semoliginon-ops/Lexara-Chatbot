@@ -344,7 +344,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["predicate"], ["sedang", "bekerja"])
         self.assertEqual(
             parsed["roles"]["adjuncts"],
-            [{"preposition": "di", "phrase": ["rumah"]}],
+            [{"preposition": "dari", "phrase": ["rumah"]}],
         )
 
     def test_fronted_prepositional_adjunct_uses_real_dictionary_pipeline(self):
@@ -668,10 +668,10 @@ class FullDictionaryPipelineTests(unittest.TestCase):
 
 
     def test_fronted_prepositional_adjunct_keeps_explicit_pronoun_subject_in_real_pipeline(self):
-        analyzed = self.analyze("Di rumah dia bekerja.")
+        analyzed = self.analyze("Dari rumah dia bekerja.")
 
         expected = {
-            "di": "PREP",
+            "dari": "PREP",
             "rumah": "NOUN",
             "dia": "PRON",
             "bekerja": "VERB",
