@@ -381,3 +381,8 @@ Lema `berteduh` (VERB, K3004) telah ditambahkan ke batch-060 dan indeks kamus. R
 ### Pemutakhiran Tahap 2.5 — 27 November 2026
 
 Lema `baru` (ADJ, K3005) telah ditambahkan ke kamus dan INDEX. Run #104 berhasil: 3.004 lema, 236/236 tes regresi; seluruh 23 token ADJ development dikenali secara kontekstual.
+
+
+### Pemutakhiran Tahap 2.5 — 27 November 2026
+
+Atas persetujuan pengguna, lema `dulu` (ADV, K3006) ditambahkan dengan dua konteks temporal/urutan dan dicatat pada INDEX. Validasi GitHub Actions sedang menunggu hasil. Lema `tetap` tetap ditahan sampai fungsi ADJ dan ADV dianalisis bersama. Setiap penambahan lema berikutnya wajib mendapat persetujuan pengguna terlebih dahulu.
