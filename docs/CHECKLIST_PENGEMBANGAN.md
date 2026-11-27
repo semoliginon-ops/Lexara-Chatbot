@@ -834,3 +834,13 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menambahkan tiga regression tests untuk konstruksi modal dan penggunaan tunggal.
 - [x] GitHub Actions Run #78: **190/190 tes lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 - [ ] Memperluas modalitas lain hanya setelah kelas kata dan perilakunya diverifikasi melalui kamus/pipeline.
+
+
+### Parser kalimat v0.5 — predikat nonverbal sederhana
+
+- [x] Mengenali predikat adjektival pada pola berpenanda subjek yang cukup jelas, misalnya pronomina atau demonstrativa.
+- [x] Mengenali pola predikat nominal sederhana dengan penanda numeralia, misalnya `Ayah seorang guru`.
+- [x] Menahan pola nomina-adjektiva yang ambigu, misalnya `rumah besar`, sebagai unresolved.
+- [x] Menambahkan empat regression tests untuk predikat adjektival, nominal, dan abstention.
+- [ ] Memverifikasi konstruksi nonverbal melalui pipeline kamus/POS nyata dan memperluas cakupan hanya setelah bukti POS memadai.
+- [ ] Menjalankan regression suite penuh melalui GitHub Actions.
