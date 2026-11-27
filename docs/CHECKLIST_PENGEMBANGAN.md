@@ -62,7 +62,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] `batch-014.jsonl`: 50 entri; lima referensi diri pada K0656 `doang`, K0661 `kayaknya`, K0672 `percaya diri`, K0692 `sungkan`, dan K0693 `terpaksa` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
 - [x] `batch-015.jsonl`: 50 entri; lima referensi diri pada K0720 `bandel`, K0735 `biadab`, K0741 `boncos`, K0748 `canggung`, dan K0750 `cerewet` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
 - [x] `batch-016.jsonl`: 50 entri; tiga referensi diri pada K0755 `ceroboh`, K0762 `dahaga`, dan K0764 `dalih` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [ ] `batch-017.jsonl`: menunggu pemeriksaan dan verifikasi validator struktur relasi di Termux.
+- [x] `batch-017.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
+- [ ] `batch-018.jsonl`: menunggu pemeriksaan dan verifikasi validator struktur relasi di Termux.
 - [ ] Lanjutkan validasi struktur batch berikutnya satu per satu; hasil validasi struktur tidak dianggap sebagai audit kebenaran makna.
 
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
