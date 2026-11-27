@@ -66,6 +66,9 @@ jobs:
       - name: Validate full 3,014-lemma dictionary
         run: python -m tools.validasi_kamus_lengkap
 
+      - name: Validate per-sense valency metadata
+        run: python -m tools.validasi_valensi data/kamus/batch-*.jsonl
+
       - name: Validate POS dataset
         run: python -m tools.validasi_dataset_pos
 
