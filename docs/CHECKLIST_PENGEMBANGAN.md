@@ -140,7 +140,8 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memperketat validasi kecocokan frame: argumen inti yang dikenali parser tidak boleh diabaikan, dan OBL tanpa batas preposisi eksplisit tidak dipetakan otomatis. Run #134: 291/291 tes regresi lulus.
 - [x] Membuat detektor voice morfologis konservatif berbasis kandidat lema VERB yang tervalidasi: di- sebagai kandidat pasif; meN-/memper- sebagai kandidat aktif; ter-/ber- dan bentuk tanpa bukti eksplisit tetap unresolved. Run #136: 304/304 tes regresi lulus.
 - [x] Mengintegrasikan hasil deteksi voice morfologis ke keluaran `analyze_text()` per token tanpa memilih kepala predikat atau mengubah parser. Run #137: 307/307 tes regresi lulus.
-- [x] Membuat adapter `tools/hubungkan_voice_predikat.py` untuk menghubungkan bukti voice token ke `predicate_structure.head` pada klausa sederhana yang diparse penuh; adapter menolak kepala berulang, hasil partial, dan struktur klausa majemuk. 9 tes khusus ditambahkan; Run #138 sukses dengan 316/316 tes regresi.
+- [x] Membuat adapter `tools/hubungkan_voice_predikat.py` untuk menghubungkan bukti voice token ke `predicate_structure.head` pada klausa sederhana yang diparse penuh; adapter menolak kepala berulang, hasil partial, dan struktur klausa majemuk. Run #138 sukses (316/316 tes).
+- [x] Menguji jalur morfologi nyata → `analyze_text()` → kepala predikat parser → adapter untuk contoh aktif, pasif, dan bentuk `ter-` yang tetap unresolved. Run #139 sukses (319/319 tes regresi).
 - [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice terintegrasi dan diuji.
 - [x] Menambahkan tes konservatif CAUSER versus INSTRUMENT: `Palu memecahkan kaca` mempertahankan dua frame alternatif, sedangkan `dengan palu` tidak otomatis dipromosikan menjadi argumen inti. Run #135: 293/293 tes regresi lulus.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
