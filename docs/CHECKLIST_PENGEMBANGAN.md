@@ -16,7 +16,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
-- GitHub Actions [Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132): validasi kamus 3.014 lema, dataset POS, evaluasi development, dan **250/250 regression tests lulus**.
+- GitHub Actions [Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139): validasi kamus 3.014 lema, dataset POS, evaluasi development, dan **253/253 regression tests lulus**.
 - Parser kini berada pada v1.8; pembekuan parser dicabut setelah POS selesai. Fokus aktif adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
 
 ---
@@ -1126,4 +1126,4 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Mengenali empat ADV temporal tersebut sebagai keterangan awal sebelum subjek, tanpa mengubah penanganan keterangan preposisional.
 - [x] Menambahkan tes unit untuk keempat kata dan tes abstention bagi ADV yang tidak terdaftar sebagai temporal (`mungkin`).
 - [x] Menambahkan tes integrasi `Besok aku akan makan nasi.` melalui pipeline kamus lengkap.
-- [ ] Menjalankan GitHub Actions untuk validasi kamus, dataset POS, evaluasi development, dan regresi penuh.
+- [x] GitHub Actions [Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139) SUCCESS: 60 batch / 3.014 lema, dataset POS, evaluasi development, dan 253/253 regression tests lulus.
