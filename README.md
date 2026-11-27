@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus berisi 3.014 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #117: 246/246 regression tests lulus.
+> **Status:** Pengembangan aktif — kamus berisi 3.014 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. Lema `akan` (K3015, ADV) telah ditambahkan dan divalidasi melalui pipeline kamus lengkap. GitHub Actions Run #118: 250/250 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -375,3 +375,6 @@ Tahap 3 (hubungan makna dan konteks), evaluasi embedding opsional, dan integrasi
 ## Penambahan lema `akan` — K3015
 
 Atas persetujuan pengguna, lema `akan` ditambahkan ke batch-060 sebagai **ADV** dengan definisi: “Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.” Indeks `a-c.tsv` dan target validasi kamus diperbarui menjadi **3.014 lema**. POS supplement yang sebelumnya sudah memetakan `akan` sebagai ADV dipertahankan tanpa duplikasi. Tes integrasi memeriksa pengenalan dari kamus, pola `akan` + verba inti, dan perilaku hati-hati ketika `akan` berdiri sendiri. Validasi CI setelah perubahan ini sedang menunggu.
+
+
+**Validasi penambahan `akan` — GitHub Actions Run #118:** sukses. Kamus memuat 60 batch / **3.014 lema**, validasi dataset POS dan evaluasi development berhasil, serta **250/250 regression tests lulus**. Tes integrasi memastikan `akan` dikenali sebagai ADV dari kamus, berfungsi sebagai penanda modal saat diikuti verba inti, dan tidak dipaksakan menjadi predikat ketika berdiri sendiri. [Lihat Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132).
