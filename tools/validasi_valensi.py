@@ -179,7 +179,7 @@ def main() -> int:
     failed = False
     total = 0
     for path in args.batches:
-        print(f"\\n[{path}]")
+        print(f"\n[{path}]")
         try:
             count, errors = validate_valency_batch(path)
         except (OSError, ValueError) as exc:
@@ -195,7 +195,7 @@ def main() -> int:
         else:
             print("VALIDASI VALENSI BERHASIL")
             print(f"Entri diperiksa : {count}")
-    print("\\nRINGKASAN VALIDASI VALENSI")
+    print("\nRINGKASAN VALIDASI VALENSI")
     print(f"Batch diperiksa : {len(args.batches)}")
     print(f"Total entri     : {total}")
     print("Catatan         : pemeriksaan struktur, bukan validasi makna anotasi.")
