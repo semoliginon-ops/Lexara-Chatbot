@@ -651,3 +651,15 @@ Anotasi ini terbatas pada empat sense tersebut. Dua frame `buka` memodelkan alte
 Run #132 sukses dengan **289/289 tes regresi lulus**. Sebelas tes baru mencakup pemetaan `lihat`, ambiguitas `buka`, objek opsional `makan`, penahanan pemetaan saat voice tidak diketahui/pasif, inversi unresolved, argumen wajib yang hilang, dan pencocokan OBL berdasarkan preposisi.
 
 **Batas implementasi:** modul ini tidak memilih sense; sense harus dipasok oleh lapisan sebelumnya. Konfirmasi voice aktif juga harus datang dari pemanggil, bukan ditebak dari parser v1.9. Pemetaan voice pasif, pemilihan otomatis AGENT vs CAUSER, dan pembedaan CAUSER vs INSTRUMENT masih belum diterapkan. Parser inti tidak diubah.
+
+
+**Penguatan batas pemetaan semantic role — Run #134 (27 November 2026):** dua celah konservatisme pada mapper diperbaiki tanpa mengubah parser atau data kamus.
+
+1. Sebuah frame tidak lagi dianggap cocok jika parser sudah mengenali SUBJ/OBJ/COMP pada permukaan, tetapi frame tersebut sama sekali tidak memodelkan salah satu fungsi sintaksis yang hadir. Ini mencegah frame intransitif yang hanya memiliki SUBJ mengabaikan OBJ yang sudah dikenali parser.
+2. Argumen OBL tidak dipetakan jika realisasi PP tidak memiliki daftar preposisi pembatas yang eksplisit. Parser saat ini masih menggabungkan PP argumen dan PP keterangan dalam daftar adjuncts; karena itu, PP tanpa batas leksikal yang jelas tidak cukup aman untuk dipromosikan menjadi argumen inti.
+
+Dua regression test baru ditambahkan pada `tests/test_pemetaan_peran_semantis.py`: (a) frame tanpa OBJ ditolak ketika parser mengenali objek; (b) OBL dengan PP tanpa batas preposisi tidak dipetakan otomatis. Implementasi berada di `tools/pemetaan_peran_semantis.py`, tetap terpisah dari parser.
+
+GitHub Actions **Run #134** sukses: validasi kamus 60 batch / 3.014 entri, validasi metadata valensi, dataset POS, evaluasi development, dan **291/291 tes regresi lulus**. [Lihat Run #134](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46003126203).
+
+**Batas yang tetap berlaku:** pemeriksaan ini meningkatkan keamanan pencocokan frame, tetapi belum membuat parser mampu membedakan semua argumen PP dari adjunct. OBL hanya dipetakan bila preposisinya dibatasi secara eksplisit; ini adalah kebijakan konservatif sementara. Pemilihan sense, konfirmasi voice, pemetaan pasif, dan pembedaan otomatis AGENT/CAUSER atau CAUSER/INSTRUMENT tetap belum tersedia. Tidak ada batch kamus, indeks, lema, anotasi sense, atau parser inti yang diubah.
