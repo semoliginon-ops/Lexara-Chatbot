@@ -104,6 +104,58 @@ class ContextualSemanticRoleResolutionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             resolve_semantic_role_candidates(ambiguous_result(), [{"frame_id": "F_CAUSER"}])
 
+    def test_evidence_for_different_argument_slots_cannot_be_combined(self):
+        mapping = {
+            "status": "ambiguous",
+            "candidates": [
+                {"frame_id": "F1", "arguments": [
+                    {"argument_id": "A1", "semantic_role": "AGENT"},
+                    {"argument_id": "A2", "semantic_role": "PATIENT"},
+                ]},
+                {"frame_id": "F2", "arguments": [
+                    {"argument_id": "A1", "semantic_role": "CAUSER"},
+                    {"argument_id": "A2", "semantic_role": "THEME"},
+                ]},
+            ],
+        }
+        result = resolve_semantic_role_candidates(mapping, [
+            evidence("F1", "AGENT", "supports"),
+            {
+                "frame_id": "F2", "argument_id": "A2", "semantic_role": "THEME",
+                "polarity": "contradicts", "strength": "strong", "source": "context",
+            },
+        ])
+        self.assertEqual(result["status"], "ambiguous")
+        self.assertEqual(result["context_resolution"]["reason"], "insufficient_discriminating_evidence")
+
+    def test_conflicting_decisive_argument_slots_do_not_select_either_frame(self):
+        mapping = {
+            "status": "ambiguous",
+            "candidates": [
+                {"frame_id": "F1", "arguments": [
+                    {"argument_id": "A1", "semantic_role": "AGENT"},
+                    {"argument_id": "A2", "semantic_role": "PATIENT"},
+                ]},
+                {"frame_id": "F2", "arguments": [
+                    {"argument_id": "A1", "semantic_role": "CAUSER"},
+                    {"argument_id": "A2", "semantic_role": "THEME"},
+                ]},
+            ],
+        }
+        result = resolve_semantic_role_candidates(mapping, [
+            evidence("F1", "AGENT", "supports"),
+            evidence("F2", "CAUSER", "contradicts"),
+            {
+                "frame_id": "F2", "argument_id": "A2", "semantic_role": "THEME",
+                "polarity": "supports", "strength": "strong", "source": "context",
+            },
+            {
+                "frame_id": "F1", "argument_id": "A2", "semantic_role": "PATIENT",
+                "polarity": "contradicts", "strength": "strong", "source": "context",
+            },
+        ])
+        self.assertEqual(result["status"], "ambiguous")
+        self.assertEqual(result["context_resolution"]["reason"], "conflicting_evidence")
     def test_non_ambiguous_mapping_is_unchanged(self):
         mapping = {"status": "mapped", "candidates": [{"frame_id": "F1", "arguments": []}]}
         result = resolve_semantic_role_candidates(mapping, [])
