@@ -363,7 +363,7 @@ Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semolig
 
 ### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
-Parser kini berada pada versi **v1.7**. Selain memisahkan kepala predikat dan pewatas, parser mengenali `akan` (ADV) serta `bisa` (VERB) sebagai modal jika diikuti verba inti. Pemakaian `bisa` tunggal tetap menjadi predikat. Tes tambahan memastikan modalitas tetap bekerja pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P.
+Parser kini berada pada versi **v1.7**. Selain memisahkan kepala predikat dan pewatas, parser mengenali `akan` (jika POS ADV) serta `bisa` (jika POS VERB) sebagai modal jika diikuti verba inti. Catatan integrasi: `bisa` ada di indeks kamus (K0026), sedangkan `akan` belum tercatat di indeks; aturan parser untuk `akan` belum berarti kamus sudah dapat memberinya POS. Pemakaian `bisa` tunggal tetap menjadi predikat. Tes tambahan memastikan modalitas tetap bekerja pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P.
 
 Langkah berikutnya adalah memperluas pola frasa verba secara bertahap dan menguji variasi susunan kalimat sederhana (S-P-O, S-P-K, dan K-S-P) tanpa memaksakan analisis yang belum didukung. Perluasan dilakukan bertahap dengan regression tests dan tetap mempertahankan perilaku konservatif: struktur yang belum didukung dilaporkan, bukan ditebak.
 
