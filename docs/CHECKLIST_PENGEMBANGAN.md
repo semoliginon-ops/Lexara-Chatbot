@@ -949,3 +949,13 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #96: **227/227 regression tests lulus**; validasi kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas:** hanya satu klausa subordinatif awal dengan predikat teridentifikasi dan satu koma pemisah. Klausa eliptis, subordinasi bertingkat, dan beberapa klausa awal belum didukung.
+
+
+### Parser kalimat v1.4 — elipsis konsesif adjektival terbatas
+
+- [x] Mengenali predikat adjektival eksplisit pada klausa konsesif awal seperti `Walaupun lelah, dia bekerja.`.
+- [x] Membiarkan subjek klausa eliptis kosong; tidak menyalin atau menebak subjek dari klausa utama.
+- [x] Menandai hasil sebagai `partial`, bukan `parsed`.
+- [x] Menolak awalan yang tidak berakhir pada predikat adjektival teridentifikasi.
+- [x] Menambahkan tes unit dan integrasi melalui kamus asli untuk `lelah` (ADJ).
+- [ ] Menangani jenis elipsis lain hanya setelah pola dan bukti leksikalnya dapat dibatasi secara aman.
