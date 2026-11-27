@@ -1002,3 +1002,13 @@ Pipeline lengkap kamus → morfologi → POS → konteks → parser juga menguji
 GitHub Actions **Run #200 selesai dengan conclusion success**; **377/377 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development juga berhasil; test split tetap tersegel. [Lihat Run #200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46031404877).
 
 **Batas:** dukungan masih terbatas pada host VERB dengan satu POS eksplisit yang berasal dari lema/metadata yang tervalidasi. Bentuk turunan seperti `melihat` tanpa anotasi POS turunan eksplisit tetap tidak mewarisi POS lema secara otomatis. Fungsi klitik pada host selain pola yang telah diuji, variasi informal/regional, dan analisis internal frasa nominal masih memerlukan pengujian lanjutan. Tidak ada lema baru ditambahkan dan tidak ada batch/index kamus yang diubah.
+
+### Uji pronomina persona informal melalui pipeline penuh — Run #201 (27 November 2026)
+
+Inventaris indeks menunjukkan lema pronomina informal `gue` dan `lu` telah tersedia pada batch 001. Variasi `gua`, `gw`, `lo`, dan `elu` tercatat sebagai variants dari kedua lema tersebut. Entri `awak` dan `abdi` juga ada di indeks, tetapi keduanya ber-POS NOUN dalam data kamus saat ini sehingga tidak diperlakukan sebagai pronomina persona. Tidak ada perubahan batch atau indeks kamus.
+
+Tes integrasi pipeline kamus → POS → parser ditambahkan untuk enam bentuk `gue`, `gua`, `gw`, `lu`, `lo`, dan `elu`. Setiap bentuk diuji sebagai subjek pada kalimat pola S-P-O dan sebagai objek pada kalimat pola S-P-O. Seluruhnya dikenali sebagai PRON dengan sumber POS dari kamus dan menempati peran sintaksis yang diharapkan.
+
+GitHub Actions **Run #201 selesai dengan conclusion success**; **378/378 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil. Coverage dan accuracy POS kontekstual development tetap 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #201](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46032249459).
+
+**Batas:** pengujian baru mencakup enam bentuk informal perkotaan yang merupakan lema/varian dari dua entri PRON. Ini belum membuktikan seluruh pemakaian regional, ragam hormat, pronomina refleksif, demonstratif, interogatif, atau indefinit. Kandidat yang tidak ditemukan di indeks belum ditambahkan; perlu persetujuan eksplisit pengguna sebelum perubahan kamus.
