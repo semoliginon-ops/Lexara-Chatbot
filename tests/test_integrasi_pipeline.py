@@ -729,6 +729,24 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
         self.assertEqual(parsed["unresolved_tokens"], [])
 
+    def test_derived_nominal_with_nya_clitic_is_recognized_in_real_pipeline(self):
+        analyzed = self.analyze("perasaannya")
+        bound = self.token(analyzed, "perasaannya")
+
+        self.assertEqual(bound["status"], "unknown")
+        self.assertEqual(len(bound["morphology_candidates"]), 1)
+        candidate = bound["morphology_candidates"][0]
+        self.assertEqual(candidate["base_form"], "perasaan")
+        self.assertEqual(candidate["rule"], "clitic_nya")
+        self.assertEqual(candidate["clitic"], "nya")
+        self.assertTrue(
+            any(
+                item["lemma"] == "rasa"
+                and item["match_type"] == "derived_form"
+                for item in candidate["candidates"]
+            )
+        )
+
     def test_derived_nominal_with_mu_clitic_is_recognized_in_real_pipeline(self):
         analyzed = self.analyze("perasaanmu")
         bound = self.token(analyzed, "perasaanmu")
