@@ -1039,3 +1039,14 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Validasi penuh: 60 batch, 3.002 lema.
 - [x] Regresi penuh: 234/234 tes lulus.
 - [x] Abstention VERB development tersisa satu: `berteduh`.
+
+
+### POS Tahap 2.5 — `berteduh` selesai (Run #103)
+
+- [x] Pemeriksaan indeks: `berteduh` dan lema dasar `teduh` tidak tercatat.
+- [x] Tambahkan lema K3004 `berteduh` dengan POS VERB pada batch-060.
+- [x] Tambahkan baris lema ke indeks `a-c.tsv`.
+- [x] Tes integrasi melalui kalimat development `Ketika hujan turun, mereka berteduh.`
+- [x] Validasi penuh: 60 batch, 3.003 lema.
+- [x] Regresi penuh: 235/235 tes lulus.
+- [x] Abstention VERB development: 0.
