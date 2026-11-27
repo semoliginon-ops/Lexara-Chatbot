@@ -74,6 +74,27 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "parsed")
         self.assertEqual(result["roles"]["object"], ["baju", "baru"])
 
+    def test_includes_verbal_negation_in_predicate(self):
+        result = parse_sentence(analysis(
+            token("kami", ["PRON"]),
+            token("tidak", ["ADV"]),
+            token("membeli", ["VERB"]),
+            token("ikan", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["predicate"], ["tidak", "membeli"])
+        self.assertEqual(result["roles"]["object"], ["ikan"])
+
+    def test_includes_temporal_negation_belum_in_predicate(self):
+        result = parse_sentence(analysis(
+            token("kami", ["PRON"]),
+            token("belum", ["ADV"]),
+            token("makan", ["VERB"]),
+            token("nasi", ["NOUN"]),
+        ))
+        self.assertEqual(result["roles"]["predicate"], ["belum", "makan"])
+
     def test_uses_contextual_pos_only_when_selected(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
