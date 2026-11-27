@@ -123,6 +123,22 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [["bekerja"], ["makan"], ["belajar"]],
         )
 
+    def test_fronted_causal_subordinate_uses_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Karena hujan turun, aku berteduh."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(parsed["clauses"][0]["subordinator"], "karena")
+        self.assertEqual(parsed["clauses"][0]["relation_to_next"], "sebab")
+        self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["aku"])
+
+    def test_fronted_temporal_subordinate_uses_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Ketika malam tiba, mereka pulang."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(parsed["clauses"][0]["subordinator"], "ketika")
+        self.assertEqual(parsed["clauses"][0]["relation_to_next"], "temporal")
+        self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["predicate"], ["pulang"])
+
     def test_contrastive_clauses_use_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Aku bekerja namun dia makan."))
         self.assertEqual(parsed["status"], "parsed")
