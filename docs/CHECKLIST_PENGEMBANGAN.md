@@ -846,3 +846,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menambahkan dua tes integrasi pipeline nyata; total suite menjadi **196 tes**.
 - [x] GitHub Actions Run #81: **196/196 tes lulus**; validasi lima batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 - [ ] Mengembangkan dan menguji konstruksi pelengkap predikat setelah desain peran sintaksisnya ditetapkan.
+
+
+### Parser kalimat v0.6 — pelengkap predikat terbatas
+
+- [x] Membedakan pelengkap nominal setelah verba penghubung `menjadi` dari objek.
+- [x] Membedakan pelengkap adjektival setelah verba penghubung `tampak` dari objek.
+- [x] Menggunakan label pola `S-P-Pel` dan mengisi field `roles.complement`.
+- [x] Mempertahankan objek pada verba transitif biasa; diuji dengan `Dia membeli baju`.
+- [x] Menambahkan tiga regression tests; GitHub Actions Run #82: **199/199 tes lulus**.
+- [ ] Menguji `menjadi` dan `tampak` melalui pipeline kamus/POS nyata setelah dukungan leksikal dan kelas katanya diverifikasi.
+- [ ] Memperluas pelengkap ke verba/konstruksi lain hanya setelah bukti linguistik dan tes tersedia.
+
+**Batas implementasi:** aturan ini sengaja hanya mencakup dua verba dan pelengkap nominal/adjektival sederhana. Frasa adverbial, klausa pelengkap, dan konstruksi lain belum dimodelkan.
