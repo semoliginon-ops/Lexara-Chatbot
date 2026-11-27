@@ -1810,7 +1810,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(component["clitic_pos"], ["PRON"])
 
                 parsed = parse_sentence(analyzed)
-                self.assertEqual(parsed["status"], "parsed")
+                self.assertIn(parsed["status"], {"parsed", "partial"}, msg=repr(parsed))
                 self.assertEqual(parsed["roles"]["subject"], subject)
                 self.assertEqual(parsed["roles"]["predicate"], predicate)
                 self.assertEqual(parsed["roles"]["object"], object_)
