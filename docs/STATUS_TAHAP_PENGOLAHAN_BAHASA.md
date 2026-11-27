@@ -1186,3 +1186,12 @@ Tes integrasi pipeline ditambahkan untuk kalimat `Aku tidak pulang karena hujan 
 GitHub Actions **Run #230 selesai dengan conclusion success**; **403/403 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. [Lihat Run #230](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081733458).
 
 Tes ini memeriksa interaksi negasi di klausa utama dengan subordinasi sebab pascaposisi. Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
+
+
+### Klausa utama bernegasi + subordinatif temporal — Run #231
+
+Tes integrasi pipeline ditambahkan untuk kalimat `Aku tidak pulang ketika hujan turun.`. Klausa utama tetap dikenali sebagai S-P dengan `tidak` sebagai modifier negasi pada predikat; klausa subordinatif `hujan turun` dikenali sebagai S-P dengan relasi `temporal`.
+
+GitHub Actions **Run #231 selesai dengan conclusion success**; **404/404 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. [Lihat Run #231](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081821287).
+
+Tes ini memperluas kombinasi negasi klausa utama dengan subordinasi temporal pascaposisi. Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
