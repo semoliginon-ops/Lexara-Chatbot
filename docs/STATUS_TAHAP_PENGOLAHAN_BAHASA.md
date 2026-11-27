@@ -981,3 +981,8 @@ Karena itu `bekerja` dinyatakan selesai: anotasi `derived_forms_pos` pada lema `
 ## Tahap 2.5 — penanganan `ditunda` — 27 November 2026
 
 Pemeriksaan pada seluruh 60 batch memastikan lema `tunda` belum tersedia. Karena aturan morfologi pasif `di-` sudah ada, masalah ini bukan alasan untuk memperluas aturan prefiks secara umum. Ditambahkan lema `tunda` dengan POS VERB pada batch-060, beserta bentuk turunan `ditunda` dan anotasi POS eksplisit `derived_forms_pos` bernilai VERB. Indeks `s-u.tsv` diperbarui dan validator kamus penuh kini mengharapkan 3.001 lema. Tes integrasi baru memakai kalimat development `Karena hujan deras, pertandingan ditunda.` untuk memastikan token `ditunda` dikenali sebagai VERB dari kamus. Test set tidak digunakan. Hasil workflow masih menunggu.
+
+
+## Hasil verifikasi penambahan `tunda` — GitHub Actions Run #101
+
+Run #101 berhasil. Kamus memuat 60 batch dan 3.001 lema; tes integrasi mengonfirmasi `ditunda` dikenali sebagai VERB dari kamus. Regresi penuh **233/233 tes lulus**. Evaluasi POS development kini mencatat dua abstention VERB: `hinggap` dan `berteduh`; `ditunda` tidak lagi abstain. Abstention NOUN untuk `pertandingan` masih tercatat sebagai masalah morfologi terpisah dan tidak boleh disamakan dengan keberhasilan pengenalan `ditunda`. Test set tetap tidak digunakan. [GitHub Actions Run #101](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45958528991).
