@@ -921,3 +921,12 @@ Contoh integrasi melalui kamus 3.000 lema:
 Tes unit juga memastikan klausa eliptis `Walaupun lelah, dia bekerja.` tidak dipaksakan menjadi klausa subordinatif karena klausa awal belum memiliki verba/predikat yang dapat dipastikan. GitHub Actions [Run #96](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955536612) sukses: **227/227 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi terpilih berhasil.
 
 **Batas:** pola ini hanya menerima satu klausa subordinatif di depan, satu koma pemisah, dan klausa awal dengan predikat yang dikenali. Klausa eliptis seperti `Walaupun lelah`, beberapa klausa subordinatif, tanda koma bertingkat, dan relasi semantik yang lebih dalam belum didukung. Contoh integrasi memakai kata-kata yang sudah tercakup dan teridentifikasi oleh pipeline.
+
+
+## Parser kalimat v1.4 — klausa konsesif eliptis berpredikat adjektival — 27 November 2026
+
+Parser kini dapat menangani satu bentuk elipsis yang dibatasi ketat pada klausa konsesif di depan kalimat, misalnya `Walaupun lelah, dia bekerja.`. Jika token klausa awal seluruhnya dikenali sebagai adverbia pewatas dan predikat adjektival, parser mencatat predikat adjektival itu tetapi membiarkan subjek kosong. Hasil tingkat atas tetap `partial`, bukan `parsed`, karena subjek yang dilesapkan tidak disimpulkan atau disalin dari klausa utama.
+
+Tes integrasi menggunakan kamus 3.000 lema memastikan `lelah` dikenali sebagai ADJ dan `dia bekerja` dianalisis sebagai klausa utama. Tes unit juga memastikan awalan yang hanya berisi adverbia tanpa predikat adjektival tidak diterima.
+
+**Batas:** hanya klausa konsesif awal dengan pola token ADV/ADJ yang berakhir pada ADJ. Parser tidak menebak subjek eliptis, tidak menangani elipsis verba, dan tidak menggeneralisasi aturan ini ke klausa sebab atau temporal.
