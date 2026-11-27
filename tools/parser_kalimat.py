@@ -172,7 +172,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     subject_lower = 0
     for prior in range(subject_head - 1, -1, -1):
         if words[prior]["pos"] == "PREP":
-            subject_lower = prior + 1
+            subject_lower = subject_head
             break
     subject_positions = _phrase_span(words, subject_head, subject_lower, verb_pos)
     subject_set = set(subject_positions)
