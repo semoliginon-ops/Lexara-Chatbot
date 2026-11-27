@@ -94,6 +94,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_multiple_fronted_adjuncts_use_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Di rumah pada malam hari aku bekerja."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(parsed["roles"]["adjuncts"], [
+            {"preposition": "di", "phrase": ["rumah"]},
+            {"preposition": "pada", "phrase": ["malam", "hari"]},
+        ])
+
     def test_verbal_negation_parses_through_real_dictionary_pipeline(self):
         result = parse_sentence(self.analyze("Kami tidak membeli ikan."))
         self.assertEqual(result["status"], "parsed")
