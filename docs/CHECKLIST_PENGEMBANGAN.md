@@ -17,7 +17,7 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 - Tahap 2.5 (POS) telah ditutup berdasarkan keputusan pengguna.
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test); test split tetap tersegel.
 - Evaluasi POS kontekstual pada development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- GitHub Actions [Run #182](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46026858196) sukses: validasi kamus 3.019 lema, valensi, dataset POS, evaluasi development, dan **366/366 regression tests lulus**.
+- GitHub Actions [Run #183](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46026858196) sukses: validasi kamus 3.019 lema, valensi, dataset POS, evaluasi development, dan **366/366 regression tests lulus**.
 
 ## Aturan kerja yang harus dijaga
 
