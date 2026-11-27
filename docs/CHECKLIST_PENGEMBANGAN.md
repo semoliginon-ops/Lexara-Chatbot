@@ -1050,3 +1050,13 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Validasi penuh: 60 batch, 3.003 lema.
 - [x] Regresi penuh: 235/235 tes lulus.
 - [x] Abstention VERB development: 0.
+
+
+### POS Tahap 2.5 — `baru` selesai (Run #104)
+
+- [x] Pemeriksaan INDEX: `baru` belum tercatat; `barusan` merupakan lema berbeda.
+- [x] Tambahkan K3005 `baru` sebagai ADJ berdasarkan dua konteks frasa nominal pada development.
+- [x] Tambahkan ke INDEX `a-c.tsv`.
+- [x] Tes dua konteks atributif: `buku baru`.
+- [x] Validasi penuh: 60 batch, 3.004 lema; regresi 236/236 lulus.
+- [x] Evaluasi development: tidak ada abstention ADJ secara kontekstual; tidak ada kesalahan prediksi.
