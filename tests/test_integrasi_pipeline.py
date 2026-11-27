@@ -219,7 +219,6 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         analyzed = self.analyze("Aku bisa makan nasi.")
         expected = {
             "aku": "PRON",
-            "bisa": "VERB",
             "makan": "VERB",
             "nasi": "NOUN",
         }
@@ -228,6 +227,15 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 item = self.token(analyzed, surface)
                 self.assertEqual(item["pos"], [pos])
                 self.assertEqual(item["pos_status"], "identified")
+
+        modal_token = self.token(analyzed, "bisa")
+        self.assertEqual(modal_token["pos"], ["VERB", "NOUN"])
+        self.assertEqual(modal_token["context_pos"], "VERB")
+        self.assertEqual(modal_token["pos_context_status"], "selected_by_context")
+        self.assertIn(
+            {"rule": "bisa_before_verb", "pos": "VERB", "cue_token": "makan"},
+            modal_token["pos_context_evidence"],
+        )
 
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
