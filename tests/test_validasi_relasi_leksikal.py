@@ -1,9 +1,12 @@
 """Regression tests for sense-scoped lexical relation validation."""
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
 from tools.validasi_relasi_leksikal import (
     validate_entries_relations,
     validate_entry_relations,
+    validate_relation_batches,
 )
 
 
@@ -82,6 +85,16 @@ class LexicalRelationValidationTests(unittest.TestCase):
         entry["senses"].append("not-an-object")
         errors = validate_entry_relations(entry)
         self.assertTrue(any("sense harus berupa objek" in error for error in errors))
+
+    def test_multiple_batches_are_processed_one_by_one(self):
+        fake_results = [(2, []), (3, ["K0003: relasi duplikat"])]
+        with patch("tools.validasi_relasi_leksikal.validate_relation_batch", side_effect=fake_results) as mocked:
+            results = validate_relation_batches([Path("a.jsonl"), Path("b.jsonl")])
+        self.assertEqual(results, [
+            (Path("a.jsonl"), 2, []),
+            (Path("b.jsonl"), 3, ["K0003: relasi duplikat"]),
+        ])
+        self.assertEqual(mocked.call_count, 2)
 
     def test_validates_all_entries_and_reports_entry_ids(self):
         good = legacy_entry()
