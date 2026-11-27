@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.9: koordinasi frasa subjek dan objek dengan konjungsi eksplisit
+# validasi parser v1.0: pemisahan dua klausa koordinatif sederhana
