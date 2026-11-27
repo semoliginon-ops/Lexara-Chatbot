@@ -915,3 +915,15 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #90: **213/213 regression tests lulus**; validasi relasi lima batch terpilih, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas implementasi:** satu konjungsi dan dua klausa eksplisit. Koordinasi bertingkat, elipsis/subjek yang dihilangkan, relasi semantik antarklausa, dan pemisahan berbasis koma belum didukung.
+
+
+### Parser kalimat v1.1 — koordinasi tiga klausa atau lebih
+
+- [x] Memisahkan beberapa klausa secara berurutan jika setiap segmen di antara konjungsi eksplisit memiliki verba teridentifikasi.
+- [x] Menyimpan konjungsi masing-masing sebagai penghubung klausa berikutnya.
+- [x] Mempertahankan perilaku dua klausa v1.0 dan koordinasi frasa nominal v0.9.
+- [x] Menolak pemisahan jika salah satu segmen tidak memiliki verba; parser kembali ke analisis satu klausa konservatif.
+- [x] Menambahkan tiga tes unit dan satu tes integrasi tiga klausa melalui kamus asli.
+- [x] GitHub Actions Run #91: **217/217 regression tests lulus**; validasi lima batch terpilih, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas implementasi:** setiap klausa harus memiliki verba eksplisit yang dikenali. Elipsis, subjek/predikat yang dihilangkan, koordinasi bertingkat, dan relasi semantik antarklausa belum ditangani.
