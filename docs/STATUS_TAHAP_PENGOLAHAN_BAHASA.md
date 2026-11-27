@@ -19,10 +19,10 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Evaluasi POS development kontekstual: **250/255 token dikenali**, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan pada prediksi yang dikeluarkan.
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
-- Parser kalimat tersedia pada **v1.7**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
-- GitHub Actions **Run #116 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
+- Parser kalimat tersedia pada **v1.7**; modalitas `akan` dan `bisa` serta urutan modal + objek/keterangan sudah diuji. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
+- GitHub Actions **Run #117 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **249/249 regression tests lulus**.
 
-**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.7**. Modalitas `akan` (ADV) dan `bisa` (VERB) sudah ditangani jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Berikutnya perluas uji susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
+**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.7**. Modalitas `akan` (ADV) dan `bisa` (VERB) sudah ditangani jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Berikutnya perluas uji susunan kalimat sederhana, termasuk pola keterangan awal dan pola inversi yang benar-benar didukung. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
 ---
 
@@ -92,12 +92,12 @@ Fondasi yang tersedia:
 - Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
 - Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terpadu terakhir adalah GitHub Actions [Run #116](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324):
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #117](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966800061):
 - Kamus: 60 batch / **3.013 lema** tervalidasi.
 - Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
 - POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
 - Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- Regression suite: **246 tes lulus, 0 gagal**.
+- Regression suite: **249 tes lulus, 0 gagal**.
 
 Tahap 2.5 selesai. Tahap 2.6 dilanjutkan dari parser v1.5; pekerjaan pertama adalah memperluas frasa verba/modal dan pengujian variasi susunan kalimat. Tahap 2.7 melengkapi keragaman dataset. Jaringan makna runtime, konteks percakapan multi-giliran, response engine, dan aplikasi Android belum selesai.
 ## 5. Urutan pekerjaan berikutnya
