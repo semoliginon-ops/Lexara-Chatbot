@@ -27,6 +27,8 @@ SUPPLEMENTARY_POS = {
     "dan": "CONJ",
     "ketika": "CONJ",
     "wah": "INTJ",
+    # Sapaan hormat yang juga merujuk kepada laki-laki dewasa.
+    "pak": "NOUN",
 }
 
 
