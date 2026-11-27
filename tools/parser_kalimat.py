@@ -85,6 +85,39 @@ def _coordinated_phrase_span(
     return list(range(start, end))
 
 
+def _elliptical_concessive_analysis(items: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """Recognize only an explicit adverb + adjectival predicate without a subject."""
+    words: list[dict[str, str]] = []
+    for item in items:
+        if not isinstance(item, dict) or not isinstance(item.get("token"), str):
+            return None
+        pos = _effective_pos(item)
+        if pos not in {"ADV", "ADJ"}:
+            return None
+        words.append({"token": item["token"], "pos": pos})
+    if not words or words[-1]["pos"] != "ADJ":
+        return None
+    if not any(word["pos"] == "ADJ" for word in words):
+        return None
+    return {
+        "parser_method": "conservative_elliptical_nonverbal_v1",
+        "status": "partial",
+        "pattern": "P-ELIPTIS",
+        "roles": {
+            "subject": [],
+            "predicate": [word["token"] for word in words],
+            "object": [],
+            "adjuncts": [],
+            "complement": [],
+        },
+        "unresolved_tokens": [],
+        "notes": [
+            "Predikat adjektival klausa konsesif dikenali tanpa subjek eksplisit.",
+            "Subjek yang dilesapkan tidak disimpulkan atau disalin dari klausa utama; hasil tetap partial.",
+        ],
+    }
+
+
 def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     """Return a cautious role skeleton from POS-tagged/contextualized tokens.
 
@@ -128,6 +161,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             )
             if prefix_items and main_items and prefix_has_only_words and main_has_no_internal_punctuation:
                 subordinate = parse_sentence({"tokens": prefix_items})
+                if subordinate["status"] == "unresolved" and marker_relation == "konsesi":
+                    elliptical = _elliptical_concessive_analysis(prefix_items)
+                    if elliptical is not None:
+                        subordinate = elliptical
                 main_clause = parse_sentence({"tokens": main_items})
                 acceptable = {"parsed", "partial"}
                 if subordinate["status"] in acceptable and main_clause["status"] in acceptable:
@@ -162,7 +199,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                         "notes": [
                             "Klausa subordinatif awal dikenali melalui penghubung eksplisit dan koma pemisah.",
                             "Klausa utama dianalisis terpisah; relasi dicatat sebagai metadata penghubung, bukan pemahaman semantik lengkap.",
-                            "Hanya klausa awal dengan verba teridentifikasi yang diterima; klausa eliptis seperti 'Walaupun lelah' belum didukung.",
+                            "Klausa awal biasanya memerlukan predikat teridentifikasi; klausa konsesif eliptis dengan predikat adjektival eksplisit diterima secara partial tanpa menebak subjek.",
                         ],
                     }
 
