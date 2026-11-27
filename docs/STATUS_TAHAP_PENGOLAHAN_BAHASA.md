@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Dataset POS tervalidasi: 100 kalimat, 543 token (60 development, 40 test).
 - Evaluasi development-only: POS leksikal 227/255 (89,0%); POS kontekstual 228/255 (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Test split tetap ditahan.
 - Pengujian integrasi kamus nyata tersedia di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, tanda baca, dan parser kalimat sederhana.
-- GitHub Actions **Run #76 SUCCESS**: validasi relasi lima batch, validasi kamus penuh 60 batch/3.000 entri, validasi dataset POS, evaluasi development, dan **184/184 regression tests lulus**.
+- GitHub Actions **Run #77 SUCCESS**: validasi relasi lima batch, validasi kamus penuh 60 batch/3.000 entri, validasi dataset POS, evaluasi development, dan **187/187 regression tests lulus**.
 
 **Titik lanjut aktif:** parser prototipe v0.3 mempertahankan rentang frasa nominal sederhana dan mengenali negasi verbal terbatas (`tidak`/`belum`) sebagai bagian predikat jika POS-nya ADV/PART. Perluas frasa verba/modal secara hati-hati; negasi adjektival/nominal, pelengkap, koordinasi, dan variasi susunan kata masih belum didukung. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -175,7 +175,7 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Evaluasi development-only: 227/255 leksikal (89,0%) dan 228/255 kontekstual (89,4%); selective accuracy 100%.
 - [x] Test split tetap ditahan dan tidak digunakan untuk menyetel aturan.
 
-### 5.6 Analisis struktur kalimat dasar — prototipe v0.2
+### 5.6 Analisis struktur kalimat dasar — prototipe v0.3
 
 - [x] Menetapkan masukan parser dari hasil POS leksikal dan, bila tersedia, POS kontekstual.
 - [x] Membuat `tools/parser_kalimat.py` untuk kerangka klausa sederhana S-P, S-P-O, dan keterangan berpreposisi.
@@ -183,7 +183,7 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Membuat regression tests parser di `tests/test_parser_kalimat.py`.
 - [x] Menguji pola S-P-K dengan kamus penuh melalui `tests/test_integrasi_pipeline.py`.
 - [x] Frasa nominal sederhana diuji dengan dua regression tests baru.
-- [x] GitHub Actions Run #76: **184/184 tes lulus**.
+- [x] GitHub Actions Run #77: **187/187 tes lulus**.
 - [x] Mengumpulkan rentang frasa nominal sederhana yang mengandung numeralia, kepala nominal, dan adjektiva tanpa mengklaim analisis internal frasa.
 - [x] Mengenali negasi verbal terbatas (`tidak` dan `belum`) sebagai bagian predikat ketika POS-nya ADV/PART.
 - [ ] Memperluas pengenalan frasa verba/modal di luar penanda tersebut.
