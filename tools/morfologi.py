@@ -87,6 +87,22 @@ def analyze_morphology(token: str, lexicon: dict[str, list[dict]]) -> list[dict[
                 "rule": rule, "candidates": matches,
             }
 
+    # Klitik pronominal terikat ditangani sebelum sufiks derivatif.
+    # Fungsi gramatikalnya (posesif atau objek) tidak diputuskan pada tahap morfologi.
+    for clitic in ("nya", "ku", "mu"):
+        if surface.endswith(clitic) and len(surface) > len(clitic) + 1:
+            base = surface[:-len(clitic)]
+            matches = _known(base, lexicon)
+            if matches:
+                found[(base, f"clitic_{clitic}")] = {
+                    "surface": surface,
+                    "base_form": base,
+                    "rule": f"clitic_{clitic}",
+                    "clitic": clitic,
+                    "interpretations": ["possessive", "object"],
+                    "candidates": matches,
+                }
+
     if "-" in surface:
         left, right = surface.split("-", 1)
         if left and left == right:
