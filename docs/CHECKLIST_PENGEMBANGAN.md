@@ -132,7 +132,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Menetapkan katalog desain 14 semantic role setelah persetujuan pengguna, termasuk CAUSER untuk penyebab non-agentif.
 - [x] Menguji batas CAUSER lintas predikat: AGENT, INSTRUMENT, STIMULUS, THEME, serta argumen penyebab vs keterangan sebab; kasus ambigu ditandai untuk abstention.
 - [x] Menyetujui spesifikasi skema valensi per-sense dan aturan anotasi awal.
-- [~] Membuat validator struktural `tools/validasi_valensi.py` dan tes regresi; eksekusi tes/CI serta uji kompatibilitas terhadap batch lama masih menunggu verifikasi.
+- [x] Membuat validator struktural `tools/validasi_valensi.py` dan 15 tes khusus; Run #129 berhasil memvalidasi 60 batch / 3.014 entri dan seluruh 273 tes regresi.
 - [ ] Menyusun anotasi terbatas pada beberapa sense terpilih, termasuk pengujian pembedaan CAUSER/INSTRUMENT pada kasus ambigu.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
