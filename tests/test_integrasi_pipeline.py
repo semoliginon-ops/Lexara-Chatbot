@@ -745,6 +745,23 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "nominal_phrase_role": "object",
         }])
 
+    def test_nominal_nya_possession_vs_definiteness_stays_unresolved_in_real_pipeline(self):
+        analyzed = self.analyze("Dia lihat bukunya.")
+        bound = self.token(analyzed, "bukunya")
+        self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["NOUN"])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["roles"]["object"], ["bukunya"])
+        self.assertEqual(parsed["clitic_analysis"], [{
+            "surface": "bukunya",
+            "base_form": "buku",
+            "clitic": "nya",
+            "function": None,
+            "function_candidates": ["possessive", "definite_anaphoric"],
+            "function_status": "unresolved",
+            "nominal_phrase_role": "object",
+        }])
+
     def test_verbal_bound_clitic_is_parsed_as_object_in_real_pipeline(self):
         analyzed = self.analyze("Dia lihatku.")
         bound = self.token(analyzed, "lihatku")
