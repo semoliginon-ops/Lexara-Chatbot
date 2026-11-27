@@ -909,3 +909,15 @@ Hasil pemisahan klausa kini menyimpan field tambahan `relation_to_previous` pada
 Empat tes unit memeriksa sebab, pertentangan, konsesi, dan penghubung yang belum dikenal. Satu tes integrasi membuktikan `namun` dikenali sebagai CONJ melalui kamus 3.000 lema dan menghasilkan label pertentangan. GitHub Actions [Run #93](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955025367) sukses: **222/222 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi terpilih juga berhasil.
 
 **Batas:** label ini mengklasifikasikan fungsi penghubung yang eksplisit, bukan memahami seluruh hubungan semantik. Tes `karena` dan `walaupun` saat ini memakai POS terkendali; arah sebab-akibat, klausa sebab yang didahulukan, konstruksi konsesif bertanda koma, klausa tanpa verba eksplisit, serta relasi bertingkat belum didukung.
+
+## Parser kalimat v1.3 — klausa subordinatif di depan klausa utama — 27 November 2026
+
+Parser kini mengenali pola terbatas `penghubung subordinatif + klausa berverba + koma + klausa utama`. Untuk pola yang diterima, hasil memakai `KLAUSA-SUBORDINATIF`, menyimpan analisis kedua klausa secara terpisah, dan mencatat `relation_to_next` pada klausa subordinatif awal.
+
+Contoh integrasi melalui kamus 3.000 lema:
+- `Karena dia makan, aku pulang.` → klausa awal berelasi sebab dengan klausa utama.
+- `Ketika dia makan, aku pulang.` → klausa awal berelasi temporal dengan klausa utama.
+
+Tes unit juga memastikan klausa eliptis `Walaupun lelah, dia bekerja.` tidak dipaksakan menjadi klausa subordinatif karena klausa awal belum memiliki verba/predikat yang dapat dipastikan. GitHub Actions [Run #96](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955536612) sukses: **227/227 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi terpilih berhasil.
+
+**Batas:** pola ini hanya menerima satu klausa subordinatif di depan, satu koma pemisah, dan klausa awal dengan predikat yang dikenali. Klausa eliptis seperti `Walaupun lelah`, beberapa klausa subordinatif, tanda koma bertingkat, dan relasi semantik yang lebih dalam belum didukung. Contoh integrasi memakai kata-kata yang sudah tercakup dan teridentifikasi oleh pipeline.
