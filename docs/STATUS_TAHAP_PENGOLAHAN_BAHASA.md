@@ -12,18 +12,17 @@ Dokumen ini adalah catatan kesinambungan kerja. Jika percakapan atau sesi pengem
 
 ## Snapshot status terbaru — 27 November 2026
 
-Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahankan sebagai riwayat, tetapi tidak boleh mengesampingkan snapshot ini.
+Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahankan sebagai riwayat dan tidak mengesampingkan snapshot ini.
 
-- Audit isi/relasi kamus selesai: **60/60 batch, 3.000 entri**.
-- Audit index terhadap seluruh batch sumber selesai: seluruh 3.000 lema terindeks; 0 lema hilang, 0 baris index tidak cocok, dan 0 kesalahan struktur. Sebanyak 2.468 varian/bentuk turunan sengaja tidak dimasukkan ke index ringan.
-- Validator penuh berhasil memuat 60 batch dan 3.000 entri.
-- Dataset POS tervalidasi: 100 kalimat, 543 token (60 development, 40 test).
-- Evaluasi development-only: POS leksikal 227/255 (89,0%); POS kontekstual 228/255 (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Test split tetap ditahan.
-- Pengujian integrasi kamus nyata tersedia di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, tanda baca, dan parser kalimat sederhana.
-- GitHub Actions **Run #77 SUCCESS**: validasi relasi lima batch, validasi kamus penuh 60 batch/3.000 entri, validasi dataset POS, evaluasi development, dan **187/187 regression tests lulus**.
+- Kamus: **60 batch, 3.013 lema**; audit isi/relasi 60 batch dan audit index terdahulu selesai. Tidak ada audit ulang batch yang direncanakan.
+- Dataset POS tervalidasi: **100 kalimat, 543 token** (60 development, 40 test).
+- Evaluasi POS development kontekstual: **250/255 token dikenali**, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan pada prediksi yang dikeluarkan.
+- Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
+- Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
+- Parser kalimat tersedia pada **v1.5**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
+- GitHub Actions **Run #113 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **241/241 regression tests lulus**.
 
-**Titik lanjut aktif:** parser prototipe v0.3 mempertahankan rentang frasa nominal sederhana dan mengenali negasi verbal terbatas (`tidak`/`belum`) sebagai bagian predikat jika POS-nya ADV/PART. Perluas frasa verba/modal secara hati-hati; negasi adjektival/nominal, pelengkap, koordinasi, dan variasi susunan kata masih belum didukung. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
-
+**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser v1.5 dengan memperluas frasa verba/modal, memisahkan inti predikat dari pewatas, dan menguji variasi susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
 ---
 
@@ -86,26 +85,21 @@ Branch kerja: `main`
 
 ## 4. Kondisi pekerjaan saat ini
 
-Fondasi pemrosesan yang tersedia:
-- Normalisasi Unicode/casefold dan whitespace.
-- Tokenizer yang mempertahankan tanda baca, tanda hubung, dan apostrof internal.
-- Loader baca-saja untuk 60 batch kamus.
-- Indeks leksikal untuk lema, variants, dan derived_forms.
-- Analyzer teks yang menggabungkan normalisasi, tokenisasi, dan pencocokan.
-- Analisis morfologi berbasis kandidat yang harus tervalidasi kamus.
-- POS leksikal dan disambiguasi POS berbasis petunjuk konteks lokal konservatif.
-- Validator dan evaluator dataset POS.
+Fondasi yang tersedia:
+- Normalisasi, tokenisasi, loader kamus, pencocokan leksikal, dan analisis morfologi.
+- POS leksikal dan POS kontekstual konservatif.
+- Dataset POS 100 kalimat dengan development/test split dan validator/evaluator.
+- Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
+- Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terakhir melalui GitHub Actions Run #74:
-- 60 batch / 3.000 entri berhasil divalidasi.
-- Dataset POS 100 kalimat / 543 token berhasil divalidasi.
-- POS development: leksikal 227/255 (89,0%); kontekstual 228/255 (89,4%).
-- Selective accuracy 100%, tanpa kesalahan pada prediksi yang dikeluarkan.
-- Regression suite: **174 tes lulus, 0 gagal**.
-- Lima tes integrasi baru menggunakan kamus penuh lulus sebagai bagian dari suite tersebut.
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168):
+- Kamus: 60 batch / **3.013 lema** tervalidasi.
+- Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
+- POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
+- Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
+- Regression suite: **241 tes lulus, 0 gagal**.
 
-Batas saat ini: belum ada parser untuk subjek, predikat, objek, pelengkap, atau keterangan. Tahap relasi makna runtime, konteks percakapan multi-giliran, pembentukan respons, dan aplikasi Android juga belum tersedia.
-
+Tahap 2.5 selesai. Tahap 2.6 dilanjutkan dari parser v1.5; pekerjaan pertama adalah memperluas frasa verba/modal dan pengujian variasi susunan kalimat. Tahap 2.7 melengkapi keragaman dataset. Jaringan makna runtime, konteks percakapan multi-giliran, response engine, dan aplikasi Android belum selesai.
 ## 5. Urutan pekerjaan berikutnya
 
 Ikuti urutan ini. Jangan melompat ke parser kalimat sebelum komponen sebelumnya tersedia dan diuji.
