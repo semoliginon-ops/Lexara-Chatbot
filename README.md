@@ -396,3 +396,6 @@ Atas persetujuan pengguna, lema `tetap` (K3007) ditambahkan dengan POS ADJ dan A
 ### Hasil validasi lema `tetap` — GitHub Actions Run #108
 
 Penambahan K3007 `tetap` dengan POS ADJ+ADV berhasil divalidasi. Kamus memuat 3.006 lema; seluruh **239/239 tes regresi lulus**. Evaluasi development kontekstual mencapai coverage 92,5% dan selective accuracy 100%; abstention ADV turun menjadi **nol**, sementara 19 abstention NOUN tetap ditahan untuk penanganan morfologi/cakupan lema. Test set tetap tersegel. [GitHub Actions Run #108](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961614138).
+
+
+Atas persetujuan pengguna, enam lema NOUN percakapan sehari-hari ditambahkan setelah pemeriksaan indeks duplikat: `kelas` (K3008), `siswa` (K3009), `padi` (K3010), `kilogram` (K3011), `pagar` (K3012), dan `tikus` (K3013). Keenamnya dicatat pada batch-060 dan shard indeks terkait. Target validasi kamus kini 3.012 lema; hasil workflow akan dicatat setelah pemeriksaan regresi.
