@@ -1,2 +1,2 @@
 56 60
-# validasi integrasi predikat nonverbal melalui kamus dan pipeline POS nyata
+# validasi parser pelengkap predikat menjadi/tampak dan regresi penuh
