@@ -765,6 +765,24 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             )
         )
 
+    def test_derived_nominal_with_ku_clitic_is_recognized_in_real_pipeline(self):
+        analyzed = self.analyze("perasaanku")
+        bound = self.token(analyzed, "perasaanku")
+
+        self.assertEqual(bound["status"], "unknown")
+        self.assertEqual(len(bound["morphology_candidates"]), 1)
+        candidate = bound["morphology_candidates"][0]
+        self.assertEqual(candidate["base_form"], "perasaan")
+        self.assertEqual(candidate["rule"], "clitic_ku")
+        self.assertEqual(candidate["clitic"], "ku")
+        self.assertTrue(
+            any(
+                item["lemma"] == "rasa"
+                and item["match_type"] == "derived_form"
+                for item in candidate["candidates"]
+            )
+        )
+
     def test_multi_affix_verb_with_nya_clitic_is_recognized_in_real_pipeline(self):
         analyzed = self.analyze("memilikinya")
         bound = self.token(analyzed, "memilikinya")
