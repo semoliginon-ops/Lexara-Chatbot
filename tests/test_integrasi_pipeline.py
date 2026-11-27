@@ -110,6 +110,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["subject"], ["rumah", "itu"])
         self.assertEqual(parsed["roles"]["predicate"], ["besar"])
 
+    def test_uncovered_linking_verb_becomes_unknown_and_parser_abstains(self):
+        result = self.analyze("Dia menjadi dokter.")
+        verb = self.token(result, "menjadi")
+        self.assertEqual(verb["status"], "unknown")
+        self.assertEqual(verb["pos"], [])
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertEqual(parsed["roles"]["complement"], [])
+
+    def test_uncovered_adjectival_complement_is_not_guessed(self):
+        result = self.analyze("Mereka tampak bahagia.")
+        linking_verb = self.token(result, "tampak")
+        adjective = self.token(result, "bahagia")
+        self.assertEqual(linking_verb["status"], "unknown")
+        self.assertEqual(adjective["status"], "unknown")
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertEqual(parsed["roles"]["complement"], [])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
