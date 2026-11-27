@@ -168,7 +168,13 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     # Ambil frasa nominal yang paling dekat dengan predikat. Kata sifat/angka
     # yang berdampingan ikut menjadi bagian frasa, tetapi tidak ditafsirkan
     # lebih jauh sebagai inti atau pewatas.
-    subject_positions = _phrase_span(words, subject_heads[-1], 0, verb_pos)
+    subject_head = subject_heads[-1]
+    subject_lower = 0
+    for prior in range(subject_head - 1, -1, -1):
+        if words[prior]["pos"] == "PREP":
+            subject_lower = prior + 1
+            break
+    subject_positions = _phrase_span(words, subject_head, subject_lower, verb_pos)
     subject_set = set(subject_positions)
     predicate_positions = [verb_pos]
     cursor = verb_pos - 1
