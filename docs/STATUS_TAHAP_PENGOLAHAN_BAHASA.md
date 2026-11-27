@@ -470,3 +470,23 @@ Perbarui dokumen ini hanya jika ada hal teknis yang layak menjadi catatan kesina
 - perubahan arsitektur atau keterbatasan yang perlu diketahui saat melanjutkan proyek.
 
 Untuk perubahan status tahap, centang dan perbarui **CHECKLIST_PENGEMBANGAN.md**. Jangan menyalin seluruh checklist ke dokumen ini.
+
+#### Keputusan resmi: CAUSER sebagai semantic role ke-14 — 27 November 2026
+
+Pengguna menyetujui penambahan `CAUSER` sebagai role ke-14 dalam katalog semantic role. Katalog baseline kini berisi 14 role: `AGENT`, `CAUSER`, `EXPERIENCER`, `THEME`, `PATIENT`, `RECIPIENT`, `BENEFICIARY`, `INSTRUMENT`, `LOCATION`, `SOURCE`, `GOAL`, `RESULT`, `CONTENT`, dan `STIMULUS`.
+
+**Definisi CAUSER:** entitas atau faktor yang menyebabkan suatu kejadian/perubahan tanpa bertindak sebagai pelaku yang berkehendak. Gunakan hanya ketika argumen itu memang berfungsi sebagai penyebab non-agentif dalam makna sense predikat.
+
+Contoh pembeda:
+- `Rina membuka pintu.` → Rina = `AGENT` (pelaku berkehendak).
+- `Angin membuka pintu.` → angin = `CAUSER` (penyebab non-agentif).
+
+**Batas yang wajib dijaga:**
+1. `CAUSER` tidak menggantikan `AGENT`, `INSTRUMENT`, `STIMULUS`, atau `SOURCE`. Alat/sarana tetap `INSTRUMENT`; pemicu pengalaman psikologis/persepsi tetap `STIMULUS`; titik asal perpindahan tetap `SOURCE`.
+2. Jangan memberi `AGENT` hanya karena entitas berada pada posisi SUBJ atau menjadi sebab fisik. Kehendak/kontrol tindakan harus didukung oleh makna sense.
+3. Argumen inti berbeda dari keterangan sebab tambahan: `Angin membuka pintu.` menempatkan angin sebagai argumen penyebab pada predikat; `Pintu terbuka karena angin.` menyatakan sebab melalui frasa/klausa sebab tambahan. Keduanya tidak boleh disamakan secara otomatis dalam analisis struktur.
+4. Jangan memberi `CAUSER` pada setiap frasa yang menyatakan sebab. Penetapan role hanya berlaku bila penyebab merupakan argumen dalam kerangka sense predikat yang sedang dianalisis.
+5. Jika perbedaan AGENT/CAUSER atau argumen/adjunct tidak didukung oleh sense dan konstruksi, pertahankan ambiguitas atau status belum teranotasi.
+
+Persetujuan ini mengesahkan nilai role pada tingkat desain. Belum ada sense kamus yang dianotasi, belum ada metadata valensi yang ditambahkan ke data, dan belum ada validator atau perilaku parser yang diubah. Implementasi tetap menunggu spesifikasi skema dan pengujian lanjutan.
+
