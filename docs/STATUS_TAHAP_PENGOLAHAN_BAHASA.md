@@ -589,11 +589,11 @@ Rancangan ini memperjelas struktur metadata valensi sebelum implementasi. Status
 | `arguments` | Daftar argumen inti yang dilisensikan frame. |
 | `argument_id` | ID unik di dalam satu frame agar argumen dapat dirujuk dalam pengembangan berikutnya. |
 | `syntactic_role` | Salah satu dari `SUBJ`, `OBJ`, `COMP`, `OBL`. Ini fungsi sintaksis, bukan semantic role. |
-| `semantic_role` | Salah satu dari 14 role yang disetujui. Nilai `null) hanya boleh dipakai jika fungsi semantis argumen memang belum dapat diputuskan; artinya belum teranotasi, bukan role baru. |
+| `semantic_role` | Salah satu dari 14 role yang disetujui. Nilai `null` hanya boleh dipakai jika fungsi semantis argumen memang belum dapat diputuskan; artinya belum teranotasi, bukan role baru. |
 | `required` | Boolean: apakah argumen merupakan bagian wajib dari frame secara leksikal/semantis. Ini tidak berarti argumen harus selalu tampak di permukaan; pelesapan, voice, dan kontrol ditangani oleh lapisan terpisah. |
 | `realizations` | Satu atau lebih bentuk sintaksis yang dapat merealisasikan argumen pada frame tersebut. |
 | `realizations[].type` | Salah satu dari `NP`, `PP`, `ADJP`, `CLAUSE`. |
-| `realizations[].prepositions` | Opsional dan hanya sah untuk `PP); membatasi preposisi jika sense memang mensyaratkannya. Tidak adanya daftar berarti belum ada pembatasan preposisi yang dicatat, bukan bahwa semua preposisi pasti cocok. |
+| `realizations[].prepositions` | Opsional dan hanya sah untuk `PP`; membatasi preposisi jika sense memang mensyaratkannya. Tidak adanya daftar berarti belum ada pembatasan preposisi yang dicatat, bukan bahwa semua preposisi pasti cocok. |
 
 **Katalog nilai sintaksis dan semantis**
 
@@ -613,9 +613,9 @@ Rancangan ini memperjelas struktur metadata valensi sebelum implementasi. Status
 
 **Contoh konseptual untuk pengujian (bukan anotasi kamus)**
 
-- Sense intransitif `muncul): satu frame dengan `SUBJ / THEME / required=true / NP`. Ini memberi dasar untuk menguji `Muncul masalah.` sebagai kandidat subjek pascaverbal, tetapi belum mengesahkan inversi secara otomatis.
+- Sense intransitif `muncul`:  satu frame dengan `SUBJ / THEME / required=true / NP`. Ini memberi dasar untuk menguji `Muncul masalah.` sebagai kandidat subjek pascaverbal, tetapi belum mengesahkan inversi secara otomatis.
 - Sense `memberi`: frame dengan `SUBJ / AGENT`, `OBJ / THEME`, dan `OBL / RECIPIENT` yang direalisasikan sebagai PP dengan preposisi yang sesuai.
-- Sense `makan): dapat diuji dengan argumen OBJ / THEME opsional atau frame alternatif tanpa OBJ, bergantung pada analisis leksikal yang diputuskan. Jangan menganggap semua verba transitif memiliki pola opsional yang sama.
+- Sense `makan`:  dapat diuji dengan argumen OBJ / THEME opsional atau frame alternatif tanpa OBJ, bergantung pada analisis leksikal yang diputuskan. Jangan menganggap semua verba transitif memiliki pola opsional yang sama.
 
 **Validasi yang harus dibuat sebelum skema diaktifkan**
 
