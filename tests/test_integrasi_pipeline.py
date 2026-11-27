@@ -29,7 +29,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3001)
+        self.assertEqual(len(self.entries), 3002)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
@@ -260,6 +260,15 @@ class FullDictionaryPipelineTests(unittest.TestCase):
     def test_ditunda_is_verb_through_real_dictionary_pipeline(self):
         result = self.analyze("Karena hujan deras, pertandingan ditunda.")
         token = self.token(result, "ditunda")
+        self.assertEqual(token["status"], "matched")
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
+        self.assertEqual(token["pos_status"], "identified")
+
+
+    def test_hinggap_is_verb_through_real_dictionary_pipeline(self):
+        result = self.analyze("Burung hinggap pada pagar.")
+        token = self.token(result, "hinggap")
         self.assertEqual(token["status"], "matched")
         self.assertEqual(token["pos"], ["VERB"])
         self.assertEqual(token["pos_source"], "dictionary")
