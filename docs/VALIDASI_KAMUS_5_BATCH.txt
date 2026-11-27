@@ -1,2 +1,3 @@
 58 60
 # Tahap 2.5: enam lema NOUN disetujui dan ditambahkan setelah cek duplikat indeks; target 3012 lema
+# Tes integrasi diselaraskan dengan jumlah lema terbaru; validasi ulang regresi.
