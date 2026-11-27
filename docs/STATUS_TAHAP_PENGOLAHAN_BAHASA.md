@@ -761,8 +761,11 @@ Kontrak bukti:
 - Mengikat bukti ke `frame_id`, `argument_id`, dan `semantic_role` yang benar-benar ada pada kandidat.
 - Bukti memiliki `polarity` (`supports` atau `contradicts`), `strength` (`strong` atau `weak`), dan `source`.
 - Bukti lemah, tidak cocok, atau tidak lengkap tidak dapat memilih frame.
-- Frame dipilih hanya jika tepat satu kandidat mendapat bukti kuat yang mendukung dan semua kandidat alternatif mendapat bukti kuat yang menentang.
+- Frame dipilih hanya jika tepat satu kandidat mendapat bukti kuat yang mendukung dan semua kandidat alternatif mendapat bukti kuat yang menentang **untuk argument slot yang sama**. Bukti pada argumen berbeda tidak boleh digabung untuk memilih frame.
 - Dukungan tanpa penyingkiran alternatif, bukti yang saling bertentangan, atau tidak adanya bukti mempertahankan status `ambiguous`.
 - Modul tidak menebak tipe entitas dari ejaan kata. Ia juga tidak menghasilkan bukti konteks sendiri; lapisan pengenal entitas/peristiwa dan interpretasi konteks masih perlu dibangun.
 
 Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti lemah, konflik, bukti tidak cocok, format bukti invalid, hasil yang sejak awal tidak ambigu, dan jaminan input tidak dimutasi. GitHub Actions Run #149 sukses dengan **337/337 tes regresi**.
+
+
+Pengamanan resolver diperketat: dukungan dan penolakan terhadap alternatif harus membandingkan `argument_id` yang sama. Bukti untuk argumen berbeda tidak boleh digabung untuk membuat keputusan frame. Dua tes tambahan memastikan bukti lintas-slot tidak menghasilkan pilihan palsu dan keputusan kuat yang saling bertentangan tetap ambiguous. Perubahan ini menunggu validasi CI.
