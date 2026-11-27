@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.7: keterangan preposisional yang mendahului subjek
+# validasi parser v0.7: keterangan preposisional depan; batas frasa subjek diperbaiki
