@@ -809,3 +809,10 @@ Untuk melanjutkan item pengujian konstruksi nyata pada Tahap 2.6, ditambahkan te
 Run #157 gagal hanya karena tes awal mencari token dengan kapitalisasi `Dia`, sedangkan normalisasi menghasilkan token `dia`. Ekspektasi tes disesuaikan dengan keluaran normalisasi (bukan mengubah perilaku parser). Run #158 sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **345/345 tes regresi lulus**. [Lihat Run #158](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015686211).
 
 Item pengujian pipeline pada checklist sekarang berstatus `[~]`, bukan selesai: kasus predikat adjektival ini menambah satu konstruksi nyata, tetapi variasi lain masih harus diuji. Tahap aktif tetap 2.6.
+
+
+### Tambahan uji subjek nominal melalui pipeline nyata — Run #159 (27 November 2026)
+
+Ditambahkan kasus `Anak makan nasi.` untuk memastikan subjek berupa nomina umum, bukan hanya pronomina, diproses melalui kamus, POS, dan parser. Indeks kamus sebelumnya telah mengonfirmasi `anak`, `makan`, dan `nasi` tersedia; tidak ada perubahan data kamus. POS yang diharapkan: NOUN + VERB + NOUN; hasil parser: S-P-O dengan `anak` sebagai subjek dan `nasi` sebagai objek. Run #159 sukses dengan **346/346 tes regresi**, termasuk validasi kamus 60 batch / 3.014 lema dan evaluasi development POS. [Lihat Run #159](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015818026).
+
+Pengujian konstruksi nyata Tahap 2.6 kini juga mencakup predikat adjektival `Dia sakit.` (Run #158) dan subjek nominal `Anak makan nasi.` (Run #159). Cakupan ini masih parsial; item checklist tetap `[~]` sampai variasi konstruksi lain yang relevan diuji.
