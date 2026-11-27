@@ -843,4 +843,4 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menahan pola nomina-adjektiva yang ambigu, misalnya `rumah besar`, sebagai unresolved.
 - [x] Menambahkan empat regression tests untuk predikat adjektival, nominal, dan abstention.
 - [ ] Memverifikasi konstruksi nonverbal melalui pipeline kamus/POS nyata dan memperluas cakupan hanya setelah bukti POS memadai.
-- [ ] Menjalankan regression suite penuh melalui GitHub Actions.
+- [x] GitHub Actions Run #80: **194/194 tes lulus**; validasi lima batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
