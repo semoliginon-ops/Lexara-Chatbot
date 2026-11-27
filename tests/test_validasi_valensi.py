@@ -79,7 +79,6 @@ class ValencyValidationTests(unittest.TestCase):
         entry = legacy_entry()
         first = valid_frame()
         second = valid_frame()
-        second["frame_id"] = "F2"
         first["arguments"].append(dict(first["arguments"][0]))
         entry["senses"][0]["valency_frames"] = [first, second]
         errors = validate_entry_valency(entry)
