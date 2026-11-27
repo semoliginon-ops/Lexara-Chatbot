@@ -777,11 +777,10 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(bisa["pos"], ["VERB", "NOUN"])
         self.assertEqual(bisa["context_pos"], "VERB")
         self.assertEqual(bisa["pos_context_status"], "selected_by_context")
-        self.assertEqual(
-            bisa["context_evidence"]["rule"],
-            "bisa_before_verb",
+        self.assertIn(
+            {"rule": "bisa_before_verb", "pos": "VERB", "cue_token": "makan"},
+            bisa["pos_context_evidence"],
         )
-        self.assertEqual(bisa["context_evidence"]["cue"], "makan")
 
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
