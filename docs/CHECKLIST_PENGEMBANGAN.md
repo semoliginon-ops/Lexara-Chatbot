@@ -129,6 +129,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Mempertahankan abstention ketika fungsi sintaksis belum cukup jelas.
 - [x] Memvalidasi parser v1.9 melalui GitHub Actions Run #126: **255/255 regression tests lulus**.
 - [ ] Melanjutkan perluasan pola kalimat secara bertahap berdasarkan contoh yang terkontrol.
+- [ ] Merancang metadata valensi per-sense (fungsi sintaksis, peran semantis, argumen wajib/opsional, dan beberapa kerangka) tanpa mengubah data kamus sebelum skema disetujui.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
