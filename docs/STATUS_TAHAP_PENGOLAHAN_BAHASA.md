@@ -1081,3 +1081,11 @@ Dua tes integrasi morfologi tambahan memperluas cakupan bentuk berklitik tanpa m
 - **Run #215 — `perasaanmu`:** menguji bentuk nominal turunan `perasaan` yang diikuti klitik `-mu`. Analisis menghasilkan satu kandidat dengan `base_form: perasaan`, aturan `clitic_mu`, dan kecocokan lema `rasa` sebagai `derived_form`. GitHub Actions sukses. [Lihat Run #215](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080089810).
 
 **Batas:** kedua tes memvalidasi pengenalan kandidat morfologi dan kecocokan bentuk turunan pada contoh terpilih. Tes ini tidak menyatakan fungsi sintaksis/semantis klitik telah diselesaikan untuk semua konteks. Khusus `-nya`, ambiguitas fungsi pada host nominal tetap dipertahankan; tidak ada perubahan kamus atau indeks.
+
+### Pengujian tambahan bentuk turunan + klitik -nya — Run #216 (28 November 2026)
+
+Tes integrasi morfologi menambahkan bentuk nominal turunan `perasaan` + klitik `-nya` melalui token `perasaannya`. Analisis menghasilkan satu kandidat klitik dengan `base_form: perasaan`, aturan `clitic_nya`, dan kecocokan lema `rasa` sebagai `derived_form`.
+
+GitHub Actions **Run #216 selesai dengan conclusion success**; **389/389 tes regresi lulus**. [Lihat Run #216](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080236697).
+
+**Batas:** tes ini memvalidasi pengenalan morfologi bentuk turunan + klitik pada satu contoh tambahan. Tes ini tidak menyelesaikan fungsi sintaksis/semantis `-nya` pada semua konteks; ambiguitas nominal posesif vs definit/anforis tetap dipertahankan. Tidak ada lema, batch, atau indeks kamus yang diubah.
