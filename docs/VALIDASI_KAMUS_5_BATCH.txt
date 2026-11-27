@@ -1,2 +1,2 @@
 56 60
-# validasi abstention saat lema verba penghubung/pelengkap belum tersedia
+# validasi abstention pada pelengkap yang tidak tercakup kamus; POS varian tampak
