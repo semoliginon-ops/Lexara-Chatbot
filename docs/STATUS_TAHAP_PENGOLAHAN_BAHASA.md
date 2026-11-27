@@ -528,7 +528,7 @@ Setelah CAUSER disahkan sebagai role ke-14, dilakukan uji konseptual untuk mence
 
 #### Rancangan skema valensi per-sense — proposal untuk persetujuan
 
-Rancangan ini memperjelas struktur metadata valensi sebelum implementasi. Statusnya **proposal desain**, belum menjadi kontrak skema aktif. Tidak ada data kamus, loader, validator, atau parser yang diubah oleh catatan ini.
+Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar implementasi skema valensi per-sense. Validator struktural awal telah dibuat di `tools/validasi_valensi.py` dengan tes regresi di `tests/test_validasi_valensi.py`. Validator belum dikonfirmasi melalui eksekusi tes/CI. Data kamus, loader, dan parser belum diubah.
 
 **Lokasi metadata**
 
@@ -632,4 +632,4 @@ Rancangan ini memperjelas struktur metadata valensi sebelum implementasi. Status
 
 Voice aktif/pasif, pelesapan argumen di permukaan, kontrol, raising, urutan kata, konstruksi inversi, argumen implisit, serta penanda klausa yang lebih rinci belum dimasukkan ke skema awal. Semua itu perlu lapisan aturan dan pengujian tersendiri agar metadata valensi tidak menjadi terlalu rumit atau menyatakan hal yang belum didukung bukti.
 
-**Status keputusan:** struktur di atas adalah proposal yang siap ditinjau. Implementasi hanya boleh dimulai setelah pengguna menyetujui skema final. Setelah disetujui, urutan kerja yang aman adalah: validator skema baru yang kompatibel dengan data lama → tes positif/negatif → anotasi terbatas pada beberapa sense terpilih → evaluasi integrasi parser. Tidak ada penambahan lema kamus yang diperlukan untuk pekerjaan ini.
+**Status keputusan dan implementasi:** skema disetujui pengguna. Validator awal dan tes positif/negatif sudah ditambahkan, tetapi hasil eksekusinya belum diverifikasi. Data lama tanpa `valency_frames` tetap diterima. Langkah berikutnya adalah menjalankan tes validator, memperbaiki temuan jika ada, lalu menjalankan uji terhadap batch kamus yang ada untuk memastikan kompatibilitas. Setelah validator stabil, barulah dilakukan anotasi terbatas pada beberapa sense terpilih dan evaluasi integrasi parser. Tidak ada penambahan lema kamus yang diperlukan.
