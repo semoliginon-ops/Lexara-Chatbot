@@ -141,6 +141,18 @@ def map_semantic_roles(
                     compatible = False
                     break
                 realizations = argument.get("realizations", [])
+                # Parser saat ini belum membedakan PP argumen inti dari PP
+                # keterangan. Tanpa batas preposisi eksplisit, jangan menebak.
+                has_explicit_constraint = any(
+                    realization.get("type") == "PP"
+                    and isinstance(realization.get("prepositions"), list)
+                    and bool(realization.get("prepositions"))
+                    for realization in realizations
+                    if isinstance(realization, dict)
+                )
+                if not has_explicit_constraint:
+                    compatible = False
+                    break
                 values = _oblique_values(raw_adjuncts, realizations)
             else:
                 raw_values = roles.get(role_field, [])
@@ -162,6 +174,27 @@ def map_semantic_roles(
                 "presence": "present" if values else "omitted",
                 "value": values,
             })
+
+        # Jangan menerima frame yang mengabaikan argumen inti yang sudah
+        # dikenali parser. Tanpa pemeriksaan ini, frame intransitif dapat
+        # keliru cocok pada kalimat yang juga memiliki objek/pelengkap.
+        if compatible:
+            for syntactic_role, field in (
+                ("SUBJ", "subject"),
+                ("OBJ", "object"),
+                ("COMP", "complement"),
+            ):
+                surface_values = roles.get(field, [])
+                if not isinstance(surface_values, list):
+                    compatible = False
+                    break
+                if surface_values and not any(
+                    isinstance(argument, dict)
+                    and argument.get("syntactic_role") == syntactic_role
+                    for argument in frame["arguments"]
+                ):
+                    compatible = False
+                    break
 
         if compatible:
             candidates.append({
