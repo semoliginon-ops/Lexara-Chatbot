@@ -23,7 +23,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Mengumpulkan 3.000 lema dalam 60 batch.
 - [x] Melengkapi definisi seluruh entri.
 - [x] Menyusun INDEX dan token shards.
-- [x] Menyelesaikan pemeriksaan serta penyempurnaan metadata batch 006–060.
+- [x] Menyelesaikan pemeriksaan serta penyempurnaan metadata dan relasi batch 001–060.
 - [x] Menjaga data inti kamus selama penyempurnaan metadata.
 - [x] Mendokumentasikan skema dan aturan kamus.
 
@@ -93,8 +93,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membedakan hasil lema, variasi, bentuk turunan, dan token tak dikenal.
 - [x] Mengaudit struktur internal seluruh 8 shard index: 3.597 baris, urutan alfabetis, rentang shard, format kolom, ID, dan referensi batch.
 - [x] Memperbaiki 5 token yang salah penempatan shard dan memverifikasi ulang seluruh index.
-- [ ] Mencocokkan seluruh baris index dengan sumber 60 batch JSONL secara bertahap; audit internal index saja belum membuktikan kesesuaian dengan batch.
-- [~] Menyiapkan `tools/audit_index_kamus.py` untuk mencocokkan index dengan sumber secara streaming satu batch per giliran; regression tests telah ditambahkan dan menunggu verifikasi lokal.
+- [x] Mencocokkan seluruh baris index dengan sumber 60 batch JSONL secara streaming; 3.000 lema terindeks, tidak ada lema hilang atau baris index yang tidak cocok.
+- [x] Menyelesaikan `tools/audit_index_kamus.py` dan regression tests; audit sumber 60 batch selesai tanpa kesalahan struktur atau ketidakcocokan index.
 - [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
@@ -154,14 +154,14 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menyusun batch pertama 10 kalimat berlabel (6 development, 4 test).
 - [x] Menambahkan batch kedua 10 kalimat (6 development, 4 test); total 20 kalimat/91 token dalam file dataset.
 - [x] Memvalidasi batch kedua di checkout Termux: 20 kalimat dan 91 token (12 development, 8 test), seluruh pemeriksaan lulus (27 November 2026).
-- [ ] Memperluas dataset secara bertahap hingga target 100 kalimat.
+- [x] Memperluas dataset hingga 100 kalimat (60 development, 40 test).
 - [x] Membuat `tools/validasi_dataset_pos.py` untuk validasi struktur, label, status, ID, dan kecocokan token.
 - [x] Membuat 9 regression tests pada `tests/test_validasi_dataset_pos.py`.
 - [x] Menjalankan `python -m tools.validasi_dataset_pos` dari checkout Termux: **VALIDASI DATASET POS BERHASIL**, batch pertama: 10 kalimat, 43 token (6 development, 4 test), seluruh pemeriksaan struktur dan kesesuaian tokenizer lulus. Batch kedua (20 kalimat total) telah lolos validasi ulang di Termux: 20 kalimat, 91 token, 12 development, 8 test (27 November 2026).
 - [x] Menjalankan 9 regression tests validator dari checkout Termux: 9 lulus, 0 gagal (27 November 2026).
 - [x] Menjalankan ulang seluruh regression suite dari checkout Termux setelah validator POS ditambahkan: **132 tes lulus, 0 gagal** (27 November 2026).
 - [x] Memvalidasi dataset POS terbaru dari checkout Termux: 30 kalimat, 156 token, 18 development, 12 test (27 November 2026).
-- [ ] Memperluas dataset hingga target 100 kalimat dan mengevaluasi akurasi POS.
+- [x] Menyelesaikan dataset 100 kalimat dan evaluasi POS pada development set; 40 kalimat test tetap ditahan.
 
 ### 2.6 Analisis struktur kalimat dasar
 
@@ -173,10 +173,10 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ### 2.7 Dataset dan pengujian terpadu
 
-- [ ] Menyusun kalimat uji representatif.
+- [x] Menyusun dataset uji 100 kalimat dengan label POS dan pembagian development/test.
 - [ ] Mencakup bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang.
-- [ ] Menyimpan hasil yang diharapkan (expected output).
-- [ ] Menjalankan regression suite untuk seluruh komponen.
+- [x] Menyimpan expected POS per token pada dataset JSONL.
+- [x] Menjalankan regression suite seluruh komponen: 174/174 lulus pada GitHub Actions Run #74.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
@@ -226,17 +226,11 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ## Titik lanjut aktif
 
-**Validasi checkout penuh dan verifikasi POS hingga konteks lokal selesai pada 27 November 2026 melalui Termux.** Validator memuat 60 batch/3.000 entri. Regression suite gabungan terbaru menjalankan **123 tes dan seluruhnya lulus**. Tahap 2.5 berlanjut ke penyusunan dataset kalimat berlabel dan evaluasi akurasi POS.
+**Status terbaru (27 November 2026):** audit isi dan relasi kamus 60/60 batch selesai. Audit index terhadap sumber juga selesai: 3.000 lema terindeks, tidak ada lema hilang, baris index tidak cocok, atau kesalahan struktur. Dataset POS berisi 100 kalimat (60 development, 40 test). Evaluasi development menghasilkan 227/255 prediksi benar pada jalur leksikal (89,0%) dan 228/255 pada jalur kontekstual (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Hasil ini hanya berlaku untuk development set; test set tetap ditahan.
 
-Hasil tes komponen yang tercatat dan dijalankan terpisah:
-- Fondasi (normalisasi, tokenizer, loader, pencocokan kamus): 45 lulus.
-- Analyzer teks: 8 lulus.
-- Morfologi: 47 lulus.
-- **Baseline awal: 100 lulus, setelah POS dasar: 110 lulus, dan setelah POS kontekstual: 123 lulus; seluruhnya 0 gagal.**
+Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #74 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **174 regression tests; seluruhnya lulus**.
 
-Catatan historis: sebelum 27 November 2026, tes komponen dijalankan terpisah pada salinan terisolasi. Pada 27 November 2026, validasi diulang langsung dari checkout repository penuh di Termux: validator 60 batch/3.000 entri berhasil dan `python -m unittest discover -s tests -v` menjalankan 100 tes dengan hasil OK, 0 gagal.
-
-Langkah berikutnya: lanjutkan Tahap 2.5 dengan dataset kalimat berlabel dan evaluasi akurasi POS. Jangan mulai parser sebelum fondasi POS dan pengujiannya memadai.
+**Titik lanjut aktif:** lanjutkan ke Tahap 2.6, yaitu merancang parser struktur kalimat dasar. Parser belum tersedia. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
 
 ## Dokumen rujukan
 
