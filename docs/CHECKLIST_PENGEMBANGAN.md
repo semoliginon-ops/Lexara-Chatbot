@@ -748,3 +748,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-031–035 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** relasi yang masih dapat dipertanggungjawabkan dipertahankan; batch yang tidak memiliki temuan pasti tidak diubah. Perubahan hanya pada relasi leksikal, tanpa mengganti lemma atau ID. Validasi otomatis tidak menggantikan penilaian semantik menyeluruh.
+
+
+### Audit dan koreksi semantik Batch-036–040 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-036 sampai Batch-040.
+- [x] Batch-036: tidak ditemukan koreksi relasi yang cukup pasti; seluruh entri dipertahankan.
+- [x] Batch-037: memindahkan `permulaan` dari sinonim `awal` ke `related_terms`; lema `awal` dianotasi sebagai adjektiva, sedangkan `permulaan` merupakan nomina sehingga tidak tepat sebagai sinonim langsung tanpa penyesuaian POS.
+- [x] Batch-038: memindahkan `rancangan` dari sinonim `denah` ke `related_terms`; rancangan lebih luas daripada gambar tata letak tempat. Memindahkan `peduli` dari antonim `egois` ke `related_terms`; antonim yang lebih langsung adalah `altruistis`, sedangkan peduli tidak selalu berlawanan dengan mementingkan diri sendiri.
+- [x] Batch-039: tidak ditemukan relasi sinonim/antonim yang perlu dikoreksi; seluruh entri dipertahankan.
+- [x] Batch-040: tidak ditemukan relasi sinonim/antonim yang perlu dikoreksi; seluruh entri dipertahankan.
+- [ ] Validasi struktural Batch-036–040 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** hanya tiga relasi yang diubah berdasarkan perbedaan kelas kata atau cakupan makna yang jelas. Entri lain dipertahankan. Validasi otomatis menguji struktur dan regresi, bukan menjamin seluruh makna kamus telah sempurna.
