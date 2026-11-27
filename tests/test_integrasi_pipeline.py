@@ -1101,6 +1101,58 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
         self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
         self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
+    def test_six_reflexive_and_demonstrative_lemmas_use_real_dictionary_pipeline(self):
+        cases = {
+            "begini": ("begini", ["ADV"]),
+            "begitu": ("begitu", ["ADV"]),
+            "diri": ("diri", ["NOUN"]),
+            "ini": ("ini", ["PRON"]),
+            "itu": ("itu", ["PRON"]),
+            "sendiri": ("sendiri", ["ADJ", "ADV"]),
+        }
+        for surface, (lemma, expected_pos) in cases.items():
+            with self.subTest(surface=surface):
+                analyzed = self.analyze(surface)
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], expected_pos)
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertTrue(
+                    any(candidate["lemma"] == lemma for candidate in token["candidates"])
+                )
+
+    def test_demonstrative_manner_adverbs_are_distinct_from_pronouns(self):
+        sentences = {
+            "Begini caranya.": ("begini", ["ADV"]),
+            "Jangan begitu.": ("begitu", ["ADV"]),
+            "Buku ini bagus.": ("ini", ["PRON"]),
+            "Rumah itu besar.": ("itu", ["PRON"]),
+        }
+        for sentence, (surface, expected_pos) in sentences.items():
+            with self.subTest(sentence=sentence):
+                analyzed = self.analyze(sentence)
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], expected_pos)
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+    def test_diri_is_nominal_and_sendiri_keeps_its_pos_ambiguity(self):
+        analyzed = self.analyze("Dia melihat diri sendiri.")
+        diri = self.token(analyzed, "diri")
+        sendiri = self.token(analyzed, "sendiri")
+
+        self.assertEqual(diri["status"], "matched")
+        self.assertEqual(diri["pos"], ["NOUN"])
+        self.assertEqual(diri["pos_status"], "identified")
+        self.assertEqual(diri["pos_source"], "dictionary")
+
+        self.assertEqual(sendiri["status"], "matched")
+        self.assertEqual(sendiri["pos"], ["ADJ", "ADV"])
+        self.assertIsNone(sendiri["context_pos"])
+        self.assertEqual(sendiri["pos_context_status"], "ambiguous")
+        self.assertEqual(sendiri["pos_source"], "dictionary")
+
 if __name__ == "__main__":
     unittest.main()
 
