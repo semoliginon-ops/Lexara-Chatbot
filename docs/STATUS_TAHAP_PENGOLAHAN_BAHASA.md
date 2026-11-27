@@ -123,6 +123,21 @@ Parser dikembangkan bertahap. Nomor versi menunjukkan versi implementasi, **buka
 
 Keputusan sementara: jangan menambahkan daftar verba intransitif hard-coded hanya untuk meloloskan dua contoh. Evaluasi dahulu apakah parser memerlukan fitur valensi/kerangka argumen leksikal yang terstruktur, dan bagaimana fitur itu dapat ditambahkan tanpa mengubah makna atau isi kamus secara spekulatif.
 
+### Rancangan awal metadata valensi verba — belum diterapkan
+
+Rancangan berikut adalah arah desain untuk diuji, bukan perubahan skema kamus yang sudah disahkan atau data yang sudah dimigrasikan.
+
+1. **Valensi melekat pada sense**, bukan hanya pada lemma. Satu lemma dapat memiliki beberapa sense dan setiap sense dapat memiliki satu atau lebih kerangka argumen.
+2. **POS perlu tersedia pada tingkat sense** dalam skema generasi berikutnya. Field `pos` tingkat lemma dapat dipertahankan sebagai gabungan label untuk kompatibilitas; data lama tidak otomatis diberi POS sense baru tanpa peninjauan.
+3. Setiap kerangka memisahkan **fungsi sintaksis** (misalnya subjek, objek, pelengkap, atau argumen berpreposisi) dari **peran semantis** (misalnya pelaku, tema, penerima, atau lokasi). Keterangan opsional tidak disamakan dengan argumen inti.
+4. Kerangka mencatat apakah argumen wajib atau opsional dan bentuk realisasi yang didukung (misalnya frasa nominal atau frasa preposisional). Urutan permukaan kata tidak dikunci dalam metadata valensi; urutan ditangani parser.
+5. Satu sense dapat memiliki beberapa kerangka yang sah. Contohnya, verba tertentu dapat dipakai tanpa objek yang dinyatakan atau dengan objek. Parser tidak boleh memilih salah satu kerangka hanya berdasarkan daftar kata.
+6. Metadata valensi hanya menjadi bukti tambahan. Pemilihan sense dan kerangka tetap mempertimbangkan POS, konteks, morfologi/voice, serta struktur kalimat. Jika beberapa analisis masih cocok, hasil harus tetap ambigu/partial/unresolved.
+
+Contoh konseptual (bukan entri kamus baru): sense intransitif `muncul` dapat memiliki argumen inti subjek dengan peran semantis tema; tidak ada objek langsung pada kerangka tersebut. Karena itu, pada `Muncul masalah.`, `masalah` dapat diuji sebagai kandidat subjek pascaverbal, tetapi belum boleh dipastikan sebelum aturan inversi dan tes pembeda tersedia.
+
+**Batas kompatibilitas:** jangan mengubah field `pos`, bentuk entri JSONL, loader, POS tagger, atau parser saat tahap desain ini. Sebelum implementasi, siapkan spesifikasi skema, strategi pembacaan data lama, validasi, contoh positif/negatif, dan tes regresi. Tidak ada lema, POS, definisi, atau metadata kamus yang ditambahkan pada tahap ini.
+
 ### Kontrak kompatibilitas
 
 - Field lama `roles.predicate` harus tetap tersedia meskipun struktur predikat terperinci ditambahkan.
