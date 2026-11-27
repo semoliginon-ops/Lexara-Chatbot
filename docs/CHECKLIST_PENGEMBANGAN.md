@@ -961,3 +961,12 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Menangani jenis elipsis lain hanya setelah pola dan bukti leksikalnya dapat dibatasi secara aman.
 
 - [x] GitHub Actions Run #97: **229/229 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih berhasil.
+
+
+### Parser kalimat v1.5 — subordinasi setelah klausa utama
+
+- [x] Mengenali pola klausa utama + penghubung subordinatif + klausa bawahan.
+- [x] Memisahkan pola sebab dan temporal sebelum aturan koordinasi agar tidak salah diklasifikasikan sebagai klausa setara.
+- [x] Menyimpan relasi pada batas kedua klausa dengan label eksplisit.
+- [x] Menambahkan tes unit sebab/temporal dan tes integrasi sebab melalui kamus asli.
+- [ ] Memperluas subordinasi bertingkat atau klausa eliptis akhir hanya jika analisis dapat dibatasi secara aman.
