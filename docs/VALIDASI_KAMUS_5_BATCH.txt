@@ -1,3 +1,2 @@
 58 60
-# Tahap 2.5: tambah lema tunda dan anotasi derived form ditunda; validasi kamus 3001 lema
-# rerun after updating full-dictionary integration expectation
+# Tahap 2.5: tambah lema hinggap; validasi kamus 3002 lema
