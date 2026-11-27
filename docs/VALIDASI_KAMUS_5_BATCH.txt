@@ -17,3 +17,4 @@
 # Koreksi regresi K-P-S: integrasi full dictionary mengunci abstention pada token terdengar yang belum dikenali sebagai VERB; tes sintaksis unit mengunci larangan menebak inversi.
 # POS: bentuk turunan terdengar dari dengar diberi anotasi VERB eksplisit; uji integrasi penuh, tanpa mengubah parser inversi K-P-S.
 # Pemisahan tahap: tes terdengar mengunci POS VERB dari anotasi turunan; analisis K-P-S parser menjadi pekerjaan sintaksis terpisah.
+# Parser: frasa PREP awal dikeluarkan dari kandidat subjek; tanpa subjek sebelum predikat, nomina pascaverbal tetap unresolved, bukan objek/subjek tebakan.
