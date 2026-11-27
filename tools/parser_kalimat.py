@@ -83,53 +83,64 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(tokens, list):
         raise ValueError("analysis harus memiliki array tokens")
 
-    # Tahap koordinasi klausa: hanya satu konjungsi eksplisit yang memisahkan
-    # dua segmen yang masing-masing memiliki verba teridentifikasi.
+    # Koordinasi klausa: pisahkan beberapa segmen hanya jika setiap segmen
+    # memiliki verba teridentifikasi. Koordinasi frasa nominal tetap ditangani
+    # parser satu klausa karena segmen nominalnya tidak lolos syarat ini.
     conjunctions = [
         i for i, item in enumerate(tokens)
         if isinstance(item, dict) and _effective_pos(item) == "CONJ"
     ]
-    if len(conjunctions) == 1:
-        boundary = conjunctions[0]
-        left_tokens = tokens[:boundary]
-        right_tokens = tokens[boundary + 1:]
-        left_has_verb = any(
-            isinstance(item, dict) and _effective_pos(item) == "VERB"
-            for item in left_tokens
+    if conjunctions:
+        boundaries = [-1, *conjunctions, len(tokens)]
+        segments = [
+            tokens[boundaries[i] + 1:boundaries[i + 1]]
+            for i in range(len(boundaries) - 1)
+        ]
+        segments_have_verbs = all(
+            segment
+            and any(
+                isinstance(item, dict) and _effective_pos(item) == "VERB"
+                for item in segment
+            )
+            for segment in segments
         )
-        right_has_verb = any(
-            isinstance(item, dict) and _effective_pos(item) == "VERB"
-            for item in right_tokens
-        )
-        if left_tokens and right_tokens and left_has_verb and right_has_verb:
-            left_result = parse_sentence({"tokens": left_tokens})
-            right_result = parse_sentence({"tokens": right_tokens})
+        if segments_have_verbs:
+            clause_results = [
+                parse_sentence({"tokens": segment})
+                for segment in segments
+            ]
             acceptable = {"parsed", "partial"}
-            if left_result["status"] in acceptable and right_result["status"] in acceptable:
+            if all(result["status"] in acceptable for result in clause_results):
                 status = (
                     "parsed"
-                    if left_result["status"] == right_result["status"] == "parsed"
+                    if all(result["status"] == "parsed" for result in clause_results)
                     else "partial"
                 )
+                clauses = []
+                for index, result in enumerate(clause_results):
+                    connector = (
+                        None if index == 0
+                        else tokens[conjunctions[index - 1]]["token"]
+                    )
+                    clauses.append({"connector": connector, "analysis": result})
                 return {
-                    "parser_method": "conservative_coordination_v1",
+                    "parser_method": "conservative_coordination_v2",
                     "status": status,
                     "pattern": "KLAUSA-KOORDINATIF",
                     "roles": {
                         "subject": [], "predicate": [], "object": [],
                         "adjuncts": [], "complement": [],
                     },
-                    "clauses": [
-                        {"connector": None, "analysis": left_result},
-                        {"connector": tokens[boundary]["token"], "analysis": right_result},
+                    "clauses": clauses,
+                    "unresolved_tokens": [
+                        token
+                        for result in clause_results
+                        for token in result["unresolved_tokens"]
                     ],
-                    "unresolved_tokens": (
-                        left_result["unresolved_tokens"]
-                        + right_result["unresolved_tokens"]
-                    ),
                     "notes": [
-                        "Dua klausa dianalisis terpisah berdasarkan satu konjungsi yang teridentifikasi.",
-                        "Analisis ini belum mencakup koordinasi bertingkat, elipsis, atau relasi semantik antarklausa.",
+                        "Setiap segmen klausa dianalisis terpisah setelah dipisahkan oleh konjungsi eksplisit.",
+                        "Semua segmen harus memiliki verba teridentifikasi; koordinasi frasa nominal tetap diproses sebagai satu klausa.",
+                        "Koordinasi bertingkat, elipsis, dan relasi semantik antarklausa belum dianalisis.",
                     ],
                 }
 
