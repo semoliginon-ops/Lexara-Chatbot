@@ -938,3 +938,14 @@ Atas persetujuan pengguna, empat lema tambahan dimasukkan ke `data/kamus/batch-0
 Tes pipeline kamus → POS → parser kini mencakup 13 pronomina: `aku`, `saya`, `kamu`, `engkau`, `dia`, `mereka`, `kita`, `kami`, `kalian`, `anda`, `beliau`, `ia`, dan `kau`. Seluruhnya diuji pada posisi subjek dan objek dalam pola S-P-O; uji memverifikasi kecocokan kamus, POS PRON, dan peran parser. Run #177–178 gagal pada pemeriksaan jumlah karena validator masih mengharapkan 3.015 lema; nilai validator dan label workflow diselaraskan menjadi 3.019. **Run #179 selesai dengan conclusion success: 358/358 tes regresi lulus**, validasi kamus 60 batch / 3.019 lema, validasi valensi dan dataset POS berhasil, serta evaluasi POS development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Test split tidak dibuka. [Lihat Run #179](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46023172229).
 
 **Batas:** pengujian 13 pronomina ini mencakup pola sederhana S-P-O sebagai subjek dan objek. Inventaris pronomina informal/regional lain serta bentuk terikat seperti `-ku`, `-mu`, dan `-nya` belum selesai; bentuk terikat tetap menjadi pekerjaan morfologi.
+
+
+### Batas frasa preposisional awal dengan subjek pronomina eksplisit — Run #182 (27 November 2026)
+
+Ditambahkan satu tes integrasi pipeline kamus → POS → parser untuk kalimat `Dari rumah dia bekerja.`. Indeks kamus diperiksa terlebih dahulu: `dari` tersedia sebagai PREP, `rumah` sebagai NOUN, `dia` sebagai PRON, dan `bekerja` sebagai bentuk turunan VERB. Tes memverifikasi seluruh POS berasal dari kamus, parser mempertahankan `dia` sebagai subjek, `bekerja` sebagai predikat, dan `dari rumah` sebagai keterangan awal. Tidak ada perubahan kamus maupun perilaku parser; ini memperkuat uji regresi batas PP awal melalui pipeline nyata.
+
+Selama pengujian awal, kandidat kalimat dengan `di` tidak dapat dipakai untuk memverifikasi POS kamus karena token `di` tidak ditemukan pada indeks. Tidak ada lema yang ditambahkan; contoh uji diganti dengan `dari` yang memang tersedia pada indeks. Perbaikan ekspektasi tes juga menjaga tes lama tetap utuh.
+
+GitHub Actions **Run #180 dan #181** gagal pada percobaan tes/ekspektasi awal; setelah menggunakan lema yang terindeks dan memperbaiki ekspektasi hanya pada tes baru, **Run #182 selesai dengan conclusion success**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi development berhasil; **359/359 tes regresi lulus**. POS development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #182](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46023874794).
+
+**Batas:** hasil ini hanya membuktikan PP awal `dari rumah` tidak menelan subjek pronomina eksplisit `dia` pada contoh yang diuji. Inversi K-P-S seperti `Di rumah terdengar suara.` dan kemungkinan subjek tersirat pada `Di rumah membaca buku.` tetap unresolved; belum ada aturan positif K-P-S yang aman.
