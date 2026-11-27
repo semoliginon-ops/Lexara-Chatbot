@@ -968,3 +968,12 @@ Tes POS mencakup host nominal `buku` dan `rumah`, serta host verbal turunan `mel
 GitHub Actions **Run #185 selesai dengan conclusion success**; **368/368 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil. Test split tetap tersegel. [Lihat Run #185](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46027412483).
 
 **Batas:** metadata POS komponen belum menentukan fungsi sintaksis klitik. Parser belum memisahkan host dan klitik menjadi argumen/pewatas, dan belum membedakan `-nya` posesif dari objek melalui konteks. Bentuk host turunan hanya memperoleh POS jika anotasi POS bentuk permukaan tersedia; selain itu tetap unresolved.
+### Parser mengonsumsi klitik pada host nominal — Run #190 (27 November 2026)
+
+Parser kini dapat memakai komponen POS klitik hanya jika host nominal memiliki satu POS eksplisit NOUN. Token gabungan seperti `bukuku` tetap menjadi satu token permukaan dan dapat mengisi slot frasa nominal subjek/objek; parser tidak memaksakan POS permukaan tunggal pada token leksikal tersebut. Jika host POS kosong/ambigu atau bukan NOUN, jalur ini tidak diaktifkan dan token tetap unresolved.
+
+Untuk host NOUN yang sudah teridentifikasi, parser menambahkan `clitic_analysis` yang mencatat bentuk permukaan, lema dasar, klitik, fungsi `possessive`, dan peran frasa nominal dalam klausa. Tes unit menguji `bukuku` sebagai objek nominal dan memastikan `melihatku` dengan host POS kosong tidak dipaksakan. Tes integrasi melalui kamus lengkap menguji `Dia lihat bukuku.` menjadi S-P-O, dengan `bukuku` sebagai objek dan `-ku` sebagai posesif.
+
+GitHub Actions **Run #190 selesai dengan conclusion success**; **371/371 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil. Test split tetap tersegel. [Lihat Run #190](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46028108871).
+
+**Batas:** dukungan ini hanya untuk klitik yang melekat pada host NOUN dengan POS tunggal yang diketahui. Klitik pada host VERB (fungsi objek terikat), struktur internal NP posesif yang lebih rinci, dan variasi ragam/informal belum ditangani. Token permukaan tidak dipecah menjadi dua token; `clitic_analysis` menyimpan metadata relasi internal secara terpisah.
