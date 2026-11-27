@@ -29,7 +29,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3012)
+        self.assertEqual(len(self.entries), 3013)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
@@ -48,6 +48,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(item["pos"], [pos])
                 self.assertEqual(item["pos_source"], "dictionary")
                 self.assertEqual(item["pos_status"], "identified")
+                self.assertTrue(
+                    any(candidate["lemma"] == lemma for candidate in item["candidates"])
+                )
+
+    def test_pandang_and_tanding_derived_forms_keep_audited_surface_pos(self):
+        expected = {
+            "memandang": ("pandang", "VERB"),
+            "dipandang": ("pandang", "VERB"),
+            "pandangan": ("pandang", "NOUN"),
+            "pemandangan": ("pandang", "NOUN"),
+            "bertanding": ("tanding", "VERB"),
+            "pertandingan": ("tanding", "NOUN"),
+            "menandingi": ("tanding", "VERB"),
+        }
+        for surface, (lemma, pos) in expected.items():
+            with self.subTest(surface=surface):
+                item = self.token(self.analyze(surface), surface)
+                self.assertEqual(item["status"], "matched")
+                self.assertEqual(item["pos"], [pos])
                 self.assertTrue(
                     any(candidate["lemma"] == lemma for candidate in item["candidates"])
                 )
