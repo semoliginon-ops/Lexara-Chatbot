@@ -1081,4 +1081,4 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Tambahkan baris lema pada INDEX `s-u.tsv`.
 - [x] Konteks `tetap` sebelum VERB dapat memilih ADV; konteks yang belum cukup jelas tetap abstain.
 - [x] Tes integrasi mencakup `pegawai tetap` (ambigu tetap dipertahankan) dan `mereka tetap bekerja` (ADV dipilih oleh konteks).
-- [ ] Validasi GitHub Actions untuk 60 batch, 3.006 lema, evaluasi development, dan regresi penuh.
+- [x] GitHub Actions Run #108: validasi 60 batch/3.006 lema, evaluasi development, dan regresi 239/239 tes berhasil.
