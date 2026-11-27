@@ -862,3 +862,20 @@ Perluasan hanya menggabungkan rentang nominal pada sisi kiri/kanan konjungsi. Pa
 Dua tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #89](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944727020) sukses: **209/209 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas:** koordinasi klausa penuh, elipsis, dan konstruksi bertingkat belum didukung. Tahap berikutnya dapat memodelkan koordinasi klausa secara terpisah agar tidak merusak analisis satu klausa yang sudah stabil.
+
+
+## Parser kalimat v1.0 — dua klausa koordinatif sederhana — 27 November 2026
+
+Parser kini dapat mengenali pola dua klausa eksplisit yang dihubungkan satu konjungsi teridentifikasi sebagai CONJ, jika kedua segmen masing-masing memiliki verba teridentifikasi.
+
+Contoh `Aku bekerja dan dia makan.` menghasilkan dua analisis klausa:
+1. Subjek `aku`, predikat `bekerja`.
+2. Penghubung `dan`; subjek `dia`, predikat `makan`.
+
+Setiap segmen dianalisis ulang oleh parser klausa sederhana yang sudah ada. Hasil tingkat atas menggunakan pola `KLAUSA-KOORDINATIF` dan menyimpan hasil di `clauses`. Field `roles` tingkat atas tetap kosong karena hasilnya terdiri dari dua klausa, bukan satu kerangka S-P-O.
+
+Pemisahan hanya dilakukan jika tepat satu konjungsi teridentifikasi dan kedua sisi memiliki VERB. Karena itu koordinasi frasa nominal seperti `Aku dan dia bekerja` dan `Aku membeli nasi dan roti` tetap diproses oleh aturan v0.9, bukan dipotong sebagai klausa.
+
+Tes unit dan integrasi melalui kamus asli ditambahkan. GitHub Actions [Run #90](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944957796) sukses: **213/213 regression tests lulus**. Validasi kamus 60 batch/3.000 lema, relasi leksikal lima batch terpilih, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas:** hanya dua klausa dengan satu konjungsi eksplisit; koordinasi bertingkat, elipsis, relasi semantik antarklausa, dan pemisahan berdasarkan koma belum didukung.
