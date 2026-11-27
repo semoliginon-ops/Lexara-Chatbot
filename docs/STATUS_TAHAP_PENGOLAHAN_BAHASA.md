@@ -890,3 +890,11 @@ Ditambahkan tes integrasi pipeline nyata untuk `Aku pergi walaupun hujan turun.`
 GitHub Actions **Run #170 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **355/355 tes regresi lulus**. POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%. [Lihat Run #170](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019852916).
 
 **Batas:** pengujian ini mencakup klausa konsesif pascaposisi dengan dua klausa S-P eksplisit. Ini belum membuktikan semua bentuk konsesi, elipsis, atau susunan klausa konsesif sudah ditangani.
+
+### Uji klausa konsesif di awal kalimat — Run #171 (27 November 2026)
+
+Ditambahkan tes integrasi pipeline nyata untuk `Walaupun hujan turun, aku pergi.` Indeks kamus memastikan `walaupun`, `hujan`, `turun`, `aku`, dan `pergi` tersedia; tidak ada penambahan lema maupun perubahan batch/index. Tes memverifikasi POS dari kamus, klausa subordinatif awal `hujan turun` dengan pola S-P, klausa utama `aku pergi` dengan pola S-P, dan relasi konsesi `walaupun` yang dihubungkan melalui koma.
+
+GitHub Actions **Run #171 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil. **356/356 tes regresi lulus.** POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #171](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46020096831).
+
+**Batas:** pengujian mencakup satu pola konsesif eksplisit di awal kalimat dengan koma dan dua klausa S-P. Ini tidak membuktikan seluruh variasi konsesi atau elipsis telah ditangani.
