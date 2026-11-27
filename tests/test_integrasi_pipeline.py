@@ -215,6 +215,44 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 )
                 self.assertEqual(parsed["roles"]["object"], ["nasi"])
 
+    def test_verbal_negation_with_bisa_modal_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Aku tidak bisa makan nasi.")
+        expected = {
+            "aku": "PRON",
+            "tidak": "ADV",
+            "makan": "VERB",
+            "nasi": "NOUN",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                item = self.token(analyzed, surface)
+                self.assertEqual(item["pos"], [pos])
+                self.assertEqual(item["pos_status"], "identified")
+
+        modal_token = self.token(analyzed, "bisa")
+        self.assertEqual(modal_token["pos"], ["VERB", "NOUN"])
+        self.assertEqual(modal_token["context_pos"], "VERB")
+        self.assertEqual(modal_token["pos_context_status"], "selected_by_context")
+        self.assertIn(
+            {"rule": "bisa_before_verb", "pos": "VERB", "cue_token": "makan"},
+            modal_token["pos_context_evidence"],
+        )
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["tidak", "bisa", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertEqual(
+            parsed["predicate_structure"]["modifiers"],
+            [
+                {"token": "tidak", "kind": "negation"},
+                {"token": "bisa", "kind": "modal"},
+            ],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+
     def test_bisa_modal_predicate_uses_real_dictionary_pipeline(self):
         analyzed = self.analyze("Aku bisa makan nasi.")
         expected = {
