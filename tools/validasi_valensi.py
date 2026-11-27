@@ -91,6 +91,8 @@ def validate_entry_valency(entry: dict, source: str = "<entry>") -> list[str]:
                 sr = argument.get("syntactic_role")
                 if not isinstance(sr, str) or sr not in _SYNTACTIC_ROLES:
                     errors.append(f"{aloc}.syntactic_role: nilai tidak dikenal ({sr!r})")
+                if "semantic_role" not in argument:
+                    errors.append(f"{aloc}.semantic_role: field wajib; gunakan null jika belum dianotasi")
                 sem = argument.get("semantic_role")
                 if sem is not None and (
                     not isinstance(sem, str) or sem not in _SEMANTIC_ROLES
