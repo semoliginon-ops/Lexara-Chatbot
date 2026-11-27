@@ -63,7 +63,7 @@ jobs:
           done
           python -m tools.validasi_relasi_leksikal "${files[@]}"
 
-      - name: Validate full 3,013-lemma dictionary
+      - name: Validate full 3,014-lemma dictionary
         run: python -m tools.validasi_kamus_lengkap
 
       - name: Validate POS dataset
