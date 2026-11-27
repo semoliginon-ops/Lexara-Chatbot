@@ -718,16 +718,16 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                 )
                 clitic = component.get("clitic")
                 if clitic in {"ku", "mu"}:
-                    clitic_analysis.append({
+                    clitic_item = {
                         "surface": word["token"],
                         "base_form": component.get("base_form"),
                         "clitic": clitic,
                         "function": "possessive",
                         "function_status": "selected_by_host_pos",
                         "nominal_phrase_role": role,
-                    })
+                    }
                 elif clitic == "nya":
-                    clitic_analysis.append({
+                    clitic_item = {
                         "surface": word["token"],
                         "base_form": component.get("base_form"),
                         "clitic": clitic,
@@ -735,7 +735,39 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                         "function_candidates": ["possessive", "definite_anaphoric"],
                         "function_status": "unresolved",
                         "nominal_phrase_role": role,
-                    })
+                    }
+                else:
+                    clitic_item = None
+
+                # "diri + klitik" dapat menjadi frasa refleksif, tetapi
+                # kecocokan orang hanya menghasilkan kandidat koreferensi,
+                # bukan keputusan semantik final.
+                if clitic_item is not None and component.get("base_form") == "diri" and role == "object":
+                    compatible_subjects = {
+                        "ku": {"aku", "saya"},
+                        "mu": {"kamu", "engkau", "kau"},
+                        "nya": {"dia", "ia", "beliau"},
+                    }
+                    subject_tokens = [
+                        words[i]["token"] for i in subject_positions
+                        if words[i]["pos"] == "PRON"
+                    ]
+                    antecedent = (
+                        subject_tokens[0]
+                        if len(subject_tokens) == 1
+                        and subject_tokens[0].casefold() in compatible_subjects.get(clitic, set())
+                        else None
+                    )
+                    clitic_item["reference_relation"] = None
+                    clitic_item["reference_relation_candidates"] = ["reflexive", "non_reflexive"]
+                    clitic_item["reference_relation_status"] = "unresolved"
+                    if antecedent is not None:
+                        clitic_item["reference_relation"] = "reflexive"
+                        clitic_item["reference_relation_status"] = "candidate_by_person_agreement"
+                        clitic_item["antecedent_candidate"] = antecedent
+
+                if clitic_item is not None:
+                    clitic_analysis.append(clitic_item)
             elif host_labels == ["VERB"] and position in predicate_positions:
                 clitic_analysis.append({
                     "surface": word["token"],
