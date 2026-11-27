@@ -477,6 +477,53 @@ class SimpleClauseParserTests(unittest.TestCase):
             ],
         })
 
+    def test_modal_phrase_with_object_keeps_spo(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("akan", ["ADV"]),
+            token("makan", ["VERB"]),
+            token("nasi", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["subject"], ["dia"])
+        self.assertEqual(result["roles"]["predicate"], ["akan", "makan"])
+        self.assertEqual(result["roles"]["object"], ["nasi"])
+
+    def test_modal_phrase_with_prepositional_adjunct_keeps_spk(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("bisa", ["VERB"]),
+            token("pergi", ["VERB"]),
+            token("ke", ["PREP"]),
+            token("pasar", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-K")
+        self.assertEqual(result["roles"]["predicate"], ["bisa", "pergi"])
+        self.assertEqual(
+            result["roles"]["adjuncts"],
+            [{"preposition": "ke", "phrase": ["pasar"]}],
+        )
+
+    def test_fronted_prepositional_adjunct_with_modal_predicate_keeps_ksp(self):
+        result = parse_sentence(analysis(
+            token("di", ["PREP"]),
+            token("rumah", ["NOUN"]),
+            token("dia", ["PRON"]),
+            token("tidak", ["ADV"]),
+            token("mau", ["VERB"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-K")
+        self.assertEqual(result["roles"]["subject"], ["dia"])
+        self.assertEqual(result["roles"]["predicate"], ["tidak", "mau", "bekerja"])
+        self.assertEqual(
+            result["roles"]["adjuncts"],
+            [{"preposition": "di", "phrase": ["rumah"]}],
+        )
+
     def test_modal_verb_standing_alone_remains_predicate(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
