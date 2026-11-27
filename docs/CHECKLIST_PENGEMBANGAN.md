@@ -27,6 +27,14 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menjaga data inti kamus selama penyempurnaan metadata.
 - [x] Mendokumentasikan skema dan aturan kamus.
 
+### Audit kualitas isi kamus — bertahap per batch
+
+- [ ] Audit isi `batch-001.jsonl` sampai `batch-060.jsonl` satu batch pada satu waktu; catat temuan sebelum berpindah batch.
+- [ ] Pisahkan audit baca-saja dari tahap perbaikan; jangan mengubah data selama audit.
+- [ ] Tinjau temuan berdasarkan bukti dan dampak; perbaiki hanya kesalahan yang terkonfirmasi.
+- [ ] Jalankan validator dan regression tests yang relevan setelah setiap kelompok perbaikan.
+- [ ] Catat hasil setiap batch dan tandai batch selesai hanya setelah pemeriksaan serta verifikasi benar-benar dilakukan.
+
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
 
 ### 2.1 Normalisasi teks
