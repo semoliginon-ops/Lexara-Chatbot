@@ -874,3 +874,11 @@ Ditambahkan tes integrasi untuk `Aku tidak akan makan nasi besok.` Indeks kamus 
 GitHub Actions **Run #167** sukses: validasi 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **353/353 tes regresi lulus**. Coverage/accuracy POS kontekstual development tetap 98,0% / 98,0%, selective accuracy 100,0%. [Lihat Run #167](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019265619).
 
 **Batas:** ini membuktikan satu kombinasi negasi + modal adverb + objek + keterangan temporal pascapredikat. Tidak menggeneralisasi ke seluruh pola urutan kata atau seluruh jenis keterangan.
+
+### Uji modal ambigu `bisa` + keterangan temporal `nanti` — Run #169 (27 November 2026)
+
+Ditambahkan tes integrasi untuk `Aku bisa makan nasi nanti.` Indeks kamus memastikan `aku`, `bisa`, `makan`, `nasi`, dan `nanti` tersedia. Tidak ada perubahan batch maupun indeks. Kandidat leksikal `bisa` tetap VERB+NOUN; bukti konteks `bisa_before_verb` dengan cue `makan` memilih VERB, dan tes memeriksa bukti melalui field `pos_context_evidence` sesuai skema pipeline. Parser menghasilkan S-P-O-K, predikat `bisa makan` berkepala `makan`, objek `nasi`, dan adjunct temporal `nanti`.
+
+Run #168 sempat gagal karena tes baru membaca nama field bukti konteks yang keliru (`context_evidence`); log mengidentifikasi KeyError tersebut. Tes diperbaiki agar memakai `pos_context_evidence`, lalu **Run #169 sukses** dengan validasi 60 batch / 3.014 lema, valensi, dataset POS, evaluasi development, dan **354/354 tes regresi lulus**. POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%. [Lihat Run #169](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019606633).
+
+**Batas:** pengujian memvalidasi satu konstruksi `bisa` modal yang diikuti verba dan keterangan temporal pascapredikat. Penggunaan `bisa` dalam konteks lain tetap memerlukan bukti konteks yang memadai.
