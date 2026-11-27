@@ -322,6 +322,8 @@ beban	K0725	beban	lemma	batch-015
 bebek	K1955	bebek	lemma	batch-040
 becak	K2552	becak	lemma	batch-052
 begadang	K0726	begadang	lemma	batch-015
+begini	K3021	begini	lemma	batch-060
+begitu	K3022	begitu	lemma	batch-060
 bekal	K0525	bekal	lemma	batch-011
 bekantan	K2256	bekantan	lemma	batch-046
 bekas	K1231	bekas	lemma	batch-025
@@ -423,9 +425,9 @@ bersih	K0321	bersih	lemma	batch-007
 bersin	K0531	bersin	lemma	batch-011
 bersuami	K0111	suami	derived_form	batch-003
 bersungai	K0157	sungai	derived_form	batch-004
-berteduh	K3004	berteduh	lemma	batch-060
 bertanah	K0154	tanah	derived_form	batch-004
 bertanya	K0189	tanya	derived_form	batch-004
+berteduh	K3004	berteduh	lemma	batch-060
 bertelinga	K0119	telinga	derived_form	batch-003
 bertelur	K0167	telur	derived_form	batch-004
 berteman	K0011	teman	derived_form	batch-001
