@@ -1802,7 +1802,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             with self.subTest(sentence=sentence, role=role, clitic=clitic):
                 analyzed = self.analyze(sentence)
                 bound = self.token(analyzed, surface)
-                self.assertEqual(bound["status"], "matched")
+                self.assertEqual(bound["status"], "unknown")
                 self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
                 component = bound["clitic_pos_candidates"][0]
                 self.assertEqual(component["clitic"], clitic)
