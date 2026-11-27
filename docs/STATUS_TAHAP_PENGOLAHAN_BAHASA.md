@@ -1089,3 +1089,11 @@ Tes integrasi morfologi menambahkan bentuk nominal turunan `perasaan` + klitik `
 GitHub Actions **Run #216 selesai dengan conclusion success**; **389/389 tes regresi lulus**. [Lihat Run #216](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080236697).
 
 **Batas:** tes ini memvalidasi pengenalan morfologi bentuk turunan + klitik pada satu contoh tambahan. Tes ini tidak menyelesaikan fungsi sintaksis/semantis `-nya` pada semua konteks; ambiguitas nominal posesif vs definit/anforis tetap dipertahankan. Tidak ada lema, batch, atau indeks kamus yang diubah.
+
+### Pengujian tambahan bentuk turunan verbal + klitik -ku — Run #217 (28 November 2026)
+
+Tes integrasi menambahkan bentuk `memilikiku`, dengan dasar turunan `memiliki` dan klitik `-ku`. Analisis menghasilkan satu kandidat dengan aturan `clitic_ku`, `base_form: memiliki`, serta kecocokan lema `milik` sebagai `derived_form`.
+
+GitHub Actions **Run #217 selesai dengan conclusion success**; **390 tes regresi dijalankan**. [Lihat Run #217](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080373836).
+
+**Batas:** ini memvalidasi pengenalan morfologi untuk satu bentuk turunan verbal berklitik `-ku`, bukan seluruh variasi sintaksis atau semantisnya. Tidak ada lema, batch, atau indeks kamus yang diubah.
