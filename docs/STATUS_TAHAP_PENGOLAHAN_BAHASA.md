@@ -879,3 +879,19 @@ Pemisahan hanya dilakukan jika tepat satu konjungsi teridentifikasi dan kedua si
 Tes unit dan integrasi melalui kamus asli ditambahkan. GitHub Actions [Run #90](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944957796) sukses: **213/213 regression tests lulus**. Validasi kamus 60 batch/3.000 lema, relasi leksikal lima batch terpilih, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas:** hanya dua klausa dengan satu konjungsi eksplisit; koordinasi bertingkat, elipsis, relasi semantik antarklausa, dan pemisahan berdasarkan koma belum didukung.
+
+
+## Parser kalimat v1.1 — koordinasi tiga klausa atau lebih — 27 November 2026
+
+Kemampuan koordinasi klausa diperluas dari dua menjadi beberapa klausa berurutan. Parser mengumpulkan posisi konjungsi yang teridentifikasi sebagai CONJ, membagi token menjadi segmen, lalu hanya menerima pemisahan jika setiap segmen memiliki setidaknya satu VERB teridentifikasi dan analisis tiap segmen menghasilkan status `parsed` atau `partial`.
+
+Contoh `Aku bekerja dan dia makan dan mereka belajar.` menghasilkan tiga analisis klausa berurutan:
+1. Subjek `aku`, predikat `bekerja`.
+2. Penghubung `dan`; subjek `dia`, predikat `makan`.
+3. Penghubung `dan`; subjek `mereka`, predikat `belajar`.
+
+Konjungsi tetap disimpan per klausa agar urutan hubungan eksplisit tidak hilang. Jika satu segmen tidak memiliki verba, parser tidak memaksakan pemisahan dan kembali ke jalur analisis satu klausa; ini menjaga koordinasi frasa nominal seperti `Aku dan dia bekerja`.
+
+Tes unit mencakup tiga klausa, kompatibilitas dua klausa, dan kasus yang harus ditolak; tes integrasi memakai pipeline kamus 3.000 lema. GitHub Actions [Run #91](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45954434150) sukses: **217/217 regression tests lulus**. Validasi kamus, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas:** semua klausa harus memiliki verba eksplisit yang dikenali. Elipsis, subjek/predikat yang dihilangkan, koordinasi bertingkat, serta pemahaman relasi sebab-akibat/pertentangan antarklausa belum didukung.
