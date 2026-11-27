@@ -787,3 +787,16 @@ Parser kini dapat mengenali empat adverbia temporal eksplisit (`besok`, `nanti`,
 Workflow regresi sebelumnya belum terpicu oleh perubahan parser karena path parser dan tes integrasi belum tercantum pada filter workflow. Path tersebut ditambahkan ke `.github/workflows/pos-validation.yml` agar perubahan parser berikutnya menjalankan suite penuh. Run #153 sempat gagal pada dua tes baru karena pemindaian kandidat objek melewati ADV temporal; pemindaian diperbaiki agar ADV dapat diperiksa oleh tahap keterangan. Run #154 kemudian sukses: validasi kamus 60 batch / 3.014 entri, validasi valensi, dataset POS, evaluasi development, dan **342/342 tes regresi lulus**. [Lihat Run #154](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46014585155).
 
 **Batas:** perluasan ini hanya mencakup empat adverbia temporal yang sudah dikenali secara eksplisit. Ini tidak menyelesaikan seluruh keterangan adverbial atau inversi K-P-S. Tahap aktif tetap 2.6.
+
+
+### Investigasi awal inversi K-P-S — Run #156 (27 November 2026)
+
+Checklist Tahap 2.6 meminta pola inversi diuji hanya jika aturan linguistik dan bukti pendukungnya jelas. Investigasi ini belum menambahkan parser K-P-S positif, karena posisi nomina setelah verba saja tidak cukup untuk menentukan apakah nomina itu subjek inversi atau objek dengan subjek yang dilesapkan.
+
+Dua konstruksi dibandingkan melalui unit test dan pipeline kamus/POS nyata:
+- `Di rumah terdengar suara.`: kandidat K-P-S; `suara` mungkin subjek pascaverbal.
+- `Di rumah membaca buku.`: pola permukaan serupa, tetapi `buku` dapat menjadi objek sementara subjek tidak disebutkan.
+
+Parser mempertahankan kedua kalimat sebagai `unresolved`, mencatat `di rumah` sebagai keterangan awal, dan tidak memaksakan nomina akhir menjadi SUBJ maupun OBJ. Tes baru ditambahkan pada `tests/test_parser_kalimat.py` dan `tests/test_integrasi_pipeline.py`. Run #156 sukses: validasi kamus penuh 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, serta **344/344 tes regresi lulus**. [Lihat Run #156](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015428982).
+
+**Keputusan sementara:** investigasi batas dan uji abstention selesai sebagian; inversi K-P-S belum diimplementasikan dan item checklist tetap `[~]`. Aturan positif perlu menunggu pemilihan sense predikat dan bukti valensi yang cukup untuk membedakan predikat intransitif dari predikat transitif/objek. Jangan membuat daftar kata kerja khusus hanya untuk meloloskan contoh tertentu. Tahap aktif tetap 2.6.
