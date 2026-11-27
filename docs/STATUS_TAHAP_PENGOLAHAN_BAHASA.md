@@ -769,3 +769,12 @@ Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti
 
 
 Pengamanan resolver diperketat: dukungan dan penolakan terhadap alternatif harus membandingkan `argument_id` yang sama. Bukti untuk argumen berbeda tidak boleh digabung untuk membuat keputusan frame. Dua tes tambahan memastikan bukti lintas-slot tidak menghasilkan pilihan palsu dan keputusan kuat yang saling bertentangan tetap ambiguous. GitHub Actions Run #152 sukses dengan **339/339 tes regresi**.
+
+
+### Klarifikasi urutan tahap — 27 November 2026
+
+Tahap 2.6 dan 2.7 **belum selesai** dan gerbang Tahap 2 menuju Tahap 3 belum terpenuhi. Beberapa pekerjaan semantic role dan konteks dikerjakan lebih awal sebagai fondasi teknis, sehingga secara urutan ada pekerjaan Tahap 3 yang mendahului penutupan Tahap 2. Ini tidak boleh ditafsirkan sebagai Tahap 2 telah selesai.
+
+Koreksi checklist: pemetaan semantic role pasif sebenarnya telah selesai dan tervalidasi melalui Run #144–148 (hingga 328/328 tes), sehingga item tersebut sekarang dicentang. Pekerjaan Tahap 2.6 yang masih terbuka mencakup perluasan pola parser terkontrol, pola inversi K-P-S, uji konstruksi lebih luas dengan pipeline nyata, dan kriteria penutupan. Tahap 2.7 masih membutuhkan dataset pipeline lengkap, variasi kalimat, expected output termasuk partial/unresolved, evaluasi terpadu dengan test split tetap tersegel, serta baseline dan kriteria kelulusan.
+
+Resolver konteks semantic role yang dibuat pada Run #149 dan diperketat pada Run #152 adalah **fondasi awal**. Resolver menerima bukti konteks terstruktur; penghasil bukti otomatisnya belum ada. Karena itu Tahap 3 belum dinyatakan resmi dimulai.
