@@ -19,10 +19,10 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Evaluasi POS development kontekstual: **250/255 token dikenali**, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan pada prediksi yang dikeluarkan.
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
-- Parser kalimat tersedia pada **v1.7**; modalitas `akan` dan `bisa` serta urutan modal + objek/keterangan sudah diuji. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
+- Parser kalimat tersedia pada **v1.8**; modalitas `akan` dan `bisa`, serta empat ADV temporal awal (`besok`, `nanti`, `sekarang`, `tadi`) sudah diuji secara konservatif. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
 - GitHub Actions **Run #118 SUCCESS**: validasi kamus 60 batch/3.014 lema, validasi dataset POS, evaluasi development, dan **250/250 regression tests lulus**.
 
-**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.7**. Aturan parser untuk modalitas `akan` (POS ADV) dan `bisa` (POS VERB) sudah diuji jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Lema `akan` kini ditambahkan sebagai ADV K3015 atas persetujuan pengguna; indeks `a-c.tsv` dan target kamus diperbarui menjadi 3.014. Tes integrasi memastikan POS berasal dari kamus serta parser tidak memaksakan `akan` sebagai predikat tunggal. Validasi CI Run #118 telah selesai dengan status SUCCESS. Berikutnya perluas uji susunan kalimat sederhana, termasuk pola keterangan awal dan pola inversi yang benar-benar didukung. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
+**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.8**. Aturan parser untuk modalitas `akan` (POS ADV) dan `bisa` (POS VERB) sudah diuji jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Lema `akan` kini ditambahkan sebagai ADV K3015 atas persetujuan pengguna; indeks `a-c.tsv` dan target kamus diperbarui menjadi 3.014. Tes integrasi memastikan POS berasal dari kamus serta parser tidak memaksakan `akan` sebagai predikat tunggal. Validasi CI Run #118 telah selesai dengan status SUCCESS. Berikutnya uji pola inversi yang memiliki penanda sintaksis dan POS yang cukup jelas; jangan menebak fungsi ADV lain sebagai keterangan waktu. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
 ---
 
@@ -1032,3 +1032,8 @@ Lema `akan` ditambahkan ke `data/kamus/batch-060.jsonl` sebagai ADV dengan defin
 
 
 **Hasil validasi penambahan `akan` — Run #118:** workflow selesai dengan status SUCCESS. Loader memuat 60 batch dan **3.014 entri**; validasi relasi batch terpilih, validasi dataset POS, evaluasi development, dan seluruh **250/250 regression tests** lulus. Tes integrasi menguji POS ADV dari sumber kamus, penggunaan `akan` sebelum verba inti pada kalimat dengan objek, dan sikap hati-hati pada `Aku akan.` yang tetap unresolved. [GitHub Actions Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132).
+
+
+### Parser v1.8 — keterangan waktu ADV di awal klausa
+
+Empat kata temporal yang sudah ada di kamus (`besok`, `nanti`, `sekarang`, `tadi`) dapat dicatat sebagai keterangan jika muncul sebelum subjek. Parser menyimpan bentuk `{adverb, kind: temporal}`; daftar ini eksplisit dan terbatas. ADV lain seperti `mungkin` tidak dianggap keterangan temporal secara otomatis dan tetap masuk `unresolved_tokens`. Tes unit menguji empat kata temporal dan abstention, sedangkan tes integrasi `Besok aku akan makan nasi.` melewati kamus, POS, modalitas, objek, dan parser. Tidak ada penambahan lema atau perubahan POS.
