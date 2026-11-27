@@ -1159,3 +1159,12 @@ Tes ini menambah cakupan integrasi untuk penanda `meskipun`; tidak mengubah pars
 ### Klausa temporal pascaposisi — Run #227 (28 November 2026)
 
 Tes integrasi pipeline untuk `Aku pulang ketika hujan turun.` memastikan dua klausa S-P dipisahkan dan klausa subordinatif diberi penanda `ketika` dengan relasi `temporal`. Run #226 sempat gagal karena tes tambahan mengasumsikan token `ketika` harus berstatus POS `matched`/`CONJ`, padahal hal tersebut bukan prasyarat yang dijamin oleh parser. Asumsi POS tersebut dihapus; cakupan tes diarahkan pada hasil struktur klausa yang menjadi target. GitHub Actions Run #227 sukses, **400/400 tes regresi lulus**. [Lihat Run #227](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081422253).
+
+
+### Klausa sebab pascaposisi dengan penanda `sebab` — Run #228 (28 November 2026)
+
+Tes integrasi pipeline ditambahkan untuk kalimat `Aku pulang sebab hujan turun.`. Parser mengidentifikasi klausa utama `Aku pulang` dan klausa subordinatif `hujan turun` sebagai pola S-P, serta mencatat hubungan antarklausa sebagai `sebab`.
+
+GitHub Actions **Run #228 selesai dengan conclusion success**; **401/401 tes regresi lulus**. Log juga mengonfirmasi validasi kamus 3.025 lema/60 batch, valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #228](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081540492).
+
+Tes ini memperluas cakupan pengujian klausa subordinatif sebab pada posisi setelah klausa utama. Ini belum menyatakan seluruh penanda sebab atau variasi posisi klausa telah tercakup. Tidak ada perubahan kamus, batch, indeks, atau perilaku parser.
