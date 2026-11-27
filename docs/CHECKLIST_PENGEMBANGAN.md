@@ -696,3 +696,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural kelompok Batch-011–015 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** koreksi ini menyasar relasi leksikal; tidak mengubah lema, ID entri, POS, atau bentuk turunan. Pemeriksaan otomatis tetap bersifat struktural dan regresi, bukan bukti bahwa seluruh makna kamus telah tervalidasi secara linguistik.
+
+
+### Audit dan koreksi semantik Batch-016–020 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-016 sampai Batch-020 dengan pemeriksaan relasi sinonim/antonim terhadap definisi dan kelas makna.
+- [x] Batch-016: menghapus `memaafkan` dari antonim `dendam` (tindakan memaafkan bukan antonim leksikal langsung); memindahkan `terkenal` dari sinonim `eksis` ke `related_terms` (keberadaan tidak sama dengan popularitas); membatasi sinonim `ketertiban` pada sense nomina `disiplin` dan memisahkan antonim sense adjektiva menjadi `tidak disiplin`.
+- [x] Batch-017: memindahkan `tolak` dari sinonim `dorong` ke `related_terms`; `tolak` dapat berarti menolak atau mendorong menjauh, sehingga bukan sinonim umum untuk gerakan mendorong.
+- [x] Batch-018: menghapus `tenangkan` dari antonim `ganggu`; bentuk perintah/aksi menenangkan bukan antonim leksikal langsung dari verba mengganggu.
+- [x] Batch-019: memindahkan `jarang` dari sinonim `langka` ke `related_terms`; frekuensi rendah dan kelangkaan tidak selalu saling menggantikan.
+- [x] Batch-020: memindahkan `korban` dari sinonim `mangsa` ke `related_terms`; korban lebih luas dan tidak selalu merupakan sasaran buruan.
+- [ ] Validasi struktural Batch-016–020 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** selain koreksi yang dicatat, entri dipertahankan. Perubahan tidak mengubah lemma atau ID; penataan sense pada `disiplin` hanya membatasi relasi ke makna yang tepat. Validasi otomatis menguji struktur dan regresi, bukan menjamin seluruh isi semantik kamus.
