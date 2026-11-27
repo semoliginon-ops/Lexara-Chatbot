@@ -1,11 +1,11 @@
-"""Parser prototipe konservatif v1.6 untuk pola klausa sederhana Bahasa Indonesia.
+"""Parser prototipe konservatif v1.7 untuk pola klausa sederhana Bahasa Indonesia.
 
 Versi ini mengenali kerangka S-P, S-P-O, keterangan berpreposisi, dan
 rentang frasa nominal sederhana tanpa memaksakan analisis internal frasa.
 Parser tidak menebak fungsi kata yang POS-nya ambigu/tidak diketahui dan tidak
 mengklaim analisis lengkap untuk kalimat majemuk atau konstruksi kompleks.
 Versi 1.6 menambahkan rincian kepala predikat verbal dan pewatas terdeteksi
-melalui field predicate_structure; roles.predicate tetap kompatibel.
+melalui field predicate_structure; roles.predicate tetap kompatibel. Versi 1.7 memperluas penanda modalitas terdeteksi.
 """
 from __future__ import annotations
 
