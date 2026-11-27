@@ -9,6 +9,22 @@
 
 Dokumen ini adalah catatan kesinambungan kerja. Jika percakapan atau sesi pengembangan terputus, gunakan dokumen ini bersama README dan kondisi repository terbaru untuk melanjutkan pekerjaan tanpa mengulang langkah yang sudah selesai.
 
+
+## Snapshot status terbaru — 27 November 2026
+
+Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahankan sebagai riwayat, tetapi tidak boleh mengesampingkan snapshot ini.
+
+- Audit isi/relasi kamus selesai: **60/60 batch, 3.000 entri**.
+- Audit index terhadap seluruh batch sumber selesai: seluruh 3.000 lema terindeks; 0 lema hilang, 0 baris index tidak cocok, dan 0 kesalahan struktur. Sebanyak 2.468 varian/bentuk turunan sengaja tidak dimasukkan ke index ringan.
+- Validator penuh berhasil memuat 60 batch dan 3.000 entri.
+- Dataset POS tervalidasi: 100 kalimat, 543 token (60 development, 40 test).
+- Evaluasi development-only: POS leksikal 227/255 (89,0%); POS kontekstual 228/255 (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Test split tetap ditahan.
+- Pengujian integrasi kamus nyata ditambahkan di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, dan tanda baca.
+- GitHub Actions **Run #74 SUCCESS**: validasi relasi lima batch, validasi kamus penuh, validasi dataset POS, evaluasi development, dan **174/174 regression tests lulus**.
+
+**Titik lanjut aktif:** Tahap 2.1–2.5 memiliki fondasi dan tes; lanjut ke **Tahap 2.6 — parser struktur kalimat dasar**. Parser belum dibuat. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
+
+
 ---
 
 ## 1. Tujuan tahap
@@ -29,7 +45,7 @@ Tahap ini menggunakan kamus 3.000 lema yang telah disusun. Fokusnya adalah memba
 - Gunakan regression tests agar perbaikan berikutnya tidak merusak perilaku yang sudah benar.
 - Jangan menjalankan GitHub Actions untuk pekerjaan rutin.
 
-## 3. Kondisi repository saat dokumen ini dibuat
+## 3. Riwayat kondisi repository awal (catatan historis)
 
 Branch kerja: `main`
 
@@ -68,18 +84,27 @@ Branch kerja: `main`
 - **Regression suite checkout penuh melalui Termux (27 November 2026):** `python -m unittest discover -s tests -v` dijalankan dari root repository dan menghasilkan `Ran 100 tests ... OK` — **100 lulus, 0 gagal**. Rinciannya: analyzer 8, loader 12, morfologi 47, normalisasi 8, pencocokan kamus 13, tokenizer 12. Ini merupakan satu kali eksekusi gabungan dari checkout penuh, berbeda dari pengujian komponen terisolasi sebelumnya.
 - Belum ada integrasi Android.
 
-## 4. Pekerjaan yang sedang dikerjakan
+## 4. Kondisi pekerjaan saat ini
 
-**Subtahap 2.1–2.4 telah memiliki fondasi dan regression suite yang lulus. Validasi seluruh kamus, implementasi POS awal, dan regression suite gabungan 110 tes telah diverifikasi pada checkout Termux pada 27 November 2026. Tahap 2.5 berlanjut pada disambiguasi POS berbasis konteks dan evaluasi dataset berlabel.**
+Fondasi pemrosesan yang tersedia:
+- Normalisasi Unicode/casefold dan whitespace.
+- Tokenizer yang mempertahankan tanda baca, tanda hubung, dan apostrof internal.
+- Loader baca-saja untuk 60 batch kamus.
+- Indeks leksikal untuk lema, variants, dan derived_forms.
+- Analyzer teks yang menggabungkan normalisasi, tokenisasi, dan pencocokan.
+- Analisis morfologi berbasis kandidat yang harus tervalidasi kamus.
+- POS leksikal dan disambiguasi POS berbasis petunjuk konteks lokal konservatif.
+- Validator dan evaluator dataset POS.
 
-Normalisasi lulus 8/8 tes, tokenizer 12/12, loader 12/12, pencocokan kamus 13/13, analyzer 8/8, morfologi 47/47, dan POS awal 10/10. Pada 27 November 2026, validator memuat seluruh 60 batch (3.000 entri). Regression suite gabungan dari checkout Termux setelah POS ditambahkan menjalankan **110 tes; seluruhnya lulus, 0 gagal**. Pencocokan token terhadap lema, variants, dan derived_forms sudah tersedia.
+Verifikasi terakhir melalui GitHub Actions Run #74:
+- 60 batch / 3.000 entri berhasil divalidasi.
+- Dataset POS 100 kalimat / 543 token berhasil divalidasi.
+- POS development: leksikal 227/255 (89,0%); kontekstual 228/255 (89,4%).
+- Selective accuracy 100%, tanpa kesalahan pada prediksi yang dikeluarkan.
+- Regression suite: **174 tes lulus, 0 gagal**.
+- Lima tes integrasi baru menggunakan kamus penuh lulus sebagai bagian dari suite tersebut.
 
-Perhatian khusus:
-- Uji Unicode dengan karakter gabungan dan karakter yang sudah terkomposisi.
-- Pastikan spasi tab/baris baru ditangani konsisten.
-- Pastikan tanda baca tidak hilang.
-- Pastikan kata slang tetap sama selain normalisasi kapitalisasi.
-- Jangan menganggap casefold selalu identik dengan lowercase untuk semua karakter; perilaku ini disengaja dan perlu dicatat.
+Batas saat ini: belum ada parser untuk subjek, predikat, objek, pelengkap, atau keterangan. Tahap relasi makna runtime, konteks percakapan multi-giliran, pembentukan respons, dan aplikasi Android juga belum tersedia.
 
 ## 5. Urutan pekerjaan berikutnya
 
@@ -140,15 +165,15 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [ ] Perluas pengujian untuk kandidat palsu lainnya.
 - [ ] Lengkapi inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan hasil uji.
 
-### 5.5 Pengenalan kelas kata (POS)
-- [x] Gunakan kode POS resmi dalam `docs/KAMUS.md`.
-- [x] Pertahankan kemungkinan lebih dari satu POS/sense untuk kata ambigu.
-- [x] Buat identifikasi POS leksikal melalui `tools/pos_tagger.py`.
-- [x] Tambahkan `tools/pos_context.py` dengan aturan konteks lokal konservatif: petunjuk aspek, preposisi, demonstrativa, dan pola sederhana `bisa`.
-- [x] Pertahankan ambiguitas jika tidak ada petunjuk atau petunjuk bertentangan; jangan mengubah POS leksikal asli.
-- [x] Buat 13 regression tests POS kontekstual; **13/13 lulus** pada checkout Termux (27 November 2026).
-- [x] Jalankan regression suite gabungan pada checkout Termux: **123/123 tes lulus, 0 gagal** (27 November 2026).
-- [ ] Susun dataset kalimat berlabel dan ukur akurasi POS.
+### 5.5 Pengenalan kelas kata (POS) — fondasi awal selesai
+
+- [x] POS leksikal berbasis kamus di `tools/pos_tagger.py`.
+- [x] POS spesifik-sense dan ambiguitas leksikal dipertahankan.
+- [x] POS bentuk turunan eksplisit tidak mewarisi POS lema secara otomatis.
+- [x] Disambiguasi lokal konservatif di `tools/pos_context.py`.
+- [x] Dataset POS tervalidasi: 100 kalimat, 543 token; 60 development dan 40 test.
+- [x] Evaluasi development-only: 227/255 leksikal (89,0%) dan 228/255 kontekstual (89,4%); selective accuracy 100%.
+- [x] Test split tetap ditahan dan tidak digunakan untuk menyetel aturan.
 
 ### 5.6 Analisis struktur kalimat dasar
 - [ ] Tetapkan token dan hasil POS sebagai masukan parser.
@@ -156,11 +181,15 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [ ] Uji variasi urutan kata dan kalimat sederhana.
 - [ ] Catat kasus ambigu atau tidak teranalisis; jangan memaksakan hasil.
 
-### 5.7 Dataset uji dan regression suite
-- [ ] Buat kumpulan kalimat representatif dari percakapan sehari-hari.
-- [ ] Sertakan bahasa baku, informal, slang, salah ketik, imbuhan, kata ulang, tanda baca, dan kalimat ambigu.
-- [ ] Simpan expected output yang dapat diperiksa.
-- [ ] Jalankan seluruh tes setiap kali aturan inti berubah.
+### 5.7 Dataset uji dan regression suite — integrasi awal selesai
+
+- [x] Dataset POS berisi 100 kalimat berlabel dengan split development/test.
+- [x] Expected POS per token disimpan dalam JSONL.
+- [x] Tes integrasi pipeline dengan kamus nyata tersedia di `tests/test_integrasi_pipeline.py`.
+- [x] Workflow memvalidasi seluruh kamus, dataset, evaluasi development, dan regression suite.
+- [x] GitHub Actions Run #74: **174/174 tes lulus**.
+
+Catatan: cakupan ini memverifikasi fondasi pemrosesan dan contoh integrasi yang dipilih; belum menguji parser kalimat atau pemahaman makna bebas.
 
 ## 6. Struktur file yang dituju
 
