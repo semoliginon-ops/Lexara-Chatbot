@@ -385,4 +385,4 @@ Lema `baru` (ADJ, K3005) telah ditambahkan ke kamus dan INDEX. Run #104 berhasil
 
 ### Pemutakhiran Tahap 2.5 — 27 November 2026
 
-Atas persetujuan pengguna, lema `dulu` (ADV, K3006) ditambahkan dengan dua konteks temporal/urutan dan dicatat pada INDEX. Validasi GitHub Actions sedang menunggu hasil. Lema `tetap` tetap ditahan sampai fungsi ADJ dan ADV dianalisis bersama. Setiap penambahan lema berikutnya wajib mendapat persetujuan pengguna terlebih dahulu.
+Atas persetujuan pengguna, lema `dulu` (ADV, K3006) ditambahkan dengan dua konteks temporal/urutan dan dicatat pada INDEX. GitHub Actions Run #105 berhasil: 3.005 lema, 237/237 tes regresi, dan coverage POS kontekstual development 91,8%. Abstention ADV yang tersisa hanya dua kemunculan `tetap`. Lema `tetap` tetap ditahan sampai fungsi ADJ dan ADV dianalisis bersama. Setiap penambahan lema berikutnya wajib mendapat persetujuan pengguna terlebih dahulu.
