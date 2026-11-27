@@ -755,6 +755,49 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             parsed["roles"]["adjuncts"],
             [{"adverb": "besok", "kind": "temporal"}],
         )
+    def test_ambiguous_bisa_modal_with_postposed_temporal_uses_real_pipeline(self):
+        analyzed = self.analyze("Aku bisa makan nasi nanti.")
+
+        expected = {
+            "aku": "PRON",
+            "makan": "VERB",
+            "nasi": "NOUN",
+            "nanti": "ADV",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        bisa = self.token(analyzed, "bisa")
+        self.assertEqual(bisa["status"], "matched")
+        self.assertEqual(bisa["pos"], ["VERB", "NOUN"])
+        self.assertEqual(bisa["context_pos"], "VERB")
+        self.assertEqual(bisa["pos_context_status"], "selected_by_context")
+        self.assertEqual(
+            bisa["context_evidence"]["rule"],
+            "bisa_before_verb",
+        )
+        self.assertEqual(bisa["context_evidence"]["cue"], "makan")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["bisa", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertEqual(
+            parsed["predicate_structure"]["modifiers"],
+            [{"token": "bisa", "kind": "modal"}],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"adverb": "nanti", "kind": "temporal"}],
+        )
 if __name__ == "__main__":
     unittest.main()
 
