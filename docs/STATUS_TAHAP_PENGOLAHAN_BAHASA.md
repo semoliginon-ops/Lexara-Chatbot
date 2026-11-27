@@ -1127,3 +1127,11 @@ Hasil pipeline penuh:
 GitHub Actions **Run #222 selesai dengan conclusion success**; **395/395 tes regresi lulus**. [Lihat Run #222](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080823100).
 
 **Batas:** aturan ini merupakan dukungan inversi terbatas, bukan parser K-P-S umum. Syarat kandidat tunggal/sense tunggal/frame tunggal sengaja ketat untuk mencegah tebakan saat makna atau struktur valensi ambigu. Tidak ada lema, batch, atau indeks kamus yang diubah.
+
+### Guard kondisi negatif inversi berbasis valensi — Run #223 (28 November 2026)
+
+Menambahkan tes pengaman agar parser tidak menetapkan nomina pascaverbal sebagai subjek jika bukti valensi tidak unik atau tidak cocok. Tujuh kondisi diuji: kandidat lema ganda, sense ganda, frame ganda, argumen tambahan, argumen SUBJ opsional, realisasi SUBJ bukan NP, serta kandidat kecocokan bentuk turunan. Semua kondisi harus tetap `unresolved`, tanpa mengisi subjek atau objek secara spekulatif.
+
+GitHub Actions **Run #223 selesai dengan conclusion success**; **396/396 tes regresi lulus**. [Lihat Run #223](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080990773).
+
+Tes ini memperkuat guard untuk fitur inversi terbatas yang diuji pada Run #222. Tidak memperluas cakupan inversi ke semua verba atau konstruksi. Tidak ada perubahan kamus, batch, atau indeks.
