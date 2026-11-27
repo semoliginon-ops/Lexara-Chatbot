@@ -136,7 +136,9 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memasukkan anotasi pilot valensi pada 4 sense yang disetujui: muncul-S1, lihat-S1, buka-S1 (frame AGENT/CAUSER alternatif), dan makan-S1 (objek opsional).
 - [x] Memvalidasi anotasi pilot melalui Run #130: 60 batch / 3.014 entri dan 273 tes regresi lulus.
 - [x] Menambahkan lima tes integrasi pilot untuk `muncul`, `lihat`, `buka`, dan `makan`; Run #131 sukses dengan 278/278 tes regresi.
-- [ ] Menguji pemetaan semantic role pada konstruksi pasif dan pembedaan CAUSER versus INSTRUMENT pada kasus ambigu.
+- [x] Membuat pemetaan semantic role konservatif untuk voice aktif berbasis frame valensi; frame alternatif dipertahankan sebagai ambiguous dan argumen opsional dapat dihilangkan. Run #132: 289/289 tes regresi lulus.
+- [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice tersedia.
+- [ ] Menguji pembedaan CAUSER versus INSTRUMENT pada kasus ambigu.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
