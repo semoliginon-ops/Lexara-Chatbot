@@ -1097,3 +1097,11 @@ Tes integrasi menambahkan bentuk `memilikiku`, dengan dasar turunan `memiliki` d
 GitHub Actions **Run #217 selesai dengan conclusion success**; **390 tes regresi dijalankan**. [Lihat Run #217](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080373836).
 
 **Batas:** ini memvalidasi pengenalan morfologi untuk satu bentuk turunan verbal berklitik `-ku`, bukan seluruh variasi sintaksis atau semantisnya. Tidak ada lema, batch, atau indeks kamus yang diubah.
+
+### Pengujian tambahan bentuk turunan verbal + klitik -mu — Run #218 (28 November 2026)
+
+Tes integrasi menambahkan bentuk `memilikimu`, dengan dasar turunan `memiliki` dan klitik `-mu`. Analisis menghasilkan satu kandidat dengan aturan `clitic_mu`, `base_form: memiliki`, serta kecocokan lema `milik` sebagai `derived_form`.
+
+GitHub Actions **Run #218 selesai dengan conclusion success**; **391 tes regresi dijalankan**. [Lihat Run #218](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080502303).
+
+**Batas:** tes ini memvalidasi pengenalan morfologi untuk satu bentuk turunan verbal berklitik `-mu`, bukan seluruh variasi sintaksis atau semantisnya. Tidak ada lema, batch, atau indeks kamus yang diubah.
