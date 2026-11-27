@@ -1031,3 +1031,12 @@ Setelah keenam lema ditambahkan pada Run #203, tes integrasi khusus ditambahkan 
 GitHub Actions **Run #204 selesai dengan conclusion success**; **381/381 tes regresi lulus**. Log juga mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch, validasi relasi leksikal batch terpilih, valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #204](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46041318079).
 
 **Batas:** tes ini memvalidasi pengenalan POS dan sejumlah contoh pipeline terpilih, bukan seluruh fungsi sintaksis demonstratif atau refleksif. Fungsi `ini/itu` sebagai penentu nomina vs pengganti frasa nominal belum dibedakan sebagai kategori sintaksis tersendiri; konstruksi refleksif lengkap seperti `diriku/dirimu/dirinya` belum diuji sebagai analisis klitik-refleksif; dan pemilihan ADJ vs ADV untuk `sendiri` masih dibiarkan ambigu bila bukti konteks tidak memadai. Tidak ada perubahan kamus pada Run #204.
+
+
+### Pengujian bentuk refleksif diri + klitik — Run #205 (27 November 2026)
+
+Tes integrasi pipeline penuh ditambahkan untuk kalimat `Aku melihat diriku.`, `Kamu melihat dirimu.`, dan `Dia melihat dirinya.`. Ketiganya dikenali melalui morfologi sebagai host `diri` (NOUN) + klitik pronominal `-ku`, `-mu`, atau `-nya`; tidak ada lema terpisah untuk bentuk gabungan tersebut dan tidak ada perubahan batch/index kamus.
+
+GitHub Actions **Run #205 selesai dengan conclusion success**; **382/382 tes regresi lulus**. Log mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dan validasi valensi serta tahapan validasi lain pada workflow berhasil. [Lihat Run #205](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46042081787).
+
+**Batas penting:** parser saat ini masih memperlakukan `-ku/-mu` pada host NOUN sebagai posesif berdasarkan POS host; ia belum memberi label fungsi refleksif pada keseluruhan frasa `diriku/dirimu`. Untuk `dirinya`, fungsi `-nya` tetap unresolved antara posesif dan definit/anforis. Tes ini memastikan pengenalan morfologi dan mendokumentasikan batas tersebut, bukan menyatakan analisis refleksif sudah selesai. Pembedaan fungsi refleksif harus ditangani pada lapisan sintaksis/konteks dengan bukti yang memadai.
