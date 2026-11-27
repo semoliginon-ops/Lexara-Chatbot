@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus 3.000 lema dan audit 60 batch selesai; fondasi kata/POS serta parser kalimat v1.1 (predikat verbal/nonverbal, pelengkap terbatas, keterangan preposisional awal, koordinasi frasa nominal, dan beberapa klausa koordinatif eksplisit) tersedia; 217/217 regression tests lulus. Cakupan parser tetap konservatif dan belum mencakup koordinasi bertingkat atau seluruh variasi susunan kalimat.
+> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.5 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #113: 241/241 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -349,53 +349,24 @@ Parser v1.5 menambahkan pola subordinatif setelah klausa utama, misalnya `Aku pu
 Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467) berhasil dengan **232/232 regression tests lulus**. Validasi kamus lengkap 3.000 lema, dataset POS, dan evaluasi development juga berhasil.
 
 
-## Fokus pengembangan aktif — Tahap 2.5 (POS Tagging)
+## Status tahap dan fokus pengembangan terkini — 27 November 2026
 
-**Prioritas aktif per 27 November 2026: selesaikan evaluasi POS development sebelum melanjutkan pengembangan parser.** Pengembangan parser kalimat v1.5 untuk sementara dibekukan; implementasi dan tes yang sudah ada tetap disimpan, tetapi tidak diperluas dulu.
+### Tahap 2.5 — Pengenalan kelas kata (POS): selesai
 
-Urutan kerja:
-1. Audit delapan kemunculan token VERB yang masih abstain: `bekerja` (3 kemunculan), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Periksa satu per satu dan tentukan apakah penyebabnya membutuhkan lema baru, aturan morfologi, anotasi `derived_forms_pos`, atau perbaikan alur pengenalan POS.
-2. Setelah setiap token diperiksa, lakukan perubahan sekecil yang terbukti perlu dan jalankan tes terkait sebelum beralih ke token berikutnya.
-3. Setelah kelompok VERB selesai, audit abstention ADJ (2), ADV (3), dan NOUN (19) secara bertahap.
-4. Berikutnya, perluas cakupan lema NOUN yang belum terindeks dan audit pola morfologi `ber-`, pasif `di-`, serta bentuk imperatif.
-5. Evaluasi kesiapan Tahap 2.5 menggunakan development split dan regresi. Test set tetap ditahan untuk evaluasi akhir dan tidak digunakan untuk penyetelan.
+- Kamus tervalidasi: 60 batch, **3.013 lema**.
+- Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
+- POS kontekstual pada development: 250/255 token dikenali; **coverage 98,0%**, accuracy 98,0%, selective accuracy 100,0%.
+- Tidak ada kesalahan pada prediksi POS kontekstual yang dikeluarkan.
+- Lima abstention yang tersisa adalah lima kemunculan dari tiga nama orang. Nama orang tidak dipaksakan menjadi lema kamus atau label POS pada tahap ini; pengenalannya ditunda ke tahap konteks/memory.
+- Test split 40 kalimat tetap ditahan dan tidak digunakan untuk penyetelan.
+- GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168) berhasil: validasi kamus, dataset POS, evaluasi development, dan **241/241 regression tests lulus**.
 
-Tahap 2.6 (analisis struktur kalimat), 2.7, tahap hubungan makna/konteks, dan integrasi Android menunggu keputusan bahwa Tahap 2.5 sudah memadai. Angka abstention di atas adalah daftar sasaran audit, bukan bukti bahwa semua kasus harus dipaksa memiliki label POS.
+### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
+Parser tetap tersedia pada versi **v1.5**. Pengembangan parser sebelumnya dihentikan sementara untuk menuntaskan POS; gerbang itu kini terpenuhi. Implementasi yang sudah ada tidak dihapus atau diulang.
 
-### Pemutakhiran kamus — 27 November 2026
+Langkah berikutnya adalah memperluas analisis frasa verba/modal dan memisahkan inti predikat dari pewatasnya, kemudian menguji variasi susunan kalimat sederhana. Perluasan dilakukan bertahap dengan regression tests dan tetap mempertahankan perilaku konservatif: struktur yang belum didukung dilaporkan, bukan ditebak.
 
-Kamus kini berisi 3.001 lema setelah penambahan lema VERB `tunda` (K3002) dan bentuk turunan pasif `ditunda` dengan anotasi POS eksplisit. Angka 3.000 adalah target awal; validator penuh telah disesuaikan ke jumlah aktual 3.001.
+Tahap 2.7 (dataset dan pengujian terpadu) tetap berjalan sebagai pekerjaan pelengkap: perluas cakupan contoh bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang. Test split tetap tersegel.
 
-
-### Pemutakhiran Tahap 2.5 — 27 November 2026
-
-Lema `hinggap` (VERB, K3003) telah ditambahkan ke batch-060 dan indeks kamus. Validasi GitHub Actions Run #102 berhasil dengan 3.002 lema dan 234/234 tes regresi. Abstention VERB pada development tersisa `berteduh`.
-
-
-### Pemutakhiran Tahap 2.5 — 27 November 2026
-
-Lema `berteduh` (VERB, K3004) telah ditambahkan ke batch-060 dan indeks kamus. Run #103 berhasil dengan 3.003 lema dan 235/235 tes regresi; abstention VERB pada development kini nol.
-
-
-### Pemutakhiran Tahap 2.5 — 27 November 2026
-
-Lema `baru` (ADJ, K3005) telah ditambahkan ke kamus dan INDEX. Run #104 berhasil: 3.004 lema, 236/236 tes regresi; seluruh 23 token ADJ development dikenali secara kontekstual.
-
-
-### Pemutakhiran Tahap 2.5 — 27 November 2026
-
-Atas persetujuan pengguna, lema `dulu` (ADV, K3006) ditambahkan dengan dua konteks temporal/urutan dan dicatat pada INDEX. GitHub Actions Run #105 berhasil: 3.005 lema, 237/237 tes regresi, dan coverage POS kontekstual development 91,8%. Abstention ADV yang tersisa hanya dua kemunculan `tetap`. Lema `tetap` tetap ditahan sampai fungsi ADJ dan ADV dianalisis bersama. Setiap penambahan lema berikutnya wajib mendapat persetujuan pengguna terlebih dahulu.
-
-
-### Pemutakhiran Tahap 2.5 — 27 November 2026
-
-Atas persetujuan pengguna, lema `tetap` (K3007) ditambahkan dengan POS ADJ dan ADV serta dua sense berlabel terpisah. Konteks `tetap` sebelum VERB dapat dikenali sebagai ADV; konteks yang belum cukup jelas tetap abstain. Validasi 3.006 lema dan regresi penuh menunggu hasil workflow.
-
-
-### Hasil validasi lema `tetap` — GitHub Actions Run #108
-
-Penambahan K3007 `tetap` dengan POS ADJ+ADV berhasil divalidasi. Kamus memuat 3.006 lema; seluruh **239/239 tes regresi lulus**. Evaluasi development kontekstual mencapai coverage 92,5% dan selective accuracy 100%; abstention ADV turun menjadi **nol**, sementara 19 abstention NOUN tetap ditahan untuk penanganan morfologi/cakupan lema. Test set tetap tersegel. [GitHub Actions Run #108](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961614138).
-
-
-Atas persetujuan pengguna, enam lema NOUN percakapan sehari-hari ditambahkan setelah pemeriksaan indeks duplikat: `kelas` (K3008), `siswa` (K3009), `padi` (K3010), `kilogram` (K3011), `pagar` (K3012), dan `tikus` (K3013). Keenamnya dicatat pada batch-060 dan shard indeks terkait. Target validasi kamus kini 3.012 lema; hasil workflow akan dicatat setelah pemeriksaan regresi.
+Tahap 3 (hubungan makna dan konteks), evaluasi embedding opsional, dan integrasi Android mengikuti urutan roadmap. Tidak ada audit ulang 60 batch yang dijadwalkan, dan perubahan lema baru tetap memerlukan persetujuan eksplisit pengguna.
