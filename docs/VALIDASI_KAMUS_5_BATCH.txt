@@ -1,2 +1,2 @@
-1 5
-# retry after fixing zero-padded batch path generation
+6 10
+# batch 006-010: audit semantik selesai; jalankan validasi kelompok berikutnya
