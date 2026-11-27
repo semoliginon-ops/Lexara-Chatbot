@@ -100,10 +100,10 @@ class SemanticRoleMappingTests(unittest.TestCase):
                 for frame in result["candidates"]
             },
             {
-                (("AGENT", ["Rina"], "postverbal_agent"),
-                 ("PATIENT", ["Pintu"], "passive_surface_subject")),
-                (("CAUSER", ["Rina"], "postverbal_agent"),
-                 ("PATIENT", ["Pintu"], "passive_surface_subject")),
+                (("AGENT", ("Rina",), "postverbal_agent"),
+                 ("PATIENT", ("Pintu",), "passive_surface_subject")),
+                (("CAUSER", ("Rina",), "postverbal_agent"),
+                 ("PATIENT", ("Pintu",), "passive_surface_subject")),
             },
         )
 
