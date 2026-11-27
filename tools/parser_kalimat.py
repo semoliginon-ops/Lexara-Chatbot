@@ -450,6 +450,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                 "subject": [], "predicate": [], "object": [],
                 "adjuncts": [], "complement": [],
             },
+            "clitic_analysis": [],
             "unresolved_tokens": [item["token"] for item in words],
             "notes": ["Predikat VERB atau pola predikat nonverbal sederhana yang cukup pasti belum ditemukan."],
         }
