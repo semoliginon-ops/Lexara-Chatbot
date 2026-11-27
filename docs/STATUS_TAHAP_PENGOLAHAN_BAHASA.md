@@ -1001,3 +1001,10 @@ Indeks kamus tidak mencatat `berteduh` maupun lema dasar `teduh`. Karena itu `be
 ## Hasil penambahan `baru` (ADJ) — GitHub Actions Run #104
 
 INDEX belum mencatat `baru` (lema `barusan` yang sudah ada berbeda). Ditambahkan K3005 sebagai ADJ dengan definisi untuk makna adjektival dan catatan bahwa penggunaan adverbial akan dievaluasi pada tahap ADV. Tes integrasi mencakup dua konteks development `buku baru`. Run #104 berhasil: 60 batch, 3.004 lema, 236/236 tes regresi. Evaluasi development kontekstual: ADJ 23/23 dikenali, tidak ada abstention ADJ dan tidak ada kesalahan prediksi. Abstention ADV tersisa `tetap` (2 konteks) dan `dulu` (1 konteks). [GitHub Actions Run #104](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45959314201).
+
+
+## Penambahan `dulu` (ADV) — menunggu validasi
+
+Atas persetujuan pengguna, lema K3006 `dulu` ditambahkan sebagai ADV. Definisi mencakup penggunaan temporal masa lampau dan urutan tindakan. INDEX `d-f.tsv` diperbarui; tes integrasi mencakup dua kalimat development: `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`. Penambahan belum dinyatakan selesai sebelum GitHub Actions memvalidasi 3.005 lema dan regresi.
+
+Keputusan yang tetap berlaku: `tetap` ditunda sampai analisis dua fungsi POS (ADJ dan ADV); `adiknya`, `pelajaran`, `pertandingan`, dan `pemandangan` tidak ditambahkan sebagai lema baru tanpa evaluasi morfologi; nama orang tidak dimasukkan ke kamus inti. Penambahan lema lain tetap memerlukan persetujuan eksplisit pengguna.
