@@ -106,9 +106,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         marker_relation = _CONNECTOR_RELATIONS.get(marker_key)
         comma_positions = [
             i for i, item in enumerate(tokens)
-            if isinstance(item, dict)
-            and (item.get("kind") == "punctuation" or item.get("pos_status") == "not_applicable")
-            and item.get("token") == ","
+            if isinstance(item, dict) and item.get("token") == ","
         ]
         allowed_fronted_relations = {"sebab", "temporal", "konsesi"}
         if marker_relation in allowed_fronted_relations and len(comma_positions) == 1:
@@ -117,14 +115,13 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             main_items = tokens[comma + 1:]
             prefix_has_only_words = all(
                 isinstance(item, dict)
-                and item.get("kind") != "punctuation"
-                and item.get("pos_status") != "not_applicable"
+                and item.get("token") not in {",", ".", "!", "?", "…", ":", ";"}
                 for item in prefix_items
             )
             main_has_no_internal_punctuation = all(
                 isinstance(item, dict)
                 and (
-                    (item.get("kind") != "punctuation" and item.get("pos_status") != "not_applicable")
+                    item.get("token") not in {",", ":", ";"}
                     or item.get("token") in _TERMINAL_PUNCTUATION
                 )
                 for item in main_items
