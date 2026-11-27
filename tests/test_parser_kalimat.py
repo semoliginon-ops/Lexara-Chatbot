@@ -62,6 +62,35 @@ class SimpleClauseParserTests(unittest.TestCase):
             "nominal_phrase_role": "object",
         }])
 
+    def test_verbal_clitic_variants_are_objects_for_explicit_verb_hosts(self):
+        for surface, clitic in (("lihatku", "ku"), ("lihatmu", "mu"), ("lihatnya", "nya")):
+            with self.subTest(surface=surface):
+                bound_verb = token(surface, status="unknown")
+                bound_verb["clitic_pos_candidates"] = [{
+                    "base_form": "lihat",
+                    "clitic": clitic,
+                    "host_pos": ["VERB"],
+                    "clitic_pos": ["PRON"],
+                    "function_candidates": ["possessive", "object"],
+                    "function_status": "unresolved",
+                }]
+                result = parse_sentence(analysis(
+                    token("dia", ["PRON"]),
+                    bound_verb,
+                ))
+                self.assertEqual(result["status"], "parsed")
+                self.assertEqual(result["pattern"], "S-P-O")
+                self.assertEqual(result["roles"]["subject"], ["dia"])
+                self.assertEqual(result["roles"]["predicate"], [surface])
+                self.assertEqual(result["clitic_analysis"], [{
+                    "surface": surface,
+                    "base_form": "lihat",
+                    "clitic": clitic,
+                    "function": "object",
+                    "function_status": "selected_by_verbal_host",
+                    "host_role": "predicate",
+                }])
+
     def test_does_not_assign_nominal_clitic_function_without_single_known_host_pos(self):
         bound_unknown = token("lihatku", status="unknown")
         bound_unknown["clitic_pos_candidates"] = [{
