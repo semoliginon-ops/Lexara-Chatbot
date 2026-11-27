@@ -63,6 +63,8 @@ def _effective_pos(item: dict[str, Any]) -> str | None:
         if isinstance(host_labels, list) and len(host_labels) == 1:
             if host_labels[0] == "NOUN":
                 return "NOUN"
+            if host_labels[0] == "VERB":
+                return "VERB"
     if len(labels) == 1 and context_status is None:
         return labels[0]
     return None
@@ -705,30 +707,41 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(components, list):
             continue
         for component in components:
-            if component.get("host_pos") != ["NOUN"]:
-                continue
-            role = (
-                "subject" if position in subject_positions else
-                "object" if position in object_positions else
-                "complement" if position in complement_positions else
-                "adjunct" if position in assigned else
-                None
-            )
-            clitic_analysis.append({
-                "surface": word["token"],
-                "base_form": component.get("base_form"),
-                "clitic": component.get("clitic"),
-                "function": "possessive",
-                "function_status": "selected_by_host_pos",
-                "nominal_phrase_role": role,
-            })
+            host_labels = component.get("host_pos", [])
+            if host_labels == ["NOUN"]:
+                role = (
+                    "subject" if position in subject_positions else
+                    "object" if position in object_positions else
+                    "complement" if position in complement_positions else
+                    "adjunct" if position in assigned else
+                    None
+                )
+                clitic_analysis.append({
+                    "surface": word["token"],
+                    "base_form": component.get("base_form"),
+                    "clitic": component.get("clitic"),
+                    "function": "possessive",
+                    "function_status": "selected_by_host_pos",
+                    "nominal_phrase_role": role,
+                })
+            elif host_labels == ["VERB"] and position in predicate_positions:
+                clitic_analysis.append({
+                    "surface": word["token"],
+                    "base_form": component.get("base_form"),
+                    "clitic": component.get("clitic"),
+                    "function": "object",
+                    "function_status": "selected_by_verbal_host",
+                    "host_role": "predicate",
+                })
     unresolved = [
         item["token"] for i, item in enumerate(words)
         if i not in assigned
     ]
 
     pattern_parts = ["S", "P"]
-    if object_positions:
+    if object_positions or any(
+        item.get("function") == "object" for item in clitic_analysis
+    ):
         pattern_parts.append("O")
     if complement_positions:
         pattern_parts.append("Pel")
