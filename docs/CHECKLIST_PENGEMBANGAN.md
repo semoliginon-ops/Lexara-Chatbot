@@ -138,8 +138,9 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Menambahkan lima tes integrasi pilot untuk `muncul`, `lihat`, `buka`, dan `makan`; Run #131 sukses dengan 278/278 tes regresi.
 - [x] Membuat pemetaan semantic role konservatif untuk voice aktif berbasis frame valensi; frame alternatif dipertahankan sebagai ambiguous dan argumen opsional dapat dihilangkan. Run #132 menjadi baseline awal (289 tes).
 - [x] Memperketat validasi kecocokan frame: argumen inti yang dikenali parser tidak boleh diabaikan, dan OBL tanpa batas preposisi eksplisit tidak dipetakan otomatis. Run #134: 291/291 tes regresi lulus.
+- [x] Menambahkan tes batas CAUSER/INSTRUMENT untuk menjaga ambiguitas `Palu memecahkan kaca` dan tidak memaksakan `dengan palu` sebagai argumen inti. Run #135: 293/293 tes regresi lulus.
 - [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice tersedia.
-- [ ] Menguji pembedaan CAUSER versus INSTRUMENT pada kasus ambigu.
+- [x] Menambahkan tes konservatif CAUSER versus INSTRUMENT: `Palu memecahkan kaca` mempertahankan dua frame alternatif, sedangkan `dengan palu` tidak otomatis dipromosikan menjadi argumen inti. Run #135: 293/293 tes regresi lulus.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
