@@ -142,7 +142,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Mengintegrasikan hasil deteksi voice morfologis ke keluaran `analyze_text()` per token tanpa memilih kepala predikat atau mengubah parser. Run #137: 307/307 tes regresi lulus.
 - [x] Membuat adapter `tools/hubungkan_voice_predikat.py` untuk menghubungkan bukti voice token ke `predicate_structure.head` pada klausa sederhana yang diparse penuh; adapter menolak kepala berulang, hasil partial, dan struktur klausa majemuk. Run #138 sukses (316/316 tes).
 - [x] Menguji jalur morfologi nyata → `analyze_text()` → kepala predikat parser → adapter untuk contoh aktif, pasif, dan bentuk `ter-` yang tetap unresolved. Run #139 sukses (319/319 tes regresi).
-- [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice terintegrasi dan diuji.
+- [x] Mengembangkan pemetaan semantic role untuk konstruksi pasif secara konservatif; mendukung agen pasif pascaverbal, frasa `oleh`, dan agen yang dilesapkan pada pola terbatas. Run #144–148, termasuk tes integrasi end-to-end, lulus hingga 328/328 tes.
 - [x] Menambahkan tes konservatif CAUSER versus INSTRUMENT: `Palu memecahkan kaca` mempertahankan dua frame alternatif, sedangkan `dengan palu` tidak otomatis dipromosikan menjadi argumen inti. Run #135: 293/293 tes regresi lulus.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
@@ -167,7 +167,9 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
-<badge color="secondary">Belum dimulai</badge>
+<badge color="info">Fondasi awal dikerjakan lebih awal — belum resmi dibuka</badge>
+
+**Catatan urutan:** beberapa komponen awal Tahap 3 sudah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Ini bukan berarti Tahap 2 selesai atau gerbang Tahap 3 sudah terpenuhi. Tahap 2.6 dan 2.7 tetap harus diselesaikan dan dievaluasi.
 
 - [ ] Mengembangkan representasi makna kata dan relasi antarkonsep.
 - [x] Membuat resolver kandidat semantic role berbasis bukti konteks eksplisit; pemilihan hanya terjadi jika satu frame didukung bukti kuat dan semua alternatif disingkirkan bukti kuat. Resolver tidak membuat bukti konteks sendiri; penghasil bukti kontekstual masih menjadi pekerjaan berikutnya. Run #149: 337/337 tes regresi lulus; Run #152: guard perbandingan argument slot yang sama tervalidasi, 339/339 tes lulus.
