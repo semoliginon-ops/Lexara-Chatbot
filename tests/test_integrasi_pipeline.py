@@ -733,7 +733,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "S-P-O")
-        self.assertEqual(parsed["roles"]["subject"], ["Dia"])
+        self.assertEqual(parsed["roles"]["subject"], ["dia"])
         self.assertEqual(parsed["roles"]["predicate"], ["lihat"])
         self.assertEqual(parsed["roles"]["object"], ["bukuku"])
         self.assertEqual(parsed["clitic_analysis"], [{
