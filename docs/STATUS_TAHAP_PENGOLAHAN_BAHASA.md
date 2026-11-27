@@ -858,3 +858,11 @@ Ditambahkan tes integrasi untuk kalimat `Aku tidak bisa makan nasi.` Indeks kamu
 GitHub Actions **Run #165** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **351/351 tes regresi lulus**. [Lihat Run #165](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46018126303).
 
 **Batas:** pengujian ini mencakup kombinasi satu negasi (`tidak`) dan satu modal ambigu (`bisa`) dalam susunan terkontrol. Ini belum memvalidasi seluruh urutan negasi/modal atau seluruh penggunaan leksikal `bisa`.
+
+### Uji modal verbal dengan keterangan temporal pascapredikat — Run #166 (27 November 2026)
+
+Ditambahkan tes integrasi untuk `Aku mau makan nasi besok.` Indeks kamus diperiksa lebih dahulu dan memastikan lema `aku`, `mau`, `makan`, `nasi`, dan `besok` tersedia; tidak ada batch atau indeks kamus yang diubah. Tes melewati analisis teks, POS tagger, disambiguasi POS kontekstual, dan parser. Hasilnya: `aku` PRON, `mau` VERB, `makan` VERB, `nasi` NOUN, dan `besok` ADV; parser menghasilkan pola S-P-O-K, rentang predikat `mau makan` dengan kepala `makan`, objek `nasi`, serta keterangan temporal `besok`.
+
+GitHub Actions **Run #166** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **352/352 tes regresi lulus**. [Lihat Run #166](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46018848688).
+
+**Batas:** pengujian ini memvalidasi satu kombinasi modal verbal dengan keterangan temporal setelah objek. Ini belum membuktikan semua susunan keterangan atau kombinasi modalitas telah didukung.
