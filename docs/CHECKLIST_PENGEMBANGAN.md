@@ -66,7 +66,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] `batch-018.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
 - [x] `batch-019.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
 - [x] `batch-020.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [ ] `batch-021.jsonl`: menunggu pemeriksaan dan verifikasi validator struktur relasi di Termux.
+- [x] `batch-021.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
+- [ ] `batch-022.jsonl`: menunggu pemeriksaan dan verifikasi validator struktur relasi di Termux.
 - [ ] Lanjutkan validasi struktur batch berikutnya satu per satu; hasil validasi struktur tidak dianggap sebagai audit kebenaran makna.
 
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
