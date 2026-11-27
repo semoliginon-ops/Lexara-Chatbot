@@ -724,3 +724,18 @@ Sembilan tes khusus mencakup voice aktif/pasif, token kepala berulang, parser pa
 
 
 Uji integrasi lintas modul kemudian ditambahkan pada `tests/test_voice_pipeline_integration.py`. Tiga skenario memakai keluaran morfologi nyata dari `analyze_text()`, parser klausa sederhana, dan adapter: `Rina menulis surat` terhubung sebagai aktif; `Surat ditulis Rina` terhubung sebagai pasif; dan `Pintu terbuka` tetap unresolved karena bukti `ter-` tidak menetapkan voice. GitHub Actions Run #139 sukses dengan **319/319 tes regresi**. Ini membuktikan koneksi antarmodul pada contoh terkontrol, belum membuktikan cakupan voice umum.
+
+
+### Pemetaan semantic role pasif — implementasi awal menunggu validasi CI
+
+`tools/pemetaan_peran_semantis.py` kini memiliki jalur pasif konservatif yang terpisah dari pemetaan aktif. Jalur ini hanya berjalan jika pemanggil memasok `voice="passive"` yang sudah dikonfirmasi oleh penghubung bukti voice dan parser berstatus `parsed`.
+
+Aturan terbatas:
+- Subjek permukaan pasif dipetakan ke argumen OBJ pada frame valensi (misalnya PATIENT).
+- Agen dapat direalisasikan sebagai objek pascaverbal pada pola `Pintu dibuka Rina`, atau sebagai frasa PP dengan preposisi `oleh` pada `Pintu dibuka oleh Rina`.
+- Jika agen tidak disebutkan (`Pintu dibuka`), argumen SUBJ valensi ditandai `omitted`; kewajiban argumen aktif tidak otomatis memaksa agen muncul dalam konstruksi pasif.
+- Bila agen muncul sekaligus dalam dua bentuk, atau ada lebih dari satu realisasi agen yang tidak dapat diselaraskan, hasil `unresolved`.
+- Semua frame yang cocok tetap dipertahankan. Untuk pilot `buka-S1`, AGENT dan CAUSER tetap ambigu; sistem tidak memilih salah satunya hanya dari posisi.
+- Hanya frame dengan satu argumen SUBJ dan satu OBJ yang didukung. Konstruksi pasif lain, klausa majemuk, dan pola yang belum dipahami tetap di luar cakupan.
+
+Tes unit ditambahkan untuk agen pascaverbal, frasa `oleh`, agen yang dilesapkan, dan konflik realisasi. Tes integrasi juga mengalirkan bukti morfologi pasif nyata dari `analyze_text()` melalui parser dan adapter ke mapper. Validasi CI masih menunggu.
