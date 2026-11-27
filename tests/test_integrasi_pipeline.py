@@ -844,6 +844,18 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(analysis["base_form"], "diri")
                 self.assertEqual(analysis["clitic"], clitic)
                 self.assertEqual(analysis["function"], expected_function)
+                self.assertEqual(
+                    analysis["reference_relation_candidates"],
+                    ["reflexive", "non_reflexive"],
+                )
+                self.assertEqual(
+                    analysis["reference_relation_status"],
+                    "candidate_by_person_agreement",
+                )
+                self.assertEqual(analysis["reference_relation"], "reflexive")
+                self.assertEqual(analysis["antecedent_candidate"], {
+                    "ku": "Aku", "mu": "Kamu", "nya": "Dia"
+                }[clitic])
 
                 if clitic == "nya":
                     self.assertEqual(
@@ -855,6 +867,21 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                     self.assertEqual(
                         analysis["function_status"], "selected_by_host_pos"
                     )
+
+    def test_diri_clitic_person_mismatch_does_not_claim_reflexive_reference(self):
+        analyzed = self.analyze("Aku melihat dirimu.")
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["object"], ["dirimu"])
+        analysis = parsed["clitic_analysis"][0]
+        self.assertEqual(analysis["base_form"], "diri")
+        self.assertIsNone(analysis["reference_relation"])
+        self.assertEqual(
+            analysis["reference_relation_candidates"],
+            ["reflexive", "non_reflexive"],
+        )
+        self.assertEqual(analysis["reference_relation_status"], "unresolved")
+        self.assertNotIn("antecedent_candidate", analysis)
 
     def test_all_verbal_clitic_variants_are_objects_in_real_pipeline(self):
         cases = (
