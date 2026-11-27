@@ -824,3 +824,13 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-056–060 dan regression suite menunggu GitHub Actions.
 
 **Catatan kualitas:** 10 entri pada Batch-056–057 diperbaiki berdasarkan ketidakcocokan geografis atau kategori pemerintahan yang eksplisit. Batch-058–060 dipertahankan. Audit ini tidak menggantikan validasi faktual menyeluruh atas seluruh definisi dan relasi.
+
+
+### Parser kalimat v0.4 — frasa verba modal
+
+- [x] Membedakan verba kehendak `mau`, `ingin`, dan `hendak` dari verba leksikal ketika keduanya hadir berurutan.
+- [x] Menggabungkan verba kehendak dan verba leksikal ke dalam rentang predikat.
+- [x] Mempertahankan penggunaan verba kehendak tunggal sebagai predikat jika tidak diikuti verba lain.
+- [x] Menambahkan tiga regression tests untuk konstruksi modal dan penggunaan tunggal.
+- [ ] Menjalankan regression suite penuh dan validasi pipeline melalui GitHub Actions.
+- [ ] Memperluas modalitas lain hanya setelah kelas kata dan perilakunya diverifikasi melalui kamus/pipeline.
