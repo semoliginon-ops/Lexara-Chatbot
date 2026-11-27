@@ -105,13 +105,14 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                 predicate_start = candidate
         if predicate_start is None and len(nominal_heads) >= 2:
             second_head = nominal_heads[1]
-            predicate_tokens = words[second_head:]
+            candidate_start = second_head - 1 if second_head > 0 and words[second_head - 1]["pos"] == "NUM" else second_head
+            predicate_tokens = words[candidate_start:]
             if (
                 nominal_heads[0] == 0
                 and len(predicate_tokens) >= 2
-                and any(item["pos"] == "NUM" for item in predicate_tokens[:-1])
+                and words[candidate_start]["pos"] == "NUM"
             ):
-                predicate_start = second_head
+                predicate_start = candidate_start
         if predicate_start is not None:
             return {
                 "parser_method": "conservative_nonverbal_v1",
