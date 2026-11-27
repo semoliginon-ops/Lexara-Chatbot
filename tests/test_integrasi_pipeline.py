@@ -685,6 +685,39 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(adverb_token["pos_context_status"], "selected_by_context")
 
 
+
+    def test_verbal_modal_with_postposed_temporal_adverb_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Aku mau makan nasi besok.")
+
+        for surface, expected_pos in {
+            "aku": "PRON",
+            "mau": "VERB",
+            "makan": "VERB",
+            "nasi": "NOUN",
+            "besok": "ADV",
+        }.items():
+            token = self.token(analyzed, surface)
+            self.assertEqual(token["status"], "matched")
+            self.assertEqual(token["pos"], [expected_pos])
+            self.assertEqual(token["pos_source"], "dictionary")
+            self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["mau", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertEqual(
+            parsed["predicate_structure"]["modifiers"],
+            [{"token": "mau", "kind": "modal"}],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"adverb": "besok", "kind": "temporal"}],
+        )
+
 if __name__ == "__main__":
     unittest.main()
 
