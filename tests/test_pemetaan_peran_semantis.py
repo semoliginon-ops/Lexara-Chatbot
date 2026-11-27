@@ -88,12 +88,61 @@ class SemanticRoleMappingTests(unittest.TestCase):
         self.assertEqual(result["reason"], "voice_not_confirmed")
         self.assertEqual(result["candidates"], [])
 
-    def test_does_not_apply_active_frames_to_passive_surface_structure(self):
+    def test_maps_passive_with_postverbal_agent(self):
         parsed = parse(("Pintu", "NOUN"), ("dibuka", "VERB"), ("Rina", "NOUN"))
+        self.assertEqual(parsed["status"], "parsed")
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "ambiguous")
+        self.assertEqual(
+            {
+                tuple((a["semantic_role"], a["value"], a["realization"])
+                      for a in frame["arguments"])
+                for frame in result["candidates"]
+            },
+            {
+                (("AGENT", ["Rina"], "postverbal_agent"),
+                 ("PATIENT", ["Pintu"], "passive_surface_subject")),
+                (("CAUSER", ["Rina"], "postverbal_agent"),
+                 ("PATIENT", ["Pintu"], "passive_surface_subject")),
+            },
+        )
+
+    def test_maps_passive_with_oleh_agent_phrase(self):
+        parsed = parse(
+            ("Pintu", "NOUN"), ("dibuka", "VERB"),
+            ("oleh", "PREP"), ("Rina", "NOUN"),
+        )
+        self.assertEqual(parsed["status"], "parsed")
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "ambiguous")
+        for frame in result["candidates"]:
+            agent = frame["arguments"][0]
+            patient = frame["arguments"][1]
+            self.assertEqual(agent["value"], ["Rina"])
+            self.assertEqual(agent["realization"], "oleh_phrase")
+            self.assertEqual(patient["semantic_role"], "PATIENT")
+            self.assertEqual(patient["value"], ["Pintu"])
+
+    def test_maps_agentless_passive_and_marks_agent_omitted(self):
+        parsed = parse(("Pintu", "NOUN"), ("dibuka", "VERB"))
+        self.assertEqual(parsed["status"], "parsed")
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "ambiguous")
+        for frame in result["candidates"]:
+            agent = frame["arguments"][0]
+            self.assertEqual(agent["presence"], "omitted")
+            self.assertEqual(agent["value"], [])
+            self.assertEqual(agent["realization"], "omitted")
+            self.assertEqual(frame["arguments"][1]["value"], ["Pintu"])
+
+    def test_does_not_guess_when_passive_agent_realizations_conflict(self):
+        parsed = parse(
+            ("Pintu", "NOUN"), ("dibuka", "VERB"), ("Rina", "NOUN"),
+            ("oleh", "PREP"), ("Budi", "NOUN"),
+        )
         result = map_semantic_roles(parsed, self.buka, voice="passive")
         self.assertEqual(result["status"], "unresolved")
-        self.assertEqual(result["reason"], "passive_mapping_not_implemented")
-        self.assertEqual(result["candidates"], [])
+        self.assertEqual(result["reason"], "passive_agent_realization_conflict")
 
     def test_does_not_map_unresolved_postverbal_inversion(self):
         parsed = parse(("muncul", "VERB"), ("masalah", "NOUN"))
