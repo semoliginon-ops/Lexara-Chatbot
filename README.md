@@ -391,3 +391,8 @@ Atas persetujuan pengguna, lema `dulu` (ADV, K3006) ditambahkan dengan dua konte
 ### Pemutakhiran Tahap 2.5 — 27 November 2026
 
 Atas persetujuan pengguna, lema `tetap` (K3007) ditambahkan dengan POS ADJ dan ADV serta dua sense berlabel terpisah. Konteks `tetap` sebelum VERB dapat dikenali sebagai ADV; konteks yang belum cukup jelas tetap abstain. Validasi 3.006 lema dan regresi penuh menunggu hasil workflow.
+
+
+### Hasil validasi lema `tetap` — GitHub Actions Run #108
+
+Penambahan K3007 `tetap` dengan POS ADJ+ADV berhasil divalidasi. Kamus memuat 3.006 lema; seluruh **239/239 tes regresi lulus**. Evaluasi development kontekstual mencapai coverage 92,5% dan selective accuracy 100%; abstention ADV turun menjadi **nol**, sementara 19 abstention NOUN tetap ditahan untuk penanganan morfologi/cakupan lema. Test set tetap tersegel. [GitHub Actions Run #108](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961614138).
