@@ -783,6 +783,35 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "host_role": "predicate",
         }])
 
+    def test_all_verbal_clitic_variants_are_objects_in_real_pipeline(self):
+        cases = (
+            ("Dia lihatku.", "lihatku", "ku"),
+            ("Dia lihatmu.", "lihatmu", "mu"),
+            ("Dia lihatnya.", "lihatnya", "nya"),
+        )
+        for sentence, surface, clitic in cases:
+            with self.subTest(sentence=sentence):
+                analyzed = self.analyze(sentence)
+                bound = self.token(analyzed, surface)
+                self.assertEqual(bound["status"], "unknown")
+                self.assertEqual(bound["pos"], [])
+                self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["VERB"])
+                self.assertEqual(bound["clitic_pos_candidates"][0]["clitic"], clitic)
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], "S-P-O")
+                self.assertEqual(parsed["roles"]["subject"], ["dia"])
+                self.assertEqual(parsed["roles"]["predicate"], [surface])
+                self.assertEqual(parsed["roles"]["object"], [])
+                self.assertEqual(parsed["clitic_analysis"], [{
+                    "surface": surface,
+                    "base_form": "lihat",
+                    "clitic": clitic,
+                    "function": "object",
+                    "function_status": "selected_by_verbal_host",
+                    "host_role": "predicate",
+                }])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
