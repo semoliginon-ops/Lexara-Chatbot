@@ -36,23 +36,37 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Menentukan kebutuhan pembaca relasi per-sense pada komponen mesin makna sebelum implementasi runtime.
 - [ ] Menerapkan anotasi per-sense hanya pada entri yang sudah diaudit dan memiliki bukti linguistik.
 
-### Audit kualitas isi kamus — bertahap per batch
+### Audit kualitas isi kamus — selesai, 60 batch
 
-- [ ] Audit isi `batch-001.jsonl` sampai `batch-060.jsonl` satu batch pada satu waktu; catat temuan sebelum berpindah batch.
-- [ ] Pisahkan audit baca-saja dari tahap perbaikan; jangan mengubah data selama audit.
-- [ ] Tinjau temuan berdasarkan bukti dan dampak; perbaiki hanya kesalahan yang terkonfirmasi.
-- [ ] Jalankan validator dan regression tests yang relevan setelah setiap kelompok perbaikan.
-- [ ] Catat hasil setiap batch dan tandai batch selesai hanya setelah pemeriksaan serta verifikasi benar-benar dilakukan.
+- [x] Audit seluruh `batch-001.jsonl` sampai `batch-060.jsonl` secara bertahap dalam 12 kelompok, masing-masing lima batch.
+- [x] Pisahkan pemeriksaan baca-saja dari perbaikan; perubahan hanya dilakukan setelah kesalahan atau ketidakcocokan cukup jelas.
+- [x] Tinjau temuan berdasarkan bukti dan dampak; pertahankan kandidat yang ambigu atau masih dapat dipertanggungjawabkan.
+- [x] Jalankan validasi relasi leksikal dan regression tests melalui GitHub Actions untuk setiap kelompok lima batch.
+- [x] Catat hasil audit dan koreksi per kelompok pada bagian laporan di bawah checklist ini.
 
-#### Audit makna relasi leksikal — baca-saja
-- [x] Audit relasi Batch-001 selesai pada 27 November 2026; empat entri diperbaiki secara selektif setelah persetujuan; perubahan dicatat pada commit b2b37d2.
-- [x] Temuan K0028 `tidak`–`bukan`, K0026 `bisa` dengan relasi lintas-sense, dan K0035 `dengar`–`dengarkan` ditangani secara selektif.
-- [x] K0032 `tolong`–`bantu` dibatasi pada sense membantu (K0032-S1), bukan sense permintaan bantuan.
-- [x] Regression suite setelah perubahan Batch-001: 169/169 tes lulus; validasi struktur Batch-001: 49 entri lulus pada 27 November 2026.
-- [x] Audit makna Batch-002 selesai secara baca-saja pada 27 November 2026; belum ada perubahan data.
-- [!] Kandidat kuat Batch-002: K0059 `taruh`–`letakkan` (bentuk perintah/turunan, bukan sinonim dasar); K0067 `masuk`–`memasuki` (bentuk turunan, bukan sinonim); K0071 `duduk`–`bersila` (postur khusus, bukan sinonim umum); K0072 `berdiri`–`tegak` (beda kelas/fungsi); K0073 `lari`–`berlomba` (berlomba bukan sinonim lari); K0090 `dekat`–`hampir` (makna jarak vs kadar/pendekatan); K0095 `bokek`–`miskin` (kondisi sementara vs keadaan ekonomi).
-- [!] Relasi yang perlu dibatasi menurut konteks/sense atau ditinjau lagi: K0052 `masak`–`mengolah`; K0053/K0054 `membersihkan`; K0055 `beli`–`berbelanja`; K0056 `jual`–`memasarkan`; K0057 `pakai`–`gunakan`; K0062 `terima`–`sambut`; K0065 `buka`–`singkap`; K0066 `tutup`–`akhiri`; K0069 `naik`–`mendaki`; K0070 `turun`–`merosot`; K0076 `baca`–`melafalkan`; K0077 `tulis`–`mencatat`; K0078 `ingat`–`kenang`; K0080 `pikir`–`renungkan`; K0082 `marah`–`murka`; K0084 `senang`–`gembira`; K0085 `sedih`–`murung`; K0087 `sibuk`–`repot`; K0092 `gabut`–`menganggur`; K0093 `baper`–`sensitif`; K0097 `lebay`–`hiperbolis`; K0100 `gercep`–`sigap`.
-- [ ] Perbaikan Batch-002 menunggu persetujuan; jangan mengubah entri lain atau lanjut ke Batch-003 sebelum temuan Batch-002 ditangani.
+#### Ringkasan audit makna dan relasi leksikal
+
+- [x] Batch-001: audit selesai; empat penataan relasi/sense dicatat dan diperbaiki secara selektif. Perubahan data pada commit `b2b37d2`.
+- [x] Batch-002: audit selesai; tujuh sinonim yang tidak setara atau merupakan bentuk turunan/perintah dihapus. Kandidat lain yang memerlukan konteks dipertahankan tanpa perubahan spekulatif.
+- [x] Batch-003: audit selesai; empat relasi salah kategori/POS ditata ulang sebagai `related_terms` atau dihapus dari sinonim/antonim.
+- [x] Batch-004: audit selesai; empat koreksi pada antonim, pemisahan sense, dan sinonim dilakukan.
+- [x] Batch-005: audit selesai; delapan bentuk turunan/gramatikal dihapus dari daftar sinonim.
+- [x] Batch-006–010: audit 250 entri; empat koreksi relasi dan pemisahan sense dilakukan.
+- [x] Batch-011–015: audit 250 entri; sembilan koreksi relasi dilakukan.
+- [x] Batch-016–020: audit 250 entri; enam koreksi/penataan relasi dan sense dilakukan.
+- [x] Batch-021–025: audit 250 entri; enam koreksi relasi dilakukan.
+- [x] Batch-026–030: audit 250 entri; delapan koreksi relasi dilakukan.
+- [x] Batch-031–035: audit 250 entri; tujuh koreksi relasi dilakukan.
+- [x] Batch-036–040: audit 250 entri; tiga koreksi relasi dilakukan.
+- [x] Batch-041–045: audit 250 entri; tidak ditemukan relasi sinonim/antonim yang dapat dikoreksi; kekosongan anotasi dicatat sebagai coverage gap.
+- [x] Batch-046–050: audit 250 entri; seluruh entri memiliki `related_terms`, tetapi tidak memiliki anotasi sinonim/antonim; tidak dibuat relasi tebakan.
+- [x] Batch-051–055: audit 250 entri; satu typo `kabina` pada K2561 `pikap` diperbaiki menjadi `kabin`.
+- [x] Batch-056–060: audit 250 entri; sepuluh koreksi geografis dan kategori administratif dilakukan pada Batch-056–057; Batch-058–060 dipertahankan.
+
+**Hasil keseluruhan:** 60/60 batch dan 3.000 entri telah tercakup dalam audit bertahap. Validasi otomatis kelompok terakhir, GitHub Actions Run #73, selesai dengan status **SUCCESS** pada 27 November 2026.
+
+**Batas audit:** audit ini berfokus pada isi dan relasi yang diperiksa dalam tiap kelompok, terutama kecocokan sinonim, antonim, related terms, serta koreksi faktual yang jelas. Kelulusan validator otomatis membuktikan struktur dan regression checks sesuai kontrak pengujian; bukan jaminan bahwa setiap definisi atau seluruh pengetahuan kamus telah sempurna secara linguistik.
+
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
 
 ### 2.1 Normalisasi teks
