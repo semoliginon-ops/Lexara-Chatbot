@@ -996,3 +996,8 @@ Pemeriksaan dilakukan melalui indeks kamus sesuai alur kerja: `hinggap` belum te
 ## Hasil penambahan `berteduh` — GitHub Actions Run #103
 
 Indeks kamus tidak mencatat `berteduh` maupun lema dasar `teduh`. Karena itu `berteduh` ditambahkan sebagai lema VERB mandiri K3004 pada batch-060 dan indeks `a-c.tsv`. Tes integrasi development memastikan kalimat `Ketika hujan turun, mereka berteduh.` dikenali sebagai VERB dari kamus. Run #103 berhasil: 60 batch, 3.003 lema, **235/235 tes regresi lulus**. Evaluasi development kini menunjukkan **0 abstention VERB**; abstention ADJ tersisa 2 (`baru`), ADV 3 (`tetap` dua kali dan `dulu`), NOUN 19. Test set tetap tidak digunakan untuk penyetelan. [GitHub Actions Run #103](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45959093568).
+
+
+## Hasil penambahan `baru` (ADJ) — GitHub Actions Run #104
+
+INDEX belum mencatat `baru` (lema `barusan` yang sudah ada berbeda). Ditambahkan K3005 sebagai ADJ dengan definisi untuk makna adjektival dan catatan bahwa penggunaan adverbial akan dievaluasi pada tahap ADV. Tes integrasi mencakup dua konteks development `buku baru`. Run #104 berhasil: 60 batch, 3.004 lema, 236/236 tes regresi. Evaluasi development kontekstual: ADJ 23/23 dikenali, tidak ada abstention ADJ dan tidak ada kesalahan prediksi. Abstention ADV tersisa `tetap` (2 konteks) dan `dulu` (1 konteks). [GitHub Actions Run #104](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45959314201).
