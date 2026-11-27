@@ -203,6 +203,64 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                         ],
                     }
 
+    # Klausa subordinatif setelah klausa utama. Periksa sebelum koordinasi
+    # agar "karena/ketika/walaupun" tidak salah dibaca sebagai konjungsi setara.
+    conjunction_positions = [
+        i for i, item in enumerate(tokens)
+        if isinstance(item, dict) and _effective_pos(item) == "CONJ"
+    ]
+    subordinating_positions = [
+        i for i in conjunction_positions
+        if _CONNECTOR_RELATIONS.get(
+            str(tokens[i].get("token", "")).casefold()
+        ) in {"sebab", "temporal", "konsesi"}
+    ]
+    if len(subordinating_positions) == 1:
+        marker_position = subordinating_positions[0]
+        if marker_position > 0 and marker_position < len(tokens) - 1:
+            main_items = tokens[:marker_position]
+            subordinate_items = tokens[marker_position + 1:]
+            main_clause = parse_sentence({"tokens": main_items})
+            subordinate = parse_sentence({"tokens": subordinate_items})
+            acceptable = {"parsed", "partial"}
+            if main_clause["status"] in acceptable and subordinate["status"] in acceptable:
+                relation = _CONNECTOR_RELATIONS[
+                    str(tokens[marker_position].get("token", "")).casefold()
+                ]
+                status = (
+                    "parsed"
+                    if main_clause["status"] == "parsed" and subordinate["status"] == "parsed"
+                    else "partial"
+                )
+                return {
+                    "parser_method": "conservative_postposed_subordination_v1",
+                    "status": status,
+                    "pattern": "KLAUSA-SUBORDINATIF",
+                    "roles": {
+                        "subject": [], "predicate": [], "object": [],
+                        "adjuncts": [], "complement": [],
+                    },
+                    "clauses": [
+                        {
+                            "subordinator": None,
+                            "relation_to_next": relation,
+                            "analysis": main_clause,
+                        },
+                        {
+                            "subordinator": tokens[marker_position]["token"],
+                            "relation_to_previous": relation,
+                            "analysis": subordinate,
+                        },
+                    ],
+                    "unresolved_tokens": (
+                        main_clause["unresolved_tokens"] + subordinate["unresolved_tokens"]
+                    ),
+                    "notes": [
+                        "Klausa utama mendahului klausa subordinatif yang ditandai penghubung eksplisit.",
+                        "Relasi dicatat sebagai metadata penghubung; parser tidak mengklaim pemahaman semantik lengkap.",
+                    ],
+                }
+
     # Koordinasi klausa: pisahkan beberapa segmen hanya jika setiap segmen
     # memiliki verba teridentifikasi. Koordinasi frasa nominal tetap ditangani
     # parser satu klausa karena segmen nominalnya tidak lolos syarat ini.
