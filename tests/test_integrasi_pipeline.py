@@ -176,7 +176,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertIsNone(parsed["pattern"])
         self.assertEqual(parsed["roles"]["subject"], [])
         self.assertEqual(parsed["roles"]["object"], [])
-        self.assertIn("inversi", parsed["notes"][0])
+        self.assertIn("terdengar", parsed["unresolved_tokens"])
 
     def test_fronted_temporal_adverb_with_modal_uses_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Besok aku akan makan nasi."))
