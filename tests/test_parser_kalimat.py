@@ -190,7 +190,7 @@ class SimpleClauseParserTests(unittest.TestCase):
             token("besar", ["ADJ"]),
         ))
         self.assertEqual(result["status"], "unresolved")
-        self.assertIn("Predikat VERB yang pasti belum ditemukan.", result["notes"])
+        self.assertIn("Predikat VERB atau pola predikat nonverbal sederhana", result["notes"][0])
 
     def test_internal_comma_is_not_misparsed_as_one_clause(self):
         result = parse_sentence(analysis(
