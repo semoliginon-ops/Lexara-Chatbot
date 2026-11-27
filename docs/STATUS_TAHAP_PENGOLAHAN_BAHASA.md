@@ -1048,7 +1048,7 @@ Parser diperluas untuk mengekspos kandidat hubungan referensi refleksif pada fra
 - `kamu/engkau/kau` + `dirimu`
 - `dia/ia/beliau` + `dirinya`
 
-Keluaran baru memakai `reference_relation: "reflexive"` dengan status `candidate_by_person_agreement` dan mencatat `antecedent_candidate`. Kandidat alternatif `reflexive/non_reflexive` tetap dipertahankan karena kecocokan orang saja belum membuktikan koreferensi secara semantik. Jika orang subjek tidak cocok atau subjek pronominal eksplisit tidak tunggal, hubungan tetap `unresolved`. Fungsi klitik yang sudah ada tidak diubah: `-ku/-mu` tetap dianalisis sebagai penanda posesif pada host NOUN, sedangkan fungsi `-nya` tetap unresolved antara posesif dan definit/anforis.
+Keluaran baru mempertahankan `reference_relation: null`, mengisi `reference_relation_candidate: "reflexive"` dengan status `candidate_by_person_agreement`, dan mencatat `antecedent_candidate`. Kandidat alternatif `reflexive/non_reflexive` tetap dipertahankan karena kecocokan orang saja belum membuktikan koreferensi secara semantik. Jika orang subjek tidak cocok atau subjek pronominal eksplisit tidak tunggal, hubungan tetap `unresolved`. Fungsi klitik yang sudah ada tidak diubah: `-ku/-mu` tetap dianalisis sebagai penanda posesif pada host NOUN, sedangkan fungsi `-nya` tetap unresolved antara posesif dan definit/anforis.
 
 Tes integrasi diperluas untuk tiga pasangan yang cocok dan satu pasangan tidak cocok (`Aku melihat dirimu.`) agar sistem tidak mengklaim refleksif hanya berdasarkan bentuk `diri` + klitik. Perubahan kode parser dan tes sudah dikomit; hasil GitHub Actions belum dapat diverifikasi pada saat pencatatan ini. Karena itu, pekerjaan tetap berstatus parsial dan tidak ada tes yang dinyatakan lulus berdasarkan perubahan ini.
 
