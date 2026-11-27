@@ -135,6 +135,51 @@ class SimpleClauseParserTests(unittest.TestCase):
             [["bekerja"], ["belajar"], ["bermain"]],
         )
 
+    def test_classifies_causal_connector(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("pulang", ["VERB"]),
+            token("karena", ["CONJ"]),
+            token("hujan", ["NOUN"]),
+            token("turun", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["clauses"][1]["connector"], "karena")
+        self.assertEqual(result["clauses"][1]["relation_to_previous"], "sebab")
+
+    def test_classifies_contrastive_connector(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("namun", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("belajar", ["VERB"]),
+        ))
+        self.assertEqual(result["clauses"][1]["relation_to_previous"], "pertentangan")
+
+    def test_classifies_concessive_connector(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("walaupun", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("tidur", ["VERB"]),
+        ))
+        self.assertEqual(result["clauses"][1]["relation_to_previous"], "konsesi")
+
+    def test_unknown_conjunction_is_not_given_guessed_relation(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("penghubung", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("belajar", ["VERB"]),
+        ))
+        self.assertEqual(
+            result["clauses"][1]["relation_to_previous"],
+            "belum_diklasifikasikan",
+        )
+
     def test_keeps_two_clause_coordination_backward_compatible(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
