@@ -748,3 +748,6 @@ Uji integrasi diperluas pada Run #145 untuk dua pola tambahan: `Pintu dibuka Rin
 
 
 Pengamanan tambahan pada Run #147: jalur pemetaan pasif kini hanya menerima parser klausa sederhana `conservative_svo_v4` dan wajib memiliki `predicate_structure.head`. Parser non-SVO atau hasil tanpa kepala predikat ditolak sebagai `unresolved`, sekalipun pemanggil memasok `voice="passive"`. Dua tes guard ditambahkan. Run #147 sukses dengan **327/327 tes regresi**.
+
+
+Uji konsistensi lintas voice pada Run #148 memakai pasangan `Angin membuka pintu` dan `Pintu dibuka angin`. Keduanya melewati analisis morfologi, parser, penghubung voice, dan mapper. Kedua konstruksi tetap mempertahankan kandidat AGENT dan CAUSER tanpa pemilihan otomatis. Run #148 sukses dengan **328/328 tes regresi**.
