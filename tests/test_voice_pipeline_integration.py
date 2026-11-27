@@ -138,6 +138,36 @@ class VoicePipelineIntegrationTests(unittest.TestCase):
         for frame in mapped["candidates"]:
             self.assertEqual(frame["arguments"][0]["presence"], "omitted")
             self.assertEqual(frame["arguments"][1]["value"], ["Pintu"])
+    def test_active_and_passive_voice_preserve_agent_causer_alternatives(self):
+        active_analysis = analyze_text("Angin membuka pintu.", self.lexicon)
+        active_parse = parse_sentence({"tokens": [
+            parser_token("Angin", "NOUN"),
+            parser_token("membuka", "VERB"),
+            parser_token("pintu", "NOUN"),
+            {"token": ".", "kind": "punctuation", "pos": [], "pos_status": "not_applicable"},
+        ]})
+        active_voice = connect_predicate_voice(active_parse, active_analysis)
+        self.assertEqual(active_voice["voice"], "active")
+        active_map = map_semantic_roles(active_parse, self.buka_sense, voice=active_voice["voice"])
+        self.assertEqual(active_map["status"], "ambiguous")
+
+        passive_analysis = analyze_text("Pintu dibuka angin.", self.lexicon)
+        passive_parse = parse_sentence({"tokens": [
+            parser_token("Pintu", "NOUN"),
+            parser_token("dibuka", "VERB"),
+            parser_token("angin", "NOUN"),
+            {"token": ".", "kind": "punctuation", "pos": [], "pos_status": "not_applicable"},
+        ]})
+        passive_voice = connect_predicate_voice(passive_parse, passive_analysis)
+        self.assertEqual(passive_voice["voice"], "passive")
+        passive_map = map_semantic_roles(passive_parse, self.buka_sense, voice=passive_voice["voice"])
+        self.assertEqual(passive_map["status"], "ambiguous")
+        for mapped in (active_map, passive_map):
+            subject_roles = {
+                next(a["semantic_role"] for a in frame["arguments"] if a["syntactic_role"] == "SUBJ")
+                for frame in mapped["candidates"]
+            }
+            self.assertEqual(subject_roles, {"AGENT", "CAUSER"})
     def test_ter_form_remains_unresolved_through_pipeline(self):
         analyzed = analyze_text("Pintu terbuka.", self.lexicon)
         parsed = parse_sentence({"tokens": [
