@@ -673,3 +673,22 @@ GitHub Actions **Run #134** sukses: validasi kamus 60 batch / 3.014 entri, valid
 Run #135 sukses dengan **293/293 tes regresi lulus**; validasi 60 batch / 3.014 entri dan langkah CI lainnya juga sukses. [Lihat Run #135](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46003321891).
 
 **Interpretasi batas:** tes ini memastikan sistem mempertahankan ambiguitas bila dua frame memang disediakan dan tidak mengubah semua PP `dengan` menjadi INSTRUMENT. Tes ini tidak menyelesaikan pemilihan CAUSER/INSTRUMENT di konteks nyata, tidak menambah sense kamus, dan tidak mengklaim parser sudah mengenali semua keterangan alat.
+
+
+#### Deteksi voice morfologis konservatif — Run #136 (27 November 2026)
+
+Modul baru `tools/deteksi_voice.py` menyediakan fungsi `detect_voice(morphology_candidates)`. Modul ini sengaja terpisah dari parser dan semantic-role mapper; tidak mengubah hasil parser atau memanggil mapper secara otomatis.
+
+**Aturan awal yang diimplementasikan:**
+
+- Kandidat dengan rule `prefix_di` (termasuk kombinasi `prefix_di+...`) ditandai sebagai bukti voice pasif, hanya jika kandidat lema yang cocok memiliki POS VERB.
+- Kandidat dengan rule `prefix_meN`, `prefix_memper`, atau restorasi nasal aktif `meng-/meny-/men-/mem-` ditandai sebagai bukti voice aktif, hanya jika kandidat lema yang cocok memiliki POS VERB.
+- `ter-`, `ber-`, bentuk tanpa penanda yang dikenali, dan kandidat non-VERB tidak dipaksa menjadi voice aktif/pasif.
+- Jika kandidat morfologi verbal memberi bukti aktif dan pasif sekaligus, hasilnya `ambiguous`, bukan dipilih otomatis.
+- Hasil `identified` berarti ada bukti pola morfologis pada kandidat lema VERB; bukan jaminan bahwa seluruh konstruksi sintaksis, makna, atau voice kalimat sudah dipahami.
+
+**Tes khusus** di `tests/test_deteksi_voice.py` mencakup di- pasif, kombinasi di- bertingkat, meN-/memper-/nasal-restoration aktif, penahanan ter-/ber-, bentuk tidak dikenal, kandidat non-VERB, bukti yang bertentangan, dan validasi tipe input.
+
+GitHub Actions **Run #136** sukses: validasi kamus 60 batch / 3.014 entri dan **304/304 tes regresi lulus**. [Lihat Run #136](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46007374655).
+
+**Batas penting:** detektor ini baru menerima keluaran morfologi per token. Ia belum memilih token yang benar-benar menjadi kepala predikat, belum memeriksa konstruksi kalimat, belum terhubung ke `analyze_text`/parser, dan belum mengubah pemetaan semantic role pasif. Awalan `di-` dan `meN-` adalah bukti morfologis untuk kandidat voice, bukan pengganti analisis sintaksis dan konteks.
