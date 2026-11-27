@@ -1,2 +1,2 @@
-57 60
-# validasi parser v1.2: klasifikasi relasi penghubung antarklausa secara eksplisit
+58 60
+# validasi parser v1.3: klausa subordinatif awal dengan koma pemisah
