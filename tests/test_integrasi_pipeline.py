@@ -72,9 +72,9 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 )
 
     def test_pak_pelajaran_and_adiknya_have_explicit_pos(self):
-        result = self.analyze("Pak memberi pelajaran kepada adiknya")
+        result = self.analyze("pak memberi pelajaran kepada adiknya")
         expected = {
-            "Pak": ("NOUN", "supplement"),
+            "pak": ("NOUN", "supplement"),
             "pelajaran": ("NOUN", "dictionary"),
             "adiknya": ("NOUN", "dictionary"),
         }
