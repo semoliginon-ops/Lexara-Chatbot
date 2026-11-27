@@ -51,6 +51,29 @@ class SimpleClauseParserTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_collects_simple_subject_phrase_with_number_and_adjective(self):
+        result = parse_sentence(analysis(
+            token("tiga", ["NUM"]),
+            token("anak", ["NOUN"]),
+            token("kecil", ["ADJ"]),
+            token("makan", ["VERB"]),
+            token("nasi", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["subject"], ["tiga", "anak", "kecil"])
+        self.assertEqual(result["roles"]["object"], ["nasi"])
+
+    def test_collects_simple_object_phrase_with_adjective(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("membeli", ["VERB"]),
+            token("baju", ["NOUN"]),
+            token("baru", ["ADJ"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["object"], ["baju", "baru"])
+
     def test_uses_contextual_pos_only_when_selected(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
