@@ -1,2 +1,2 @@
 58 60
-# Tahap 2.5: validasi lema ADJ+ADV tetap K3007; fixture tes konteks diperbaiki; target 3006 lema
+# Tahap 2.5: enam lema NOUN disetujui dan ditambahkan setelah cek duplikat indeks; target 3012 lema
