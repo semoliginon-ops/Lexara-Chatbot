@@ -126,6 +126,45 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "parsed")
         self.assertEqual(result["roles"]["predicate"], ["mau"])
 
+    def test_parses_adjectival_predicate_after_pronoun_subject(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("sakit", ["ADJ"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["dia"])
+        self.assertEqual(result["roles"]["predicate"], ["sakit"])
+
+    def test_parses_adjectival_predicate_after_demonstrative_subject(self):
+        result = parse_sentence(analysis(
+            token("rumah", ["NOUN"]),
+            token("itu", ["PRON"]),
+            token("besar", ["ADJ"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["subject"], ["rumah", "itu"])
+        self.assertEqual(result["roles"]["predicate"], ["besar"])
+
+    def test_parses_simple_nominal_predicate(self):
+        result = parse_sentence(analysis(
+            token("ayah", ["NOUN"]),
+            token("seorang", ["NUM"]),
+            token("guru", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["ayah"])
+        self.assertEqual(result["roles"]["predicate"], ["seorang", "guru"])
+
+    def test_does_not_guess_ambiguous_noun_adjective_sequence(self):
+        result = parse_sentence(analysis(
+            token("rumah", ["NOUN"]),
+            token("besar", ["ADJ"]),
+        ))
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["pattern"])
+
     def test_uses_contextual_pos_only_when_selected(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
