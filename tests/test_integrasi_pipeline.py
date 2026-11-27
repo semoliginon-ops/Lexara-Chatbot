@@ -83,6 +83,14 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_verbal_negation_parses_through_real_dictionary_pipeline(self):
+        result = parse_sentence(self.analyze("Kami tidak membeli ikan."))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["subject"], ["kami"])
+        self.assertEqual(result["roles"]["predicate"], ["tidak", "membeli"])
+        self.assertEqual(result["roles"]["object"], ["ikan"])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
