@@ -945,3 +945,27 @@ Klausa utama dan klausa subordinatif disimpan terpisah. Hubungan sebab, temporal
 
 
 Validasi GitHub Actions Run #99 berhasil: **232/232 regression tests lulus**. Validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih juga sukses. [Lihat Run #99](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467).
+
+
+## Keputusan urutan pengembangan — prioritas kembali ke Tahap 2.5 — 27 November 2026
+
+Setelah meninjau urutan tahapan, pengembangan parser dihentikan sementara. Parser v1.5, implementasi, dan tesnya tetap berada di repository; tidak ada rollback atau penghapusan. Namun, fitur parser baru tidak dikerjakan sebelum fondasi POS development dinilai memadai.
+
+### Prioritas pertama: abstention VERB
+
+Daftar sasaran terdiri dari delapan kemunculan: `bekerja` (3), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Audit dilakukan satu per satu. Untuk setiap kasus, diagnosis harus membedakan kebutuhan lema baru, aturan morfologi, anotasi `derived_forms_pos`, atau masalah pada alur pencocokan/POS. Keberadaan anotasi turunan sebelumnya harus diperiksa sebelum menambahkan perubahan baru.
+
+Setiap kasus diperiksa terlebih dahulu, lalu hanya diperbaiki jika penyebabnya terbukti. Tes terkait dijalankan sebelum beralih ke kasus berikutnya. Tidak boleh mengubah test set untuk menyetel aturan.
+
+### Prioritas setelah VERB
+
+1. Audit abstention ADJ (2), ADV (3), dan NOUN (19) secara bertahap.
+2. Perluas cakupan lema NOUN yang belum terindeks.
+3. Audit cakupan morfologi `ber-`, pasif `di-`, dan imperatif.
+4. Evaluasi ulang pada development split dan jalankan regresi. Test set tetap ditahan untuk evaluasi akhir.
+
+### Gerbang sebelum Tahap 2.6
+
+Tahap 2.6 (analisis struktur kalimat dasar) belum dinyatakan dimulai. Tahap 2.5 harus lebih dahulu memiliki hasil evaluasi POS development yang memadai dan terdokumentasi. Tahap 2.7, tahap hubungan makna/konteks, dan integrasi Android tetap menunggu urutan tersebut.
+
+Daftar abstention adalah sasaran audit, bukan target untuk memaksa semua token memperoleh label. Abstention yang tepat untuk kasus ambigu tetap merupakan perilaku yang sah.
