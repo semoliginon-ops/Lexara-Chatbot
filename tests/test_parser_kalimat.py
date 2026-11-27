@@ -654,6 +654,19 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertIsNone(result["pattern"])
         self.assertEqual(result["roles"]["subject"], [])
 
+    def test_does_not_guess_postverbal_subject_in_kps_inversion(self):
+        # "Terjadi kecelakaan" is K-P-S; inversion is not supported yet.
+        # The postverbal noun must not be relabeled as an object.
+        result = parse_sentence(analysis(
+            token("terjadi", ["VERB"]),
+            token("kecelakaan", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["pattern"])
+        self.assertEqual(result["roles"]["subject"], [])
+        self.assertEqual(result["roles"]["object"], [])
+        self.assertIn("inversi", result["notes"][0])
+
     def test_returns_unresolved_when_no_certain_verb(self):
         result = parse_sentence(analysis(
             token("rumah", ["NOUN"]),
