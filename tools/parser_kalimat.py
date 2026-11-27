@@ -106,6 +106,41 @@ def _predicate_structure(
         "modifiers": modifiers,
     }
 
+def _has_unique_intransitive_subject_frame(item: dict[str, Any]) -> bool:
+    """Require one lexical lemma, one sense, and one mandatory NP subject only."""
+    candidates = item.get("candidates", [])
+    if not isinstance(candidates, list) or len(candidates) != 1:
+        return False
+    candidate = candidates[0]
+    if not isinstance(candidate, dict) or candidate.get("match_type") != "lemma":
+        return False
+    entry = candidate.get("entry")
+    if not isinstance(entry, dict):
+        return False
+    senses = entry.get("senses", [])
+    if not isinstance(senses, list) or len(senses) != 1:
+        return False
+    frames = senses[0].get("valency_frames", [])
+    if not isinstance(frames, list) or len(frames) != 1:
+        return False
+    arguments = frames[0].get("arguments", [])
+    if not isinstance(arguments, list) or len(arguments) != 1:
+        return False
+    argument = arguments[0]
+    if not isinstance(argument, dict):
+        return False
+    realizations = argument.get("realizations", [])
+    return (
+        argument.get("syntactic_role") == "SUBJ"
+        and argument.get("required") is True
+        and isinstance(realizations, list)
+        and any(
+            isinstance(realization, dict) and realization.get("type") == "NP"
+            for realization in realizations
+        )
+    )
+
+
 
 def _coordinated_phrase_span(
     words: list[dict[str, Any]], positions: list[int], lower: int, upper: int
@@ -524,6 +559,43 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             leading_positions.add(marker_position)
             leading_positions.update(phrase_positions)
             prefix_cursor = scan
+
+        if _has_unique_intransitive_subject_frame(words[verb_pos]["source"]):
+            postverbal_positions = list(range(verb_pos + 1, len(words)))
+            postverbal_heads = [
+                i for i in postverbal_positions if words[i]["pos"] in _NOMINAL_POS
+            ]
+            if (
+                prefix_cursor == verb_pos
+                and postverbal_positions
+                and postverbal_heads
+                and all(words[i]["pos"] in _NOMINAL_PHRASE_POS for i in postverbal_positions)
+            ):
+                subject_positions = _phrase_span(
+                    words, postverbal_heads[0], verb_pos + 1, len(words)
+                )
+                if subject_positions == postverbal_positions:
+                    return {
+                        "parser_method": "conservative_valency_guided_inversion_v1",
+                        "status": "parsed",
+                        "pattern": "K-P-S" if leading_adjuncts else "P-S",
+                        "roles": {
+                            "subject": [words[i]["token"] for i in subject_positions],
+                            "predicate": [words[verb_pos]["token"]],
+                            "object": [],
+                            "adjuncts": leading_adjuncts,
+                            "complement": [],
+                        },
+                        "predicate_structure": _predicate_structure(
+                            words, [verb_pos], verb_pos
+                        ),
+                        "clitic_analysis": [],
+                        "unresolved_tokens": [],
+                        "notes": [
+                            "Inversi predikat-subjek dikenali hanya karena satu sense leksikal memiliki satu frame dengan satu argumen SUBJ NP wajib dan tanpa argumen lain.",
+                            "Aturan ini tidak digeneralisasi ke verba atau sense yang belum memiliki bukti valensi tunggal.",
+                        ],
+                    }
 
         assigned_without_subject = leading_positions | {verb_pos}
         unresolved_without_subject = [
