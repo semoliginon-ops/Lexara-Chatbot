@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus berisi 3.014 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.8 tersedia sebagai fondasi Tahap 2.6. Lema `akan` (K3015, ADV) telah ditambahkan dan divalidasi melalui pipeline kamus lengkap. GitHub Actions Run #119: 253/253 regression tests lulus.
+> **Status:** Pengembangan aktif — kamus berisi 3.014 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.9 tersedia sebagai fondasi Tahap 2.6. Perubahan terbaru memperketat pemisahan keterangan preposisional awal dari subjek dan mempertahankan abstention untuk pola yang belum didukung. GitHub Actions Run #126: 255/255 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -363,9 +363,14 @@ Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semolig
 
 ### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
-Parser kini berada pada versi **v1.7**. Selain memisahkan kepala predikat dan pewatas, parser mengenali `akan` (jika POS ADV) serta `bisa` (jika POS VERB) sebagai modal jika diikuti verba inti. Catatan integrasi: `bisa` ada di indeks kamus (K0026), sedangkan `akan` belum tercatat di indeks; aturan parser untuk `akan` belum berarti kamus sudah dapat memberinya POS. Pemakaian `bisa` tunggal tetap menjadi predikat. Tes tambahan memastikan modalitas tetap bekerja pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P.
+Parser kini berada pada versi **v1.9**. Fitur yang sudah tersedia mencakup pemisahan kepala predikat dan pewatas, modalitas terbatas, keterangan temporal awal yang eksplisit, serta pemisahan keterangan preposisional awal dari kandidat subjek.
 
-Langkah berikutnya adalah memperluas pola frasa verba secara bertahap dan menguji variasi susunan kalimat sederhana (S-P-O, S-P-K, dan K-S-P) tanpa memaksakan analisis yang belum didukung. Perluasan dilakukan bertahap dengan regression tests dan tetap mempertahankan perilaku konservatif: struktur yang belum didukung dilaporkan, bukan ditebak.
+Perilaku konservatif yang diuji:
+- `Di rumah aku bekerja.`: `di rumah` dicatat sebagai keterangan dan `aku` tetap dikenali sebagai subjek.
+- `Di rumah terdengar suara.`: `di rumah` dicatat sebagai keterangan; subjek dibiarkan kosong dan `suara` tetap unresolved, bukan dipaksakan menjadi objek.
+- Pronomina orang yang jelas setelah frasa preposisional awal tidak boleh ikut tertelan ke dalam frasa keterangan.
+
+**Batas saat ini:** inversi K-P-S penuh belum diimplementasikan. Parser tidak menebak subjek pascaverbal jika pola tersebut belum didukung; struktur parsial atau unresolved lebih diutamakan daripada label yang keliru. Perluasan berikutnya dilakukan bertahap dengan regression tests.
 
 Tahap 2.7 (dataset dan pengujian terpadu) tetap berjalan sebagai pekerjaan pelengkap: perluas cakupan contoh bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang. Test split tetap tersegel.
 
@@ -386,3 +391,10 @@ Parser kini mengenali empat ADV temporal yang tercatat di kamus — `besok`, `na
 
 
 **Validasi parser v1.8 — Run #119 SUCCESS:** kamus 60 batch / 3.014 lema tervalidasi; dataset POS dan evaluasi development berhasil; **253/253 regression tests lulus**. Tes mencakup empat ADV temporal awal (`besok`, `nanti`, `sekarang`, `tadi`), penolakan tebakan untuk `mungkin`, serta kalimat integrasi `Besok aku akan makan nasi.` [Lihat Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139).
+
+
+### Parser v1.9 — batas keterangan preposisional awal dan subjek
+
+Parser memisahkan frasa preposisional di awal kalimat dari kandidat subjek. Pronomina orang yang jelas setelah frasa tersebut tetap dapat dikenali sebagai subjek, misalnya `Di rumah aku bekerja.`. Jika tidak ada subjek pra-verbal yang cukup jelas, parser mempertahankan subjek kosong dan menandai token pascaverbal yang belum teranalisis sebagai unresolved; pada `Di rumah terdengar suara.`, `suara` tidak dipaksakan menjadi subjek maupun objek. Inversi K-P-S penuh tetap di luar cakupan.
+
+**Validasi parser v1.9 — Run #126 SUCCESS:** validasi kamus 60 batch/3.014 lema, dataset POS, evaluasi development, dan **255/255 regression tests lulus**. [Lihat Run #126](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45972629322).
