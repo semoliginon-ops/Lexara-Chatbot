@@ -167,6 +167,35 @@ Pengguna telah menyetujui inventaris awal ini sebagai baseline desain pada 27 No
 5. `RESULT` adalah hasil yang muncul dari proses; jangan gunakan untuk semua pelengkap predikat.
 6. `CONTENT` cocok untuk klausa/isi proposisional. Jangan memberi label ini hanya karena argumen berupa klausa; makna predikat harus mendukungnya.
 
+#### Uji batas THEME vs PATIENT — aturan kerja sementara
+
+Pembedaan ini diputuskan berdasarkan **jenis keterlibatan entitas dalam makna sense predikat**, bukan berdasarkan SUBJ/OBJ, urutan kata, atau bentuk aktif/pasif.
+
+- **THEME**: entitas yang bergerak/berpindah, muncul/hadir, berada, atau menjadi sasaran persepsi/pembahasan, tanpa predikat yang secara jelas menyatakan bahwa entitas itu mengalami perubahan sifat/keadaan atau terkena dampak.
+- **PATIENT**: entitas yang secara jelas dikenai tindakan atau mengalami perubahan keadaan/sifat yang dinyatakan oleh predikat. Pelaku boleh ada, tidak ada, atau tidak disebutkan.
+- Jika predikat dan konteks tidak cukup membedakan keterlibatan tersebut, jangan memaksakan salah satu label. Tandai belum teranotasi atau pertahankan kandidat alternatif hanya jika dua pembacaan memang sah.
+
+| Kalimat | Kandidat | Analisis sementara | Alasan |
+|---|---|---|---|
+| Rina memindahkan meja. | meja | THEME | Entitas berpindah lokasi; tindakan tidak dengan sendirinya menyatakan meja berubah sifat/keadaan. |
+| Meja dipindahkan Rina. | meja | THEME | Bentuk pasif tidak mengubah peran semantis entitas yang dipindahkan. |
+| Rina memecahkan gelas. | gelas | PATIENT | Gelas mengalami perubahan keadaan/keutuhan akibat tindakan. |
+| Gelas dipecahkan Rina. | gelas | PATIENT | Peran tetap PATIENT meskipun menjadi subjek gramatikal pasif. |
+| Masalah muncul. | masalah | THEME | Entitas mulai hadir/terjadi; bukan objek yang terkena tindakan oleh pelaku. |
+| Bola menggelinding. | bola | THEME | Peristiwa menyatakan gerak/perpindahan. |
+| Es mencair. | es | PATIENT | Es mengalami perubahan keadaan. |
+| Daun menguning. | daun | PATIENT | Daun mengalami perubahan sifat/keadaan. |
+| Rina melihat burung. | burung | THEME | Burung adalah entitas yang dipersepsi; tidak dinyatakan terdampak oleh tindakan melihat. |
+| Burung itu terlihat oleh Rina. | burung itu | THEME | Perubahan konstruksi/voice tidak menjadikan burung PATIENT. |
+| Pintu terbuka. | pintu | Belum diputuskan tanpa sense/konteks | Dapat dibaca sebagai peristiwa perubahan keadaan (PATIENT) atau keadaan/resultatif; label harus mengikuti sense yang tepat. |
+
+**Temuan penting dari uji ini**
+
+1. Batas yang paling berguna untuk baseline adalah **perpindahan/kehadiran/persepsi** (cenderung THEME) versus **perubahan keadaan/sifat atau dampak langsung** (cenderung PATIENT).
+2. Jangan menjadikan “ada perubahan” sebagai aturan otomatis untuk PATIENT tanpa melihat jenis perubahan. Perubahan lokasi saja tetap dapat menjadi THEME; perubahan keadaan/sifat yang menjadi inti predikat cenderung PATIENT.
+3. Aktif dan pasif tidak mengubah semantic role suatu entitas. Voice memengaruhi realisasi/fungsi sintaksis dan dapat mengubah apakah AGENT dinyatakan, bukan identitas peran entitas lain.
+4. Kategori ini adalah pedoman anotasi proyek, bukan klaim bahwa semua teori linguistik memakai batas THEME/PATIENT yang sama. Kasus lintas makna dan resultatif tetap memerlukan peninjauan sense.
+
 **Aturan anotasi konservatif**
 
 - Katalog ini adalah daftar nilai awal yang diizinkan untuk proposal frame, bukan kewajiban mengisi semua peran pada semua sense.
