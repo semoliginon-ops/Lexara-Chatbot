@@ -188,6 +188,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(parsed["roles"]["object"], [])
                 self.assertEqual(parsed["unresolved_tokens"], ["masalah"])
 
+    def test_kps_candidate_and_omitted_subject_object_remain_unresolved_in_real_pipeline(self):
+        cases = (
+            ("Di rumah terdengar suara.", "terdengar", "suara"),
+            ("Di rumah membaca buku.", "membaca", "buku"),
+        )
+        for sentence, predicate, nominal in cases:
+            with self.subTest(sentence=sentence):
+                parsed = parse_sentence(self.analyze(sentence))
+                self.assertEqual(parsed["status"], "unresolved")
+                self.assertIsNone(parsed["pattern"])
+                self.assertEqual(parsed["roles"]["subject"], [])
+                self.assertEqual(parsed["roles"]["predicate"], [predicate])
+                self.assertEqual(parsed["roles"]["object"], [])
+                self.assertEqual(parsed["unresolved_tokens"], [nominal])
+                self.assertEqual(
+                    parsed["roles"]["adjuncts"],
+                    [{"preposition": "di", "phrase": ["rumah"]}],
+                )
+
     def test_fronted_prepositional_phrase_is_not_misread_in_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Di rumah terdengar suara."))
         self.assertEqual(parsed["status"], "unresolved")
