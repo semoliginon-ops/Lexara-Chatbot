@@ -1,2 +1,2 @@
 56 60
-# validasi parser pelengkap predikat menjadi/tampak dan regresi penuh
+# validasi abstention saat lema verba penghubung/pelengkap belum tersedia
