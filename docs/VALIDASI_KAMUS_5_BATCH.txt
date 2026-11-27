@@ -11,3 +11,4 @@
 # Uji tambahan modalitas: empat regression tests untuk akan, bisa, bisa sebagai predikat tunggal, dan tidak mau + verba inti.
 # Tahap 2.6: uji variasi susunan kalimat dengan modalitas pada pola S-P-O, S-P-K, dan K-S-P.
 # Tahap 2.6: lema akan (K3015) ditambahkan sebagai ADV atas persetujuan pengguna; validasi integrasi penuh setelah pembaruan batch, indeks, validator, dan tes.
+# Tahap 2.6: parser v1.8 mengenali ADV temporal awal besok/nanti/sekarang/tadi; ADV lain tetap abstain; tes unit dan integrasi ditambahkan.
