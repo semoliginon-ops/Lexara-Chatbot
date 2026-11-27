@@ -1071,3 +1071,14 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Tes integrasi untuk `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`.
 - [x] GitHub Actions Run #105: validasi 60 batch/3.005 lema dan regresi 237/237 berhasil.
 - [x] Evaluasi development: ADV tersisa dua abstention, keduanya `tetap`; `dulu` berhasil dikenali. NOUN masih 19 abstention.
+
+
+### POS Tahap 2.5 — lema `tetap` disetujui dan ditambahkan (K3007)
+
+- [x] Persetujuan pengguna diperoleh sebelum perubahan kamus.
+- [x] Pemeriksaan INDEX: `tetap` belum tercatat.
+- [x] Tambahkan satu lema dengan POS entri ADJ dan ADV; dua sense diberi POS masing-masing agar makna adjektival dan adverbial tidak tercampur.
+- [x] Tambahkan baris lema pada INDEX `s-u.tsv`.
+- [x] Konteks `tetap` sebelum VERB dapat memilih ADV; konteks yang belum cukup jelas tetap abstain.
+- [x] Tes integrasi mencakup `pegawai tetap` (ambigu tetap dipertahankan) dan `mereka tetap bekerja` (ADV dipilih oleh konteks).
+- [ ] Validasi GitHub Actions untuk 60 batch, 3.006 lema, evaluasi development, dan regresi penuh.
