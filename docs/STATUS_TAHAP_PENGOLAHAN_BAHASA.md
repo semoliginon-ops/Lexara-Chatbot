@@ -1113,3 +1113,17 @@ Tes integrasi menambahkan bentuk `perasaanku`, dengan dasar turunan `perasaan` d
 GitHub Actions **Run #219 selesai dengan conclusion success**; **392 tes regresi dijalankan**. [Lihat Run #219](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080600275).
 
 Dengan ini, seri enam tes representatif Run #214–219 mencakup ketiga klitik (`-ku`, `-mu`, `-nya`) pada host turunan verbal (`memiliki`) dan nominal (`perasaan`). Cakupan ini menilai pengenalan morfologi melalui pipeline nyata; bukan bukti bahwa fungsi sintaksis atau semantik semua bentuk sudah terselesaikan. Tidak ada lema, batch, atau indeks kamus yang diubah.
+
+### Inversi predikat–subjek berbasis valensi secara konservatif — Run #222 (28 November 2026)
+
+Parser kini dapat mengenali subjek nominal pascaverbal hanya jika token predikat membawa tepat satu kandidat kecocokan lema, lema tersebut memiliki tepat satu sense, dan sense itu memiliki tepat satu frame dengan satu argumen wajib `SUBJ` yang terealisasi sebagai NP. Aturan ini tidak menganggap nomina pascaverbal sebagai objek dan tidak menebak untuk verba yang belum memiliki bukti valensi yang sesuai.
+
+Hasil pipeline penuh:
+- `Muncul masalah.` → `P-S`, subjek `masalah`, predikat `muncul`.
+- `Di rumah muncul masalah.` → `K-P-S`, keterangan `di rumah`, subjek `masalah`, predikat `muncul`.
+- `Timbul masalah.` tetap `unresolved` karena bukti frame valensi yang tersedia belum memenuhi syarat.
+- `Di rumah terdengar suara.` tetap `unresolved`; nomina pascaverbal tidak dipaksakan menjadi subjek.
+
+GitHub Actions **Run #222 selesai dengan conclusion success**; **395/395 tes regresi lulus**. [Lihat Run #222](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080823100).
+
+**Batas:** aturan ini merupakan dukungan inversi terbatas, bukan parser K-P-S umum. Syarat kandidat tunggal/sense tunggal/frame tunggal sengaja ketat untuk mencegah tebakan saat makna atau struktur valensi ambigu. Tidak ada lema, batch, atau indeks kamus yang diubah.
