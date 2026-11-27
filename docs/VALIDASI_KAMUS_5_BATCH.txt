@@ -1,2 +1,2 @@
-31 35
-# batch 031-035: audit semantik selesai; jalankan validasi kelompok
+36 40
+# batch 036-040: audit semantik selesai; jalankan validasi kelompok
