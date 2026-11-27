@@ -374,7 +374,7 @@ Tahap 3 (hubungan makna dan konteks), evaluasi embedding opsional, dan integrasi
 
 ## Penambahan lema `akan` — K3015
 
-Atas persetujuan pengguna, lema `akan` ditambahkan ke batch-060 sebagai **ADV** dengan definisi: “Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.” Indeks `a-c.tsv` dan target validasi kamus diperbarui menjadi **3.014 lema**. POS supplement yang sebelumnya sudah memetakan `akan` sebagai ADV dipertahankan tanpa duplikasi. Tes integrasi memeriksa pengenalan dari kamus, pola `akan` + verba inti, dan perilaku hati-hati ketika `akan` berdiri sendiri. Validasi CI setelah perubahan ini sedang menunggu.
+Atas persetujuan pengguna, lema `akan` ditambahkan ke batch-060 sebagai **ADV** dengan definisi: “Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.” Indeks `a-c.tsv` dan target validasi kamus diperbarui menjadi **3.014 lema**. POS supplement yang sebelumnya sudah memetakan `akan` sebagai ADV dipertahankan tanpa duplikasi. Tes integrasi memeriksa pengenalan dari kamus, pola `akan` + verba inti, dan perilaku hati-hati ketika `akan` berdiri sendiri. Validasi CI Run #118 telah selesai dengan status SUCCESS.
 
 
 **Validasi penambahan `akan` — GitHub Actions Run #118:** sukses. Kamus memuat 60 batch / **3.014 lema**, validasi dataset POS dan evaluasi development berhasil, serta **250/250 regression tests lulus**. Tes integrasi memastikan `akan` dikenali sebagai ADV dari kamus, berfungsi sebagai penanda modal saat diikuti verba inti, dan tidak dipaksakan menjadi predikat ketika berdiri sendiri. [Lihat Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132).
