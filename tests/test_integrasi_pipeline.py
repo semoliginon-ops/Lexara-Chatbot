@@ -852,7 +852,8 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                     analysis["reference_relation_status"],
                     "candidate_by_person_agreement",
                 )
-                self.assertEqual(analysis["reference_relation"], "reflexive")
+                self.assertIsNone(analysis["reference_relation"])
+                self.assertEqual(analysis["reference_relation_candidate"], "reflexive")
                 self.assertEqual(analysis["antecedent_candidate"], {
                     "ku": "aku", "mu": "kamu", "nya": "dia"
                 }[clitic])
@@ -876,6 +877,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         analysis = parsed["clitic_analysis"][0]
         self.assertEqual(analysis["base_form"], "diri")
         self.assertIsNone(analysis["reference_relation"])
+        self.assertIsNone(analysis["reference_relation_candidate"])
         self.assertEqual(
             analysis["reference_relation_candidates"],
             ["reflexive", "non_reflexive"],
