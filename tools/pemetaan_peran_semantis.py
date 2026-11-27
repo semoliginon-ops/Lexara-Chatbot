@@ -1,9 +1,10 @@
 """Pemetaan konservatif fungsi sintaksis ke semantic role berbasis valensi.
 
-Modul ini adalah lapisan terpisah dari parser. Pemanggil wajib memasok voice
-yang telah ditentukan oleh analisis morfologi/konteks; parser v1.9 sendiri
-belum menentukan voice secara andal. Hanya voice aktif yang dipetakan saat ini.
-Jika beberapa frame cocok, semua kandidat dipertahankan dan status ambiguous.
+Modul ini terpisah dari parser. Voice harus dikonfirmasi oleh lapisan analisis
+morfologi/konteks. Pemetaan pasif sederhana membalik realisasi permukaan SUBJ/OBJ
+ke argumen valensi: subjek permukaan menjadi OBJ (umumnya PATIENT), sedangkan
+agen dapat muncul sebagai objek pascaverbal atau frasa PP berpreposisi "oleh".
+Kasus yang tidak cocok dengan pola terbatas ini tetap unresolved.
 """
 from __future__ import annotations
 
@@ -60,6 +61,139 @@ def _oblique_values(adjuncts: list[Any], realizations: list[dict[str, Any]]) -> 
     return matched
 
 
+def _map_passive_roles(
+    parse_result: dict[str, Any],
+    sense: dict[str, Any],
+    frames: list[Any],
+) -> dict[str, Any]:
+    """Map one conservative di- passive surface pattern through active valency."""
+    sense_id = sense.get("sense_id")
+    roles = parse_result.get("roles")
+    if not isinstance(roles, dict):
+        result = _unresolved("missing_parser_roles", "Hasil parser tidak memiliki objek roles.")
+        result["sense_id"] = sense_id
+        return result
+
+    surface_subject = roles.get("subject", [])
+    surface_object = roles.get("object", [])
+    adjuncts = roles.get("adjuncts", [])
+    if not all(isinstance(values, list) and all(isinstance(v, str) for v in values)
+               for values in (surface_subject, surface_object)):
+        result = _unresolved("invalid_parser_roles", "Peran permukaan parser tidak valid.")
+        result["sense_id"] = sense_id
+        return result
+    if not isinstance(adjuncts, list):
+        result = _unresolved("invalid_parser_roles", "Daftar adjunct parser tidak valid.")
+        result["sense_id"] = sense_id
+        return result
+    if not surface_subject:
+        result = _unresolved("passive_patient_not_identified", "Subjek permukaan/pasien pasif belum dikenali.")
+        result["sense_id"] = sense_id
+        return result
+
+    oleh_phrases = []
+    other_adjuncts = []
+    for adjunct in adjuncts:
+        if not isinstance(adjunct, dict):
+            continue
+        if isinstance(adjunct.get("preposition"), str) and adjunct["preposition"].casefold() == "oleh":
+            phrase = adjunct.get("phrase")
+            if isinstance(phrase, list) and phrase and all(isinstance(v, str) for v in phrase):
+                oleh_phrases.append(phrase)
+        else:
+            other_adjuncts.append(adjunct)
+    if oleh_phrases and surface_object:
+        result = _unresolved(
+            "passive_agent_realization_conflict",
+            "Agen muncul sekaligus sebagai objek pascaverbal dan frasa oleh; pemetaan ditahan.",
+        )
+        result["sense_id"] = sense_id
+        return result
+    if len(oleh_phrases) > 1:
+        result = _unresolved("multiple_passive_agent_phrases", "Lebih dari satu frasa oleh ditemukan.")
+        result["sense_id"] = sense_id
+        return result
+    if surface_object and len(surface_object) != 1:
+        result = _unresolved("multiple_postverbal_passive_agents", "Rentang objek pascaverbal belum dapat dipastikan sebagai satu agen.")
+        result["sense_id"] = sense_id
+        return result
+
+    agent_values = surface_object or (oleh_phrases[0] if oleh_phrases else [])
+    agent_source = "postverbal_agent" if surface_object else (
+        "oleh_phrase" if oleh_phrases else "omitted"
+    )
+    candidates: list[dict[str, Any]] = []
+    for frame in frames:
+        if not isinstance(frame, dict) or not isinstance(frame.get("arguments"), list):
+            continue
+        subj_args = [
+            a for a in frame["arguments"]
+            if isinstance(a, dict) and a.get("syntactic_role") == "SUBJ"
+        ]
+        obj_args = [
+            a for a in frame["arguments"]
+            if isinstance(a, dict) and a.get("syntactic_role") == "OBJ"
+        ]
+        # Passive remapping is limited to frames with one SUBJ and one OBJ.
+        if len(subj_args) != 1 or len(obj_args) != 1:
+            continue
+        subject_arg, object_arg = subj_args[0], obj_args[0]
+        if not isinstance(subject_arg.get("realizations"), list) or not isinstance(object_arg.get("realizations"), list):
+            continue
+        if not agent_values and subject_arg.get("required") is not True:
+            # Requiredness is active-frame valency. Passive agent omission is
+            # licensed independently by the passive construction.
+            pass
+        if agent_values and subject_arg.get("required") is not True:
+            continue
+        if object_arg.get("required") is not True:
+            # This pilot only handles a clearly realized passive patient.
+            continue
+        mapped = [
+            {
+                "argument_id": subject_arg.get("argument_id"),
+                "syntactic_role": "SUBJ",
+                "surface_role": "OBJ" if agent_source == "postverbal_agent" else (
+                    "OBL" if agent_source == "oleh_phrase" else None
+                ),
+                "semantic_role": subject_arg.get("semantic_role"),
+                "presence": "present" if agent_values else "omitted",
+                "value": list(agent_values),
+                "realization": agent_source,
+            },
+            {
+                "argument_id": object_arg.get("argument_id"),
+                "syntactic_role": "OBJ",
+                "surface_role": "SUBJ",
+                "semantic_role": object_arg.get("semantic_role"),
+                "presence": "present",
+                "value": list(surface_subject),
+                "realization": "passive_surface_subject",
+            },
+        ]
+        candidates.append({"frame_id": frame.get("frame_id"), "arguments": mapped})
+
+    if not candidates:
+        result = _unresolved(
+            "no_supported_passive_frame",
+            "Pola pasif ini memerlukan satu argumen SUBJ dan satu OBJ dalam frame valensi; tidak ada frame yang dapat dipetakan dengan aman.",
+        )
+        result["sense_id"] = sense_id
+        return result
+
+    return {
+        "status": "mapped" if len(candidates) == 1 else "ambiguous",
+        "reason": None if len(candidates) == 1 else "multiple_frames_match",
+        "sense_id": sense_id,
+        "candidates": candidates,
+        "notes": [
+            "Pemetaan pasif terbatas: subjek permukaan dipetakan ke argumen OBJ valensi; agen opsional dipetakan ke argumen SUBJ.",
+            "Bentuk pasif tanpa agen mengizinkan argumen SUBJ valensi tidak terealisasi, meskipun required pada frame aktif.",
+            "Hanya pola klausa sederhana dengan voice pasif yang telah dikonfirmasi yang didukung; ini bukan pemetaan pasif umum untuk semua konstruksi.",
+        ],
+    }
+
+
 def map_semantic_roles(
     parse_result: dict[str, Any],
     sense: dict[str, Any],
@@ -91,14 +225,6 @@ def map_semantic_roles(
         )
         result["sense_id"] = sense_id
         return result
-    if voice == "passive":
-        result = _unresolved(
-            "passive_mapping_not_implemented",
-            "Pemetaan voice pasif belum diterapkan; fungsi sintaksis permukaan tidak boleh langsung disamakan dengan peran semantis.",
-        )
-        result["sense_id"] = sense_id
-        return result
-
     if parse_result.get("status") != "parsed":
         result = _unresolved(
             "parser_not_fully_resolved",
@@ -112,6 +238,9 @@ def map_semantic_roles(
         result = _unresolved("missing_parser_roles", "Hasil parser tidak memiliki objek roles.")
         result["sense_id"] = sense_id
         return result
+
+    if voice == "passive":
+        return _map_passive_roles(parse_result, sense, frames)
 
     candidates: list[dict[str, Any]] = []
     for frame in frames:
