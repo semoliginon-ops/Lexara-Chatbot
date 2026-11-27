@@ -829,3 +829,21 @@ Perbaikan batas frasa memastikan kata `rumah` pada contoh kedua tidak diserap ke
 Dua tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #87](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944311484) sukses: **204/204 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas:** dukungan ini belum mencakup inversi, klausa majemuk, atau seluruh variasi susunan kalimat. Tahap parser berikutnya tetap perlu memperluas variasi secara terukur tanpa menebak fungsi token yang belum jelas.
+
+
+## Parser kalimat v0.8 — beberapa keterangan preposisional di depan subjek — 27 November 2026
+
+Parser kini dapat mengenali lebih dari satu frasa keterangan preposisional sederhana yang muncul berurutan sebelum subjek.
+
+Contoh: `Di rumah pada malam hari aku bekerja.`
+- Keterangan 1: `di rumah`
+- Keterangan 2: `pada malam hari`
+- Subjek: `aku`
+- Predikat: `bekerja`
+- Pola: S-P-K
+
+Urutan keterangan dipertahankan. Parser hanya menerima awalan jika seluruh token sebelum subjek dapat dibagi menjadi rangkaian PREP + frasa nominal; jika ada bagian yang tidak cocok, bagian tersebut tidak dipaksakan menjadi keterangan.
+
+Satu tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #88](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944536094) sukses: **206/206 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas:** keterangan depan yang dipisahkan tanda baca, klausa bertingkat, dan susunan campuran di luar pola PREP + frasa nominal sederhana belum didukung.
