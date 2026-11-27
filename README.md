@@ -347,3 +347,17 @@ Validasi parser v1.4 melalui GitHub Actions [Run #97](https://github.com/semolig
 Parser v1.5 menambahkan pola subordinatif setelah klausa utama, misalnya `Aku pulang karena hujan turun.`. Penghubung sebab/temporal/konsesi yang dikenali tidak lagi diperlakukan sebagai koordinasi setara pada pola tersebut. Hasil validasi dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
 
 Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467) berhasil dengan **232/232 regression tests lulus**. Validasi kamus lengkap 3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+
+## Fokus pengembangan aktif — Tahap 2.5 (POS Tagging)
+
+**Prioritas aktif per 27 November 2026: selesaikan evaluasi POS development sebelum melanjutkan pengembangan parser.** Pengembangan parser kalimat v1.5 untuk sementara dibekukan; implementasi dan tes yang sudah ada tetap disimpan, tetapi tidak diperluas dulu.
+
+Urutan kerja:
+1. Audit delapan kemunculan token VERB yang masih abstain: `bekerja` (3 kemunculan), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh`. Periksa satu per satu dan tentukan apakah penyebabnya membutuhkan lema baru, aturan morfologi, anotasi `derived_forms_pos`, atau perbaikan alur pengenalan POS.
+2. Setelah setiap token diperiksa, lakukan perubahan sekecil yang terbukti perlu dan jalankan tes terkait sebelum beralih ke token berikutnya.
+3. Setelah kelompok VERB selesai, audit abstention ADJ (2), ADV (3), dan NOUN (19) secara bertahap.
+4. Berikutnya, perluas cakupan lema NOUN yang belum terindeks dan audit pola morfologi `ber-`, pasif `di-`, serta bentuk imperatif.
+5. Evaluasi kesiapan Tahap 2.5 menggunakan development split dan regresi. Test set tetap ditahan untuk evaluasi akhir dan tidak digunakan untuk penyetelan.
+
+Tahap 2.6 (analisis struktur kalimat), 2.7, tahap hubungan makna/konteks, dan integrasi Android menunggu keputusan bahwa Tahap 2.5 sudah memadai. Angka abstention di atas adalah daftar sasaran audit, bukan bukti bahwa semua kasus harus dipaksa memiliki label POS.
