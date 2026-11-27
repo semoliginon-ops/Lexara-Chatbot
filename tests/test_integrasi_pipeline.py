@@ -635,6 +635,22 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
         self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
 
+    def test_postposed_causal_subordinate_with_sebab_uses_real_pipeline(self):
+        analyzed = self.analyze("Aku pulang sebab hujan turun.")
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        main_clause, subordinate = parsed["clauses"]
+        self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pulang"])
+        self.assertEqual(subordinate["subordinator"], "sebab")
+        self.assertEqual(subordinate["relation_to_previous"], "sebab")
+        self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+        self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
+
     def test_postposed_causal_subordinate_uses_real_dictionary(self):
         result = self.analyze("Aku pulang karena hujan turun.")
         parsed = parse_sentence(result)
