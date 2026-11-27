@@ -257,5 +257,14 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(punctuation["pos_status"], "not_applicable")
 
 
+    def test_ditunda_is_verb_through_real_dictionary_pipeline(self):
+        result = self.analyze("Karena hujan deras, pertandingan ditunda.")
+        token = self.token(result, "ditunda")
+        self.assertEqual(token["status"], "matched")
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
+        self.assertEqual(token["pos_status"], "identified")
+
+
 if __name__ == "__main__":
     unittest.main()
