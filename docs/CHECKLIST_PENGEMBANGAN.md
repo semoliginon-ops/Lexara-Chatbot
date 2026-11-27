@@ -16,8 +16,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
-- GitHub Actions [Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139): validasi kamus 3.014 lema, dataset POS, evaluasi development, dan **253/253 regression tests lulus**.
-- Parser kini berada pada v1.8; pembekuan parser dicabut setelah POS selesai. Fokus aktif adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
+- GitHub Actions [Run #126](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45972629322): validasi kamus 3.014 lema, dataset POS, evaluasi development, dan **255/255 regression tests lulus**.
+- Parser kini berada pada v1.9; fokus aktif Tahap 2.6 adalah perluasan pola secara konservatif, tanpa memaksakan struktur yang belum didukung.
 
 ---
 
@@ -1127,3 +1127,15 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Menambahkan tes unit untuk keempat kata dan tes abstention bagi ADV yang tidak terdaftar sebagai temporal (`mungkin`).
 - [x] Menambahkan tes integrasi `Besok aku akan makan nasi.` melalui pipeline kamus lengkap.
 - [x] GitHub Actions [Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139) SUCCESS: 60 batch / 3.014 lema, dataset POS, evaluasi development, dan 253/253 regression tests lulus.
+
+
+### Parser v1.9 — batas keterangan preposisional awal dan subjek
+
+- [x] Memastikan frasa PREP di awal kalimat diperlakukan sebagai keterangan, bukan kandidat subjek.
+- [x] Memastikan pronomina orang yang jelas setelah frasa PREP awal tetap dapat dikenali sebagai subjek, misalnya `Di rumah aku bekerja.`.
+- [x] Jika tidak ada subjek pra-verbal yang cukup jelas, mempertahankan subjek kosong dan tidak memaksa nomina pascaverbal menjadi objek.
+- [x] Menambahkan tes integrasi melalui pipeline kamus penuh untuk `Di rumah terdengar suara.`: `di rumah` sebagai keterangan, subjek kosong, dan `suara` unresolved.
+- [x] Menjaga inversi K-P-S penuh tetap di luar cakupan.
+- [x] GitHub Actions [Run #126](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45972629322) SUCCESS: validasi 60 batch / 3.014 lema, dataset POS, evaluasi development, dan **255/255 regression tests lulus**.
+
+**Catatan perilaku:** abstention pada `suara` adalah keputusan sengaja karena parser belum memiliki aturan inversi K-P-S yang tervalidasi. Ini bukan klaim bahwa `suara` secara linguistik bukan subjek; parser hanya belum menetapkan fungsi tersebut.
