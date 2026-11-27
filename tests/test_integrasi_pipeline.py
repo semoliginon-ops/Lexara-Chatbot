@@ -695,6 +695,27 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
         self.assertEqual(parsed["unresolved_tokens"], [])
 
+    def test_bound_pronoun_clitics_are_exposed_by_real_lexical_pipeline(self):
+        cases = {
+            "bukuku": ("buku", "ku"),
+            "rumahmu": ("rumah", "mu"),
+            "bukunya": ("buku", "nya"),
+            "melihatku": ("melihat", "ku"),
+            "melihatmu": ("melihat", "mu"),
+            "melihatnya": ("melihat", "nya"),
+        }
+        for surface, (base, clitic) in cases.items():
+            with self.subTest(surface=surface):
+                result = analyze_text(surface, self.lexicon)
+                token = self.token(result, surface)
+                self.assertEqual(token["kind"], "word")
+                self.assertEqual(token["status"], "unknown")
+                self.assertEqual(len(token["morphology_candidates"]), 1)
+                candidate = token["morphology_candidates"][0]
+                self.assertEqual(candidate["base_form"], base)
+                self.assertEqual(candidate["clitic"], clitic)
+                self.assertEqual(candidate["interpretations"], ["possessive", "object"])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
