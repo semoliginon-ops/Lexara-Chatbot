@@ -1,6 +1,6 @@
 # Rancangan Relasi Leksikal per-Sense
 
-**Status:** Rancangan kompatibilitas; belum diterapkan ke data batch.  
+**Status:** Skema relasi per-sense diterapkan secara selektif pada Batch-001; data batch lain tetap kompatibel dengan relasi tingkat entri.  
 **Cakupan:** Sinonim, antonim, dan kata berkaitan pada entri kamus Sistem Bahasa.
 
 ## 1. Tujuan
@@ -105,7 +105,7 @@ Perintah tersebut menghasilkan satu ringkasan untuk seluruh batch dan kode kelua
 2. Tambahkan validator terpisah beserta unit tests.
 3. Uji data lama dan contoh baru tanpa mengubah batch.
 4. Tambahkan pembaca relasi yang mempertahankan cakupan sense, jika memang dibutuhkan komponen berikutnya.
-5. Perbarui data batch secara selektif setelah audit selesai dan setiap perubahan memiliki bukti.
+5. Perbarui data batch secara selektif setelah audit selesai dan setiap perubahan memiliki bukti. Penerapan awal pada Batch-001: K0026 (`bisa`) memindahkan sinonim dan antonim ke sense yang sesuai; K0028 (`tidak`) tidak lagi mencatat `bukan` sebagai sinonim; K0032 (`tolong`) membatasi `bantu` pada sense membantu; K0035 (`dengar`) tidak lagi mencatat `dengarkan` sebagai sinonim.
 6. Jalankan seluruh regression tests sebelum menyatakan kompatibel.
 
-**Status saat ini:** rancangan dan validator struktural telah ditambahkan, beserta regression tests. Verifikasi lokal masih menunggu. Belum ada perubahan pada 3.000 entri, loader, pencocokan, morfologi, atau POS tagger.
+**Status saat ini:** rancangan dan validator struktural tersedia beserta regression tests. Empat entri pada Batch-001 telah diperbarui secara selektif setelah persetujuan; perubahan ini hanya mengubah anotasi relasi leksikal dan tidak mengubah loader, pencocokan, morfologi, atau POS tagger. Jalankan regression tests setelah sinkronisasi sebelum melanjutkan audit batch berikutnya.
