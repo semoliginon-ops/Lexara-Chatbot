@@ -95,6 +95,37 @@ class SimpleClauseParserTests(unittest.TestCase):
         ))
         self.assertEqual(result["roles"]["predicate"], ["belum", "makan"])
 
+    def test_groups_mau_before_lexical_verb_as_one_predicate(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("mau", ["VERB"]),
+            token("pergi", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["aku"])
+        self.assertEqual(result["roles"]["predicate"], ["mau", "pergi"])
+
+    def test_groups_ingin_before_lexical_verb_and_keeps_object(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("ingin", ["VERB"]),
+            token("makan", ["VERB"]),
+            token("nasi", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["predicate"], ["ingin", "makan"])
+        self.assertEqual(result["roles"]["object"], ["nasi"])
+
+    def test_modal_verb_standing_alone_remains_predicate(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("mau", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["mau"])
+
     def test_uses_contextual_pos_only_when_selected(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
