@@ -53,6 +53,16 @@ def _effective_pos(item: dict[str, Any]) -> str | None:
         raise ValueError("field pos setiap token harus berupa array")
     if item.get("pos_status") == "identified" and len(labels) == 1:
         return labels[0]
+
+    # A bound pronoun attached to an explicitly known nominal host remains
+    # a nominal phrase for clause parsing. Do not infer POS from the clitic
+    # itself or from an unannotated derived-form lemma.
+    clitic_components = item.get("clitic_pos_candidates", [])
+    if isinstance(clitic_components, list) and len(clitic_components) == 1:
+        host_labels = clitic_components[0].get("host_pos", [])
+        if isinstance(host_labels, list) and len(host_labels) == 1:
+            if host_labels[0] == "NOUN":
+                return "NOUN"
     if len(labels) == 1 and context_status is None:
         return labels[0]
     return None
@@ -688,6 +698,29 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "adjuncts": adjuncts,
         "complement": [words[i]["token"] for i in complement_positions],
     }
+    clitic_analysis = []
+    for position, word in enumerate(words):
+        components = word["source"].get("clitic_pos_candidates", [])
+        if not isinstance(components, list):
+            continue
+        for component in components:
+            if component.get("host_pos") != ["NOUN"]:
+                continue
+            role = (
+                "subject" if position in subject_positions else
+                "object" if position in object_positions else
+                "complement" if position in complement_positions else
+                "adjunct" if position in assigned else
+                None
+            )
+            clitic_analysis.append({
+                "surface": word["token"],
+                "base_form": component.get("base_form"),
+                "clitic": component.get("clitic"),
+                "function": "possessive",
+                "function_status": "selected_by_host_pos",
+                "nominal_phrase_role": role,
+            })
     unresolved = [
         item["token"] for i, item in enumerate(words)
         if i not in assigned
@@ -705,6 +738,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "status": "partial" if unresolved else "parsed",
         "pattern": "-".join(pattern_parts),
         "roles": roles,
+        "clitic_analysis": clitic_analysis,
         "predicate_structure": _predicate_structure(words, predicate_positions, verb_pos),
         "unresolved_tokens": unresolved,
         "notes": [
