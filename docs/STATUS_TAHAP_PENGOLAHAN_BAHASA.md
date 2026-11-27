@@ -977,3 +977,12 @@ Untuk host NOUN yang sudah teridentifikasi, parser menambahkan `clitic_analysis`
 GitHub Actions **Run #190 selesai dengan conclusion success**; **371/371 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil. Test split tetap tersegel. [Lihat Run #190](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46028108871).
 
 **Batas:** dukungan ini hanya untuk klitik yang melekat pada host NOUN dengan POS tunggal yang diketahui. Klitik pada host VERB (fungsi objek terikat), struktur internal NP posesif yang lebih rinci, dan variasi ragam/informal belum ditangani. Token permukaan tidak dipecah menjadi dua token; `clitic_analysis` menyimpan metadata relasi internal secara terpisah.
+### Klitik objek pada host verbal — Run #195 (27 November 2026)
+
+Parser kini mengonsumsi metadata klitik ketika host memiliki satu POS eksplisit `VERB`. Untuk bentuk seperti `lihatku`, host `lihat` dikenali sebagai verba melalui lema kamus, sehingga token permukaan tetap menjadi kepala predikat dan `-ku` dianalisis sebagai objek terikat. Keluaran `clitic_analysis` mencatat `function: object`, `function_status: selected_by_verbal_host`, dan `host_role: predicate`; pola klausa dapat mencerminkan slot objek melalui `S-P-O`, tanpa menduplikasi token ke `roles.object`.
+
+Tes unit memverifikasi `lihatku` sebagai predikat dengan objek klitik, dan tes pipeline kamus/POS nyata memverifikasi `Dia lihatku.`. Host turunan yang tidak memiliki anotasi POS eksplisit tidak boleh mewarisi POS lema secara otomatis; percobaan awal dengan `melihatku` menunjukkan host `melihat` belum memiliki anotasi turunan eksplisit, sehingga contoh uji diganti ke host lema `lihat` yang POS-nya jelas. Ini mempertahankan aturan konservatif, bukan melonggarkannya.
+
+GitHub Actions **Run #195 selesai dengan conclusion success**; **373/373 tes regresi lulus**. [Lihat Run #195](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46029121093). Tidak ada lema baru ditambahkan dan tidak ada batch kamus yang diubah.
+
+**Batas:** fungsi objek terikat hanya dipilih untuk host dengan POS tunggal `VERB` yang eksplisit. Host turunan tanpa anotasi POS, host ambigu, konstruksi lain, dan variasi informal/regional tetap unresolved sampai ada bukti/aturan yang memadai. `roles.object` tidak diisi ulang dengan token predikat yang sama; relasi objek terikat direpresentasikan terpisah melalui `clitic_analysis`.
