@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.2: frasa nominal dan regression suite penuh
+# validasi parser v0.3: negasi verbal dan regression suite penuh
