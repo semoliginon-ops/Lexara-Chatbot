@@ -95,7 +95,7 @@ class SemanticRoleMappingTests(unittest.TestCase):
         self.assertEqual(result["status"], "ambiguous")
         self.assertEqual(
             {
-                tuple((a["semantic_role"], a["value"], a["realization"])
+                tuple((a["semantic_role"], tuple(a["value"]), a["realization"])
                       for a in frame["arguments"])
                 for frame in result["candidates"]
             },
