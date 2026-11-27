@@ -797,6 +797,35 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             parsed["roles"]["adjuncts"],
             [{"adverb": "nanti", "kind": "temporal"}],
         )
+    def test_postposed_concessive_subordinate_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Aku pergi walaupun hujan turun.")
+
+        expected = {
+            "aku": "PRON",
+            "pergi": "VERB",
+            "walaupun": "CONJ",
+            "hujan": "NOUN",
+            "turun": "VERB",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        main_clause, subordinate_clause = parsed["clauses"]
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
+        self.assertEqual(subordinate_clause["subordinator"], "walaupun")
+        self.assertEqual(subordinate_clause["relation_to_previous"], "konsesi")
+        self.assertEqual(subordinate_clause["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(subordinate_clause["analysis"]["roles"]["predicate"], ["turun"])
 if __name__ == "__main__":
     unittest.main()
 
