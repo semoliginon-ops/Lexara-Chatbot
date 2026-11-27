@@ -916,3 +916,16 @@ Pemeriksaan indeks juga menunjukkan `kalian` belum tersedia sebagai lema atau en
 GitHub Actions **Run #173 selesai dengan conclusion success**. Validasi kamus 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **358/358 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #173](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46021616127).
 
 **Batas:** pengujian membuktikan empat pronomina pada posisi subjek dan objek dalam pola kalimat sederhana yang diuji. Ini belum membuktikan seluruh penggunaan pronomina, ragam tutur, atau konstruksi sintaksis yang lebih kompleks.
+
+
+### Perluasan inventaris dan uji pronomina persona — Run #176 (27 November 2026)
+
+Atas persetujuan pengguna, lema `kalian` ditambahkan ke `data/kamus/batch-060.jsonl` sebagai PRON (ID K3016) dan dimasukkan ke indeks `j-l.tsv`. Jumlah kamus menjadi 3.015 lema pada 60 batch. Validator ukuran kamus dan asersi jumlah entri pada tes integrasi diperbarui dari 3.014 menjadi 3.015.
+
+Tes pipeline kamus → POS → parser diperluas untuk sembilan pronomina: `aku`, `saya`, `kamu`, `engkau`, `dia`, `mereka`, `kita`, `kami`, dan `kalian`. Setiap bentuk diuji pada posisi subjek dan objek dalam pola S-P-O; seluruhnya dikenali sebagai PRON dan hasil parser sesuai harapan.
+
+Pemeriksaan indeks menemukan kandidat tambahan `Anda`, `beliau`, `ia`, dan `kau` belum tersedia sebagai lema. Kandidat ini belum ditambahkan; perlu persetujuan pengguna sebelum ada perubahan kamus. Bentuk seperti `-ku`, `-mu`, dan `-nya` juga perlu ditangani sebagai bentuk terikat/morfologi, bukan otomatis dianggap lema pronomina mandiri.
+
+GitHub Actions **Run #176 selesai dengan conclusion success**. Validasi kamus lengkap berhasil memuat 60 batch / 3.015 lema; validasi valensi dan dataset POS berhasil; **358/358 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #176](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46022179021).
+
+**Batas:** uji sembilan pronomina ini mencakup pola kalimat sederhana S-P-O pada posisi subjek dan objek. Ini belum membuktikan seluruh konstruksi, ragam hormat, bentuk terikat, atau pronomina nonpersona.
