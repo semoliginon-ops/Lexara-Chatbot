@@ -169,10 +169,10 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat `tools/parser_kalimat.py` untuk kerangka sederhana S-P, S-P-O, dan keterangan berpreposisi.
 - [x] Membuat regression tests parser; pola S-P-K juga diuji melalui kamus penuh pada `tests/test_integrasi_pipeline.py`.
 - [x] Menjalankan regression suite penuh: **182/182 lulus** pada GitHub Actions Run #75.
-- [ ] Mengenali subjek, predikat, objek, pelengkap, dan keterangan.
+- [x] Mengenali kerangka subjek-predikat, objek langsung sederhana, dan keterangan berpreposisi; pelengkap masih belum didukung.
 - [ ] Menguji variasi susunan kalimat sederhana.
-- [ ] Mencatat kasus ambigu atau belum teranalisis.
-- [ ] Membuat regression tests parser.
+- [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
+- [x] Membuat regression tests parser.
 
 ### 2.7 Dataset dan pengujian terpadu
 
@@ -231,7 +231,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 **Status terbaru (27 November 2026):** audit isi dan relasi kamus 60/60 batch selesai. Audit index terhadap sumber juga selesai: 3.000 lema terindeks, tidak ada lema hilang, baris index tidak cocok, atau kesalahan struktur. Dataset POS berisi 100 kalimat (60 development, 40 test). Evaluasi development menghasilkan 227/255 prediksi benar pada jalur leksikal (89,0%) dan 228/255 pada jalur kontekstual (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Hasil ini hanya berlaku untuk development set; test set tetap ditahan.
 
-Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #74 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **174 regression tests; seluruhnya lulus**.
+Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #75 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **182 regression tests; seluruhnya lulus**.
 
 **Titik lanjut aktif:** lanjutkan penyempurnaan parser v0.1: perluas frasa nominal/verba, pelengkap, negasi, koordinasi, dan variasi susunan kalimat. Parser saat ini baru mengenali pola S-P, S-P-O, serta keterangan berpreposisi. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
 
