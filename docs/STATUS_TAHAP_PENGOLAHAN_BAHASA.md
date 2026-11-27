@@ -22,7 +22,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Pengujian integrasi kamus nyata tersedia di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, tanda baca, dan parser kalimat sederhana.
 - GitHub Actions **Run #75 SUCCESS**: validasi relasi lima batch, validasi kamus penuh, validasi dataset POS, evaluasi development, dan **182/182 regression tests lulus**.
 
-**Titik lanjut aktif:** parser prototipe v0.1 sudah dibuat dan diuji untuk pola S-P, S-P-O, serta keterangan berpreposisi. Lanjutkan perluasan parser secara konservatif untuk frasa, pelengkap, negasi, dan koordinasi. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
+**Titik lanjut aktif:** parser prototipe v0.2 mengenali rentang frasa nominal sederhana (numeralia/kepala nominal/adjektiva) sebagai satu peran datar. Perluas frasa verba berikutnya, lalu pelengkap dan negasi; koordinasi dan variasi susunan kata menyusul. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
 
 
 ---
@@ -175,7 +175,7 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Evaluasi development-only: 227/255 leksikal (89,0%) dan 228/255 kontekstual (89,4%); selective accuracy 100%.
 - [x] Test split tetap ditahan dan tidak digunakan untuk menyetel aturan.
 
-### 5.6 Analisis struktur kalimat dasar — prototipe v0.1
+### 5.6 Analisis struktur kalimat dasar — prototipe v0.2
 
 - [x] Menetapkan masukan parser dari hasil POS leksikal dan, bila tersedia, POS kontekstual.
 - [x] Membuat `tools/parser_kalimat.py` untuk kerangka klausa sederhana S-P, S-P-O, dan keterangan berpreposisi.
@@ -183,8 +183,10 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Membuat regression tests parser di `tests/test_parser_kalimat.py`.
 - [x] Menguji pola S-P-K dengan kamus penuh melalui `tests/test_integrasi_pipeline.py`.
 - [x] GitHub Actions Run #75: **182/182 tes lulus**.
-- [ ] Memperluas pengenalan frasa nominal dan frasa verba.
-- [ ] Menambahkan analisis pelengkap, negasi, koordinasi, dan variasi susunan kata secara bertahap.
+- [x] Mengumpulkan rentang frasa nominal sederhana yang mengandung numeralia, kepala nominal, dan adjektiva tanpa mengklaim analisis internal frasa.
+- [ ] Memperluas pengenalan frasa verba.
+- [ ] Menambahkan analisis pelengkap dan negasi secara bertahap.
+- [ ] Menambahkan koordinasi dan variasi susunan kata setelah batas frasa stabil.
 - [ ] Menguji kalimat majemuk dan klausa bertingkat tanpa memaksakan hasil.
 
 ### 5.7 Dataset uji dan regression suite — integrasi awal selesai
