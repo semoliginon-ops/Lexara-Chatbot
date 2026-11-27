@@ -797,6 +797,43 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "nominal_phrase_role": "subject",
         }])
 
+    def test_nominal_mu_clitic_can_head_subject_phrase_in_real_pipeline(self):
+        analyzed = self.analyze("Rumahmu besar.")
+        bound = self.token(analyzed, "rumahmu")
+        self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["NOUN"])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P")
+        self.assertEqual(parsed["roles"]["subject"], ["rumahmu"])
+        self.assertEqual(parsed["roles"]["predicate"], ["besar"])
+        self.assertEqual(parsed["clitic_analysis"], [{
+            "surface": "rumahmu",
+            "base_form": "rumah",
+            "clitic": "mu",
+            "function": "possessive",
+            "function_status": "selected_by_host_pos",
+            "nominal_phrase_role": "subject",
+        }])
+
+    def test_nominal_nya_clitic_can_head_subject_without_resolving_its_function(self):
+        analyzed = self.analyze("Bukunya jatuh.")
+        bound = self.token(analyzed, "bukunya")
+        self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["NOUN"])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P")
+        self.assertEqual(parsed["roles"]["subject"], ["bukunya"])
+        self.assertEqual(parsed["roles"]["predicate"], ["jatuh"])
+        self.assertEqual(parsed["clitic_analysis"], [{
+            "surface": "bukunya",
+            "base_form": "buku",
+            "clitic": "nya",
+            "function": None,
+            "function_candidates": ["possessive", "definite_anaphoric"],
+            "function_status": "unresolved",
+            "nominal_phrase_role": "subject",
+        }])
+
     def test_nominal_nya_possession_vs_definiteness_stays_unresolved_in_real_pipeline(self):
         analyzed = self.analyze("Dia lihat bukunya.")
         bound = self.token(analyzed, "bukunya")
