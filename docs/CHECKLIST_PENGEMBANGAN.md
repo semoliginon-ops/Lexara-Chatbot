@@ -735,3 +735,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-026–030 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** perubahan hanya menyentuh relasi leksikal; lemma dan ID tetap. Batch-028 lulus audit manual tanpa perubahan. Validasi otomatis menguji struktur dan regresi, bukan keseluruhan ketepatan semantik kamus.
+
+
+### Audit dan koreksi semantik Batch-031–035 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-031 sampai Batch-035.
+- [x] Batch-031: memindahkan `terkenal` dari sinonim `populer` ke `related_terms`; dikenal luas tidak selalu berarti disukai banyak orang.
+- [x] Batch-032: tidak ditemukan koreksi relasi yang cukup pasti; seluruh entri dipertahankan.
+- [x] Batch-033: memindahkan `mengisap` dari sinonim `serap` ke `related_terms` (mengisap adalah salah satu cara menarik cairan, tidak identik dengan penyerapan); memindahkan `mengusir` dari sinonim `singkir` ke `related_terms` (mengusir khususnya mengeluarkan pihak/orang, sedangkan menyingkir lebih luas).
+- [x] Batch-034: memindahkan `genting` dari sinonim `tegang` ke `related_terms`; keadaan genting adalah keadaan kritis/darurat, bukan padanan umum dari tegang.
+- [x] Batch-035: memindahkan `kurus` dari sinonim `tipis` ke `related_terms` (bentuk tubuh vs ukuran ketebalan); memindahkan `menyangka` dari sinonim `tuduh` ke `related_terms` (dugaan tidak selalu berupa tuduhan); memindahkan `menimbun` dari sinonim `tumpuk` ke `related_terms` (menimbun memiliki nuansa mengumpulkan/menyimpan banyak).
+- [ ] Validasi struktural Batch-031–035 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** relasi yang masih dapat dipertanggungjawabkan dipertahankan; batch yang tidak memiliki temuan pasti tidak diubah. Perubahan hanya pada relasi leksikal, tanpa mengganti lemma atau ID. Validasi otomatis tidak menggantikan penilaian semantik menyeluruh.
