@@ -667,6 +667,40 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(parsed["roles"]["object"], [pronoun])
 
 
+    def test_informal_personal_pronouns_use_real_dictionary_pipeline_as_subject_and_object(self):
+        pronouns = ("gue", "gua", "gw", "lu", "lo", "elu")
+
+        for pronoun in pronouns:
+            with self.subTest(role="subject", pronoun=pronoun):
+                analyzed = self.analyze(f"{pronoun} makan nasi.")
+                token = self.token(analyzed, pronoun)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], ["PRON"])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], "S-P-O")
+                self.assertEqual(parsed["roles"]["subject"], [pronoun])
+                self.assertEqual(parsed["roles"]["predicate"], ["makan"])
+                self.assertEqual(parsed["roles"]["object"], ["nasi"])
+
+            with self.subTest(role="object", pronoun=pronoun):
+                analyzed = self.analyze(f"Dia lihat {pronoun}.")
+                token = self.token(analyzed, pronoun)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], ["PRON"])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], "S-P-O")
+                self.assertEqual(parsed["roles"]["subject"], ["dia"])
+                self.assertEqual(parsed["roles"]["predicate"], ["lihat"])
+                self.assertEqual(parsed["roles"]["object"], [pronoun])
+
     def test_fronted_prepositional_adjunct_keeps_explicit_pronoun_subject_in_real_pipeline(self):
         analyzed = self.analyze("Dari rumah dia bekerja.")
 
