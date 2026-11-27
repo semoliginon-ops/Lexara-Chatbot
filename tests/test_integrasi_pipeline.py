@@ -123,11 +123,15 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         result = self.analyze("Mereka tampak bahagia.")
         linking_verb = self.token(result, "tampak")
         adjective = self.token(result, "bahagia")
-        self.assertEqual(linking_verb["status"], "unknown")
+        self.assertEqual(linking_verb["status"], "matched")
+        self.assertEqual(linking_verb["pos"], ["VERB"])
+        self.assertEqual(linking_verb["pos_source"], "dictionary")
         self.assertEqual(adjective["status"], "unknown")
         parsed = parse_sentence(result)
-        self.assertEqual(parsed["status"], "unresolved")
+        self.assertEqual(parsed["status"], "partial")
+        self.assertEqual(parsed["roles"]["predicate"], ["tampak"])
         self.assertEqual(parsed["roles"]["complement"], [])
+        self.assertEqual(parsed["unresolved_tokens"], ["bahagia"])
 
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
