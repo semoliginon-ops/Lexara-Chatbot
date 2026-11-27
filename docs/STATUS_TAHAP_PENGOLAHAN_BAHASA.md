@@ -930,3 +930,6 @@ Parser kini dapat menangani satu bentuk elipsis yang dibatasi ketat pada klausa 
 Tes integrasi menggunakan kamus 3.000 lema memastikan `lelah` dikenali sebagai ADJ dan `dia bekerja` dianalisis sebagai klausa utama. Tes unit juga memastikan awalan yang hanya berisi adverbia tanpa predikat adjektival tidak diterima.
 
 **Batas:** hanya klausa konsesif awal dengan pola token ADV/ADJ yang berakhir pada ADJ. Parser tidak menebak subjek eliptis, tidak menangani elipsis verba, dan tidak menggeneralisasi aturan ini ke klausa sebab atau temporal.
+
+
+Validasi GitHub Actions Run #97 berhasil: **229/229 regression tests lulus**. Validasi struktur kamus memuat 60 batch/3.000 lema, validasi dataset POS, evaluasi development, dan validasi relasi pada batch terpilih juga sukses. [Lihat Run #97](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956239387).
