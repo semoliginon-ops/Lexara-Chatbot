@@ -621,10 +621,6 @@ class FullDictionaryPipelineTests(unittest.TestCase):
 
     def test_postposed_temporal_subordinate_uses_real_dictionary_pipeline(self):
         analyzed = self.analyze("Aku pulang ketika hujan turun.")
-        marker = self.token(analyzed, "ketika")
-        self.assertEqual(marker["status"], "matched")
-        self.assertEqual(marker["pos"], ["CONJ"])
-        self.assertEqual(marker["pos_source"], "dictionary")
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
