@@ -31,7 +31,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 - [x] Membuat dokumen rancangan kompatibilitas relasi per-sense di `docs/RELASI_LEKSIKAL_PER_SENSE.md`; belum mengubah data kamus atau kode.
 - [ ] Meninjau dan menetapkan rancangan field relasi opsional pada setiap sense.
-- [ ] Menambahkan validator struktur relasi per-sense dan regression tests.
+- [x] Menambahkan modul validator struktur relasi per-sense dan 11 regression tests; verifikasi eksekusi lokal masih menunggu.
 - [ ] Menguji kompatibilitas dengan seluruh bentuk data lama tanpa migrasi batch.
 - [ ] Menentukan kebutuhan pembaca relasi per-sense pada komponen mesin makna sebelum implementasi runtime.
 - [ ] Menerapkan anotasi per-sense hanya pada entri yang sudah diaudit dan memiliki bukti linguistik.
