@@ -1249,3 +1249,12 @@ Tes integrasi pipeline ditambahkan untuk kalimat `Walaupun hujan turun, aku tida
 GitHub Actions **Run #237 selesai dengan conclusion success**; **410/410 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. Evaluasi POS mencatat coverage/accuracy 98% pada konfigurasi kontekstual. [Lihat Run #237](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46083441434).
 
 Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
+
+
+### Klausa utama bernegasi + subordinatif konsesif pascaposisi `walaupun` — Run #238
+
+Tes integrasi pipeline ditambahkan untuk kalimat `Aku tidak pergi walaupun hujan turun.`. Klausa utama dikenali sebagai S-P dengan predikat `tidak pergi`; `tidak` tetap dicatat sebagai modifier negasi. Klausa subordinatif `hujan turun` dikenali sebagai S-P dengan subordinator `walaupun` dan relasi `konsesi`.
+
+GitHub Actions **Run #238 selesai dengan conclusion success**; **411/411 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. Evaluasi POS kontekstual menunjukkan coverage/accuracy 98%. [Lihat Run #238](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46083545335).
+
+Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
