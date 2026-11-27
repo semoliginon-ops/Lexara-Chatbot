@@ -94,6 +94,30 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertIn("mungkin", result["unresolved_tokens"])
 
+    def test_parses_coordinated_subject(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("dan", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["aku", "dan", "dia"])
+        self.assertEqual(result["roles"]["predicate"], ["bekerja"])
+
+    def test_parses_coordinated_object(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("membeli", ["VERB"]),
+            token("nasi", ["NOUN"]),
+            token("dan", ["CONJ"]),
+            token("roti", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["object"], ["nasi", "dan", "roti"])
+
     def test_collects_simple_subject_phrase_with_number_and_adjective(self):
         result = parse_sentence(analysis(
             token("tiga", ["NUM"]),
