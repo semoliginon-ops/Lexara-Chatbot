@@ -785,3 +785,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-046–050 dan regression suite menunggu GitHub Actions.
 
 **Catatan kualitas:** kelompok ini memiliki cakupan related_terms pada seluruh 250 entri, tetapi belum memiliki anotasi sinonim/antonim. Ini dicatat sebagai coverage gap untuk relasi sinonim/antonim, bukan kegagalan struktur atau bukti bahwa relasi tersebut tidak ada dalam bahasa.
+
+
+### Audit Batch-051–055 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-051 sampai Batch-055, termasuk definisi sense dan related_terms.
+- [x] Batch-051: 50 entri diperiksa; tidak ditemukan salah relasi yang cukup pasti untuk diubah.
+- [x] Batch-052: 50 entri diperiksa; koreksi satu salah ketik pada K2561 `pikap`: `kabina` menjadi `kabin`.
+- [x] Batch-053: 50 entri diperiksa; tidak ditemukan salah relasi yang cukup pasti untuk diubah.
+- [x] Batch-054: 50 entri diperiksa; tidak ditemukan salah relasi yang cukup pasti untuk diubah.
+- [x] Batch-055: 50 entri diperiksa; tidak ditemukan salah relasi yang cukup pasti untuk diubah.
+- [ ] Validasi struktural Batch-051–055 dan regression suite menunggu GitHub Actions.
+
+**Catatan kualitas:** koreksi pada kelompok ini terbatas pada typo yang jelas. Related terms lain dipertahankan ketika masih masuk akal sebagai keterkaitan topik atau konsep; tidak dipaksakan menjadi sinonim/antonim.
