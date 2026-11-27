@@ -1072,3 +1072,12 @@ Percobaan awal memakai kalimat `Rumahmu besar.` gagal karena parser belum menduk
 GitHub Actions **Run #213 selesai dengan conclusion success**; **386/386 tes regresi lulus**. Log juga mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch serta validasi valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #213](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46078924646).
 
 **Batas:** hasil ini menguji masing-masing satu contoh `-mu` dan `-nya` pada posisi subjek dengan predikat verbal. Ini belum membuktikan cakupan semua klitik pada seluruh posisi atau seluruh struktur frasa nominal. `-nya` tetap ambigu antara posesif dan definit/anforis. Predikat adjektival dengan subjek nominal biasa maupun berklitik belum menjadi cakupan parser yang tervalidasi. Tidak ada perubahan kamus atau indeks.
+
+### Pengujian tambahan bentuk turunan + klitik — Run #214 dan #215 (28 November 2026)
+
+Dua tes integrasi morfologi tambahan memperluas cakupan bentuk berklitik tanpa menambah lema atau mengubah batch/index kamus:
+
+- **Run #214 — `memilikinya`:** menguji bentuk verbal turunan `memiliki` yang diikuti klitik `-nya`. Analisis menghasilkan satu kandidat klitik dengan `base_form: memiliki`, aturan `clitic_nya`, dan kecocokan lema `milik` sebagai `derived_form`. GitHub Actions sukses. [Lihat Run #214](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46079795753).
+- **Run #215 — `perasaanmu`:** menguji bentuk nominal turunan `perasaan` yang diikuti klitik `-mu`. Analisis menghasilkan satu kandidat dengan `base_form: perasaan`, aturan `clitic_mu`, dan kecocokan lema `rasa` sebagai `derived_form`. GitHub Actions sukses. [Lihat Run #215](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080089810).
+
+**Batas:** kedua tes memvalidasi pengenalan kandidat morfologi dan kecocokan bentuk turunan pada contoh terpilih. Tes ini tidak menyatakan fungsi sintaksis/semantis klitik telah diselesaikan untuk semua konteks. Khusus `-nya`, ambiguitas fungsi pada host nominal tetap dipertahankan; tidak ada perubahan kamus atau indeks.
