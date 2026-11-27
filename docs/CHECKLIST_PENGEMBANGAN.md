@@ -761,3 +761,13 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-036–040 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** hanya tiga relasi yang diubah berdasarkan perbedaan kelas kata atau cakupan makna yang jelas. Entri lain dipertahankan. Validasi otomatis menguji struktur dan regresi, bukan menjamin seluruh makna kamus telah sempurna.
+
+
+### Audit Batch-041–045 — 27 November 2026
+
+- [x] Memeriksa seluruh 250 entri Batch-041 sampai Batch-045 beserta lemma, POS, dan definisi sense.
+- [x] Batch-041–045: tidak ada field relasi `synonyms` atau `antonyms` pada entri yang diperiksa. Karena itu tidak ada relasi salah yang dapat dikoreksi pada kelompok ini; tidak dibuat sinonim/antonim tebakan hanya untuk mengisi kekosongan.
+- [x] Tidak mengubah isi batch. Catat bahwa hasil ini adalah audit cakupan anotasi relasi, bukan bukti bahwa definisi setiap entri sudah tervalidasi secara leksikografis.
+- [ ] Validasi struktural Batch-041–045 dan regression suite menunggu GitHub Actions.
+
+**Catatan kualitas:** kelompok ini memuat 250 lema dengan definisi sense, tetapi belum memiliki anotasi sinonim/antonim. Kekosongan anotasi harus diperlakukan sebagai coverage gap, bukan kesalahan validasi atau relasi yang sudah benar.
