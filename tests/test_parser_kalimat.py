@@ -79,6 +79,35 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "unresolved")
         self.assertEqual(result["clitic_analysis"], [])
 
+    def test_parses_verbal_host_clitic_as_bound_object(self):
+        bound_verb = token("melihatku", status="unknown")
+        bound_verb["clitic_pos_candidates"] = [{
+            "base_form": "melihat",
+            "clitic": "ku",
+            "host_pos": ["VERB"],
+            "clitic_pos": ["PRON"],
+            "function_candidates": ["possessive", "object"],
+            "function_status": "unresolved",
+        }]
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            bound_verb,
+            token(".", punctuation=True),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["subject"], ["dia"])
+        self.assertEqual(result["roles"]["predicate"], ["melihatku"])
+        self.assertEqual(result["roles"]["object"], [])
+        self.assertEqual(result["clitic_analysis"], [{
+            "surface": "melihatku",
+            "base_form": "melihat",
+            "clitic": "ku",
+            "function": "object",
+            "function_status": "selected_by_verbal_host",
+            "host_role": "predicate",
+        }])
+
     def test_parses_adverbial_predicate_and_prepositional_adjunct(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
