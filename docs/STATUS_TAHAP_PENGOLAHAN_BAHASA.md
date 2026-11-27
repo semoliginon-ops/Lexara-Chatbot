@@ -1053,3 +1053,11 @@ Keluaran baru mempertahankan `reference_relation: null`, mengisi `reference_rela
 Tes integrasi diperluas untuk tiga pasangan yang cocok dan satu pasangan tidak cocok (`Aku melihat dirimu.`) agar sistem tidak mengklaim refleksif hanya berdasarkan bentuk `diri` + klitik. GitHub Actions Run #210 selesai dengan conclusion success. Pekerjaan tetap berstatus parsial karena metadata tersebut hanya kandidat koreferensi, bukan resolusi refleksif final. [Lihat Run #210](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46042754768).
 
 **Batas:** ini hanya menghasilkan kandidat koreferensi berdasarkan kesesuaian orang pada pola objek sederhana. Sistem belum melakukan resolusi anafora lintas kalimat, belum menangani frasa subjek majemuk atau pronomina plural, dan belum memutuskan semua pemakaian refleksif/nonrefleksif. Tidak ada perubahan kamus atau indeks.
+
+### Pengujian klitik posesif pada frasa nominal subjek — Run #211 (27 November 2026)
+
+Tes integrasi pipeline penuh ditambahkan untuk kalimat `Bukuku jatuh.`. Bentuk `bukuku` dikenali melalui host NOUN + klitik `-ku`, dapat mengisi peran subjek dalam pola S-P, dan metadata parser mempertahankan fungsi `possessive` serta `nominal_phrase_role: subject`. Ini melengkapi pengujian klitik nominal yang sebelumnya terutama memakai posisi objek (`Dia lihat bukuku.`).
+
+GitHub Actions **Run #211 selesai dengan conclusion success**; **384/384 tes regresi lulus**. Log mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch, evaluasi POS development, dan tahapan validasi workflow berhasil. [Lihat Run #211](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46043106171).
+
+**Batas:** pengujian ini memastikan posisi frasa nominal subjek untuk satu contoh `-ku); belum membuktikan semua klitik dapat digunakan pada semua jenis frasa nominal atau semua posisi sintaksis. Fungsi `-nya` tetap ambigu antara posesif dan definit/anforis; relasi refleksif tetap kandidat yang belum diputuskan. Tidak ada perubahan kamus atau indeks.
