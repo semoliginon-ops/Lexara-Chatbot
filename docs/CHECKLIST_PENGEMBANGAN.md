@@ -31,7 +31,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 - [x] Membuat dokumen rancangan kompatibilitas relasi per-sense di `docs/RELASI_LEKSIKAL_PER_SENSE.md`; belum mengubah data kamus atau kode.
 - [ ] Meninjau dan menetapkan rancangan field relasi opsional pada setiap sense.
-- [x] Menambahkan modul validator struktur relasi per-sense dan 11 regression tests; verifikasi Termux: 11/11 tes khusus lulus, `batch-001.jsonl` (49 entri) lolos validasi struktur, dan regression suite penuh 168/168 lulus pada 27 November 2026.
+- [x] Menambahkan modul validator struktur relasi per-sense dan 12 regression tests; verifikasi Termux: 12/12 tes khusus lulus, seluruh 60 batch (3.000 entri) lolos validasi struktur relasi secara bertahap, dan regression suite penuh 169/169 lulus pada 27 November 2026.
 - [ ] Menguji kompatibilitas dengan seluruh bentuk data lama tanpa migrasi batch.
 - [ ] Menentukan kebutuhan pembaca relasi per-sense pada komponen mesin makna sebelum implementasi runtime.
 - [ ] Menerapkan anotasi per-sense hanya pada entri yang sudah diaudit dan memiliki bukti linguistik.
@@ -46,11 +46,11 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 #### Audit makna relasi leksikal — baca-saja
 
-- [x] Audit relasi Batch-001 selesai pada 27 November 2026; tidak ada data kamus yang diubah.
-- [!] Temuan jelas untuk ditinjau: K0028 `tidak` mencatat `bukan` sebagai sinonim meskipun usage note membedakan fungsi keduanya; K0026 `bisa` mencampur sinonim untuk dua sense berbeda pada tingkat entri; K0035 `dengar` mencatat `dengarkan` (bentuk perintah/turunan) sebagai sinonim.
-- [!] Temuan cakupan sense: K0032 `tolong`–`bantu` hanya sesuai untuk sense membantu, bukan sense permintaan bantuan.
+- [x] Audit makna relasi Batch-001 selesai pada 27 November 2026; empat entri diperbaiki secara selektif setelah persetujuan; perubahan dicatat pada commit b2b37d2.
+- [x] Temuan K0028 `tidak`–`bukan`, K0026 `bisa` dengan relasi lintas-sense, dan K0035 `dengar`–`dengarkan` ditangani secara selektif.
+- [x] K0032 `tolong`–`bantu` dibatasi pada sense membantu (K0032-S1), bukan sense permintaan bantuan.
 - [ ] Tinjauan lanjutan: K0021 `kerja`–`pekerjaan`, K0043 `besar`–`luas`, K0042 antonim `jelek`–`indah`; pasangan dekat seperti `teman`–`sahabat`, `pulang`–`kembali`, dan `tahu`–`mengerti` perlu mempertahankan batas pemakaian.
-- [ ] Belum ada perbaikan data; seluruh temuan harus ditinjau dan disetujui sebelum perubahan batch.
+- [ ] Jalankan regression tests dan validasi struktur Batch-001 setelah perubahan relasi per-sense; jangan lanjutkan audit Batch-002 sebelum hasilnya lulus.
 
 #### Verifikasi struktur relasi leksikal
 
