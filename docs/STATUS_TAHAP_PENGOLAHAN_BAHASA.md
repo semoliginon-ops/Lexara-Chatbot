@@ -490,3 +490,37 @@ Contoh pembeda:
 
 Persetujuan ini mengesahkan nilai role pada tingkat desain. Belum ada sense kamus yang dianotasi, belum ada metadata valensi yang ditambahkan ke data, dan belum ada validator atau perilaku parser yang diubah. Implementasi tetap menunggu spesifikasi skema dan pengujian lanjutan.
 
+#### Uji batas CAUSER lintas jenis predikat — 27 November 2026
+
+Setelah CAUSER disahkan sebagai role ke-14, dilakukan uji konseptual untuk mencegah pemakaian terlalu luas. Hasil berikut adalah pedoman anotasi desain; bukan anotasi sense kamus atau hasil evaluasi parser.
+
+| Kalimat uji | Argumen/keterangan | Analisis kerja | Alasan/batas |
+|---|---|---|---|
+| Rina membuka pintu. | Rina | AGENT | Pelaku mengendalikan tindakan. |
+| Angin membuka pintu. | Angin | CAUSER | Penyebab fisik non-agentif dalam pembacaan biasa. |
+| Gempa meruntuhkan gedung. | Gempa | CAUSER | Peristiwa alam menjadi penyebab kejadian fisik. |
+| Batu memecahkan kaca. | Batu | CAUSER | Penyebab fisik; bukan pelaku berkehendak. |
+| Rina memecahkan kaca dengan palu. | Rina; palu | AGENT; INSTRUMENT | Rina melakukan tindakan; palu adalah sarana yang dipakai. |
+| Palu memecahkan kaca. | Palu | Belum diputuskan tanpa konteks/frame | Dapat dipahami sebagai alat dengan pelaku tersirat atau sebagai penyebab mekanis yang diperlakukan sebagai CAUSER. Jangan otomatis memilih. |
+| Angin bertiup. | Angin | THEME/kandidat argumen sesuai frame, bukan otomatis CAUSER | Predikat menyatakan gerak/keadaan angin; tidak ada akibat lain yang disebabkan dalam klausa. |
+| Air mengalir. | Air | THEME/kandidat argumen sesuai frame, bukan otomatis CAUSER | Entitas bergerak; tidak otomatis menjadi penyebab. |
+| Air mengikis batu. | Air | CAUSER | Air menjadi daya penyebab perubahan pada batu dalam pembacaan ini. |
+| Suara keras mengejutkan Rina. | Suara keras; Rina | STIMULUS; EXPERIENCER | Suara memicu pengalaman psikologis, bukan CAUSER untuk kejadian fisik. |
+| Bau itu membuat Rina mual. | Bau itu; Rina | STIMULUS; EXPERIENCER sebagai analisis awal | Respons yang dipicu berupa pengalaman/sensasi; periksa sense dan kerangka predikat sebelum anotasi final. |
+| Panas melelehkan es. | Panas | CAUSER | Faktor fisik menyebabkan perubahan keadaan. |
+| Hujan membuat jalan licin. | Hujan | CAUSER | Hujan menjadi argumen penyebab pada konstruksi kausatif. |
+| Jalan menjadi licin karena hujan. | karena hujan | Keterangan sebab (adjunct), bukan otomatis CAUSER | Sebab dinyatakan sebagai keterangan tambahan, bukan argumen inti predikat utama. |
+| Pintu terbuka karena angin. | karena angin | Keterangan sebab (adjunct), bukan otomatis CAUSER | Sama-sama menyatakan sebab, tetapi realisasi sintaksisnya berbeda dari argumen CAUSER pada contoh kausatif. |
+
+**Aturan hasil uji:**
+
+1. CAUSER ditentukan oleh fungsi semantisnya terhadap sense predikat, bukan oleh ciri benda mati, posisi subjek, atau fakta bahwa sesuatu mendahului akibat.
+2. Entitas non-manusia tidak otomatis CAUSER. Pada predikat gerak/keadaan seperti “angin bertiup” dan “air mengalir”, entitas dapat menjadi THEME sesuai frame sense.
+3. Bedakan argumen penyebab yang dipilih/dilisensikan predikat dari keterangan sebab bebas. Kehadiran kata “karena” merupakan petunjuk konstruksi keterangan sebab, bukan bukti CAUSER.
+4. INSTRUMENT adalah sarana yang dipakai dalam tindakan; CAUSER adalah faktor penyebab kejadian. Jika konteks tidak membedakan alat dengan penyebab mekanis (misalnya “Palu memecahkan kaca”), jangan memaksakan label.
+5. STIMULUS dibatasi pada pemicu pengalaman psikologis/perseptual/sensasional. Penyebab perubahan fisik seperti panas yang melelehkan es lebih tepat diuji sebagai CAUSER.
+6. AGENT memerlukan bukti kontrol/kehendak yang didukung sense dan konteks. Jangan menyimpulkan AGENT hanya dari subjek atau verba aktif.
+7. Jika predikat, sense, atau konstruksi belum cukup untuk membedakan role, anotasi boleh ditunda/abstain.
+
+**Kesimpulan:** contoh lintas predikat mendukung CAUSER sebagai role tersendiri dan menunjukkan batas penggunaannya. Namun, kasus alat/penyebab mekanis serta konstruksi kausatif tertentu tetap memerlukan pemeriksaan sense dan kerangka argumen. Katalog 14 role tetap menjadi baseline yang disetujui; belum ada sense kamus yang dianotasi dan belum ada implementasi kode.
+
