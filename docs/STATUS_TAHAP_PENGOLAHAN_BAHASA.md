@@ -742,3 +742,6 @@ Tes unit ditambahkan untuk agen pascaverbal, frasa `oleh`, agen yang dilesapkan,
 
 
 Validasi CI Run #144: **323/323 tes lulus**. Tes mencakup pemetaan pasif dengan agen pascaverbal, agen berfrasa `oleh`, agen yang dilesapkan, konflik dua realisasi agen, dan integrasi voice pasif dari analisis morfologi sampai semantic-role mapper. Validasi kamus penuh tetap mencakup 60 batch / 3.014 lema. Keberhasilan ini hanya memvalidasi pola terbatas yang diuji; belum berarti semua konstruksi pasif bahasa Indonesia sudah tertangani.
+
+
+Uji integrasi diperluas pada Run #145 untuk dua pola tambahan: `Pintu dibuka Rina` (agen pascaverbal) dan `Pintu dibuka` (agen tidak disebutkan). Keduanya menggunakan voice pasif yang dideteksi dari analisis morfologi nyata, dihubungkan ke kepala predikat parser, lalu dipetakan melalui frame valensi. Run #145 sukses dengan **325/325 tes regresi**. Pola ini tetap dibatasi pada klausa sederhana dan frame pilot yang tersedia.
