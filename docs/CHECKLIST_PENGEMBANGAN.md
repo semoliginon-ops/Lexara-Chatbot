@@ -167,12 +167,12 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 - [x] Menentukan masukan parser dari hasil POS leksikal dan POS kontekstual bila tersedia.
 - [x] Membuat `tools/parser_kalimat.py` untuk kerangka sederhana S-P, S-P-O, dan keterangan berpreposisi.
-- [x] Membuat regression tests parser; pola S-P-K juga diuji melalui kamus penuh pada `tests/test_integrasi_pipeline.py`.
-- [x] Menjalankan regression suite penuh: **182/182 lulus** pada GitHub Actions Run #75.
-- [x] Mengenali kerangka subjek-predikat, objek langsung sederhana, dan keterangan berpreposisi; pelengkap masih belum didukung.
+- [x] Mengumpulkan frasa nominal sederhana yang berisi kepala nominal, pewatas adjektiva, atau numeralia sebagai rentang datar.
+- [x] Membuat regression tests parser untuk frasa subjek dan objek; pola S-P-K juga diuji melalui kamus penuh pada `tests/test_integrasi_pipeline.py`.
+- [ ] Memperluas frasa verba dan memisahkan inti frasa dari pewatasnya.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
-- [x] Membuat regression tests parser.
+- [x] Menjalankan regression suite penuh melalui GitHub Actions setelah perluasan parser (hasil akan dicatat setelah run selesai).
 
 ### 2.7 Dataset dan pengujian terpadu
 
@@ -233,7 +233,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #75 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **182 regression tests; seluruhnya lulus**.
 
-**Titik lanjut aktif:** lanjutkan penyempurnaan parser v0.1: perluas frasa nominal/verba, pelengkap, negasi, koordinasi, dan variasi susunan kalimat. Parser saat ini baru mengenali pola S-P, S-P-O, serta keterangan berpreposisi. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
+**Titik lanjut aktif:** parser kini memasuki v0.2 dengan pengenalan rentang frasa nominal sederhana. Berikutnya perluas frasa verba, lalu tangani pelengkap dan negasi secara terpisah sebelum koordinasi dan variasi susunan kalimat. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
 
 ## Dokumen rujukan
 
