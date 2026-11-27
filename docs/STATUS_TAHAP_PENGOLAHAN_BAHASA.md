@@ -720,4 +720,4 @@ Batas implementasi awal:
 - Hasil parser `partial`, struktur koordinasi/subordinasi, kepala predikat yang berulang/tidak ditemukan, dan bukti voice yang belum pasti menghasilkan `unresolved`.
 - Adapter belum mengubah atau memetakan semantic role. Integrasi pemetaan pasif merupakan pekerjaan berikutnya setelah penghubung ini tervalidasi.
 
-Sembilan tes khusus mencakup voice aktif/pasif, token kepala berulang, parser partial, struktur klausa majemuk, bukti voice unresolved, kepala tidak ditemukan, serta validasi input.
+Sembilan tes khusus mencakup voice aktif/pasif, token kepala berulang, parser partial, struktur klausa majemuk, bukti voice unresolved, kepala tidak ditemukan, serta validasi input. GitHub Actions Run #138 mengonfirmasi seluruh 316/316 tes regresi lulus dan validasi kamus 60 batch / 3.014 entri berhasil. Hasil ini memvalidasi adapter dan regresi proyek, bukan akurasi voice untuk seluruh bahasa Indonesia.
