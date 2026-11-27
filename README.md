@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.5 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #114: 242/242 regression tests lulus.
+> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.6 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #114: 242/242 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -363,7 +363,7 @@ Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semolig
 
 ### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
-Parser tetap tersedia pada versi **v1.5**. Tahap 2.6 kini dilanjutkan dengan tambahan struktur keluaran yang memisahkan kepala predikat dari pewatas modal, negasi, dan adverbial; rentang `roles.predicate` lama tetap dipertahankan agar kompatibel.
+Parser kini berada pada versi **v1.6**. Tahap 2.6 kini dilanjutkan dengan tambahan struktur keluaran yang memisahkan kepala predikat dari pewatas modal, negasi, dan adverbial; rentang `roles.predicate` lama tetap dipertahankan agar kompatibel.
 
 Langkah berikutnya adalah memperluas analisis frasa verba/modal dan memisahkan inti predikat dari pewatasnya, kemudian menguji variasi susunan kalimat sederhana. Perluasan dilakukan bertahap dengan regression tests dan tetap mempertahankan perilaku konservatif: struktur yang belum didukung dilaporkan, bukan ditebak.
 
