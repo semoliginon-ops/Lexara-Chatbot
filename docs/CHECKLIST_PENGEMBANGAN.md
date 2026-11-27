@@ -1005,7 +1005,7 @@ Daftar delapan kemunculan pada catatan historis di atas sudah tidak seluruhnya m
 
 - [x] `bekerja` (3 kemunculan): sudah memiliki anotasi `derived_forms_pos` pada lema `kerja` dan tidak lagi muncul dalam daftar abstention Run #99.
 - [x] `menjelaskan` dan `letakkan`: bentuk turunan berlabel VERB dan lulus tes pipeline kamus penuh.
-- [ ] `ditunda`: lanjutkan diagnosis berikutnya.
+- [x] `ditunda`: lema `tunda` dan anotasi bentuk turunan `ditunda` VERB sudah ditambahkan; tes integrasi lulus.
 - [ ] `hinggap`.
 - [ ] `berteduh`.
 
@@ -1019,4 +1019,12 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Catat `ditunda` sebagai `derived_forms` dengan anotasi eksplisit `derived_forms_pos: {"ditunda":["VERB"]}`; aturan pasif `di-` umum tidak diubah.
 - [x] Perbarui indeks lema dan target validasi kamus menjadi 3.001 entri.
 - [x] Tambahkan tes integrasi `Karena hujan deras, pertandingan ditunda.` untuk memastikan POS VERB berasal dari kamus.
-- [ ] Menunggu hasil GitHub Actions untuk validasi dan regresi penuh.
+- [x] GitHub Actions Run #101: validasi 60 batch/3.001 lema dan regresi 233/233 berhasil.
+
+
+### Verifikasi `ditunda` — GitHub Actions Run #101
+
+- [x] Validasi kamus lengkap: 60 batch, 3.001 lema.
+- [x] Tes integrasi `ditunda` sebagai VERB melalui kamus.
+- [x] Regresi penuh: 233/233 tes lulus.
+- [x] Evaluasi development: abstention VERB tersisa dua, yaitu `hinggap` dan `berteduh`; test set tetap tidak digunakan.
