@@ -385,6 +385,24 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             {"preposition": "di", "phrase": ["rumah"]}
         ])
 
+    def test_valency_guided_inversion_keeps_postverbal_nominal_modifier(self):
+        for sentence, expected_pattern, expected_adjuncts in (
+            ("Muncul masalah besar.", "P-S", []),
+            (
+                "Di rumah muncul masalah besar.",
+                "K-P-S",
+                [{"preposition": "di", "phrase": ["rumah"]}],
+            ),
+        ):
+            with self.subTest(sentence=sentence):
+                parsed = parse_sentence(self.analyze(sentence))
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], expected_pattern)
+                self.assertEqual(parsed["roles"]["subject"], ["masalah", "besar"])
+                self.assertEqual(parsed["roles"]["predicate"], ["muncul"])
+                self.assertEqual(parsed["roles"]["object"], [])
+                self.assertEqual(parsed["roles"]["adjuncts"], expected_adjuncts)
+
     def test_postverbal_noun_without_unique_valency_remains_unresolved_in_real_pipeline(self):
         analyzed = self.analyze("Timbul masalah.")
         verb = self.token(analyzed, "timbul")
