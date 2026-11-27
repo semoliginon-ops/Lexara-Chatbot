@@ -976,3 +976,8 @@ Daftar abstention adalah sasaran audit, bukan target untuk memaksa semua token m
 Catatan historis yang menyebut delapan kemunculan VERB abstain telah diperbarui oleh hasil evaluasi berikutnya. GitHub Actions Run #99 pada 60 kalimat development mencatat **tiga** abstention VERB: `ditunda`, `hinggap`, dan `berteduh`. Token `bekerja` yang muncul tiga kali pada `pos_0005`, `pos_0025`, dan `pos_0052` sudah teridentifikasi; begitu pula `menjelaskan` dan `letakkan` pada pengujian development/pipeline terkait.
 
 Karena itu `bekerja` dinyatakan selesai: anotasi `derived_forms_pos` pada lema `kerja` memberi VERB secara eksplisit tanpa mewarisi POS NOUN lema. Tidak perlu menambah aturan `ber-` umum atau mengubah kamus lagi untuk kasus ini. Langkah diagnosis berikutnya adalah `ditunda`, lalu `hinggap` dan `berteduh` satu per satu. Hasil Run #99: [GitHub Actions](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467). Test set tetap tidak digunakan.
+
+
+## Tahap 2.5 — penanganan `ditunda` — 27 November 2026
+
+Pemeriksaan pada seluruh 60 batch memastikan lema `tunda` belum tersedia. Karena aturan morfologi pasif `di-` sudah ada, masalah ini bukan alasan untuk memperluas aturan prefiks secara umum. Ditambahkan lema `tunda` dengan POS VERB pada batch-060, beserta bentuk turunan `ditunda` dan anotasi POS eksplisit `derived_forms_pos` bernilai VERB. Indeks `s-u.tsv` diperbarui dan validator kamus penuh kini mengharapkan 3.001 lema. Tes integrasi baru memakai kalimat development `Karena hujan deras, pertandingan ditunda.` untuk memastikan token `ditunda` dikenali sebagai VERB dari kamus. Test set tidak digunakan. Hasil workflow masih menunggu.
