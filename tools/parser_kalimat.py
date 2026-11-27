@@ -16,6 +16,7 @@ _OBJECT_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _NOMINAL_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _ADVERBIAL_PREDICATE_POS = {"ADV"}
 _NEGATION_MARKERS = {"tidak", "belum"}
+_MODAL_VERBS = {"mau", "ingin", "hendak"}
 
 
 def _effective_pos(item: dict[str, Any]) -> str | None:
@@ -70,7 +71,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             if token in _TERMINAL_PUNCTUATION:
                 continue
             return {
-                "parser_method": "conservative_svo_v2",
+                "parser_method": "conservative_svo_v3",
                 "status": "unsupported",
                 "pattern": None,
                 "roles": {
@@ -101,7 +102,13 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             "notes": ["Predikat VERB yang pasti belum ditemukan."],
         }
 
-    verb_pos = verb_positions[0]
+    # Kata kehendak yang berlabel VERB dapat menjadi verba bantu ketika
+    # diikuti verba leksikal. Jika berdiri sendiri, tetap menjadi predikat.
+    lexical_positions = [
+        i for i in verb_positions
+        if words[i]["token"].casefold() not in _MODAL_VERBS
+    ]
+    verb_pos = lexical_positions[0] if lexical_positions else verb_positions[0]
     subject_heads = [
         i for i in range(verb_pos) if words[i]["pos"] in _NOMINAL_POS
     ]
@@ -127,6 +134,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     cursor = verb_pos - 1
     while cursor >= 0 and (
         words[cursor]["pos"] in _ADVERBIAL_PREDICATE_POS
+        or (
+            words[cursor]["token"].casefold() in _MODAL_VERBS
+            and words[cursor]["pos"] == "VERB"
+        )
         or (
             words[cursor]["token"].casefold() in _NEGATION_MARKERS
             and words[cursor]["pos"] in {"ADV", "PART"}
@@ -196,6 +207,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas; negasi predikat adjektival/nominal, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Verba kehendak 'mau', 'ingin', dan 'hendak' digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan tunggal tetap dipertahankan sebagai predikat. Modalitas lain, negasi predikat adjektival/nominal, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
