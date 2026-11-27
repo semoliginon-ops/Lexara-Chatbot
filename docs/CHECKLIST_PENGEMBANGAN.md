@@ -145,7 +145,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Mengembangkan pemetaan semantic role untuk konstruksi pasif secara konservatif; mendukung agen pasif pascaverbal, frasa `oleh`, dan agen yang dilesapkan pada pola terbatas. Run #144–148, termasuk tes integrasi end-to-end, lulus hingga 328/328 tes.
 - [x] Menambahkan tes konservatif CAUSER versus INSTRUMENT: `Palu memecahkan kaca` mempertahankan dua frame alternatif, sedangkan `dengan palu` tidak otomatis dipromosikan menjadi argumen inti. Run #135: 293/293 tes regresi lulus.
 - [~] Investigasi awal inversi K-P-S: diuji bahwa nomina pascaverbal pada `Di rumah terdengar suara.` tidak boleh otomatis dianggap subjek, karena urutan serupa pada `Di rumah membaca buku.` dapat memuat subjek yang dilesapkan dan objek. Parser tetap unresolved untuk keduanya; belum ada aturan positif K-P-S yang aman. Run #156: 344/344 tes regresi lulus. Implementasi menunggu bukti valensi/sense predikat yang terpilih.
-- [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
+- [~] Memperluas pengujian konstruksi melalui pipeline kamus/POS nyata; ditambahkan kasus predikat adjektival `Dia sakit.` dengan POS PRON+ADJ dan hasil S-P. Run #158: 345/345 tes regresi lulus. Variasi konstruksi lain masih perlu ditambahkan.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
 
 **Batas saat ini:** pada contoh `Di rumah terdengar suara.`, parser mengenali `di rumah` sebagai keterangan, tetapi membiarkan subjek kosong dan `suara` unresolved. Inversi K-P-S penuh belum diimplementasikan.
