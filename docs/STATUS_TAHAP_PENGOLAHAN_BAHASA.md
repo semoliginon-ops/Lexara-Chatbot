@@ -1005,6 +1005,9 @@ INDEX belum mencatat `baru` (lema `barusan` yang sudah ada berbeda). Ditambahkan
 
 ## Penambahan `dulu` (ADV) — menunggu validasi
 
-Atas persetujuan pengguna, lema K3006 `dulu` ditambahkan sebagai ADV. Definisi mencakup penggunaan temporal masa lampau dan urutan tindakan. INDEX `d-f.tsv` diperbarui; tes integrasi mencakup dua kalimat development: `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`. Penambahan belum dinyatakan selesai sebelum GitHub Actions memvalidasi 3.005 lema dan regresi.
+Atas persetujuan pengguna, lema K3006 `dulu` ditambahkan sebagai ADV. Definisi mencakup penggunaan temporal masa lampau dan urutan tindakan. INDEX `d-f.tsv` diperbarui; tes integrasi mencakup dua kalimat development: `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`. GitHub Actions Run #105 berhasil: 60 batch, 3.005 lema, dan 237/237 tes regresi lulus. Evaluasi development kontekstual naik menjadi coverage 91,8% (234/255), selective accuracy 100%; abstention ADV tinggal dua kemunculan `tetap`, sedangkan NOUN masih 19. Test set tetap tidak digunakan.
 
 Keputusan yang tetap berlaku: `tetap` ditunda sampai analisis dua fungsi POS (ADJ dan ADV); `adiknya`, `pelajaran`, `pertandingan`, dan `pemandangan` tidak ditambahkan sebagai lema baru tanpa evaluasi morfologi; nama orang tidak dimasukkan ke kamus inti. Penambahan lema lain tetap memerlukan persetujuan eksplisit pengguna.
+
+
+Validasi penambahan `dulu` selesai: [GitHub Actions Run #105](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961206191).
