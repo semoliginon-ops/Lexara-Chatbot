@@ -134,7 +134,8 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Menyetujui spesifikasi skema valensi per-sense dan aturan anotasi awal.
 - [x] Membuat validator struktural `tools/validasi_valensi.py` dan 15 tes khusus; Run #129 berhasil memvalidasi 60 batch / 3.014 entri dan seluruh 273 tes regresi.
 - [x] Memasukkan anotasi pilot valensi pada 4 sense yang disetujui: muncul-S1, lihat-S1, buka-S1 (frame AGENT/CAUSER alternatif), dan makan-S1 (objek opsional).
-- [ ] Menguji anotasi pilot melalui CI dan tes integrasi kalimat, termasuk pembedaan CAUSER/INSTRUMENT pada kasus ambigu.
+- [x] Memvalidasi anotasi pilot melalui Run #130: 60 batch / 3.014 entri dan 273 tes regresi lulus.
+- [ ] Menambahkan tes integrasi kalimat untuk empat sense pilot, termasuk pembedaan CAUSER/INSTRUMENT pada kasus ambigu.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
