@@ -123,6 +123,15 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [["bekerja"], ["makan"], ["belajar"]],
         )
 
+    def test_contrastive_clauses_use_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Aku bekerja namun dia makan."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-KOORDINATIF")
+        self.assertEqual(parsed["clauses"][1]["connector"], "namun")
+        self.assertEqual(
+            parsed["clauses"][1]["relation_to_previous"], "pertentangan"
+        )
+
     def test_two_coordinated_clauses_use_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Aku bekerja dan dia makan."))
         self.assertEqual(parsed["status"], "parsed")
