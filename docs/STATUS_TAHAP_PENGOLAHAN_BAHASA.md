@@ -768,4 +768,4 @@ Kontrak bukti:
 Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti lemah, konflik, bukti tidak cocok, format bukti invalid, hasil yang sejak awal tidak ambigu, dan jaminan input tidak dimutasi. GitHub Actions Run #149 sukses dengan **337/337 tes regresi**.
 
 
-Pengamanan resolver diperketat: dukungan dan penolakan terhadap alternatif harus membandingkan `argument_id` yang sama. Bukti untuk argumen berbeda tidak boleh digabung untuk membuat keputusan frame. Dua tes tambahan memastikan bukti lintas-slot tidak menghasilkan pilihan palsu dan keputusan kuat yang saling bertentangan tetap ambiguous. Perubahan ini menunggu validasi CI.
+Pengamanan resolver diperketat: dukungan dan penolakan terhadap alternatif harus membandingkan `argument_id` yang sama. Bukti untuk argumen berbeda tidak boleh digabung untuk membuat keputusan frame. Dua tes tambahan memastikan bukti lintas-slot tidak menghasilkan pilihan palsu dan keputusan kuat yang saling bertentangan tetap ambiguous. GitHub Actions Run #152 sukses dengan **339/339 tes regresi**.
