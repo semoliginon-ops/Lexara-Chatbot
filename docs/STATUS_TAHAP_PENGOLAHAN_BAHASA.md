@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
 - Parser kalimat tersedia pada **v1.6**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
-- GitHub Actions **Run #114 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **242/242 regression tests lulus**.
+- GitHub Actions **Run #116 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
 
 **Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser v1.5 dengan memperluas frasa verba/modal, memisahkan inti predikat dari pewatas, dan menguji variasi susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -92,12 +92,12 @@ Fondasi yang tersedia:
 - Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
 - Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terpadu terakhir adalah GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45965451485):
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #116](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324):
 - Kamus: 60 batch / **3.013 lema** tervalidasi.
 - Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
 - POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
 - Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- Regression suite: **242 tes lulus, 0 gagal**.
+- Regression suite: **246 tes lulus, 0 gagal**.
 
 Tahap 2.5 selesai. Tahap 2.6 dilanjutkan dari parser v1.5; pekerjaan pertama adalah memperluas frasa verba/modal dan pengujian variasi susunan kalimat. Tahap 2.7 melengkapi keragaman dataset. Jaringan makna runtime, konteks percakapan multi-giliran, response engine, dan aplikasi Android belum selesai.
 ## 5. Urutan pekerjaan berikutnya
@@ -172,9 +172,9 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - 40 kalimat test tetap tersegel dan tidak digunakan untuk penyetelan.
 - **Status:** Tahap 2.5 selesai berdasarkan evaluasi development dan keputusan pengguna.
 
-### 5.6 Analisis struktur kalimat — baseline v1.6; Tahap 2.6 dilanjutkan
+### 5.6 Analisis struktur kalimat — baseline v1.7; Tahap 2.6 dilanjutkan
 
-Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup fitur sintaksis sebelumnya; v1.6 menambahkan rincian struktur predikat verbal. Fitur baseline v1.5 meliputi:
+Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup fitur sintaksis sebelumnya; v1.6 menambahkan rincian struktur predikat verbal, dan v1.7 memperluas modalitas. Fitur baseline v1.5 meliputi:
 - Pola klausa sederhana S-P, S-P-O, S-P-K dan rentang frasa nominal sederhana.
 - Negasi verbal terbatas serta penanganan modal.
 - Predikat nonverbal dan predikat penghubung tertentu.
@@ -183,7 +183,7 @@ Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup fitur sinta
 - Label relasi untuk penghubung yang dikenali secara eksplisit.
 - Klausa subordinatif terbatas di depan dan setelah klausa utama, termasuk pola konsesif eliptis tertentu dengan status `partial`.
 
-Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu. Karena Tahap 2.5 kini selesai, pembekuan tersebut dicabut. Perubahan terbaru menambahkan `predicate_structure` dengan `head` dan daftar `modifiers` bertipe `negation`, `modal`, atau `adverbial`; rentang `roles.predicate` lama tidak berubah sehingga pemanggil lama tetap kompatibel.
+Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu. Karena Tahap 2.5 kini selesai, pembekuan tersebut dicabut. Parser v1.6 menambahkan `predicate_structure` dengan `head` dan daftar `modifiers`; v1.7 mengenali `akan` (ADV) dan `bisa` (VERB) sebagai modal hanya ketika diikuti verba inti. Penggunaan `bisa` tunggal tetap menjadi predikat. Rentang `roles.predicate` lama tidak berubah sehingga pemanggil lama tetap kompatibel.
 
 **Pekerjaan aktif berikutnya:**
 - Memperluas frasa verba/modal di luar penanda yang sudah didukung.
