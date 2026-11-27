@@ -170,6 +170,59 @@ class SemanticRoleMappingTests(unittest.TestCase):
         result = map_semantic_roles(parsed, sense, voice="active")
         self.assertEqual(result["status"], "incompatible")
 
+
+    def test_rejects_frame_that_ignores_recognized_object(self):
+        parsed = parse(
+            ("Rina", "NOUN"), ("membuka", "VERB"), ("pintu", "NOUN")
+        )
+        intransitive_sense = {
+            "sense_id": "uji-intransitif-S1",
+            "valency_frames": [{
+                "frame_id": "F1",
+                "arguments": [{
+                    "argument_id": "A1",
+                    "syntactic_role": "SUBJ",
+                    "semantic_role": "THEME",
+                    "required": True,
+                    "realizations": [{"type": "NP"}],
+                }],
+            }],
+        }
+        result = map_semantic_roles(parsed, intransitive_sense, voice="active")
+        self.assertEqual(result["status"], "incompatible")
+        self.assertEqual(result["reason"], "no_frame_matches_surface_roles")
+
+    def test_does_not_map_unconstrained_oblique_as_core_argument(self):
+        parsed = parse(
+            ("Rina", "NOUN"), ("pergi", "VERB"),
+            ("ke", "PREP"), ("pasar", "NOUN"),
+        )
+        unconstrained_sense = {
+            "sense_id": "pergi-tanpa-batas-S1",
+            "valency_frames": [{
+                "frame_id": "F1",
+                "arguments": [
+                    {
+                        "argument_id": "A1",
+                        "syntactic_role": "SUBJ",
+                        "semantic_role": "AGENT",
+                        "required": True,
+                        "realizations": [{"type": "NP"}],
+                    },
+                    {
+                        "argument_id": "A2",
+                        "syntactic_role": "OBL",
+                        "semantic_role": "GOAL",
+                        "required": True,
+                        "realizations": [{"type": "PP"}],
+                    },
+                ],
+            }],
+        }
+        result = map_semantic_roles(parsed, unconstrained_sense, voice="active")
+        self.assertEqual(result["status"], "incompatible")
+        self.assertEqual(result["reason"], "no_frame_matches_surface_roles")
+
     def test_rejects_invalid_voice_value(self):
         with self.assertRaises(ValueError):
             map_semantic_roles({}, self.buka, voice="middle")
