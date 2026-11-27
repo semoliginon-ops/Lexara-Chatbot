@@ -651,3 +651,12 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi Batch-004 dan regression suite menunggu validasi kelompok Batch-001–005 melalui GitHub Actions.
 
 **Batas audit:** definisi dipisah hanya untuk memperjelas dua makna yang sebelumnya tergabung; perubahan tidak mengubah lemma, POS entri, bentuk turunan, atau relasi lain.
+
+### Audit dan koreksi relasi leksikal Batch-005 — 27 November 2026
+
+- [x] Audit semantik baca-saja pada 50 entri Batch-005.
+- [x] Menghapus delapan sinonim yang merupakan bentuk turunan, bukan sinonim dasar: K0211 `belok`, K0215 `kenal`, K0216 `ketemu`, K0221 `ganti`, K0227 `ulang`, K0228 `coba`, K0241 `percaya`, dan K0246 `izin`.
+- [x] Mempertahankan seluruh field selain delapan relasi tersebut.
+- [ ] Validasi kelompok Batch-001–005 dan regression suite menunggu pemicu GitHub Actions.
+
+**Batas audit:** koreksi ini memperbaiki klasifikasi relasi; tidak mengubah lemma, definisi, POS, sense, atau bentuk turunan.
