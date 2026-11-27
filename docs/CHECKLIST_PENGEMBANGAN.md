@@ -832,5 +832,5 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menggabungkan verba kehendak dan verba leksikal ke dalam rentang predikat.
 - [x] Mempertahankan penggunaan verba kehendak tunggal sebagai predikat jika tidak diikuti verba lain.
 - [x] Menambahkan tiga regression tests untuk konstruksi modal dan penggunaan tunggal.
-- [ ] Menjalankan regression suite penuh dan validasi pipeline melalui GitHub Actions.
+- [x] GitHub Actions Run #78: **190/190 tes lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 - [ ] Memperluas modalitas lain hanya setelah kelas kata dan perilakunya diverifikasi melalui kamus/pipeline.
