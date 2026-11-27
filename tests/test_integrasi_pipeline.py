@@ -1792,7 +1792,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             ("Dia membawa tas sekolahku.", "sekolahku", "ku", "object", ["dia"], ["membawa"], ["tas", "sekolahku"]),
             ("Saya membaca buku sekolahmu.", "sekolahmu", "mu", "object", ["saya"], ["membaca"], ["buku", "sekolahmu"]),
             ("Dia melihat foto keluarganya.", "keluarganya", "nya", "object", ["dia"], ["melihat"], ["foto", "keluarganya"]),
-            ("Aku membaca cerita temanku.", "temanku", "ku", "object", ["aku"], ["membaca"], ["cerita", "temanku"]),
+            ("Aku membaca buku temanku.", "temanku", "ku", "object", ["aku"], ["membaca"], ["buku", "temanku"]),
             ("Kamu mencari kunci rumahku.", "rumahku", "ku", "object", ["kamu"], ["mencari"], ["kunci", "rumahku"]),
             ("Mereka membawa surat kantormu.", "kantormu", "mu", "object", ["mereka"], ["membawa"], ["surat", "kantormu"]),
             ("Dia melihat alamat rumahnya.", "rumahnya", "nya", "object", ["dia"], ["melihat"], ["alamat", "rumahnya"]),
