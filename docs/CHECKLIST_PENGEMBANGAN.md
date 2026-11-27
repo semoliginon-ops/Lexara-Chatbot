@@ -970,3 +970,5 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menyimpan relasi pada batas kedua klausa dengan label eksplisit.
 - [x] Menambahkan tes unit sebab/temporal dan tes integrasi sebab melalui kamus asli.
 - [ ] Memperluas subordinasi bertingkat atau klausa eliptis akhir hanya jika analisis dapat dibatasi secara aman.
+
+- [x] GitHub Actions Run #99: **232/232 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih berhasil.
