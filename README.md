@@ -331,3 +331,7 @@ Proyek mencapai target awal ketika:
 ## Status parser bahasa
 
 Parser konservatif saat ini telah mencapai v1.2: selain memisahkan beberapa klausa berverba eksplisit, hasilnya menyimpan label hubungan untuk penghubung yang dikenali (`dan`, `atau`, `tetapi`, `namun`, `karena`, `sebab`, `walaupun`, `meskipun`, `lalu`, `kemudian`, dan `ketika`). Label yang belum didukung tidak ditebak. GitHub Actions [Run #93](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955025367) lulus dengan **222/222 tes**. Ini masih kerangka sintaksis sederhana, bukan pemahaman semantik lengkap; batasan dan cakupan uji rinci dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
+
+## Status parser bahasa
+
+Parser konservatif telah mencapai v1.3. Selain koordinasi beberapa klausa dan label penghubung, parser kini mengenali pola terbatas klausa subordinatif di depan klausa utama, misalnya `Karena dia makan, aku pulang.` dan `Ketika dia makan, aku pulang.`. Klausa awal tanpa predikat teridentifikasi tidak dipaksakan. GitHub Actions [Run #96](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955536612) lulus dengan **227/227 tes**. Batas implementasi dicatat dalam `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
