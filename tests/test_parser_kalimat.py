@@ -157,6 +157,40 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["roles"]["subject"], ["ayah"])
         self.assertEqual(result["roles"]["predicate"], ["seorang", "guru"])
 
+    def test_menjadi_takes_nominal_predicate_complement(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("menjadi", ["VERB"]),
+            token("dokter", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-Pel")
+        self.assertEqual(result["roles"]["predicate"], ["menjadi"])
+        self.assertEqual(result["roles"]["object"], [])
+        self.assertEqual(result["roles"]["complement"], ["dokter"])
+
+    def test_tampak_takes_adjectival_predicate_complement(self):
+        result = parse_sentence(analysis(
+            token("mereka", ["PRON"]),
+            token("tampak", ["VERB"]),
+            token("bahagia", ["ADJ"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-Pel")
+        self.assertEqual(result["roles"]["object"], [])
+        self.assertEqual(result["roles"]["complement"], ["bahagia"])
+
+    def test_ordinary_transitive_verb_keeps_nominal_object(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("membeli", ["VERB"]),
+            token("baju", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["object"], ["baju"])
+        self.assertEqual(result["roles"]["complement"], [])
+
     def test_does_not_guess_ambiguous_noun_adjective_sequence(self):
         result = parse_sentence(analysis(
             token("rumah", ["NOUN"]),
