@@ -119,6 +119,46 @@ Contoh struktur JSON:
 
 Contoh di atas hanya ilustrasi skema, bukan keputusan bahwa semua relasi kata selalu saling dapat menggantikan. Sinonim, antonim, dan kata terkait harus diverifikasi berdasarkan makna tertentu.
 
+
+### Metadata valensi per-sense
+
+Skema metadata valensi per-sense telah disetujui sebagai bagian dari pengembangan tata bahasa. Field `valency_frames` bersifat **opsional** dan ditempatkan di dalam objek sense, bukan pada tingkat lemma.
+
+- Sense yang belum memiliki `valency_frames` berarti belum dianotasi; bukan berarti tidak memiliki argumen.
+- Satu sense dapat memiliki beberapa frame jika pola argumennya memang berbeda.
+- Setiap frame memiliki `frame_id` dan daftar `arguments`.
+- Setiap argumen memiliki `argument_id`, `syntactic_role`, `semantic_role`, `required`, dan `realizations`.
+- Fungsi sintaksis awal: `SUBJ`, `OBJ`, `COMP`, `OBL`.
+- Semantic role awal: `AGENT`, `CAUSER`, `EXPERIENCER`, `THEME`, `PATIENT`, `RECIPIENT`, `BENEFICIARY`, `INSTRUMENT`, `LOCATION`, `SOURCE`, `GOAL`, `RESULT`, `CONTENT`, `STIMULUS`.
+- Tipe realisasi awal: `NP`, `PP`, `ADJP`, `CLAUSE`. Pembatas `prepositions` hanya berlaku pada realisasi `PP`.
+- `semantic_role: null) hanya menyatakan bahwa role argumen belum diputuskan; bukan label role tambahan.
+- `required` menyatakan status argumen dalam frame, bukan jaminan bahwa argumen selalu tampak pada permukaan kalimat. Voice dan pelesapan ditangani oleh lapisan terpisah.
+
+Contoh berikut ilustratif dan bukan anotasi yang boleh langsung disalin ke entri kamus:
+
+```json
+{
+  "sense_id": "contoh-S1",
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "argument_id": "A1",
+          "syntactic_role": "SUBJ",
+          "semantic_role": "AGENT",
+          "required": true,
+          "realizations": [{ "type": "NP" }]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Validator struktural tersedia di `tools/validasi_valensi.py`. Data lama tanpa metadata valensi tetap harus dapat dimuat oleh loader yang ada. Validasi struktur tidak membuktikan bahwa anotasi role atau frame benar secara linguistik; setiap anotasi tetap memerlukan tinjauan dan contoh uji.
+
+
 ## 6. Pemisahan bentuk kata dan makna
 
 Kamus harus membedakan:
