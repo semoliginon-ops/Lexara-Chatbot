@@ -802,6 +802,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
 
 
+    def test_multi_affix_verb_with_mu_clitic_is_recognized_in_real_pipeline(self):
+        analyzed = self.analyze("memilikimu")
+        bound = self.token(analyzed, "memilikimu")
+
+        self.assertEqual(bound["status"], "unknown")
+        self.assertEqual(len(bound["morphology_candidates"]), 1)
+        candidate = bound["morphology_candidates"][0]
+        self.assertEqual(candidate["base_form"], "memiliki")
+        self.assertEqual(candidate["rule"], "clitic_mu")
+        self.assertEqual(candidate["clitic"], "mu")
+        self.assertTrue(
+            any(
+                item["lemma"] == "milik"
+                and item["match_type"] == "derived_form"
+                for item in candidate["candidates"]
+            )
+        )
+
+
     def test_bound_pronoun_clitics_are_exposed_by_real_lexical_pipeline(self):
         cases = {
             "bukuku": ("buku", "ku"),
