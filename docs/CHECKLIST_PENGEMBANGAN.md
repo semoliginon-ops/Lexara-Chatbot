@@ -959,3 +959,5 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Menolak awalan yang tidak berakhir pada predikat adjektival teridentifikasi.
 - [x] Menambahkan tes unit dan integrasi melalui kamus asli untuk `lelah` (ADJ).
 - [ ] Menangani jenis elipsis lain hanya setelah pola dan bukti leksikalnya dapat dibatasi secara aman.
+
+- [x] GitHub Actions Run #97: **229/229 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih berhasil.
