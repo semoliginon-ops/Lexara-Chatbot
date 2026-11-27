@@ -219,6 +219,20 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["complement"], [])
         self.assertEqual(parsed["unresolved_tokens"], ["bahagia"])
 
+    def test_fronted_elliptical_concessive_adjective_uses_real_dictionary(self):
+        result = self.analyze("Walaupun lelah, dia bekerja.")
+        adjective = self.token(result, "lelah")
+        self.assertEqual(adjective["status"], "matched")
+        self.assertEqual(adjective["pos"], ["ADJ"])
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "partial")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        subordinate = parsed["clauses"][0]["analysis"]
+        self.assertEqual(subordinate["pattern"], "P-ELIPTIS")
+        self.assertEqual(subordinate["roles"]["subject"], [])
+        self.assertEqual(subordinate["roles"]["predicate"], ["lelah"])
+        self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["dia"])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
