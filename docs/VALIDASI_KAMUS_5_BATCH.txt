@@ -5,3 +5,4 @@
 # Integrasi diuji untuk bentuk VERB dan NOUN agar POS turunan tidak diwariskan secara keliru.
 # Tahap 2.5: pak ditangani sebagai sapaan NOUN pada supplement; pelajaran dan adiknya mendapat POS turunan eksplisit.
 # Tidak ada lema baru: pelajaran ditautkan ke ajar (K0188), adiknya ke adik (K0109).
+# Koreksi tes integrasi: token sapaan pak diuji dalam bentuk lowercase sesuai tokenisasi; supplement tetap case-insensitive.
