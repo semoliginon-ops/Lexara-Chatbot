@@ -17,7 +17,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
 - GitHub Actions [Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132): validasi kamus 3.014 lema, dataset POS, evaluasi development, dan **250/250 regression tests lulus**.
-- Parser kini berada pada v1.7; pembekuan parser dicabut setelah POS selesai. Fokus aktif adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
+- Parser kini berada pada v1.8; pembekuan parser dicabut setelah POS selesai. Fokus aktif adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
 
 ---
 
@@ -194,7 +194,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
 - [x] Menetapkan parser v1.7 dengan `predicate_structure` dan modalitas `akan` (ADV) serta `bisa` (VERB) untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
 - [x] Menambahkan regression tests untuk perluasan parser hingga v1.5; tes v1.6/v1.7 menjaga struktur kepala predikat, modalitas, dan variasi susunan klausa.
-- [x] Melanjutkan Tahap 2.6 dari baseline v1.7 dan fitur lama tetap dipertahankan.
+- [x] Melanjutkan Tahap 2.6 dari baseline v1.8 dan fitur lama tetap dipertahankan.
 - [x] Pada lapisan parser, mengenali `akan` (jika POS ADV) dan `bisa` (jika POS VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
 - [ ] Integrasi `akan` dengan POS kamus: indeks saat ini belum mencatat `akan`. Penambahan lema belum dilakukan dan tetap menunggu persetujuan eksplisit pengguna.
 - [ ] Memperluas frasa verba ke penanda modal/aspek lain hanya setelah POS dan konteksnya cukup kuat.
@@ -1118,3 +1118,12 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Memperbarui indeks `a-c.tsv` dan target validasi menjadi 3.014 lema.
 - [x] Menambahkan tes integrasi: POS berasal dari kamus, modal hanya bergabung dengan verba inti, dan penggunaan tunggal tidak dipaksakan menjadi predikat.
 - [x] GitHub Actions [Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132) sukses: 60 batch / 3.014 lema, dataset POS, evaluasi development, dan 250/250 regression tests lulus.
+
+
+### Parser v1.8 — keterangan temporal ADV di awal klausa
+
+- [x] Memeriksa indeks dan POS kamus untuk `besok`, `nanti`, `sekarang`, dan `tadi` (semuanya ADV).
+- [x] Mengenali empat ADV temporal tersebut sebagai keterangan awal sebelum subjek, tanpa mengubah penanganan keterangan preposisional.
+- [x] Menambahkan tes unit untuk keempat kata dan tes abstention bagi ADV yang tidak terdaftar sebagai temporal (`mungkin`).
+- [x] Menambahkan tes integrasi `Besok aku akan makan nasi.` melalui pipeline kamus lengkap.
+- [ ] Menjalankan GitHub Actions untuk validasi kamus, dataset POS, evaluasi development, dan regresi penuh.
