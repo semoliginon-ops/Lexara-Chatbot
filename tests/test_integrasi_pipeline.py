@@ -826,6 +826,39 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(subordinate_clause["relation_to_previous"], "konsesi")
         self.assertEqual(subordinate_clause["analysis"]["roles"]["subject"], ["hujan"])
         self.assertEqual(subordinate_clause["analysis"]["roles"]["predicate"], ["turun"])
+    def test_fronted_concessive_subordinate_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Walaupun hujan turun, aku pergi.")
+
+        expected = {
+            "walaupun": "CONJ",
+            "hujan": "NOUN",
+            "turun": "VERB",
+            "aku": "PRON",
+            "pergi": "VERB",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        subordinate, main_clause = parsed["clauses"]
+        self.assertEqual(subordinate["subordinator"], "walaupun")
+        self.assertEqual(subordinate["relation_to_next"], "konsesi")
+        self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+        self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
+        self.assertIsNone(main_clause["subordinator"])
+        self.assertEqual(main_clause["relation_to_previous"], "konsesi")
+        self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
 if __name__ == "__main__":
     unittest.main()
 
