@@ -652,7 +652,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(parsed["roles"]["object"], ["nasi"])
 
             with self.subTest(role="object", pronoun=pronoun):
-                analyzed = self.analyze(f"Dia melihat {pronoun}.")
+                analyzed = self.analyze(f"Dia lihat {pronoun}.")
                 token = self.token(analyzed, pronoun)
                 self.assertEqual(token["status"], "matched")
                 self.assertEqual(token["pos"], ["PRON"])
@@ -663,7 +663,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(parsed["status"], "parsed")
                 self.assertEqual(parsed["pattern"], "S-P-O")
                 self.assertEqual(parsed["roles"]["subject"], ["dia"])
-                self.assertEqual(parsed["roles"]["predicate"], ["melihat"])
+                self.assertEqual(parsed["roles"]["predicate"], ["lihat"])
                 self.assertEqual(parsed["roles"]["object"], [pronoun])
 
 
@@ -700,9 +700,9 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "bukuku": ("buku", "ku"),
             "rumahmu": ("rumah", "mu"),
             "bukunya": ("buku", "nya"),
-            "melihatku": ("melihat", "ku"),
-            "melihatmu": ("melihat", "mu"),
-            "melihatnya": ("melihat", "nya"),
+            "lihatku": ("lihat", "ku"),
+            "lihatmu": ("lihat", "mu"),
+            "lihatnya": ("lihat", "nya"),
         }
         for surface, (base, clitic) in cases.items():
             with self.subTest(surface=surface):
@@ -746,8 +746,8 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         }])
 
     def test_verbal_bound_clitic_is_parsed_as_object_in_real_pipeline(self):
-        analyzed = self.analyze("Dia melihatku.")
-        bound = self.token(analyzed, "melihatku")
+        analyzed = self.analyze("Dia lihatku.")
+        bound = self.token(analyzed, "lihatku")
         self.assertEqual(bound["status"], "unknown")
         self.assertEqual(bound["pos"], [])
         self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["VERB"])
@@ -755,11 +755,11 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "S-P-O")
         self.assertEqual(parsed["roles"]["subject"], ["dia"])
-        self.assertEqual(parsed["roles"]["predicate"], ["melihatku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["lihatku"])
         self.assertEqual(parsed["roles"]["object"], [])
         self.assertEqual(parsed["clitic_analysis"], [{
-            "surface": "melihatku",
-            "base_form": "melihat",
+            "surface": "lihatku",
+            "base_form": "lihat",
             "clitic": "ku",
             "function": "object",
             "function_status": "selected_by_verbal_host",
