@@ -294,9 +294,9 @@ GitHub **bukan tempat menjalankan chatbot**. Aplikasi berjalan di HP. GitHub Act
 
 ### Alur perubahan kamus dan penggunaan Actions
 
-- Kamus disusun dalam batch berisi tepat 50 lema baru.
+- Kamus disusun dalam batch yang umumnya berisi sekitar 50 lema; jumlah per batch boleh kurang atau lebih, dan keseimbangan dapat disesuaikan pada batch berikutnya. Jumlah 50 bukan syarat lulus/gagal.
 - Sebelum menambahkan batch, periksa INDEX terbaru dan seluruh 8 token shard untuk mendeteksi duplikasi lema, variasi, serta bentuk turunan.
-- Setelah setiap batch, lakukan pemeriksaan manual: jumlah 50 entri, ID berurutan dan unik, lema unik, serta pembaruan INDEX dan shard sesuai.
+- Setelah setiap batch, periksa ID dan lema unik, konsistensi data, serta pembaruan INDEX dan shard sesuai. Jangan menambah atau menghapus entri hanya demi memaksakan jumlah 50.
 - Pemeriksaan batch rutin dilakukan tanpa menjalankan GitHub Actions.
 - Workflow **Dictionary Audit** hanya berjalan melalui pemicu manual (workflow_dispatch), bukan otomatis pada setiap push atau pull request.
 - Jalankan audit besar melalui GitHub Actions setelah target 3.000 entri tercapai, atau jika memang diperlukan audit menyeluruh lebih awal.
