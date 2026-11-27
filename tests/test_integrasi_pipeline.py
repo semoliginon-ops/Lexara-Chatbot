@@ -147,7 +147,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
 
     def test_adjectival_predicate_uses_real_dictionary_pipeline(self):
         analyzed = self.analyze("Dia sakit.")
-        subject = self.token(analyzed, "Dia")
+        subject = self.token(analyzed, "dia")
         predicate = self.token(analyzed, "sakit")
         self.assertEqual(subject["pos"], ["PRON"])
         self.assertEqual(subject["pos_status"], "identified")
@@ -157,7 +157,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "S-P")
-        self.assertEqual(parsed["roles"]["subject"], ["Dia"])
+        self.assertEqual(parsed["roles"]["subject"], ["dia"])
         self.assertEqual(parsed["roles"]["predicate"], ["sakit"])
         self.assertEqual(parsed["roles"]["object"], [])
 
