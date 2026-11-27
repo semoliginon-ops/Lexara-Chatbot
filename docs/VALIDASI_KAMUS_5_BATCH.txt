@@ -1,2 +1,2 @@
-21 25
-# batch 021-025: audit semantik selesai; jalankan validasi kelompok
+26 30
+# batch 026-030: audit semantik selesai; jalankan validasi kelompok
