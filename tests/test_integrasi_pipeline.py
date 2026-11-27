@@ -798,17 +798,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         }])
 
     def test_nominal_mu_clitic_can_head_subject_phrase_in_real_pipeline(self):
-        analyzed = self.analyze("Rumahmu besar.")
-        bound = self.token(analyzed, "rumahmu")
+        analyzed = self.analyze("Bukumu jatuh.")
+        bound = self.token(analyzed, "bukumu")
         self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["NOUN"])
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
         self.assertEqual(parsed["pattern"], "S-P")
-        self.assertEqual(parsed["roles"]["subject"], ["rumahmu"])
-        self.assertEqual(parsed["roles"]["predicate"], ["besar"])
+        self.assertEqual(parsed["roles"]["subject"], ["bukumu"])
+        self.assertEqual(parsed["roles"]["predicate"], ["jatuh"])
         self.assertEqual(parsed["clitic_analysis"], [{
-            "surface": "rumahmu",
-            "base_form": "rumah",
+            "surface": "bukumu",
+            "base_form": "buku",
             "clitic": "mu",
             "function": "possessive",
             "function_status": "selected_by_host_pos",
