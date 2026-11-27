@@ -19,11 +19,12 @@ class MorphologyTests(unittest.TestCase):
             "main", "indah", "baik", "bangun", "cat", "kerja", "jalan", "anda", "mari",
             "ong", "lalu", "lati", "lapa", "ang", "api", "reka", "gecat",
             "ambil", "kambil", "kunci", "ari", "tari", "nyanyi", "anyi", "sanyi", "kajar",
-            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin",
+            "pengacara", "pengadilan", "pengemudi", "penggaris", "penguin", "buku", "rumah", "lihat", "kamu",
             "penjara", "peniti", "penipuan", "penasaran", "penyanyi", "penyu",
         ]
         entries = [entry(f"K{i:04d}", lemma) for i, lemma in enumerate(lemmas, 1)]
         entries.append(entry("K9001", "tanam", ["menanam"]))
+        entries.append(entry("K9002", "lihat", ["melihat"]))
         self.lexicon = build_lexicon(entries)
 
     def bases(self, token):
@@ -147,6 +148,36 @@ class MorphologyTests(unittest.TestCase):
 
     def test_nested_di_per_rejects_nominal_suffix_an(self):
         self.assertNotIn("kerja", self.bases("diperkerjaan"))
+
+    def test_bound_pronoun_clitic_ku_uses_known_nominal_base(self):
+        results = analyze_morphology("bukuku", self.lexicon)
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["base_form"], "buku")
+        self.assertEqual(results[0]["rule"], "clitic_ku")
+        self.assertEqual(results[0]["clitic"], "ku")
+        self.assertEqual(results[0]["interpretations"], ["possessive", "object"])
+
+    def test_bound_pronoun_clitic_mu_uses_known_nominal_base(self):
+        results = analyze_morphology("rumahmu", self.lexicon)
+        self.assertEqual([item["base_form"] for item in results], ["rumah"])
+        self.assertEqual(results[0]["rule"], "clitic_mu")
+
+    def test_bound_pronoun_clitic_nya_uses_known_nominal_base(self):
+        results = analyze_morphology("bukunya", self.lexicon)
+        self.assertEqual([item["base_form"] for item in results], ["buku"])
+        self.assertEqual(results[0]["rule"], "clitic_nya")
+
+    def test_bound_pronoun_clitic_attaches_to_derived_verb_form(self):
+        results = analyze_morphology("melihatku", self.lexicon)
+        self.assertEqual([item["base_form"] for item in results], ["melihat"])
+        self.assertEqual(results[0]["clitic"], "ku")
+        self.assertEqual(results[0]["candidates"][0]["lemma"], "lihat")
+
+    def test_exact_pronoun_kamu_is_not_split_as_ku_or_mu_clitic(self):
+        self.assertEqual(analyze_morphology("kamu", self.lexicon), [])
+
+    def test_unknown_clitic_base_is_not_guessed(self):
+        self.assertEqual(analyze_morphology("xyzku", self.lexicon), [])
 
     def test_rejects_non_string(self):
         with self.assertRaises(TypeError): analyze_morphology(None, self.lexicon)
