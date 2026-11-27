@@ -29,7 +29,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3004)
+        self.assertEqual(len(self.entries), 3005)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
@@ -291,6 +291,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 token = self.token(result, "baru")
                 self.assertEqual(token["status"], "matched")
                 self.assertEqual(token["pos"], ["ADJ"])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+
+    def test_dulu_is_adverb_in_temporal_and_sequence_contexts(self):
+        for sentence in ("Gue mau makan dulu.", "Dulu dia tinggal di sini."):
+            with self.subTest(sentence=sentence):
+                result = self.analyze(sentence)
+                token = self.token(result, "dulu")
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], ["ADV"])
                 self.assertEqual(token["pos_source"], "dictionary")
                 self.assertEqual(token["pos_status"], "identified")
 
