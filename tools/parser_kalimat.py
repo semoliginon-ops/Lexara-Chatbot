@@ -18,7 +18,8 @@ _OBJECT_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _NOMINAL_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _ADVERBIAL_PREDICATE_POS = {"ADV"}
 _NEGATION_MARKERS = {"tidak", "belum"}
-_MODAL_VERBS = {"mau", "ingin", "hendak"}
+_MODAL_VERBS = {"mau", "ingin", "hendak", "bisa"}
+_MODAL_ADVERBS = {"akan"}
 _LINKING_PREDICATES = {"menjadi", "tampak"}
 
 # Klasifikasi eksplisit fungsi penghubung; tidak menyimpulkan relasi untuk kata lain.
@@ -77,7 +78,10 @@ def _predicate_structure(
         token = item["token"].casefold()
         if token in _NEGATION_MARKERS:
             kind = "negation"
-        elif token in _MODAL_VERBS and item["pos"] == "VERB":
+        elif (
+            (token in _MODAL_VERBS and item["pos"] == "VERB")
+            or (token in _MODAL_ADVERBS and item["pos"] == "ADV")
+        ):
             kind = "modal"
         else:
             kind = "adverbial"
@@ -481,6 +485,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             and words[cursor]["pos"] == "VERB"
         )
         or (
+            words[cursor]["token"].casefold() in _MODAL_ADVERBS
+            and words[cursor]["pos"] == "ADV"
+        )
+        or (
             words[cursor]["token"].casefold() in _NEGATION_MARKERS
             and words[cursor]["pos"] in {"ADV", "PART"}
         )
@@ -609,6 +617,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Verba kehendak 'mau', 'ingin', dan 'hendak' digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan tunggal tetap dipertahankan sebagai predikat. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Penanda modalitas 'mau', 'ingin', 'hendak', dan 'bisa' (VERB), serta 'akan' (ADV), digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan verbal tunggal tetap dipertahankan sebagai predikat. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
