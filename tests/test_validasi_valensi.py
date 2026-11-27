@@ -36,7 +36,7 @@ class ValencyValidationTests(unittest.TestCase):
     def test_accepts_legacy_entry_without_valency_metadata(self):
         self.assertEqual(validate_entry_valency(legacy_entry()), [])
 
-    def test_accepts_valid_frame_with_all_fourteen_role_catalog(self):
+    def test_accepts_valid_frame_with_approved_semantic_role(self):
         entry = legacy_entry()
         entry["senses"][0]["valency_frames"] = [valid_frame()]
         self.assertEqual(validate_entry_valency(entry), [])
