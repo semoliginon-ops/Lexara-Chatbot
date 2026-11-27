@@ -91,6 +91,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(result["roles"]["predicate"], ["tidak", "membeli"])
         self.assertEqual(result["roles"]["object"], ["ikan"])
 
+
+    def test_adjectival_nonverbal_predicate_uses_real_dictionary_pipeline(self):
+        result = parse_sentence(self.analyze("Dia sakit."))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["Dia".lower()])
+        self.assertEqual(result["roles"]["predicate"], ["sakit"])
+
+    def test_demonstrative_subject_nonverbal_predicate_uses_real_pipeline(self):
+        result = self.analyze("Rumah itu besar.")
+        self.assertEqual(self.token(result, "rumah")["pos"], ["NOUN"])
+        self.assertEqual(self.token(result, "itu")["pos"], ["PRON"])
+        self.assertEqual(self.token(result, "besar")["pos"], ["ADJ"])
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P")
+        self.assertEqual(parsed["roles"]["subject"], ["rumah", "itu"])
+        self.assertEqual(parsed["roles"]["predicate"], ["besar"])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
