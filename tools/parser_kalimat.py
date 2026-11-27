@@ -38,6 +38,7 @@ _CONNECTOR_RELATIONS = {
     "lalu": "urutan",
     "kemudian": "urutan",
     "ketika": "temporal",
+    "supaya": "tujuan",
 }
 
 
