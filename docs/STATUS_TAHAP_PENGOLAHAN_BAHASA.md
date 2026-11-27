@@ -1273,3 +1273,16 @@ Run #240 menambahkan satu kelompok tes integrasi berisi **10 skenario independen
 GitHub Actions **Run #240 selesai dengan conclusion success**; **413/413 tes regresi lulus**. [Lihat Run #240](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46084389875).
 
 Tidak ada lema, batch, atau indeks kamus yang ditambahkan/diubah. Perubahan parser terbatas pada penerimaan relasi `tujuan` di dua posisi klausa; tes baru menambah cakupan integrasi. Cakupan klausa subordinatif secara keseluruhan tetap merupakan pekerjaan Tahap 2.6 yang belum ditutup.
+
+### Klitik di dalam frasa nominal multi-kata — Run #241 (28 November 2026)
+
+Menambahkan satu kelompok tes integrasi berisi **10 skenario** untuk menguji apakah klitik nominal tetap dikenali ketika host-nya menjadi bagian dari frasa nominal multi-kata. Pengujian mencakup:
+- `-ku`, `-mu`, dan `-nya` pada posisi subjek: `Buku sekolahku jatuh.`, `Kunci rumahmu jatuh.`, dan `Foto keluarganya jatuh.`
+- Ketiga klitik pada posisi objek di dalam frasa nominal: `Dia membawa tas sekolahku.`, `Saya membaca buku sekolahmu.`, `Dia melihat foto keluarganya.`, `Aku membaca buku temanku.`, `Kamu mencari kunci rumahku.`, `Mereka membawa surat kantormu.`, dan `Dia melihat alamat rumahnya.`
+- Pemeriksaan host NOUN, komponen klitik PRON, peran nominal host, serta fungsi klitik. `-ku` dan `-mu` tetap posesif pada host nominal; fungsi `-nya` tetap unresolved dengan kandidat `possessive` dan `definite_anaphoric`.
+
+Satu percobaan awal dengan `cerita temanku` menghasilkan status parser `partial` dan tidak memasukkan `cerita` ke rentang objek. Contoh tersebut diganti menjadi `buku temanku` agar tes ini mengisolasi perilaku klitik di frasa nominal tanpa menganggap kepala frasa yang POS-nya belum cukup jelas sebagai bagian objek. Ini dicatat sebagai batas analisis frasa nominal, bukan diperbaiki dengan tebakan.
+
+GitHub Actions **Run #241 selesai dengan conclusion success**; **414/414 tes regresi lulus**. [Lihat Run #241](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46084989923).
+
+Tes ini memvalidasi penempatan klitik dalam rentang frasa nominal sederhana, bukan analisis internal inti dan pewatas. Frasa masih dilaporkan sebagai rentang datar; ambiguitas semantis `-nya` dan inventaris bentuk informal/regional tetap menjadi pekerjaan lanjutan. Tidak ada lema, batch, atau indeks kamus yang diubah.
