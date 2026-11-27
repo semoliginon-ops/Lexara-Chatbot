@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Perencanaan dan perancangan fondasi  
+> **Status:** Pengembangan aktif — kamus 3.000 lema dan audit 60 batch selesai; fondasi pengolahan kata/POS tersedia, integrasi dan parser kalimat menjadi pekerjaan berikutnya  
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
