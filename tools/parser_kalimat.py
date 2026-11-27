@@ -760,9 +760,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                     )
                     clitic_item["reference_relation"] = None
                     clitic_item["reference_relation_candidates"] = ["reflexive", "non_reflexive"]
+                    clitic_item["reference_relation_candidate"] = None
                     clitic_item["reference_relation_status"] = "unresolved"
                     if antecedent is not None:
-                        clitic_item["reference_relation"] = "reflexive"
+                        clitic_item["reference_relation_candidate"] = "reflexive"
                         clitic_item["reference_relation_status"] = "candidate_by_person_agreement"
                         clitic_item["antecedent_candidate"] = antecedent
 
