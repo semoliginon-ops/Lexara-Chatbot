@@ -663,3 +663,13 @@ Dua regression test baru ditambahkan pada `tests/test_pemetaan_peran_semantis.py
 GitHub Actions **Run #134** sukses: validasi kamus 60 batch / 3.014 entri, validasi metadata valensi, dataset POS, evaluasi development, dan **291/291 tes regresi lulus**. [Lihat Run #134](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46003126203).
 
 **Batas yang tetap berlaku:** pemeriksaan ini meningkatkan keamanan pencocokan frame, tetapi belum membuat parser mampu membedakan semua argumen PP dari adjunct. OBL hanya dipetakan bila preposisinya dibatasi secara eksplisit; ini adalah kebijakan konservatif sementara. Pemilihan sense, konfirmasi voice, pemetaan pasif, dan pembedaan otomatis AGENT/CAUSER atau CAUSER/INSTRUMENT tetap belum tersedia. Tidak ada batch kamus, indeks, lema, anotasi sense, atau parser inti yang diubah.
+
+
+**Uji batas CAUSER versus INSTRUMENT — Run #135 (27 November 2026):** dua tes tambahan dibuat tanpa menambah anotasi kamus.
+
+1. Kalimat ilustratif `Palu memecahkan kaca` diuji dengan dua frame sintetis yang memiliki struktur sintaksis sama tetapi role SUBJ berbeda (CAUSER atau INSTRUMENT). Mapper harus mengembalikan `ambiguous` dan mempertahankan kedua kandidat. Fixture ini hanya menguji perilaku mapper; bukan anotasi baru untuk sense `memecahkan`.
+2. Pada `Rina memecahkan kaca dengan palu`, frasa `dengan palu` diperlakukan sebagai keterangan yang belum dilisensikan sebagai argumen inti dalam frame uji. Mapper tidak boleh menambahkan role INSTRUMENT hanya berdasarkan keberadaan PP tersebut.
+
+Run #135 sukses dengan **293/293 tes regresi lulus**; validasi 60 batch / 3.014 entri dan langkah CI lainnya juga sukses. [Lihat Run #135](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46003321891).
+
+**Interpretasi batas:** tes ini memastikan sistem mempertahankan ambiguitas bila dua frame memang disediakan dan tidak mengubah semua PP `dengan` menjadi INSTRUMENT. Tes ini tidak menyelesaikan pemilihan CAUSER/INSTRUMENT di konteks nyata, tidak menambah sense kamus, dan tidak mengklaim parser sudah mengenali semua keterangan alat.
