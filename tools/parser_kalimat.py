@@ -98,6 +98,77 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(tokens, list):
         raise ValueError("analysis harus memiliki array tokens")
 
+    # Klausa subordinatif di depan kalimat: penanda + klausa + koma + klausa utama.
+    # Dibatasi pada penghubung sebab, temporal, dan konsesi yang dipetakan eksplisit.
+    if tokens and isinstance(tokens[0], dict):
+        marker = tokens[0].get("token")
+        marker_key = marker.casefold() if isinstance(marker, str) else ""
+        marker_relation = _CONNECTOR_RELATIONS.get(marker_key)
+        comma_positions = [
+            i for i, item in enumerate(tokens)
+            if isinstance(item, dict)
+            and (item.get("kind") == "punctuation" or item.get("pos_status") == "not_applicable")
+            and item.get("token") == ","
+        ]
+        allowed_fronted_relations = {"sebab", "temporal", "konsesi"}
+        if marker_relation in allowed_fronted_relations and len(comma_positions) == 1:
+            comma = comma_positions[0]
+            prefix_items = tokens[1:comma]
+            main_items = tokens[comma + 1:]
+            prefix_has_only_words = all(
+                isinstance(item, dict)
+                and item.get("kind") != "punctuation"
+                and item.get("pos_status") != "not_applicable"
+                for item in prefix_items
+            )
+            main_has_no_internal_punctuation = all(
+                isinstance(item, dict)
+                and (
+                    (item.get("kind") != "punctuation" and item.get("pos_status") != "not_applicable")
+                    or item.get("token") in _TERMINAL_PUNCTUATION
+                )
+                for item in main_items
+            )
+            if prefix_items and main_items and prefix_has_only_words and main_has_no_internal_punctuation:
+                subordinate = parse_sentence({"tokens": prefix_items})
+                main_clause = parse_sentence({"tokens": main_items})
+                acceptable = {"parsed", "partial"}
+                if subordinate["status"] in acceptable and main_clause["status"] in acceptable:
+                    status = (
+                        "parsed"
+                        if subordinate["status"] == "parsed" and main_clause["status"] == "parsed"
+                        else "partial"
+                    )
+                    return {
+                        "parser_method": "conservative_fronted_subordination_v1",
+                        "status": status,
+                        "pattern": "KLAUSA-SUBORDINATIF",
+                        "roles": {
+                            "subject": [], "predicate": [], "object": [],
+                            "adjuncts": [], "complement": [],
+                        },
+                        "clauses": [
+                            {
+                                "subordinator": marker,
+                                "relation_to_next": marker_relation,
+                                "analysis": subordinate,
+                            },
+                            {
+                                "subordinator": None,
+                                "relation_to_previous": marker_relation,
+                                "analysis": main_clause,
+                            },
+                        ],
+                        "unresolved_tokens": (
+                            subordinate["unresolved_tokens"] + main_clause["unresolved_tokens"]
+                        ),
+                        "notes": [
+                            "Klausa subordinatif awal dikenali melalui penghubung eksplisit dan koma pemisah.",
+                            "Klausa utama dianalisis terpisah; relasi dicatat sebagai metadata penghubung, bukan pemahaman semantik lengkap.",
+                            "Hanya klausa awal dengan verba teridentifikasi yang diterima; klausa eliptis seperti 'Walaupun lelah' belum didukung.",
+                        ],
+                    }
+
     # Koordinasi klausa: pisahkan beberapa segmen hanya jika setiap segmen
     # memiliki verba teridentifikasi. Koordinasi frasa nominal tetap ditangani
     # parser satu klausa karena segmen nominalnya tidak lolos syarat ini.
