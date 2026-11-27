@@ -138,9 +138,9 @@ Contoh konseptual (bukan entri kamus baru): sense intransitif `muncul` dapat mem
 
 **Batas kompatibilitas:** jangan mengubah field `pos`, bentuk entri JSONL, loader, POS tagger, atau parser saat tahap desain ini. Sebelum implementasi, siapkan spesifikasi skema, strategi pembacaan data lama, validasi, contoh positif/negatif, dan tes regresi. Tidak ada lema, POS, definisi, atau metadata kamus yang ditambahkan pada tahap ini.
 
-#### Katalog awal semantic role — proposal untuk ditinjau
+#### Katalog awal semantic role — disepakati sebagai baseline desain
 
-Daftar berikut adalah inventaris awal yang sengaja dibatasi. Peran semantis menjelaskan kontribusi makna suatu argumen terhadap sense predikat; peran ini **tidak ditentukan hanya dari posisi kata atau fungsi sintaksisnya**. Satu peran dapat muncul pada fungsi sintaksis berbeda, dan satu fungsi sintaksis dapat diisi peran semantis berbeda.
+Pengguna telah menyetujui inventaris awal ini sebagai baseline desain pada 27 November 2026. Daftar berikut sengaja dibatasi; persetujuan ini belum berarti seluruh sense kamus sudah dianotasi atau skema sudah diimplementasikan. Peran semantis menjelaskan kontribusi makna suatu argumen terhadap sense predikat; peran ini **tidak ditentukan hanya dari posisi kata atau fungsi sintaksisnya**. Satu peran dapat muncul pada fungsi sintaksis berbeda, dan satu fungsi sintaksis dapat diisi peran semantis berbeda.
 
 | Kode | Makna ringkas | Contoh ilustratif |
 |---|---|---|
@@ -176,6 +176,38 @@ Daftar berikut adalah inventaris awal yang sengaja dibatasi. Peran semantis menj
 - Peran semantis tidak menggantikan anotasi keterangan bebas. Waktu, cara, sebab, frekuensi, dan derajat belum dimasukkan ke katalog argumen inti; penanganannya dapat dirancang sebagai lapisan adjunct terpisah.
 
 Contoh pemetaan di atas hanya ilustrasi desain. Belum ada sense kamus yang dianotasi, belum ada validator, dan belum ada perilaku parser yang berubah. Sebelum diterapkan, katalog harus diuji pada contoh positif dan negatif lintas jenis predikat, termasuk kalimat aktif, pasif, non-agentif, dan sense polisemi.
+
+#### Matriks uji konseptual semantic role
+
+Matriks ini dipakai untuk menguji konsistensi definisi role sebelum membuat validator. Label adalah target analisis konseptual, bukan keluaran parser yang sudah berjalan.
+
+| Kalimat uji | Kandidat argumen | Role yang diuji | Tujuan / jebakan |
+|---|---|---|---|
+| Rina membuka pintu. | Rina | AGENT | Pelaku tindakan aktif. |
+| Pintu dibuka Rina. | pintu | PATIENT | Subjek pasif tidak otomatis AGENT. |
+| Pintu terbuka. | pintu | THEME atau PATIENT sesuai sense/konstruksi | Jangan memutuskan hanya dari posisi SUBJ. |
+| Masalah muncul. | masalah | THEME | Kasus penting untuk valensi intransitif dan kandidat subjek pascaverbal. |
+| Rina menyukai musik. | Rina | EXPERIENCER | Pengalami keadaan psikologis. |
+| Suara keras mengejutkan Rina. | suara keras | STIMULUS | Pemicu pengalaman, bukan AGENT otomatis. |
+| Rina memberi buku kepada Doni. | Doni | RECIPIENT | Penerima benda. |
+| Rina memasak untuk ibunya. | ibunya | BENEFICIARY | Penerima manfaat, bukan otomatis RECIPIENT. |
+| Rina memotong roti dengan pisau. | pisau | INSTRUMENT | Sarana tindakan. |
+| Rina tinggal di Bandung. | Bandung | LOCATION | Lokasi keadaan. |
+| Rina datang dari Bogor. | Bogor | SOURCE | Titik asal perpindahan. |
+| Rina pergi ke pasar. | pasar | GOAL | Titik tujuan perpindahan. |
+| Rina mengubah air menjadi es. | es | RESULT | Hasil perubahan. |
+| Rina mengatakan bahwa ia siap. | bahwa ia siap | CONTENT | Isi proposisi/ucapan. |
+
+**Kasus negatif / pembatas**
+
+- Pada `Rina memecahkan gelas dengan palu`, `gelas` adalah PATIENT dan `palu` INSTRUMENT; jangan memberi keduanya AGENT hanya karena keduanya terkait tindakan.
+- Pada `Doni menerima buku dari Rina`, `Doni` adalah RECIPIENT, sedangkan `Rina` adalah SOURCE dalam sense penerimaan yang sesuai; jangan mengandalkan preposisi saja tanpa memeriksa predikat.
+- Pada `Rina berada di rumah`, `rumah` adalah LOCATION, bukan GOAL hanya karena muncul setelah preposisi `di`.
+- Pada `Rina bekerja besok`, `besok` adalah keterangan waktu, bukan semantic role argumen inti dalam katalog ini.
+- Pada `Rina berlari dengan cepat`, `dengan cepat` menyatakan cara/derajat, bukan INSTRUMENT.
+- Pada `Rina melihat burung`, jangan otomatis menetapkan burung sebagai PATIENT; THEME lebih aman sebagai kandidat awal kecuali definisi sense dan skema anotasi menetapkan pembedaan lain.
+
+Hasil matriks ini mendukung definisi awal, tetapi belum menyelesaikan seluruh batas THEME/PATIENT atau seluruh konstruksi. Khusus `Pintu terbuka`, label harus ditentukan berdasarkan sense verba dan interpretasi konstruksi; jika bukti leksikal belum cukup, anotasi tetap belum diputuskan. Sebelum implementasi, kasus-kasus tersebut perlu diperluas dengan variasi pasif, kausatif, verba persepsi, verba gerak, dan sense polisemi.
 
 #### Usulan bentuk data konkret (proposal, belum menjadi skema aktif)
 
