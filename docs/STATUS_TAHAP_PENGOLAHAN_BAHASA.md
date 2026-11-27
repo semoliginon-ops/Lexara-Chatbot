@@ -113,6 +113,16 @@ Parser dikembangkan bertahap. Nomor versi menunjukkan versi implementasi, **buka
 4. Jika struktur tidak cukup didukung aturan eksplisit, pertahankan status unresolved/partial.
 5. Perubahan v1.9 tidak mengubah kamus atau menambah lema.
 
+### Eksplorasi inversi setelah v1.9 — 27 November 2026
+
+- Pipeline leksikal mengidentifikasi `muncul` dan `timbul` sebagai VERB, serta `masalah` sebagai NOUN.
+- Entri `muncul` dan `timbul` memiliki definisi/catatan pemakaian yang mendukung makna intransitif seperti mulai hadir, terlihat, atau terjadi.
+- Kalimat `Muncul masalah.` dan `Timbul masalah.` berpotensi memperlihatkan pola predikat-verba diikuti subjek nominal (K-P-S), tetapi parser belum memiliki metadata valensi verba atau aturan inversi yang cukup umum.
+- Tes integrasi ditambahkan untuk memastikan nomina setelah verba tersebut **tidak otomatis dipaksa menjadi objek atau subjek**. Hasil yang aman saat ini tetap unresolved sampai ada aturan yang dapat membedakan pola intransitif dari pola verba-transitif + objek.
+- Tes baru tersebut sudah tersimpan di repository, tetapi belum ada hasil CI yang mengonfirmasi kelulusannya. Jangan menyebutnya tervalidasi sebelum workflow benar-benar dijalankan.
+
+Keputusan sementara: jangan menambahkan daftar verba intransitif hard-coded hanya untuk meloloskan dua contoh. Evaluasi dahulu apakah parser memerlukan fitur valensi/kerangka argumen leksikal yang terstruktur, dan bagaimana fitur itu dapat ditambahkan tanpa mengubah makna atau isi kamus secara spekulatif.
+
 ### Kontrak kompatibilitas
 
 - Field lama `roles.predicate` harus tetap tersedia meskipun struktur predikat terperinci ditambahkan.
