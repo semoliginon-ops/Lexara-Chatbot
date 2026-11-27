@@ -640,3 +640,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi Batch-003 dan regression suite menunggu validasi kelompok Batch-001–005 melalui GitHub Actions.
 
 **Batas audit:** hanya empat relasi yang disetujui yang diubah; kandidat lain yang memerlukan pembatasan konteks belum diubah.
+
+### Audit dan koreksi relasi leksikal Batch-004 — 27 November 2026
+
+- [x] Audit semantik baca-saja pada 50 entri Batch-004.
+- [x] Menghapus `puas` sebagai antonim `haus` (K0177).
+- [x] Memisahkan sense nomina dan verba pada `cerita` (K0191), lalu membatasi sinonim `kisah` pada sense nomina.
+- [x] Memisahkan sense nomina dan verba pada `pesan` (K0194), lalu membatasi sinonim `amanat` pada sense nomina.
+- [x] Menghapus `panggilan` dari sinonim `telepon` (K0195) karena tidak menjadi padanan untuk makna perangkat.
+- [ ] Validasi Batch-004 dan regression suite menunggu validasi kelompok Batch-001–005 melalui GitHub Actions.
+
+**Batas audit:** definisi dipisah hanya untuk memperjelas dua makna yang sebelumnya tergabung; perubahan tidak mengubah lemma, POS entri, bentuk turunan, atau relasi lain.
