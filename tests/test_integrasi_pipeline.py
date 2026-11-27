@@ -161,6 +161,32 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["predicate"], ["sakit"])
         self.assertEqual(parsed["roles"]["object"], [])
 
+    def test_verbal_negation_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Aku tidak makan nasi.")
+        expected = {
+            "aku": "PRON",
+            "tidak": "ADV",
+            "makan": "VERB",
+            "nasi": "NOUN",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                item = self.token(analyzed, surface)
+                self.assertEqual(item["pos"], [pos])
+                self.assertEqual(item["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["tidak", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertIn(
+            {"token": "tidak", "kind": "negation"},
+            parsed["predicate_structure"]["modifiers"],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+
     def test_nominal_subject_with_object_uses_real_dictionary_pipeline(self):
         analyzed = self.analyze("Anak makan nasi.")
         for surface, expected_pos in (
