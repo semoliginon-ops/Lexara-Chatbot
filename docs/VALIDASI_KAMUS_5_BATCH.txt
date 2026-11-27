@@ -1,2 +1,2 @@
 56 60
-# uji integrasi pasca-audit: validasi kamus penuh, POS, dan regression suite
+# uji integrasi parser kalimat prototipe dan regression suite penuh
