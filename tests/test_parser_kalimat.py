@@ -867,6 +867,40 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(omitted_subject["roles"]["object"], [])
         self.assertEqual(omitted_subject["unresolved_tokens"], ["buku"])
 
+    def test_parses_postverbal_subject_only_with_unique_single_np_subject_valency(self):
+        verb = token("muncul", ["VERB"])
+        verb["candidates"] = [{
+            "match_type": "lemma",
+            "entry": {
+                "senses": [{
+                    "valency_frames": [{
+                        "arguments": [{
+                            "syntactic_role": "SUBJ",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        }],
+                    }],
+                }],
+            },
+        }]
+        result = parse_sentence(analysis(verb, token("masalah", ["NOUN"])))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "P-S")
+        self.assertEqual(result["roles"]["subject"], ["masalah"])
+        self.assertEqual(result["roles"]["predicate"], ["muncul"])
+        self.assertEqual(result["roles"]["object"], [])
+
+    def test_does_not_infer_postverbal_subject_without_unique_valency(self):
+        verb = token("terdengar", ["VERB"])
+        verb["candidates"] = [{
+            "match_type": "lemma",
+            "entry": {"senses": [{"valency_frames": []}]},
+        }]
+        result = parse_sentence(analysis(verb, token("suara", ["NOUN"])))
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["roles"]["subject"], [])
+        self.assertEqual(result["unresolved_tokens"], ["suara"])
+
     def test_does_not_guess_postverbal_subject_in_kps_inversion(self):
         # "Terjadi kecelakaan" is K-P-S; inversion is not supported yet.
         # The postverbal noun must not be relabeled as an object.
