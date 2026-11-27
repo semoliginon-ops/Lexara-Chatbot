@@ -105,6 +105,14 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             {"preposition": "pada", "phrase": ["malam", "hari"]},
         ])
 
+    def test_coordinated_subject_and_object_use_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Aku dan dia membeli nasi dan roti."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["subject"], ["aku", "dan", "dia"])
+        self.assertEqual(parsed["roles"]["predicate"], ["membeli"])
+        self.assertEqual(parsed["roles"]["object"], ["nasi", "dan", "roti"])
+
     def test_verbal_negation_parses_through_real_dictionary_pipeline(self):
         result = parse_sentence(self.analyze("Kami tidak membeli ikan."))
         self.assertEqual(result["status"], "parsed")
