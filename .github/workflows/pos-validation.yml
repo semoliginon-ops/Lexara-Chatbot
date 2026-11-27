@@ -12,6 +12,8 @@ on:
       - "tests/test_pemetaan_peran_semantis.py"
       - "tools/deteksi_voice.py"
       - "tests/test_deteksi_voice.py"
+      - "tools/analisis_teks.py"
+      - "tests/test_analisis_teks.py"
       - "data/kamus/batch-*.jsonl"
       - ".github/workflows/pos-validation.yml"
   workflow_dispatch:
