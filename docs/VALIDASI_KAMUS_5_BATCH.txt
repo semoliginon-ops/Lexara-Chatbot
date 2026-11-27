@@ -1,2 +1,2 @@
 58 60
-# Tahap 2.5: tambah lema hinggap; validasi kamus 3002 lema
+# Tahap 2.5: tambah lema berteduh; validasi kamus 3003 lema
