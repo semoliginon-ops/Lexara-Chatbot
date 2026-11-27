@@ -715,6 +715,14 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(candidate["base_form"], base)
                 self.assertEqual(candidate["clitic"], clitic)
                 self.assertEqual(candidate["interpretations"], ["possessive", "object"])
+                components = token["clitic_pos_candidates"]
+                self.assertEqual(len(components), 1)
+                self.assertEqual(components[0]["clitic"], clitic)
+                self.assertEqual(components[0]["clitic_pos"], ["PRON"])
+                self.assertEqual(components[0]["function_candidates"], ["possessive", "object"])
+                self.assertEqual(components[0]["function_status"], "unresolved")
+                self.assertEqual(token["pos"], [])
+                self.assertEqual(token["pos_status"], "unknown")
 
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
