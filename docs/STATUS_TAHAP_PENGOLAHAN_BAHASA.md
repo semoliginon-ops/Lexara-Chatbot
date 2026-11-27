@@ -200,7 +200,7 @@ Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Run 
 - Expected POS per token tersimpan dalam JSONL dan divalidasi terhadap tokenizer.
 - Tes integrasi pipeline menggunakan kamus nyata tersedia di `tests/test_integrasi_pipeline.py`.
 - Workflow memvalidasi kamus lengkap, dataset POS, evaluasi development, dan regression suite.
-- GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168): **241/241 tes lulus**.
+- GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45965451485): **242/242 tes lulus**.
 - Pekerjaan yang masih terbuka adalah memperluas variasi dataset untuk bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang. Test split yang sudah ada tetap ditahan.
 
 
