@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #116: 246/246 regression tests lulus.
+> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #116: 249/249 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -359,11 +359,11 @@ Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semolig
 - Tidak ada kesalahan pada prediksi POS kontekstual yang dikeluarkan.
 - Lima abstention yang tersisa adalah lima kemunculan dari tiga nama orang. Nama orang tidak dipaksakan menjadi lema kamus atau label POS pada tahap ini; pengenalannya ditunda ke tahap konteks/memory.
 - Test split 40 kalimat tetap ditahan dan tidak digunakan untuk penyetelan.
-- GitHub Actions [Run #116](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324) berhasil: validasi kamus, dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
+- GitHub Actions [Run #117](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966800061) berhasil: validasi kamus, dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
 
 ### Tahap 2.6 — Analisis struktur kalimat: dilanjutkan
 
-Parser kini berada pada versi **v1.7**. Tahap 2.6 kini berada pada parser **v1.7**: selain pemisahan kepala predikat dan pewatas, parser mengenali `akan` (ADV) serta `bisa` (VERB) sebagai modal jika diikuti verba inti. Pemakaian `bisa` tunggal tetap menjadi predikat.
+Parser kini berada pada versi **v1.7**. Selain memisahkan kepala predikat dan pewatas, parser mengenali `akan` (ADV) serta `bisa` (VERB) sebagai modal jika diikuti verba inti. Pemakaian `bisa` tunggal tetap menjadi predikat. Tes tambahan memastikan modalitas tetap bekerja pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P.
 
 Langkah berikutnya adalah memperluas pola frasa verba secara bertahap dan menguji variasi susunan kalimat sederhana (S-P-O, S-P-K, dan K-S-P) tanpa memaksakan analisis yang belum didukung. Perluasan dilakukan bertahap dengan regression tests dan tetap mempertahankan perilaku konservatif: struktur yang belum didukung dilaporkan, bukan ditebak.
 
