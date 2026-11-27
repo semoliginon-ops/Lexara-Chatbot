@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.7: penempatan keterangan depan dan batas subjek
+# validasi parser v0.8: beberapa keterangan preposisional di depan subjek
