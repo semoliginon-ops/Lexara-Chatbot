@@ -751,3 +751,18 @@ Pengamanan tambahan pada Run #147: jalur pemetaan pasif kini hanya menerima pars
 
 
 Uji konsistensi lintas voice pada Run #148 memakai pasangan `Angin membuka pintu` dan `Pintu dibuka angin`. Keduanya melewati analisis morfologi, parser, penghubung voice, dan mapper. Kedua konstruksi tetap mempertahankan kandidat AGENT dan CAUSER tanpa pemilihan otomatis. Run #148 sukses dengan **328/328 tes regresi**.
+
+
+### Resolver kandidat semantic role berbasis bukti konteks
+
+Dibuat `tools/resolusi_peran_semantis.py` sebagai lapisan terpisah setelah pemetaan valensi. Fungsi `resolve_semantic_role_candidates()` menerima hasil mapper dan daftar bukti konteks terstruktur.
+
+Kontrak bukti:
+- Mengikat bukti ke `frame_id`, `argument_id`, dan `semantic_role` yang benar-benar ada pada kandidat.
+- Bukti memiliki `polarity` (`supports` atau `contradicts`), `strength` (`strong` atau `weak`), dan `source`.
+- Bukti lemah, tidak cocok, atau tidak lengkap tidak dapat memilih frame.
+- Frame dipilih hanya jika tepat satu kandidat mendapat bukti kuat yang mendukung dan semua kandidat alternatif mendapat bukti kuat yang menentang.
+- Dukungan tanpa penyingkiran alternatif, bukti yang saling bertentangan, atau tidak adanya bukti mempertahankan status `ambiguous`.
+- Modul tidak menebak tipe entitas dari ejaan kata. Ia juga tidak menghasilkan bukti konteks sendiri; lapisan pengenal entitas/peristiwa dan interpretasi konteks masih perlu dibangun.
+
+Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti lemah, konflik, bukti tidak cocok, format bukti invalid, hasil yang sejak awal tidak ambigu, dan jaminan input tidak dimutasi. Validasi CI masih menunggu.
