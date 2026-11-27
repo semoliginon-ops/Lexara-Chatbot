@@ -526,9 +526,9 @@ Setelah CAUSER disahkan sebagai role ke-14, dilakukan uji konseptual untuk mence
 
 
 
-#### Rancangan skema valensi per-sense — proposal untuk persetujuan
+#### Rancangan skema valensi per-sense — disetujui dan diverifikasi
 
-Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar implementasi skema valensi per-sense. Validator struktural awal telah dibuat di `tools/validasi_valensi.py` dengan tes regresi di `tests/test_validasi_valensi.py`. Validator belum dikonfirmasi melalui eksekusi tes/CI. Data kamus, loader, dan parser belum diubah.
+Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar implementasi skema valensi per-sense. Validator struktural tersedia di `tools/validasi_valensi.py` dengan 15 tes khusus di `tests/test_validasi_valensi.py`. GitHub Actions Run #129 berhasil: validasi valensi pada 60 batch / 3.014 entri lulus dan seluruh 273 tes regresi lulus. Data kamus, loader, dan parser tidak diubah.
 
 **Lokasi metadata**
 
@@ -632,4 +632,4 @@ Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar imple
 
 Voice aktif/pasif, pelesapan argumen di permukaan, kontrol, raising, urutan kata, konstruksi inversi, argumen implisit, serta penanda klausa yang lebih rinci belum dimasukkan ke skema awal. Semua itu perlu lapisan aturan dan pengujian tersendiri agar metadata valensi tidak menjadi terlalu rumit atau menyatakan hal yang belum didukung bukti.
 
-**Status keputusan dan implementasi:** skema disetujui pengguna. Validator awal dan tes positif/negatif sudah ditambahkan, tetapi hasil eksekusinya belum diverifikasi. Data lama tanpa `valency_frames` tetap diterima. Langkah berikutnya adalah menjalankan tes validator, memperbaiki temuan jika ada, lalu menjalankan uji terhadap batch kamus yang ada untuk memastikan kompatibilitas. Setelah validator stabil, barulah dilakukan anotasi terbatas pada beberapa sense terpilih dan evaluasi integrasi parser. Tidak ada penambahan lema kamus yang diperlukan.
+**Status keputusan dan implementasi:** skema disetujui pengguna. Validator struktural dan 15 tes khusus telah dibuat. Run #129 berhasil menguji seluruh 60 batch / 3.014 entri dan menjalankan 273 tes regresi; semua lulus. Kompatibilitas data lama terbukti pada pemuatan kamus dan pemeriksaan valensi. Validator ini memeriksa struktur, bukan kebenaran linguistik anotasi. Langkah berikutnya adalah menyusun anotasi terbatas pada beberapa sense terpilih, meninjau setiap frame berdasarkan makna sense, lalu menambahkan pengujian integrasi parser. Tidak ada penambahan lema kamus yang diperlukan.
