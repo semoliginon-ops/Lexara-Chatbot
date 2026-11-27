@@ -240,7 +240,35 @@ Bandingkan:
 
 Katalog baseline 13 role belum memiliki label umum yang jelas untuk **CAUSER** (penyebab non-agentif). STIMULUS tidak boleh dipakai sebagai label serba-guna untuk semua sebab: STIMULUS khusus relasi dengan pengalaman/persepsi/emosi, sedangkan CAUSER akan mencakup penyebab suatu peristiwa atau perubahan.
 
-**Keputusan sementara:** jangan mengubah katalog 13 role yang telah disepakati. Catat CAUSER sebagai kandidat ekstensi yang perlu diuji lebih luas sebelum disetujui. Untuk sementara, kasus penyebab non-agentif yang tidak dapat direpresentasikan secara aman tetap belum dianotasi; jangan dipaksa menjadi AGENT atau STIMULUS.
+**Uji lanjutan kandidat CAUSER**
+
+Contoh pembeda tambahan:
+
+| Kalimat | Analisis kandidat | Hasil uji |
+|---|---|---|
+| Rina membuka pintu. | Rina = AGENT | Pelaku tindakan terkendali. |
+| Angin membuka pintu. | angin = CAUSER | Penyebab fisik yang tidak bertindak dengan kehendak. |
+| Rina membuka pintu dengan kunci. | Rina = AGENT; kunci = INSTRUMENT | Sarana tindakan tidak sama dengan penyebab mandiri. |
+| Suara keras mengejutkan Rina. | suara = STIMULUS; Rina = EXPERIENCER | Sebab yang memicu pengalaman psikologis tetap STIMULUS. |
+| Gempa meruntuhkan gedung. | gempa = CAUSER; gedung = PATIENT | Penyebab peristiwa fisik, bukan pelaku berkehendak. |
+| Obat menurunkan demam. | obat = kandidat CAUSER; demam = entitas terdampak | Perlu sense predikat yang tepat; jangan menyamakan semua penyebab dengan INSTRUMENT. |
+| Air mengalir dari gunung. | gunung = SOURCE | Asal gerak bukan penyebab gerak. |
+| Pintu terbuka karena angin. | karena angin = keterangan sebab | Penyebab dapat hadir sebagai adjunct, bukan selalu argumen inti. |
+| Angin membuka pintu. | angin = kandidat CAUSER sebagai argumen | Contoh yang lebih kuat untuk kebutuhan role pada frame predikat. |
+
+**Pembedaan argumen dan adjunct**
+
+Keberadaan frasa sebab seperti karena angin tidak otomatis membuktikan bahwa setiap predikat membutuhkan slot CAUSER. Pada kalimat Pintu terbuka karena angin, frasa sebab dapat dianalisis sebagai adjunct yang menerangkan alasan terjadinya peristiwa. Sebaliknya, pada Angin membuka pintu, angin menempati posisi argumen yang dipilih/dilisensikan oleh konstruksi predikat kausatif tersebut. Parser dan skema valensi harus membedakan keduanya.
+
+**Evaluasi sementara**
+
+1. CAUSER tidak dapat disamakan dengan AGENT: penyebab tidak harus memiliki kehendak atau kontrol.
+2. CAUSER tidak dapat disamakan dengan INSTRUMENT: alat/sarana biasanya digunakan oleh pelaku, sedangkan penyebab fisik dapat menjadi sumber terjadinya peristiwa tanpa pelaku.
+3. CAUSER tidak dapat disamakan dengan STIMULUS: STIMULUS dibatasi pada relasi dengan pengalaman/persepsi/emosi; CAUSER menjangkau peristiwa fisik dan perubahan keadaan.
+4. CAUSER tidak dapat disamakan dengan SOURCE: SOURCE menandai asal perpindahan, bukan sebab terjadinya peristiwa.
+5. CAUSER dapat menjadi argumen inti pada konstruksi tertentu atau muncul sebagai adjunct sebab pada konstruksi lain. Peran semantis dan status argumen/adjunct harus dicatat terpisah.
+
+**Rekomendasi desain (belum menjadi keputusan resmi):** bukti contoh lintas predikat menunjukkan kebutuhan representasi CAUSER sebagai kandidat role tersendiri. Namun katalog resmi tetap 13 role sampai pengguna menyetujui ekstensi. Jika disetujui, definisi kerja yang disarankan: entitas atau peristiwa yang secara non-agentif menyebabkan terjadinya suatu peristiwa atau perubahan keadaan pada entitas lain. Label ini tidak digunakan untuk pelaku berkehendak (AGENT), sarana (INSTRUMENT), pemicu pengalaman psikologis (STIMULUS), atau asal perpindahan (SOURCE).
 
 #### Matriks uji konseptual semantic role
 
