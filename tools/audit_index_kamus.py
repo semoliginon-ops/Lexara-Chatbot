@@ -163,16 +163,22 @@ def audit_index(
 
     actual, index_errors = _read_index(index_path)
     errors.extend(index_errors)
-    missing = expected - actual
+    required_lemmas = Counter(
+        {row: count for row, count in expected.items() if row[3] == "lemma"}
+    )
+    missing_lemmas = required_lemmas - actual
     extra = actual - expected
+    optional_expected = expected - required_lemmas
+    omitted_optional = optional_expected - actual
 
     return {
-        "ok": not errors and not missing and not extra,
+        "ok": not errors and not missing_lemmas and not extra,
         "batch_count": len(batch_paths),
         "entry_count": entry_count,
         "expected_rows": sum(expected.values()),
         "actual_rows": sum(actual.values()),
-        "missing_rows": list(missing.items()),
+        "missing_lemma_rows": list(missing_lemmas.items()),
+        "omitted_optional_rows": list(omitted_optional.items()),
         "extra_rows": list(extra.items()),
         "errors": errors,
     }
@@ -203,13 +209,14 @@ def main() -> int:
     print(f"Lema sumber        : {report['entry_count']}")
     print(f"Baris yang diharap : {report['expected_rows']}")
     print(f"Baris pada index   : {report['actual_rows']}")
-    print(f"Baris hilang       : {len(report['missing_rows'])}")
-    print(f"Baris tambahan     : {len(report['extra_rows'])}")
+    print(f"Lema index hilang  : {len(report['missing_lemma_rows'])}")
+    print(f"Baris opsional tak diindeks: {len(report['omitted_optional_rows'])}")
+    print(f"Baris index tak cocok: {len(report['extra_rows'])}")
     print(f"Kesalahan struktur : {len(report['errors'])}")
 
     for label, differences in (
-        ("HILANG", report["missing_rows"]),
-        ("TAMBAHAN", report["extra_rows"]),
+        ("LEMA HILANG", report["missing_lemma_rows"]),
+        ("BARIS TAK COCOK", report["extra_rows"]),
     ):
         for row, count in differences[:20]:
             print(f"{label}: {row} (jumlah {count})")
