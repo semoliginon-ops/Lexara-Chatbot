@@ -135,6 +135,19 @@ class SemanticRoleMappingTests(unittest.TestCase):
             self.assertEqual(agent["realization"], "omitted")
             self.assertEqual(frame["arguments"][1]["value"], ["Pintu"])
 
+    def test_passive_mapping_rejects_non_svo_parser_method(self):
+        parsed = parse(("Pintu", "NOUN"), ("dibuka", "VERB"))
+        parsed["parser_method"] = "conservative_nonverbal_v1"
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["reason"], "unsupported_passive_parse_method")
+
+    def test_passive_mapping_requires_predicate_head(self):
+        parsed = parse(("Pintu", "NOUN"), ("dibuka", "VERB"))
+        parsed.pop("predicate_structure", None)
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["reason"], "passive_predicate_head_unavailable")
     def test_does_not_guess_when_passive_agent_realizations_conflict(self):
         parsed = parse(
             ("Pintu", "NOUN"), ("dibuka", "VERB"), ("Rina", "NOUN"),
