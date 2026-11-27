@@ -560,6 +560,45 @@ class SimpleClauseParserTests(unittest.TestCase):
                     [{"adverb": adverb, "kind": "temporal"}],
                 )
 
+    def test_parses_explicit_temporal_adverb_after_predicate_or_object(self):
+        intransitive = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("besok", ["ADV"]),
+        ))
+        self.assertEqual(intransitive["status"], "parsed")
+        self.assertEqual(intransitive["pattern"], "S-P-K")
+        self.assertEqual(intransitive["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(
+            intransitive["roles"]["adjuncts"],
+            [{"adverb": "besok", "kind": "temporal"}],
+        )
+
+        transitive = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("makan", ["VERB"]),
+            token("nasi", ["NOUN"]),
+            token("nanti", ["ADV"]),
+        ))
+        self.assertEqual(transitive["status"], "parsed")
+        self.assertEqual(transitive["pattern"], "S-P-O-K")
+        self.assertEqual(transitive["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            transitive["roles"]["adjuncts"],
+            [{"adverb": "nanti", "kind": "temporal"}],
+        )
+
+    def test_does_not_treat_unlisted_postposed_adverb_as_temporal_adjunct(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("mungkin", ["ADV"]),
+        ))
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["unresolved_tokens"], ["mungkin"])
+        self.assertEqual(result["roles"]["adjuncts"], [])
+
     def test_does_not_treat_unlisted_fronted_adverb_as_temporal_adjunct(self):
         result = parse_sentence(analysis(
             token("mungkin", ["ADV"]),
