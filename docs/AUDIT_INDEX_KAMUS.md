@@ -1,70 +1,35 @@
 # Audit Integritas Index Kamus
 
 **Tanggal:** 27 November 2026  
-**Cakupan:** Delapan token shard di `data/kamus/index/`  
-**Status:** Audit struktur internal selesai; pencocokan menyeluruh terhadap 60 batch belum dilakukan.
+**Cakupan:** Delapan shard index dibandingkan dengan 60 batch sumber.
 
-## Ringkasan hasil
+## Prinsip desain
 
-| Shard | Baris |
-|---|---:|
-| `a-c.tsv` | 645 |
-| `d-f.tsv` | 413 |
-| `g-i.tsv` | 329 |
-| `j-l.tsv` | 594 |
-| `m-o.tsv` | 469 |
-| `p-r.tsv` | 458 |
-| `s-u.tsv` | 597 |
-| `v-z.tsv` | 92 |
-| **Total** | **3.597** |
+Index adalah peta ringan, bukan salinan lengkap seluruh metadata dan bentuk turunan dari batch. Karena itu:
+- Semua 3.000 lema wajib tercantum di index.
+- Setiap baris yang tercantum (lema, variasi, atau bentuk turunan) wajib cocok dengan sumber batch: token, ID, lema induk, tipe, dan nama batch.
+- Variasi dan bentuk turunan boleh tidak dicantumkan seluruhnya. Ketidakadaan bentuk opsional di index bukan kesalahan.
+- Baris index yang tidak punya pasangan tepat di batch sumber adalah kesalahan.
+- Audit membaca satu batch pada satu waktu.
 
-Jenis token yang tercatat:
+## Hasil pemeriksaan index internal sebelumnya
 
-- 3.000 lema
-- 586 bentuk turunan
-- 11 variasi
+Index memiliki 3.597 baris: 3.000 lema, 586 bentuk turunan, dan 11 variasi. Pemeriksaan internal sebelumnya menemukan urutan shard benar, tidak ada duplikasi token, dan tidak ada salah penempatan huruf.
 
-## Pemeriksaan yang lulus
+## Koreksi atas audit pertama
 
-- Semua baris memiliki lima kolom: token, ID, lema, jenis, dan nama batch.
-- ID mengikuti format `K####`.
-- Referensi batch mengikuti format `batch-NNN`.
-- Seluruh 60 batch terwakili dalam baris bertipe lema.
-- Urutan token alfabetis pada setiap shard.
-- Penempatan huruf awal sesuai rentang nama shard.
-- Tidak ditemukan token duplikat pada gabungan delapan shard.
-- Jumlah baris dan distribusi jenis token konsisten dengan hasil pembacaan index.
+Eksekusi pertama alat audit menghasilkan 6.065 baris yang diharapkan dan melaporkan 2.468 baris hilang. Angka tersebut menghitung seluruh variasi dan bentuk turunan dari batch seolah-olah semuanya wajib dimasukkan ke index. **Asumsi itu keliru untuk desain index ringan.** Hasil tersebut bukan bukti 2.468 data kamus hilang; itu menunjukkan bentuk opsional yang tidak dimasukkan ke index.
 
-## Perbaikan yang dilakukan
+Audit diperbaiki agar membedakan:
+1. **Lema wajib:** seluruh lema harus ada.
+2. **Baris opsional:** variasi dan bentuk turunan boleh tidak ada di index.
+3. **Baris tak cocok:** setiap baris yang ada di index tetap harus cocok persis dengan sumber batch.
 
-Audit awal menemukan lima token berada di shard yang tidak sesuai:
+## Verifikasi
 
-| Token | Shard sebelumnya | Shard yang benar |
-|---|---|---|
-| `cek` | `v-z.tsv` | `a-c.tsv` |
-| `lulus` | `v-z.tsv` | `j-l.tsv` |
-| `rapat` | `v-z.tsv` | `p-r.tsv` |
-| `rekan` | `v-z.tsv` | `p-r.tsv` |
-| `rencana` | `v-z.tsv` | `p-r.tsv` |
+Jalankan:
 
-Setelah pemindahan, seluruh delapan shard diambil ulang dari GitHub dan diperiksa kembali. Hasil akhir: tidak ada token salah penempatan, semua shard terurut, dan tidak ada token duplikat.
+    python -m unittest discover -s tests -p "test_audit_index_kamus.py" -v
+    python -m tools.audit_index_kamus
 
-## Batas audit
-
-Audit ini hanya memeriksa konsistensi internal index. Index merupakan peta ringan, bukan pengganti batch JSONL.
-
-Pemeriksaan berikut belum dilakukan:
-
-1. Mencocokkan setiap lema index dengan entri sumber pada batch JSONL.
-2. Memastikan setiap `derived_form` dan `variant` benar-benar tercatat pada entri sumber yang sesuai.
-3. Memeriksa metadata lengkap seperti POS, senses, register, dan `derived_forms_pos`.
-
-## Langkah audit berikutnya
-
-Alat streaming `tools/audit_index_kamus.py` dan regression tests awal sudah ditambahkan. Alat ini membaca satu batch sumber pada satu waktu, lalu membandingkan seluruh baris lema, variasi, dan bentuk turunan dengan delapan shard index. Kode dan tes masih menunggu verifikasi lokal sebelum audit penuh dinyatakan selesai.
-
-Jalankan setelah mengambil perubahan terbaru:
-
-    python -m unittest discover -s tests -p "test_audit_index_kamus.py" -v && python -m tools.audit_index_kamus
-
-Jangan memuat atau mengirim seluruh 60 batch sekaligus ke percakapan. Proses lokal membaca batch satu per satu dan menggunakan index ringan sebagai pembanding.
+Audit dinyatakan lulus hanya jika seluruh batch dan 3.000 lema valid, tidak ada baris index tambahan/tidak cocok, dan tidak ada kesalahan struktur. Jumlah bentuk opsional yang tidak diindeks dilaporkan sebagai informasi, bukan kegagalan.
