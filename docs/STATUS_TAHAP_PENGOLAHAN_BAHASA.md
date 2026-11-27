@@ -19,7 +19,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Evaluasi POS development kontekstual: **250/255 token dikenali**, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan pada prediksi yang dikeluarkan.
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
-- Parser kalimat tersedia pada **v1.5**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
+- Parser kalimat tersedia pada **v1.6**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
 - GitHub Actions **Run #114 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **242/242 regression tests lulus**.
 
 **Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser v1.5 dengan memperluas frasa verba/modal, memisahkan inti predikat dari pewatas, dan menguji variasi susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
@@ -172,9 +172,9 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - 40 kalimat test tetap tersegel dan tidak digunakan untuk penyetelan.
 - **Status:** Tahap 2.5 selesai berdasarkan evaluasi development dan keputusan pengguna.
 
-### 5.6 Analisis struktur kalimat — baseline v1.5; Tahap 2.6 dilanjutkan
+### 5.6 Analisis struktur kalimat — baseline v1.6; Tahap 2.6 dilanjutkan
 
-Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup:
+Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup fitur sintaksis sebelumnya; v1.6 menambahkan rincian struktur predikat verbal. Fitur baseline v1.5 meliputi:
 - Pola klausa sederhana S-P, S-P-O, S-P-K dan rentang frasa nominal sederhana.
 - Negasi verbal terbatas serta penanganan modal.
 - Predikat nonverbal dan predikat penghubung tertentu.
@@ -192,7 +192,7 @@ Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu.
 - Menambah dukungan secara konservatif untuk pelengkap dan pola lain setelah bukti uji tersedia.
 - Mempertahankan status ambigu/unsupported bila struktur belum cukup didukung.
 
-Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Run #114 memvalidasi pemisahan kepala predikat dan pewatas; regression suite terbaru lulus **242/242**.
+Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Parser v1.6 menambahkan `predicate_structure`; Run #114 memvalidasi perubahan ini dan regression suite lulus **242/242**.
 
 ### 5.7 Dataset uji dan regression suite — integrasi awal tersedia
 
