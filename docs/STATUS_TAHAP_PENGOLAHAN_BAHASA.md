@@ -707,3 +707,17 @@ Tes integrasi di `tests/test_analisis_teks.py` memastikan:
 GitHub Actions **Run #137** sukses: validasi kamus 60 batch / 3.014 entri dan **307/307 tes regresi lulus**. [Lihat Run #137](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46007550098).
 
 **Batas integrasi:** `voice_analysis` adalah bukti morfologis per token, bukan voice kalimat. Modul belum memilih kepala predikat; kata berimbuhan yang bukan predikat juga dapat memiliki bukti morfologisnya sendiri. Parser dan semantic-role mapper belum mengonsumsi field ini. Integrasi berikutnya perlu mengaitkan bukti pada kepala predikat yang sudah dikenali, lalu menahan hasil bila ada lebih dari satu kandidat atau struktur belum jelas.
+
+
+### Penghubung bukti voice token dengan kepala predikat
+
+Modul `tools/hubungkan_voice_predikat.py` menghubungkan hasil `voice_analysis` per token dari `analyze_text()` dengan `predicate_structure.head` dari parser. Adapter ini sengaja tidak mengubah parser v1.9 maupun bentuk keluaran lama.
+
+Batas implementasi awal:
+- Hanya menerima hasil parser `conservative_svo_v4` dengan status `parsed`.
+- Kepala predikat harus ditemukan tepat satu kali sebagai token kata pada hasil analisis teks.
+- Bukti voice token harus berstatus `identified` dan berisi label `active` atau `passive`.
+- Hasil parser `partial`, struktur koordinasi/subordinasi, kepala predikat yang berulang/tidak ditemukan, dan bukti voice yang belum pasti menghasilkan `unresolved`.
+- Adapter belum mengubah atau memetakan semantic role. Integrasi pemetaan pasif merupakan pekerjaan berikutnya setelah penghubung ini tervalidasi.
+
+Sembilan tes khusus mencakup voice aktif/pasif, token kepala berulang, parser partial, struktur klausa majemuk, bukti voice unresolved, kepala tidak ditemukan, serta validasi input.
