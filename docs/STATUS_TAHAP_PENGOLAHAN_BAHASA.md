@@ -991,3 +991,8 @@ Run #101 berhasil. Kamus memuat 60 batch dan 3.001 lema; tes integrasi mengonfir
 ## Hasil penambahan `hinggap` — GitHub Actions Run #102
 
 Pemeriksaan dilakukan melalui indeks kamus sesuai alur kerja: `hinggap` belum tercatat. Lema K3003 ditambahkan sebagai VERB pada batch-060 dan dicatat pada indeks `g-i.tsv`. Tes integrasi development `Burung hinggap pada pagar.` memastikan POS VERB berasal dari kamus. Run #102 berhasil: 60 batch, 3.002 lema, dan **234/234 tes regresi lulus**. Evaluasi development menunjukkan abstention VERB tersisa satu, yaitu `berteduh`. Test set tetap tidak digunakan untuk penyetelan. [GitHub Actions Run #102](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45958936060).
+
+
+## Hasil penambahan `berteduh` — GitHub Actions Run #103
+
+Indeks kamus tidak mencatat `berteduh` maupun lema dasar `teduh`. Karena itu `berteduh` ditambahkan sebagai lema VERB mandiri K3004 pada batch-060 dan indeks `a-c.tsv`. Tes integrasi development memastikan kalimat `Ketika hujan turun, mereka berteduh.` dikenali sebagai VERB dari kamus. Run #103 berhasil: 60 batch, 3.003 lema, **235/235 tes regresi lulus**. Evaluasi development kini menunjukkan **0 abstention VERB**; abstention ADJ tersisa 2 (`baru`), ADV 3 (`tetap` dua kali dan `dulu`), NOUN 19. Test set tetap tidak digunakan untuk penyetelan. [GitHub Actions Run #103](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45959093568).
