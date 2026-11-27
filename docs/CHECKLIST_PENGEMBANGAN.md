@@ -193,7 +193,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menguji negasi verbal dengan tes unit dan pipeline kamus penuh.
 - [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
 - [x] Menetapkan parser v1.7 dengan `predicate_structure` dan modalitas `akan` (ADV) serta `bisa` (VERB) untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
-- [x] Menambahkan regression tests untuk perluasan parser tersebut; versi terakhir yang tercatat lulus pada Run #99 (232/232 tes) sebelum rangkaian penyelesaian POS.
+- [x] Menambahkan regression tests untuk perluasan parser hingga v1.5; tes baru v1.6/v1.7 menjaga struktur kepala predikat dan modalitas.
 - [x] Melanjutkan Tahap 2.6 dari baseline v1.6; parser kini v1.7 dan fitur lama tetap dipertahankan.
 - [x] Mengenali `akan` (ADV) dan `bisa` (VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
 - [ ] Memperluas frasa verba ke penanda modal/aspek lain hanya setelah POS dan konteksnya cukup kuat.
