@@ -986,3 +986,10 @@ Tes unit memverifikasi `lihatku` sebagai predikat dengan objek klitik, dan tes p
 GitHub Actions **Run #195 selesai dengan conclusion success**; **373/373 tes regresi lulus**. [Lihat Run #195](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46029121093). Tidak ada lema baru ditambahkan dan tidak ada batch kamus yang diubah.
 
 **Batas:** fungsi objek terikat hanya dipilih untuk host dengan POS tunggal `VERB` yang eksplisit. Host turunan tanpa anotasi POS, host ambigu, konstruksi lain, dan variasi informal/regional tetap unresolved sampai ada bukti/aturan yang memadai. `roles.object` tidak diisi ulang dengan token predikat yang sama; relasi objek terikat direpresentasikan terpisah melalui `clitic_analysis`.
+### Menjaga ambiguitas fungsi nominal `-nya` — Run #198 (27 November 2026)
+
+Penanganan klitik nominal diperhalus agar tidak menganggap setiap `-nya` sebagai posesif. Pada host NOUN, `-ku` dan `-mu` dapat ditandai posesif secara terbatas. Sementara itu, `-nya` pada nomina dapat menyatakan kepemilikan atau fungsi definit/anforis; tanpa konteks yang cukup, parser menyimpan `function: null`, kandidat `possessive` dan `definite_anaphoric`, serta status `unresolved`, sambil tetap melaporkan peran frasa nominalnya dalam klausa.
+
+Tes unit dan integrasi pipeline kamus/POS nyata menggunakan `Dia lihat bukunya.` memastikan `bukunya` tetap teridentifikasi sebagai objek, tetapi fungsi `-nya` tidak diputuskan secara paksa. GitHub Actions **Run #198 sukses; 375/375 tes regresi lulus**. [Lihat Run #198](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46029341871).
+
+**Batas:** kandidat fungsi yang diuji saat ini dibatasi pada posesif vs definit/anforis untuk `-nya` nominal. Pemakaian `-nya` lain, misalnya nominalisasi atau fungsi wacana pada konstruksi tertentu, belum dimodelkan. Tidak ada perubahan kamus atau penambahan lema.
