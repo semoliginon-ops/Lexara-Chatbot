@@ -760,4 +760,4 @@ Tidak ada perubahan kode atau data kamus pada audit ini. Evaluasi tetap hanya pa
 
 Parser kini memiliki aturan terbatas untuk verba kehendak `mau`, `ingin`, dan `hendak`. Jika salah satu token tersebut berlabel VERB dan diikuti verba leksikal, parser memilih verba leksikal sebagai inti predikat dan menggabungkan verba kehendak ke rentang predikat. Jika berdiri sendiri, token tersebut tetap dapat menjadi predikat.
 
-Tiga regression tests baru mencakup `aku mau pergi`, `dia ingin makan nasi`, dan penggunaan tunggal `aku mau`. Aturan ini tidak otomatis diperluas ke `bisa`, `dapat`, atau kata lain yang ambigu. Validasi GitHub Actions untuk perubahan ini menunggu.
+Tiga regression tests baru mencakup `aku mau pergi`, `dia ingin makan nasi`, dan penggunaan tunggal `aku mau`. Aturan ini tidak otomatis diperluas ke `bisa`, `dapat`, atau kata lain yang ambigu. GitHub Actions [Run #78](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45936018029) sukses: **190/190 regression tests lulus**, validasi lima batch berhasil, seluruh 3.000 lema tervalidasi secara struktural, validasi dataset POS dan evaluasi development juga berhasil.
