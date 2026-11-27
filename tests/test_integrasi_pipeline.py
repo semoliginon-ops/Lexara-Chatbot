@@ -105,6 +105,19 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             {"preposition": "pada", "phrase": ["malam", "hari"]},
         ])
 
+    def test_two_coordinated_clauses_use_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Aku bekerja dan dia makan."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-KOORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        first = parsed["clauses"][0]["analysis"]
+        second = parsed["clauses"][1]["analysis"]
+        self.assertEqual(first["roles"]["subject"], ["aku"])
+        self.assertEqual(first["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(parsed["clauses"][1]["connector"], "dan")
+        self.assertEqual(second["roles"]["subject"], ["dia"])
+        self.assertEqual(second["roles"]["predicate"], ["makan"])
+
     def test_coordinated_subject_and_object_use_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Aku dan dia membeli nasi dan roti."))
         self.assertEqual(parsed["status"], "parsed")
