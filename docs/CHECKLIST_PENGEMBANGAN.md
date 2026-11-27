@@ -27,6 +27,15 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menjaga data inti kamus selama penyempurnaan metadata.
 - [x] Mendokumentasikan skema dan aturan kamus.
 
+### Rancangan relasi leksikal per-sense
+
+- [x] Membuat dokumen rancangan kompatibilitas relasi per-sense di `docs/RELASI_LEKSIKAL_PER_SENSE.md`; belum mengubah data kamus atau kode.
+- [ ] Meninjau dan menetapkan rancangan field relasi opsional pada setiap sense.
+- [ ] Menambahkan validator struktur relasi per-sense dan regression tests.
+- [ ] Menguji kompatibilitas dengan seluruh bentuk data lama tanpa migrasi batch.
+- [ ] Menentukan kebutuhan pembaca relasi per-sense pada komponen mesin makna sebelum implementasi runtime.
+- [ ] Menerapkan anotasi per-sense hanya pada entri yang sudah diaudit dan memiliki bukti linguistik.
+
 ### Audit kualitas isi kamus — bertahap per batch
 
 - [ ] Audit isi `batch-001.jsonl` sampai `batch-060.jsonl` satu batch pada satu waktu; catat temuan sebelum berpindah batch.
