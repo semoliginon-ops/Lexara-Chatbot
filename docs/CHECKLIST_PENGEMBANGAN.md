@@ -972,3 +972,28 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Memperluas subordinasi bertingkat atau klausa eliptis akhir hanya jika analisis dapat dibatasi secara aman.
 
 - [x] GitHub Actions Run #99: **232/232 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih berhasil.
+
+
+## Prioritas aktif — kembali ke Tahap 2.5 (27 November 2026)
+
+Parser kalimat v1.5 dan seluruh tes yang sudah dibuat tetap dipertahankan, tetapi **pengembangan parser dihentikan sementara** sampai evaluasi POS development dinilai memadai. Jangan memulai fitur parser baru pada tahap ini.
+
+### Urutan pekerjaan POS
+
+- [ ] Audit token VERB abstain satu per satu: `bekerja` (3 kemunculan), `ditunda`, `letakkan`, `menjelaskan`, `hinggap`, dan `berteduh` (8 kemunculan total).
+- [ ] Untuk setiap kasus, identifikasi apakah kebutuhan sebenarnya adalah lema baru, aturan morfologi, anotasi `derived_forms_pos`, atau perbaikan alur POS. Jangan menambah data/aturan sebelum penyebabnya terbukti.
+- [ ] Setelah satu kasus diperiksa dan diperbaiki bila perlu, jalankan tes terkait sebelum melanjutkan ke kasus berikutnya.
+- [ ] Setelah VERB, audit abstention ADJ (2), ADV (3), dan NOUN (19) secara bertahap.
+- [ ] Perluas cakupan lema NOUN yang belum terindeks.
+- [ ] Audit pola morfologi bentuk `ber-`, pasif `di-`, dan imperatif.
+- [ ] Evaluasi ulang POS menggunakan development split dan regresi penuh; dokumentasikan hasil dan batasannya.
+- [ ] Pertahankan test set sebagai data evaluasi akhir; jangan membukanya untuk penyetelan.
+
+### Tahap berikutnya — belum dimulai
+
+- [ ] Tahap 2.6 — analisis struktur kalimat dasar.
+- [ ] Tahap 2.7 — dataset dan pengujian terpadu.
+- [ ] Tahap 3 — hubungan makna dan konteks.
+- [ ] Tahap 5 — integrasi Android.
+
+**Catatan urutan:** parser v1.5 adalah pekerjaan terdahulu yang tetap tersimpan, bukan alasan untuk melompati prasyarat POS. Tidak ada audit ulang batch kamus secara rutin; fokus saat ini adalah diagnosis abstention dan kesiapan POS.
