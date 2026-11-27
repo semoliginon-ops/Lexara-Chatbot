@@ -94,6 +94,47 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertIn("mungkin", result["unresolved_tokens"])
 
+    def test_parses_fronted_causal_subordinate_clause(self):
+        result = parse_sentence(analysis(
+            token("karena", ["CONJ"]),
+            token("hujan", ["NOUN"]),
+            token("turun", ["VERB"]),
+            token(",", punctuation=True),
+            token("aku", ["PRON"]),
+            token("berteduh", ["VERB"]),
+            token(".", punctuation=True),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(result["clauses"][0]["subordinator"], "karena")
+        self.assertEqual(result["clauses"][0]["relation_to_next"], "sebab")
+        self.assertEqual(result["clauses"][0]["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(result["clauses"][1]["analysis"]["roles"]["subject"], ["aku"])
+
+    def test_parses_fronted_temporal_subordinate_clause(self):
+        result = parse_sentence(analysis(
+            token("ketika", ["CONJ"]),
+            token("malam", ["NOUN"]),
+            token("tiba", ["VERB"]),
+            token(",", punctuation=True),
+            token("mereka", ["PRON"]),
+            token("pulang", ["VERB"]),
+            token(".", punctuation=True),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["clauses"][0]["relation_to_next"], "temporal")
+        self.assertEqual(result["clauses"][1]["analysis"]["roles"]["predicate"], ["pulang"])
+
+    def test_does_not_force_fronted_elliptical_subordinate_clause(self):
+        result = parse_sentence(analysis(
+            token("walaupun", ["CONJ"]),
+            token("lelah", ["ADJ"]),
+            token(",", punctuation=True),
+            token("dia", ["PRON"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertNotEqual(result.get("pattern"), "KLAUSA-SUBORDINATIF")
+
     def test_parses_two_clauses_joined_by_conjunction(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
