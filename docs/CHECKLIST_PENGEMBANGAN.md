@@ -842,5 +842,7 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Mengenali pola predikat nominal sederhana dengan penanda numeralia, misalnya `Ayah seorang guru`.
 - [x] Menahan pola nomina-adjektiva yang ambigu, misalnya `rumah besar`, sebagai unresolved.
 - [x] Menambahkan empat regression tests untuk predikat adjektival, nominal, dan abstention.
-- [ ] Memverifikasi konstruksi nonverbal melalui pipeline kamus/POS nyata dan memperluas cakupan hanya setelah bukti POS memadai.
-- [x] GitHub Actions Run #80: **194/194 tes lulus**; validasi lima batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+- [x] Memverifikasi predikat adjektival `Dia sakit` dan `Rumah itu besar` melalui kamus, POS tagger, disambiguasi konteks, dan parser end-to-end.
+- [x] Menambahkan dua tes integrasi pipeline nyata; total suite menjadi **196 tes**.
+- [x] GitHub Actions Run #81: **196/196 tes lulus**; validasi lima batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+- [ ] Mengembangkan dan menguji konstruksi pelengkap predikat setelah desain peran sintaksisnya ditetapkan.
