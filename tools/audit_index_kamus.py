@@ -95,7 +95,7 @@ def audit_index(
     data_dir: str | Path,
     index_dir: str | Path,
     expected_batches: int = 60,
-    expected_entries: int = 3000,
+    expected_entries: int = 3013,
 ) -> dict:
     """Compare all index rows with batch source files, loading one batch at a time."""
     data_path = Path(data_dir)
@@ -191,7 +191,7 @@ def main() -> int:
     parser.add_argument("--data-dir", type=Path, default=Path("data/kamus"))
     parser.add_argument("--index-dir", type=Path, default=Path("data/kamus/index"))
     parser.add_argument("--expected-batches", type=int, default=60)
-    parser.add_argument("--expected-entries", type=int, default=3000)
+    parser.add_argument("--expected-entries", type=int, default=3013)
     args = parser.parse_args()
 
     try:
