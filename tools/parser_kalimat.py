@@ -89,7 +89,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     verb_positions = [i for i, item in enumerate(words) if item["pos"] == "VERB"]
     if not verb_positions:
         return {
-            "parser_method": "conservative_svo_v1",
+            "parser_method": "conservative_svo_v2",
             "status": "unresolved",
             "pattern": None,
             "roles": {
@@ -106,7 +106,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     ]
     if not subject_heads:
         return {
-            "parser_method": "conservative_svo_v1",
+            "parser_method": "conservative_svo_v2",
             "status": "unresolved",
             "pattern": None,
             "roles": {
@@ -182,7 +182,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     if adjuncts:
         pattern_parts.append("K")
     return {
-        "parser_method": "conservative_svo_v1",
+        "parser_method": "conservative_svo_v2",
         "status": "partial" if unresolved else "parsed",
         "pattern": "-".join(pattern_parts),
         "roles": roles,
