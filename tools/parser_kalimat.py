@@ -221,7 +221,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             i for i, item in enumerate(tokens)
             if isinstance(item, dict) and item.get("token") == ","
         ]
-        allowed_fronted_relations = {"sebab", "temporal", "konsesi"}
+        allowed_fronted_relations = {"sebab", "temporal", "konsesi", "tujuan"}
         if marker_relation in allowed_fronted_relations and len(comma_positions) == 1:
             comma = comma_positions[0]
             prefix_items = tokens[1:comma]
@@ -293,7 +293,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         i for i in conjunction_positions
         if _CONNECTOR_RELATIONS.get(
             str(tokens[i].get("token", "")).casefold()
-        ) in {"sebab", "temporal", "konsesi"}
+        ) in {"sebab", "temporal", "konsesi", "tujuan"}
     ]
     if len(subordinating_positions) == 1:
         marker_position = subordinating_positions[0]
