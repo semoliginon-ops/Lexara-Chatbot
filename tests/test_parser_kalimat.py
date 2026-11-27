@@ -422,6 +422,61 @@ class SimpleClauseParserTests(unittest.TestCase):
         })
         self.assertEqual(result["roles"]["object"], ["ikan"])
 
+    def test_groups_akan_as_modal_adverb_before_lexical_verb(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("akan", ["ADV"]),
+            token("makan", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["akan", "makan"])
+        self.assertEqual(result["predicate_structure"], {
+            "head": "makan",
+            "modifiers": [{"token": "akan", "kind": "modal"}],
+        })
+
+    def test_groups_bisa_as_modal_verb_before_lexical_verb(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("bisa", ["VERB"]),
+            token("pergi", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["bisa", "pergi"])
+        self.assertEqual(result["predicate_structure"], {
+            "head": "pergi",
+            "modifiers": [{"token": "bisa", "kind": "modal"}],
+        })
+
+    def test_does_not_treat_standalone_bisa_as_modal_modifier(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("bisa", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["bisa"])
+        self.assertEqual(result["predicate_structure"], {
+            "head": "bisa",
+            "modifiers": [],
+        })
+
+    def test_groups_negation_mau_and_lexical_verb(self):
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("tidak", ["ADV"]),
+            token("mau", ["VERB"]),
+            token("datang", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["tidak", "mau", "datang"])
+        self.assertEqual(result["predicate_structure"], {
+            "head": "datang",
+            "modifiers": [
+                {"token": "tidak", "kind": "negation"},
+                {"token": "mau", "kind": "modal"},
+            ],
+        })
+
     def test_modal_verb_standing_alone_remains_predicate(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
