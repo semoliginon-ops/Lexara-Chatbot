@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
 - Parser kalimat tersedia pada **v1.8**; modalitas `akan` dan `bisa`, serta empat ADV temporal awal (`besok`, `nanti`, `sekarang`, `tadi`) sudah diuji secara konservatif. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
-- GitHub Actions **Run #118 SUCCESS**: validasi kamus 60 batch/3.014 lema, validasi dataset POS, evaluasi development, dan **250/250 regression tests lulus**.
+- GitHub Actions **Run #119 SUCCESS**: validasi kamus 60 batch/3.014 lema, validasi dataset POS, evaluasi development, dan **253/253 regression tests lulus**.
 
 **Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.8**. Aturan parser untuk modalitas `akan` (POS ADV) dan `bisa` (POS VERB) sudah diuji jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Lema `akan` kini ditambahkan sebagai ADV K3015 atas persetujuan pengguna; indeks `a-c.tsv` dan target kamus diperbarui menjadi 3.014. Tes integrasi memastikan POS berasal dari kamus serta parser tidak memaksakan `akan` sebagai predikat tunggal. Validasi CI Run #118 telah selesai dengan status SUCCESS. Berikutnya uji pola inversi yang memiliki penanda sintaksis dan POS yang cukup jelas; jangan menebak fungsi ADV lain sebagai keterangan waktu. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -92,7 +92,7 @@ Fondasi yang tersedia:
 - Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
 - Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terpadu terakhir adalah GitHub Actions [Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132):
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #119](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45968374139):
 - Kamus: 60 batch / **3.013 lema** tervalidasi.
 - Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
 - POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
@@ -1037,3 +1037,6 @@ Lema `akan` ditambahkan ke `data/kamus/batch-060.jsonl` sebagai ADV dengan defin
 ### Parser v1.8 — keterangan waktu ADV di awal klausa
 
 Empat kata temporal yang sudah ada di kamus (`besok`, `nanti`, `sekarang`, `tadi`) dapat dicatat sebagai keterangan jika muncul sebelum subjek. Parser menyimpan bentuk `{adverb, kind: temporal}`; daftar ini eksplisit dan terbatas. ADV lain seperti `mungkin` tidak dianggap keterangan temporal secara otomatis dan tetap masuk `unresolved_tokens`. Tes unit menguji empat kata temporal dan abstention, sedangkan tes integrasi `Besok aku akan makan nasi.` melewati kamus, POS, modalitas, objek, dan parser. Tidak ada penambahan lema atau perubahan POS.
+
+
+**Hasil validasi parser v1.8 — Run #119:** SUCCESS. Loader memuat 60 batch / 3.014 lema; validasi relasi batch terpilih, dataset POS, dan evaluasi development lulus; regression suite **253/253 lulus**. Empat ADV temporal awal diuji pada tes unit; `mungkin` tetap unresolved; tes integrasi `Besok aku akan makan nasi.` memastikan keterangan waktu, modalitas, subjek, predikat, dan objek terhubung melalui pipeline kamus penuh. Tidak ada perubahan kamus pada fitur v1.8.
