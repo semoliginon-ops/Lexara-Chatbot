@@ -202,25 +202,32 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     # yang diterima; pola lain tetap dibiarkan unresolved.
     subject_start = min(subject_positions) if subject_positions else verb_pos
     prefix_cursor = 0
+    fronted_adjuncts: list[dict[str, Any]] = []
+    fronted_positions: set[int] = set()
+    prefix_is_complete = True
     while prefix_cursor < subject_start:
         if words[prefix_cursor]["pos"] != "PREP":
-            prefix_cursor += 1
-            continue
+            prefix_is_complete = False
+            break
+        marker = prefix_cursor
+        scan = marker + 1
         phrase_positions: list[int] = []
-        scan = prefix_cursor + 1
         while scan < subject_start and words[scan]["pos"] in _OBJECT_PHRASE_POS:
             phrase_positions.append(scan)
             scan += 1
-        if phrase_positions and scan == subject_start:
-            adjuncts.append({
-                "preposition": words[prefix_cursor]["token"],
-                "phrase": [words[i]["token"] for i in phrase_positions],
-            })
-            assigned.add(prefix_cursor)
-            assigned.update(phrase_positions)
-            prefix_cursor = scan
-        else:
-            prefix_cursor += 1
+        if not phrase_positions:
+            prefix_is_complete = False
+            break
+        fronted_adjuncts.append({
+            "preposition": words[marker]["token"],
+            "phrase": [words[i]["token"] for i in phrase_positions],
+        })
+        fronted_positions.add(marker)
+        fronted_positions.update(phrase_positions)
+        prefix_cursor = scan
+    if prefix_is_complete and prefix_cursor == subject_start:
+        adjuncts.extend(fronted_adjuncts)
+        assigned.update(fronted_positions)
 
     cursor = verb_pos + 1
 
