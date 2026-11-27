@@ -29,7 +29,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3015)
+        self.assertEqual(len(self.entries), 3019)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
@@ -633,7 +633,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
         self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
     def test_personal_pronouns_use_real_dictionary_pipeline_as_subject_and_object(self):
-        pronouns = ("aku", "saya", "kamu", "engkau", "dia", "mereka", "kita", "kami", "kalian")
+        pronouns = ("aku", "saya", "kamu", "engkau", "dia", "mereka", "kita", "kami", "kalian", "anda", "beliau", "ia", "kau")
 
         for pronoun in pronouns:
             with self.subTest(role="subject", pronoun=pronoun):
