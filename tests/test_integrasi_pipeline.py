@@ -1830,6 +1830,39 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                     self.assertEqual(clitic_result["function"], "possessive")
                     self.assertEqual(clitic_result["function_status"], "selected_by_host_pos")
 
+
+    def test_five_clitics_in_milik_phrases_and_prepositional_phrases(self):
+        cases = (
+            ("Buku milikku jatuh.", "milikku", "ku", "subject"),
+            ("Dia membawa tas milikmu.", "milikmu", "mu", "object"),
+            ("Dia pergi ke rumahku.", "rumahku", "ku", "adjunct"),
+            ("Saya pulang ke rumahmu.", "rumahmu", "mu", "adjunct"),
+            ("Mereka datang ke rumahnya.", "rumahnya", "nya", "adjunct"),
+        )
+
+        for sentence, surface, clitic, expected_role in cases:
+            with self.subTest(sentence=sentence, clitic=clitic, role=expected_role):
+                analyzed = self.analyze(sentence)
+                bound = self.token(analyzed, surface)
+                self.assertEqual(bound["status"], "unknown")
+                self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
+                component = bound["clitic_pos_candidates"][0]
+                self.assertEqual(component["clitic"], clitic)
+                self.assertEqual(component["host_pos"], ["NOUN"])
+
+                parsed = parse_sentence(analyzed)
+                self.assertIn(parsed["status"], {"parsed", "partial"}, msg=repr(parsed))
+                self.assertEqual(len(parsed["clitic_analysis"]), 1)
+                result = parsed["clitic_analysis"][0]
+                self.assertEqual(result["surface"], surface)
+                self.assertEqual(result["clitic"], clitic)
+                self.assertEqual(result["nominal_phrase_role"], expected_role)
+                if clitic == "nya":
+                    self.assertIsNone(result["function"])
+                    self.assertEqual(result["function_status"], "unresolved")
+                else:
+                    self.assertEqual(result["function"], "possessive")
+
 if __name__ == "__main__":
     unittest.main()
 
