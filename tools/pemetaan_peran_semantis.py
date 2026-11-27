@@ -92,7 +92,6 @@ def _map_passive_roles(
         return result
 
     oleh_phrases = []
-    other_adjuncts = []
     for adjunct in adjuncts:
         if not isinstance(adjunct, dict):
             continue
@@ -100,8 +99,6 @@ def _map_passive_roles(
             phrase = adjunct.get("phrase")
             if isinstance(phrase, list) and phrase and all(isinstance(v, str) for v in phrase):
                 oleh_phrases.append(phrase)
-        else:
-            other_adjuncts.append(adjunct)
     if oleh_phrases and surface_object:
         result = _unresolved(
             "passive_agent_realization_conflict",
@@ -240,6 +237,21 @@ def map_semantic_roles(
         return result
 
     if voice == "passive":
+        if parse_result.get("parser_method") != "conservative_svo_v4":
+            result = _unresolved(
+                "unsupported_passive_parse_method",
+                "Pemetaan pasif hanya menerima hasil klausa sederhana conservative_svo_v4.",
+            )
+            result["sense_id"] = sense_id
+            return result
+        structure = parse_result.get("predicate_structure")
+        if not isinstance(structure, dict) or not isinstance(structure.get("head"), str):
+            result = _unresolved(
+                "passive_predicate_head_unavailable",
+                "Kepala predikat tidak tersedia untuk mengikat bukti voice pasif.",
+            )
+            result["sense_id"] = sense_id
+            return result
         return _map_passive_roles(parse_result, sense, frames)
 
     candidates: list[dict[str, Any]] = []
