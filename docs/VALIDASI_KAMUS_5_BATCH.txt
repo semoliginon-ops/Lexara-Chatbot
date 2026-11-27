@@ -8,3 +8,4 @@
 # Koreksi tes integrasi: token sapaan pak diuji dalam bentuk lowercase sesuai tokenisasi; supplement tetap case-insensitive.
 # Tahap 2.6: parser memisahkan kepala predikat dari pewatas modal, negasi, dan adverbial; regression test ditambahkan.
 # Tahap 2.6: cakupan modalitas frasa verba diperluas untuk akan (ADV) dan bisa (VERB), dengan uji regresi penggunaan tunggal.
+# Uji tambahan modalitas: empat regression tests untuk akan, bisa, bisa sebagai predikat tunggal, dan tidak mau + verba inti.
