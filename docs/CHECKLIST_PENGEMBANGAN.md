@@ -1069,4 +1069,5 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Tambahkan `dulu` sebagai ADV dengan definisi temporal dan urutan tindakan sesuai persetujuan.
 - [x] Tambahkan baris lema pada INDEX `d-f.tsv`.
 - [x] Tes integrasi untuk `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`.
-- [ ] Validasi GitHub Actions untuk 3.005 lema dan seluruh regresi.
+- [x] GitHub Actions Run #105: validasi 60 batch/3.005 lema dan regresi 237/237 berhasil.
+- [x] Evaluasi development: ADV tersisa dua abstention, keduanya `tetap`; `dulu` berhasil dikenali. NOUN masih 19 abstention.
