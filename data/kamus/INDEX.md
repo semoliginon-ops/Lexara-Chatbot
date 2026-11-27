@@ -87,4 +87,3 @@ Index ini hanya untuk navigasi dan pemeriksaan duplikasi. Definisi, POS, registe
 ## Aturan singkat
 
 Sebelum menyetujui batch baru, cocokkan lemma, varian, dan bentuk turunannya dengan token index. Jangan menambah token yang sudah terdaftar untuk lemma lain. Detail aturan tetap mengacu ke dokumentasi kamus.
-- [Batch 041](./batch-041.jsonl)
