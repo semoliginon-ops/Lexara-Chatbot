@@ -1645,6 +1645,44 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
         self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
         self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
+
+    def test_supaya_purpose_subordinate_fronted_and_postposed_use_real_pipeline(self):
+        cases = (
+            ("Aku belajar supaya dia lulus.", "postposed"),
+            ("Supaya dia lulus, aku belajar.", "fronted"),
+        )
+        for sentence, position in cases:
+            with self.subTest(sentence=sentence, position=position):
+                analyzed = self.analyze(sentence)
+                marker = self.token(analyzed, "supaya")
+                self.assertEqual(marker["status"], "matched")
+                self.assertEqual(marker["pos"], ["CONJ"])
+                self.assertEqual(marker["pos_source"], "dictionary")
+                self.assertEqual(marker["pos_status"], "identified")
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+                self.assertEqual(len(parsed["clauses"]), 2)
+
+                if position == "postposed":
+                    main_clause, subordinate = parsed["clauses"]
+                    self.assertIsNone(main_clause["subordinator"])
+                    self.assertEqual(subordinate["subordinator"], "supaya")
+                    self.assertEqual(subordinate["relation_to_previous"], "tujuan")
+                else:
+                    subordinate, main_clause = parsed["clauses"]
+                    self.assertEqual(subordinate["subordinator"], "supaya")
+                    self.assertEqual(subordinate["relation_to_next"], "tujuan")
+                    self.assertIsNone(main_clause["subordinator"])
+
+                self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+                self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["dia"])
+                self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["lulus"])
+                self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+                self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+                self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["belajar"])
+
     def test_six_reflexive_and_demonstrative_lemmas_use_real_dictionary_pipeline(self):
         cases = {
             "begini": ("begini", ["ADV"]),
