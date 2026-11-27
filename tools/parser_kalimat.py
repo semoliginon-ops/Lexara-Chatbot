@@ -83,6 +83,56 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(tokens, list):
         raise ValueError("analysis harus memiliki array tokens")
 
+    # Tahap koordinasi klausa: hanya satu konjungsi eksplisit yang memisahkan
+    # dua segmen yang masing-masing memiliki verba teridentifikasi.
+    conjunctions = [
+        i for i, item in enumerate(tokens)
+        if isinstance(item, dict) and _effective_pos(item) == "CONJ"
+    ]
+    if len(conjunctions) == 1:
+        boundary = conjunctions[0]
+        left_tokens = tokens[:boundary]
+        right_tokens = tokens[boundary + 1:]
+        left_has_verb = any(
+            isinstance(item, dict) and _effective_pos(item) == "VERB"
+            for item in left_tokens
+        )
+        right_has_verb = any(
+            isinstance(item, dict) and _effective_pos(item) == "VERB"
+            for item in right_tokens
+        )
+        if left_tokens and right_tokens and left_has_verb and right_has_verb:
+            left_result = parse_sentence({"tokens": left_tokens})
+            right_result = parse_sentence({"tokens": right_tokens})
+            acceptable = {"parsed", "partial"}
+            if left_result["status"] in acceptable and right_result["status"] in acceptable:
+                status = (
+                    "parsed"
+                    if left_result["status"] == right_result["status"] == "parsed"
+                    else "partial"
+                )
+                return {
+                    "parser_method": "conservative_coordination_v1",
+                    "status": status,
+                    "pattern": "KLAUSA-KOORDINATIF",
+                    "roles": {
+                        "subject": [], "predicate": [], "object": [],
+                        "adjuncts": [], "complement": [],
+                    },
+                    "clauses": [
+                        {"connector": None, "analysis": left_result},
+                        {"connector": tokens[boundary]["token"], "analysis": right_result},
+                    ],
+                    "unresolved_tokens": (
+                        left_result["unresolved_tokens"]
+                        + right_result["unresolved_tokens"]
+                    ),
+                    "notes": [
+                        "Dua klausa dianalisis terpisah berdasarkan satu konjungsi yang teridentifikasi.",
+                        "Analisis ini belum mencakup koordinasi bertingkat, elipsis, atau relasi semantik antarklausa.",
+                    ],
+                }
+
     words: list[dict[str, Any]] = []
     for index, item in enumerate(tokens):
         if not isinstance(item, dict):
