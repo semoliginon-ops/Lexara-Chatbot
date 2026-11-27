@@ -1010,3 +1010,13 @@ Daftar delapan kemunculan pada catatan historis di atas sudah tidak seluruhnya m
 - [ ] `berteduh`.
 
 Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hanya `ditunda`, `hinggap`, `berteduh` sebagai abstention. Tiga kemunculan `bekerja` berada pada `pos_0005`, `pos_0025`, dan `pos_0052` (semuanya development). Jangan mengaudit ulang atau mengubah kasus yang sudah selesai tanpa bukti masalah baru.
+
+
+### POS Tahap 2.5 — kasus `ditunda` selesai
+
+- [x] Verifikasi seluruh 60 batch sumber: lema `tunda` sebelumnya belum tersedia.
+- [x] Tambahkan lema `tunda` (VERB) sebagai K3002 pada batch-060.
+- [x] Catat `ditunda` sebagai `derived_forms` dengan anotasi eksplisit `derived_forms_pos: {"ditunda":["VERB"]}`; aturan pasif `di-` umum tidak diubah.
+- [x] Perbarui indeks lema dan target validasi kamus menjadi 3.001 entri.
+- [x] Tambahkan tes integrasi `Karena hujan deras, pertandingan ditunda.` untuk memastikan POS VERB berasal dari kamus.
+- [ ] Menunggu hasil GitHub Actions untuk validasi dan regresi penuh.
