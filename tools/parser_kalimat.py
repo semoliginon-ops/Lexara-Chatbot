@@ -190,6 +190,32 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     complement_positions: list[int] = []
     adjuncts: list[dict[str, Any]] = []
     assigned = subject_set | set(predicate_positions)
+
+    # Keterangan berpreposisi di awal kalimat dapat mendahului subjek.
+    # Hanya rentang PREP + frasa nominal yang selesai tepat sebelum subjek
+    # yang diterima; pola lain tetap dibiarkan unresolved.
+    subject_start = min(subject_positions) if subject_positions else verb_pos
+    prefix_cursor = 0
+    while prefix_cursor < subject_start:
+        if words[prefix_cursor]["pos"] != "PREP":
+            prefix_cursor += 1
+            continue
+        phrase_positions: list[int] = []
+        scan = prefix_cursor + 1
+        while scan < subject_start and words[scan]["pos"] in _OBJECT_PHRASE_POS:
+            phrase_positions.append(scan)
+            scan += 1
+        if phrase_positions and scan == subject_start:
+            adjuncts.append({
+                "preposition": words[prefix_cursor]["token"],
+                "phrase": [words[i]["token"] for i in phrase_positions],
+            })
+            assigned.add(prefix_cursor)
+            assigned.update(phrase_positions)
+            prefix_cursor = scan
+        else:
+            prefix_cursor += 1
+
     cursor = verb_pos + 1
 
     # Verba penghubung tertentu memperkenalkan pelengkap, bukan objek.
