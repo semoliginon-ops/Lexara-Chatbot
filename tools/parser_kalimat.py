@@ -19,6 +19,21 @@ _NEGATION_MARKERS = {"tidak", "belum"}
 _MODAL_VERBS = {"mau", "ingin", "hendak"}
 _LINKING_PREDICATES = {"menjadi", "tampak"}
 
+# Klasifikasi eksplisit fungsi penghubung; tidak menyimpulkan relasi untuk kata lain.
+_CONNECTOR_RELATIONS = {
+    "dan": "penambahan",
+    "atau": "alternatif",
+    "tetapi": "pertentangan",
+    "namun": "pertentangan",
+    "karena": "sebab",
+    "sebab": "sebab",
+    "walaupun": "konsesi",
+    "meskipun": "konsesi",
+    "lalu": "urutan",
+    "kemudian": "urutan",
+    "ketika": "temporal",
+}
+
 
 def _effective_pos(item: dict[str, Any]) -> str | None:
     """Use contextual POS only when explicitly selected; otherwise a singleton."""
@@ -122,7 +137,16 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                         None if index == 0
                         else tokens[conjunctions[index - 1]]["token"]
                     )
-                    clauses.append({"connector": connector, "analysis": result})
+                    clauses.append({
+                        "connector": connector,
+                        "relation_to_previous": (
+                            None if connector is None
+                            else _CONNECTOR_RELATIONS.get(
+                                connector.casefold(), "belum_diklasifikasikan"
+                            )
+                        ),
+                        "analysis": result,
+                    })
                 return {
                     "parser_method": "conservative_coordination_v2",
                     "status": status,
@@ -140,7 +164,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                     "notes": [
                         "Setiap segmen klausa dianalisis terpisah setelah dipisahkan oleh konjungsi eksplisit.",
                         "Semua segmen harus memiliki verba teridentifikasi; koordinasi frasa nominal tetap diproses sebagai satu klausa.",
-                        "Koordinasi bertingkat, elipsis, dan relasi semantik antarklausa belum dianalisis.",
+                        "Relasi penghubung hanya diberi label untuk daftar konjungsi eksplisit; arah sebab-akibat, cakupan klausa, dan relasi semantik yang lebih rinci belum dianalisis.",
                     ],
                 }
 
