@@ -847,3 +847,18 @@ Urutan keterangan dipertahankan. Parser hanya menerima awalan jika seluruh token
 Satu tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #88](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944536094) sukses: **206/206 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas:** keterangan depan yang dipisahkan tanda baca, klausa bertingkat, dan susunan campuran di luar pola PREP + frasa nominal sederhana belum didukung.
+
+
+## Parser kalimat v0.9 — koordinasi frasa nominal sederhana — 27 November 2026
+
+Parser dapat mengenali koordinasi sederhana pada subjek dan objek jika konjungsi diidentifikasi secara eksplisit sebagai CONJ.
+
+Contoh:
+- `Aku dan dia bekerja.` → subjek `aku dan dia`, predikat `bekerja`.
+- `Aku membeli nasi dan roti.` → subjek `aku`, predikat `membeli`, objek `nasi dan roti`.
+
+Perluasan hanya menggabungkan rentang nominal pada sisi kiri/kanan konjungsi. Parser tidak menyimpulkan unsur yang dihilangkan dan tidak menganggap setiap kata `dan` otomatis sebagai penghubung klausa.
+
+Dua tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #89](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944727020) sukses: **209/209 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas:** koordinasi klausa penuh, elipsis, dan konstruksi bertingkat belum didukung. Tahap berikutnya dapat memodelkan koordinasi klausa secara terpisah agar tidak merusak analisis satu klausa yang sudah stabil.
