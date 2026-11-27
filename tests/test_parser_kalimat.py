@@ -890,6 +890,81 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["roles"]["predicate"], ["muncul"])
         self.assertEqual(result["roles"]["object"], [])
 
+    def test_postverbal_subject_abstains_on_ambiguous_or_non_np_valency(self):
+        argument = {
+            "syntactic_role": "SUBJ",
+            "required": True,
+            "realizations": [{"type": "NP"}],
+        }
+        frame = {"arguments": [argument]}
+        sense = {"valency_frames": [frame]}
+        candidate = {
+            "match_type": "lemma",
+            "entry": {"senses": [sense]},
+        }
+        cases = (
+            ("multiple lexical candidates", [candidate, candidate]),
+            ("multiple senses", [{
+                "match_type": "lemma",
+                "entry": {"senses": [sense, sense]},
+            }]),
+            ("multiple frames", [{
+                "match_type": "lemma",
+                "entry": {"senses": [{"valency_frames": [frame, frame]}]},
+            }]),
+            ("additional argument", [{
+                "match_type": "lemma",
+                "entry": {"senses": [{
+                    "valency_frames": [{
+                        "arguments": [argument, {
+                            "syntactic_role": "OBJ",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        }],
+                    }],
+                }]},
+            }]),
+            ("optional subject", [{
+                "match_type": "lemma",
+                "entry": {"senses": [{
+                    "valency_frames": [{
+                        "arguments": [{
+                            "syntactic_role": "SUBJ",
+                            "required": False,
+                            "realizations": [{"type": "NP"}],
+                        }],
+                    }],
+                }]},
+            }]),
+            ("non-NP subject realization", [{
+                "match_type": "lemma",
+                "entry": {"senses": [{
+                    "valency_frames": [{
+                        "arguments": [{
+                            "syntactic_role": "SUBJ",
+                            "required": True,
+                            "realizations": [{"type": "PP"}],
+                        }],
+                    }],
+                }]},
+            }]),
+            ("derived-form match", [{
+                "match_type": "derived_form",
+                "entry": {"senses": [sense]},
+            }]),
+        )
+        for label, candidates in cases:
+            with self.subTest(case=label):
+                verb = token("muncul", ["VERB"])
+                verb["candidates"] = candidates
+                result = parse_sentence(analysis(
+                    verb, token("masalah", ["NOUN"])
+                ))
+                self.assertEqual(result["status"], "unresolved")
+                self.assertEqual(result["roles"]["subject"], [])
+                self.assertEqual(result["roles"]["object"], [])
+                self.assertEqual(result["unresolved_tokens"], ["masalah"])
+
     def test_does_not_infer_postverbal_subject_without_unique_valency(self):
         verb = token("terdengar", ["VERB"])
         verb["candidates"] = [{
@@ -902,8 +977,7 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["unresolved_tokens"], ["suara"])
 
     def test_does_not_guess_postverbal_subject_in_kps_inversion(self):
-        # "Terjadi kecelakaan" is K-P-S; inversion is not supported yet.
-        # The postverbal noun must not be relabeled as an object.
+        # Without a unique, annotated single-NP subject frame, the noun remains unresolved.
         result = parse_sentence(analysis(
             token("terjadi", ["VERB"]),
             token("kecelakaan", ["NOUN"]),
