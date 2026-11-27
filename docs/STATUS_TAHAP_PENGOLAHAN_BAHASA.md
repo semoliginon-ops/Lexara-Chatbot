@@ -832,3 +832,11 @@ Ditambahkan tes integrasi untuk kalimat `Aku tidak akan makan nasi.` Indeks kamu
 GitHub Actions **Run #161** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **348/348 tes regresi lulus**. [Lihat Run #161](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46016960249).
 
 **Batas:** pengujian ini memvalidasi satu susunan terkontrol untuk gabungan negasi dan modalitas. Ini belum membuktikan semua kombinasi modal, negasi, atau urutan pewatas predikat telah didukung.
+
+### Uji modalitas verbal melalui pipeline nyata — Run #162 (27 November 2026)
+
+Ditambahkan tes integrasi untuk dua kalimat: `Aku mau makan nasi.` dan `Aku ingin makan nasi.` Indeks kamus memastikan lema `aku`, `mau`, `ingin`, `makan`, dan `nasi` tersedia; tidak ada perubahan pada batch atau indeks kamus. Pipeline memvalidasi modal `mau` dan `ingin` sebagai VERB, lalu parser menggabungkan modal dengan verba leksikal ke rentang predikat, mempertahankan `makan` sebagai kepala predikat, dan `nasi` sebagai objek.
+
+GitHub Actions **Run #162** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **349/349 tes regresi lulus**. [Lihat Run #162](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46017378600).
+
+**Batas:** pengujian mencakup dua modal verbal yang sudah didaftarkan eksplisit pada parser; ini tidak berarti seluruh kata yang dapat menyatakan keinginan, kemampuan, atau keharusan otomatis dikenali sebagai modal.
