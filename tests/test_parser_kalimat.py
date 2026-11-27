@@ -79,6 +79,33 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "unresolved")
         self.assertEqual(result["clitic_analysis"], [])
 
+    def test_keeps_nominal_nya_ambiguous_between_possession_and_definiteness(self):
+        bound_noun = token("bukunya", status="unknown")
+        bound_noun["clitic_pos_candidates"] = [{
+            "base_form": "buku",
+            "clitic": "nya",
+            "host_pos": ["NOUN"],
+            "clitic_pos": ["PRON"],
+            "function_candidates": ["possessive", "object"],
+            "function_status": "unresolved",
+        }]
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("lihat", ["VERB"]),
+            bound_noun,
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["object"], ["bukunya"])
+        self.assertEqual(result["clitic_analysis"], [{
+            "surface": "bukunya",
+            "base_form": "buku",
+            "clitic": "nya",
+            "function": None,
+            "function_candidates": ["possessive", "definite_anaphoric"],
+            "function_status": "unresolved",
+            "nominal_phrase_role": "object",
+        }])
+
     def test_parses_verbal_host_clitic_as_bound_object(self):
         bound_verb = token("lihatku", status="unknown")
         bound_verb["clitic_pos_candidates"] = [{
