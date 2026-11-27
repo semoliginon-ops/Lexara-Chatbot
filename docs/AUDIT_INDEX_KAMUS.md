@@ -61,4 +61,10 @@ Pemeriksaan berikut belum dilakukan:
 
 ## Langkah audit berikutnya
 
-Lakukan pencocokan index terhadap batch sumber secara bertahap, dengan kelompok batch kecil. Jangan memuat atau mengirim seluruh 60 batch sekaligus. Catat setiap kelompok yang sudah selesai dan lanjutkan sampai semua batch terperiksa.
+Alat streaming `tools/audit_index_kamus.py` dan regression tests awal sudah ditambahkan. Alat ini membaca satu batch sumber pada satu waktu, lalu membandingkan seluruh baris lema, variasi, dan bentuk turunan dengan delapan shard index. Kode dan tes masih menunggu verifikasi lokal sebelum audit penuh dinyatakan selesai.
+
+Jalankan setelah mengambil perubahan terbaru:
+
+    python -m unittest discover -s tests -p "test_audit_index_kamus.py" -v && python -m tools.audit_index_kamus
+
+Jangan memuat atau mengirim seluruh 60 batch sekaligus ke percakapan. Proses lokal membaca batch satu per satu dan menggunakan index ringan sebagai pembanding.
