@@ -1060,3 +1060,13 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Tes dua konteks atributif: `buku baru`.
 - [x] Validasi penuh: 60 batch, 3.004 lema; regresi 236/236 lulus.
 - [x] Evaluasi development: tidak ada abstention ADJ secara kontekstual; tidak ada kesalahan prediksi.
+
+
+### POS Tahap 2.5 — lema `dulu` disetujui dan ditambahkan (K3006)
+
+- [x] Persetujuan pengguna diperoleh sebelum perubahan kamus.
+- [x] Pemeriksaan INDEX: `dulu` belum tercatat; `duluan` adalah lema berbeda.
+- [x] Tambahkan `dulu` sebagai ADV dengan definisi temporal dan urutan tindakan sesuai persetujuan.
+- [x] Tambahkan baris lema pada INDEX `d-f.tsv`.
+- [x] Tes integrasi untuk `Gue mau makan dulu.` dan `Dulu dia tinggal di sini.`.
+- [ ] Validasi GitHub Actions untuk 3.005 lema dan seluruh regresi.
