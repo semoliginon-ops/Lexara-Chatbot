@@ -25,8 +25,8 @@ class DictionaryIndexAuditTests(unittest.TestCase):
             "pos": ["VERB"],
             "senses": [{"sense_id": "K0001-S1", "definition": "Memasukkan makanan."}],
             "register": ["neutral"],
-            "variants": ["maké"],
-            "derived_forms": ["memakan"],
+            "variants": [],
+            "derived_forms": ["makanan", "memakan"],
         }
         (self.data_dir / "batch-001.jsonl").write_text(
             json.dumps(entry, ensure_ascii=False) + "\n",
@@ -56,8 +56,8 @@ class DictionaryIndexAuditTests(unittest.TestCase):
     def valid_rows(self):
         return {
             "m-o": [
-                ("maké", "K0001", "makan", "variant", "batch-001"),
                 ("makan", "K0001", "makan", "lemma", "batch-001"),
+                ("makanan", "K0001", "makan", "derived_form", "batch-001"),
                 ("memakan", "K0001", "makan", "derived_form", "batch-001"),
             ]
         }
