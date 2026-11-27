@@ -898,3 +898,11 @@ Ditambahkan tes integrasi pipeline nyata untuk `Walaupun hujan turun, aku pergi.
 GitHub Actions **Run #171 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil. **356/356 tes regresi lulus.** POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #171](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46020096831).
 
 **Batas:** pengujian mencakup satu pola konsesif eksplisit di awal kalimat dengan koma dan dua klausa S-P. Ini tidak membuktikan seluruh variasi konsesi atau elipsis telah ditangani.
+
+### Variasi elipsis konsesif dengan penanda `meskipun` — Run #172 (27 November 2026)
+
+Ditambahkan tes pipeline kamus/POS/parser untuk `Meskipun lelah, aku pergi.` Indeks kamus mengonfirmasi semua lema tersedia (`meskipun`, `lelah`, `aku`, `pergi`); tidak ada perubahan batch atau indeks kamus. POS masing-masing diverifikasi berasal dari kamus. Parser mengenali klausa subordinatif konsesif awal dengan pola `P-ELIPTIS` dan klausa utama `aku pergi` dengan pola S-P. Subjek klausa eliptis tetap kosong dan hasil keseluruhan `partial`; parser tidak menyalin atau menebak subjek dari klausa utama.
+
+GitHub Actions **Run #172 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **357/357 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Test split tidak dibuka. [Lihat Run #172](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46020456944).
+
+**Batas:** tes ini memverifikasi satu bentuk elipsis adjektival konsesif dengan penanda `meskipun`; tidak menggeneralisasi semua elipsis atau semua konjungsi.
