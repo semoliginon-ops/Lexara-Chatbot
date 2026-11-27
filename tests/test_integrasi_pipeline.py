@@ -604,6 +604,34 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(subordinate["roles"]["predicate"], ["lelah"])
         self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["dia"])
 
+    def test_fronted_elliptical_concessive_with_meskipun_uses_real_pipeline(self):
+        result = self.analyze("Meskipun lelah, aku pergi.")
+        expected = {
+            "meskipun": "CONJ",
+            "lelah": "ADJ",
+            "aku": "PRON",
+            "pergi": "VERB",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(result, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "partial")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        subordinate, main_clause = parsed["clauses"]
+        self.assertEqual(subordinate["subordinator"], "meskipun")
+        self.assertEqual(subordinate["relation_to_next"], "konsesi")
+        self.assertEqual(subordinate["analysis"]["pattern"], "P-ELIPTIS")
+        self.assertEqual(subordinate["analysis"]["roles"]["subject"], [])
+        self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["lelah"])
+        self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
