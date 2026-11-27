@@ -139,7 +139,9 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Membuat pemetaan semantic role konservatif untuk voice aktif berbasis frame valensi; frame alternatif dipertahankan sebagai ambiguous dan argumen opsional dapat dihilangkan. Run #132 menjadi baseline awal (289 tes).
 - [x] Memperketat validasi kecocokan frame: argumen inti yang dikenali parser tidak boleh diabaikan, dan OBL tanpa batas preposisi eksplisit tidak dipetakan otomatis. Run #134: 291/291 tes regresi lulus.
 - [x] Menambahkan tes batas CAUSER/INSTRUMENT untuk menjaga ambiguitas `Palu memecahkan kaca` dan tidak memaksakan `dengan palu` sebagai argumen inti. Run #135: 293/293 tes regresi lulus.
-- [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice tersedia.
+- [x] Membuat detektor voice morfologis konservatif berbasis kandidat lema VERB yang tervalidasi: di- sebagai kandidat pasif; meN-/memper- sebagai kandidat aktif; ter-/ber- dan bentuk tanpa bukti eksplisit tetap unresolved. Run #136: 304/304 tes regresi lulus.
+- [ ] Menghubungkan detektor voice ke pipeline analisis token/predikat tanpa mengubah hasil parser lama secara tidak kompatibel.
+- [ ] Mengembangkan pemetaan semantic role untuk konstruksi pasif setelah deteksi voice terintegrasi dan diuji.
 - [x] Menambahkan tes konservatif CAUSER versus INSTRUMENT: `Palu memecahkan kaca` mempertahankan dua frame alternatif, sedangkan `dengan palu` tidak otomatis dipromosikan menjadi argumen inti. Run #135: 293/293 tes regresi lulus.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
