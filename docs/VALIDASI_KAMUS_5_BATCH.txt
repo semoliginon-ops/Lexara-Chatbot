@@ -1,2 +1,2 @@
-41 45
-# batch 041-045: audit selesai; validasi struktural kelompok
+46 50
+# batch 046-050: audit relasi selesai; jalankan validasi struktural kelompok
