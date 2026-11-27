@@ -639,7 +639,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     # Cari kepala nominal pertama sebelum batas klausa/frasa preposisional,
     # lalu ambil rentang frasa nominal sederhana di sekitarnya.
     object_head = None
-    while cursor < len(words) and words[cursor]["pos"] not in {"PREP", "CONJ", "VERB"}:
+    while cursor < len(words) and words[cursor]["pos"] not in {"PREP", "CONJ", "VERB", "ADV"}:
         if words[cursor]["pos"] in _NOMINAL_POS:
             object_head = cursor
             break
