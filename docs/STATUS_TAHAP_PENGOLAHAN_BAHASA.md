@@ -771,3 +771,15 @@ Parser sengaja menahan rangkaian seperti `rumah besar` karena dapat dibaca sebag
 
 
 GitHub Actions [Run #80](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45936363554) memverifikasi parser v0.5: **194/194 regression tests lulus**. Validasi kelompok lima batch, validasi struktur kamus 3.000 lema, validasi dataset POS, dan evaluasi development juga berhasil. Empat tes baru untuk predikat nonverbal termasuk di dalam regression suite. Keterbatasan yang masih terbuka: POS konstruksi nonverbal belum diuji end-to-end dengan kalimat nyata melalui pipeline kamus.
+
+
+## Integrasi predikat nonverbal melalui pipeline kamus — 27 November 2026
+
+Dua konstruksi predikat adjektival kini diuji melalui alur penuh kamus 3.000 lema → analisis leksikal/morfologi → POS tagger → disambiguasi konteks → parser:
+
+- `Dia sakit.`: `dia` dikenali sebagai PRON dan `sakit` sebagai ADJ; parser menghasilkan pola S-P.
+- `Rumah itu besar.`: `rumah` dikenali sebagai NOUN, `itu` sebagai PRON dari supplement POS yang eksplisit, dan `besar` sebagai ADJ; parser menghasilkan pola S-P dengan subjek `rumah itu`.
+
+Dua tes integrasi end-to-end ditambahkan. GitHub Actions [Run #81](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45936903373) sukses: **196/196 regression tests lulus**. Validasi Batch-056–060, struktur seluruh kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga sukses.
+
+**Batas yang sudah diverifikasi:** integrasi nonverbal adjektival pada dua pola tersebut. Predikat nominal `Ayah seorang guru` masih diuji pada tingkat parser dengan POS terkontrol, belum melalui pipeline kamus penuh. Belum ada dukungan yang diklaim untuk pelengkap predikat seperti `menjadi dokter` atau `tampak bahagia`; itu menjadi tahap desain dan implementasi berikutnya.
