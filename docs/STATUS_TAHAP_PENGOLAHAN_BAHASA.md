@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
 - Parser kalimat tersedia pada **v1.7**; modalitas `akan` dan `bisa` serta urutan modal + objek/keterangan sudah diuji. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
-- GitHub Actions **Run #117 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
+- GitHub Actions **Run #118 SUCCESS**: validasi kamus 60 batch/3.014 lema, validasi dataset POS, evaluasi development, dan **250/250 regression tests lulus**.
 
 **Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.7**. Aturan parser untuk modalitas `akan` (POS ADV) dan `bisa` (POS VERB) sudah diuji jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Lema `akan` kini ditambahkan sebagai ADV K3015 atas persetujuan pengguna; indeks `a-c.tsv` dan target kamus diperbarui menjadi 3.014. Tes integrasi memastikan POS berasal dari kamus serta parser tidak memaksakan `akan` sebagai predikat tunggal. Validasi CI setelah perubahan ini masih menunggu. Berikutnya perluas uji susunan kalimat sederhana, termasuk pola keterangan awal dan pola inversi yang benar-benar didukung. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -92,7 +92,7 @@ Fondasi yang tersedia:
 - Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
 - Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terpadu terakhir adalah GitHub Actions [Run #117](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966800061):
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132):
 - Kamus: 60 batch / **3.013 lema** tervalidasi.
 - Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
 - POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
@@ -1029,3 +1029,6 @@ Run #108 berhasil: 60 batch, **3.006 lema**, dataset POS 100 kalimat/543 token, 
 ### Penambahan lema `akan` — K3015
 
 Lema `akan` ditambahkan ke `data/kamus/batch-060.jsonl` sebagai ADV dengan definisi yang disetujui pengguna: “Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.” Indeks `a-c.tsv` mencatat token tersebut sebagai lema K3015. Validator kamus dan tes integrasi diperbarui ke target 3.014 lema. POS supplement yang sudah menetapkan `akan` sebagai ADV tetap dipertahankan; tidak dibuat aturan duplikat. Tes integrasi mencakup `Aku akan pergi besok.`, `Dia akan makan nasi.`, serta `Aku akan.` yang harus tetap unresolved alih-alih memaksa ADV menjadi predikat. Hasil workflow setelah perubahan ini akan dicatat setelah CI selesai.
+
+
+**Hasil validasi penambahan `akan` — Run #118:** workflow selesai dengan status SUCCESS. Loader memuat 60 batch dan **3.014 entri**; validasi relasi batch terpilih, validasi dataset POS, evaluasi development, dan seluruh **250/250 regression tests** lulus. Tes integrasi menguji POS ADV dari sumber kamus, penggunaan `akan` sebelum verba inti pada kalimat dengan objek, dan sikap hati-hati pada `Aku akan.` yang tetap unresolved. [GitHub Actions Run #118](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45967596132).
