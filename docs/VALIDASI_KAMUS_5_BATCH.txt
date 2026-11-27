@@ -1,2 +1,2 @@
 58 60
-# validasi parser v1.3: klausa subordinatif awal dengan koma pemisah
+# validasi ulang parser v1.3 setelah perbaikan deteksi koma subordinatif
