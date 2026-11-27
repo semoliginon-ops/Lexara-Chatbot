@@ -129,7 +129,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Mempertahankan abstention ketika fungsi sintaksis belum cukup jelas.
 - [x] Memvalidasi parser v1.9 melalui GitHub Actions Run #126: **255/255 regression tests lulus**.
 - [ ] Melanjutkan perluasan pola kalimat secara bertahap berdasarkan contoh yang terkontrol.
-- [~] Menyepakati katalog awal 13 semantic role; menguji THEME/PATIENT serta AGENT/EXPERIENCER/STIMULUS pada variasi aktif-pasif. Ditemukan kandidat ekstensi CAUSER untuk penyebab non-agentif; belum disetujui dan perlu pengujian lintas sense. Belum ada anotasi atau perubahan data kamus.
+- [x] Menetapkan katalog desain 14 semantic role setelah persetujuan pengguna, termasuk CAUSER untuk penyebab non-agentif. Pembedaan AGENT/CAUSER serta argumen inti/keterangan sebab terdokumentasi; anotasi sense, skema aktif, validator, dan implementasi parser masih belum dikerjakan.
 - [ ] Menentukan dan menguji pola inversi, termasuk K-P-S, hanya setelah aturan dan bukti linguistiknya jelas.
 - [ ] Menguji lebih banyak konstruksi melalui pipeline kamus dan POS nyata.
 - [ ] Menetapkan kriteria penutupan Tahap 2.6 berdasarkan cakupan pola, batasan yang terdokumentasi, dan hasil regresi.
