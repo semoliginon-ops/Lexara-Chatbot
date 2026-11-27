@@ -224,3 +224,5 @@ Embedding **bukan tahap wajib dan bukan prasyarat** untuk menyelesaikan tahapan 
 ## Titik lanjut resmi
 
 Pekerjaan dilanjutkan dari **Tahap 2.6 — parser v1.9**. Tahap 2.5 tetap ditutup. Setelah cakupan parser cukup stabil, lanjutkan ke Tahap 2.7 untuk evaluasi pipeline terpadu; setelah gerbang Tahap 2 terpenuhi, barulah masuk ke Tahap 3.
+
+- [ ] Validasi CI untuk pemetaan semantic role pasif konservatif: subjek permukaan → argumen OBJ valensi; agen pasif melalui objek pascaverbal atau frasa `oleh`; agen yang tidak disebutkan boleh omitted. Dukungan masih dibatasi pada frame valensi SUBJ+OBJ dan klausa sederhana.
