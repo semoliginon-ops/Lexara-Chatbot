@@ -125,10 +125,27 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["clauses"][0]["relation_to_next"], "temporal")
         self.assertEqual(result["clauses"][1]["analysis"]["roles"]["predicate"], ["pulang"])
 
-    def test_does_not_force_fronted_elliptical_subordinate_clause(self):
+    def test_parses_fronted_elliptical_concessive_adjective_as_partial(self):
         result = parse_sentence(analysis(
             token("walaupun", ["CONJ"]),
             token("lelah", ["ADJ"]),
+            token(",", punctuation=True),
+            token("dia", ["PRON"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["pattern"], "KLAUSA-SUBORDINATIF")
+        subordinate = result["clauses"][0]["analysis"]
+        self.assertEqual(subordinate["pattern"], "P-ELIPTIS")
+        self.assertEqual(subordinate["roles"]["subject"], [])
+        self.assertEqual(subordinate["roles"]["predicate"], ["lelah"])
+        self.assertIn("Subjek yang dilesapkan", subordinate["notes"][1])
+        self.assertEqual(result["clauses"][0]["relation_to_next"], "konsesi")
+
+    def test_does_not_force_unclassified_fronted_elliptical_clause(self):
+        result = parse_sentence(analysis(
+            token("walaupun", ["CONJ"]),
+            token("mungkin", ["ADV"]),
             token(",", punctuation=True),
             token("dia", ["PRON"]),
             token("bekerja", ["VERB"]),
