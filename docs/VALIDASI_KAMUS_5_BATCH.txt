@@ -1,2 +1,2 @@
 58 60
-# validasi parser v1.3: uji integrasi dengan lema yang teridentifikasi
+# validasi parser v1.4: elipsis konsesif adjektival melalui pipeline kamus
