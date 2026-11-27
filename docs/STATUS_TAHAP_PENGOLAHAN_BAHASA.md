@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
 - Parser kalimat tersedia pada **v1.5**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
-- GitHub Actions **Run #113 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **241/241 regression tests lulus**.
+- GitHub Actions **Run #114 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **242/242 regression tests lulus**.
 
 **Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser v1.5 dengan memperluas frasa verba/modal, memisahkan inti predikat dari pewatas, dan menguji variasi susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -92,12 +92,12 @@ Fondasi yang tersedia:
 - Parser kalimat konservatif **v1.5**, mencakup pola klausa sederhana, frasa nominal datar, negasi/modal terbatas, koordinasi, label penghubung, serta klausa subordinatif tertentu.
 - Regression suite dan workflow GitHub Actions untuk validasi kamus, dataset, evaluasi development, dan tes.
 
-Verifikasi terpadu terakhir adalah GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168):
+Verifikasi terpadu terakhir adalah GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45965451485):
 - Kamus: 60 batch / **3.013 lema** tervalidasi.
 - Dataset POS: 100 kalimat / 543 token; 60 development dan 40 test.
 - POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
 - Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- Regression suite: **241 tes lulus, 0 gagal**.
+- Regression suite: **242 tes lulus, 0 gagal**.
 
 Tahap 2.5 selesai. Tahap 2.6 dilanjutkan dari parser v1.5; pekerjaan pertama adalah memperluas frasa verba/modal dan pengujian variasi susunan kalimat. Tahap 2.7 melengkapi keragaman dataset. Jaringan makna runtime, konteks percakapan multi-giliran, response engine, dan aplikasi Android belum selesai.
 ## 5. Urutan pekerjaan berikutnya
@@ -183,7 +183,7 @@ Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup:
 - Label relasi untuk penghubung yang dikenali secara eksplisit.
 - Klausa subordinatif terbatas di depan dan setelah klausa utama, termasuk pola konsesif eliptis tertentu dengan status `partial`.
 
-Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu. Karena Tahap 2.5 kini selesai, pembekuan tersebut dicabut. Tidak perlu membuat ulang parser atau mengulang fitur yang sudah tersedia.
+Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu. Karena Tahap 2.5 kini selesai, pembekuan tersebut dicabut. Perubahan terbaru menambahkan `predicate_structure` dengan `head` dan daftar `modifiers` bertipe `negation`, `modal`, atau `adverbial`; rentang `roles.predicate` lama tidak berubah sehingga pemanggil lama tetap kompatibel.
 
 **Pekerjaan aktif berikutnya:**
 - Memperluas frasa verba/modal di luar penanda yang sudah didukung.
@@ -192,7 +192,7 @@ Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu.
 - Menambah dukungan secara konservatif untuk pelengkap dan pola lain setelah bukti uji tersedia.
 - Mempertahankan status ambigu/unsupported bila struktur belum cukup didukung.
 
-Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Regression suite terbaru Run #113 mencakup tes parser yang ada dan lulus **241/241**.
+Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Run #114 memvalidasi pemisahan kepala predikat dan pewatas; regression suite terbaru lulus **242/242**.
 
 ### 5.7 Dataset uji dan regression suite — integrasi awal tersedia
 
