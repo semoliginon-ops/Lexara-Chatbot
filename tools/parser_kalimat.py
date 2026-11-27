@@ -48,6 +48,28 @@ def _phrase_span(words: list[dict[str, Any]], head: int, lower: int, upper: int)
     return list(range(start, end))
 
 
+def _coordinated_phrase_span(
+    words: list[dict[str, Any]], positions: list[int], lower: int, upper: int
+) -> list[int]:
+    """Expand a nominal phrase across explicit conjunctions only."""
+    if not positions:
+        return positions
+    start, end = positions[0], positions[-1] + 1
+    while start - 2 >= lower and words[start - 1]["pos"] == "CONJ":
+        previous_head = start - 2
+        if words[previous_head]["pos"] not in _NOMINAL_POS:
+            break
+        previous = _phrase_span(words, previous_head, lower, start - 1)
+        start = previous[0]
+    while end + 1 < upper and words[end]["pos"] == "CONJ":
+        next_head = end + 1
+        if words[next_head]["pos"] not in _NOMINAL_POS:
+            break
+        following = _phrase_span(words, next_head, end + 1, upper)
+        end = following[-1] + 1
+    return list(range(start, end))
+
+
 def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     """Return a cautious role skeleton from POS-tagged/contextualized tokens.
 
@@ -175,6 +197,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             subject_lower = subject_head
             break
     subject_positions = _phrase_span(words, subject_head, subject_lower, verb_pos)
+    subject_positions = _coordinated_phrase_span(words, subject_positions, subject_lower, verb_pos)
     subject_set = set(subject_positions)
     predicate_positions = [verb_pos]
     cursor = verb_pos - 1
@@ -263,6 +286,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         cursor += 1
     if object_head is not None:
         object_positions = _phrase_span(words, object_head, cursor, len(words))
+        object_positions = _coordinated_phrase_span(words, object_positions, cursor, len(words))
         assigned.update(object_positions)
 
     # Keterangan berpreposisi sederhana: preposisi + frasa nominal sesudahnya.
