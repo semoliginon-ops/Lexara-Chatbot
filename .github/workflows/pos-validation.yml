@@ -19,6 +19,9 @@ on:
       - "tests/test_hubungkan_voice_predikat.py"
       - "tests/test_voice_pipeline_integration.py"
       - "tests/test_analisis_teks.py"
+      - "tools/parser_kalimat.py"
+      - "tests/test_parser_kalimat.py"
+      - "tests/test_integrasi_pipeline.py"
       - "data/kamus/batch-*.jsonl"
       - ".github/workflows/pos-validation.yml"
   workflow_dispatch:
