@@ -969,3 +969,10 @@ Setiap kasus diperiksa terlebih dahulu, lalu hanya diperbaiki jika penyebabnya t
 Tahap 2.6 (analisis struktur kalimat dasar) belum dinyatakan dimulai. Tahap 2.5 harus lebih dahulu memiliki hasil evaluasi POS development yang memadai dan terdokumentasi. Tahap 2.7, tahap hubungan makna/konteks, dan integrasi Android tetap menunggu urutan tersebut.
 
 Daftar abstention adalah sasaran audit, bukan target untuk memaksa semua token memperoleh label. Abstention yang tepat untuk kasus ambigu tetap merupakan perilaku yang sah.
+
+
+## Pemutakhiran titik lanjut POS berdasarkan Run #99 — 27 November 2026
+
+Catatan historis yang menyebut delapan kemunculan VERB abstain telah diperbarui oleh hasil evaluasi berikutnya. GitHub Actions Run #99 pada 60 kalimat development mencatat **tiga** abstention VERB: `ditunda`, `hinggap`, dan `berteduh`. Token `bekerja` yang muncul tiga kali pada `pos_0005`, `pos_0025`, dan `pos_0052` sudah teridentifikasi; begitu pula `menjelaskan` dan `letakkan` pada pengujian development/pipeline terkait.
+
+Karena itu `bekerja` dinyatakan selesai: anotasi `derived_forms_pos` pada lema `kerja` memberi VERB secara eksplisit tanpa mewarisi POS NOUN lema. Tidak perlu menambah aturan `ber-` umum atau mengubah kamus lagi untuk kasus ini. Langkah diagnosis berikutnya adalah `ditunda`, lalu `hinggap` dan `berteduh` satu per satu. Hasil Run #99: [GitHub Actions](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467). Test set tetap tidak digunakan.
