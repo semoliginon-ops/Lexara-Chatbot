@@ -194,7 +194,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
 - [x] Menetapkan parser v1.7 dengan `predicate_structure` dan modalitas `akan` (ADV) serta `bisa` (VERB) untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
 - [x] Menambahkan regression tests untuk perluasan parser hingga v1.5; tes v1.6/v1.7 menjaga struktur kepala predikat, modalitas, dan variasi susunan klausa.
-- [x] Melanjutkan Tahap 2.6 dari baseline v1.6; parser kini v1.7 dan fitur lama tetap dipertahankan.
+- [x] Melanjutkan Tahap 2.6 dari baseline v1.7 dan fitur lama tetap dipertahankan.
 - [x] Mengenali `akan` (ADV) dan `bisa` (VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
 - [ ] Memperluas frasa verba ke penanda modal/aspek lain hanya setelah POS dan konteksnya cukup kuat.
 - [x] Menguji variasi susunan kalimat dengan frasa modal pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P; regression tests menjaga fungsi objek/keterangan tetap benar.
@@ -207,7 +207,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Mencakup bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang.
 - [x] Menyimpan expected POS per token pada dataset JSONL.
 - [x] Menjalankan regression suite seluruh komponen: 182/182 lulus pada GitHub Actions Run #75 (catatan historis).
-- [x] Validasi terpadu terbaru Run #114: dataset 100 kalimat/543 token tervalidasi, evaluasi development POS berhasil, dan **242/242 regression tests lulus**.
+- [x] Validasi terpadu terbaru Run #117: dataset 100 kalimat/543 token tervalidasi, evaluasi development POS berhasil, dan **249/249 regression tests lulus**.
 - [ ] Memperluas variasi dataset untuk bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang; test split yang ada tetap tersegel.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
