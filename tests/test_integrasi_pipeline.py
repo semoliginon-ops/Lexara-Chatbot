@@ -168,6 +168,19 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_fronted_prepositional_phrase_is_not_misread_in_real_dictionary_pipeline(self):
+        parsed = parse_sentence(self.analyze("Di rumah terdengar suara."))
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertIsNone(parsed["pattern"])
+        self.assertEqual(parsed["roles"]["subject"], [])
+        self.assertEqual(parsed["roles"]["predicate"], ["terdengar"])
+        self.assertEqual(parsed["roles"]["object"], [])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"preposition": "di", "phrase": ["rumah"]}],
+        )
+        self.assertEqual(parsed["unresolved_tokens"], ["suara"])
+
     def test_terdengar_is_verb_from_explicit_derived_form_annotation(self):
         # This test covers lexical POS only. K-P-S parsing remains a separate
         # parser task and must not be conflated with derived-form recognition.
