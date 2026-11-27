@@ -19,10 +19,10 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Validator penuh berhasil memuat 60 batch dan 3.000 entri.
 - Dataset POS tervalidasi: 100 kalimat, 543 token (60 development, 40 test).
 - Evaluasi development-only: POS leksikal 227/255 (89,0%); POS kontekstual 228/255 (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Test split tetap ditahan.
-- Pengujian integrasi kamus nyata ditambahkan di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, dan tanda baca.
-- GitHub Actions **Run #74 SUCCESS**: validasi relasi lima batch, validasi kamus penuh, validasi dataset POS, evaluasi development, dan **174/174 regression tests lulus**.
+- Pengujian integrasi kamus nyata tersedia di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, tanda baca, dan parser kalimat sederhana.
+- GitHub Actions **Run #75 SUCCESS**: validasi relasi lima batch, validasi kamus penuh, validasi dataset POS, evaluasi development, dan **182/182 regression tests lulus**.
 
-**Titik lanjut aktif:** Tahap 2.1–2.5 memiliki fondasi dan tes; lanjut ke **Tahap 2.6 — parser struktur kalimat dasar**. Parser belum dibuat. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
+**Titik lanjut aktif:** parser prototipe v0.1 sudah dibuat dan diuji untuk pola S-P, S-P-O, serta keterangan berpreposisi. Lanjutkan perluasan parser secara konservatif untuk frasa, pelengkap, negasi, dan koordinasi. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
 
 
 ---
@@ -175,11 +175,17 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Evaluasi development-only: 227/255 leksikal (89,0%) dan 228/255 kontekstual (89,4%); selective accuracy 100%.
 - [x] Test split tetap ditahan dan tidak digunakan untuk menyetel aturan.
 
-### 5.6 Analisis struktur kalimat dasar
-- [ ] Tetapkan token dan hasil POS sebagai masukan parser.
-- [ ] Kenali pola subjek, predikat, objek, pelengkap, dan keterangan secara bertahap.
-- [ ] Uji variasi urutan kata dan kalimat sederhana.
-- [ ] Catat kasus ambigu atau tidak teranalisis; jangan memaksakan hasil.
+### 5.6 Analisis struktur kalimat dasar — prototipe v0.1
+
+- [x] Menetapkan masukan parser dari hasil POS leksikal dan, bila tersedia, POS kontekstual.
+- [x] Membuat `tools/parser_kalimat.py` untuk kerangka klausa sederhana S-P, S-P-O, dan keterangan berpreposisi.
+- [x] Menahan keputusan jika subjek/predikat tidak memiliki POS yang pasti; tanda baca internal yang belum didukung dilaporkan sebagai unsupported.
+- [x] Membuat regression tests parser di `tests/test_parser_kalimat.py`.
+- [x] Menguji pola S-P-K dengan kamus penuh melalui `tests/test_integrasi_pipeline.py`.
+- [x] GitHub Actions Run #75: **182/182 tes lulus**.
+- [ ] Memperluas pengenalan frasa nominal dan frasa verba.
+- [ ] Menambahkan analisis pelengkap, negasi, koordinasi, dan variasi susunan kata secara bertahap.
+- [ ] Menguji kalimat majemuk dan klausa bertingkat tanpa memaksakan hasil.
 
 ### 5.7 Dataset uji dan regression suite — integrasi awal selesai
 
