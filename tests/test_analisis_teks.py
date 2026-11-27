@@ -26,6 +26,8 @@ class TextAnalysisTests(unittest.TestCase):
             entry("K0002", "gue", variants=["gw"]),
             entry("K0003", "bisa"),
             entry("K0004", "bisa"),
+            entry("K0005", "tulis"),
+            entry("K0006", "buka"),
         ]
         self.lexicon = build_lexicon(self.entries)
 
@@ -37,6 +39,24 @@ class TextAnalysisTests(unittest.TestCase):
         self.assertEqual(result["tokens"][0]["status"], "matched")
         self.assertEqual(result["tokens"][1]["status"], "unknown")
         self.assertEqual(result["tokens"][2]["candidates"][0]["lemma"], "makan")
+
+    def test_token_analysis_exposes_passive_morphological_voice_evidence(self):
+        result = analyze_text("ditulis", self.lexicon)
+        token = result["tokens"][0]
+        self.assertEqual(token["voice_analysis"]["status"], "identified")
+        self.assertEqual(token["voice_analysis"]["voice"], "passive")
+
+    def test_token_analysis_exposes_active_morphological_voice_evidence(self):
+        result = analyze_text("menulis", self.lexicon)
+        token = result["tokens"][0]
+        self.assertEqual(token["voice_analysis"]["status"], "identified")
+        self.assertEqual(token["voice_analysis"]["voice"], "active")
+
+    def test_token_analysis_keeps_ambiguous_ter_form_unresolved(self):
+        result = analyze_text("terbuka", self.lexicon)
+        token = result["tokens"][0]
+        self.assertEqual(token["voice_analysis"]["status"], "unresolved")
+        self.assertIsNone(token["voice_analysis"]["voice"])
 
     def test_matches_variant(self):
         result = analyze_text("gw", self.lexicon)
