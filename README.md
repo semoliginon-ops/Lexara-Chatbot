@@ -376,3 +376,8 @@ Lema `hinggap` (VERB, K3003) telah ditambahkan ke batch-060 dan indeks kamus. Va
 ### Pemutakhiran Tahap 2.5 — 27 November 2026
 
 Lema `berteduh` (VERB, K3004) telah ditambahkan ke batch-060 dan indeks kamus. Run #103 berhasil dengan 3.003 lema dan 235/235 tes regresi; abstention VERB pada development kini nol.
+
+
+### Pemutakhiran Tahap 2.5 — 27 November 2026
+
+Lema `baru` (ADJ, K3005) telah ditambahkan ke kamus dan INDEX. Run #104 berhasil: 3.004 lema, 236/236 tes regresi; seluruh 23 token ADJ development dikenali secara kontekstual.
