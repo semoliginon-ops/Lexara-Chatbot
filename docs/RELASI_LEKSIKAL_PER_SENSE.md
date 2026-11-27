@@ -79,7 +79,21 @@ Validator relasi nantinya memeriksa:
 
 Validasi struktur tidak dapat membuktikan kebenaran linguistik. Tinjauan makna tetap diperlukan.
 
-## 6. Tahapan penerapan
+
+## 7. Validator struktural
+
+Modul terpisah `tools/validasi_relasi_leksikal.py` memeriksa satu batch tanpa mengubah data. Jalankan dari root repository:
+
+```bash
+python -m unittest discover -s tests -p "test_validasi_relasi_leksikal.py" -v
+python -m tools.validasi_relasi_leksikal data/kamus/batch-001.jsonl
+```
+
+Validator memeriksa tipe array, item teks nonkosong, duplikasi setelah normalisasi Unicode NFC dan casefold, relasi yang menunjuk ke lemma sendiri, serta keberadaan `sense_id` ketika sebuah sense menggunakan field relasi. Field relasi yang tidak digunakan tetap opsional; data lama tidak diwajibkan memiliki relasi per-sense.
+
+Jalankan validator satu batch pada satu waktu. Hasil lulus hanya menyatakan struktur relasi lolos pemeriksaan, bukan bahwa relasinya benar secara linguistik. Implementasi dan tes masih harus diverifikasi di lingkungan lokal sebelum dinyatakan selesai.
+
+## 8. Tahapan penerapan
 
 1. Tinjau dan setujui rancangan skema.
 2. Tambahkan validator terpisah beserta unit tests.
@@ -88,4 +102,4 @@ Validasi struktur tidak dapat membuktikan kebenaran linguistik. Tinjauan makna t
 5. Perbarui data batch secara selektif setelah audit selesai dan setiap perubahan memiliki bukti.
 6. Jalankan seluruh regression tests sebelum menyatakan kompatibel.
 
-**Status saat ini:** dokumen rancangan saja. Belum ada perubahan pada 3.000 entri, loader, pencocokan, morfologi, atau POS tagger.
+**Status saat ini:** rancangan dan validator struktural telah ditambahkan, beserta regression tests. Verifikasi lokal masih menunggu. Belum ada perubahan pada 3.000 entri, loader, pencocokan, morfologi, atau POS tagger.
