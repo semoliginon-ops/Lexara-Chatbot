@@ -1,2 +1,2 @@
 58 60
-# Tahap 2.5: tambah lema ADJ+ADV tetap; validasi kamus 3006 lema; tes integrasi dipastikan berada dalam kelas pengujian
+# Tahap 2.5: validasi lema ADJ+ADV tetap K3007; fixture tes konteks diperbaiki; target 3006 lema
