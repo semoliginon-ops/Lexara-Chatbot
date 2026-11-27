@@ -335,3 +335,8 @@ Parser konservatif saat ini telah mencapai v1.2: selain memisahkan beberapa klau
 ## Status parser bahasa
 
 Parser konservatif telah mencapai v1.3. Selain koordinasi beberapa klausa dan label penghubung, parser kini mengenali pola terbatas klausa subordinatif di depan klausa utama, misalnya `Karena dia makan, aku pulang.` dan `Ketika dia makan, aku pulang.`. Klausa awal tanpa predikat teridentifikasi tidak dipaksakan. GitHub Actions [Run #96](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955536612) lulus dengan **227/227 tes**. Batas implementasi dicatat dalam `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
+
+
+## Status parser bahasa
+
+Parser konservatif mencapai v1.4. Perluasan terbaru menangani bentuk terbatas klausa konsesif eliptis berpredikat adjektival, seperti `Walaupun lelah, dia bekerja.`. Subjek yang dilesapkan tetap kosong dan hasil ditandai `partial`; sistem tidak menebak atau menyalin subjek dari klausa utama. Cakupan serta hasil validasi terbaru dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
