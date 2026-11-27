@@ -1,11 +1,11 @@
-"""Parser prototipe konservatif v1.7 untuk pola klausa sederhana Bahasa Indonesia.
+"""Parser prototipe konservatif v1.8 untuk pola klausa sederhana Bahasa Indonesia.
 
 Versi ini mengenali kerangka S-P, S-P-O, keterangan berpreposisi, dan
 rentang frasa nominal sederhana tanpa memaksakan analisis internal frasa.
 Parser tidak menebak fungsi kata yang POS-nya ambigu/tidak diketahui dan tidak
 mengklaim analisis lengkap untuk kalimat majemuk atau konstruksi kompleks.
-Versi 1.6 menambahkan rincian kepala predikat verbal dan pewatas terdeteksi
-melalui field predicate_structure; roles.predicate tetap kompatibel. Versi 1.7 memperluas penanda modalitas terdeteksi.
+Versi 1.6 menambahkan rincian kepala predikat verbal; v1.7 memperluas modalitas;
+v1.8 mengenali empat keterangan waktu ADV yang eksplisit di awal klausa.
 """
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ _ADVERBIAL_PREDICATE_POS = {"ADV"}
 _NEGATION_MARKERS = {"tidak", "belum"}
 _MODAL_VERBS = {"mau", "ingin", "hendak", "bisa"}
 _MODAL_ADVERBS = {"akan"}
+_FRONTED_TEMPORAL_ADVERBS = {"besok", "nanti", "sekarang", "tadi"}
 _LINKING_PREDICATES = {"menjadi", "tampak"}
 
 # Klasifikasi eksplisit fungsi penghubung; tidak menyimpulkan relasi untuk kata lain.
@@ -501,16 +502,27 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     adjuncts: list[dict[str, Any]] = []
     assigned = subject_set | set(predicate_positions)
 
-    # Keterangan berpreposisi di awal kalimat dapat mendahului subjek.
-    # Hanya rentang PREP + frasa nominal yang selesai tepat sebelum subjek
-    # yang diterima; pola lain tetap dibiarkan unresolved.
+    # Keterangan berpreposisi dan empat ADV temporal eksplisit dapat
+    # mendahului subjek. ADV lain tidak otomatis dianggap keterangan waktu.
     subject_start = min(subject_positions) if subject_positions else verb_pos
     prefix_cursor = 0
     fronted_adjuncts: list[dict[str, Any]] = []
     fronted_positions: set[int] = set()
     prefix_is_complete = True
     while prefix_cursor < subject_start:
-        if words[prefix_cursor]["pos"] != "PREP":
+        current = words[prefix_cursor]
+        if (
+            current["pos"] == "ADV"
+            and current["token"].casefold() in _FRONTED_TEMPORAL_ADVERBS
+        ):
+            fronted_adjuncts.append({
+                "adverb": current["token"],
+                "kind": "temporal",
+            })
+            fronted_positions.add(prefix_cursor)
+            prefix_cursor += 1
+            continue
+        if current["pos"] != "PREP":
             prefix_is_complete = False
             break
         marker = prefix_cursor
@@ -617,6 +629,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Penanda modalitas 'mau', 'ingin', 'hendak', dan 'bisa' (VERB), serta 'akan' (ADV), digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan verbal tunggal tetap dipertahankan sebagai predikat. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Penanda modalitas 'mau', 'ingin', 'hendak', dan 'bisa' (VERB), serta 'akan' (ADV), digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan verbal tunggal tetap dipertahankan sebagai predikat. Empat ADV temporal eksplisit ('besok', 'nanti', 'sekarang', 'tadi') dapat dicatat sebagai keterangan awal sebelum subjek. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
