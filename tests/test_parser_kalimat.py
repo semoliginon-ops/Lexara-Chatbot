@@ -94,6 +94,45 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["status"], "partial")
         self.assertIn("mungkin", result["unresolved_tokens"])
 
+    def test_parses_two_clauses_joined_by_conjunction(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+            token("dan", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("belajar", ["VERB"]),
+            token(".", punctuation=True),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "KLAUSA-KOORDINATIF")
+        self.assertEqual(len(result["clauses"]), 2)
+        self.assertEqual(result["clauses"][0]["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(result["clauses"][0]["analysis"]["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(result["clauses"][1]["connector"], "dan")
+        self.assertEqual(result["clauses"][1]["analysis"]["roles"]["subject"], ["dia"])
+        self.assertEqual(result["clauses"][1]["analysis"]["roles"]["predicate"], ["belajar"])
+
+    def test_does_not_split_nominal_coordination_as_two_clauses(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("dan", ["CONJ"]),
+            token("dia", ["PRON"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertEqual(result["pattern"], "S-P")
+        self.assertEqual(result["roles"]["subject"], ["aku", "dan", "dia"])
+
+    def test_does_not_split_when_second_segment_has_no_verb(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("membeli", ["VERB"]),
+            token("nasi", ["NOUN"]),
+            token("dan", ["CONJ"]),
+            token("roti", ["NOUN"]),
+        ))
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["object"], ["nasi", "dan", "roti"])
+
     def test_parses_coordinated_subject(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
