@@ -882,3 +882,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #87: **204/204 regression tests lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas implementasi:** hanya keterangan awal berbentuk PREP + frasa nominal sederhana yang selesai tepat sebelum subjek. Inversi, klausa majemuk, dan susunan kompleks tetap di luar cakupan.
+
+
+### Parser kalimat v0.8 — beberapa keterangan preposisional di depan subjek
+
+- [x] Mengenali rangkaian beberapa keterangan sederhana sebelum subjek, misalnya `Di rumah pada malam hari aku bekerja.`.
+- [x] Mempertahankan urutan keterangan sesuai kemunculannya dalam kalimat.
+- [x] Hanya menerima rangkaian awal jika seluruh bagian sebelum subjek dapat dipetakan sebagai PREP + frasa nominal; awalan yang tidak cocok tetap unresolved.
+- [x] Menambahkan satu tes unit dan satu tes integrasi melalui kamus asli.
+- [x] GitHub Actions Run #88: **206/206 regression tests lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas implementasi:** keterangan depan yang dipisahkan tanda baca, klausa bertingkat, dan susunan campuran yang tidak cocok dengan pola konservatif belum diparse.
