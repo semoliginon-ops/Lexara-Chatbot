@@ -1,6 +1,7 @@
 """Parser prototipe konservatif untuk pola klausa sederhana Bahasa Indonesia.
 
-Versi awal hanya mengenali kerangka S-P, S-P-O, dan keterangan berpreposisi.
+Versi ini mengenali kerangka S-P, S-P-O, keterangan berpreposisi, dan
+rentang frasa nominal sederhana tanpa memaksakan analisis internal frasa.
 Parser tidak menebak fungsi kata yang POS-nya ambigu/tidak diketahui dan tidak
 mengklaim analisis lengkap untuk kalimat majemuk atau konstruksi kompleks.
 """
@@ -12,6 +13,7 @@ from typing import Any
 _TERMINAL_PUNCTUATION = {".", "!", "?", "…"}
 _NOMINAL_POS = {"NOUN", "PRON"}
 _OBJECT_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
+_NOMINAL_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _ADVERBIAL_PREDICATE_POS = {"ADV"}
 
 
@@ -30,6 +32,17 @@ def _effective_pos(item: dict[str, Any]) -> str | None:
     if len(labels) == 1 and context_status is None:
         return labels[0]
     return None
+
+
+def _phrase_span(words: list[dict[str, Any]], head: int, lower: int, upper: int) -> list[int]:
+    """Collect one contiguous nominal phrase around a known nominal head."""
+    start = head
+    end = head + 1
+    while start > lower and words[start - 1]["pos"] in _NOMINAL_PHRASE_POS:
+        start -= 1
+    while end < upper and words[end]["pos"] in _NOMINAL_PHRASE_POS:
+        end += 1
+    return list(range(start, end))
 
 
 def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
@@ -56,7 +69,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             if token in _TERMINAL_PUNCTUATION:
                 continue
             return {
-                "parser_method": "conservative_svo_v1",
+                "parser_method": "conservative_svo_v2",
                 "status": "unsupported",
                 "pattern": None,
                 "roles": {
@@ -88,10 +101,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         }
 
     verb_pos = verb_positions[0]
-    subject_positions = [
+    subject_heads = [
         i for i in range(verb_pos) if words[i]["pos"] in _NOMINAL_POS
     ]
-    if not subject_positions:
+    if not subject_heads:
         return {
             "parser_method": "conservative_svo_v1",
             "status": "unresolved",
@@ -104,6 +117,10 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             "notes": ["Subjek eksplisit sebelum predikat belum ditemukan; inversi dan subjek tersirat belum ditangani."],
         }
 
+    # Ambil frasa nominal yang paling dekat dengan predikat. Kata sifat/angka
+    # yang berdampingan ikut menjadi bagian frasa, tetapi tidak ditafsirkan
+    # lebih jauh sebagai inti atau pewatas.
+    subject_positions = _phrase_span(words, subject_heads[-1], 0, verb_pos)
     subject_set = set(subject_positions)
     predicate_positions = [verb_pos]
     cursor = verb_pos - 1
@@ -116,15 +133,17 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     assigned = subject_set | set(predicate_positions)
     cursor = verb_pos + 1
 
-    # Objek langsung dibaca sebelum frasa preposisional pertama.
-    while cursor < len(words):
-        pos = words[cursor]["pos"]
-        if pos in {"PREP", "CONJ", "VERB"}:
+    # Cari kepala nominal pertama sebelum batas klausa/frasa preposisional,
+    # lalu ambil rentang frasa nominal sederhana di sekitarnya.
+    object_head = None
+    while cursor < len(words) and words[cursor]["pos"] not in {"PREP", "CONJ", "VERB"}:
+        if words[cursor]["pos"] in _NOMINAL_POS:
+            object_head = cursor
             break
-        if pos in _OBJECT_PHRASE_POS:
-            object_positions.append(cursor)
-            assigned.add(cursor)
         cursor += 1
+    if object_head is not None:
+        object_positions = _phrase_span(words, object_head, verb_pos + 1, len(words))
+        assigned.update(object_positions)
 
     # Keterangan berpreposisi sederhana: preposisi + frasa nominal sesudahnya.
     while cursor < len(words):
@@ -170,6 +189,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Pelengkap, negasi, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Pelengkap, negasi, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
