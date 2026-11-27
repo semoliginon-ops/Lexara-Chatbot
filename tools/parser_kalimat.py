@@ -71,7 +71,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             if token in _TERMINAL_PUNCTUATION:
                 continue
             return {
-                "parser_method": "conservative_svo_v3",
+                "parser_method": "conservative_svo_v4",
                 "status": "unsupported",
                 "pattern": None,
                 "roles": {
@@ -90,8 +90,46 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
 
     verb_positions = [i for i, item in enumerate(words) if item["pos"] == "VERB"]
     if not verb_positions:
+        # Predikat nonverbal sederhana dengan penanda subjek yang cukup jelas.
+        nominal_heads = [i for i, item in enumerate(words) if item["pos"] in _NOMINAL_POS]
+        adjective_heads = [i for i, item in enumerate(words) if item["pos"] == "ADJ" and i > 0]
+        predicate_start = None
+        if adjective_heads:
+            candidate = adjective_heads[0]
+            subject_prefix = words[:candidate]
+            anchored = bool(subject_prefix) and (
+                subject_prefix[0]["pos"] == "PRON"
+                or any(item["token"].casefold() in {"ini", "itu"} for item in subject_prefix)
+            )
+            if anchored and all(item["pos"] in _NOMINAL_PHRASE_POS | {"NUM"} for item in subject_prefix):
+                predicate_start = candidate
+        if predicate_start is None and len(nominal_heads) >= 2:
+            second_head = nominal_heads[1]
+            predicate_tokens = words[second_head:]
+            if (
+                nominal_heads[0] == 0
+                and len(predicate_tokens) >= 2
+                and any(item["pos"] == "NUM" for item in predicate_tokens[:-1])
+            ):
+                predicate_start = second_head
+        if predicate_start is not None:
+            return {
+                "parser_method": "conservative_nonverbal_v1",
+                "status": "parsed",
+                "pattern": "S-P",
+                "roles": {
+                    "subject": [item["token"] for item in words[:predicate_start]],
+                    "predicate": [item["token"] for item in words[predicate_start:]],
+                    "object": [], "adjuncts": [], "complement": [],
+                },
+                "unresolved_tokens": [],
+                "notes": [
+                    "Predikat nonverbal sederhana dikenali secara heuristik.",
+                    "Frasa adjektival dan nominal belum dianalisis secara internal; konstruksi tanpa penanda subjek yang cukup tetap unresolved.",
+                ],
+            }
         return {
-            "parser_method": "conservative_svo_v2",
+            "parser_method": "conservative_svo_v4",
             "status": "unresolved",
             "pattern": None,
             "roles": {
@@ -99,7 +137,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                 "adjuncts": [], "complement": [],
             },
             "unresolved_tokens": [item["token"] for item in words],
-            "notes": ["Predikat VERB yang pasti belum ditemukan."],
+            "notes": ["Predikat VERB atau pola predikat nonverbal sederhana yang cukup pasti belum ditemukan."],
         }
 
     # Kata kehendak yang berlabel VERB dapat menjadi verba bantu ketika
@@ -114,7 +152,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     ]
     if not subject_heads:
         return {
-            "parser_method": "conservative_svo_v2",
+            "parser_method": "conservative_svo_v4",
             "status": "unresolved",
             "pattern": None,
             "roles": {
@@ -200,13 +238,13 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     if adjuncts:
         pattern_parts.append("K")
     return {
-        "parser_method": "conservative_svo_v2",
+        "parser_method": "conservative_svo_v4",
         "status": "partial" if unresolved else "parsed",
         "pattern": "-".join(pattern_parts),
         "roles": roles,
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Verba kehendak 'mau', 'ingin', dan 'hendak' digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan tunggal tetap dipertahankan sebagai predikat. Modalitas lain, negasi predikat adjektival/nominal, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Verba kehendak 'mau', 'ingin', dan 'hendak' digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan tunggal tetap dipertahankan sebagai predikat. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
