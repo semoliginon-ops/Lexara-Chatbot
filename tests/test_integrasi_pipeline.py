@@ -817,6 +817,45 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "host_role": "predicate",
         }])
 
+    def test_reflexive_diri_clitic_forms_are_recognized_without_overclaiming_function(self):
+        cases = (
+            ("Aku melihat diriku.", "diriku", "ku", "possessive"),
+            ("Kamu melihat dirimu.", "dirimu", "mu", "possessive"),
+            ("Dia melihat dirinya.", "dirinya", "nya", None),
+        )
+        for sentence, surface, clitic, expected_function in cases:
+            with self.subTest(sentence=sentence):
+                analyzed = self.analyze(sentence)
+                bound = self.token(analyzed, surface)
+                self.assertEqual(bound["status"], "unknown")
+                self.assertEqual(bound["pos"], [])
+                self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
+                component = bound["clitic_pos_candidates"][0]
+                self.assertEqual(component["base_form"], "diri")
+                self.assertEqual(component["clitic"], clitic)
+                self.assertEqual(component["host_pos"], ["NOUN"])
+                self.assertEqual(component["clitic_pos"], ["PRON"])
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["roles"]["object"], [surface])
+                self.assertEqual(len(parsed["clitic_analysis"]), 1)
+                analysis = parsed["clitic_analysis"][0]
+                self.assertEqual(analysis["surface"], surface)
+                self.assertEqual(analysis["base_form"], "diri")
+                self.assertEqual(analysis["clitic"], clitic)
+                self.assertEqual(analysis["function"], expected_function)
+
+                if clitic == "nya":
+                    self.assertEqual(
+                        analysis["function_candidates"],
+                        ["possessive", "definite_anaphoric"],
+                    )
+                    self.assertEqual(analysis["function_status"], "unresolved")
+                else:
+                    self.assertEqual(
+                        analysis["function_status"], "selected_by_host_pos"
+                    )
+
     def test_all_verbal_clitic_variants_are_objects_in_real_pipeline(self):
         cases = (
             ("Dia lihatku.", "lihatku", "ku"),
