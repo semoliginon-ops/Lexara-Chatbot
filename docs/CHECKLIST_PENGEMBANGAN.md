@@ -81,7 +81,31 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] `batch-033.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
 - [x] `batch-034.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
 - [x] `batch-035.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [ ] `batch-036.jsonl`: 50 entri (K1752–K1801); pemeriksaan awal tidak menemukan ID ganda, tidak menemukan lemma ganda, tidak menemukan referensi diri; menunggu verifikasi validator struktur relasi di Termux.
+- [ ] `batch-036.jsonl`: 50 entri (K3252–K3301); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-037.jsonl`: 50 entri (K3302–K3351); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-038.jsonl`: 50 entri (K3352–K3401); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-039.jsonl`: 50 entri (K3402–K3451); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-040.jsonl`: 50 entri (K3452–K3501); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-041.jsonl`: 50 entri (K3502–K3551); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-042.jsonl`: 50 entri (K3552–K3601); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-043.jsonl`: 50 entri (K3602–K3651); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-044.jsonl`: 50 entri (K3652–K3701); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-045.jsonl`: 50 entri (K3702–K3751); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-046.jsonl`: 50 entri (K3752–K3801); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-047.jsonl`: 50 entri (K3802–K3851); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-048.jsonl`: 50 entri (K3852–K3901); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-049.jsonl`: 50 entri (K3902–K3951); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-050.jsonl`: 50 entri (K3952–K4001); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-051.jsonl`: 50 entri (K4002–K4051); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [!] `batch-052.jsonl`: 50 entri (K4052–K4101); ditemukan referensi diri K2578 `ketiak` pada related_terms; menunggu keputusan perbaikan dan validasi.
+- [ ] `batch-053.jsonl`: 50 entri (K4102–K4151); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-054.jsonl`: 50 entri (K4152–K4201); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-055.jsonl`: 50 entri (K4202–K4251); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-056.jsonl`: 50 entri (K4252–K4301); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [!] `batch-057.jsonl`: 50 entri (K4302–K4351); ditemukan referensi diri K2850 `Kepulauan Seribu Utara` dan K2851 `Kepulauan Seribu Selatan` pada related_terms; menunggu keputusan perbaikan dan validasi.
+- [ ] `batch-058.jsonl`: 50 entri (K4352–K4401); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-059.jsonl`: 50 entri (K4402–K4451); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
+- [ ] `batch-060.jsonl`: 50 entri (K4452–K4501); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] Lanjutkan validasi struktur batch berikutnya satu per satu; hasil validasi struktur tidak dianggap sebagai audit kebenaran makna.
 
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
