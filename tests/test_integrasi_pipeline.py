@@ -71,6 +71,25 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                     any(candidate["lemma"] == lemma for candidate in item["candidates"])
                 )
 
+    def test_pak_pelajaran_and_adiknya_have_explicit_pos(self):
+        result = self.analyze("Pak memberi pelajaran kepada adiknya")
+        expected = {
+            "Pak": ("NOUN", "supplement"),
+            "pelajaran": ("NOUN", "dictionary"),
+            "adiknya": ("NOUN", "dictionary"),
+        }
+        for surface, (pos, source) in expected.items():
+            with self.subTest(surface=surface):
+                item = self.token(result, surface)
+                self.assertEqual(item["pos"], [pos])
+                self.assertEqual(item["pos_source"], source)
+                self.assertEqual(item["pos_status"], "identified")
+        for surface, lemma in (("pelajaran", "ajar"), ("adiknya", "adik")):
+            item = self.token(result, surface)
+            self.assertTrue(
+                any(candidate["lemma"] == lemma for candidate in item["candidates"])
+            )
+
     def test_context_resolves_real_dictionary_ambiguity_conservatively(self):
         verb_result = self.analyze("sedang jalan")
         verb = self.token(verb_result, "jalan")
