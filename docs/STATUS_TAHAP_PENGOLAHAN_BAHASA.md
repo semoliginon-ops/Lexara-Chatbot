@@ -778,3 +778,12 @@ Tahap 2.6 dan 2.7 **belum selesai** dan gerbang Tahap 2 menuju Tahap 3 belum ter
 Koreksi checklist: pemetaan semantic role pasif sebenarnya telah selesai dan tervalidasi melalui Run #144–148 (hingga 328/328 tes), sehingga item tersebut sekarang dicentang. Pekerjaan Tahap 2.6 yang masih terbuka mencakup perluasan pola parser terkontrol, pola inversi K-P-S, uji konstruksi lebih luas dengan pipeline nyata, dan kriteria penutupan. Tahap 2.7 masih membutuhkan dataset pipeline lengkap, variasi kalimat, expected output termasuk partial/unresolved, evaluasi terpadu dengan test split tetap tersegel, serta baseline dan kriteria kelulusan.
 
 Resolver konteks semantic role yang dibuat pada Run #149 dan diperketat pada Run #152 adalah **fondasi awal**. Resolver menerima bukti konteks terstruktur; penghasil bukti otomatisnya belum ada. Karena itu Tahap 3 belum dinyatakan resmi dimulai.
+
+
+### Perluasan keterangan temporal pascapredikat — Run #154 (27 November 2026)
+
+Parser kini dapat mengenali empat adverbia temporal eksplisit (`besok`, `nanti`, `sekarang`, `tadi`) bukan hanya sebelum subjek, tetapi juga setelah predikat atau objek. Pola yang diuji mencakup klausa intransitif (`Aku bekerja besok.`) dan transitif (`Aku makan nasi nanti.`). Adverbia lain tidak otomatis dianggap temporal; token ADV yang tidak termasuk daftar tetap unresolved/partial. Perubahan dilakukan pada `tools/parser_kalimat.py`, dengan tes unit pada `tests/test_parser_kalimat.py` dan tes pipeline kamus lengkap pada `tests/test_integrasi_pipeline.py`.
+
+Workflow regresi sebelumnya belum terpicu oleh perubahan parser karena path parser dan tes integrasi belum tercantum pada filter workflow. Path tersebut ditambahkan ke `.github/workflows/pos-validation.yml` agar perubahan parser berikutnya menjalankan suite penuh. Run #153 sempat gagal pada dua tes baru karena pemindaian kandidat objek melewati ADV temporal; pemindaian diperbaiki agar ADV dapat diperiksa oleh tahap keterangan. Run #154 kemudian sukses: validasi kamus 60 batch / 3.014 entri, validasi valensi, dataset POS, evaluasi development, dan **342/342 tes regresi lulus**. [Lihat Run #154](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46014585155).
+
+**Batas:** perluasan ini hanya mencakup empat adverbia temporal yang sudah dikenali secara eksplisit. Ini tidak menyelesaikan seluruh keterangan adverbial atau inversi K-P-S. Tahap aktif tetap 2.6.
