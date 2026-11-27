@@ -906,3 +906,13 @@ Ditambahkan tes pipeline kamus/POS/parser untuk `Meskipun lelah, aku pergi.` Ind
 GitHub Actions **Run #172 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **357/357 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Test split tidak dibuka. [Lihat Run #172](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46020456944).
 
 **Batas:** tes ini memverifikasi satu bentuk elipsis adjektival konsesif dengan penanda `meskipun`; tidak menggeneralisasi semua elipsis atau semua konjungsi.
+
+### Uji pronomina persona sebagai subjek dan objek — Run #173 (27 November 2026)
+
+Ditambahkan tes integrasi pipeline kamus → POS → parser untuk pronomina persona `saya`, `kamu`, `dia`, dan `mereka`. Keempatnya ditemukan pada indeks kamus sebagai lema PRON, lalu diuji pada posisi subjek (contoh pola S-P-O) dan objek (contoh pola S-P-O). Seluruh token mendapat POS PRON dari kamus dan seluruh hasil parser sesuai peran yang diharapkan. Tidak ada perubahan pada batch maupun indeks kamus.
+
+Pemeriksaan indeks juga menunjukkan `kalian` belum tersedia sebagai lema atau entri indeks. Sesuai aturan proyek, lema baru tidak ditambahkan tanpa persetujuan eksplisit pengguna; pengujian untuk kata ini masih tertunda.
+
+GitHub Actions **Run #173 selesai dengan conclusion success**. Validasi kamus 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **358/358 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #173](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46021616127).
+
+**Batas:** pengujian membuktikan empat pronomina pada posisi subjek dan objek dalam pola kalimat sederhana yang diuji. Ini belum membuktikan seluruh penggunaan pronomina, ragam tutur, atau konstruksi sintaksis yang lebih kompleks.
