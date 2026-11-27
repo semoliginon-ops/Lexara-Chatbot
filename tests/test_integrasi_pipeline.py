@@ -74,6 +74,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "bekerja": ("kerja", "VERB"),
             "menjelaskan": ("jelas", "VERB"),
             "letakkan": ("letak", "VERB"),
+            "terdengar": ("dengar", "VERB"),
         }
         for surface, (lemma, pos) in expected.items():
             with self.subTest(surface=surface):
@@ -176,7 +177,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertIsNone(parsed["pattern"])
         self.assertEqual(parsed["roles"]["subject"], [])
         self.assertEqual(parsed["roles"]["object"], [])
-        self.assertIn("terdengar", parsed["unresolved_tokens"])
+        self.assertEqual(self.token(analyzed, "terdengar")["pos"], ["VERB"])
 
     def test_fronted_temporal_adverb_with_modal_uses_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Besok aku akan makan nasi."))
