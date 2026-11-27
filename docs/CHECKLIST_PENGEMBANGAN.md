@@ -871,3 +871,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Pertimbangkan perluasan kosakata sebagai perubahan cakupan dataset terpisah; jangan menyisipkan lema tambahan tanpa keputusan target dataset dan definisi/POS yang tervalidasi.
 
 **Catatan:** ketiadaan kecocokan untuk `menjadi` dan `bahagia` adalah celah cakupan leksikal, bukan kerusakan parser. Bentuk `tampak` dapat dipetakan ke lema `nampak` melalui varian kamus.
+
+
+### Parser kalimat v0.7 — keterangan preposisional di depan subjek
+
+- [x] Mengenali keterangan berpreposisi sederhana yang ditempatkan sebelum subjek, misalnya `Di rumah aku bekerja.`.
+- [x] Memisahkan frasa preposisional awal dari frasa subjek agar `rumah` tidak keliru dimasukkan ke subjek `aku`.
+- [x] Mempertahankan keterangan preposisional setelah predikat seperti pada `Aku bekerja di rumah.`.
+- [x] Menambahkan dua tes unit dan satu tes integrasi melalui kamus asli.
+- [x] GitHub Actions Run #87: **204/204 regression tests lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas implementasi:** hanya keterangan awal berbentuk PREP + frasa nominal sederhana yang selesai tepat sebelum subjek. Inversi, klausa majemuk, dan susunan kompleks tetap di luar cakupan.
