@@ -1135,3 +1135,13 @@ Menambahkan tes pengaman agar parser tidak menetapkan nomina pascaverbal sebagai
 GitHub Actions **Run #223 selesai dengan conclusion success**; **396/396 tes regresi lulus**. [Lihat Run #223](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46080990773).
 
 Tes ini memperkuat guard untuk fitur inversi terbatas yang diuji pada Run #222. Tidak memperluas cakupan inversi ke semua verba atau konstruksi. Tidak ada perubahan kamus, batch, atau indeks.
+
+### Frasa subjek pascaverbal dengan pewatas — Run #224 (28 November 2026)
+
+Menambahkan dua tes integrasi melalui pipeline kamus/POS nyata untuk memastikan inversi berbasis valensi mempertahankan seluruh frasa nominal, bukan hanya kepala nomina:
+- `Muncul masalah besar.` → pola P-S, subjek `masalah besar`.
+- `Di rumah muncul masalah besar.` → pola K-P-S, keterangan `di rumah`, subjek `masalah besar`.
+
+GitHub Actions **Run #224 selesai dengan conclusion success**; **397/397 tes regresi lulus**. [Lihat Run #224](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081115402).
+
+Perubahan hanya menambahkan tes integrasi; tidak mengubah perilaku parser, kamus, batch, atau indeks. Inversi tetap terbatas pada syarat valensi tunggal yang sudah diterapkan.
