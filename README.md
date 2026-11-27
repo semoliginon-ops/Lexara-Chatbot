@@ -1,6 +1,6 @@
 # Sistem Bahasa — Chatbot Lokal Offline Tanpa LLM
 
-> **Status:** Pengembangan aktif — kamus berisi 3.013 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #116: 249/249 regression tests lulus.
+> **Status:** Pengembangan aktif — kamus berisi 3.014 lema dalam 60 batch; Tahap 2.5 (POS) dinyatakan selesai. Evaluasi development POS kontekstual mencapai coverage 98,0% dan selective accuracy 100,0%; lima abstention berupa nama orang ditunda ke tahap konteks. Parser kalimat v1.7 tersedia sebagai fondasi Tahap 2.6. GitHub Actions Run #117: 246/246 regression tests lulus.
 > **Target utama:** sistem pengolahan bahasa untuk chatbot yang berjalan langsung di HP Android, tanpa layanan cloud, API berbayar, maupun LLM.
 
 > **Checklist utama proyek:** lihat [Checklist Pengembangan](docs/CHECKLIST_PENGEMBANGAN.md) untuk daftar seluruh tahap dan pekerjaan yang sudah/belum selesai.
@@ -370,3 +370,8 @@ Langkah berikutnya adalah memperluas pola frasa verba secara bertahap dan menguj
 Tahap 2.7 (dataset dan pengujian terpadu) tetap berjalan sebagai pekerjaan pelengkap: perluas cakupan contoh bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang. Test split tetap tersegel.
 
 Tahap 3 (hubungan makna dan konteks), evaluasi embedding opsional, dan integrasi Android mengikuti urutan roadmap. Tidak ada audit ulang 60 batch yang dijadwalkan, dan perubahan lema baru tetap memerlukan persetujuan eksplisit pengguna.
+
+
+## Penambahan lema `akan` — K3015
+
+Atas persetujuan pengguna, lema `akan` ditambahkan ke batch-060 sebagai **ADV** dengan definisi: “Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.” Indeks `a-c.tsv` dan target validasi kamus diperbarui menjadi **3.014 lema**. POS supplement yang sebelumnya sudah memetakan `akan` sebagai ADV dipertahankan tanpa duplikasi. Tes integrasi memeriksa pengenalan dari kamus, pola `akan` + verba inti, dan perilaku hati-hati ketika `akan` berdiri sendiri. Validasi CI setelah perubahan ini sedang menunggu.
