@@ -361,3 +361,8 @@ Urutan kerja:
 5. Evaluasi kesiapan Tahap 2.5 menggunakan development split dan regresi. Test set tetap ditahan untuk evaluasi akhir dan tidak digunakan untuk penyetelan.
 
 Tahap 2.6 (analisis struktur kalimat), 2.7, tahap hubungan makna/konteks, dan integrasi Android menunggu keputusan bahwa Tahap 2.5 sudah memadai. Angka abstention di atas adalah daftar sasaran audit, bukan bukti bahwa semua kasus harus dipaksa memiliki label POS.
+
+
+### Pemutakhiran kamus — 27 November 2026
+
+Kamus kini berisi 3.001 lema setelah penambahan lema VERB `tunda` (K3002) dan bentuk turunan pasif `ditunda` dengan anotasi POS eksplisit. Angka 3.000 adalah target awal; validator penuh telah disesuaikan ke jumlah aktual 3.001.
