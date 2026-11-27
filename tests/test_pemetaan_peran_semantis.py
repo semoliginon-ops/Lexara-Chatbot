@@ -223,6 +223,100 @@ class SemanticRoleMappingTests(unittest.TestCase):
         self.assertEqual(result["status"], "incompatible")
         self.assertEqual(result["reason"], "no_frame_matches_surface_roles")
 
+
+    def test_preserves_causer_instrument_ambiguity_without_context(self):
+        parsed = parse(
+            ("Palu", "NOUN"), ("memecahkan", "VERB"), ("kaca", "NOUN")
+        )
+        ambiguous_sense = {
+            "sense_id": "memecahkan-uji-S1",
+            "valency_frames": [
+                {
+                    "frame_id": "F_CAUSER",
+                    "arguments": [
+                        {
+                            "argument_id": "A1",
+                            "syntactic_role": "SUBJ",
+                            "semantic_role": "CAUSER",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        },
+                        {
+                            "argument_id": "A2",
+                            "syntactic_role": "OBJ",
+                            "semantic_role": "PATIENT",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        },
+                    ],
+                },
+                {
+                    "frame_id": "F_INSTRUMENT",
+                    "arguments": [
+                        {
+                            "argument_id": "A1",
+                            "syntactic_role": "SUBJ",
+                            "semantic_role": "INSTRUMENT",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        },
+                        {
+                            "argument_id": "A2",
+                            "syntactic_role": "OBJ",
+                            "semantic_role": "PATIENT",
+                            "required": True,
+                            "realizations": [{"type": "NP"}],
+                        },
+                    ],
+                },
+            ],
+        }
+        result = map_semantic_roles(parsed, ambiguous_sense, voice="active")
+        self.assertEqual(result["status"], "ambiguous")
+        subject_roles = {
+            next(a["semantic_role"] for a in frame["arguments"]
+                 if a["syntactic_role"] == "SUBJ")
+            for frame in result["candidates"]
+        }
+        self.assertEqual(subject_roles, {"CAUSER", "INSTRUMENT"})
+
+    def test_does_not_promote_instrument_adjunct_to_core_oblique(self):
+        parsed = parse(
+            ("Rina", "NOUN"), ("memecahkan", "VERB"), ("kaca", "NOUN"),
+            ("dengan", "PREP"), ("palu", "NOUN"),
+        )
+        sense = {
+            "sense_id": "memecahkan-uji-argumen-S1",
+            "valency_frames": [{
+                "frame_id": "F1",
+                "arguments": [
+                    {
+                        "argument_id": "A1",
+                        "syntactic_role": "SUBJ",
+                        "semantic_role": "AGENT",
+                        "required": True,
+                        "realizations": [{"type": "NP"}],
+                    },
+                    {
+                        "argument_id": "A2",
+                        "syntactic_role": "OBJ",
+                        "semantic_role": "PATIENT",
+                        "required": True,
+                        "realizations": [{"type": "NP"}],
+                    },
+                ],
+            }],
+        }
+        result = map_semantic_roles(parsed, sense, voice="active")
+        self.assertEqual(result["status"], "mapped")
+        mapped_roles = {
+            argument["semantic_role"]
+            for frame in result["candidates"]
+            for argument in frame["arguments"]
+        }
+        self.assertEqual(mapped_roles, {"AGENT", "PATIENT"})
+        self.assertNotIn("INSTRUMENT", mapped_roles)
+
     def test_rejects_invalid_voice_value(self):
         with self.assertRaises(ValueError):
             map_semantic_roles({}, self.buka, voice="middle")
