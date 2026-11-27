@@ -765,4 +765,4 @@ Kontrak bukti:
 - Dukungan tanpa penyingkiran alternatif, bukti yang saling bertentangan, atau tidak adanya bukti mempertahankan status `ambiguous`.
 - Modul tidak menebak tipe entitas dari ejaan kata. Ia juga tidak menghasilkan bukti konteks sendiri; lapisan pengenal entitas/peristiwa dan interpretasi konteks masih perlu dibangun.
 
-Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti lemah, konflik, bukti tidak cocok, format bukti invalid, hasil yang sejak awal tidak ambigu, dan jaminan input tidak dimutasi. Validasi CI masih menunggu.
+Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti lemah, konflik, bukti tidak cocok, format bukti invalid, hasil yang sejak awal tidak ambigu, dan jaminan input tidak dimutasi. GitHub Actions Run #149 sukses dengan **337/337 tes regresi**.
