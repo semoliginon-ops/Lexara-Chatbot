@@ -145,6 +145,22 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertIsNone(item["context_pos"])
         self.assertEqual(item["pos_context_status"], "ambiguous")
 
+    def test_adjectival_predicate_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Dia sakit.")
+        subject = self.token(analyzed, "Dia")
+        predicate = self.token(analyzed, "sakit")
+        self.assertEqual(subject["pos"], ["PRON"])
+        self.assertEqual(subject["pos_status"], "identified")
+        self.assertEqual(predicate["pos"], ["ADJ"])
+        self.assertEqual(predicate["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P")
+        self.assertEqual(parsed["roles"]["subject"], ["Dia"])
+        self.assertEqual(parsed["roles"]["predicate"], ["sakit"])
+        self.assertEqual(parsed["roles"]["object"], [])
+
     def test_simple_sentence_parser_uses_real_dictionary_pipeline(self):
         result = self.analyze("Aku sedang bekerja di rumah.")
         parsed = parse_sentence(result)
