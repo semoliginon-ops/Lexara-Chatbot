@@ -46,6 +46,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 #### Verifikasi struktur relasi leksikal
 
+- [x] Validator diperluas untuk menerima banyak batch dan memprosesnya berurutan satu per satu; satu tes tambahan ditambahkan (12 tes khusus validator); verifikasi lokal gabungan masih menunggu.
 - [x] `batch-001.jsonl`: 49 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
 - [x] `batch-002.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
 - [x] `batch-003.jsonl`: 51 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
