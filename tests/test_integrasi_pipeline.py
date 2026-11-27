@@ -167,6 +167,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_fronted_adjunct_with_postverbal_subject_stays_unresolved(self):
+        # "Di rumah terdengar suara" has K-P-S order. The parser must not
+        # assign "rumah" as subject or "suara" as object without inversion rules.
+        analyzed = self.analyze("Di rumah terdengar suara.")
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertIsNone(parsed["pattern"])
+        self.assertEqual(parsed["roles"]["subject"], [])
+        self.assertEqual(parsed["roles"]["object"], [])
+        self.assertIn("inversi", parsed["notes"][0])
+
     def test_fronted_temporal_adverb_with_modal_uses_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Besok aku akan makan nasi."))
         self.assertEqual(parsed["status"], "parsed")
