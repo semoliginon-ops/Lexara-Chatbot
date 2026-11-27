@@ -524,6 +524,36 @@ class SimpleClauseParserTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_parses_explicit_fronted_temporal_adverbs_before_subject(self):
+        for adverb in ("besok", "nanti", "sekarang", "tadi"):
+            with self.subTest(adverb=adverb):
+                result = parse_sentence(analysis(
+                    token(adverb, ["ADV"]),
+                    token("aku", ["PRON"]),
+                    token("akan", ["ADV"]),
+                    token("pergi", ["VERB"]),
+                ))
+                self.assertEqual(result["status"], "parsed")
+                self.assertEqual(result["pattern"], "S-P-K")
+                self.assertEqual(result["roles"]["subject"], ["aku"])
+                self.assertEqual(result["roles"]["predicate"], ["akan", "pergi"])
+                self.assertEqual(
+                    result["roles"]["adjuncts"],
+                    [{"adverb": adverb, "kind": "temporal"}],
+                )
+
+    def test_does_not_treat_unlisted_fronted_adverb_as_temporal_adjunct(self):
+        result = parse_sentence(analysis(
+            token("mungkin", ["ADV"]),
+            token("aku", ["PRON"]),
+            token("pergi", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "partial")
+        self.assertEqual(result["roles"]["subject"], ["aku"])
+        self.assertEqual(result["roles"]["predicate"], ["pergi"])
+        self.assertEqual(result["unresolved_tokens"], ["mungkin"])
+        self.assertEqual(result["roles"]["adjuncts"], [])
+
     def test_modal_verb_standing_alone_remains_predicate(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
