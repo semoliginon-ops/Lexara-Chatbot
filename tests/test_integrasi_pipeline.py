@@ -1735,6 +1735,54 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(sendiri["pos_context_status"], "ambiguous")
         self.assertEqual(sendiri["pos_source"], "dictionary")
 
+
+    def test_ten_purpose_subordinate_variations_use_real_dictionary_pipeline(self):
+        cases = (
+            ("Saya belajar supaya kamu lulus.", "postposed", "saya", "belajar", "kamu", "lulus"),
+            ("Dia pergi supaya saya tenang.", "postposed", "dia", "pergi", "saya", "tenang"),
+            ("Kami pulang supaya mereka sehat.", "postposed", "kami", "pulang", "mereka", "sehat"),
+            ("Kita makan supaya dia sehat.", "postposed", "kita", "makan", "dia", "sehat"),
+            ("Aku tidak pergi supaya dia tenang.", "postposed", "aku", "tidak pergi", "dia", "tenang"),
+            ("Saya mau belajar supaya kamu lulus.", "postposed", "saya", "mau belajar", "kamu", "lulus"),
+            ("Supaya kamu lulus, saya belajar.", "fronted", "saya", "belajar", "kamu", "lulus"),
+            ("Supaya mereka sehat, kami pulang.", "fronted", "kami", "pulang", "mereka", "sehat"),
+            ("Supaya dia tenang, aku tidak pergi.", "fronted", "aku", "tidak pergi", "dia", "tenang"),
+            ("Supaya saya sehat, kamu makan.", "fronted", "kamu", "makan", "saya", "sehat"),
+        )
+
+        for sentence, position, main_subject, main_predicate, sub_subject, sub_predicate in cases:
+            with self.subTest(sentence=sentence, position=position):
+                analyzed = self.analyze(sentence)
+                marker = self.token(analyzed, "supaya")
+                self.assertEqual(marker["status"], "matched")
+                self.assertEqual(marker["pos"], ["CONJ"])
+                self.assertEqual(marker["pos_source"], "dictionary")
+                self.assertEqual(marker["pos_status"], "identified")
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+                self.assertEqual(len(parsed["clauses"]), 2)
+
+                if position == "postposed":
+                    main_clause, subordinate = parsed["clauses"]
+                    self.assertIsNone(main_clause["subordinator"])
+                    self.assertEqual(subordinate["subordinator"], "supaya")
+                    self.assertEqual(subordinate["relation_to_previous"], "tujuan")
+                else:
+                    subordinate, main_clause = parsed["clauses"]
+                    self.assertEqual(subordinate["subordinator"], "supaya")
+                    self.assertEqual(subordinate["relation_to_next"], "tujuan")
+                    self.assertIsNone(main_clause["subordinator"])
+
+                self.assertEqual(main_clause["analysis"]["status"], "parsed")
+                self.assertEqual(main_clause["analysis"]["roles"]["subject"], [main_subject])
+                self.assertEqual(" ".join(main_clause["analysis"]["roles"]["predicate"]), main_predicate)
+                self.assertEqual(subordinate["analysis"]["status"], "parsed")
+                self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+                self.assertEqual(subordinate["analysis"]["roles"]["subject"], [sub_subject])
+                self.assertEqual(" ".join(subordinate["analysis"]["roles"]["predicate"]), sub_predicate)
+
 if __name__ == "__main__":
     unittest.main()
 
