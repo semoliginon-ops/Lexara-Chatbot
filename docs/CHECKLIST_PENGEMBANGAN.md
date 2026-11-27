@@ -128,7 +128,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memperjelas batas keterangan preposisional awal dan subjek.
 - [x] Mempertahankan abstention ketika fungsi sintaksis belum cukup jelas.
 - [x] Memvalidasi parser v1.9 melalui GitHub Actions Run #126: **255/255 regression tests lulus**.
-- [ ] Melanjutkan perluasan pola kalimat secara bertahap berdasarkan contoh yang terkontrol.
+- [x] Memperluas keterangan temporal eksplisit agar dapat muncul setelah predikat atau objek, selain di awal kalimat; hanya `besok`, `nanti`, `sekarang`, dan `tadi` yang dikenali, sedangkan ADV lain tetap unresolved. Diuji pada unit parser dan pipeline kamus/POS nyata; Run #154: 342/342 tes regresi lulus.
 - [x] Menetapkan katalog desain 14 semantic role setelah persetujuan pengguna, termasuk CAUSER untuk penyebab non-agentif.
 - [x] Menguji batas CAUSER lintas predikat: AGENT, INSTRUMENT, STIMULUS, THEME, serta argumen penyebab vs keterangan sebab; kasus ambigu ditandai untuk abstention.
 - [x] Menyetujui spesifikasi skema valensi per-sense dan aturan anotasi awal.
