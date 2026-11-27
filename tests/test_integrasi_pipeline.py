@@ -718,6 +718,43 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"adverb": "besok", "kind": "temporal"}],
         )
 
+    def test_negation_modal_adverb_with_postposed_temporal_uses_real_pipeline(self):
+        analyzed = self.analyze("Aku tidak akan makan nasi besok.")
+
+        expected = {
+            "aku": "PRON",
+            "tidak": "ADV",
+            "akan": "ADV",
+            "makan": "VERB",
+            "nasi": "NOUN",
+            "besok": "ADV",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O-K")
+        self.assertEqual(parsed["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["roles"]["predicate"], ["tidak", "akan", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertEqual(
+            parsed["predicate_structure"]["modifiers"],
+            [
+                {"token": "tidak", "kind": "negation"},
+                {"token": "akan", "kind": "modal"},
+            ],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"adverb": "besok", "kind": "temporal"}],
+        )
 if __name__ == "__main__":
     unittest.main()
 
