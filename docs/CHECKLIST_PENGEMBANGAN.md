@@ -165,7 +165,10 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 ### 2.6 Analisis struktur kalimat dasar
 
-- [ ] Menentukan masukan parser dari token dan hasil POS.
+- [x] Menentukan masukan parser dari hasil POS leksikal dan POS kontekstual bila tersedia.
+- [x] Membuat `tools/parser_kalimat.py` untuk kerangka sederhana S-P, S-P-O, dan keterangan berpreposisi.
+- [x] Membuat regression tests parser; pola S-P-K juga diuji melalui kamus penuh pada `tests/test_integrasi_pipeline.py`.
+- [x] Menjalankan regression suite penuh: **182/182 lulus** pada GitHub Actions Run #75.
 - [ ] Mengenali subjek, predikat, objek, pelengkap, dan keterangan.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [ ] Mencatat kasus ambigu atau belum teranalisis.
@@ -176,7 +179,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menyusun dataset uji 100 kalimat dengan label POS dan pembagian development/test.
 - [ ] Mencakup bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang.
 - [x] Menyimpan expected POS per token pada dataset JSONL.
-- [x] Menjalankan regression suite seluruh komponen: 174/174 lulus pada GitHub Actions Run #74.
+- [x] Menjalankan regression suite seluruh komponen: 182/182 lulus pada GitHub Actions Run #75.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
@@ -230,7 +233,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #74 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **174 regression tests; seluruhnya lulus**.
 
-**Titik lanjut aktif:** lanjutkan ke Tahap 2.6, yaitu merancang parser struktur kalimat dasar. Parser belum tersedia. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
+**Titik lanjut aktif:** lanjutkan penyempurnaan parser v0.1: perluas frasa nominal/verba, pelengkap, negasi, koordinasi, dan variasi susunan kalimat. Parser saat ini baru mengenali pola S-P, S-P-O, serta keterangan berpreposisi. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
 
 ## Dokumen rujukan
 
