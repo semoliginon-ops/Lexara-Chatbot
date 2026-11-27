@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.4: frasa verba modal kehendak
+# validasi parser v0.5: predikat nonverbal sederhana
