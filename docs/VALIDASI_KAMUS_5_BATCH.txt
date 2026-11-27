@@ -14,3 +14,4 @@
 # Tahap 2.6: parser v1.8 mengenali ADV temporal awal besok/nanti/sekarang/tadi; ADV lain tetap abstain; tes unit dan integrasi ditambahkan.
 # Regresi Tahap 2.6: pola inversi K-P-S yang belum didukung dipastikan tetap unresolved, bukan ditebak sebagai S-P-O.
 # Regresi integrasi: K-P-S 'Di rumah terdengar suara' memakai entri kamus nyata dan tetap unresolved sampai aturan inversi tersedia.
+# Koreksi regresi K-P-S: integrasi full dictionary mengunci abstention pada token terdengar yang belum dikenali sebagai VERB; tes sintaksis unit mengunci larangan menebak inversi.
