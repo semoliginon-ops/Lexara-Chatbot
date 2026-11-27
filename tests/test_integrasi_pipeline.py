@@ -306,6 +306,24 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(token["pos_status"], "identified")
 
 
+    def test_tetap_has_adjective_and_adverb_senses_conservatively(self):
+        entry = next(item for item in self.entries if item["lemma"] == "tetap")
+        self.assertEqual(entry["pos"], ["ADJ", "ADV"])
+        self.assertEqual([sense["pos"] for sense in entry["senses"]], [["ADJ"], ["ADV"]])
+
+        adjective = self.analyze("pegawai tetap")
+        adjective_token = self.token(adjective, "tetap")
+        self.assertEqual(adjective_token["pos"], ["ADJ", "ADV"])
+        self.assertIsNone(adjective_token["context_pos"])
+        self.assertEqual(adjective_token["pos_context_status"], "ambiguous")
+
+        adverb = self.analyze("mereka tetap bekerja")
+        adverb_token = self.token(adverb, "tetap")
+        self.assertEqual(adverb_token["pos"], ["ADJ", "ADV"])
+        self.assertEqual(adverb_token["context_pos"], "ADV")
+        self.assertEqual(adverb_token["pos_context_status"], "selected_by_context")
+
+
 if __name__ == "__main__":
     unittest.main()
 
