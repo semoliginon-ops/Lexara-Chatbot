@@ -345,3 +345,5 @@ Validasi parser v1.4 melalui GitHub Actions [Run #97](https://github.com/semolig
 
 
 Parser v1.5 menambahkan pola subordinatif setelah klausa utama, misalnya `Aku pulang karena hujan turun.`. Penghubung sebab/temporal/konsesi yang dikenali tidak lagi diperlakukan sebagai koordinasi setara pada pola tersebut. Hasil validasi dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
+
+Validasi parser v1.5 melalui GitHub Actions [Run #99](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467) berhasil dengan **232/232 regression tests lulus**. Validasi kamus lengkap 3.000 lema, dataset POS, dan evaluasi development juga berhasil.
