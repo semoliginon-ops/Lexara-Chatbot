@@ -168,6 +168,21 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_postverbal_noun_after_muncul_remains_unresolved_in_real_pipeline(self):
+        analyzed = self.analyze("Muncul masalah.")
+        verb = self.token(analyzed, "muncul")
+        noun = self.token(analyzed, "masalah")
+        self.assertEqual(verb["pos"], ["VERB"])
+        self.assertEqual(noun["pos"], ["NOUN"])
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertIsNone(parsed["pattern"])
+        self.assertEqual(parsed["roles"]["subject"], [])
+        self.assertEqual(parsed["roles"]["predicate"], ["muncul"])
+        self.assertEqual(parsed["roles"]["object"], [])
+        self.assertEqual(parsed["unresolved_tokens"], ["masalah"])
+
     def test_fronted_prepositional_phrase_is_not_misread_in_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Di rumah terdengar suara."))
         self.assertEqual(parsed["status"], "unresolved")
