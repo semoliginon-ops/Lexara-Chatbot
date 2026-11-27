@@ -1,2 +1,2 @@
 58 60
-# validasi ulang parser v1.3 setelah perbaikan deteksi koma subordinatif
+# validasi parser v1.3: uji integrasi dengan lema yang teridentifikasi
