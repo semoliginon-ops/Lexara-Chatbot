@@ -651,6 +651,19 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
 
     # Keterangan berpreposisi sederhana: preposisi + frasa nominal sesudahnya.
     while cursor < len(words):
+        # Hanya adverbia temporal eksplisit yang boleh menjadi keterangan
+        # pascapredikat/pascaobjek; ADV lain tetap unresolved.
+        if (
+            words[cursor]["pos"] == "ADV"
+            and words[cursor]["token"].casefold() in _FRONTED_TEMPORAL_ADVERBS
+        ):
+            adjuncts.append({
+                "adverb": words[cursor]["token"],
+                "kind": "temporal",
+            })
+            assigned.add(cursor)
+            cursor += 1
+            continue
         if words[cursor]["pos"] == "PREP":
             marker = cursor
             phrase_positions: list[int] = []
@@ -696,6 +709,6 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
-            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Penanda modalitas 'mau', 'ingin', 'hendak', dan 'bisa' (VERB), serta 'akan' (ADV), digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan verbal tunggal tetap dipertahankan sebagai predikat. Empat ADV temporal eksplisit ('besok', 'nanti', 'sekarang', 'tadi') dapat dicatat sebagai keterangan awal sebelum subjek. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
+            "Frasa nominal dilaporkan sebagai rentang datar; inti dan pewatasnya belum dianalisis. Negasi verbal 'tidak' dan 'belum' dikenali secara terbatas. Penanda modalitas 'mau', 'ingin', 'hendak', dan 'bisa' (VERB), serta 'akan' (ADV), digabung ke rentang predikat hanya jika diikuti verba leksikal; penggunaan verbal tunggal tetap dipertahankan sebagai predikat. Empat ADV temporal eksplisit ('besok', 'nanti', 'sekarang', 'tadi') dapat dicatat sebagai keterangan sebelum subjek atau setelah predikat/objek; ADV lain tidak otomatis dianggap temporal. Predikat nonverbal adjektival/nominal sederhana dikenali secara heuristik; modalitas lain, pelengkap, koordinasi, klausa majemuk, dan subjek tersirat belum dimodelkan.",
         ],
     }
