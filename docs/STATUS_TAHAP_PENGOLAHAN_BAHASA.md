@@ -942,3 +942,6 @@ Parser kini mengenali pola klausa utama yang diikuti klausa subordinatif dengan 
 Klausa utama dan klausa subordinatif disimpan terpisah. Hubungan sebab, temporal, atau konsesi dicatat hanya jika penghubungnya termasuk daftar eksplisit. Tes unit mencakup contoh sebab dan temporal; tes integrasi memakai kalimat sebab melalui kamus 3.000 lema.
 
 **Batas:** setiap sisi harus dapat dianalisis sebagai klausa `parsed` atau `partial`; elipsis pada klausa subordinatif akhir, beberapa penghubung subordinatif dalam satu kalimat, dan relasi semantik yang tidak tercantum belum dipaksakan.
+
+
+Validasi GitHub Actions Run #99 berhasil: **232/232 regression tests lulus**. Validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi batch terpilih juga sukses. [Lihat Run #99](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956517467).
