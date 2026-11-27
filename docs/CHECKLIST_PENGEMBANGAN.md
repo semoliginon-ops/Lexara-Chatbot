@@ -174,7 +174,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Memperluas frasa verba di luar adverbia/negator sebelum verba inti dan memisahkan inti frasa dari pewatasnya.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
-- [x] Menjalankan regression suite penuh melalui GitHub Actions Run #76: **184/184 lulus**; validasi kamus 60 batch/3.000 entri, dataset POS, dan evaluasi development juga berhasil.
+- [x] Menjalankan regression suite penuh melalui GitHub Actions Run #76: **187/187 lulus**; validasi kamus 60 batch/3.000 entri, dataset POS, dan evaluasi development juga berhasil.
 
 ### 2.7 Dataset dan pengujian terpadu
 
@@ -235,7 +235,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 
 Pengujian integrasi baru menggunakan kamus asli 3.000 lema telah ditambahkan pada `tests/test_integrasi_pipeline.py`. GitHub Actions Run #75 menjalankan validasi relasi lima batch terakhir, validasi penuh 60 batch/3.000 entri, validasi dataset, evaluasi development, dan **182 regression tests; seluruhnya lulus**.
 
-**Titik lanjut aktif:** parser v0.3 mulai mengenali negasi verbal terbatas (`tidak` dan `belum`) sebagai bagian predikat. Berikutnya perluas frasa verba/modal secara hati-hati, lalu pelengkap, negasi predikat adjektival/nominal, koordinasi, dan variasi susunan kalimat. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
+**Titik lanjut aktif:** parser v0.3 mengenali negasi verbal terbatas (`tidak` dan `belum`) sebagai bagian predikat. Berikutnya perluas frasa verba/modal secara hati-hati, lalu pelengkap, negasi predikat adjektival/nominal, koordinasi, dan variasi susunan kalimat. Integrasi Android, pemrosesan makna lintas kalimat, dan pembentukan respons juga belum selesai. Jangan menyamakan kelulusan tes fondasi dengan kemampuan memahami bahasa bebas seperti LLM.
 
 ## Dokumen rujukan
 
