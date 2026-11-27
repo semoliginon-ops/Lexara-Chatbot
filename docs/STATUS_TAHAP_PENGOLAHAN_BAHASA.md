@@ -882,3 +882,11 @@ Ditambahkan tes integrasi untuk `Aku bisa makan nasi nanti.` Indeks kamus memast
 Run #168 sempat gagal karena tes baru membaca nama field bukti konteks yang keliru (`context_evidence`); log mengidentifikasi KeyError tersebut. Tes diperbaiki agar memakai `pos_context_evidence`, lalu **Run #169 sukses** dengan validasi 60 batch / 3.014 lema, valensi, dataset POS, evaluasi development, dan **354/354 tes regresi lulus**. POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%. [Lihat Run #169](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019606633).
 
 **Batas:** pengujian memvalidasi satu konstruksi `bisa` modal yang diikuti verba dan keterangan temporal pascapredikat. Penggunaan `bisa` dalam konteks lain tetap memerlukan bukti konteks yang memadai.
+
+### Uji klausa konsesif pascaposisi — Run #170 (27 November 2026)
+
+Ditambahkan tes integrasi pipeline nyata untuk `Aku pergi walaupun hujan turun.` Indeks kamus memastikan `aku`, `pergi`, `walaupun`, `hujan`, dan `turun` tersedia. Tidak ada perubahan batch atau indeks kamus. Tes memverifikasi POS dari kamus (`PRON`, `VERB`, `CONJ`, `NOUN`, `VERB`), pemisahan klausa utama `Aku pergi` dan klausa subordinatif `hujan turun`, serta relasi `konsesi` yang ditandai oleh `walaupun`.
+
+GitHub Actions **Run #170 selesai dengan conclusion success**. Validasi 60 batch / 3.014 lema, valensi, dataset POS, dan evaluasi development berhasil; **355/355 tes regresi lulus**. POS kontekstual development tetap coverage/accuracy 98,0% dan selective accuracy 100,0%. [Lihat Run #170](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019852916).
+
+**Batas:** pengujian ini mencakup klausa konsesif pascaposisi dengan dua klausa S-P eksplisit. Ini belum membuktikan semua bentuk konsesi, elipsis, atau susunan klausa konsesif sudah ditangani.
