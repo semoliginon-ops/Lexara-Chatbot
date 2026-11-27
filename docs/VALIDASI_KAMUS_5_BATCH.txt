@@ -1,2 +1,2 @@
 56 60
-# validasi parser v0.5: predikat nonverbal sederhana
+# ulangi validasi parser v0.5 setelah perbaikan predikat nominal
