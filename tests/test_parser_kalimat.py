@@ -67,6 +67,24 @@ class SimpleClauseParserTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
+    def test_parses_multiple_fronted_prepositional_adjuncts(self):
+        result = parse_sentence(analysis(
+            token("di", ["PREP"]),
+            token("rumah", ["NOUN"]),
+            token("pada", ["PREP"]),
+            token("malam", ["NOUN"]),
+            token("hari", ["NOUN"]),
+            token("aku", ["PRON"]),
+            token("bekerja", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-K")
+        self.assertEqual(result["roles"]["subject"], ["aku"])
+        self.assertEqual(result["roles"]["adjuncts"], [
+            {"preposition": "di", "phrase": ["rumah"]},
+            {"preposition": "pada", "phrase": ["malam", "hari"]},
+        ])
+
     def test_does_not_absorb_unclassified_prefix_as_fronted_adjunct(self):
         result = parse_sentence(analysis(
             token("mungkin", ["ADV"]),
