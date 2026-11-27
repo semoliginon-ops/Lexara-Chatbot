@@ -1,2 +1,2 @@
 56 60
-# ulangi validasi parser v0.5 setelah perbaikan predikat nominal
+# validasi integrasi predikat nonverbal melalui kamus dan pipeline POS nyata
