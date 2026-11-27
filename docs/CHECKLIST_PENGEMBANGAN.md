@@ -623,3 +623,11 @@ Catatan: metrik batch keenam tidak boleh disebut peningkatan kualitas yang teruk
 - [ ] Lanjutkan audit 19 abstention NOUN development untuk menyusun prioritas lema yang benar-benar dibutuhkan.
 
 Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perlu ditindaklanjuti, bukan alasan untuk menebak bentuk turunan atau mengubah aturan morfologi. Split test tetap tidak digunakan.
+
+### Audit dan koreksi relasi leksikal Batch-002 — 27 November 2026
+
+- [x] Audit semantik read-only pada relasi Batch-002; ditemukan tujuh sinonim yang tidak setara secara makna atau merupakan bentuk turunan/perintah.
+- [x] Menghapus relasi sinonim yang tidak tepat pada K0059 `taruh`, K0067 `masuk`, K0071 `duduk`, K0072 `berdiri`, K0073 `lari`, K0090 `dekat`, dan K0095 `bokek`. Tidak mengubah definisi, sense, POS, bentuk turunan, atau relasi lain.
+- [ ] Menunggu validasi lokal Batch-002 dan regression suite setelah perubahan.
+
+**Batas audit:** koreksi ini hanya menangani tujuh relasi yang disetujui; relasi lain yang memerlukan pembatasan konteks tetap menunggu audit terpisah.
