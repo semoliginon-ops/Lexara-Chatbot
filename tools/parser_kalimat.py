@@ -449,20 +449,80 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         if words[i]["token"].casefold() not in _MODAL_VERBS
     ]
     verb_pos = lexical_positions[0] if lexical_positions else verb_positions[0]
+    # Nomina di dalam frasa berpreposisi bukan kandidat subjek.
+    # Tandai seluruh rentang PREP + frasa nominal sebelum predikat agar
+    # "di rumah" tidak keliru dipilih sebagai subjek pada "Di rumah terdengar suara".
+    prepositional_positions: set[int] = set()
+    scan = 0
+    while scan < verb_pos:
+        if words[scan]["pos"] != "PREP":
+            scan += 1
+            continue
+        prepositional_positions.add(scan)
+        scan += 1
+        while scan < verb_pos and words[scan]["pos"] in _OBJECT_PHRASE_POS:
+            prepositional_positions.add(scan)
+            scan += 1
+
     subject_heads = [
-        i for i in range(verb_pos) if words[i]["pos"] in _NOMINAL_POS
+        i for i in range(verb_pos)
+        if words[i]["pos"] in _NOMINAL_POS and i not in prepositional_positions
     ]
     if not subject_heads:
+        # Catat keterangan berpreposisi/temporal di awal, tetapi jangan
+        # mengangkat nomina setelah verba menjadi subjek atau objek secara otomatis.
+        leading_adjuncts: list[dict[str, Any]] = []
+        leading_positions: set[int] = set()
+        prefix_cursor = 0
+        while prefix_cursor < verb_pos:
+            current = words[prefix_cursor]
+            if (
+                current["pos"] == "ADV"
+                and current["token"].casefold() in _FRONTED_TEMPORAL_ADVERBS
+            ):
+                leading_adjuncts.append({
+                    "adverb": current["token"],
+                    "kind": "temporal",
+                })
+                leading_positions.add(prefix_cursor)
+                prefix_cursor += 1
+                continue
+            if current["pos"] != "PREP":
+                break
+            marker_position = prefix_cursor
+            scan = marker_position + 1
+            phrase_positions: list[int] = []
+            while scan < verb_pos and words[scan]["pos"] in _OBJECT_PHRASE_POS:
+                phrase_positions.append(scan)
+                scan += 1
+            if not phrase_positions:
+                break
+            leading_adjuncts.append({
+                "preposition": words[marker_position]["token"],
+                "phrase": [words[i]["token"] for i in phrase_positions],
+            })
+            leading_positions.add(marker_position)
+            leading_positions.update(phrase_positions)
+            prefix_cursor = scan
+
+        assigned_without_subject = leading_positions | {verb_pos}
+        unresolved_without_subject = [
+            item["token"] for i, item in enumerate(words)
+            if i not in assigned_without_subject
+        ]
         return {
             "parser_method": "conservative_svo_v4",
             "status": "unresolved",
             "pattern": None,
             "roles": {
                 "subject": [], "predicate": [words[verb_pos]["token"]],
-                "object": [], "adjuncts": [], "complement": [],
+                "object": [], "adjuncts": leading_adjuncts, "complement": [],
             },
-            "unresolved_tokens": [item["token"] for item in words if item["pos"] is None],
-            "notes": ["Subjek eksplisit sebelum predikat belum ditemukan; inversi dan subjek tersirat belum ditangani."],
+            "unresolved_tokens": unresolved_without_subject,
+            "notes": [
+                "Subjek eksplisit sebelum predikat belum ditemukan; inversi dan subjek tersirat belum ditangani.",
+                "Nomina di dalam frasa berpreposisi awal dicatat sebagai keterangan, bukan kandidat subjek; nomina setelah predikat tidak otomatis ditetapkan sebagai subjek atau objek.",
+            ],
         }
 
     # Ambil frasa nominal yang paling dekat dengan predikat. Kata sifat/angka
