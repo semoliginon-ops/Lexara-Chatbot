@@ -358,25 +358,46 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
-    def test_postverbal_noun_after_intransitive_verb_remains_unresolved_in_real_pipeline(self):
-        for sentence, verb_surface in (
-            ("Muncul masalah.", "muncul"),
-            ("Timbul masalah.", "timbul"),
-        ):
-            with self.subTest(sentence=sentence):
-                analyzed = self.analyze(sentence)
-                verb = self.token(analyzed, verb_surface)
-                noun = self.token(analyzed, "masalah")
-                self.assertEqual(verb["pos"], ["VERB"])
-                self.assertEqual(noun["pos"], ["NOUN"])
+    def test_valency_guided_postverbal_subject_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Muncul masalah.")
+        verb = self.token(analyzed, "muncul")
+        self.assertEqual(verb["pos"], ["VERB"])
+        self.assertEqual(verb["candidates"][0]["entry"]["senses"][0]["valency_frames"][0]["arguments"], [{
+            "argument_id": "A1",
+            "syntactic_role": "SUBJ",
+            "semantic_role": "THEME",
+            "required": True,
+            "realizations": [{"type": "NP"}],
+        }])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "P-S")
+        self.assertEqual(parsed["roles"]["subject"], ["masalah"])
+        self.assertEqual(parsed["roles"]["predicate"], ["muncul"])
+        self.assertEqual(parsed["roles"]["object"], [])
 
-                parsed = parse_sentence(analyzed)
-                self.assertEqual(parsed["status"], "unresolved")
-                self.assertIsNone(parsed["pattern"])
-                self.assertEqual(parsed["roles"]["subject"], [])
-                self.assertEqual(parsed["roles"]["predicate"], [verb_surface])
-                self.assertEqual(parsed["roles"]["object"], [])
-                self.assertEqual(parsed["unresolved_tokens"], ["masalah"])
+        fronted = parse_sentence(self.analyze("Di rumah muncul masalah."))
+        self.assertEqual(fronted["status"], "parsed")
+        self.assertEqual(fronted["pattern"], "K-P-S")
+        self.assertEqual(fronted["roles"]["subject"], ["masalah"])
+        self.assertEqual(fronted["roles"]["predicate"], ["muncul"])
+        self.assertEqual(fronted["roles"]["adjuncts"], [
+            {"preposition": "di", "phrase": ["rumah"]}
+        ])
+
+    def test_postverbal_noun_without_unique_valency_remains_unresolved_in_real_pipeline(self):
+        analyzed = self.analyze("Timbul masalah.")
+        verb = self.token(analyzed, "timbul")
+        noun = self.token(analyzed, "masalah")
+        self.assertEqual(verb["pos"], ["VERB"])
+        self.assertEqual(noun["pos"], ["NOUN"])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "unresolved")
+        self.assertIsNone(parsed["pattern"])
+        self.assertEqual(parsed["roles"]["subject"], [])
+        self.assertEqual(parsed["roles"]["predicate"], ["timbul"])
+        self.assertEqual(parsed["roles"]["object"], [])
+        self.assertEqual(parsed["unresolved_tokens"], ["masalah"])
 
     def test_kps_candidate_and_omitted_subject_object_remain_unresolved_in_real_pipeline(self):
         cases = (
