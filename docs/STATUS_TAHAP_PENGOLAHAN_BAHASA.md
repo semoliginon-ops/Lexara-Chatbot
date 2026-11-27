@@ -738,4 +738,7 @@ Aturan terbatas:
 - Semua frame yang cocok tetap dipertahankan. Untuk pilot `buka-S1`, AGENT dan CAUSER tetap ambigu; sistem tidak memilih salah satunya hanya dari posisi.
 - Hanya frame dengan satu argumen SUBJ dan satu OBJ yang didukung. Konstruksi pasif lain, klausa majemuk, dan pola yang belum dipahami tetap di luar cakupan.
 
-Tes unit ditambahkan untuk agen pascaverbal, frasa `oleh`, agen yang dilesapkan, dan konflik realisasi. Tes integrasi juga mengalirkan bukti morfologi pasif nyata dari `analyze_text()` melalui parser dan adapter ke mapper. Validasi CI masih menunggu.
+Tes unit ditambahkan untuk agen pascaverbal, frasa `oleh`, agen yang dilesapkan, dan konflik realisasi. Tes integrasi juga mengalirkan bukti morfologi pasif nyata dari `analyze_text()` melalui parser dan adapter ke mapper. GitHub Actions Run #144 sukses dengan **323/323 tes regresi**. Tes integrasi memastikan voice pasif hasil morfologi nyata mengalir ke mapper; hasil untuk `buka-S1` tetap ambigu antara AGENT dan CAUSER.
+
+
+Validasi CI Run #144: **323/323 tes lulus**. Tes mencakup pemetaan pasif dengan agen pascaverbal, agen berfrasa `oleh`, agen yang dilesapkan, konflik dua realisasi agen, dan integrasi voice pasif dari analisis morfologi sampai semantic-role mapper. Validasi kamus penuh tetap mencakup 60 batch / 3.014 lema. Keberhasilan ini hanya memvalidasi pola terbatas yang diuji; belum berarti semua konstruksi pasif bahasa Indonesia sudah tertangani.
