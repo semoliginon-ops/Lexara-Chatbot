@@ -1061,3 +1061,14 @@ Tes integrasi pipeline penuh ditambahkan untuk kalimat `Bukuku jatuh.`. Bentuk `
 GitHub Actions **Run #211 selesai dengan conclusion success**; **384/384 tes regresi lulus**. Log mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch, evaluasi POS development, dan tahapan validasi workflow berhasil. [Lihat Run #211](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46043106171).
 
 **Batas:** pengujian ini memastikan posisi frasa nominal subjek untuk satu contoh `-ku); belum membuktikan semua klitik dapat digunakan pada semua jenis frasa nominal atau semua posisi sintaksis. Fungsi `-nya` tetap ambigu antara posesif dan definit/anforis; relasi refleksif tetap kandidat yang belum diputuskan. Tidak ada perubahan kamus atau indeks.
+
+
+### Pengujian klitik nominal -mu dan -nya pada frasa subjek — Run #213 (28 November 2026)
+
+Tes integrasi pipeline penuh diperluas untuk dua bentuk subjek nominal: `Bukumu jatuh.` dan `Bukunya jatuh.`. Pada `Bukumu`, host `buku` dikenali sebagai NOUN dengan klitik `-mu`, fungsi posesif dipertahankan, dan frasa mengisi peran subjek pada pola S-P. Pada `Bukunya`, host NOUN dengan klitik `-nya` juga dapat mengisi peran subjek pada pola S-P, tetapi fungsi klitik tetap `unresolved` dengan kandidat `possessive` dan `definite_anaphoric`.
+
+Percobaan awal memakai kalimat `Rumahmu besar.` gagal karena parser belum mendukung predikat adjektival sederhana dengan subjek nominal yang tidak memiliki penanda pronominal eksplisit. Contoh uji `-mu` kemudian diganti menjadi `Bukumu jatuh.` agar pengujian mengisolasi dukungan klitik pada posisi subjek tanpa memperluas cakupan predikat nonverbal. Kegagalan percobaan awal dicatat sebagai batas parser, bukan disembunyikan.
+
+GitHub Actions **Run #213 selesai dengan conclusion success**; **386/386 tes regresi lulus**. Log juga mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch serta validasi valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #213](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46078924646).
+
+**Batas:** hasil ini menguji masing-masing satu contoh `-mu` dan `-nya` pada posisi subjek dengan predikat verbal. Ini belum membuktikan cakupan semua klitik pada seluruh posisi atau seluruh struktur frasa nominal. `-nya` tetap ambigu antara posesif dan definit/anforis. Predikat adjektival dengan subjek nominal biasa maupun berklitik belum menjadi cakupan parser yang tervalidasi. Tidak ada perubahan kamus atau indeks.
