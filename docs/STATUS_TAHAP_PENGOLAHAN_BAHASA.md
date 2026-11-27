@@ -1040,3 +1040,16 @@ Empat kata temporal yang sudah ada di kamus (`besok`, `nanti`, `sekarang`, `tadi
 
 
 **Hasil validasi parser v1.8 — Run #119:** SUCCESS. Loader memuat 60 batch / 3.014 lema; validasi relasi batch terpilih, dataset POS, dan evaluasi development lulus; regression suite **253/253 lulus**. Empat ADV temporal awal diuji pada tes unit; `mungkin` tetap unresolved; tes integrasi `Besok aku akan makan nasi.` memastikan keterangan waktu, modalitas, subjek, predikat, dan objek terhubung melalui pipeline kamus penuh. Tidak ada perubahan kamus pada fitur v1.8.
+
+
+## Parser v1.9 — batas keterangan preposisional awal dan subjek
+
+Perubahan ini memperketat batas antara keterangan preposisional awal dan subjek, tanpa mengimplementasikan inversi K-P-S penuh.
+
+- Frasa PREP di awal kalimat dikeluarkan dari kandidat subjek dan dicatat sebagai keterangan.
+- Pronomina orang yang jelas setelah frasa tersebut tetap dipertahankan sebagai kandidat subjek. Contoh: `Di rumah aku bekerja.` menghasilkan keterangan `di rumah` dan subjek `aku`.
+- Jika subjek tidak dapat ditentukan secara aman, subjek dibiarkan kosong. Pada `Di rumah terdengar suara.`, parser mencatat `di rumah` sebagai keterangan, predikat `terdengar`, dan `suara` sebagai unresolved; token itu tidak dipaksakan menjadi objek.
+- Inversi K-P-S penuh belum didukung. Hasil unresolved/partial lebih dipilih daripada penetapan fungsi yang tidak memiliki dasar aturan.
+- Tidak ada perubahan kamus atau penambahan lema dalam pekerjaan ini.
+
+**Validasi GitHub Actions Run #126 — SUCCESS:** 60 batch / 3.014 lema, validasi kamus lengkap, dataset POS, evaluasi development, dan **255/255 regression tests lulus**. [Lihat Run #126](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45972629322).
