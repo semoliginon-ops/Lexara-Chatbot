@@ -1016,3 +1016,8 @@ Validasi penambahan `dulu` selesai: [GitHub Actions Run #105](https://github.com
 ## Penambahan lema `tetap` (ADJ + ADV) — menunggu validasi
 
 Atas persetujuan pengguna, K3007 `tetap` ditambahkan dengan dua sense terpisah: ADJ (tidak berubah/konstan/tidak goyah) dan ADV (melakukan hal yang sama seperti sebelumnya/tidak berhenti). POS entri memuat kedua label; masing-masing sense memiliki POS spesifik. Aturan konteks yang sangat terbatas memilih ADV ketika `tetap` langsung mendahului token yang telah dikenali sebagai VERB. Contoh `pegawai tetap` tetap ambigu dan tidak dipaksa. INDEX `s-u.tsv` diperbarui. Validasi GitHub Actions masih menunggu.
+
+
+## Hasil validasi penambahan `tetap` — GitHub Actions Run #108
+
+Run #108 berhasil: 60 batch, **3.006 lema**, dataset POS 100 kalimat/543 token, dan **239/239 tes regresi lulus**. Pada development split (255 token resolved), evaluasi kontekstual menghasilkan 236 prediksi benar, coverage 92,5%, accuracy 92,5%, dan selective accuracy 100%. Abstention ADV menjadi **0** (20/20 ADV dikenali); NOUN masih 19 abstention. Satu token ADJ tetap abstain secara konservatif. Test set tidak digunakan untuk penyetelan. Aturan konteks baru hanya memilih ADV untuk `tetap` yang langsung mendahului token VERB; kasus tanpa bukti yang cukup tetap dibiarkan ambigu. [GitHub Actions Run #108](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961614138).
