@@ -1258,3 +1258,18 @@ Tes integrasi pipeline ditambahkan untuk kalimat `Aku tidak pergi walaupun hujan
 GitHub Actions **Run #238 selesai dengan conclusion success**; **411/411 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. Evaluasi POS kontekstual menunjukkan coverage/accuracy 98%. [Lihat Run #238](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46083545335).
 
 Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
+
+### Perbaikan subordinator tujuan `supaya` dan kelompok 10 skenario — Run #239–240 (28 November 2026)
+
+Run #239 memperbaiki parser agar relasi `tujuan` diterima pada klausa subordinatif di depan maupun di belakang. Sebelumnya, dua skenario `supaya` gagal karena relasi tersebut belum masuk ke jalur pengenalan klausa subordinatif. Setelah perbaikan, GitHub Actions sukses dengan **412/412 tes regresi lulus**. [Lihat Run #239](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46084214953).
+
+Run #240 menambahkan satu kelompok tes integrasi berisi **10 skenario independen** melalui pipeline kamus/POS nyata untuk konstruksi tujuan dengan `supaya`. Cakupannya meliputi:
+- Klausa tujuan setelah klausa utama dan klausa tujuan di depan dengan koma.
+- Variasi subjek pronominal pada kedua klausa.
+- Klausa utama dengan negasi.
+- Klausa utama dengan modalitas.
+- Pemeriksaan subordinator `supaya` sebagai CONJ dari kamus, dua klausa berpola S-P, serta relasi antarklausa `tujuan`.
+
+GitHub Actions **Run #240 selesai dengan conclusion success**; **413/413 tes regresi lulus**. [Lihat Run #240](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46084389875).
+
+Tidak ada lema, batch, atau indeks kamus yang ditambahkan/diubah. Perubahan parser terbatas pada penerimaan relasi `tujuan` di dua posisi klausa; tes baru menambah cakupan integrasi. Cakupan klausa subordinatif secara keseluruhan tetap merupakan pekerjaan Tahap 2.6 yang belum ditutup.
