@@ -633,7 +633,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
         self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["pergi"])
     def test_personal_pronouns_use_real_dictionary_pipeline_as_subject_and_object(self):
-        pronouns = ("saya", "kamu", "dia", "mereka")
+        pronouns = ("aku", "saya", "kamu", "engkau", "dia", "mereka", "kita", "kami", "kalian")
 
         for pronoun in pronouns:
             with self.subTest(role="subject", pronoun=pronoun):
