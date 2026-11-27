@@ -159,41 +159,50 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [ ] Perluas pengujian untuk kandidat palsu lainnya.
 - [ ] Lengkapi inventaris imbuhan, reduplikasi, dan perubahan morfofonemik berdasarkan hasil uji.
 
-### 5.5 Pengenalan kelas kata (POS) — fondasi awal selesai
+### 5.5 Pengenalan kelas kata (POS) — Tahap 2.5 selesai
 
-- [x] POS leksikal berbasis kamus di `tools/pos_tagger.py`.
-- [x] POS spesifik-sense dan ambiguitas leksikal dipertahankan.
-- [x] POS bentuk turunan eksplisit tidak mewarisi POS lema secara otomatis.
-- [x] Disambiguasi lokal konservatif di `tools/pos_context.py`.
-- [x] Dataset POS tervalidasi: 100 kalimat, 543 token; 60 development dan 40 test.
-- [x] Evaluasi development-only: 227/255 leksikal (89,0%) dan 228/255 kontekstual (89,4%); selective accuracy 100%.
-- [x] Test split tetap ditahan dan tidak digunakan untuk menyetel aturan.
+- POS leksikal berbasis kamus tersedia di `tools/pos_tagger.py`; disambiguasi konteks lokal konservatif tersedia di `tools/pos_context.py`.
+- POS spesifik-sense dan ambiguitas dipertahankan; POS lema tidak diwariskan otomatis ke bentuk turunan.
+- Dataset POS tervalidasi: **100 kalimat / 543 token**, terdiri dari 60 development dan 40 test.
+- Evaluasi development terakhir pada GitHub Actions Run #113:
+  - POS leksikal: 247/255 prediksi benar; coverage 96,9%, selective accuracy 100,0%.
+  - POS kontekstual: **250/255 dikenali**; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%.
+  - Tidak ada kesalahan pada prediksi kontekstual yang dikeluarkan.
+  - Lima abstention merupakan lima kemunculan dari tiga nama orang. Sesuai keputusan pengguna, nama orang ditunda ke tahap pengenalan nama/konteks dan tidak dipaksa masuk kamus atau diberi POS pada tahap ini.
+- 40 kalimat test tetap tersegel dan tidak digunakan untuk penyetelan.
+- **Status:** Tahap 2.5 selesai berdasarkan evaluasi development dan keputusan pengguna.
 
-### 5.6 Analisis struktur kalimat dasar — prototipe v0.3
+### 5.6 Analisis struktur kalimat — baseline v1.5; Tahap 2.6 dilanjutkan
 
-- [x] Menetapkan masukan parser dari hasil POS leksikal dan, bila tersedia, POS kontekstual.
-- [x] Membuat `tools/parser_kalimat.py` untuk kerangka klausa sederhana S-P, S-P-O, dan keterangan berpreposisi.
-- [x] Menahan keputusan jika subjek/predikat tidak memiliki POS yang pasti; tanda baca internal yang belum didukung dilaporkan sebagai unsupported.
-- [x] Membuat regression tests parser di `tests/test_parser_kalimat.py`.
-- [x] Menguji pola S-P-K dengan kamus penuh melalui `tests/test_integrasi_pipeline.py`.
-- [x] Frasa nominal sederhana diuji dengan dua regression tests baru.
-- [x] GitHub Actions Run #77: **187/187 tes lulus**.
-- [x] Mengumpulkan rentang frasa nominal sederhana yang mengandung numeralia, kepala nominal, dan adjektiva tanpa mengklaim analisis internal frasa.
-- [x] Mengenali negasi verbal terbatas (`tidak` dan `belum`) sebagai bagian predikat ketika POS-nya ADV/PART.
-- [ ] Memperluas pengenalan frasa verba/modal di luar penanda tersebut.
-- [ ] Menambahkan analisis pelengkap dan negasi predikat adjektival/nominal secara bertahap.
-- [ ] Menambahkan koordinasi dan variasi susunan kata setelah batas frasa stabil.
-- [ ] Menguji kalimat majemuk dan klausa bertingkat tanpa memaksakan hasil.
+Parser tersedia di `tools/parser_kalimat.py`. Baseline v1.5 mencakup:
+- Pola klausa sederhana S-P, S-P-O, S-P-K dan rentang frasa nominal sederhana.
+- Negasi verbal terbatas serta penanganan modal.
+- Predikat nonverbal dan predikat penghubung tertentu.
+- Keterangan preposisional di depan klausa.
+- Koordinasi frasa nominal dan beberapa klausa koordinatif.
+- Label relasi untuk penghubung yang dikenali secara eksplisit.
+- Klausa subordinatif terbatas di depan dan setelah klausa utama, termasuk pola konsesif eliptis tertentu dengan status `partial`.
 
-### 5.7 Dataset uji dan regression suite — integrasi awal selesai
+Parser sempat dibekukan pada v1.5 agar fondasi POS diselesaikan terlebih dahulu. Karena Tahap 2.5 kini selesai, pembekuan tersebut dicabut. Tidak perlu membuat ulang parser atau mengulang fitur yang sudah tersedia.
 
-- [x] Dataset POS berisi 100 kalimat berlabel dengan split development/test.
-- [x] Expected POS per token disimpan dalam JSONL.
-- [x] Tes integrasi pipeline dengan kamus nyata tersedia di `tests/test_integrasi_pipeline.py`.
-- [x] Workflow memvalidasi seluruh kamus, dataset, evaluasi development, dan regression suite.
-- [x] GitHub Actions Run #74: **174/174 tes lulus**.
+**Pekerjaan aktif berikutnya:**
+- Memperluas frasa verba/modal di luar penanda yang sudah didukung.
+- Memisahkan inti predikat dari pewatasnya tanpa menghilangkan urutan token.
+- Menguji variasi susunan kalimat sederhana.
+- Menambah dukungan secara konservatif untuk pelengkap dan pola lain setelah bukti uji tersedia.
+- Mempertahankan status ambigu/unsupported bila struktur belum cukup didukung.
 
-Catatan: cakupan ini memverifikasi fondasi pemrosesan dan contoh integrasi yang dipilih; belum menguji parser kalimat atau pemahaman makna bebas.
+Parser v1.5 terakhir divalidasi tersendiri pada Run #99 dengan 232/232 tes. Regression suite terbaru Run #113 mencakup tes parser yang ada dan lulus **241/241**.
+
+### 5.7 Dataset uji dan regression suite — integrasi awal tersedia
+
+- Dataset POS berisi 100 kalimat berlabel dan 543 token; 60 development, 40 test.
+- Expected POS per token tersimpan dalam JSONL dan divalidasi terhadap tokenizer.
+- Tes integrasi pipeline menggunakan kamus nyata tersedia di `tests/test_integrasi_pipeline.py`.
+- Workflow memvalidasi kamus lengkap, dataset POS, evaluasi development, dan regression suite.
+- GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168): **241/241 tes lulus**.
+- Pekerjaan yang masih terbuka adalah memperluas variasi dataset untuk bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang. Test split yang sudah ada tetap ditahan.
+
 
 ## 6. Struktur file yang dituju
 
