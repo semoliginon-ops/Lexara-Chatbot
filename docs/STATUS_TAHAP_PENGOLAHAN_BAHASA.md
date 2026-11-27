@@ -138,6 +138,45 @@ Contoh konseptual (bukan entri kamus baru): sense intransitif `muncul` dapat mem
 
 **Batas kompatibilitas:** jangan mengubah field `pos`, bentuk entri JSONL, loader, POS tagger, atau parser saat tahap desain ini. Sebelum implementasi, siapkan spesifikasi skema, strategi pembacaan data lama, validasi, contoh positif/negatif, dan tes regresi. Tidak ada lema, POS, definisi, atau metadata kamus yang ditambahkan pada tahap ini.
 
+#### Katalog awal semantic role — proposal untuk ditinjau
+
+Daftar berikut adalah inventaris awal yang sengaja dibatasi. Peran semantis menjelaskan kontribusi makna suatu argumen terhadap sense predikat; peran ini **tidak ditentukan hanya dari posisi kata atau fungsi sintaksisnya**. Satu peran dapat muncul pada fungsi sintaksis berbeda, dan satu fungsi sintaksis dapat diisi peran semantis berbeda.
+
+| Kode | Makna ringkas | Contoh ilustratif |
+|---|---|---|
+| `AGENT` | Pelaku yang secara sengaja/aktif melakukan tindakan. | `Rina` membuka pintu. |
+| `EXPERIENCER` | Entitas yang mengalami keadaan psikologis atau persepsi. | `Rina` menyukai musik. |
+| `THEME` | Entitas yang bergerak, muncul, berada, berubah, atau menjadi pokok keadaan tanpa penekanan pada dampak langsung. | Masalah muncul; `masalah` = THEME. |
+| `PATIENT` | Entitas yang secara langsung dikenai tindakan atau mengalami perubahan/efek yang kuat. | Rina memecahkan `gelas`. |
+| `RECIPIENT` | Entitas yang menerima sesuatu atau menjadi tujuan pemindahan kepemilikan/penerimaan. | Rina memberi buku kepada `Doni`. |
+| `BENEFICIARY` | Entitas yang memperoleh manfaat atau untuk kepentingannya tindakan dilakukan. | Rina memasak untuk `ibunya`. |
+| `INSTRUMENT` | Alat atau sarana yang digunakan untuk melakukan tindakan. | Rina memotong roti dengan `pisau`. |
+| `LOCATION` | Tempat berlangsungnya keadaan atau peristiwa. | Rina tinggal di `Bandung`. |
+| `SOURCE` | Titik asal atau sumber perpindahan/perolehan. | Rina datang dari `Bogor`. |
+| `GOAL` | Tujuan atau titik akhir perpindahan/arah. | Rina pergi ke `pasar`. |
+| `RESULT` | Hasil atau keadaan baru yang dihasilkan tindakan/perubahan. | Rina mengubah air menjadi `es`. |
+| `CONTENT` | Isi proposisi, pikiran, ucapan, atau informasi yang dinyatakan/dipikirkan. | Rina mengatakan `bahwa ia siap`. |
+| `STIMULUS` | Hal yang memicu respons emosi, persepsi, atau pengalaman. | Suara itu mengejutkan `Rina`; suara = STIMULUS. |
+
+**Batas pembedaan yang wajib dijaga**
+
+1. `THEME` dan `PATIENT` tidak boleh digabung. THEME dipakai untuk entitas yang hadir, bergerak, berada, atau menjadi pokok keadaan; PATIENT dipakai jika entitas jelas terdampak tindakan/perubahan. Jika perbedaannya tidak didukung makna sense, jangan menebak.
+2. `EXPERIENCER` adalah pihak yang mengalami perasaan/persepsi; `STIMULUS` adalah hal yang memicunya. Keduanya bukan sinonim AGENT.
+3. `RECIPIENT` menerima sesuatu; `BENEFICIARY` mendapat manfaat. Seseorang dapat menjadi keduanya dalam konteks tertentu, tetapi labelnya tidak otomatis sama.
+4. `SOURCE`, `GOAL`, dan `LOCATION` dibedakan berdasarkan relasi terhadap peristiwa, bukan semata-mata preposisi. Preposisi hanya petunjuk realisasi, bukan definisi peran.
+5. `RESULT` adalah hasil yang muncul dari proses; jangan gunakan untuk semua pelengkap predikat.
+6. `CONTENT` cocok untuk klausa/isi proposisional. Jangan memberi label ini hanya karena argumen berupa klausa; makna predikat harus mendukungnya.
+
+**Aturan anotasi konservatif**
+
+- Katalog ini adalah daftar nilai awal yang diizinkan untuk proposal frame, bukan kewajiban mengisi semua peran pada semua sense.
+- Satu argumen mendapat satu label utama dalam satu frame. Jika dua interpretasi sama-sama masuk akal, buat frame alternatif hanya bila keduanya benar-benar merupakan pola valensi yang sah; selain itu biarkan belum teranotasi.
+- Jangan menyimpulkan semantic role dari `SUBJ`, `OBJ`, `COMP`, atau `OBL` saja. Contoh: subjek pada `Pintu terbuka` adalah THEME/PATIENT sesuai sense dan konstruksi, bukan AGENT.
+- Peran tambahan dapat diusulkan kelak jika ditemukan kebutuhan berulang pada data nyata. Jangan memperluas daftar hanya untuk satu kalimat.
+- Peran semantis tidak menggantikan anotasi keterangan bebas. Waktu, cara, sebab, frekuensi, dan derajat belum dimasukkan ke katalog argumen inti; penanganannya dapat dirancang sebagai lapisan adjunct terpisah.
+
+Contoh pemetaan di atas hanya ilustrasi desain. Belum ada sense kamus yang dianotasi, belum ada validator, dan belum ada perilaku parser yang berubah. Sebelum diterapkan, katalog harus diuji pada contoh positif dan negatif lintas jenis predikat, termasuk kalimat aktif, pasif, non-agentif, dan sense polisemi.
+
 #### Usulan bentuk data konkret (proposal, belum menjadi skema aktif)
 
 Metadata ditempatkan di dalam objek sense sebagai `valency_frames`. Satu sense boleh memiliki beberapa frame. Contoh berikut bersifat ilustratif dan tidak boleh disalin menjadi data kamus tanpa tinjauan entri yang bersangkutan.
