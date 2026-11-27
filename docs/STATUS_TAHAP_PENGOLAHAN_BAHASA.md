@@ -123,9 +123,9 @@ Parser dikembangkan bertahap. Nomor versi menunjukkan versi implementasi, **buka
 
 Keputusan sementara: jangan menambahkan daftar verba intransitif hard-coded hanya untuk meloloskan dua contoh. Evaluasi dahulu apakah parser memerlukan fitur valensi/kerangka argumen leksikal yang terstruktur, dan bagaimana fitur itu dapat ditambahkan tanpa mengubah makna atau isi kamus secara spekulatif.
 
-### Rancangan awal metadata valensi verba — belum diterapkan
+### Rancangan awal metadata valensi verba — catatan historis desain
 
-Rancangan berikut adalah arah desain untuk diuji, bukan perubahan skema kamus yang sudah disahkan atau data yang sudah dimigrasikan.
+Bagian ini merekam rancangan sebelum implementasi. Status terkini berada pada bagian **Rancangan skema valensi per-sense — disetujui dan diverifikasi** serta **Anotasi pilot pertama** di bagian akhir dokumen.
 
 1. **Valensi melekat pada sense**, bukan hanya pada lemma. Satu lemma dapat memiliki beberapa sense dan setiap sense dapat memiliki satu atau lebih kerangka argumen.
 2. **POS perlu tersedia pada tingkat sense** dalam skema generasi berikutnya. Field `pos` tingkat lemma dapat dipertahankan sebagai gabungan label untuk kompatibilitas; data lama tidak otomatis diberi POS sense baru tanpa peninjauan.
@@ -204,7 +204,7 @@ Pembedaan ini diputuskan berdasarkan **jenis keterlibatan entitas dalam makna se
 - Peran tambahan dapat diusulkan kelak jika ditemukan kebutuhan berulang pada data nyata. Jangan memperluas daftar hanya untuk satu kalimat.
 - Peran semantis tidak menggantikan anotasi keterangan bebas. Waktu, cara, sebab, frekuensi, dan derajat belum dimasukkan ke katalog argumen inti; penanganannya dapat dirancang sebagai lapisan adjunct terpisah.
 
-Contoh pemetaan di atas hanya ilustrasi desain. Belum ada sense kamus yang dianotasi, belum ada validator, dan belum ada perilaku parser yang berubah. Sebelum diterapkan, katalog harus diuji pada contoh positif dan negatif lintas jenis predikat, termasuk kalimat aktif, pasif, non-agentif, dan sense polisemi.
+Pada saat catatan desain ini pertama ditulis, belum ada sense kamus yang dianotasi dan belum ada validator. Perkembangan implementasi setelahnya dicatat pada bagian akhir dokumen: validator struktural telah dibuat, empat sense pilot telah dianotasi, dan tes integrasi awal telah dijalankan. Parser belum otomatis memilih semantic role atau menangani pemetaan voice pasif.
 
 #### Uji AGENT vs EXPERIENCER vs STIMULUS — dan kandidat celah CAUSER
 
@@ -632,7 +632,7 @@ Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar imple
 
 Voice aktif/pasif, pelesapan argumen di permukaan, kontrol, raising, urutan kata, konstruksi inversi, argumen implisit, serta penanda klausa yang lebih rinci belum dimasukkan ke skema awal. Semua itu perlu lapisan aturan dan pengujian tersendiri agar metadata valensi tidak menjadi terlalu rumit atau menyatakan hal yang belum didukung bukti.
 
-**Status keputusan dan implementasi:** skema disetujui pengguna. Validator struktural dan 15 tes khusus telah dibuat. Run #129 berhasil menguji seluruh 60 batch / 3.014 entri dan menjalankan 273 tes regresi; semua lulus. Kompatibilitas data lama terbukti pada pemuatan kamus dan pemeriksaan valensi. Validator ini memeriksa struktur, bukan kebenaran linguistik anotasi. Langkah berikutnya adalah menyusun anotasi terbatas pada beberapa sense terpilih, meninjau setiap frame berdasarkan makna sense, lalu menambahkan pengujian integrasi parser. Tidak ada penambahan lema kamus yang diperlukan.
+**Status implementasi pada tahap validator:** skema disetujui pengguna; validator struktural dan 15 tes khusus tersedia. Run #129 menguji 60 batch / 3.014 entri dan 273 tes regresi. Validasi ini memeriksa struktur, bukan kebenaran linguistik anotasi. Anotasi pilot dan tes integrasi berikutnya telah diselesaikan secara bertahap; lihat catatan Run #130 dan #131 di bawah.
 
 **Anotasi pilot pertama — 4 sense (27 November 2026):** setelah persetujuan pengguna, metadata valensi dimasukkan pada empat sense yang sudah ada:
 - `muncul` / `K1475-S1`: satu frame, SUBJ/THEME.
