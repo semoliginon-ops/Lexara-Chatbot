@@ -849,3 +849,12 @@ Ditambahkan tes integrasi untuk kalimat `Aku bisa makan nasi.` Pemeriksaan indek
 GitHub Actions **Run #164** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **350/350 tes regresi lulus**. [Lihat Run #164](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46017770296).
 
 **Batas:** ini membuktikan satu konteks modal `bisa` yang diikuti verba. Penggunaan `bisa` sebagai nomina atau pada konteks lain tetap bergantung pada bukti konteks; tidak semua konstruksi modal otomatis tercakup. Lema `hendak` tidak ditemukan pada shard indeks yang diperiksa dan tidak ditambahkan.
+
+
+### Uji negasi + modal ambigu `bisa` melalui pipeline nyata — Run #165 (27 November 2026)
+
+Ditambahkan tes integrasi untuk kalimat `Aku tidak bisa makan nasi.` Indeks kamus memastikan lema `aku`, `tidak`, `bisa`, `makan`, dan `nasi` tersedia; tidak ada perubahan pada batch maupun indeks kamus. Kandidat POS `bisa` tetap VERB+NOUN dan dipilih sebagai VERB berdasarkan konteks verba berikutnya (`makan`), sedangkan `tidak` tetap ADV. Parser menghasilkan pola S-P-O, rentang predikat `tidak bisa makan`, kepala predikat `makan`, modifier `tidak` sebagai negasi dan `bisa` sebagai modal, serta objek `nasi`.
+
+GitHub Actions **Run #165** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **351/351 tes regresi lulus**. [Lihat Run #165](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46018126303).
+
+**Batas:** pengujian ini mencakup kombinasi satu negasi (`tidak`) dan satu modal ambigu (`bisa`) dalam susunan terkontrol. Ini belum memvalidasi seluruh urutan negasi/modal atau seluruh penggunaan leksikal `bisa`.
