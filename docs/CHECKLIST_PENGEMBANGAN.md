@@ -997,3 +997,16 @@ Parser kalimat v1.5 dan seluruh tes yang sudah dibuat tetap dipertahankan, tetap
 - [ ] Tahap 5 — integrasi Android.
 
 **Catatan urutan:** parser v1.5 adalah pekerjaan terdahulu yang tetap tersimpan, bukan alasan untuk melompati prasyarat POS. Tidak ada audit ulang batch kamus secara rutin; fokus saat ini adalah diagnosis abstention dan kesiapan POS.
+
+
+### Koreksi titik lanjut POS — hasil evaluasi GitHub Actions Run #99
+
+Daftar delapan kemunculan pada catatan historis di atas sudah tidak seluruhnya merupakan abstention aktif. Evaluasi terbaru pada 60 kalimat development menunjukkan **tiga VERB abstain**, yaitu `ditunda`, `hinggap`, dan `berteduh`. Tiga kemunculan `bekerja` sudah teridentifikasi sebagai VERB; demikian juga `menjelaskan` dan `letakkan` pada data development yang diuji.
+
+- [x] `bekerja` (3 kemunculan): sudah memiliki anotasi `derived_forms_pos` pada lema `kerja` dan tidak lagi muncul dalam daftar abstention Run #99.
+- [x] `menjelaskan` dan `letakkan`: bentuk turunan berlabel VERB dan lulus tes pipeline kamus penuh.
+- [ ] `ditunda`: lanjutkan diagnosis berikutnya.
+- [ ] `hinggap`.
+- [ ] `berteduh`.
+
+Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hanya `ditunda`, `hinggap`, `berteduh` sebagai abstention. Tiga kemunculan `bekerja` berada pada `pos_0005`, `pos_0025`, dan `pos_0052` (semuanya development). Jangan mengaudit ulang atau mengubah kasus yang sudah selesai tanpa bukti masalah baru.
