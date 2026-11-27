@@ -17,7 +17,7 @@ from tools.kamus_loader import (
 def validate_full_dictionary(
     directory: str | Path,
     expected_batches: int = 60,
-    expected_entries: int = 3004,
+    expected_entries: int = 3005,
 ) -> tuple[int, int]:
     """Load every batch and verify the expected corpus size."""
     data_dir = Path(directory)
@@ -50,7 +50,7 @@ def main() -> int:
         help="Folder berisi batch-NNN.jsonl (default: data/kamus)",
     )
     parser.add_argument("--expected-batches", type=int, default=60)
-    parser.add_argument("--expected-entries", type=int, default=3004)
+    parser.add_argument("--expected-entries", type=int, default=3005)
     args = parser.parse_args()
 
     try:
