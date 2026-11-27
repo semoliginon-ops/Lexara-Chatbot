@@ -21,6 +21,7 @@ _NEGATION_MARKERS = {"tidak", "belum"}
 _MODAL_VERBS = {"mau", "ingin", "hendak", "bisa"}
 _MODAL_ADVERBS = {"akan"}
 _FRONTED_TEMPORAL_ADVERBS = {"besok", "nanti", "sekarang", "tadi"}
+_PERSONAL_PRONOUNS = {"aku", "saya", "dia", "kami", "kita", "kamu", "kalian", "mereka", "engkau", "beliau"}
 _LINKING_PREDICATES = {"menjadi", "tampak"}
 
 # Klasifikasi eksplisit fungsi penghubung; tidak menyimpulkan relasi untuk kata lain.
@@ -461,6 +462,11 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         prepositional_positions.add(scan)
         scan += 1
         while scan < verb_pos and words[scan]["pos"] in _OBJECT_PHRASE_POS:
+            if (
+                words[scan]["pos"] == "PRON"
+                and words[scan]["token"].casefold() in _PERSONAL_PRONOUNS
+            ):
+                break
             prepositional_positions.add(scan)
             scan += 1
 
