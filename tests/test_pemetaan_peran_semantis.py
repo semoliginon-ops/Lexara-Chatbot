@@ -1,0 +1,179 @@
+"""Tests for conservative mapping from parser roles to valency semantic roles."""
+from pathlib import Path
+import unittest
+
+from tools.kamus_loader import load_batch
+from tools.parser_kalimat import parse_sentence
+from tools.pemetaan_peran_semantis import map_semantic_roles
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def token(value, pos):
+    return {
+        "token": value,
+        "kind": "word",
+        "pos": [pos],
+        "pos_status": "identified",
+        "context_pos": None,
+        "pos_context_status": None,
+    }
+
+
+def parse(*items):
+    return parse_sentence({"tokens": [token(value, pos) for value, pos in items]})
+
+
+def pilot_sense(batch_name, entry_id):
+    entries = load_batch(ROOT / "data" / "kamus" / batch_name)
+    entry = next(item for item in entries if item["id"] == entry_id)
+    return entry["senses"][0]
+
+
+class SemanticRoleMappingTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.muncul = pilot_sense("batch-030.jsonl", "K1475")
+        cls.lihat = pilot_sense("batch-001.jsonl", "K0034")
+        cls.makan = pilot_sense("batch-001.jsonl", "K0013")
+        cls.buka = pilot_sense("batch-002.jsonl", "K0065")
+
+    def test_maps_lihat_experiencer_and_theme_for_active_svo(self):
+        parsed = parse(("Rina", "NOUN"), ("melihat", "VERB"), ("burung", "NOUN"))
+        result = map_semantic_roles(parsed, self.lihat, voice="active")
+        self.assertEqual(result["status"], "mapped")
+        arguments = result["candidates"][0]["arguments"]
+        self.assertEqual(
+            [(a["syntactic_role"], a["semantic_role"], a["value"]) for a in arguments],
+            [("SUBJ", "EXPERIENCER", ["Rina"]), ("OBJ", "THEME", ["burung"])],
+        )
+
+    def test_keeps_agent_and_causer_frames_ambiguous_for_same_buka_syntax(self):
+        parsed = parse(("Angin", "NOUN"), ("membuka", "VERB"), ("pintu", "NOUN"))
+        result = map_semantic_roles(parsed, self.buka, voice="active")
+        self.assertEqual(result["status"], "ambiguous")
+        self.assertEqual(
+            {
+                next(a["semantic_role"] for a in frame["arguments"]
+                     if a["syntactic_role"] == "SUBJ")
+                for frame in result["candidates"]
+            },
+            {"AGENT", "CAUSER"},
+        )
+
+    def test_accepts_makan_without_optional_object(self):
+        parsed = parse(("Rina", "NOUN"), ("makan", "VERB"))
+        result = map_semantic_roles(parsed, self.makan, voice="active")
+        self.assertEqual(result["status"], "mapped")
+        obj = next(a for a in result["candidates"][0]["arguments"]
+                   if a["syntactic_role"] == "OBJ")
+        self.assertEqual(obj["presence"], "omitted")
+        self.assertEqual(obj["semantic_role"], "PATIENT")
+        self.assertEqual(obj["value"], [])
+
+    def test_maps_optional_makan_object_when_present(self):
+        parsed = parse(("Rina", "NOUN"), ("makan", "VERB"), ("nasi", "NOUN"))
+        result = map_semantic_roles(parsed, self.makan, voice="active")
+        self.assertEqual(result["status"], "mapped")
+        obj = next(a for a in result["candidates"][0]["arguments"]
+                   if a["syntactic_role"] == "OBJ")
+        self.assertEqual(obj["presence"], "present")
+        self.assertEqual(obj["value"], ["nasi"])
+
+    def test_does_not_map_when_voice_is_not_confirmed(self):
+        parsed = parse(("Rina", "NOUN"), ("membuka", "VERB"), ("pintu", "NOUN"))
+        result = map_semantic_roles(parsed, self.buka)
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["reason"], "voice_not_confirmed")
+        self.assertEqual(result["candidates"], [])
+
+    def test_does_not_apply_active_frames_to_passive_surface_structure(self):
+        parsed = parse(("Pintu", "NOUN"), ("dibuka", "VERB"), ("Rina", "NOUN"))
+        result = map_semantic_roles(parsed, self.buka, voice="passive")
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["reason"], "passive_mapping_not_implemented")
+        self.assertEqual(result["candidates"], [])
+
+    def test_does_not_map_unresolved_postverbal_inversion(self):
+        parsed = parse(("muncul", "VERB"), ("masalah", "NOUN"))
+        result = map_semantic_roles(parsed, self.muncul, voice="active")
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["reason"], "parser_not_fully_resolved")
+
+    def test_required_object_missing_makes_lihat_frame_incompatible(self):
+        parsed = parse(("Rina", "NOUN"), ("melihat", "VERB"))
+        result = map_semantic_roles(parsed, self.lihat, voice="active")
+        self.assertEqual(result["status"], "incompatible")
+        self.assertEqual(result["reason"], "no_frame_matches_surface_roles")
+
+    def test_maps_oblique_only_when_preposition_constraint_matches(self):
+        sense = {
+            "sense_id": "pergi-test-S1",
+            "valency_frames": [{
+                "frame_id": "F1",
+                "arguments": [
+                    {
+                        "argument_id": "A1",
+                        "syntactic_role": "SUBJ",
+                        "semantic_role": "AGENT",
+                        "required": True,
+                        "realizations": [{"type": "NP"}],
+                    },
+                    {
+                        "argument_id": "A2",
+                        "syntactic_role": "OBL",
+                        "semantic_role": "GOAL",
+                        "required": True,
+                        "realizations": [{"type": "PP", "prepositions": ["ke"]}],
+                    },
+                ],
+            }],
+        }
+        parsed = parse(
+            ("Rina", "NOUN"), ("pergi", "VERB"),
+            ("ke", "PREP"), ("pasar", "NOUN"),
+        )
+        result = map_semantic_roles(parsed, sense, voice="active")
+        self.assertEqual(result["status"], "mapped")
+        oblique = result["candidates"][0]["arguments"][1]
+        self.assertEqual(oblique["semantic_role"], "GOAL")
+        self.assertEqual(oblique["value"], [{"preposition": "ke", "phrase": ["pasar"]}])
+
+    def test_rejects_oblique_with_nonmatching_preposition(self):
+        sense = {
+            "sense_id": "pergi-test-S1",
+            "valency_frames": [{
+                "frame_id": "F1",
+                "arguments": [
+                    {
+                        "argument_id": "A1",
+                        "syntactic_role": "SUBJ",
+                        "semantic_role": "AGENT",
+                        "required": True,
+                        "realizations": [{"type": "NP"}],
+                    },
+                    {
+                        "argument_id": "A2",
+                        "syntactic_role": "OBL",
+                        "semantic_role": "SOURCE",
+                        "required": True,
+                        "realizations": [{"type": "PP", "prepositions": ["dari"]}],
+                    },
+                ],
+            }],
+        }
+        parsed = parse(
+            ("Rina", "NOUN"), ("pergi", "VERB"),
+            ("ke", "PREP"), ("pasar", "NOUN"),
+        )
+        result = map_semantic_roles(parsed, sense, voice="active")
+        self.assertEqual(result["status"], "incompatible")
+
+    def test_rejects_invalid_voice_value(self):
+        with self.assertRaises(ValueError):
+            map_semantic_roles({}, self.buka, voice="middle")
+
+
+if __name__ == "__main__":
+    unittest.main()
