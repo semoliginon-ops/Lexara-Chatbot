@@ -16,7 +16,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
-- GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45965451485): validasi kamus dan dataset berhasil, **242/242 regression tests lulus**.
+- GitHub Actions [Run #116](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966546324): validasi kamus dan dataset berhasil, **246/246 regression tests lulus**.
 - Parser kini berada pada v1.6; pembekuan parser dicabut setelah POS selesai. Fokus berikutnya adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
 
 ---
@@ -192,10 +192,11 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memasukkan negator verbal `tidak` dan `belum` (POS ADV/PART) ke rentang predikat secara terbatas.
 - [x] Menguji negasi verbal dengan tes unit dan pipeline kamus penuh.
 - [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
-- [x] Menetapkan parser v1.6 dengan `predicate_structure` untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
+- [x] Menetapkan parser v1.7 dengan `predicate_structure` dan modalitas `akan` (ADV) serta `bisa` (VERB) untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
 - [x] Menambahkan regression tests untuk perluasan parser tersebut; versi terakhir yang tercatat lulus pada Run #99 (232/232 tes) sebelum rangkaian penyelesaian POS.
-- [ ] Melanjutkan pengembangan Tahap 2.6 setelah gerbang POS selesai; parser v1.6 dipertahankan sebagai baseline dan tidak diulang dari awal.
-- [ ] Memperluas frasa verba di luar adverbia/negator sebelum verba inti dan memisahkan inti frasa dari pewatasnya.
+- [x] Melanjutkan Tahap 2.6 dari baseline v1.6; parser kini v1.7 dan fitur lama tetap dipertahankan.
+- [x] Mengenali `akan` (ADV) dan `bisa` (VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
+- [ ] Memperluas frasa verba ke penanda modal/aspek lain hanya setelah POS dan konteksnya cukup kuat.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
 - [x] Menjalankan regression suite penuh melalui GitHub Actions Run #76: **187/187 lulus**; validasi kamus 60 batch/3.000 entri, dataset POS, dan evaluasi development juga berhasil.
