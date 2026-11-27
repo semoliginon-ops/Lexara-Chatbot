@@ -768,3 +768,6 @@ Tiga regression tests baru mencakup `aku mau pergi`, `dia ingin makan nasi`, dan
 Parser kini memiliki jalur konservatif untuk predikat nonverbal ketika tidak ditemukan token ber-POS VERB. Pola adjektival diterima jika subjek memiliki penanda yang cukup jelas (misalnya pronomina atau demonstrativa `ini/itu`). Pola nominal sederhana diterima jika pola memiliki subjek nominal diikuti numeralia dan kepala nominal predikat, misalnya `Ayah seorang guru`.
 
 Parser sengaja menahan rangkaian seperti `rumah besar` karena dapat dibaca sebagai frasa nominal, bukan kalimat. Empat tes baru menguji predikat adjektival, nominal, dan keputusan abstain. Perubahan ini belum diklaim terverifikasi melalui pipeline kamus/POS nyata; pengujian integrasi tersebut menjadi pekerjaan berikutnya.
+
+
+GitHub Actions [Run #80](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45936363554) memverifikasi parser v0.5: **194/194 regression tests lulus**. Validasi kelompok lima batch, validasi struktur kamus 3.000 lema, validasi dataset POS, dan evaluasi development juga berhasil. Empat tes baru untuk predikat nonverbal termasuk di dalam regression suite. Keterbatasan yang masih terbuka: POS konstruksi nonverbal belum diuji end-to-end dengan kalimat nyata melalui pipeline kamus.
