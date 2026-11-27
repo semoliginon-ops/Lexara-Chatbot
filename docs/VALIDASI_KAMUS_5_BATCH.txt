@@ -1,2 +1,2 @@
 58 60
-# validasi parser v1.5: subordinasi setelah klausa utama
+# validasi ulang parser v1.5 setelah koreksi ekspektasi tes sebab
