@@ -63,6 +63,29 @@ def _phrase_span(words: list[dict[str, Any]], head: int, lower: int, upper: int)
     return list(range(start, end))
 
 
+def _predicate_structure(
+    words: list[dict[str, Any]], positions: list[int], head_position: int
+) -> dict[str, Any]:
+    """Expose the lexical predicate head separately from its recognized modifiers."""
+    modifiers = []
+    for position in positions:
+        if position == head_position:
+            continue
+        item = words[position]
+        token = item["token"].casefold()
+        if token in _NEGATION_MARKERS:
+            kind = "negation"
+        elif token in _MODAL_VERBS and item["pos"] == "VERB":
+            kind = "modal"
+        else:
+            kind = "adverbial"
+        modifiers.append({"token": item["token"], "kind": kind})
+    return {
+        "head": words[head_position]["token"],
+        "modifiers": modifiers,
+    }
+
+
 def _coordinated_phrase_span(
     words: list[dict[str, Any]], positions: list[int], lower: int, upper: int
 ) -> list[int]:
@@ -580,6 +603,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "status": "partial" if unresolved else "parsed",
         "pattern": "-".join(pattern_parts),
         "roles": roles,
+        "predicate_structure": _predicate_structure(words, predicate_positions, verb_pos),
         "unresolved_tokens": unresolved,
         "notes": [
             "Kerangka klausa sederhana; bukan analisis sintaksis lengkap.",
