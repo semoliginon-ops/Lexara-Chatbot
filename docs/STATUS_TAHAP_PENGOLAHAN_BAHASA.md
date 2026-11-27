@@ -800,3 +800,12 @@ Dua konstruksi dibandingkan melalui unit test dan pipeline kamus/POS nyata:
 Parser mempertahankan kedua kalimat sebagai `unresolved`, mencatat `di rumah` sebagai keterangan awal, dan tidak memaksakan nomina akhir menjadi SUBJ maupun OBJ. Tes baru ditambahkan pada `tests/test_parser_kalimat.py` dan `tests/test_integrasi_pipeline.py`. Run #156 sukses: validasi kamus penuh 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, serta **344/344 tes regresi lulus**. [Lihat Run #156](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015428982).
 
 **Keputusan sementara:** investigasi batas dan uji abstention selesai sebagian; inversi K-P-S belum diimplementasikan dan item checklist tetap `[~]`. Aturan positif perlu menunggu pemilihan sense predikat dan bukti valensi yang cukup untuk membedakan predikat intransitif dari predikat transitif/objek. Jangan membuat daftar kata kerja khusus hanya untuk meloloskan contoh tertentu. Tahap aktif tetap 2.6.
+
+
+### Perluasan uji konstruksi melalui pipeline kamus/POS — Run #157–158 (27 November 2026)
+
+Untuk melanjutkan item pengujian konstruksi nyata pada Tahap 2.6, ditambahkan tes predikat adjektival `Dia sakit.` melalui `analyze_text()`, POS tagger, disambiguasi konteks, dan parser. Indeks kamus diperiksa lebih dahulu untuk memastikan lema `dia` dan `sakit` tersedia; tidak ada perubahan kamus. Hasil yang diharapkan: `dia` = PRON, `sakit` = ADJ, struktur S-P, tanpa objek.
+
+Run #157 gagal hanya karena tes awal mencari token dengan kapitalisasi `Dia`, sedangkan normalisasi menghasilkan token `dia`. Ekspektasi tes disesuaikan dengan keluaran normalisasi (bukan mengubah perilaku parser). Run #158 sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **345/345 tes regresi lulus**. [Lihat Run #158](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015686211).
+
+Item pengujian pipeline pada checklist sekarang berstatus `[~]`, bukan selesai: kasus predikat adjektival ini menambah satu konstruksi nyata, tetapi variasi lain masih harus diuji. Tahap aktif tetap 2.6.
