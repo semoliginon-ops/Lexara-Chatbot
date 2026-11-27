@@ -172,7 +172,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Memperluas frasa verba dan memisahkan inti frasa dari pewatasnya.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
-- [x] Menjalankan regression suite penuh melalui GitHub Actions setelah perluasan parser (hasil akan dicatat setelah run selesai).
+- [x] Menjalankan regression suite penuh melalui GitHub Actions Run #76: **184/184 lulus**; validasi kamus 60 batch/3.000 entri, dataset POS, dan evaluasi development juga berhasil.
 
 ### 2.7 Dataset dan pengujian terpadu
 
