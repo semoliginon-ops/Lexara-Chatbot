@@ -682,3 +682,17 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural kelompok Batch-006–010 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** empat koreksi relasi/struktur makna di atas tidak mengubah lemma, ID entri, POS entri, atau bentuk turunan. Relasi lain yang hanya berbeda nuansa/register tidak diubah tanpa bukti yang lebih kuat. Validasi otomatis nantinya hanya menguji struktur dan regresi, bukan menggantikan penilaian linguistik.
+
+
+### Audit dan koreksi semantik Batch-011–015 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-011 sampai Batch-015; fokus pada kesepadanan sinonim/antonim dengan definisi lema.
+- [x] Batch-011: memindahkan `berlebihan` dari sinonim `boros` ke `related_terms` karena cakupannya lebih luas daripada perilaku boros.
+- [x] Batch-012: memindahkan `langka` dari sinonim `jarang` ke `related_terms` (frekuensi kejadian vs kelangkaan); memindahkan `keren sekali` dari sinonim `keren` ke `related_terms` karena merupakan bentuk intensifikasi; memindahkan `enggan` dari sinonim `malas` ke `related_terms` karena ketidakmauan tidak identik dengan kurang motivasi.
+- [x] Batch-013: menghapus `andaikan` dari sinonim `andai` karena merupakan bentuk turunan/varian gramatikal, bukan padanan leksikal yang perlu dicatat sebagai sinonim.
+- [x] Batch-014: menghapus `sabar` dari antonim `kesel`; kesabaran bukan lawan makna langsung dari rasa kesal.
+- [x] Batch-015: memindahkan `tekad` dari sinonim `ambisi` ke `related_terms`; menghapus `untung` dari antonim `bangkrut`; menghapus `membelot` dari sinonim `belot` sebagai bentuk turunan; memindahkan `cerdas` dari sinonim `bijak` ke `related_terms`; memindahkan `merembes` dari sinonim `bocor` ke `related_terms` karena hanya mencakup jenis kebocoran tertentu.
+- [x] Entri lain dipertahankan jika relasinya masih dapat dipertanggungjawabkan atau perbedaannya memerlukan konteks lebih lanjut.
+- [ ] Validasi struktural kelompok Batch-011–015 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** koreksi ini menyasar relasi leksikal; tidak mengubah lema, ID entri, POS, atau bentuk turunan. Pemeriksaan otomatis tetap bersifat struktural dan regresi, bukan bukti bahwa seluruh makna kamus telah tervalidasi secara linguistik.
