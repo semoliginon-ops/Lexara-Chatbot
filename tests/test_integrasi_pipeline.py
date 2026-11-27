@@ -854,7 +854,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 )
                 self.assertEqual(analysis["reference_relation"], "reflexive")
                 self.assertEqual(analysis["antecedent_candidate"], {
-                    "ku": "Aku", "mu": "Kamu", "nya": "Dia"
+                    "ku": "aku", "mu": "kamu", "nya": "dia"
                 }[clitic])
 
                 if clitic == "nya":
