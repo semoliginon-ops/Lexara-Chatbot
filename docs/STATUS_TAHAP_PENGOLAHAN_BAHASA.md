@@ -206,6 +206,42 @@ Pembedaan ini diputuskan berdasarkan **jenis keterlibatan entitas dalam makna se
 
 Contoh pemetaan di atas hanya ilustrasi desain. Belum ada sense kamus yang dianotasi, belum ada validator, dan belum ada perilaku parser yang berubah. Sebelum diterapkan, katalog harus diuji pada contoh positif dan negatif lintas jenis predikat, termasuk kalimat aktif, pasif, non-agentif, dan sense polisemi.
 
+#### Uji AGENT vs EXPERIENCER vs STIMULUS — dan kandidat celah CAUSER
+
+Pembedaan kerja:
+
+- **AGENT**: pelaku yang mengendalikan atau secara sengaja melakukan tindakan. Jangan berikan AGENT hanya karena entitas menjadi subjek atau menjadi penyebab fisik.
+- **EXPERIENCER**: entitas yang mengalami persepsi, emosi, sensasi, atau keadaan psikologis.
+- **STIMULUS**: entitas/peristiwa yang menjadi isi sasaran atau pemicu pengalaman tersebut. Role ini hanya digunakan jika makna predikat memang menghubungkan argumen dengan pengalaman.
+- **Ketiadaan AGENT** adalah hasil yang sah. Kalimat tidak wajib memiliki pelaku yang disebutkan.
+
+| Kalimat uji | Argumen | Role sementara | Catatan |
+|---|---|---|---|
+| Rina membuka pintu. | Rina | AGENT | Pelaku tindakan terkendali. |
+| Pintu dibuka Rina. | Rina | AGENT | Frasa pelaku pasif mempertahankan role semantis. |
+| Pintu dibuka. | tidak ada argumen pelaku yang dinyatakan | AGENT tidak dinyatakan | Jangan menciptakan AGENT implisit sebagai argumen teramati. |
+| Rina menyukai musik. | Rina | EXPERIENCER | Mengalami keadaan afektif. |
+| Musik disukai Rina. | Rina | EXPERIENCER | Perubahan susunan/voice tidak mengubah role Rina. |
+| Rina takut pada petir. | Rina | EXPERIENCER | Pihak yang mengalami rasa takut. |
+| Petir menakuti Rina. | petir | STIMULUS | Pemicu pengalaman takut. |
+| Petir menakuti Rina. | Rina | EXPERIENCER | Pihak yang mengalami rasa takut. |
+| Rina dikejutkan suara keras. | Rina | EXPERIENCER | Pihak yang mengalami kejutan. |
+| Suara keras mengejutkan Rina. | suara keras | STIMULUS | Pemicu pengalaman. |
+| Rina mendengar musik. | Rina | EXPERIENCER | Pihak yang mengalami persepsi auditori. |
+| Musik terdengar oleh Rina. | musik | THEME atau STIMULUS menurut sense | Jangan otomatis menganggap musik sebagai AGENT atau PATIENT. Rina adalah EXPERIENCER. |
+
+**Celah yang ditemukan: penyebab non-agentif**
+
+Bandingkan:
+
+- Rina memecahkan kaca dengan palu. — Rina = AGENT; kaca = PATIENT; palu = INSTRUMENT.
+- Angin memecahkan kaca. — kaca = PATIENT, tetapi angin tidak melakukan tindakan dengan kehendak. Memberi label AGENT pada angin akan mengaburkan perbedaan pelaku dan penyebab fisik.
+- Hujan membanjiri jalan. — hujan merupakan penyebab non-agentif; jalan/area terdampak adalah PATIENT atau entitas terdampak sesuai sense.
+
+Katalog baseline 13 role belum memiliki label umum yang jelas untuk **CAUSER** (penyebab non-agentif). STIMULUS tidak boleh dipakai sebagai label serba-guna untuk semua sebab: STIMULUS khusus relasi dengan pengalaman/persepsi/emosi, sedangkan CAUSER akan mencakup penyebab suatu peristiwa atau perubahan.
+
+**Keputusan sementara:** jangan mengubah katalog 13 role yang telah disepakati. Catat CAUSER sebagai kandidat ekstensi yang perlu diuji lebih luas sebelum disetujui. Untuk sementara, kasus penyebab non-agentif yang tidak dapat direpresentasikan secara aman tetap belum dianotasi; jangan dipaksa menjadi AGENT atau STIMULUS.
+
 #### Matriks uji konseptual semantic role
 
 Matriks ini dipakai untuk menguji konsistensi definisi role sebelum membuat validator. Label adalah target analisis konseptual, bukan keluaran parser yang sudah berjalan.
