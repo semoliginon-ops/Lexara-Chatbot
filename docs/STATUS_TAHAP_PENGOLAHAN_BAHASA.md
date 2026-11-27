@@ -823,3 +823,12 @@ Pengujian konstruksi nyata Tahap 2.6 kini juga mencakup predikat adjektival `Dia
 Ditambahkan tes integrasi untuk kalimat `Aku tidak makan nasi.` Indeks kamus diperiksa terlebih dahulu dan mengonfirmasi lema `aku`, `tidak`, `makan`, dan `nasi` tersedia; tidak ada batch atau indeks kamus yang diubah. Tes memeriksa POS hasil pipeline: PRON + ADV + VERB + NOUN, lalu memastikan parser menghasilkan pola S-P-O, menempatkan `tidak` bersama `makan` dalam rentang predikat, mengidentifikasi kepala predikat `makan`, dan mempertahankan `nasi` sebagai objek. Run #160 sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **347/347 tes regresi lulus**. [Lihat Run #160](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46016150202).
 
 Cakupan pengujian konstruksi nyata Tahap 2.6 kini mencakup kalimat adjektival, kalimat dengan subjek nominal dan objek, serta negasi verbal. Item perluasan pengujian tetap berstatus sebagian karena variasi pola dan batas parser lain belum seluruhnya diuji.
+
+
+### Uji gabungan negasi dan modalitas melalui pipeline nyata — Run #161 (27 November 2026)
+
+Ditambahkan tes integrasi untuk kalimat `Aku tidak akan makan nasi.` Indeks kamus diperiksa terlebih dahulu dan memastikan `aku`, `tidak`, `akan`, `makan`, dan `nasi` tersedia; tidak ada perubahan pada batch atau indeks kamus. Tes memeriksa hasil POS nyata (PRON + ADV + ADV + VERB + NOUN), lalu memastikan parser mempertahankan pola S-P-O, rentang predikat `tidak akan makan`, kepala predikat leksikal `makan`, pewatas `tidak` sebagai negasi dan `akan` sebagai modal, serta `nasi` sebagai objek.
+
+GitHub Actions **Run #161** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **348/348 tes regresi lulus**. [Lihat Run #161](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46016960249).
+
+**Batas:** pengujian ini memvalidasi satu susunan terkontrol untuk gabungan negasi dan modalitas. Ini belum membuktikan semua kombinasi modal, negasi, atau urutan pewatas predikat telah didukung.
