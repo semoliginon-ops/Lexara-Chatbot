@@ -927,3 +927,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #91: **217/217 regression tests lulus**; validasi lima batch terpilih, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas implementasi:** setiap klausa harus memiliki verba eksplisit yang dikenali. Elipsis, subjek/predikat yang dihilangkan, koordinasi bertingkat, dan relasi semantik antarklausa belum ditangani.
+
+### Parser kalimat v1.2 — klasifikasi hubungan antarklausa
+
+- [x] Menambahkan field `relation_to_previous` pada hasil setiap klausa setelah klausa pertama.
+- [x] Mengklasifikasikan penghubung eksplisit untuk penambahan, alternatif, pertentangan, sebab, konsesi, urutan, dan hubungan temporal.
+- [x] Menandai penghubung yang belum dipetakan sebagai `belum_diklasifikasikan`; tidak menebak relasi.
+- [x] Menambahkan empat tes unit untuk sebab, pertentangan, konsesi, dan penghubung tak dikenal.
+- [x] Menambahkan tes integrasi `Aku bekerja namun dia makan.` melalui kamus asli.
+- [x] GitHub Actions Run #93: **222/222 regression tests lulus**; validasi kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas:** klasifikasi penghubung bukan pemahaman semantik lengkap. Sebab dan konsesi masih diuji dengan POS terkendali; arah hubungan, klausa awal bertanda `karena`, konstruksi bertanda koma, elipsis, dan klausa tanpa verba eksplisit belum didukung.
