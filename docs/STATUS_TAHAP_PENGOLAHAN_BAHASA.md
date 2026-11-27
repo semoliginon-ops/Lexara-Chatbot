@@ -949,3 +949,13 @@ Selama pengujian awal, kandidat kalimat dengan `di` tidak dapat dipakai untuk me
 GitHub Actions **Run #180 dan #181** gagal pada percobaan tes/ekspektasi awal; setelah menggunakan lema yang terindeks dan memperbaiki ekspektasi hanya pada tes baru, **Run #182 selesai dengan conclusion success**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi development berhasil; **359/359 tes regresi lulus**. POS development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #182](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46023874794).
 
 **Batas:** hasil ini hanya membuktikan PP awal `dari rumah` tidak menelan subjek pronomina eksplisit `dia` pada contoh yang diuji. Inversi K-P-S seperti `Di rumah terdengar suara.` dan kemungkinan subjek tersirat pada `Di rumah membaca buku.` tetap unresolved; belum ada aturan positif K-P-S yang aman.
+
+### Fondasi analisis klitik pronominal terikat — Run #183 (27 November 2026)
+
+Modul morfologi kini mengenali tiga klitik pronominal terikat (-ku, -mu, -nya) setelah bentuk dasar yang cocok dengan kamus. Analisis mengembalikan bentuk permukaan, bentuk dasar, kandidat leksikal, identitas klitik, serta dua interpretasi yang masih mungkin: posesif atau objek. Tahap morfologi tidak memilih fungsi sintaksisnya secara otomatis.
+
+Pengujian unit mencakup bentuk nominal bukuku, rumahmu, bukunya, bentuk verbal turunan melihatku, serta perlindungan terhadap pronomina utuh kamu agar tidak dipecah sebagai klitik. Bentuk dengan dasar yang tidak dikenal, seperti xyzku, tidak dipaksakan. Tes integrasi juga memverifikasi enam bentuk: bukuku, rumahmu, bukunya, melihatku, melihatmu, dan melihatnya melalui analyze_text() dengan kamus lengkap. Indeks diperiksa untuk lema dasar yang dipakai; tidak ada penambahan atau perubahan data kamus.
+
+GitHub Actions Run #183 selesai dengan conclusion success. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development berhasil; 366/366 tes regresi lulus. POS development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #183](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46026858196).
+
+Batas: ini baru fondasi segmentasi klitik pada tahap morfologi. Hasil token berklitik masih berstatus unknown pada pencocokan permukaan; POS tagger dan parser belum mengonsumsi informasi klitik untuk menetapkan PRON terikat atau membedakan fungsi posesif dari objek. Bentuk lain, variasi ejaan informal, dan konteks sintaksisnya masih perlu diuji.
