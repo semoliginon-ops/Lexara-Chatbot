@@ -692,3 +692,18 @@ Modul baru `tools/deteksi_voice.py` menyediakan fungsi `detect_voice(morphology_
 GitHub Actions **Run #136** sukses: validasi kamus 60 batch / 3.014 entri dan **304/304 tes regresi lulus**. [Lihat Run #136](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46007374655).
 
 **Batas penting:** detektor ini baru menerima keluaran morfologi per token. Ia belum memilih token yang benar-benar menjadi kepala predikat, belum memeriksa konstruksi kalimat, belum terhubung ke `analyze_text`/parser, dan belum mengubah pemetaan semantic role pasif. Awalan `di-` dan `meN-` adalah bukti morfologis untuk kandidat voice, bukan pengganti analisis sintaksis dan konteks.
+
+
+#### Integrasi bukti voice pada analisis token — Run #137 (27 November 2026)
+
+Detektor dari Run #136 kini dipanggil oleh `tools/analisis_teks.py` untuk setiap token kata. Keluaran token mempertahankan field lama dan menambahkan `voice_analysis`, yang berisi status, label voice bila teridentifikasi, alasan, bukti rule morfologi, dan catatan batas. Token tanda baca tidak berubah.
+
+Tes integrasi di `tests/test_analisis_teks.py` memastikan:
+- `ditulis` menghasilkan bukti voice pasif;
+- `menulis` menghasilkan bukti voice aktif;
+- `terbuka` tetap unresolved, bukan dipaksa pasif;
+- struktur keluaran lama (normalisasi, tokenisasi, pencocokan, dan kandidat morfologi) tetap tersedia.
+
+GitHub Actions **Run #137** sukses: validasi kamus 60 batch / 3.014 entri dan **307/307 tes regresi lulus**. [Lihat Run #137](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46007550098).
+
+**Batas integrasi:** `voice_analysis` adalah bukti morfologis per token, bukan voice kalimat. Modul belum memilih kepala predikat; kata berimbuhan yang bukan predikat juga dapat memiliki bukti morfologisnya sendiri. Parser dan semantic-role mapper belum mengonsumsi field ini. Integrasi berikutnya perlu mengaitkan bukti pada kepala predikat yang sudah dikenali, lalu menahan hasil bila ada lebih dari satu kandidat atau struktur belum jelas.
