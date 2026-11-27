@@ -327,3 +327,7 @@ Proyek mencapai target awal ketika:
 ---
 
 **Catatan:** dokumen ini adalah rencana pengembangan bertahap. Target 3.000 entri merupakan sasaran kamus versi pertama. Kebutuhan embedding, teknologi final, ukuran aplikasi, dan performa akan ditentukan berdasarkan hasil prototipe serta pengujian.
+
+## Status parser bahasa
+
+Parser konservatif saat ini telah mencapai v1.2: selain memisahkan beberapa klausa berverba eksplisit, hasilnya menyimpan label hubungan untuk penghubung yang dikenali (`dan`, `atau`, `tetapi`, `namun`, `karena`, `sebab`, `walaupun`, `meskipun`, `lalu`, `kemudian`, dan `ketika`). Label yang belum didukung tidak ditebak. GitHub Actions [Run #93](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955025367) lulus dengan **222/222 tes**. Ini masih kerangka sintaksis sederhana, bukan pemahaman semantik lengkap; batasan dan cakupan uji rinci dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
