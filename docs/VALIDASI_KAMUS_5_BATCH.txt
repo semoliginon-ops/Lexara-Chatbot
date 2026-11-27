@@ -1,2 +1,2 @@
 56 60
-# validasi parser v1.0: pemisahan dua klausa koordinatif sederhana
+# validasi parser v1.1: koordinasi dua atau lebih klausa eksplisit
