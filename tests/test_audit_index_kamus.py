@@ -76,15 +76,23 @@ class DictionaryIndexAuditTests(unittest.TestCase):
         self.assertTrue(report["ok"], report)
         self.assertEqual(report["expected_rows"], 3)
         self.assertEqual(report["actual_rows"], 3)
+        self.assertEqual(len(report["omitted_optional_rows"]), 0)
 
-    def test_reports_missing_index_row(self):
+    def test_allows_unindexed_optional_derived_form(self):
         rows = self.valid_rows()
         rows["m-o"] = rows["m-o"][:-1]
         self.write_rows(rows)
         report = self.audit()
+        self.assertTrue(report["ok"], report)
+        self.assertEqual(len(report["missing_lemma_rows"]), 0)
+        self.assertEqual(len(report["omitted_optional_rows"]), 1)
+
+    def test_reports_missing_lemma_index_row(self):
+        self.write_rows({})
+        report = self.audit()
         self.assertFalse(report["ok"])
-        self.assertEqual(len(report["missing_rows"]), 1)
-        self.assertEqual(report["missing_rows"][0][0][0], "memakan")
+        self.assertEqual(len(report["missing_lemma_rows"]), 1)
+        self.assertEqual(report["missing_lemma_rows"][0][0][0], "makan")
 
     def test_reports_extra_index_row(self):
         rows = self.valid_rows()
