@@ -170,6 +170,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 <badge color="secondary">Belum dimulai</badge>
 
 - [ ] Mengembangkan representasi makna kata dan relasi antarkonsep.
+- [x] Membuat resolver kandidat semantic role berbasis bukti konteks eksplisit; pemilihan hanya terjadi jika satu frame didukung bukti kuat dan semua alternatif disingkirkan bukti kuat. Resolver tidak membuat bukti konteks sendiri; penghasil bukti kontekstual masih menjadi pekerjaan berikutnya.
 - [ ] Menentukan cara memilih sense berdasarkan konteks kalimat.
 - [ ] Menggabungkan hasil leksikal, morfologi, POS, dan struktur kalimat.
 - [ ] Menangani ambiguitas dan maksud ujaran secara bertahap.
