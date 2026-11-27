@@ -1011,3 +1011,8 @@ Keputusan yang tetap berlaku: `tetap` ditunda sampai analisis dua fungsi POS (AD
 
 
 Validasi penambahan `dulu` selesai: [GitHub Actions Run #105](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45961206191).
+
+
+## Penambahan lema `tetap` (ADJ + ADV) — menunggu validasi
+
+Atas persetujuan pengguna, K3007 `tetap` ditambahkan dengan dua sense terpisah: ADJ (tidak berubah/konstan/tidak goyah) dan ADV (melakukan hal yang sama seperti sebelumnya/tidak berhenti). POS entri memuat kedua label; masing-masing sense memiliki POS spesifik. Aturan konteks yang sangat terbatas memilih ADV ketika `tetap` langsung mendahului token yang telah dikenali sebagai VERB. Contoh `pegawai tetap` tetap ambigu dan tidak dipaksa. INDEX `s-u.tsv` diperbarui. Validasi GitHub Actions masih menunggu.
