@@ -344,7 +344,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["predicate"], ["sedang", "bekerja"])
         self.assertEqual(
             parsed["roles"]["adjuncts"],
-            [{"preposition": "dari", "phrase": ["rumah"]}],
+            [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
     def test_fronted_prepositional_adjunct_uses_real_dictionary_pipeline(self):
@@ -691,7 +691,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["predicate"], ["bekerja"])
         self.assertEqual(
             parsed["roles"]["adjuncts"],
-            [{"preposition": "di", "phrase": ["rumah"]}],
+            [{"preposition": "dari", "phrase": ["rumah"]}],
         )
         self.assertEqual(parsed["unresolved_tokens"], [])
 
