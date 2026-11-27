@@ -859,3 +859,15 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Memperluas pelengkap ke verba/konstruksi lain hanya setelah bukti linguistik dan tes tersedia.
 
 **Batas implementasi:** aturan ini sengaja hanya mencakup dua verba dan pelengkap nominal/adjektival sederhana. Frasa adverbial, klausa pelengkap, dan konstruksi lain belum dimodelkan.
+
+
+### Verifikasi cakupan leksikal pelengkap — 27 November 2026
+
+- [x] Memastikan `tampak` dikenali sebagai VERB melalui varian kamus dari lema `nampak`.
+- [x] Memastikan `menjadi` belum tersedia sebagai lema/varian/bentuk turunan yang cocok dalam cakupan kamus saat ini; pipeline tidak menebak POS-nya.
+- [x] Memastikan `bahagia` belum memiliki kecocokan leksikal langsung yang memberi POS; parser menandai token tersebut unresolved, bukan pelengkap hasil tebakan.
+- [x] Menambahkan dua tes integrasi: abstention untuk `Dia menjadi dokter` dan parsing parsial aman untuk `Mereka tampak bahagia`.
+- [x] GitHub Actions Run #84: **201/201 tes lulus**, validasi kamus 3.000 lema dan evaluasi POS tetap lulus.
+- [ ] Pertimbangkan perluasan kosakata sebagai perubahan cakupan dataset terpisah; jangan menyisipkan lema tambahan tanpa keputusan target dataset dan definisi/POS yang tervalidasi.
+
+**Catatan:** ketiadaan kecocokan untuk `menjadi` dan `bahagia` adalah celah cakupan leksikal, bukan kerusakan parser. Bentuk `tampak` dapat dipetakan ke lema `nampak` melalui varian kamus.
