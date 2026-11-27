@@ -128,6 +128,41 @@ class PosTaggerTests(unittest.TestCase):
         self.assertEqual(token["pos"], ["VERB"])
         self.assertEqual(token["pos_source"], "morphology")
 
+    def test_bound_clitic_exposes_host_and_pronoun_pos_without_guessing_function(self):
+        lexicon = build_lexicon([
+            entry("K9201", "buku", ["NOUN"]),
+            entry("K9202", "rumah", ["NOUN"]),
+            entry("K9203", "lihat", ["VERB"], derived_forms=["melihat"],
+                  derived_forms_pos={"melihat": ["VERB"]}),
+        ])
+        expected = {
+            "bukuku": ("buku", "ku", ["NOUN"]),
+            "rumahmu": ("rumah", "mu", ["NOUN"]),
+            "melihatnya": ("melihat", "nya", ["VERB"]),
+        }
+        for surface, (base, clitic, host_pos) in expected.items():
+            with self.subTest(surface=surface):
+                token = tag_pos(analyze_text(surface, lexicon))["tokens"][0]
+                self.assertEqual(token["pos"], [])
+                self.assertEqual(token["pos_status"], "unknown")
+                self.assertEqual(len(token["clitic_pos_candidates"]), 1)
+                component = token["clitic_pos_candidates"][0]
+                self.assertEqual(component["base_form"], base)
+                self.assertEqual(component["clitic"], clitic)
+                self.assertEqual(component["host_pos"], host_pos)
+                self.assertEqual(component["clitic_pos"], ["PRON"])
+                self.assertEqual(component["function_candidates"], ["possessive", "object"])
+                self.assertEqual(component["function_status"], "unresolved")
+
+    def test_unannotated_derived_host_does_not_inherit_lemma_pos_for_clitic(self):
+        lexicon = build_lexicon([
+            entry("K9204", "lihat", ["VERB"], derived_forms=["melihat"]),
+        ])
+        token = tag_pos(analyze_text("melihatku", lexicon))["tokens"][0]
+        component = token["clitic_pos_candidates"][0]
+        self.assertEqual(component["host_pos"], [])
+        self.assertEqual(component["clitic_pos"], ["PRON"])
+
     def test_unknown_word_has_unknown_status(self):
         token = self.analyze_and_tag("xyzabc")["tokens"][0]
         self.assertEqual(token["pos"], [])
