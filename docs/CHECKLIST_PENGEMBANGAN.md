@@ -16,7 +16,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
-- GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168): validasi kamus dan dataset berhasil, **241/241 regression tests lulus**.
+- GitHub Actions [Run #114](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45965451485): validasi kamus dan dataset berhasil, **242/242 regression tests lulus**.
 - Parser tersedia pada v1.5; pembekuan parser dicabut setelah POS selesai. Fokus berikutnya adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
 
 ---
@@ -178,7 +178,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menyelesaikan penanganan kandidat POS development yang layak ditangani pada tahap ini; tidak memaksakan label untuk nama orang.
 - [x] Memvalidasi POS kontekstual pada development: 250/255 dikenali, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan prediksi.
 - [x] Mempertahankan 40 kalimat test agar tetap tersegel.
-- [x] Menjalankan validasi terpadu GitHub Actions Run #113: 60 batch/3.013 lema, dataset 100 kalimat/543 token, dan **241/241 regression tests lulus**.
+- [x] Menjalankan validasi terpadu GitHub Actions Run #114: 60 batch/3.013 lema, dataset 100 kalimat/543 token, dan **242/242 regression tests lulus**.
 - [x] Menetapkan lima kemunculan nama orang sebagai abstention yang disengaja untuk ditangani pada tahap pengenalan nama/konteks, bukan sebagai kekurangan Tahap 2.5.
 
 **Status:** Tahap 2.5 selesai. Tidak perlu mengaudit ulang nama orang atau memaksa semua token memiliki POS.
@@ -192,6 +192,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memasukkan negator verbal `tidak` dan `belum` (POS ADV/PART) ke rentang predikat secara terbatas.
 - [x] Menguji negasi verbal dengan tes unit dan pipeline kamus penuh.
 - [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
+- [x] Menambahkan `predicate_structure` untuk memisahkan kepala predikat dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
 - [x] Menambahkan regression tests untuk perluasan parser tersebut; versi terakhir yang tercatat lulus pada Run #99 (232/232 tes) sebelum rangkaian penyelesaian POS.
 - [ ] Melanjutkan pengembangan Tahap 2.6 setelah gerbang POS selesai; parser v1.5 dipertahankan sebagai baseline dan tidak diulang dari awal.
 - [ ] Memperluas frasa verba di luar adverbia/negator sebelum verba inti dan memisahkan inti frasa dari pewatasnya.
