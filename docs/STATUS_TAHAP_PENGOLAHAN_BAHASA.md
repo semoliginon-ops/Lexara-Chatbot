@@ -1155,3 +1155,7 @@ Menambahkan dua tes integrasi melalui pipeline kamus/POS nyata untuk klausa kons
 GitHub Actions **Run #225 selesai dengan conclusion success**; **399/399 tes regresi lulus**. [Lihat Run #225](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081250314).
 
 Tes ini menambah cakupan integrasi untuk penanda `meskipun`; tidak mengubah parser, kamus, batch, atau indeks. Bentuk konsesif eliptis tetap memiliki status `partial` sesuai bukti yang tersedia.
+
+### Klausa temporal pascaposisi — Run #227 (28 November 2026)
+
+Tes integrasi pipeline untuk `Aku pulang ketika hujan turun.` memastikan dua klausa S-P dipisahkan dan klausa subordinatif diberi penanda `ketika` dengan relasi `temporal`. Run #226 sempat gagal karena tes tambahan mengasumsikan token `ketika` harus berstatus POS `matched`/`CONJ`, padahal hal tersebut bukan prasyarat yang dijamin oleh parser. Asumsi POS tersebut dihapus; cakupan tes diarahkan pada hasil struktur klausa yang menjadi target. GitHub Actions Run #227 sukses, **400/400 tes regresi lulus**. [Lihat Run #227](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081422253).
