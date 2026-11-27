@@ -6,6 +6,7 @@ from typing import Any
 
 from tools.normalisasi import normalize_text
 from tools.morfologi import analyze_morphology
+from tools.deteksi_voice import detect_voice
 from tools.pencocokan_kamus import lookup_token
 from tools.tokenizer import tokenize
 
@@ -47,6 +48,7 @@ def analyze_text(text: str, lexicon: dict[str, list[dict]]) -> dict[str, Any]:
             "status": "matched" if candidates else "unknown",
             "candidates": candidates,
             "morphology_candidates": morphology_candidates,
+            "voice_analysis": detect_voice(morphology_candidates),
         })
 
     return {
