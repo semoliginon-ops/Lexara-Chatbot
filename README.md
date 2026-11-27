@@ -371,3 +371,8 @@ Kamus kini berisi 3.001 lema setelah penambahan lema VERB `tunda` (K3002) dan be
 ### Pemutakhiran Tahap 2.5 — 27 November 2026
 
 Lema `hinggap` (VERB, K3003) telah ditambahkan ke batch-060 dan indeks kamus. Validasi GitHub Actions Run #102 berhasil dengan 3.002 lema dan 234/234 tes regresi. Abstention VERB pada development tersisa `berteduh`.
+
+
+### Pemutakhiran Tahap 2.5 — 27 November 2026
+
+Lema `berteduh` (VERB, K3004) telah ditambahkan ke batch-060 dan indeks kamus. Run #103 berhasil dengan 3.003 lema dan 235/235 tes regresi; abstention VERB pada development kini nol.
