@@ -1,3 +1,5 @@
 58 60
 # Tahap 2.5: enam lema NOUN disetujui dan ditambahkan setelah cek duplikat indeks; target 3012 lema
 # Tes integrasi diselaraskan dengan jumlah lema terbaru; validasi ulang regresi.
+# Tahap 2.5: lema pandang ditambahkan; turunan pandang dan tanding dicatat dengan POS permukaan eksplisit; total 3013 lema.
+# Integrasi diuji untuk bentuk VERB dan NOUN agar POS turunan tidak diwariskan secara keliru.
