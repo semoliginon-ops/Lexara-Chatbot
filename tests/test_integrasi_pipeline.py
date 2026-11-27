@@ -531,6 +531,28 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["clauses"][0]["relation_to_next"], "sebab")
         self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["aku"])
 
+    def test_fronted_causal_subordinate_with_negated_main_uses_real_pipeline(self):
+        analyzed = self.analyze("Sebab hujan turun, aku tidak pulang.")
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        subordinate, main_clause = parsed["clauses"]
+        self.assertEqual(subordinate["subordinator"], "sebab")
+        self.assertEqual(subordinate["relation_to_next"], "sebab")
+        self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+        self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
+        self.assertIsNone(main_clause["subordinator"])
+        self.assertEqual(main_clause["relation_to_previous"], "sebab")
+        self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["tidak", "pulang"])
+        self.assertEqual(
+            main_clause["analysis"]["predicate_structure"]["modifiers"],
+            [{"token": "tidak", "kind": "negation"}],
+        )
+
     def test_fronted_causal_subordinate_with_sebab_uses_real_pipeline(self):
         parsed = parse_sentence(self.analyze("Sebab hujan turun, aku pulang."))
         self.assertEqual(parsed["status"], "parsed")
