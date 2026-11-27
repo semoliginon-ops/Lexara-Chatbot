@@ -123,7 +123,7 @@ def main() -> int:
     failed = False
     total_entries = 0
     for batch_path in args.batches:
-        print(f"\\n[{batch_path}]")
+        print(f"\n[{batch_path}]")
         try:
             entry_count, errors = validate_relation_batch(batch_path)
         except (OSError, ValueError) as exc:
@@ -141,7 +141,7 @@ def main() -> int:
             print("VALIDASI RELASI BERHASIL")
             print(f"Entri diperiksa : {entry_count}")
 
-    print("\\nRINGKASAN VALIDASI RELASI")
+    print("\nRINGKASAN VALIDASI RELASI")
     print(f"Batch diperiksa : {len(args.batches)}")
     print(f"Total entri     : {total_entries}")
     print("Pemeriksaan     : tipe array, teks nonkosong, duplikasi,")
