@@ -168,16 +168,18 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"preposition": "di", "phrase": ["rumah"]}],
         )
 
-    def test_fronted_adjunct_with_postverbal_subject_stays_unresolved(self):
-        # "Di rumah terdengar suara" has K-P-S order. The parser must not
-        # assign "rumah" as subject or "suara" as object without inversion rules.
+    def test_terdengar_is_verb_from_explicit_derived_form_annotation(self):
+        # This test covers lexical POS only. K-P-S parsing remains a separate
+        # parser task and must not be conflated with derived-form recognition.
         analyzed = self.analyze("Di rumah terdengar suara.")
-        parsed = parse_sentence(analyzed)
-        self.assertEqual(parsed["status"], "unresolved")
-        self.assertIsNone(parsed["pattern"])
-        self.assertEqual(parsed["roles"]["subject"], [])
-        self.assertEqual(parsed["roles"]["object"], [])
-        self.assertEqual(self.token(analyzed, "terdengar")["pos"], ["VERB"])
+        token = self.token(analyzed, "terdengar")
+        self.assertEqual(token["status"], "matched")
+        self.assertEqual(token["pos"], ["VERB"])
+        self.assertEqual(token["pos_source"], "dictionary")
+        self.assertEqual(token["pos_status"], "identified")
+        self.assertTrue(
+            any(candidate["lemma"] == "dengar" for candidate in token["candidates"])
+        )
 
     def test_fronted_temporal_adverb_with_modal_uses_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Besok aku akan makan nasi."))
