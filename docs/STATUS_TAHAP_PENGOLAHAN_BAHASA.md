@@ -814,3 +814,18 @@ Dua tes integrasi mengunci perilaku konservatif tersebut:
 GitHub Actions [Run #84](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45937903217) sukses: **201/201 regression tests lulus**, validasi 3.000 lema, dataset POS, dan evaluasi development juga lulus.
 
 **Keputusan teknis:** jangan menambahkan kata ke supplement POS hanya untuk membuat contoh parser lulus. Perluasan lema/POS harus menjadi perubahan dataset yang disengaja, dengan definisi, kelas kata, dan tesnya sendiri.
+
+
+## Parser kalimat v0.7 — keterangan preposisional di depan subjek — 27 November 2026
+
+Parser kini dapat mengenali keterangan preposisional sederhana yang diletakkan sebelum subjek, selain keterangan yang berada setelah predikat.
+
+Contoh:
+- `Aku bekerja di rumah.` → S-P-K (keterangan setelah predikat).
+- `Di rumah aku bekerja.` → S-P-K (keterangan sebelum subjek).
+
+Perbaikan batas frasa memastikan kata `rumah` pada contoh kedua tidak diserap ke dalam subjek `aku`. Pola yang diterima dibatasi pada PREP + frasa nominal sederhana yang berakhir tepat sebelum subjek. Token awal yang tidak cocok dengan pola tersebut tidak otomatis dianggap keterangan.
+
+Dua tes unit dan satu tes integrasi melalui kamus 3.000 lema ditambahkan. GitHub Actions [Run #87](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45944311484) sukses: **204/204 regression tests lulus**. Validasi relasi lima batch terpilih, struktur kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas:** dukungan ini belum mencakup inversi, klausa majemuk, atau seluruh variasi susunan kalimat. Tahap parser berikutnya tetap perlu memperluas variasi secara terukur tanpa menebak fungsi token yang belum jelas.
