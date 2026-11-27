@@ -44,6 +44,14 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Jalankan validator dan regression tests yang relevan setelah setiap kelompok perbaikan.
 - [ ] Catat hasil setiap batch dan tandai batch selesai hanya setelah pemeriksaan serta verifikasi benar-benar dilakukan.
 
+#### Audit makna relasi leksikal — baca-saja
+
+- [x] Audit relasi Batch-001 selesai pada 27 November 2026; tidak ada data kamus yang diubah.
+- [!] Temuan jelas untuk ditinjau: K0028 `tidak` mencatat `bukan` sebagai sinonim meskipun usage note membedakan fungsi keduanya; K0026 `bisa` mencampur sinonim untuk dua sense berbeda pada tingkat entri; K0035 `dengar` mencatat `dengarkan` (bentuk perintah/turunan) sebagai sinonim.
+- [!] Temuan cakupan sense: K0032 `tolong`–`bantu` hanya sesuai untuk sense membantu, bukan sense permintaan bantuan.
+- [ ] Tinjauan lanjutan: K0021 `kerja`–`pekerjaan`, K0043 `besar`–`luas`, K0042 antonim `jelek`–`indah`; pasangan dekat seperti `teman`–`sahabat`, `pulang`–`kembali`, dan `tahu`–`mengerti` perlu mempertahankan batas pemakaian.
+- [ ] Belum ada perbaikan data; seluruh temuan harus ditinjau dan disetujui sebelum perubahan batch.
+
 #### Verifikasi struktur relasi leksikal
 
 - [x] Validator diperluas untuk menerima banyak batch dan memprosesnya berurutan satu per satu; verifikasi Termux 27 November 2026: regression suite 169/169 lulus dan batch 036–060 (25 batch, 1.250 entri) lolos seluruh pemeriksaan struktur relasi.
