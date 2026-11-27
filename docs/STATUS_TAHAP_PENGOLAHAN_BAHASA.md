@@ -866,3 +866,11 @@ Ditambahkan tes integrasi untuk `Aku mau makan nasi besok.` Indeks kamus diperik
 GitHub Actions **Run #166** sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **352/352 tes regresi lulus**. [Lihat Run #166](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46018848688).
 
 **Batas:** pengujian ini memvalidasi satu kombinasi modal verbal dengan keterangan temporal setelah objek. Ini belum membuktikan semua susunan keterangan atau kombinasi modalitas telah didukung.
+
+### Uji negasi + modal adverb + keterangan temporal pascapredikat — Run #167 (27 November 2026)
+
+Ditambahkan tes integrasi untuk `Aku tidak akan makan nasi besok.` Indeks kamus diperiksa terlebih dahulu: `aku`, `akan`, `besok`, `makan`, `nasi`, dan `tidak` tersedia. Tidak ada penambahan lema atau perubahan batch/index. Melalui pipeline nyata, POS dikenali sebagai PRON, ADV, ADV, VERB, NOUN, ADV. Parser menghasilkan S-P-O-K; predikat `tidak akan makan` berkepala `makan`, dengan modifier `tidak` sebagai negasi dan `akan` sebagai modal, objek `nasi`, serta keterangan temporal `besok`.
+
+GitHub Actions **Run #167** sukses: validasi 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **353/353 tes regresi lulus**. Coverage/accuracy POS kontekstual development tetap 98,0% / 98,0%, selective accuracy 100,0%. [Lihat Run #167](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46019265619).
+
+**Batas:** ini membuktikan satu kombinasi negasi + modal adverb + objek + keterangan temporal pascapredikat. Tidak menggeneralisasi ke seluruh pola urutan kata atau seluruh jenis keterangan.
