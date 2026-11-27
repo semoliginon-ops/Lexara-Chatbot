@@ -1,2 +1,2 @@
 58 60
-# validasi ulang parser v1.5 setelah koreksi ekspektasi tes sebab
+# Tahap 2.5: tambah lema tunda dan anotasi derived form ditunda; validasi kamus 3001 lema
