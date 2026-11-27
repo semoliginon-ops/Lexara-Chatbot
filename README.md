@@ -342,3 +342,6 @@ Parser konservatif telah mencapai v1.3. Selain koordinasi beberapa klausa dan la
 Parser konservatif mencapai v1.4. Perluasan terbaru menangani bentuk terbatas klausa konsesif eliptis berpredikat adjektival, seperti `Walaupun lelah, dia bekerja.`. Subjek yang dilesapkan tetap kosong dan hasil ditandai `partial`; sistem tidak menebak atau menyalin subjek dari klausa utama. Cakupan serta hasil validasi terbaru dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
 
 Validasi parser v1.4 melalui GitHub Actions [Run #97](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45956239387) berhasil dengan **229/229 regression tests lulus**. Validasi kamus lengkap 3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+
+Parser v1.5 menambahkan pola subordinatif setelah klausa utama, misalnya `Aku pulang karena hujan turun.`. Penghubung sebab/temporal/konsesi yang dikenali tidak lagi diperlakukan sebagai koordinasi setara pada pola tersebut. Hasil validasi dicatat di `docs/STATUS_TAHAP_PENGOLAHAN_BAHASA.md`.
