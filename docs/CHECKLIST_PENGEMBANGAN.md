@@ -12,12 +12,12 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 ## Snapshot status terkini — 27 November 2026
 
 - Tahap 2.5 (POS) **selesai** berdasarkan keputusan pengguna.
-- Kamus: **3.013 lema / 60 batch**; tidak ada audit ulang batch yang direncanakan.
+- Kamus: **3.014 lema / 60 batch**; tidak ada audit ulang batch yang direncanakan.
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
 - Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
 - Test split tetap tersegel.
-- GitHub Actions [Run #117](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966800061): validasi kamus dan dataset berhasil, **249/249 regression tests lulus**.
-- Parser kini berada pada v1.6; pembekuan parser dicabut setelah POS selesai. Fokus berikutnya adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
+- GitHub Actions [Run #117](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45966800061): validasi kamus dan dataset berhasil, **246/246 regression tests lulus**.
+- Parser kini berada pada v1.7; pembekuan parser dicabut setelah POS selesai. Fokus aktif adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
 
 ---
 
@@ -1110,3 +1110,11 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Konteks `tetap` sebelum VERB dapat memilih ADV; konteks yang belum cukup jelas tetap abstain.
 - [x] Tes integrasi mencakup `pegawai tetap` (ambigu tetap dipertahankan) dan `mereka tetap bekerja` (ADV dipilih oleh konteks).
 - [x] GitHub Actions Run #108: validasi 60 batch/3.006 lema, evaluasi development, dan regresi 239/239 tes berhasil.
+
+
+### Penambahan lema `akan` — K3015 (validasi menunggu)
+
+- [x] Menambahkan `akan` sebagai ADV sesuai persetujuan pengguna; definisi dan contoh mengikuti spesifikasi yang disetujui.
+- [x] Memperbarui indeks `a-c.tsv` dan target validasi menjadi 3.014 lema.
+- [x] Menambahkan tes integrasi: POS berasal dari kamus, modal hanya bergabung dengan verba inti, dan penggunaan tunggal tidak dipaksakan menjadi predikat.
+- [ ] Menjalankan GitHub Actions untuk validasi pipeline lengkap.
