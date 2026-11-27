@@ -670,3 +670,15 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] Regression suite: 169 tes lulus.
 
 **Batas hasil:** validasi relasi bersifat struktural, bukan penilaian kebenaran makna. Evaluasi POS hanya pada development split; test split tetap ditahan dan bukan dasar klaim akurasi umum.
+
+
+### Audit dan koreksi semantik Batch-006–010 — 27 November 2026
+
+- [x] Audit baca seluruh 250 entri pada Batch-006 sampai Batch-010, dengan fokus pada kecocokan relasi sinonim/antonim terhadap definisi dan cakupan makna.
+- [x] Batch-006: memindahkan `kaca rias` dari sinonim `cermin` ke `related_terms` karena merupakan jenis cermin yang lebih khusus; memisahkan dua makna `jam` (alat penunjuk waktu dan satuan 60 menit), lalu membatasi `penunjuk waktu` pada sense alat.
+- [x] Batch-007: memindahkan `higienis` dari sinonim `bersih` ke `related_terms` karena higienis berkaitan dengan kebersihan tetapi tidak selalu berarti bebas dari kotoran/noda.
+- [x] Batch-009: menghapus `lulus` sebagai antonim umum `gagal` dan mempertahankannya sebagai `related_terms`; antonim umum yang tepat adalah `berhasil`.
+- [x] Batch-008 dan Batch-010: tidak ditemukan relasi yang cukup kuat untuk dikoreksi pada audit ini; data dipertahankan.
+- [ ] Validasi struktural kelompok Batch-006–010 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** empat koreksi relasi/struktur makna di atas tidak mengubah lemma, ID entri, POS entri, atau bentuk turunan. Relasi lain yang hanya berbeda nuansa/register tidak diubah tanpa bukti yang lebih kuat. Validasi otomatis nantinya hanya menguji struktur dan regresi, bukan menggantikan penilaian linguistik.
