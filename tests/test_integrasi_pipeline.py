@@ -724,6 +724,27 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(token["pos"], [])
                 self.assertEqual(token["pos_status"], "unknown")
 
+    def test_nominal_bound_clitic_is_parsed_as_possessive_object_phrase_in_real_pipeline(self):
+        analyzed = self.analyze("Dia lihat bukuku.")
+        bound = self.token(analyzed, "bukuku")
+        self.assertEqual(bound["status"], "unknown")
+        self.assertEqual(bound["pos"], [])
+        self.assertEqual(bound["clitic_pos_candidates"][0]["host_pos"], ["NOUN"])
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["subject"], ["Dia"])
+        self.assertEqual(parsed["roles"]["predicate"], ["lihat"])
+        self.assertEqual(parsed["roles"]["object"], ["bukuku"])
+        self.assertEqual(parsed["clitic_analysis"], [{
+            "surface": "bukuku",
+            "base_form": "buku",
+            "clitic": "ku",
+            "function": "possessive",
+            "function_status": "selected_by_host_pos",
+            "nominal_phrase_role": "object",
+        }])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
