@@ -783,3 +783,17 @@ Dua konstruksi predikat adjektival kini diuji melalui alur penuh kamus 3.000 lem
 Dua tes integrasi end-to-end ditambahkan. GitHub Actions [Run #81](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45936903373) sukses: **196/196 regression tests lulus**. Validasi Batch-056–060, struktur seluruh kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga sukses.
 
 **Batas yang sudah diverifikasi:** integrasi nonverbal adjektival pada dua pola tersebut. Predikat nominal `Ayah seorang guru` masih diuji pada tingkat parser dengan POS terkontrol, belum melalui pipeline kamus penuh. Belum ada dukungan yang diklaim untuk pelengkap predikat seperti `menjadi dokter` atau `tampak bahagia`; itu menjadi tahap desain dan implementasi berikutnya.
+
+
+## Parser kalimat v0.6 — pelengkap predikat terbatas — 27 November 2026
+
+Parser kini membedakan dua konstruksi pelengkap predikat sederhana dari objek:
+
+- `Dia menjadi dokter.`: `menjadi` sebagai predikat dan `dokter` sebagai pelengkap nominal; pola `S-P-Pel`.
+- `Mereka tampak bahagia.`: `tampak` sebagai predikat dan `bahagia` sebagai pelengkap adjektival; pola `S-P-Pel`.
+
+Field `roles.complement` diisi dan objek tetap kosong untuk dua pola tersebut. Tes pembanding memastikan verba transitif biasa, misalnya `Dia membeli baju`, tetap menghasilkan objek (`S-P-O`).
+
+GitHub Actions [Run #82](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45937493840) sukses: **199/199 regression tests lulus**; validasi Batch-056–060, kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
+
+**Batas penting:** tiga tes fitur baru menggunakan POS terkontrol di tingkat parser. Dukungan POS untuk `menjadi` dan `tampak` belum diklaim terverifikasi end-to-end melalui kamus. Frasa kompleks seperti `tampak sangat bahagia`, klausa pelengkap, dan verba penghubung lain belum ditangani.
