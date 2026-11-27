@@ -195,7 +195,8 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menetapkan parser v1.7 dengan `predicate_structure` dan modalitas `akan` (ADV) serta `bisa` (VERB) untuk memisahkan kepala predikat verbal dari pewatas modal, negasi, dan adverbial; `roles.predicate` tetap mempertahankan rentang lama demi kompatibilitas.
 - [x] Menambahkan regression tests untuk perluasan parser hingga v1.5; tes v1.6/v1.7 menjaga struktur kepala predikat, modalitas, dan variasi susunan klausa.
 - [x] Melanjutkan Tahap 2.6 dari baseline v1.7 dan fitur lama tetap dipertahankan.
-- [x] Mengenali `akan` (ADV) dan `bisa` (VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
+- [x] Pada lapisan parser, mengenali `akan` (jika POS ADV) dan `bisa` (jika POS VERB) sebagai modal jika diikuti verba inti; penggunaan `bisa` tunggal tetap dipertahankan sebagai predikat.
+- [ ] Integrasi `akan` dengan POS kamus: indeks saat ini belum mencatat `akan`. Penambahan lema belum dilakukan dan tetap menunggu persetujuan eksplisit pengguna.
 - [ ] Memperluas frasa verba ke penanda modal/aspek lain hanya setelah POS dan konteksnya cukup kuat.
 - [x] Menguji variasi susunan kalimat dengan frasa modal pada pola S-P-O, S-P-K, dan masukan berurutan K-S-P; regression tests menjaga fungsi objek/keterangan tetap benar.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
