@@ -45,78 +45,14 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] Catat hasil setiap batch dan tandai batch selesai hanya setelah pemeriksaan serta verifikasi benar-benar dilakukan.
 
 #### Audit makna relasi leksikal — baca-saja
-
-- [x] Audit makna relasi Batch-001 selesai pada 27 November 2026; empat entri diperbaiki secara selektif setelah persetujuan; perubahan dicatat pada commit b2b37d2.
+- [x] Audit relasi Batch-001 selesai pada 27 November 2026; empat entri diperbaiki secara selektif setelah persetujuan; perubahan dicatat pada commit b2b37d2.
 - [x] Temuan K0028 `tidak`–`bukan`, K0026 `bisa` dengan relasi lintas-sense, dan K0035 `dengar`–`dengarkan` ditangani secara selektif.
 - [x] K0032 `tolong`–`bantu` dibatasi pada sense membantu (K0032-S1), bukan sense permintaan bantuan.
-- [ ] Tinjauan lanjutan: K0021 `kerja`–`pekerjaan`, K0043 `besar`–`luas`, K0042 antonim `jelek`–`indah`; pasangan dekat seperti `teman`–`sahabat`, `pulang`–`kembali`, dan `tahu`–`mengerti` perlu mempertahankan batas pemakaian.
-- [ ] Jalankan regression tests dan validasi struktur Batch-001 setelah perubahan relasi per-sense; jangan lanjutkan audit Batch-002 sebelum hasilnya lulus.
-
-#### Verifikasi struktur relasi leksikal
-
-- [x] Validator diperluas untuk menerima banyak batch dan memprosesnya berurutan satu per satu; verifikasi Termux 27 November 2026: regression suite 169/169 lulus dan batch 036–060 (25 batch, 1.250 entri) lolos seluruh pemeriksaan struktur relasi.
-- [x] `batch-001.jsonl`: 49 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-002.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-003.jsonl`: 51 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-004.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-005.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-006.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-007.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-008.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-009.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-010.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [x] `batch-011.jsonl`: 50 entri; dua referensi diri pada K0520 `awas` dan K0531 `bersin` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-012.jsonl`: 50 entri; dua referensi diri pada K0568 `jengkel` dan K0574 `keren` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-013.jsonl`: 50 entri; referensi diri pada K0608 `barangkali` dan K0645 `yuk` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-014.jsonl`: 50 entri; lima referensi diri pada K0656 `doang`, K0661 `kayaknya`, K0672 `percaya diri`, K0692 `sungkan`, dan K0693 `terpaksa` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-015.jsonl`: 50 entri; lima referensi diri pada K0720 `bandel`, K0735 `biadab`, K0741 `boncos`, K0748 `canggung`, dan K0750 `cerewet` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-016.jsonl`: 50 entri; tiga referensi diri pada K0755 `ceroboh`, K0762 `dahaga`, dan K0764 `dalih` diperbaiki; validator struktur relasi berhasil dijalankan ulang di Termux pada 27 November 2026.
-- [x] `batch-017.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-018.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-019.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-020.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-021.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-022.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-023.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-024.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-025.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-026.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-027.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-028.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-029.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-030.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-031.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-032.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-033.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-034.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-035.jsonl`: 50 entri; pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-036.jsonl`: 50 entri (K1752–K1801); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-037.jsonl`: 50 entri (K1802–K1851); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-038.jsonl`: 50 entri (K1852–K1901); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-039.jsonl`: 50 entri (K1902–K1951); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-040.jsonl`: 50 entri (K1952–K2001); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-041.jsonl`: 50 entri (K2002–K2051); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-042.jsonl`: 50 entri (K2052–K2101); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-043.jsonl`: 50 entri (K2102–K2151); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-044.jsonl`: 50 entri (K2152–K2201); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-045.jsonl`: 50 entri (K2202–K2251); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-046.jsonl`: 50 entri (K2252–K2301); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-047.jsonl`: 50 entri (K2302–K2351); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-048.jsonl`: 50 entri (K2352–K2401); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-049.jsonl`: 50 entri (K2402–K2451); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-050.jsonl`: 50 entri (K2452–K2501); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-051.jsonl`: 50 entri (K2502–K2551); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-052.jsonl`: 50 entri (K2552–K2601); referensi diri K2578 `ketiak` telah dihapus secara selektif; menunggu validasi struktur gabungan.
-- [x] `batch-053.jsonl`: 50 entri (K2602–K2651); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-054.jsonl`: 50 entri (K2652–K2701); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-055.jsonl`: 50 entri (K2702–K2751); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-056.jsonl`: 50 entri (K2752–K2801); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-057.jsonl`: 50 entri (K2802–K2851); referensi diri K2850 `Kepulauan Seribu Utara` dan K2851 `Kepulauan Seribu Selatan` telah dihapus secara selektif; menunggu validasi struktur gabungan.
-- [x] `batch-058.jsonl`: 50 entri (K2852–K2901); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-059.jsonl`: 50 entri (K2902–K2951); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] `batch-060.jsonl`: 50 entri (K2952–K3001); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; validator struktur relasi berhasil dijalankan di Termux pada 27 November 2026.
-- [x] Validasi struktur relasi seluruh 60 batch (3.000 entri) selesai; hasil validasi struktur tidak dianggap sebagai audit kebenaran makna.
-
+- [x] Regression suite setelah perubahan Batch-001: 169/169 tes lulus; validasi struktur Batch-001: 49 entri lulus pada 27 November 2026.
+- [x] Audit makna Batch-002 selesai secara baca-saja pada 27 November 2026; belum ada perubahan data.
+- [!] Kandidat kuat Batch-002: K0059 `taruh`–`letakkan` (bentuk perintah/turunan, bukan sinonim dasar); K0067 `masuk`–`memasuki` (bentuk turunan, bukan sinonim); K0071 `duduk`–`bersila` (postur khusus, bukan sinonim umum); K0072 `berdiri`–`tegak` (beda kelas/fungsi); K0073 `lari`–`berlomba` (berlomba bukan sinonim lari); K0090 `dekat`–`hampir` (makna jarak vs kadar/pendekatan); K0095 `bokek`–`miskin` (kondisi sementara vs keadaan ekonomi).
+- [!] Relasi yang perlu dibatasi menurut konteks/sense atau ditinjau lagi: K0052 `masak`–`mengolah`; K0053/K0054 `membersihkan`; K0055 `beli`–`berbelanja`; K0056 `jual`–`memasarkan`; K0057 `pakai`–`gunakan`; K0062 `terima`–`sambut`; K0065 `buka`–`singkap`; K0066 `tutup`–`akhiri`; K0069 `naik`–`mendaki`; K0070 `turun`–`merosot`; K0076 `baca`–`melafalkan`; K0077 `tulis`–`mencatat`; K0078 `ingat`–`kenang`; K0080 `pikir`–`renungkan`; K0082 `marah`–`murka`; K0084 `senang`–`gembira`; K0085 `sedih`–`murung`; K0087 `sibuk`–`repot`; K0092 `gabut`–`menganggur`; K0093 `baper`–`sensitif`; K0097 `lebay`–`hiperbolis`; K0100 `gercep`–`sigap`.
+- [ ] Perbaikan Batch-002 menunggu persetujuan; jangan mengubah entri lain atau lanjut ke Batch-003 sebelum temuan Batch-002 ditangani.
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
 
 ### 2.1 Normalisasi teks
