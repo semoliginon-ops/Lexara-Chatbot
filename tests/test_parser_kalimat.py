@@ -33,6 +33,52 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["roles"]["predicate"], ["makan"])
         self.assertEqual(result["roles"]["object"], ["nasi"])
 
+    def test_parses_nominal_clitic_as_noun_phrase_without_losing_possessive_analysis(self):
+        bound_noun = token("bukuku", status="unknown")
+        bound_noun["clitic_pos_candidates"] = [{
+            "base_form": "buku",
+            "clitic": "ku",
+            "host_pos": ["NOUN"],
+            "clitic_pos": ["PRON"],
+            "function_candidates": ["possessive", "object"],
+            "function_status": "unresolved",
+        }]
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            token("lihat", ["VERB"]),
+            bound_noun,
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "S-P-O")
+        self.assertEqual(result["roles"]["subject"], ["dia"])
+        self.assertEqual(result["roles"]["predicate"], ["lihat"])
+        self.assertEqual(result["roles"]["object"], ["bukuku"])
+        self.assertEqual(result["clitic_analysis"], [{
+            "surface": "bukuku",
+            "base_form": "buku",
+            "clitic": "ku",
+            "function": "possessive",
+            "function_status": "selected_by_host_pos",
+            "nominal_phrase_role": "object",
+        }])
+
+    def test_does_not_assign_nominal_clitic_function_without_single_known_host_pos(self):
+        bound_unknown = token("melihatku", status="unknown")
+        bound_unknown["clitic_pos_candidates"] = [{
+            "base_form": "melihat",
+            "clitic": "ku",
+            "host_pos": [],
+            "clitic_pos": ["PRON"],
+            "function_candidates": ["possessive", "object"],
+            "function_status": "unresolved",
+        }]
+        result = parse_sentence(analysis(
+            token("dia", ["PRON"]),
+            bound_unknown,
+        ))
+        self.assertEqual(result["status"], "unresolved")
+        self.assertEqual(result["clitic_analysis"], [])
+
     def test_parses_adverbial_predicate_and_prepositional_adjunct(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
