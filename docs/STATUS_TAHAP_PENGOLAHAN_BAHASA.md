@@ -816,3 +816,10 @@ Item pengujian pipeline pada checklist sekarang berstatus `[~]`, bukan selesai: 
 Ditambahkan kasus `Anak makan nasi.` untuk memastikan subjek berupa nomina umum, bukan hanya pronomina, diproses melalui kamus, POS, dan parser. Indeks kamus sebelumnya telah mengonfirmasi `anak`, `makan`, dan `nasi` tersedia; tidak ada perubahan data kamus. POS yang diharapkan: NOUN + VERB + NOUN; hasil parser: S-P-O dengan `anak` sebagai subjek dan `nasi` sebagai objek. Run #159 sukses dengan **346/346 tes regresi**, termasuk validasi kamus 60 batch / 3.014 lema dan evaluasi development POS. [Lihat Run #159](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46015818026).
 
 Pengujian konstruksi nyata Tahap 2.6 kini juga mencakup predikat adjektival `Dia sakit.` (Run #158) dan subjek nominal `Anak makan nasi.` (Run #159). Cakupan ini masih parsial; item checklist tetap `[~]` sampai variasi konstruksi lain yang relevan diuji.
+
+
+### Uji negasi verbal melalui pipeline kamus/POS nyata — Run #160 (27 November 2026)
+
+Ditambahkan tes integrasi untuk kalimat `Aku tidak makan nasi.` Indeks kamus diperiksa terlebih dahulu dan mengonfirmasi lema `aku`, `tidak`, `makan`, dan `nasi` tersedia; tidak ada batch atau indeks kamus yang diubah. Tes memeriksa POS hasil pipeline: PRON + ADV + VERB + NOUN, lalu memastikan parser menghasilkan pola S-P-O, menempatkan `tidak` bersama `makan` dalam rentang predikat, mengidentifikasi kepala predikat `makan`, dan mempertahankan `nasi` sebagai objek. Run #160 sukses: validasi kamus 60 batch / 3.014 lema, validasi valensi, dataset POS, evaluasi development, dan **347/347 tes regresi lulus**. [Lihat Run #160](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46016150202).
+
+Cakupan pengujian konstruksi nyata Tahap 2.6 kini mencakup kalimat adjektival, kalimat dengan subjek nominal dan objek, serta negasi verbal. Item perluasan pengujian tetap berstatus sebagian karena variasi pola dan batas parser lain belum seluruhnya diuji.
