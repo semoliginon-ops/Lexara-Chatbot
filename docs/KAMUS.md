@@ -131,7 +131,7 @@ Skema metadata valensi per-sense telah disetujui sebagai bagian dari pengembanga
 - Fungsi sintaksis awal: `SUBJ`, `OBJ`, `COMP`, `OBL`.
 - Semantic role awal: `AGENT`, `CAUSER`, `EXPERIENCER`, `THEME`, `PATIENT`, `RECIPIENT`, `BENEFICIARY`, `INSTRUMENT`, `LOCATION`, `SOURCE`, `GOAL`, `RESULT`, `CONTENT`, `STIMULUS`.
 - Tipe realisasi awal: `NP`, `PP`, `ADJP`, `CLAUSE`. Pembatas `prepositions` hanya berlaku pada realisasi `PP`.
-- `semantic_role: null) hanya menyatakan bahwa role argumen belum diputuskan; bukan label role tambahan.
+- `semantic_role: null` hanya menyatakan bahwa role argumen belum diputuskan; bukan label role tambahan.
 - `required` menyatakan status argumen dalam frame, bukan jaminan bahwa argumen selalu tampak pada permukaan kalimat. Voice dan pelesapan ditangani oleh lapisan terpisah.
 
 Contoh berikut ilustratif dan bukan anotasi yang boleh langsung disalin ke entri kamus:
