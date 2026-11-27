@@ -8,6 +8,8 @@ on:
       - "tools/validasi_valensi.py"
       - "tests/test_validasi_valensi.py"
       - "tests/test_valency_pilot_integration.py"
+      - "tools/pemetaan_peran_semantis.py"
+      - "tests/test_pemetaan_peran_semantis.py"
       - "data/kamus/batch-*.jsonl"
       - ".github/workflows/pos-validation.yml"
   workflow_dispatch:
