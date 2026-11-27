@@ -1022,3 +1022,12 @@ POS demonstratif `ini` dan `itu` dipakai sebagai kategori PRON dalam taksonomi p
 Run #202 sempat gagal karena validator kamus lengkap dan satu assertion integrasi masih mengharapkan 3.019 entri. Ekspektasi keduanya diperbarui menjadi 3.025. **Run #203 selesai dengan conclusion success**: validasi relasi untuk batch 058–060, validasi kamus lengkap 3.025 lema, validasi valensi, validasi dataset POS, evaluasi development, dan **378/378 tes regresi lulus**. Coverage dan accuracy POS development tetap 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #203](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46034097778).
 
 **Batas:** Run #203 memvalidasi struktur kamus dan regresi yang sudah ada, tetapi belum menambahkan tes pipeline khusus untuk enam lema baru. Fungsi demonstratif sebagai penentu nomina vs pengganti frasa nominal, fungsi refleksif `diri/sendiri`, dan konstruksi adverbial `begini/begitu` masih perlu diuji sebelum cakupan sintaksisnya dinyatakan tersedia.
+
+
+### Pengujian pipeline enam lema refleksif dan demonstratif — Run #204 (27 November 2026)
+
+Setelah keenam lema ditambahkan pada Run #203, tes integrasi khusus ditambahkan untuk memeriksa bahwa lema tersebut benar-benar melewati pipeline kamus → POS → parser, bukan hanya lolos validasi struktur kamus. Tes mencakup pengenalan lema dan sumber POS dari kamus; pemakaian adverbial `begini` dan `begitu`; demonstratif `ini` dan `itu` pada frasa nominal; serta `diri` sebagai NOUN dan `sendiri` yang tetap memiliki kandidat ADJ+ADV ketika konteks belum cukup untuk memilih salah satunya.
+
+GitHub Actions **Run #204 selesai dengan conclusion success**; **381/381 tes regresi lulus**. Log juga mengonfirmasi validasi kamus lengkap memuat **3.025 lema** dalam 60 batch, validasi relasi leksikal batch terpilih, valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #204](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46041318079).
+
+**Batas:** tes ini memvalidasi pengenalan POS dan sejumlah contoh pipeline terpilih, bukan seluruh fungsi sintaksis demonstratif atau refleksif. Fungsi `ini/itu` sebagai penentu nomina vs pengganti frasa nominal belum dibedakan sebagai kategori sintaksis tersendiri; konstruksi refleksif lengkap seperti `diriku/dirimu/dirinya` belum diuji sebagai analisis klitik-refleksif; dan pemilihan ADJ vs ADV untuk `sendiri` masih dibiarkan ambigu bila bukti konteks tidak memadai. Tidak ada perubahan kamus pada Run #204.
