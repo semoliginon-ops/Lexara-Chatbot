@@ -56,7 +56,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] `batch-008.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
 - [x] `batch-009.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
 - [x] `batch-010.jsonl`: 50 entri; validator struktur relasi berhasil di Termux pada 27 November 2026.
-- [ ] `batch-011.jsonl`: menunggu verifikasi validator struktur relasi di Termux.
+- [!] `batch-011.jsonl`: validasi struktur gagal pada 27 November 2026; ditemukan referensi ke lema sendiri pada K0520 `awas` (`related_terms[1]`) dan K0531 `bersin` (`related_terms[4]`). Menunggu peninjauan/perbaikan terarah dan validasi ulang.
 - [ ] Lanjutkan validasi struktur batch berikutnya satu per satu; hasil validasi struktur tidak dianggap sebagai audit kebenaran makna.
 
 ## Tahap 2 — Pengolahan kata dan tata bahasa dasar
