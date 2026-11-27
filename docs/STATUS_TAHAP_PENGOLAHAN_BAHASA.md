@@ -754,3 +754,10 @@ Pemeriksaan seluruh delapan shard token index tidak menemukan entri token persis
 Aturan kamus saat ini menetapkan setiap batch berisi tepat 50 lema baru dengan ID berurutan. Karena itu tidak dibuat batch parsial untuk tiga kata. Rencana berikutnya adalah mengumpulkan lema prioritas lain dari abstention NOUN, lalu memasukkannya ke batch lengkap setelah audit duplikasi dan penetapan POS/sense. Untuk teduh, POS dasar perlu ditinjau sebagai ADJ; bentuk berteduh memerlukan anotasi POS bentuk turunan VERB yang eksplisit jika relasinya disetujui.
 
 Tidak ada perubahan kode atau data kamus pada audit ini. Evaluasi tetap hanya pada development set; 40 kalimat test tetap tertahan.
+
+
+## Parser kalimat v0.4 — frasa verba modal
+
+Parser kini memiliki aturan terbatas untuk verba kehendak `mau`, `ingin`, dan `hendak`. Jika salah satu token tersebut berlabel VERB dan diikuti verba leksikal, parser memilih verba leksikal sebagai inti predikat dan menggabungkan verba kehendak ke rentang predikat. Jika berdiri sendiri, token tersebut tetap dapat menjadi predikat.
+
+Tiga regression tests baru mencakup `aku mau pergi`, `dia ingin makan nasi`, dan penggunaan tunggal `aku mau`. Aturan ini tidak otomatis diperluas ke `bisa`, `dapat`, atau kata lain yang ambigu. Validasi GitHub Actions untuk perubahan ini menunggu.
