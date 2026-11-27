@@ -190,6 +190,27 @@ Urutan kerja yang disarankan:
 
 Jangan mengejar jumlah 3.000 dengan mengorbankan ketepatan. Entri yang belum jelas lebih baik ditandai untuk ditinjau daripada dipaksakan masuk.
 
+### 8.3 Audit kualitas isi per batch
+
+Audit kualitas isi dilakukan bertahap, satu berkas batch pada satu waktu, dimulai dari `batch-001.jsonl` hingga `batch-060.jsonl`. Audit ini melengkapi validasi struktur otomatis; keduanya memiliki tujuan berbeda.
+
+Aturan kerja:
+
+1. Periksa satu batch sampai selesai sebelum berpindah ke batch berikutnya. Jangan memuat atau menyalin seluruh 60 batch sekaligus ke konteks kerja.
+2. Perlakukan berkas batch sebagai sumber data utama. INDEX hanya alat navigasi dan pemeriksaan lema/duplikasi; jangan memperbesar INDEX menjadi salinan isi kamus.
+3. Tahap audit bersifat baca-saja. Jangan mengubah entri ketika pemeriksaan masih berlangsung.
+4. Periksa struktur dan tipe data, konsistensi ID/lema, POS, sense/definisi, register, variasi, bentuk turunan, relasi, serta catatan pemakaian sesuai skema yang berlaku.
+5. Catat setiap temuan dengan nama batch, ID entri, field terkait, jenis temuan, bukti, dan tingkat kepastian. Bedakan kesalahan yang dapat dibuktikan dari saran atau kasus yang perlu tinjauan linguistik.
+6. Jangan menganggap field opsional yang kosong atau bentuk turunan yang tidak tercantum pada INDEX sebagai kesalahan jika skema memang mengizinkannya.
+7. Setelah audit batch selesai, rangkum hasilnya: temuan wajib diperbaiki, temuan untuk ditinjau, dan tidak ada masalah yang ditemukan. Batch yang lolos tidak perlu diubah.
+8. Perbaikan dilakukan terpisah setelah temuan ditinjau. Ubah hanya entri yang memiliki bukti cukup, pertahankan ID stabil dan kompatibilitas skema, lalu jalankan validator serta regression tests yang relevan.
+9. Jangan mengubah data hanya demi merapikan tampilan atau mengejar keseragaman yang tidak diwajibkan skema. Jangan mengarang definisi, POS, relasi, atau bentuk turunan.
+10. Catat kemajuan batch dan hasil verifikasi pada checklist proyek. Jika perubahan berisiko memengaruhi POS, morfologi, atau komponen lain, tambahkan regression test sebelum menyatakan perbaikan selesai.
+
+Audit per batch tidak menggantikan validasi struktur seluruh kamus, dan lolosnya validator struktur tidak otomatis membuktikan bahwa seluruh definisi atau relasi linguistik sudah benar. Audit isi juga tidak boleh mengklaim kualitas semantik sempurna hanya berdasarkan pemeriksaan otomatis.
+
+---
+
 ## 9. Validasi dan pengujian
 
 Pemeriksaan minimum:
