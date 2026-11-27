@@ -134,9 +134,41 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
             for candidate in candidates
         )
 
-        morphology_labels = _morphological_verbal_pos(
-            item.get("morphology_candidates", [])
-        )
+        morphology_candidates = item.get("morphology_candidates", [])
+        clitic_pos_candidates = []
+        for morphology in morphology_candidates:
+            clitic = morphology.get("clitic")
+            if clitic not in {"ku", "mu", "nya"}:
+                continue
+            host_pos = []
+            for match in morphology.get("candidates", []):
+                entry = match.get("entry", {})
+                if not isinstance(entry, dict):
+                    continue
+                if match.get("match_type") == "derived_form":
+                    derived_map = entry.get("derived_forms_pos", {})
+                    labels = derived_map.get(match.get("matched_form"), [])
+                    if not isinstance(labels, list):
+                        labels = []
+                else:
+                    labels = entry.get("pos", [])
+                for label in labels:
+                    if isinstance(label, str) and label and label not in host_pos:
+                        host_pos.append(label)
+            clitic_pos_candidates.append({
+                "base_form": morphology.get("base_form"),
+                "clitic": clitic,
+                "host_pos": host_pos,
+                "clitic_pos": ["PRON"],
+                "combined_pos": [
+                    {"host": host_label, "clitic": "PRON"}
+                    for host_label in host_pos
+                ],
+                "function_candidates": ["possessive", "object"],
+                "function_status": "unresolved",
+            })
+
+        morphology_labels = _morphological_verbal_pos(morphology_candidates)
 
         # Use the small audited supplement only when the dictionary has no
         # POS candidate and the token is not an unresolved derived form.
@@ -158,6 +190,7 @@ def tag_pos(analysis: dict[str, Any]) -> dict[str, Any]:
             updated["pos_source"] = "unknown" if item.get("kind") == "word" else "not_applicable"
 
         updated["pos_candidates"] = pos_candidates
+        updated["clitic_pos_candidates"] = clitic_pos_candidates
         updated["pos"] = all_labels
         updated["pos_status"] = (
             "identified" if all_labels else
