@@ -633,3 +633,11 @@ Rancangan ini telah disetujui pengguna pada 27 November 2026 sebagai dasar imple
 Voice aktif/pasif, pelesapan argumen di permukaan, kontrol, raising, urutan kata, konstruksi inversi, argumen implisit, serta penanda klausa yang lebih rinci belum dimasukkan ke skema awal. Semua itu perlu lapisan aturan dan pengujian tersendiri agar metadata valensi tidak menjadi terlalu rumit atau menyatakan hal yang belum didukung bukti.
 
 **Status keputusan dan implementasi:** skema disetujui pengguna. Validator struktural dan 15 tes khusus telah dibuat. Run #129 berhasil menguji seluruh 60 batch / 3.014 entri dan menjalankan 273 tes regresi; semua lulus. Kompatibilitas data lama terbukti pada pemuatan kamus dan pemeriksaan valensi. Validator ini memeriksa struktur, bukan kebenaran linguistik anotasi. Langkah berikutnya adalah menyusun anotasi terbatas pada beberapa sense terpilih, meninjau setiap frame berdasarkan makna sense, lalu menambahkan pengujian integrasi parser. Tidak ada penambahan lema kamus yang diperlukan.
+
+**Anotasi pilot pertama — 4 sense (27 November 2026):** setelah persetujuan pengguna, metadata valensi dimasukkan pada empat sense yang sudah ada:
+- `muncul` / `K1475-S1`: satu frame, SUBJ/THEME.
+- `lihat` / `K0034-S1`: SUBJ/EXPERIENCER dan OBJ/THEME.
+- `buka` / `K0065-S1`: dua frame alternatif dengan struktur sintaktis sama, masing-masing SUBJ/AGENT atau SUBJ/CAUSER; OBJ/PATIENT.
+- `makan` / `K0013-S1`: SUBJ/AGENT; OBJ/PATIENT dengan `required: false`.
+
+Anotasi ini terbatas pada empat sense tersebut. Dua frame `buka` memodelkan alternatif peran semantis pada posisi SUBJ; objek pada `makan` dinyatakan opsional. Belum ada klaim bahwa seluruh variasi valensi atau semua konstruksi aktif/pasif telah tercakup. Tahap berikutnya adalah validasi CI atas perubahan data dan tes integrasi terarah pada kalimat contoh serta kasus negatif/ambigu.
