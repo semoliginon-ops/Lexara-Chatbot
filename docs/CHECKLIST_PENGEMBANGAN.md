@@ -9,6 +9,16 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [~] Sedang dikerjakan.
 - [!] Perlu pemeriksaan ulang atau ada kendala.
 
+## Snapshot status terkini — 27 November 2026
+
+- Tahap 2.5 (POS) **selesai** berdasarkan keputusan pengguna.
+- Kamus: **3.013 lema / 60 batch**; tidak ada audit ulang batch yang direncanakan.
+- Dataset POS: 100 kalimat / 543 token (60 development, 40 test).
+- Evaluasi POS kontekstual development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; lima abstention nama orang ditunda ke tahap konteks.
+- Test split tetap tersegel.
+- GitHub Actions [Run #113](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45964639168): validasi kamus dan dataset berhasil, **241/241 regression tests lulus**.
+- Parser tersedia pada v1.5; pembekuan parser dicabut setelah POS selesai. Fokus berikutnya adalah Tahap 2.6, bukan mengulang audit atau mengulang Tahap 2.5.
+
 ---
 
 ## Tahap 0 — Spesifikasi dan desain data
@@ -163,6 +173,16 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Memvalidasi dataset POS terbaru dari checkout Termux: 30 kalimat, 156 token, 18 development, 12 test (27 November 2026).
 - [x] Menyelesaikan dataset 100 kalimat dan evaluasi POS pada development set; 40 kalimat test tetap ditahan.
 
+**Penutupan Tahap 2.5 — 27 November 2026**
+
+- [x] Menyelesaikan penanganan kandidat POS development yang layak ditangani pada tahap ini; tidak memaksakan label untuk nama orang.
+- [x] Memvalidasi POS kontekstual pada development: 250/255 dikenali, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan prediksi.
+- [x] Mempertahankan 40 kalimat test agar tetap tersegel.
+- [x] Menjalankan validasi terpadu GitHub Actions Run #113: 60 batch/3.013 lema, dataset 100 kalimat/543 token, dan **241/241 regression tests lulus**.
+- [x] Menetapkan lima kemunculan nama orang sebagai abstention yang disengaja untuk ditangani pada tahap pengenalan nama/konteks, bukan sebagai kekurangan Tahap 2.5.
+
+**Status:** Tahap 2.5 selesai. Tidak perlu mengaudit ulang nama orang atau memaksa semua token memiliki POS.
+
 ### 2.6 Analisis struktur kalimat dasar
 
 - [x] Menentukan masukan parser dari hasil POS leksikal dan POS kontekstual bila tersedia.
@@ -171,6 +191,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat regression tests parser untuk frasa subjek dan objek; pola S-P-K juga diuji melalui kamus penuh pada `tests/test_integrasi_pipeline.py`.
 - [x] Memasukkan negator verbal `tidak` dan `belum` (POS ADV/PART) ke rentang predikat secara terbatas.
 - [x] Menguji negasi verbal dengan tes unit dan pipeline kamus penuh.
+- [x] Memperluas parser secara bertahap hingga versi v1.5: modal, predikat nonverbal/linking, keterangan preposisional depan, koordinasi frasa nominal/klausa, label relasi penghubung, serta klausa subordinatif depan dan belakang.
+- [x] Menambahkan regression tests untuk perluasan parser tersebut; versi terakhir yang tercatat lulus pada Run #99 (232/232 tes) sebelum rangkaian penyelesaian POS.
+- [ ] Melanjutkan pengembangan Tahap 2.6 setelah gerbang POS selesai; parser v1.5 dipertahankan sebagai baseline dan tidak diulang dari awal.
 - [ ] Memperluas frasa verba di luar adverbia/negator sebelum verba inti dan memisahkan inti frasa dari pewatasnya.
 - [ ] Menguji variasi susunan kalimat sederhana.
 - [x] Melaporkan token ambigu/tidak teranalisis dan pola yang belum didukung tanpa memaksakan struktur.
@@ -181,7 +204,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Menyusun dataset uji 100 kalimat dengan label POS dan pembagian development/test.
 - [ ] Mencakup bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang.
 - [x] Menyimpan expected POS per token pada dataset JSONL.
-- [x] Menjalankan regression suite seluruh komponen: 182/182 lulus pada GitHub Actions Run #75.
+- [x] Menjalankan regression suite seluruh komponen: 182/182 lulus pada GitHub Actions Run #75 (catatan historis).
+- [x] Validasi terpadu terbaru Run #113: dataset 100 kalimat/543 token tervalidasi, evaluasi development POS berhasil, dan **241/241 regression tests lulus**.
+- [ ] Memperluas variasi dataset untuk bahasa baku, informal, slang, salah ketik, imbuhan, dan kata ulang; test split yang ada tetap tersegel.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
