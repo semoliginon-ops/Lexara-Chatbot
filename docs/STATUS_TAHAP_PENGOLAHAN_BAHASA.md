@@ -19,10 +19,10 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Evaluasi POS development kontekstual: **250/255 token dikenali**, coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%, tanpa kesalahan pada prediksi yang dikeluarkan.
 - Lima abstention adalah kemunculan nama orang; sesuai keputusan pengguna, kasus ini ditunda ke tahap pengenalan nama/konteks dan tidak dipaksakan menjadi lema atau label POS.
 - Test split 40 kalimat tetap tersegel dan tidak digunakan untuk penyetelan.
-- Parser kalimat tersedia pada **v1.6**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
+- Parser kalimat tersedia pada **v1.7**. Pengembangan parser sebelumnya dibekukan sementara untuk menyelesaikan POS; pembekuan kini dicabut.
 - GitHub Actions **Run #116 SUCCESS**: validasi kamus 60 batch/3.013 lema, validasi dataset POS, evaluasi development, dan **246/246 regression tests lulus**.
 
-**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser v1.5 dengan memperluas frasa verba/modal, memisahkan inti predikat dari pewatas, dan menguji variasi susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
+**Titik lanjut aktif:** Tahap 2.5 (POS) dinyatakan selesai. Lanjutkan Tahap 2.6 dari baseline parser **v1.7**. Modalitas `akan` (ADV) dan `bisa` (VERB) sudah ditangani jika diikuti verba inti; penggunaan `bisa` tunggal tetap menjadi predikat. Berikutnya perluas uji susunan kalimat sederhana. Lakukan perubahan kecil dengan regression tests; jangan mengulang audit batch atau membuka test split. Tahap 2.7 melengkapi variasi dataset; hubungan makna/konteks dan integrasi Android tetap mengikuti roadmap. Kelulusan tes bukan klaim pemahaman bahasa bebas setara LLM.
 
 ---
 
