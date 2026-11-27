@@ -60,6 +60,13 @@ class ContextualPosTests(unittest.TestCase):
         self.assertEqual(token["pos_context_status"], "selected_by_context")
         self.assertEqual(token["pos_context_evidence"][0]["rule"], "coordination_with_previous_conjunct")
 
+    def test_tetap_before_verb_selects_adverb(self):
+        token = self.token(self.analyze("mereka tetap bekerja"), "tetap")
+        self.assertEqual(token["pos"], ["ADJ", "ADV"])
+        self.assertEqual(token["context_pos"], "ADV")
+        self.assertEqual(token["pos_context_status"], "selected_by_context")
+        self.assertEqual(token["pos_context_evidence"][0]["rule"], "tetap_before_verb")
+
     def test_ambiguous_without_cue_remains_unresolved(self):
         token = self.token(self.analyze("jalan"), "jalan")
         self.assertIsNone(token["context_pos"])
