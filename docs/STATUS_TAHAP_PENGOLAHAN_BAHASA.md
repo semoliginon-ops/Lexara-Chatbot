@@ -20,7 +20,7 @@ Bagian ini adalah acuan status terkini. Catatan historis di bawahnya dipertahank
 - Dataset POS tervalidasi: 100 kalimat, 543 token (60 development, 40 test).
 - Evaluasi development-only: POS leksikal 227/255 (89,0%); POS kontekstual 228/255 (89,4%); selective accuracy 100% dan tidak ada kesalahan pada prediksi yang dikeluarkan. Test split tetap ditahan.
 - Pengujian integrasi kamus nyata tersedia di `tests/test_integrasi_pipeline.py`, mencakup pemuatan kamus, bentuk turunan dengan POS eksplisit, disambiguasi konteks, ambiguitas, normalisasi, tanda baca, dan parser kalimat sederhana.
-- GitHub Actions **Run #75 SUCCESS**: validasi relasi lima batch, validasi kamus penuh, validasi dataset POS, evaluasi development, dan **182/182 regression tests lulus**.
+- GitHub Actions **Run #76 SUCCESS**: validasi relasi lima batch, validasi kamus penuh 60 batch/3.000 entri, validasi dataset POS, evaluasi development, dan **184/184 regression tests lulus**.
 
 **Titik lanjut aktif:** parser prototipe v0.2 mengenali rentang frasa nominal sederhana (numeralia/kepala nominal/adjektiva) sebagai satu peran datar. Perluas frasa verba berikutnya, lalu pelengkap dan negasi; koordinasi dan variasi susunan kata menyusul. Integrasi Android, jaringan makna runtime, konteks percakapan multi-giliran, dan response engine juga belum selesai. Kelulusan tes ini bukan klaim pemahaman bahasa bebas setara LLM.
 
@@ -182,7 +182,8 @@ Contoh ini adalah target perilaku tokenizer, bukan klaim bahwa tokenizer sudah d
 - [x] Menahan keputusan jika subjek/predikat tidak memiliki POS yang pasti; tanda baca internal yang belum didukung dilaporkan sebagai unsupported.
 - [x] Membuat regression tests parser di `tests/test_parser_kalimat.py`.
 - [x] Menguji pola S-P-K dengan kamus penuh melalui `tests/test_integrasi_pipeline.py`.
-- [x] GitHub Actions Run #75: **182/182 tes lulus**.
+- [x] Frasa nominal sederhana diuji dengan dua regression tests baru.
+- [x] GitHub Actions Run #76: **184/184 tes lulus**.
 - [x] Mengumpulkan rentang frasa nominal sederhana yang mengandung numeralia, kepala nominal, dan adjektiva tanpa mengklaim analisis internal frasa.
 - [ ] Memperluas pengenalan frasa verba.
 - [ ] Menambahkan analisis pelengkap dan negasi secara bertahap.
