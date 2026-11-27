@@ -745,3 +745,6 @@ Validasi CI Run #144: **323/323 tes lulus**. Tes mencakup pemetaan pasif dengan 
 
 
 Uji integrasi diperluas pada Run #145 untuk dua pola tambahan: `Pintu dibuka Rina` (agen pascaverbal) dan `Pintu dibuka` (agen tidak disebutkan). Keduanya menggunakan voice pasif yang dideteksi dari analisis morfologi nyata, dihubungkan ke kepala predikat parser, lalu dipetakan melalui frame valensi. Run #145 sukses dengan **325/325 tes regresi**. Pola ini tetap dibatasi pada klausa sederhana dan frame pilot yang tersedia.
+
+
+Pengamanan tambahan pada Run #147: jalur pemetaan pasif kini hanya menerima parser klausa sederhana `conservative_svo_v4` dan wajib memiliki `predicate_structure.head`. Parser non-SVO atau hasil tanpa kepala predikat ditolak sebagai `unresolved`, sekalipun pemanggil memasok `voice="passive"`. Dua tes guard ditambahkan. Run #147 sukses dengan **327/327 tes regresi**.
