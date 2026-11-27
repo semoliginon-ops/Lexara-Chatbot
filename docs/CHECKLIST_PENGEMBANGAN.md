@@ -97,12 +97,12 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [ ] `batch-049.jsonl`: 50 entri (K2402–K2451); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-050.jsonl`: 50 entri (K2452–K2501); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-051.jsonl`: 50 entri (K2502–K2551); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
-- [!] `batch-052.jsonl`: 50 entri (K2552–K2601); ditemukan referensi diri K2578 `ketiak` pada related_terms; menunggu keputusan perbaikan dan validasi.
+- [ ] `batch-052.jsonl`: 50 entri (K2552–K2601); referensi diri K2578 `ketiak` telah dihapus secara selektif; menunggu validasi struktur gabungan.
 - [ ] `batch-053.jsonl`: 50 entri (K2602–K2651); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-054.jsonl`: 50 entri (K2652–K2701); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-055.jsonl`: 50 entri (K2702–K2751); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-056.jsonl`: 50 entri (K2752–K2801); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
-- [!] `batch-057.jsonl`: 50 entri (K2802–K2851); ditemukan referensi diri K2850 `Kepulauan Seribu Utara` dan K2851 `Kepulauan Seribu Selatan` pada related_terms; menunggu keputusan perbaikan dan validasi.
+- [ ] `batch-057.jsonl`: 50 entri (K2802–K2851); referensi diri K2850 `Kepulauan Seribu Utara` dan K2851 `Kepulauan Seribu Selatan` telah dihapus secara selektif; menunggu validasi struktur gabungan.
 - [ ] `batch-058.jsonl`: 50 entri (K2852–K2901); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-059.jsonl`: 50 entri (K2902–K2951); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
 - [ ] `batch-060.jsonl`: 50 entri (K2952–K3001); pemeriksaan awal tidak menemukan ID/lemma ganda atau referensi diri; menunggu validasi struktur relasi gabungan.
