@@ -895,3 +895,17 @@ Konjungsi tetap disimpan per klausa agar urutan hubungan eksplisit tidak hilang.
 Tes unit mencakup tiga klausa, kompatibilitas dua klausa, dan kasus yang harus ditolak; tes integrasi memakai pipeline kamus 3.000 lema. GitHub Actions [Run #91](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45954434150) sukses: **217/217 regression tests lulus**. Validasi kamus, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas:** semua klausa harus memiliki verba eksplisit yang dikenali. Elipsis, subjek/predikat yang dihilangkan, koordinasi bertingkat, serta pemahaman relasi sebab-akibat/pertentangan antarklausa belum didukung.
+
+## Parser kalimat v1.2 — klasifikasi penghubung antarklausa — 27 November 2026
+
+Hasil pemisahan klausa kini menyimpan field tambahan `relation_to_previous` pada setiap klausa setelah klausa pertama. Label diberikan hanya untuk penghubung yang tercantum eksplisit di parser:
+- `dan` → penambahan; `atau` → alternatif.
+- `tetapi` dan `namun` → pertentangan.
+- `karena` dan `sebab` → sebab.
+- `walaupun` dan `meskipun` → konsesi.
+- `lalu` dan `kemudian` → urutan; `ketika` → temporal.
+- Penghubung lain diberi `belum_diklasifikasikan`, bukan ditebak. Klausa pertama memakai `null` karena tidak memiliki penghubung sebelumnya.
+
+Empat tes unit memeriksa sebab, pertentangan, konsesi, dan penghubung yang belum dikenal. Satu tes integrasi membuktikan `namun` dikenali sebagai CONJ melalui kamus 3.000 lema dan menghasilkan label pertentangan. GitHub Actions [Run #93](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45955025367) sukses: **222/222 regression tests lulus**; validasi kamus 60 batch/3.000 lema, dataset POS, evaluasi development, dan validasi relasi terpilih juga berhasil.
+
+**Batas:** label ini mengklasifikasikan fungsi penghubung yang eksplisit, bukan memahami seluruh hubungan semantik. Tes `karena` dan `walaupun` saat ini memakai POS terkendali; arah sebab-akibat, klausa sebab yang didahulukan, konstruksi konsesif bertanda koma, klausa tanpa verba eksplisit, serta relasi bertingkat belum didukung.
