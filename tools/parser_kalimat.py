@@ -716,14 +716,26 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
                     "adjunct" if position in assigned else
                     None
                 )
-                clitic_analysis.append({
-                    "surface": word["token"],
-                    "base_form": component.get("base_form"),
-                    "clitic": component.get("clitic"),
-                    "function": "possessive",
-                    "function_status": "selected_by_host_pos",
-                    "nominal_phrase_role": role,
-                })
+                clitic = component.get("clitic")
+                if clitic in {"ku", "mu"}:
+                    clitic_analysis.append({
+                        "surface": word["token"],
+                        "base_form": component.get("base_form"),
+                        "clitic": clitic,
+                        "function": "possessive",
+                        "function_status": "selected_by_host_pos",
+                        "nominal_phrase_role": role,
+                    })
+                elif clitic == "nya":
+                    clitic_analysis.append({
+                        "surface": word["token"],
+                        "base_form": component.get("base_form"),
+                        "clitic": clitic,
+                        "function": None,
+                        "function_candidates": ["possessive", "definite_anaphoric"],
+                        "function_status": "unresolved",
+                        "nominal_phrase_role": role,
+                    })
             elif host_labels == ["VERB"] and position in predicate_positions:
                 clitic_analysis.append({
                     "surface": word["token"],
