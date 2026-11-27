@@ -226,6 +226,26 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             [{"adverb": "besok", "kind": "temporal"}],
         )
 
+    def test_postposed_temporal_adverb_uses_real_dictionary_pipeline(self):
+        intransitive = parse_sentence(self.analyze("Aku bekerja besok."))
+        self.assertEqual(intransitive["status"], "parsed")
+        self.assertEqual(intransitive["pattern"], "S-P-K")
+        self.assertEqual(intransitive["roles"]["subject"], ["aku"])
+        self.assertEqual(intransitive["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(
+            intransitive["roles"]["adjuncts"],
+            [{"adverb": "besok", "kind": "temporal"}],
+        )
+
+        transitive = parse_sentence(self.analyze("Aku makan nasi nanti."))
+        self.assertEqual(transitive["status"], "parsed")
+        self.assertEqual(transitive["pattern"], "S-P-O-K")
+        self.assertEqual(transitive["roles"]["object"], ["nasi"])
+        self.assertEqual(
+            transitive["roles"]["adjuncts"],
+            [{"adverb": "nanti", "kind": "temporal"}],
+        )
+
     def test_multiple_fronted_adjuncts_use_real_dictionary_pipeline(self):
         parsed = parse_sentence(self.analyze("Di rumah pada malam hari aku bekerja."))
         self.assertEqual(parsed["status"], "parsed")
