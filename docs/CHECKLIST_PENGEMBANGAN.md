@@ -51,6 +51,9 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Membuat loader kamus baca-saja di `tools/kamus_loader.py`.
 - [x] Membuat pencocokan token terhadap lema, variants, dan derived_forms di `tools/pencocokan_kamus.py`.
 - [x] Membedakan hasil lema, variasi, bentuk turunan, dan token tak dikenal.
+- [x] Mengaudit struktur internal seluruh 8 shard index: 3.597 baris, urutan alfabetis, rentang shard, format kolom, ID, dan referensi batch.
+- [x] Memperbaiki 5 token yang salah penempatan shard dan memverifikasi ulang seluruh index.
+- [ ] Mencocokkan seluruh baris index dengan sumber 60 batch JSONL secara bertahap; audit internal index saja belum membuktikan kesesuaian dengan batch.
 - [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
