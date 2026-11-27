@@ -524,3 +524,112 @@ Setelah CAUSER disahkan sebagai role ke-14, dilakukan uji konseptual untuk mence
 
 **Kesimpulan:** contoh lintas predikat mendukung CAUSER sebagai role tersendiri dan menunjukkan batas penggunaannya. Namun, kasus alat/penyebab mekanis serta konstruksi kausatif tertentu tetap memerlukan pemeriksaan sense dan kerangka argumen. Katalog 14 role tetap menjadi baseline yang disetujui; belum ada sense kamus yang dianotasi dan belum ada implementasi kode.
 
+
+
+#### Rancangan skema valensi per-sense — proposal untuk persetujuan
+
+Rancangan ini memperjelas struktur metadata valensi sebelum implementasi. Statusnya **proposal desain**, belum menjadi kontrak skema aktif. Tidak ada data kamus, loader, validator, atau parser yang diubah oleh catatan ini.
+
+**Lokasi metadata**
+
+- Metadata ditempatkan di dalam objek sense, melalui field opsional `valency_frames`.
+- Field yang tidak ada pada entri lama berarti **belum dianotasi**, bukan berarti sense tersebut tidak memiliki argumen.
+- Satu sense dapat memiliki nol, satu, atau beberapa frame yang sudah dianotasi. Beberapa frame diperlukan jika satu sense memiliki pola argumen yang berbeda.
+- Valensi hanya mencatat argumen yang dilisensikan oleh sense predikat. Keterangan bebas seperti waktu, cara, dan sebab tambahan tidak dimasukkan sebagai argumen valensi.
+
+**Bentuk data yang diusulkan**
+
+```json
+{
+  "sense_id": "memberi-S1",
+  "pos": ["VERB"],
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "argument_id": "A1",
+          "syntactic_role": "SUBJ",
+          "semantic_role": "AGENT",
+          "required": true,
+          "realizations": [
+            { "type": "NP" }
+          ]
+        },
+        {
+          "argument_id": "A2",
+          "syntactic_role": "OBJ",
+          "semantic_role": "THEME",
+          "required": true,
+          "realizations": [
+            { "type": "NP" }
+          ]
+        },
+        {
+          "argument_id": "A3",
+          "syntactic_role": "OBL",
+          "semantic_role": "RECIPIENT",
+          "required": true,
+          "realizations": [
+            { "type": "PP", "prepositions": ["kepada", "ke"] }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+**Arti field**
+
+| Field | Aturan proposal |
+|---|---|
+| `valency_frames` | Daftar frame untuk satu sense. Field boleh tidak ada pada data lama yang belum dianotasi. |
+| `frame_id` | ID unik di dalam satu sense; tidak harus unik global. |
+| `arguments` | Daftar argumen inti yang dilisensikan frame. |
+| `argument_id` | ID unik di dalam satu frame agar argumen dapat dirujuk dalam pengembangan berikutnya. |
+| `syntactic_role` | Salah satu dari `SUBJ`, `OBJ`, `COMP`, `OBL`. Ini fungsi sintaksis, bukan semantic role. |
+| `semantic_role` | Salah satu dari 14 role yang disetujui. Nilai `null) hanya boleh dipakai jika fungsi semantis argumen memang belum dapat diputuskan; artinya belum teranotasi, bukan role baru. |
+| `required` | Boolean: apakah argumen merupakan bagian wajib dari frame secara leksikal/semantis. Ini tidak berarti argumen harus selalu tampak di permukaan; pelesapan, voice, dan kontrol ditangani oleh lapisan terpisah. |
+| `realizations` | Satu atau lebih bentuk sintaksis yang dapat merealisasikan argumen pada frame tersebut. |
+| `realizations[].type` | Salah satu dari `NP`, `PP`, `ADJP`, `CLAUSE`. |
+| `realizations[].prepositions` | Opsional dan hanya sah untuk `PP); membatasi preposisi jika sense memang mensyaratkannya. Tidak adanya daftar berarti belum ada pembatasan preposisi yang dicatat, bukan bahwa semua preposisi pasti cocok. |
+
+**Katalog nilai sintaksis dan semantis**
+
+- Fungsi sintaksis awal: `SUBJ`, `OBJ`, `COMP`, `OBL`.
+- Realisasi awal: `NP`, `PP`, `ADJP`, `CLAUSE`.
+- Semantic role: tepat 14 nilai baseline yang sudah disetujui: `AGENT`, `CAUSER`, `EXPERIENCER`, `THEME`, `PATIENT`, `RECIPIENT`, `BENEFICIARY`, `INSTRUMENT`, `LOCATION`, `SOURCE`, `GOAL`, `RESULT`, `CONTENT`, `STIMULUS`.
+
+**Aturan interpretasi yang diusulkan**
+
+1. Satu sense boleh memiliki beberapa frame. Frame alternatif tidak boleh dibuat hanya untuk menampung ketidakpastian analisis satu kalimat.
+2. Argumen opsional tetap dapat dicatat dalam frame dengan `required: false`. Jika perbedaan pola lebih tepat direpresentasikan sebagai dua frame, gunakan dua frame; jangan menduplikasi keduanya tanpa alasan.
+3. Urutan permukaan tidak disimpan di frame. Parser menentukan urutan dan realisasi aktual berdasarkan struktur kalimat.
+4. Role semantis tidak diturunkan otomatis dari fungsi sintaksis. SUBJ dapat berperan sebagai AGENT, CAUSER, THEME, PATIENT, atau EXPERIENCER sesuai sense; OBJ tidak otomatis PATIENT.
+5. `prepositions` membatasi realisasi PP yang memang disyaratkan oleh sense. Preposisi sendiri tidak menentukan semantic role.
+6. Frame hanya berisi argumen inti. Frasa seperti `karena hujan` tidak otomatis menjadi argumen CAUSER; harus dibuktikan bahwa sense predikat melisensikan argumen tersebut.
+7. Metadata yang belum tersedia tidak boleh ditafsirkan sebagai frame kosong atau bukti bahwa suatu argumen tidak mungkin ada.
+
+**Contoh konseptual untuk pengujian (bukan anotasi kamus)**
+
+- Sense intransitif `muncul): satu frame dengan `SUBJ / THEME / required=true / NP`. Ini memberi dasar untuk menguji `Muncul masalah.` sebagai kandidat subjek pascaverbal, tetapi belum mengesahkan inversi secara otomatis.
+- Sense `memberi`: frame dengan `SUBJ / AGENT`, `OBJ / THEME`, dan `OBL / RECIPIENT` yang direalisasikan sebagai PP dengan preposisi yang sesuai.
+- Sense `makan): dapat diuji dengan argumen OBJ / THEME opsional atau frame alternatif tanpa OBJ, bergantung pada analisis leksikal yang diputuskan. Jangan menganggap semua verba transitif memiliki pola opsional yang sama.
+
+**Validasi yang harus dibuat sebelum skema diaktifkan**
+
+- Tipe `valency_frames`, `arguments`, dan `realizations` harus berupa array; objek wajib memiliki field yang disyaratkan.
+- `frame_id` unik dalam satu sense; `argument_id` unik dalam satu frame.
+- `syntactic_role`, `semantic_role`, dan tipe realisasi harus berasal dari katalog yang diizinkan; `semantic_role` boleh `null` hanya untuk anotasi yang belum diputuskan.
+- `required` harus boolean.
+- `prepositions` hanya boleh muncul pada realisasi `PP`, dan jika hadir harus berupa daftar string nonkosong yang tidak duplikat.
+- Satu argumen dapat memiliki beberapa tipe realisasi, tetapi setiap objek realisasi harus valid dan tidak duplikat.
+- Field tambahan yang tidak dikenal harus ditolak atau ditangani secara eksplisit; jangan diam-diam mengubah data.
+- Data lama tanpa `valency_frames` harus tetap lolos validasi dan tetap dapat dimuat tanpa perubahan perilaku.
+
+**Cakupan yang sengaja ditunda**
+
+Voice aktif/pasif, pelesapan argumen di permukaan, kontrol, raising, urutan kata, konstruksi inversi, argumen implisit, serta penanda klausa yang lebih rinci belum dimasukkan ke skema awal. Semua itu perlu lapisan aturan dan pengujian tersendiri agar metadata valensi tidak menjadi terlalu rumit atau menyatakan hal yang belum didukung bukti.
+
+**Status keputusan:** struktur di atas adalah proposal yang siap ditinjau. Implementasi hanya boleh dimulai setelah pengguna menyetujui skema final. Setelah disetujui, urutan kerja yang aman adalah: validator skema baru yang kompatibel dengan data lama → tes positif/negatif → anotasi terbatas pada beberapa sense terpilih → evaluasi integrasi parser. Tidak ada penambahan lema kamus yang diperlukan untuk pekerjaan ini.
