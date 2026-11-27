@@ -993,3 +993,12 @@ Penanganan klitik nominal diperhalus agar tidak menganggap setiap `-nya` sebagai
 Tes unit dan integrasi pipeline kamus/POS nyata menggunakan `Dia lihat bukunya.` memastikan `bukunya` tetap teridentifikasi sebagai objek, tetapi fungsi `-nya` tidak diputuskan secara paksa. GitHub Actions **Run #198 sukses; 375/375 tes regresi lulus**. [Lihat Run #198](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46029341871).
 
 **Batas:** kandidat fungsi yang diuji saat ini dibatasi pada posesif vs definit/anforis untuk `-nya` nominal. Pemakaian `-nya` lain, misalnya nominalisasi atau fungsi wacana pada konstruksi tertentu, belum dimodelkan. Tidak ada perubahan kamus atau penambahan lema.
+### Konsistensi klitik objek verbal untuk -ku, -mu, dan -nya — Run #200 (27 November 2026)
+
+Pengujian parser diperluas agar tiga bentuk klitik pada host VERB diuji dengan aturan yang sama. Tes unit menggunakan host lema `lihat` dengan POS VERB eksplisit untuk bentuk `lihatku`, `lihatmu`, dan `lihatnya`. Setiap bentuk menghasilkan kerangka S-P-O; token gabungan tetap berada pada rentang predikat, sedangkan klitik dicatat sebagai objek terikat dalam `clitic_analysis` dengan `function_status: selected_by_verbal_host`. Slot `roles.object` tidak diisi dengan salinan token predikat.
+
+Pipeline lengkap kamus → morfologi → POS → konteks → parser juga menguji kalimat `Dia lihatku.`, `Dia lihatmu.`, dan `Dia lihatnya.`. Ketiganya dikenali dengan host POS `VERB` eksplisit dan menghasilkan keluaran yang konsisten. Bentuk kalimat tersebut digunakan sebagai uji struktural untuk klitik objek pada host verbal; pengujian ini tidak menyatakan bahwa seluruh ragam atau konteks pemakaian ketiga bentuk sudah tercakup.
+
+GitHub Actions **Run #200 selesai dengan conclusion success**; **377/377 tes regresi lulus**. Validasi kamus 60 batch / 3.019 lema, valensi, dataset POS, dan evaluasi POS development juga berhasil; test split tetap tersegel. [Lihat Run #200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46031404877).
+
+**Batas:** dukungan masih terbatas pada host VERB dengan satu POS eksplisit yang berasal dari lema/metadata yang tervalidasi. Bentuk turunan seperti `melihat` tanpa anotasi POS turunan eksplisit tetap tidak mewarisi POS lema secara otomatis. Fungsi klitik pada host selain pola yang telah diuji, variasi informal/regional, dan analisis internal frasa nominal masih memerlukan pengujian lanjutan. Tidak ada lema baru ditambahkan dan tidak ada batch/index kamus yang diubah.
