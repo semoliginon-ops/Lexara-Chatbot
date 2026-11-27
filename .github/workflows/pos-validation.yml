@@ -57,7 +57,8 @@ jobs:
         shell: bash
         run: |
           files=()
-          for n in $(seq "${{ steps.batch.outputs.start }}" "${{ steps.batch.outputs.end }}"); do
+          for ((i=10#${{ steps.batch.outputs.start }}; i<=10#${{ steps.batch.outputs.end }}; i++)); do
+            printf -v n "%03d" "$i"
             files+=("data/kamus/batch-${n}.jsonl")
           done
           python -m tools.validasi_relasi_leksikal "${files[@]}"
