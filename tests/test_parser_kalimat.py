@@ -401,6 +401,27 @@ class SimpleClauseParserTests(unittest.TestCase):
         self.assertEqual(result["roles"]["predicate"], ["ingin", "makan"])
         self.assertEqual(result["roles"]["object"], ["nasi"])
 
+    def test_separates_predicate_head_from_modal_negation_and_adverbial_modifiers(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("tidak", ["ADV"]),
+            token("mau", ["VERB"]),
+            token("sedang", ["ADV"]),
+            token("makan", ["VERB"]),
+            token("ikan", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["roles"]["predicate"], ["tidak", "mau", "sedang", "makan"])
+        self.assertEqual(result["predicate_structure"], {
+            "head": "makan",
+            "modifiers": [
+                {"token": "tidak", "kind": "negation"},
+                {"token": "mau", "kind": "modal"},
+                {"token": "sedang", "kind": "adverbial"},
+            ],
+        })
+        self.assertEqual(result["roles"]["object"], ["ikan"])
+
     def test_modal_verb_standing_alone_remains_predicate(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
