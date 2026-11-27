@@ -1028,3 +1028,14 @@ Bukti: Run #99 mencatat VERB development `NO_PREDICTION: 3` dan menampilkan hany
 - [x] Tes integrasi `ditunda` sebagai VERB melalui kamus.
 - [x] Regresi penuh: 233/233 tes lulus.
 - [x] Evaluasi development: abstention VERB tersisa dua, yaitu `hinggap` dan `berteduh`; test set tetap tidak digunakan.
+
+
+### POS Tahap 2.5 — `hinggap` selesai (Run #102)
+
+- [x] Pemeriksaan indeks: `hinggap` belum tercatat.
+- [x] Tambahkan lema K3003 `hinggap` dengan POS VERB pada batch-060.
+- [x] Tambahkan baris lema ke indeks `g-i.tsv`.
+- [x] Tes integrasi melalui kalimat development `Burung hinggap pada pagar.`
+- [x] Validasi penuh: 60 batch, 3.002 lema.
+- [x] Regresi penuh: 234/234 tes lulus.
+- [x] Abstention VERB development tersisa satu: `berteduh`.
