@@ -95,6 +95,13 @@ class ValencyValidationTests(unittest.TestCase):
         self.assertTrue(any("syntactic_role" in error for error in errors))
         self.assertTrue(any("semantic_role" in error for error in errors))
 
+    def test_requires_semantic_role_field_even_when_null_is_allowed(self):
+        entry = legacy_entry()
+        frame = valid_frame()
+        del frame["arguments"][0]["semantic_role"]
+        entry["senses"][0]["valency_frames"] = [frame]
+        self.assertTrue(any("semantic_role: field wajib" in e for e in validate_entry_valency(entry)))
+
     def test_rejects_non_boolean_required(self):
         entry = legacy_entry()
         frame = valid_frame()
