@@ -161,6 +161,24 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["predicate"], ["sakit"])
         self.assertEqual(parsed["roles"]["object"], [])
 
+    def test_nominal_subject_with_object_uses_real_dictionary_pipeline(self):
+        analyzed = self.analyze("Anak makan nasi.")
+        for surface, expected_pos in (
+            ("anak", "NOUN"),
+            ("makan", "VERB"),
+            ("nasi", "NOUN"),
+        ):
+            item = self.token(analyzed, surface)
+            self.assertEqual(item["pos"], [expected_pos])
+            self.assertEqual(item["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["subject"], ["anak"])
+        self.assertEqual(parsed["roles"]["predicate"], ["makan"])
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+
     def test_simple_sentence_parser_uses_real_dictionary_pipeline(self):
         result = self.analyze("Aku sedang bekerja di rumah.")
         parsed = parse_sentence(result)
