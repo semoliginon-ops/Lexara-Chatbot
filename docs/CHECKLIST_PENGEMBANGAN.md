@@ -54,6 +54,7 @@ Dokumen ini adalah pusat pelacakan pekerjaan proyek. Perbarui checklist hanya se
 - [x] Mengaudit struktur internal seluruh 8 shard index: 3.597 baris, urutan alfabetis, rentang shard, format kolom, ID, dan referensi batch.
 - [x] Memperbaiki 5 token yang salah penempatan shard dan memverifikasi ulang seluruh index.
 - [ ] Mencocokkan seluruh baris index dengan sumber 60 batch JSONL secara bertahap; audit internal index saja belum membuktikan kesesuaian dengan batch.
+- [~] Menyiapkan `tools/audit_index_kamus.py` untuk mencocokkan index dengan sumber secara streaming satu batch per giliran; regression tests telah ditambahkan dan menunggu verifikasi lokal.
 - [x] Mempertahankan seluruh kandidat, POS, dan sense tanpa memilih makna secara otomatis.
 - [x] Membuat 13 regression tests pencocokan leksikal; seluruhnya lulus.
 - [x] Memeriksa struktur dasar seluruh 60 batch (3.000 entri): JSON, field wajib, ID, lema, dan sense.
