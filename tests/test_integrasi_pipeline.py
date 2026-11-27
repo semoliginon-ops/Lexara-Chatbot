@@ -667,6 +667,34 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(parsed["roles"]["object"], [pronoun])
 
 
+    def test_fronted_prepositional_adjunct_keeps_explicit_pronoun_subject_in_real_pipeline(self):
+        analyzed = self.analyze("Di rumah dia bekerja.")
+
+        expected = {
+            "di": "PREP",
+            "rumah": "NOUN",
+            "dia": "PRON",
+            "bekerja": "VERB",
+        }
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                token = self.token(analyzed, surface)
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], [pos])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-K")
+        self.assertEqual(parsed["roles"]["subject"], ["dia"])
+        self.assertEqual(parsed["roles"]["predicate"], ["bekerja"])
+        self.assertEqual(
+            parsed["roles"]["adjuncts"],
+            [{"preposition": "di", "phrase": ["rumah"]}],
+        )
+        self.assertEqual(parsed["unresolved_tokens"], [])
+
     def test_normalization_unknown_words_and_punctuation_flow_end_to_end(self):
         result = self.analyze("  AKU   bekerja! ")
         self.assertEqual(result["normalized_text"], "aku bekerja!")
