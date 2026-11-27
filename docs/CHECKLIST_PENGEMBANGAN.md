@@ -904,3 +904,14 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [x] GitHub Actions Run #89: **209/209 regression tests lulus**; validasi 5 batch, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
 
 **Batas implementasi:** koordinasi hanya diperluas untuk frasa nominal sederhana dengan konjungsi yang dikenali POS sebagai CONJ. Koordinasi klausa penuh, elipsis, dan konstruksi bertingkat belum didukung.
+
+
+### Parser kalimat v1.0 — dua klausa koordinatif sederhana
+
+- [x] Memisahkan dua segmen klausa jika satu konjungsi teridentifikasi sebagai CONJ dan masing-masing sisi memiliki VERB teridentifikasi.
+- [x] Menganalisis setiap klausa secara terpisah menggunakan parser konservatif yang sudah ada.
+- [x] Mempertahankan koordinasi frasa nominal v0.9; tidak memecah `Aku dan dia bekerja` atau `Aku membeli nasi dan roti` menjadi dua klausa.
+- [x] Menambahkan tiga tes unit dan satu tes integrasi melalui kamus asli.
+- [x] GitHub Actions Run #90: **213/213 regression tests lulus**; validasi relasi lima batch terpilih, kamus 3.000 lema, dataset POS, dan evaluasi development berhasil.
+
+**Batas implementasi:** satu konjungsi dan dua klausa eksplisit. Koordinasi bertingkat, elipsis/subjek yang dihilangkan, relasi semantik antarklausa, dan pemisahan berbasis koma belum didukung.
