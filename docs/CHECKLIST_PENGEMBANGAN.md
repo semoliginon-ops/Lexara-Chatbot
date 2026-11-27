@@ -798,3 +798,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-051–055 dan regression suite menunggu GitHub Actions.
 
 **Catatan kualitas:** koreksi pada kelompok ini terbatas pada typo yang jelas. Related terms lain dipertahankan ketika masih masuk akal sebagai keterkaitan topik atau konsep; tidak dipaksakan menjadi sinonim/antonim.
+
+
+### Audit penutup Batch-056–060 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-056 sampai Batch-060, termasuk definisi dan kecocokan related_terms.
+- [x] Batch-056: koreksi 4 entri geografis yang jelas salah lokasi: K2781 Gunung Tambora (Pulau Lombok → Pulau Sumbawa); K2791 Gunung Mutis (Pulau Flores → Pulau Timor); K2798 Gunung Salak (Pegunungan Bukit Barisan diganti Jawa Barat dan Taman Nasional Gunung Halimun Salak); K2800 Gunung Tangkuban Parahu (Pulau Bali → Jawa Barat).
+- [x] Batch-057: koreksi relasi administratif yang salah kategori: K2802–K2806 (kota administrasi Jakarta, hapus bupati); K2807 (Kabupaten Administrasi Kepulauan Seribu, hapus wali kota).
+- [x] Batch-058: 50 entri diperiksa; tidak ditemukan koreksi relasi yang cukup pasti.
+- [x] Batch-059: 50 entri diperiksa; tidak ditemukan koreksi relasi yang cukup pasti.
+- [x] Batch-060: 50 entri diperiksa; tidak ditemukan koreksi relasi yang cukup pasti.
+- [ ] Validasi struktural Batch-056–060 dan regression suite menunggu GitHub Actions.
+
+**Catatan kualitas:** 10 entri pada Batch-056–057 diperbaiki berdasarkan ketidakcocokan geografis atau kategori pemerintahan yang eksplisit. Batch-058–060 dipertahankan. Audit ini tidak menggantikan validasi faktual menyeluruh atas seluruh definisi dan relasi.
