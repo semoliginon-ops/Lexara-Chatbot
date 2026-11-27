@@ -17,6 +17,7 @@ _NOMINAL_PHRASE_POS = {"NOUN", "PRON", "NUM", "ADJ"}
 _ADVERBIAL_PREDICATE_POS = {"ADV"}
 _NEGATION_MARKERS = {"tidak", "belum"}
 _MODAL_VERBS = {"mau", "ingin", "hendak"}
+_LINKING_PREDICATES = {"menjadi", "tampak"}
 
 
 def _effective_pos(item: dict[str, Any]) -> str | None:
@@ -186,9 +187,32 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         cursor -= 1
 
     object_positions: list[int] = []
+    complement_positions: list[int] = []
     adjuncts: list[dict[str, Any]] = []
     assigned = subject_set | set(predicate_positions)
     cursor = verb_pos + 1
+
+    # Verba penghubung tertentu memperkenalkan pelengkap, bukan objek.
+    # Aturan dibatasi pada verba eksplisit dan pelengkap nominal/adjektival.
+    if words[verb_pos]["token"].casefold() in _LINKING_PREDICATES:
+        candidate = cursor
+        if candidate < len(words) and words[candidate]["pos"] == "NUM":
+            noun_head = next(
+                (i for i in range(candidate + 1, len(words)) if words[i]["pos"] == "NOUN"),
+                None,
+            )
+            if noun_head is not None:
+                complement_positions = list(range(candidate, noun_head + 1))
+        elif candidate < len(words) and words[candidate]["pos"] == "NOUN":
+            complement_positions = _phrase_span(words, candidate, candidate, len(words))
+        elif candidate < len(words) and words[candidate]["pos"] == "ADJ":
+            end = candidate + 1
+            while end < len(words) and words[end]["pos"] == "ADJ":
+                end += 1
+            complement_positions = list(range(candidate, end))
+        if complement_positions:
+            assigned.update(complement_positions)
+            cursor = complement_positions[-1] + 1
 
     # Cari kepala nominal pertama sebelum batas klausa/frasa preposisional,
     # lalu ambil rentang frasa nominal sederhana di sekitarnya.
@@ -199,7 +223,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
             break
         cursor += 1
     if object_head is not None:
-        object_positions = _phrase_span(words, object_head, verb_pos + 1, len(words))
+        object_positions = _phrase_span(words, object_head, cursor, len(words))
         assigned.update(object_positions)
 
     # Keterangan berpreposisi sederhana: preposisi + frasa nominal sesudahnya.
@@ -226,7 +250,7 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
         "predicate": [words[i]["token"] for i in predicate_positions],
         "object": [words[i]["token"] for i in object_positions],
         "adjuncts": adjuncts,
-        "complement": [],
+        "complement": [words[i]["token"] for i in complement_positions],
     }
     unresolved = [
         item["token"] for i, item in enumerate(words)
@@ -236,6 +260,8 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     pattern_parts = ["S", "P"]
     if object_positions:
         pattern_parts.append("O")
+    if complement_positions:
+        pattern_parts.append("Pel")
     if adjuncts:
         pattern_parts.append("K")
     return {
