@@ -1168,3 +1168,12 @@ Tes integrasi pipeline ditambahkan untuk kalimat `Aku pulang sebab hujan turun.`
 GitHub Actions **Run #228 selesai dengan conclusion success**; **401/401 tes regresi lulus**. Log juga mengonfirmasi validasi kamus 3.025 lema/60 batch, valensi, dataset POS, dan evaluasi development berhasil. [Lihat Run #228](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081540492).
 
 Tes ini memperluas cakupan pengujian klausa subordinatif sebab pada posisi setelah klausa utama. Ini belum menyatakan seluruh penanda sebab atau variasi posisi klausa telah tercakup. Tidak ada perubahan kamus, batch, indeks, atau perilaku parser.
+
+
+### Klausa sebab di depan dengan penanda `sebab` — Run #229
+
+Tes integrasi pipeline ditambahkan untuk kalimat `Sebab hujan turun, aku pulang.`. Parser mengenali klausa subordinatif awal `hujan turun` dan klausa utama `aku pulang` sebagai pola S-P, serta mencatat hubungan antarklausa sebagai `sebab`.
+
+GitHub Actions **Run #229 selesai dengan conclusion success**; **402/402 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. [Lihat Run #229](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46081643176).
+
+Tes ini melengkapi posisi depan untuk penanda `sebab`, berdampingan dengan pengujian pascaposisi. Tidak ada perubahan kamus, batch, indeks, atau perilaku parser.
