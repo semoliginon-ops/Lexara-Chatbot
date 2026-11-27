@@ -650,6 +650,26 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
         self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
 
+    def test_negated_main_clause_with_postposed_temporal_subordinate_uses_real_pipeline(self):
+        analyzed = self.analyze("Aku tidak pulang ketika hujan turun.")
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        main_clause, subordinate = parsed["clauses"]
+        self.assertEqual(main_clause["analysis"]["pattern"], "S-P")
+        self.assertEqual(main_clause["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(main_clause["analysis"]["roles"]["predicate"], ["tidak", "pulang"])
+        self.assertEqual(
+            main_clause["analysis"]["predicate_structure"]["modifiers"],
+            [{"token": "tidak", "kind": "negation"}],
+        )
+        self.assertEqual(subordinate["subordinator"], "ketika")
+        self.assertEqual(subordinate["relation_to_previous"], "temporal")
+        self.assertEqual(subordinate["analysis"]["pattern"], "S-P")
+        self.assertEqual(subordinate["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(subordinate["analysis"]["roles"]["predicate"], ["turun"])
+
     def test_negated_main_clause_with_postposed_causal_subordinate_uses_real_pipeline(self):
         analyzed = self.analyze("Aku tidak pulang karena hujan turun.")
         parsed = parse_sentence(analyzed)
