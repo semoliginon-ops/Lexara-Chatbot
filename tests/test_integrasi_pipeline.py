@@ -1783,6 +1783,53 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(subordinate["analysis"]["roles"]["subject"], [sub_subject])
                 self.assertEqual(" ".join(subordinate["analysis"]["roles"]["predicate"]), sub_predicate)
 
+
+    def test_ten_clitics_inside_multiword_nominal_phrases_use_real_pipeline(self):
+        cases = (
+            ("Buku sekolahku jatuh.", "sekolahku", "ku", "subject", ["buku", "sekolahku"], ["jatuh"], []),
+            ("Kunci rumahmu jatuh.", "rumahmu", "mu", "subject", ["kunci", "rumahmu"], ["jatuh"], []),
+            ("Foto keluarganya jatuh.", "keluarganya", "nya", "subject", ["foto", "keluarganya"], ["jatuh"], []),
+            ("Dia membawa tas sekolahku.", "sekolahku", "ku", "object", ["dia"], ["membawa"], ["tas", "sekolahku"]),
+            ("Saya membaca buku sekolahmu.", "sekolahmu", "mu", "object", ["saya"], ["membaca"], ["buku", "sekolahmu"]),
+            ("Dia melihat foto keluarganya.", "keluarganya", "nya", "object", ["dia"], ["melihat"], ["foto", "keluarganya"]),
+            ("Aku membaca cerita temanku.", "temanku", "ku", "object", ["aku"], ["membaca"], ["cerita", "temanku"]),
+            ("Kamu mencari kunci rumahku.", "rumahku", "ku", "object", ["kamu"], ["mencari"], ["kunci", "rumahku"]),
+            ("Mereka membawa surat kantormu.", "kantormu", "mu", "object", ["mereka"], ["membawa"], ["surat", "kantormu"]),
+            ("Dia melihat alamat rumahnya.", "rumahnya", "nya", "object", ["dia"], ["melihat"], ["alamat", "rumahnya"]),
+        )
+
+        for sentence, surface, clitic, role, subject, predicate, object_ in cases:
+            with self.subTest(sentence=sentence, role=role, clitic=clitic):
+                analyzed = self.analyze(sentence)
+                bound = self.token(analyzed, surface)
+                self.assertEqual(bound["status"], "matched")
+                self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
+                component = bound["clitic_pos_candidates"][0]
+                self.assertEqual(component["clitic"], clitic)
+                self.assertEqual(component["host_pos"], ["NOUN"])
+                self.assertEqual(component["clitic_pos"], ["PRON"])
+
+                parsed = parse_sentence(analyzed)
+                self.assertEqual(parsed["status"], "parsed")
+                self.assertEqual(parsed["roles"]["subject"], subject)
+                self.assertEqual(parsed["roles"]["predicate"], predicate)
+                self.assertEqual(parsed["roles"]["object"], object_)
+                self.assertEqual(len(parsed["clitic_analysis"]), 1)
+                clitic_result = parsed["clitic_analysis"][0]
+                self.assertEqual(clitic_result["surface"], surface)
+                self.assertEqual(clitic_result["clitic"], clitic)
+                self.assertEqual(clitic_result["nominal_phrase_role"], role)
+                if clitic == "nya":
+                    self.assertIsNone(clitic_result["function"])
+                    self.assertEqual(
+                        clitic_result["function_candidates"],
+                        ["possessive", "definite_anaphoric"],
+                    )
+                    self.assertEqual(clitic_result["function_status"], "unresolved")
+                else:
+                    self.assertEqual(clitic_result["function"], "possessive")
+                    self.assertEqual(clitic_result["function_status"], "selected_by_host_pos")
+
 if __name__ == "__main__":
     unittest.main()
 
