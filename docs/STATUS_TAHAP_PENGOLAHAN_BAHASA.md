@@ -138,6 +138,135 @@ Contoh konseptual (bukan entri kamus baru): sense intransitif `muncul` dapat mem
 
 **Batas kompatibilitas:** jangan mengubah field `pos`, bentuk entri JSONL, loader, POS tagger, atau parser saat tahap desain ini. Sebelum implementasi, siapkan spesifikasi skema, strategi pembacaan data lama, validasi, contoh positif/negatif, dan tes regresi. Tidak ada lema, POS, definisi, atau metadata kamus yang ditambahkan pada tahap ini.
 
+#### Usulan bentuk data konkret (proposal, belum menjadi skema aktif)
+
+Metadata ditempatkan di dalam objek sense sebagai `valency_frames`. Satu sense boleh memiliki beberapa frame. Contoh berikut bersifat ilustratif dan tidak boleh disalin menjadi data kamus tanpa tinjauan entri yang bersangkutan.
+
+```json
+{
+  "sense_id": "contoh-S1",
+  "definition": "Contoh makna verba",
+  "pos": ["VERB"],
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "syntactic_role": "SUBJ",
+          "semantic_role": "THEME",
+          "required": true,
+          "realization": ["NP"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Aturan field yang diusulkan:
+
+- `sense_id`: ID stabil sense yang sudah ada.
+- `pos`: POS untuk sense tersebut. Ini usulan bagi skema generasi berikutnya; bukan instruksi mengisi POS sense untuk seluruh data lama sekarang.
+- `valency_frames`: array kerangka argumen yang didukung untuk sense itu. Jika belum ditinjau, field tidak ada atau statusnya belum diketahui; jangan mengartikan ketiadaan metadata sebagai verba tidak memiliki argumen.
+- `frame_id`: ID unik di dalam sense.
+- `arguments`: argumen inti pada kerangka tersebut.
+- `syntactic_role`: fungsi sintaksis, dengan kode awal yang dibatasi seperti `SUBJ`, `OBJ`, `COMP`, dan `OBL`.
+- `semantic_role`: peran makna seperti `AGENT`, `THEME`, `EXPERIENCER`, `RECIPIENT`, atau `RESULT`. Daftar ini perlu dikembangkan dan divalidasi, bukan diasumsikan lengkap.
+- `required`: apakah argumen wajib untuk kerangka itu. Argumen opsional tetap berbeda dari keterangan bebas.
+- `realization`: bentuk frasa yang dapat mengisi argumen, misalnya `NP`, `PP`, `ADJP`, atau `CLAUSE`.
+- `prepositions`: opsional, untuk membatasi preposisi jika peran OBL direalisasikan sebagai PP. Tidak digunakan untuk mengunci urutan kata.
+
+Contoh ilustratif beberapa jenis frame:
+
+```json
+{
+  "sense_id": "contoh-muncul-S1",
+  "pos": ["VERB"],
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "syntactic_role": "SUBJ",
+          "semantic_role": "THEME",
+          "required": true,
+          "realization": ["NP"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "sense_id": "contoh-makan-S1",
+  "pos": ["VERB"],
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "syntactic_role": "SUBJ",
+          "semantic_role": "AGENT",
+          "required": true,
+          "realization": ["NP"]
+        },
+        {
+          "syntactic_role": "OBJ",
+          "semantic_role": "THEME",
+          "required": false,
+          "realization": ["NP"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+```json
+{
+  "sense_id": "contoh-memberi-S1",
+  "pos": ["VERB"],
+  "valency_frames": [
+    {
+      "frame_id": "F1",
+      "arguments": [
+        {
+          "syntactic_role": "SUBJ",
+          "semantic_role": "AGENT",
+          "required": true,
+          "realization": ["NP"]
+        },
+        {
+          "syntactic_role": "OBJ",
+          "semantic_role": "THEME",
+          "required": true,
+          "realization": ["NP"]
+        },
+        {
+          "syntactic_role": "OBL",
+          "semantic_role": "RECIPIENT",
+          "required": false,
+          "realization": ["PP"],
+          "prepositions": ["kepada", "ke"]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Catatan penting:
+1. `Muncul masalah.` baru dapat menjadi kandidat pola verba + subjek pascaverbal jika frame sense `muncul` yang tepat mendukung SUBJ bertema THEME dan parser memiliki aturan urutan inversi yang diuji. Metadata valensi sendiri tidak mengesahkan urutan K-P-S.
+2. Frame `makan` dengan OBJ opsional tidak berarti setiap nomina setelah `makan` otomatis objek. Kandidat harus cocok dengan struktur, konteks, dan sense.
+3. Keterangan seperti waktu/tempat tidak dimasukkan sebagai argumen inti kecuali ada alasan leksikal yang kuat.
+4. Voice aktif/pasif, kontrol/pelesapan subjek, dan urutan permukaan ditunda sebagai lapisan terpisah. Jangan menyimpulkan semuanya dari frame dasar.
+5. Data lama tanpa `valency_frames` harus dibaca sebagai **belum dianotasi**, bukan sebagai frame kosong atau bukti bahwa verba tidak memiliki valensi.
+6. Implementasi nantinya harus tetap bisa memuat entri lama, mempertahankan `pos` tingkat lema, dan tidak mengubah hasil parser lama ketika metadata belum tersedia.
+
+Sebelum skema disahkan, validasi perlu memastikan peran sintaksis dan realisasi termasuk nilai yang diizinkan, `required` berupa boolean, `frame_id` unik di dalam sense, dan preposisi hanya dipakai untuk realisasi PP.
+
 ### Kontrak kompatibilitas
 
 - Field lama `roles.predicate` harus tetap tersedia meskipun struktur predikat terperinci ditambahkan.
