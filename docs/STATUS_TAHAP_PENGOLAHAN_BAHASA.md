@@ -721,3 +721,6 @@ Batas implementasi awal:
 - Adapter belum mengubah atau memetakan semantic role. Integrasi pemetaan pasif merupakan pekerjaan berikutnya setelah penghubung ini tervalidasi.
 
 Sembilan tes khusus mencakup voice aktif/pasif, token kepala berulang, parser partial, struktur klausa majemuk, bukti voice unresolved, kepala tidak ditemukan, serta validasi input. GitHub Actions Run #138 mengonfirmasi seluruh 316/316 tes regresi lulus dan validasi kamus 60 batch / 3.014 entri berhasil. Hasil ini memvalidasi adapter dan regresi proyek, bukan akurasi voice untuk seluruh bahasa Indonesia.
+
+
+Uji integrasi lintas modul kemudian ditambahkan pada `tests/test_voice_pipeline_integration.py`. Tiga skenario memakai keluaran morfologi nyata dari `analyze_text()`, parser klausa sederhana, dan adapter: `Rina menulis surat` terhubung sebagai aktif; `Surat ditulis Rina` terhubung sebagai pasif; dan `Pintu terbuka` tetap unresolved karena bukti `ter-` tidak menetapkan voice. GitHub Actions Run #139 sukses dengan **319/319 tes regresi**. Ini membuktikan koneksi antarmodul pada contoh terkontrol, belum membuktikan cakupan voice umum.
