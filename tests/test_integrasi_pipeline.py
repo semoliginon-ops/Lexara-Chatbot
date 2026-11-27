@@ -29,10 +29,45 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3013)
+        self.assertEqual(len(self.entries), 3014)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
+
+    def test_akan_is_adverb_from_dictionary_and_only_modal_with_lexical_verb(self):
+        entry = next(item for item in self.entries if item["lemma"] == "akan")
+        self.assertEqual(entry["id"], "K3015")
+        self.assertEqual(entry["pos"], ["ADV"])
+        self.assertEqual(
+            entry["senses"][0]["definition"],
+            "Menandakan sesuatu akan terjadi di masa depan; penanda aspek masa mendatang.",
+        )
+
+        for sentence in ("Aku akan pergi besok.", "Dia akan makan nasi."):
+            with self.subTest(sentence=sentence):
+                result = self.analyze(sentence)
+                token = self.token(result, "akan")
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], ["ADV"])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(self.analyze("Dia akan makan nasi."))
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        self.assertEqual(parsed["roles"]["predicate"], ["akan", "makan"])
+        self.assertEqual(parsed["predicate_structure"]["head"], "makan")
+        self.assertIn(
+            {"token": "akan", "kind": "modal"},
+            parsed["predicate_structure"]["modifiers"],
+        )
+        self.assertEqual(parsed["roles"]["object"], ["nasi"])
+
+        standalone = self.analyze("Aku akan.")
+        self.assertEqual(self.token(standalone, "akan")["pos"], ["ADV"])
+        cautious = parse_sentence(standalone)
+        self.assertEqual(cautious["status"], "unresolved")
+        self.assertEqual(cautious["roles"]["predicate"], [])
 
     def test_explicit_derived_form_pos_survives_full_pipeline(self):
         expected = {
