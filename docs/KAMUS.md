@@ -164,7 +164,7 @@ Pengisian dilakukan bertahap per kelompok dan diperiksa sebelum digabungkan. Ang
 
 ### 8.1 Prosedur batch dan pemeriksaan rutin
 
-- Setiap batch berisi tepat **50 lema baru** dengan ID berurutan.
+- Setiap batch umumnya berisi sekitar **50 lema baru**, tetapi jumlah aktual boleh kurang atau lebih. Pembagian dapat diseimbangkan pada batch berikutnya; karena itu, jumlah baris per batch bukan syarat kelulusan dan tidak boleh dijadikan alasan untuk menambah, menghapus, atau mengubah ID entri.
 - Setiap lema menggunakan satu POS utama sesuai keputusan penyusunan batch.
 - Sebelum menyusun batch baru, ambil INDEX terbaru dan periksa seluruh 8 token shard (a-c.tsv, d-f.tsv, g-i.tsv, j-l.tsv, m-o.tsv, p-r.tsv, s-u.tsv, dan v-z.tsv).
 - Pemeriksaan duplikasi mencakup lema yang sudah ada, variasi ejaan, serta bentuk turunan yang tercatat.
