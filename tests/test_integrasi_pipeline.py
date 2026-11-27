@@ -219,6 +219,16 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(parsed["roles"]["complement"], [])
         self.assertEqual(parsed["unresolved_tokens"], ["bahagia"])
 
+    def test_postposed_causal_subordinate_uses_real_dictionary(self):
+        result = self.analyze("Aku pulang karena hujan turun.")
+        parsed = parse_sentence(result)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(parsed["clauses"][0]["analysis"]["roles"]["subject"], ["aku"])
+        self.assertEqual(parsed["clauses"][1]["subordinator"], "karena")
+        self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["subject"], ["hujan"])
+        self.assertEqual(parsed["clauses"][1]["analysis"]["roles"]["predicate"], ["turun"])
+
     def test_fronted_elliptical_concessive_adjective_uses_real_dictionary(self):
         result = self.analyze("Walaupun lelah, dia bekerja.")
         adjective = self.token(result, "lelah")
