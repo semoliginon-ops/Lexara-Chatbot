@@ -631,3 +631,12 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Menunggu validasi lokal Batch-002 dan regression suite setelah perubahan.
 
 **Batas audit:** koreksi ini hanya menangani tujuh relasi yang disetujui; relasi lain yang memerlukan pembatasan konteks tetap menunggu audit terpisah.
+
+### Audit dan koreksi relasi leksikal Batch-003 — 27 November 2026
+
+- [x] Audit semantik baca-saja pada 51 entri Batch-003.
+- [x] Setelah persetujuan, menghapus relasi antonim `anak`–`orang tua` serta `suami`–`istri`; mempertahankan hubungan sebagai `related_terms`.
+- [x] Menghapus `kasih` dari sinonim `sayang` karena perbedaan fungsi kelas kata; mempertahankan hubungan makna sebagai `related_terms`.
+- [ ] Validasi Batch-003 dan regression suite menunggu validasi kelompok Batch-001–005 melalui GitHub Actions.
+
+**Batas audit:** hanya empat relasi yang disetujui yang diubah; kandidat lain yang memerlukan pembatasan konteks belum diubah.
