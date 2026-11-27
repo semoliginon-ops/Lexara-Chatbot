@@ -91,7 +91,13 @@ python -m tools.validasi_relasi_leksikal data/kamus/batch-001.jsonl
 
 Validator memeriksa tipe array, item teks nonkosong, duplikasi setelah normalisasi Unicode NFC dan casefold, relasi yang menunjuk ke lemma sendiri, serta keberadaan `sense_id` ketika sebuah sense menggunakan field relasi. Field relasi yang tidak digunakan tetap opsional; data lama tidak diwajibkan memiliki relasi per-sense.
 
-Jalankan validator satu batch pada satu waktu. Hasil lulus hanya menyatakan struktur relasi lolos pemeriksaan, bukan bahwa relasinya benar secara linguistik. Implementasi dan tes masih harus diverifikasi di lingkungan lokal sebelum dinyatakan selesai.
+Validator dapat menerima satu atau beberapa path sekaligus. Setiap file tetap dimuat dan divalidasi berurutan satu per satu (bukan digabung ke memori), dan hasil tiap batch ditampilkan terpisah. Contoh di Termux/Bash untuk batch 036 sampai 060:
+
+```bash
+python -m tools.validasi_relasi_leksikal data/kamus/batch-{036..060}.jsonl
+```
+
+Perintah tersebut menghasilkan satu ringkasan untuk seluruh batch dan kode keluar gagal jika salah satu batch gagal. Hasil lulus hanya menyatakan struktur relasi lolos pemeriksaan, bukan bahwa relasinya benar secara linguistik.
 
 ## 8. Tahapan penerapan
 
