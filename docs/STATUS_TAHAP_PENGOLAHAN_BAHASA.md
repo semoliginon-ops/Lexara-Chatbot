@@ -1213,3 +1213,12 @@ Tes integrasi pipeline ditambahkan untuk kalimat `Meskipun hujan turun, aku tida
 GitHub Actions **Run #233 selesai dengan conclusion success**; **406/406 tes regresi lulus**. Validasi kamus, metadata valensi, dataset POS, dan evaluasi development juga berhasil. [Lihat Run #233](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46082342195).
 
 Tes ini melengkapi satu variasi posisi depan untuk interaksi negasi dan klausa konsesif. Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
+
+
+### Klausa sebab di depan + klausa utama bernegasi — Run #234
+
+Tes integrasi pipeline ditambahkan untuk kalimat `Sebab hujan turun, aku tidak pulang.`. Klausa subordinatif di depan dikenali sebagai S-P dengan relasi `sebab`; klausa utama setelah koma juga dikenali sebagai S-P dengan predikat `tidak pulang`, dan `tidak` tetap dicatat sebagai modifier negasi.
+
+GitHub Actions **Run #234 selesai dengan conclusion success**; **407/407 tes regresi lulus**. Validasi kamus 3.019 lema, metadata valensi, dataset POS, dan evaluasi development juga berhasil. [Lihat Run #234](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46082514716).
+
+Tes ini melengkapi pasangan pengujian klausa sebab di depan dan klausa utama bernegasi, berdampingan dengan pengujian sebab pascaposisi serta variasi klausa utama bernegasi. Tidak ada perubahan kamus, batch, indeks, atau implementasi parser.
