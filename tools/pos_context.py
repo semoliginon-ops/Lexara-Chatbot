@@ -76,6 +76,9 @@ def disambiguate_pos_context(analysis: dict[str, Any]) -> dict[str, Any]:
                         "cue_token": left_conjunct.get("token", "").casefold(),
                     })
 
+            if token.casefold() == "tetap" and following and "ADV" in candidates and "VERB" in following_pos:
+                evidence.append({"rule": "tetap_before_verb", "pos": "ADV", "cue_token": following_text})
+
             if token.casefold() == "bisa" and following:
                 if "VERB" in following_pos and "VERB" in candidates:
                     evidence.append({"rule": "bisa_before_verb", "pos": "VERB", "cue_token": following_text})
