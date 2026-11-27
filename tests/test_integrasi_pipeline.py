@@ -29,7 +29,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         return next(item for item in result["tokens"] if item["token"] == surface)
 
     def test_loads_full_dictionary_without_duplicate_lemmas(self):
-        self.assertEqual(len(self.entries), 3003)
+        self.assertEqual(len(self.entries), 3004)
         self.assertGreater(len(self.lexicon), 3000)
         self.assertIn("aku", self.lexicon)
         self.assertIn("rumah", self.lexicon)
@@ -282,6 +282,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         self.assertEqual(token["pos"], ["VERB"])
         self.assertEqual(token["pos_source"], "dictionary")
         self.assertEqual(token["pos_status"], "identified")
+
+
+    def test_baru_is_adjective_in_nominal_phrases(self):
+        for sentence in ("Mereka membaca buku baru.", "Buku baru itu milik ibu."):
+            with self.subTest(sentence=sentence):
+                result = self.analyze(sentence)
+                token = self.token(result, "baru")
+                self.assertEqual(token["status"], "matched")
+                self.assertEqual(token["pos"], ["ADJ"])
+                self.assertEqual(token["pos_source"], "dictionary")
+                self.assertEqual(token["pos_status"], "identified")
 
 
 if __name__ == "__main__":
