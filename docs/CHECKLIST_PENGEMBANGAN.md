@@ -709,3 +709,16 @@ Catatan: ketidakhadiran pada token index adalah bukti gap indeks/kamus yang perl
 - [ ] Validasi struktural Batch-016–020 dan regression suite menunggu GitHub Actions.
 
 **Batas audit:** selain koreksi yang dicatat, entri dipertahankan. Perubahan tidak mengubah lemma atau ID; penataan sense pada `disiplin` hanya membatasi relasi ke makna yang tepat. Validasi otomatis menguji struktur dan regresi, bukan menjamin seluruh isi semantik kamus.
+
+
+### Audit dan koreksi semantik Batch-021–025 — 27 November 2026
+
+- [x] Audit seluruh 250 entri Batch-021 sampai Batch-025.
+- [x] Batch-021: memindahkan `lezat` dari sinonim `nikmat` ke `related_terms` karena maknanya lebih khusus pada rasa makanan; memindahkan `mekanis` dari sinonim `otomatis` ke `related_terms` karena cara kerja mekanis tidak selalu otomatis.
+- [x] Batch-022: memindahkan `tersembunyi` dari sinonim `rahasia` ke `related_terms`; sesuatu yang rahasia tidak selalu tersembunyi secara fisik.
+- [x] Batch-023: memindahkan `mantap` dari sinonim `tegas` ke `related_terms`; mantap dapat bermakna stabil/yakin, bukan selalu tegas dalam mengambil sikap.
+- [x] Batch-024: memindahkan `kalah` dari antonim `unggul` ke `related_terms`; unggul (lebih baik/kuat) tidak selalu beroposisi langsung dengan hasil kalah.
+- [x] Batch-025: memindahkan `menyerang` dari sinonim `agresif` ke `related_terms`; agresif adalah sifat/kecenderungan, sedangkan menyerang adalah tindakan.
+- [ ] Validasi struktural Batch-021–025 dan regression suite menunggu GitHub Actions.
+
+**Batas audit:** relasi lain dipertahankan jika masih dapat dibenarkan berdasarkan definisi yang tersedia. Perubahan hanya pada relasi leksikal; lemma dan ID tidak diubah. Validasi otomatis memeriksa struktur dan regresi, bukan membuktikan seluruh makna kamus.
