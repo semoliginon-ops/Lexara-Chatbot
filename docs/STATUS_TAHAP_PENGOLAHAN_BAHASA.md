@@ -797,3 +797,20 @@ Field `roles.complement` diisi dan objek tetap kosong untuk dua pola tersebut. T
 GitHub Actions [Run #82](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45937493840) sukses: **199/199 regression tests lulus**; validasi Batch-056–060, kamus 60 batch/3.000 lema, dataset POS, dan evaluasi development juga berhasil.
 
 **Batas penting:** tiga tes fitur baru menggunakan POS terkontrol di tingkat parser. Dukungan POS untuk `menjadi` dan `tampak` belum diklaim terverifikasi end-to-end melalui kamus. Frasa kompleks seperti `tampak sangat bahagia`, klausa pelengkap, dan verba penghubung lain belum ditangani.
+
+
+## Verifikasi cakupan leksikal pelengkap — 27 November 2026
+
+Pemeriksaan melalui data kamus dan pipeline menemukan batas cakupan yang penting:
+
+- `tampak` bukan lema mandiri pada dataset saat ini, tetapi merupakan varian eksplisit dari lema `nampak` (VERB). Pipeline mengenalinya sebagai VERB dari kamus.
+- `menjadi` belum memiliki kecocokan kamus langsung pada dataset saat ini. POS-nya tidak ditebak.
+- `bahagia` muncul sebagai kata terkait pada entri lain, tetapi belum tersedia sebagai lema/varian/bentuk turunan langsung dengan POS-nya sendiri. Karena itu, parser tidak menganggapnya ADJ hanya dari kemunculan kata di relasi makna.
+
+Dua tes integrasi mengunci perilaku konservatif tersebut:
+- `Dia menjadi dokter.` tetap unresolved karena verba penghubung belum dikenali secara leksikal.
+- `Mereka tampak bahagia.` dikenali parsial: `tampak` sebagai VERB dan `bahagia` ditandai unresolved; tidak ada pelengkap yang ditebak.
+
+GitHub Actions [Run #84](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/45937903217) sukses: **201/201 regression tests lulus**, validasi 3.000 lema, dataset POS, dan evaluasi development juga lulus.
+
+**Keputusan teknis:** jangan menambahkan kata ke supplement POS hanya untuk membuat contoh parser lulus. Perluasan lema/POS harus menjadi perubahan dataset yang disengaja, dengan definisi, kelas kata, dan tesnya sendiri.
