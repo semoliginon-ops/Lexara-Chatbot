@@ -228,7 +228,9 @@ class SimpleClauseParserTests(unittest.TestCase):
             token("turun", ["VERB"]),
         ))
         self.assertEqual(result["status"], "parsed")
-        self.assertEqual(result["clauses"][1]["connector"], "karena")
+        self.assertEqual(result["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(result["clauses"][0]["relation_to_next"], "sebab")
+        self.assertEqual(result["clauses"][1]["subordinator"], "karena")
         self.assertEqual(result["clauses"][1]["relation_to_previous"], "sebab")
 
     def test_classifies_contrastive_connector(self):
