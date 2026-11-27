@@ -152,6 +152,32 @@ class SimpleClauseParserTests(unittest.TestCase):
         ))
         self.assertNotEqual(result.get("pattern"), "KLAUSA-SUBORDINATIF")
 
+    def test_parses_postposed_causal_subordinate_clause(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("pulang", ["VERB"]),
+            token("karena", ["CONJ"]),
+            token("hujan", ["NOUN"]),
+            token("turun", ["VERB"]),
+        ))
+        self.assertEqual(result["status"], "parsed")
+        self.assertEqual(result["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(result["clauses"][0]["analysis"]["roles"]["predicate"], ["pulang"])
+        self.assertEqual(result["clauses"][0]["relation_to_next"], "sebab")
+        self.assertEqual(result["clauses"][1]["subordinator"], "karena")
+        self.assertEqual(result["clauses"][1]["analysis"]["roles"]["subject"], ["hujan"])
+
+    def test_parses_postposed_temporal_subordinate_clause(self):
+        result = parse_sentence(analysis(
+            token("aku", ["PRON"]),
+            token("pulang", ["VERB"]),
+            token("ketika", ["CONJ"]),
+            token("malam", ["NOUN"]),
+            token("tiba", ["VERB"]),
+        ))
+        self.assertEqual(result["pattern"], "KLAUSA-SUBORDINATIF")
+        self.assertEqual(result["clauses"][1]["relation_to_previous"], "temporal")
+
     def test_parses_two_clauses_joined_by_conjunction(self):
         result = parse_sentence(analysis(
             token("aku", ["PRON"]),
