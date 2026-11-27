@@ -147,8 +147,12 @@ def resolve_semantic_role_candidates(
         "status": "unresolved",
         "reason": (
             "conflicting_evidence"
-            if any(state["supports"] and state["contradictions"]
-                   for state in candidate_states.values())
+            if len(decisive_winners) > 1 or any(
+                state["supports"].get(argument_id)
+                and state["contradictions"].get(argument_id)
+                for state in candidate_states.values()
+                for argument_id in set(state["supports"]) | set(state["contradictions"])
+            )
             else "insufficient_discriminating_evidence"
         ),
         "selected_frame_id": None,
