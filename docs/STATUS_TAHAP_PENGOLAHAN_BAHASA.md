@@ -929,3 +929,12 @@ Pemeriksaan indeks menemukan kandidat tambahan `Anda`, `beliau`, `ia`, dan `kau`
 GitHub Actions **Run #176 selesai dengan conclusion success**. Validasi kamus lengkap berhasil memuat 60 batch / 3.015 lema; validasi valensi dan dataset POS berhasil; **358/358 tes regresi lulus**. POS kontekstual development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%; test split tidak dibuka. [Lihat Run #176](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46022179021).
 
 **Batas:** uji sembilan pronomina ini mencakup pola kalimat sederhana S-P-O pada posisi subjek dan objek. Ini belum membuktikan seluruh konstruksi, ragam hormat, bentuk terikat, atau pronomina nonpersona.
+
+
+### Perluasan pronomina persona — Run #179 (27 November 2026)
+
+Atas persetujuan pengguna, empat lema tambahan dimasukkan ke `data/kamus/batch-060.jsonl`: `anda` (K3017, PRON, formal), `beliau` (K3018, PRON, formal/hormat), `ia` (K3019, PRON), dan `kau` (K3020, PRON, informal/akrab atau puitis). Ketiganya ditempatkan pada shard indeks sesuai huruf awal; jumlah kamus menjadi **3.019 lema dalam 60 batch** dan indeks memuat **3.601 token**.
+
+Tes pipeline kamus → POS → parser kini mencakup 13 pronomina: `aku`, `saya`, `kamu`, `engkau`, `dia`, `mereka`, `kita`, `kami`, `kalian`, `anda`, `beliau`, `ia`, dan `kau`. Seluruhnya diuji pada posisi subjek dan objek dalam pola S-P-O; uji memverifikasi kecocokan kamus, POS PRON, dan peran parser. Run #177–178 gagal pada pemeriksaan jumlah karena validator masih mengharapkan 3.015 lema; nilai validator dan label workflow diselaraskan menjadi 3.019. **Run #179 selesai dengan conclusion success: 358/358 tes regresi lulus**, validasi kamus 60 batch / 3.019 lema, validasi valensi dan dataset POS berhasil, serta evaluasi POS development tetap coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Test split tidak dibuka. [Lihat Run #179](https://github.com/semoliginon-ops/Sistem_bahasa/actions/runs/46023172229).
+
+**Batas:** pengujian 13 pronomina ini mencakup pola sederhana S-P-O sebagai subjek dan objek. Inventaris pronomina informal/regional lain serta bentuk terikat seperti `-ku`, `-mu`, dan `-nya` belum selesai; bentuk terikat tetap menjadi pekerjaan morfologi.
