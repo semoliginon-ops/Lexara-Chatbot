@@ -506,6 +506,24 @@ class SimpleClauseParserTests(unittest.TestCase):
             [{"preposition": "ke", "phrase": ["pasar"]}],
         )
 
+    def test_fronted_prepositional_phrase_is_not_guessed_as_subject_without_preverbal_subject(self):
+        result = parse_sentence(analysis(
+            token("di", ["PREP"]),
+            token("rumah", ["NOUN"]),
+            token("terdengar", ["VERB"]),
+            token("suara", ["NOUN"]),
+        ))
+        self.assertEqual(result["status"], "unresolved")
+        self.assertIsNone(result["pattern"])
+        self.assertEqual(result["roles"]["subject"], [])
+        self.assertEqual(result["roles"]["predicate"], ["terdengar"])
+        self.assertEqual(result["roles"]["object"], [])
+        self.assertEqual(
+            result["roles"]["adjuncts"],
+            [{"preposition": "di", "phrase": ["rumah"]}],
+        )
+        self.assertEqual(result["unresolved_tokens"], ["suara"])
+
     def test_fronted_prepositional_adjunct_with_modal_predicate_keeps_ksp(self):
         result = parse_sentence(analysis(
             token("di", ["PREP"]),
