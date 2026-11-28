@@ -61,6 +61,7 @@ class CalculatorTests(unittest.TestCase):
 
     def test_percent_of(self):
         self.assertEqual(percent_of("20", "150000"), Decimal("30000"))
+        self.assertEqual(percent_of("20%", "150000"), Decimal("30000"))
 
     def test_division_by_zero(self):
         with self.assertRaises(CalculationError):
