@@ -1419,3 +1419,38 @@ Pemetaan ini merangkum bukti yang telah ada; bukan klaim bahwa seluruh variasi B
 - Test split POS tetap tersegel; audit ini tidak membukanya.
 - Tahap berikutnya adalah membandingkan kebutuhan pipeline end-to-end dengan bukti yang sudah ada. Belum ada alasan untuk menjalankan tes massal atau membuka kembali Tahap 2.6.
 
+
+
+## Audit celah pipeline end-to-end Tahap 2.7 — 28 November 2026
+
+Audit lanjutan membaca implementasi `tools/analisis_teks.py`, `tools/parser_kalimat.py`, `tools/hubungkan_voice_predikat.py`, `tools/pemetaan_peran_semantis.py`, serta tes integrasi terkait. Tidak ada tes yang dijalankan dan tidak ada workflow yang dipicu.
+
+### Yang sudah terbukti
+
+- `tests/test_integrasi_pipeline.py` menjalankan kamus aktual → analisis leksikal/morfologi → POS → resolusi konteks → parser pada 123 metode tes integrasi.
+- `tests/test_voice_pipeline_integration.py` memiliki 7 skenario yang menghubungkan bukti morfologi voice, kepala predikat, dan pemetaan semantic role.
+- `tests/test_valency_pilot_integration.py` memiliki 5 skenario kompatibilitas parser dengan anotasi valensi pilot.
+- Unit test pemetaan semantic role dan resolver konteks memeriksa pemetaan aktif/pasif, alternatif frame, abstention, serta syarat bukti kuat.
+
+### Celah yang benar-benar ditemukan
+
+Belum ada bukti satu jalur end-to-end yang dimulai dari kalimat mentah, memakai kamus aktual untuk memperoleh token dan POS melalui pipeline, kemudian meneruskan hasil parser dan bukti voice ke pemetaan semantic role berbasis sense valensi aktual.
+
+Batas bukti yang ada:
+- Tes parser pipeline utama membuktikan kamus → morfologi → POS → konteks → parser, tetapi tidak meneruskan hasilnya ke semantic role.
+- Tes voice/semantic integration memang menghubungkan beberapa modul, tetapi token POS untuk parser dibentuk manual dalam tes dan voice menggunakan lexicon uji kecil; sense valensi pilot diambil terpisah dari batch.
+- Karena itu, tes tersebut membuktikan kompatibilitas antarmodul pada skenario terkontrol, belum membuktikan satu alur kalimat mentah → keluaran semantic role dengan sumber leksikal aktual dari awal sampai akhir.
+
+Ini adalah celah bukti integrasi, bukan klaim bahwa modul yang ada salah atau harus ditulis ulang. Tidak diperlukan pengujian ulang untuk jalur yang sudah terbukti.
+
+### Usulan verifikasi minimum — belum disetujui / belum dijalankan
+
+Usulan dibatasi menjadi **4 skenario integrasi independen**, memakai lema dan sense valensi yang sudah ada:
+1. Aktif, frame tunggal: `Dia melihat burung.` — jalur kamus aktual sampai semantic role EXPERIENCER/THEME (sesuai label frame yang tersimpan).
+2. Aktif, objek opsional hadir: `Dia makan nasi.` — memastikan argumen PATIENT hadir pada hasil pemetaan.
+3. Pasif dengan agen eksplisit: `Pintu dibuka oleh dia.` — memastikan voice pasif berasal dari morfologi aktual dan alternatif AGENT/CAUSER tetap dipertahankan jika frame sense memang ambigu.
+4. Pasif tanpa agen: `Pintu dibuka.` — memastikan argumen agen dicatat omitted dan pasien tetap terpetakan.
+
+Sebelum skenario ini dapat dijalankan, setiap kata harus diverifikasi tersedia pada indeks/kamus aktual dan POS-nya benar-benar keluar dari pipeline. Jika salah satu contoh tidak memenuhi prasyarat leksikal/parser, contoh tersebut tidak boleh dipaksakan atau diganti diam-diam; usulkan pengganti dan minta persetujuan.
+
+**Status:** audit celah selesai untuk jalur integrasi semantic role. Empat skenario di atas hanya proposal; belum ada perubahan kode, kamus, dataset, atau tes dan belum ada CI baru. Persetujuan pengguna diperlukan sebelum menambahkan atau menjalankan skenario tersebut.
