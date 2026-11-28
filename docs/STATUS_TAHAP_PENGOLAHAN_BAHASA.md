@@ -1530,4 +1530,4 @@ Verifikasi pengujian — 28 November 2026:
 
 Hasil ini membuktikan validator memenuhi pemeriksaan struktural yang dicakup oleh 17 tes dan fixture sintetis; hasil tersebut tidak membuktikan kebenaran linguistik anotasi konsep atau kelengkapan pemahaman konteks.
 
-**Langkah berikutnya:** tinjau batas kasus validator sebelum memulai data konsep atau pembaca/runtime. Jangan menjalankan 450 tes regresi kecuali ada alasan teknis baru.
+**Tinjauan batas kasus lanjutan:** ditemukan dua celah robustness pada validator: pembacaan JSONL ber-UTF-8 tidak valid dapat melempar exception, dan pola `\\d` menerima digit Unicode meskipun ID dirancang memakai digit ASCII. Keduanya diperbaiki: pembacaan JSONL kini melaporkan encoding UTF-8 yang tidak valid sebagai error validasi, dan pola ID konsep/relasi kini memakai `[0-9]`. Dua tes tambahan dibuat untuk kedua kasus tersebut; total tes terfokus menjadi 19. **Dua tes tambahan belum dijalankan.** Langkah berikutnya adalah menjalankan hanya tes `test_validasi_concept_layer.py` di Termux untuk memverifikasi perubahan. Tidak ada CI atau regression suite 450 tes yang dijalankan.
