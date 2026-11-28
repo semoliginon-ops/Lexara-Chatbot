@@ -51,3 +51,28 @@ Aturan proposed/rejected tidak menghasilkan evidence aktif. Tidak ada aturan `re
 3. Tidak boleh menaikkan strength menjadi `strong` hanya karena cue tampak relevan.
 4. Belum ada integrasi entrypoint/runtime. Penentuan titik pemanggilan orchestrator merupakan pekerjaan berikutnya setelah kandidat aturan ditinjau.
 5. Tidak ada perubahan pada kamus, indeks, Concept Layer, parser, POS, morfologi, analyzer, generator, selector, atau orchestrator.
+
+
+## 6. Bukti contoh kalimat yang ditemukan
+
+Penelusuran dibatasi pada dua lema same-POS yang sudah dipilih; tidak menambah lema atau aturan baru.
+
+### bangun
+
+Arsip entri KBBI daring memuat dua contoh yang relevan:
+- “anak itu berkali-kali terjatuh, namun ia selalu dapat bangun kembali” — mendukung pembacaan bangun sebagai kembali berdiri setelah jatuh.
+- “setiap pagi ia bangun pukul 04.00” — mendukung pembacaan bangun sebagai terjaga dari tidur.
+
+Sumber: https://kbbi.web.id/bangun (arsip KBBI daring; halaman menyatakan basis data utamanya mengacu pada KBBI Edisi III dan bukan laman resmi KBBI Daring terbaru).
+
+Penilaian: contoh tersebut berguna sebagai bukti leksikografis untuk memeriksa perbedaan dua makna dalam kamus proyek. Namun, ini belum merupakan sampel korpus percakapan alami dan cue `pagi`, `pukul`, `terjatuh`, atau `kembali` belum boleh otomatis dijadikan aturan aktif. Aturan `tidur` dan `berdiri` tetap proposed/weak sampai ada bukti yang cocok dengan kondisi generator dan target token secara lebih aman.
+
+### jam
+
+Buku resmi Badan Pengembangan Bahasa dan Perbukuan, *Bentuk dan Pilihan Kata* (2019), menyatakan bahwa `jam` dapat bermakna durasi/jangka waktu maupun arloji/alat penunjuk waktu. Contoh durasi yang diberikan: “Para pekerja di Indonesia rata-rata bekerja selama delapan jam sehari.” Buku tersebut juga menjelaskan makna benda penunjuk waktu/arloji. Rujukan: https://badanbahasa.kemendikdasmen.go.id/resource/doc/files/Buku_Seri_Penyuluhan_2019_Bentuk_dan_Pilihan_Kata.pdf, bagian “Pemakaian Kata Jam dan Pukul”.
+
+Penilaian: sumber resmi menguatkan bahwa kedua makna dalam entri proyek memang perlu dibedakan. Contoh yang tersedia secara eksplisit lebih kuat untuk sense durasi daripada sense alat. Namun, contoh pedoman kebahasaan bukan kumpulan korpus alami, dan kata `jam` tetap dapat digunakan secara bervariasi dalam ragam percakapan. Aturan `menit` tetap proposed/weak; cue `alarm` tetap rejected. Belum ada dasar untuk status reviewed/strong.
+
+### Kesimpulan bukti
+
+Bukti rujukan kamus dan pedoman resmi sudah ditemukan untuk mengonfirmasi perbedaan makna dasar. Bukti ini belum memenuhi standar korpus autentik dan belum cukup untuk mengaktifkan aturan. Tidak ada aturan baru, perubahan kode, atau perubahan runtime pada langkah ini.
