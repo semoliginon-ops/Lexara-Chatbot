@@ -1,148 +1,120 @@
 # Rancangan Context Evidence Generator v1 — Lexara
 
-**Status:** Draf desain untuk ditinjau; belum disetujui dan belum diimplementasikan.
+**Status:** Disetujui untuk implementasi terbatas.
 **Tahap:** 3 — Hubungan makna dan pemrosesan konteks.
-**Tujuan:** Menyediakan bukti yang dapat diaudit untuk pekerjaan pemilihan sense kontekstual berikutnya, tanpa mengubah parser, POS, morfologi, kamus, Concept Layer v1, atau semantic-role resolver.
+**Tujuan:** Menyediakan evidence sense yang dapat diaudit untuk komponen pemilih sense berikutnya, tanpa mengubah parser, POS, morfologi, kamus, Concept Layer v1, atau semantic-role resolver.
 
 ## 1. Posisi dalam pipeline
 
-Rancangan alur:
-
 1. Analyzer menghasilkan kandidat leksikal beserta sense.
-2. concept_sense_adapter melampirkan konsep yang sudah reviewed pada setiap sense kandidat.
-3. Parser menghasilkan struktur klausa dan status parsed, partial, atau unresolved.
-4. Context Evidence Generator mengekstrak observasi dari masukan tersebut dan mencocokkannya hanya dengan aturan konteks yang eksplisit serta berstatus reviewed.
-5. Generator mengeluarkan bukti per-sense untuk calon komponen pemilih sense. Pemilih sense dan integrasi runtime merupakan pekerjaan terpisah.
+2. concept_sense_adapter melampirkan konsep reviewed pada setiap sense kandidat.
+3. Parser menghasilkan struktur klausa dengan status parsed, partial, atau unresolved.
+4. Context Evidence Generator mengekstrak observasi dan mencocokkannya dengan aturan konteks eksplisit berstatus reviewed.
+5. Komponen pemilih sense berikutnya menggunakan evidence untuk memutuskan apakah sense dapat dipilih atau harus tetap ambigu/tidak terselesaikan.
 
-Generator tidak memilih sense. Ia hanya menghasilkan bukti dan alasan yang dapat ditelusuri.
+Generator **tidak memilih sense** dan **tidak menetapkan status akhir ambiguous/unresolved**. Generator hanya menghasilkan observasi, evidence, dan catatan batas pemrosesan. Status akhir merupakan tanggung jawab pemilih sense.
 
 ## 2. Pemisahan observasi dan evidence
 
-Dua jenis keluaran harus dibedakan.
+### 2.1 Observasi
 
-### 2.1 Observasi konteks
+Observasi adalah fakta yang terlihat langsung pada masukan, bukan kesimpulan makna. Versi pertama mengambil:
+- sense_id dan concept_id dari kandidat sense yang diberikan;
+- status parser;
+- token yang tercatat pada roles subject, predicate, object, adjuncts, dan complement;
+- unresolved_tokens dari parser.
 
-Observasi adalah fakta yang terlihat langsung pada masukan, bukan kesimpulan makna. Contoh:
+Observasi sintaksis hanya dicatat jika benar-benar disediakan parser. Generator tidak mengarang rentang token atau struktur yang tidak tersedia.
 
-- token/kandidat lema yang hadir;
-- sense dan concept ID yang melekat pada kandidat;
-- peran sintaksis yang secara eksplisit dihasilkan parser;
-- kepala predikat dan modifier predikat yang memang disediakan parser;
-- penanda negasi/modalitas yang dikenali;
-- relasi penghubung klausa yang secara eksplisit dicatat parser;
-- status dan metode parser.
+### 2.2 Evidence
 
-Observasi harus mempertahankan sumber token/rentang token jika tersedia. Generator tidak boleh mengubah observasi menjadi klaim semantis hanya berdasarkan posisi kata.
-
-### 2.2 Evidence untuk sense
-
-Evidence hanya boleh dibuat ketika suatu aturan konteks eksplisit cocok dengan observasi. Setiap evidence memiliki:
-
-- sense_id: sense yang didukung atau ditentang;
-- concept_ids: konsep reviewed yang terkait dengan sense tersebut; boleh kosong;
+Evidence hanya dibuat ketika aturan konteks eksplisit berstatus reviewed cocok. Setiap evidence memuat:
+- sense_id;
+- concept_ids (boleh kosong);
 - polarity: supports atau contradicts;
 - strength: weak atau strong;
-- source: asal bukti yang cocok;
-- rule_id: ID aturan yang menghasilkan evidence;
-- rationale: alasan yang menjelaskan kecocokan aturan;
-- token_spans: rentang token yang menjadi dasar kecocokan, jika tersedia.
+- source;
+- rule_id;
+- rationale;
+- matched_conditions sebagai jejak kondisi yang cocok;
+- token_spans, berupa daftar kosong jika offset tidak tersedia dari sumber.
 
-Evidence harus merujuk pada sense kandidat yang benar-benar diberikan. Generator tidak boleh menciptakan sense, konsep, atau pemetaan baru.
+Evidence hanya boleh merujuk pada sense kandidat yang diberikan. Generator tidak menciptakan sense, konsep, atau pemetaan baru.
 
-## 3. Aturan konteks
+## 3. Kontrak aturan konteks v1
 
-- Hanya aturan berstatus reviewed yang boleh menghasilkan evidence aktif.
-- Setiap aturan memiliki ID stabil, target sense yang eksplisit, kondisi yang dapat diperiksa, polarity, strength, sumber, dan rationale.
-- Aturan harus menyatakan kondisi positif maupun batas penerapannya secara eksplisit; kemiripan kata atau kedekatan token saja tidak cukup.
-- Aturan yang belum ditinjau tidak menghasilkan evidence aktif.
-- Versi pertama menggunakan katalog kondisi terbatas dan eksplisit. Tidak ada evaluasi ekspresi bebas, kode dinamis, atau inferensi tak terbatas.
-- Bila belum ada aturan yang cocok, hasilnya adalah tanpa evidence; bukan bukti bahwa sense tersebut salah.
+Setiap aturan memiliki field:
+- rule_id: ID stabil, format CE diikuti minimal enam digit;
+- status: proposed, reviewed, atau rejected;
+- target_sense_id: sense yang menjadi sasaran aturan;
+- conditions: daftar kondisi eksplisit yang semuanya wajib cocok (AND);
+- polarity: supports atau contradicts;
+- strength: weak atau strong;
+- source: teks nonkosong yang menunjukkan sumber kurasi;
+- rationale: teks nonkosong yang menjelaskan alasan linguistik.
 
-Sumber aturan dapat berupa anotasi kurasi atau pola konteks yang ditinjau. Setiap aturan harus dapat ditelusuri ke contoh/sumber dan rationale. Kumpulan aturan tidak boleh mengubah data kamus atau Concept Layer.
+Katalog kondisi v1 dibatasi pada:
+- token_present: token tertentu harus hadir pada token yang teramati;
+- role_contains: token tertentu harus hadir pada salah satu role parser yang didukung (subject, predicate, object, adjuncts, complement).
+
+Kondisi role_contains hanya dapat cocok jika parser berstatus parsed atau partial dan role yang diminta benar-benar tersedia. Status unresolved atau status tak dikenal tidak boleh menghasilkan kecocokan struktural.
+
+Aturan proposed/rejected tidak menghasilkan evidence. Aturan reviewed dengan target sense yang tidak terdapat pada kandidat diabaikan. Semua kondisi dalam satu aturan harus cocok. Tidak ada evaluasi kode/ekspresi bebas, kemiripan semantik otomatis, atau inferensi dari kedekatan kata.
 
 ## 4. Kekuatan evidence
 
-- weak: aturan yang ditinjau menemukan petunjuk relevan, tetapi petunjuk tersebut tidak cukup untuk membedakan sense secara meyakinkan.
-- strong: aturan yang ditinjau secara khusus membedakan sense pada kondisi yang dinyatakan dan memiliki bukti yang cukup untuk mendukung atau menolak sense tersebut.
-- Tidak ada evidence yang boleh diberi strength strong hanya dari urutan kata, posisi subjek/objek, POS, atau struktur parser.
-- Strength ditetapkan oleh aturan yang ditinjau, bukan dihitung dari jumlah petunjuk atau skor kemiripan.
-- Beberapa evidence yang lemah tidak otomatis menjadi satu evidence kuat.
+- weak: aturan reviewed menemukan petunjuk relevan yang belum cukup membedakan sense secara meyakinkan.
+- strong: aturan reviewed secara khusus membedakan sense pada kondisi yang dinyatakan.
+- Strength ditetapkan oleh aturan yang dikurasi, bukan dihitung dari jumlah petunjuk.
+- Beberapa evidence weak tidak dinaikkan menjadi strong.
+- Aturan strong wajib memiliki setidaknya satu kondisi token_present. Aturan yang hanya bergantung pada role sintaksis tidak boleh menghasilkan strong.
+- Posisi kata, urutan kata, POS, atau struktur parser saja tidak pernah otomatis menghasilkan strong.
 
-## 5. Status parser dan abstention
+## 5. Status parser dan konflik
 
-- Untuk parser parsed, observasi sintaksis yang tersedia boleh dipakai oleh aturan yang secara eksplisit mengizinkannya.
-- Untuk parser partial, hanya observasi pada bagian yang berhasil dianalisis yang boleh dipakai. Aturan yang memerlukan bagian yang tidak tersedia tidak cocok.
-- Untuk parser unresolved atau status yang tidak dikenal, generator tidak boleh mengarang struktur. Observasi leksikal langsung masih dapat dicatat, tetapi aturan yang membutuhkan struktur klausa tidak boleh cocok.
-- Evidence yang saling bertentangan harus dipertahankan bersama. Generator tidak menyelesaikan konflik.
-- Tidak ada evidence atau evidence yang tidak cukup menghasilkan kondisi kandidat tetap ambigu/tidak terselesaikan pada tahap pemilihan sense berikutnya.
+- parsed: kondisi token dan role yang tersedia boleh diperiksa.
+- partial: hanya kondisi yang dapat diverifikasi dari observasi yang tersedia boleh cocok; bagian unresolved tidak boleh diperlakukan sebagai struktur terkonfirmasi.
+- unresolved atau status tidak dikenal: kondisi token masih dapat diperiksa dari token yang tersedia, tetapi role_contains tidak boleh cocok.
+- Evidence supports dan contradicts untuk sense yang sama tetap dikeluarkan bersama.
+- Generator tidak menggabungkan evidence lintas sense, tidak menentukan pemenang, tidak menghapus kandidat, dan tidak menetapkan status akhir ambiguous/unresolved.
 
-## 6. Batas konflik dan penggabungan
+## 6. Batas integrasi
 
-- Evidence disimpan per sense dan per aturan; jangan menggabungkan evidence dari sense berbeda.
-- Evidence dari argument/slot atau klausa berbeda tidak boleh digabung untuk menciptakan dukungan kuat, kecuali satu aturan secara eksplisit mendefinisikan hubungan tersebut.
-- Evidence duplikat dari aturan dan rentang token yang sama tidak boleh digandakan.
-- Dukungan dan kontradiksi terhadap sense yang sama harus tetap terlihat sebagai konflik.
-- Generator tidak menetapkan pemenang, tidak menghapus kandidat, dan tidak mengubah status sense.
+Modul baru yang diusulkan: tools/context_evidence_generator.py.
 
-## 7. Batas integrasi
-
-Dalam cakupan modul ini:
-
-- Membaca keluaran kandidat sense, hasil adapter, hasil parser, dan aturan konteks yang diberikan.
-- Menghasilkan observasi dan evidence yang dapat diaudit.
-- Bersifat deterministik dan tidak menulis ke sumber input.
-- Tidak mengubah analyzer, kamus, batch, indeks, Concept Layer, loader, adapter, POS, morfologi, parser, atau semantic-role resolver.
-- Tidak memanggil atau menggantikan resolver semantic role. Format evidence sense berbeda dari format evidence semantic-role resolver.
-- Tidak memilih sense dan tidak mengubah keluaran runtime yang ada.
-
-## 8. Antarmuka konseptual
-
-Nama modul yang diusulkan: tools/context_evidence_generator.py.
-
-Fungsi yang diusulkan:
-
+Antarmuka:
 ~~~python
-generate_context_evidence(
-    sense_candidates,
-    parse_result,
-    context_rules,
-)
+generate_context_evidence(sense_candidates, parse_result, context_rules)
 ~~~
 
-Hasil konseptual memuat:
+Input sense_candidates mengikuti keluaran map_sense_candidates_to_concepts, yaitu daftar record per sense dengan sense_id dan concepts. parse_result adalah hasil parser yang sudah ada. context_rules adalah daftar aturan dengan kontrak pada bagian 3.
 
-- observations: fakta yang diekstrak dari input;
-- evidence: daftar evidence per-sense yang dihasilkan aturan reviewed;
-- status: evidence_found atau no_evidence;
-- notes: batas atau alasan abstention yang relevan.
+Hasil:
+- observations: fakta hasil ekstraksi;
+- evidence: evidence per sense dari aturan reviewed yang cocok;
+- status: evidence_found atau no_evidence (status pemrosesan evidence, bukan status ambiguitas sense);
+- notes: catatan batas parser atau alasan abstention.
 
-Nama fungsi dan bentuk final objek masih dapat disesuaikan saat kontrak ini ditinjau. Tidak ada janji bahwa pilot tiga konsep saat ini sudah menyediakan aturan yang cukup untuk menghasilkan evidence kontekstual.
+Modul harus deterministik, read-only, dan tidak memutasi input. Tidak mengubah analyzer, kamus, batch, indeks, Concept Layer, loader, adapter, POS, morfologi, parser, atau semantic-role resolver. Format evidence ini berbeda dari evidence semantic-role resolver.
 
-## 9. Rencana pengujian setelah desain disetujui
+## 7. Tes terfokus yang disepakati
 
-Tes terfokus hanya untuk modul baru:
+Tepat 10 tes unit khusus modul baru:
+1. observasi sintaksis tanpa aturan tidak otomatis menjadi evidence;
+2. aturan reviewed menghasilkan evidence pada sense sasaran;
+3. aturan proposed/rejected tidak menghasilkan evidence;
+4. beberapa evidence weak tetap weak dan tidak diagregasi;
+5. aturan strong harus eksplisit dan tidak boleh hanya mengandalkan role sintaksis;
+6. evidence supports dan contradicts dipertahankan sebagai konflik;
+7. kandidat tanpa concept mapping tetap dapat menghasilkan evidence;
+8. parser partial hanya memakai observasi yang tersedia;
+9. parser unresolved tidak menghasilkan evidence dari kondisi role;
+10. input tidak berubah dan hasil deterministik.
 
-1. observasi sintaksis tidak otomatis menjadi evidence;
-2. aturan reviewed menghasilkan evidence sesuai target sense;
-3. aturan proposed/rejected tidak menghasilkan evidence aktif;
-4. evidence weak tetap weak dan tidak dinaikkan karena jumlah petunjuk;
-5. evidence strong hanya muncul dari aturan yang secara eksplisit menetapkannya;
-6. dukungan dan kontradiksi dipertahankan sebagai konflik;
-7. kandidat tanpa concept mapping tetap diproses berdasarkan sense ID;
-8. parser partial hanya menggunakan observasi yang tersedia;
-9. parser unresolved tidak menghasilkan evidence yang memerlukan struktur klausa;
-10. masukan tidak berubah dan keluaran deterministik.
+Tes Concept Layer v1 yang telah lulus tidak diulang. Tambahkan workflow GitHub Actions khusus untuk menjalankan 10 tes ini saja; jangan memicu regression suite penuh karena perubahan modul ini tidak mengubah komponen lama.
 
-Jumlah dan cakupan final tes dikunci sebelum implementasi. Tes Concept Layer v1 yang sudah ada tidak diulang kecuali ada alasan kompatibilitas yang terbukti. GitHub Actions boleh digunakan untuk tes yang relevan.
+## 8. Batas hasil tahap ini
 
-## 10. Keputusan yang masih memerlukan persetujuan
+Penyelesaian modul dan tes tidak berarti pemilihan sense kontekstual atau integrasi runtime telah selesai. Itu merupakan langkah lanjutan tersendiri setelah generator tersedia dan aturan konteks mulai dikurasi. Dataset pilot Concept Layer tiga konsep tidak dianggap cukup untuk mendukung pemahaman konteks secara luas.
 
-Sebelum implementasi, tinjau dan setujui:
-
-1. pemisahan observasi dan evidence;
-2. kewajiban evidence berasal dari aturan konteks eksplisit berstatus reviewed;
-3. aturan strength weak/strong dan larangan menaikkan strength otomatis;
-4. perilaku konservatif untuk parser partial/unresolved dan konflik;
-5. batas modul, antarmuka konseptual, dan daftar tes terfokus.
-
-**Status akhir:** dokumen ini hanya draf desain. Belum ada modul, dataset aturan, tes, atau integrasi runtime yang dibuat berdasarkan rancangan ini.
+**Keputusan pengguna:** rancangan disetujui pada 28 November 2026. Implementasi dibatasi sesuai kontrak ini.
