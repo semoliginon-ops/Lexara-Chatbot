@@ -3,6 +3,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from tools.analisis_teks import analyze_text
+from tools.kamus_loader import load_dictionary_directory
+from tools.pencocokan_kamus import build_lexicon
+from tools.pos_context import disambiguate_pos_context
+from tools.pos_tagger import tag_pos
+from tools.parser_kalimat import parse_sentence
+
 from tools.context_rules_loader import load_context_rules, ContextRulesLoadError
 from tools.contextual_sense_integration import orchestrate_contextual_senses
 
@@ -155,6 +162,22 @@ class ContextualSenseIntegrationTests(unittest.TestCase):
         second = orchestrate_contextual_senses(source, parsed, layer, rules)
         self.assertEqual(first, second)
         self.assertEqual(json.dumps([source, parsed, layer, rules], sort_keys=True), before)
+
+        root = Path(__file__).resolve().parents[1]
+        entries = load_dictionary_directory(root / "data" / "kamus")
+        lexicon = build_lexicon(entries)
+        lexical = analyze_text("Aku makan nasi besok.", lexicon)
+        tagged = disambiguate_pos_context(tag_pos(lexical))
+        parsed_sentence = parse_sentence(tagged)
+        integrated = orchestrate_contextual_senses(
+            tagged, parsed_sentence, concept_layer(), []
+        )
+        self.assertEqual(parsed_sentence["status"], "parsed")
+        self.assertEqual(integrated["status"], "completed")
+        self.assertEqual(
+            [item["token"] for item in integrated["results"] if item["orchestration_status"] == "processed"],
+            ["Aku", "makan", "nasi", "besok"],
+        )
 
     def test_context_rules_loader_reads_jsonl_and_rejects_invalid_rows(self):
         with tempfile.TemporaryDirectory() as directory:
