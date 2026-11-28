@@ -143,3 +143,14 @@ Tes tidak mengulang 11 tes planner atau 11 tes interpretasi. Tidak menjalankan r
 ## 11. Status prasyarat perencana
 
 Planner v1.1 telah mendukung referensi sense-level dan memverifikasi definisi sumber terhadap snapshot. Implementasi serta 12 tes khusus lulus melalui GitHub Actions Run #2 [46118895383](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895383); kompatibilitas planner v1 diverifikasi kembali 11/11 pada Run [46118895363](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895363). Kontrak penyaji dan pencatatan respons tetap belum diimplementasikan atau dihubungkan ke runtime.
+
+## 12. Hasil implementasi read-only v1
+
+- Penyaji dan pencatat respons: tools/clarification_interaction.py.
+- Tes khusus: tests/test_clarification_interaction.py, tepat 10 kasus.
+- Workflow: .github/workflows/clarification-interaction-tests.yml.
+- GitHub Actions Run #2 [46119074901](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46119074901) sukses; log memverifikasi 10/10 tes lulus.
+- Penyaji saat ini hanya mendukung focus sense-level leksikal yang tervalidasi. Candidate refs tanpa deskripsi sense-level ditolak aman.
+- Pilihan ditampilkan dari definition kamus; ID internal hanya disimpan pada session, tidak masuk ke prompt.
+- Pilihan tunggal, teks bebas, penolakan, tidak ada respons, pembatalan, dan respons tidak valid dicatat terpisah. Teks bebas disimpan apa adanya dengan completeness unknown dan tidak dipetakan otomatis ke sense.
+- Tidak ada penyimpanan permanen, interpretasi jawaban bebas, integrasi runtime, atau perubahan pada kamus/snapshot/analyzer/parser.
