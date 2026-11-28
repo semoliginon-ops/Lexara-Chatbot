@@ -59,6 +59,10 @@ class ConceptLayerValidationTests(unittest.TestCase):
         _, errors = self._validate()
         self.assertTrue(any("JSON tidak valid" in error for error in errors))
 
+    def test_rejects_invalid_utf8_without_crashing(self):
+        self.concepts.write_bytes(b"\\xff\\xfe\\xfa")
+        _, errors = self._validate()
+        self.assertTrue(any("tidak dapat dibaca sebagai UTF-8" in error for error in errors))
     def test_rejects_non_object_json_line(self):
         self.concepts.write_text("[]\n", encoding="utf-8")
         _, errors = self._validate()
@@ -80,6 +84,12 @@ class ConceptLayerValidationTests(unittest.TestCase):
         _, errors = self._validate()
         self.assertTrue(any("minimal enam digit" in error for error in errors))
 
+    def test_rejects_non_ascii_digits_in_concept_id(self):
+        records = self._read_records(self.concepts)
+        records[0]["concept_id"] = "C٠٠٠٠٠١"
+        self._write_records(self.concepts, records)
+        _, errors = self._validate()
+        self.assertTrue(any("minimal enam digit" in error for error in errors))
     def test_rejects_duplicate_concept_id(self):
         records = self._read_records(self.concepts)
         records[1]["concept_id"] = records[0]["concept_id"]
