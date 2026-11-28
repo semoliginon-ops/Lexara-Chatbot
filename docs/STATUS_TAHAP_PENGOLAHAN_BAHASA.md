@@ -1619,3 +1619,39 @@ Ringkasan verifikasi komponen Concept Layer yang telah dijalankan pengguna:
 Tidak ada regression suite 450 tes yang dijalankan ulang dan tidak ada GitHub Actions/CI yang dipicu untuk verifikasi adapter ini. Tidak ada perubahan pada kamus, batch, indeks, morfologi/klitik, POS, parser, resolver, atau alur analyzer/runtime.
 
 **Titik lanjut resmi:** merancang penghasil bukti konteks sebagai modul terpisah. Rancangan perlu menentukan sumber bukti dari struktur kalimat yang sudah tersedia, skema bukti, aturan penggabungan/konflik bukti, dan kondisi untuk mempertahankan hasil `ambiguous` atau `unresolved`. Tahap desain ini belum merupakan izin untuk mengubah parser, resolver, atau mengintegrasikan pemilihan sense ke runtime.
+
+
+## Context Evidence Generator v1 — implementasi dan verifikasi, 28 November 2026
+
+Atas persetujuan pengguna, kontrak desain Context Evidence Generator v1 ditetapkan dan implementasi dibatasi pada modul terpisah.
+
+Perubahan:
+- Dokumen kontrak: `docs/RANCANGAN_CONTEXT_EVIDENCE_GENERATOR.md`, status disetujui untuk implementasi.
+- Modul baru: `tools/context_evidence_generator.py`.
+- Tes baru: `tests/test_context_evidence_generator.py`, tepat 10 tes unit.
+- Workflow baru: `.github/workflows/context-evidence-tests.yml`, menjalankan hanya tes khusus generator melalui unittest discovery.
+
+Perilaku modul:
+- Menerima kandidat per-sense dari adapter, hasil parser, dan daftar aturan konteks.
+- Mengekstrak observasi dari token pada role parser dan unresolved_tokens.
+- Hanya aturan berstatus `reviewed` yang dapat menghasilkan evidence; kondisi dalam satu aturan harus seluruhnya cocok.
+- Katalog kondisi v1 dibatasi pada `token_present` dan `role_contains`.
+- Evidence mempertahankan sense_id, concept_ids (termasuk daftar kosong), polarity, strength, source, rule_id, rationale, matched_conditions, dan token_spans.
+- Aturan strong wajib memuat kondisi token_present; strength tidak dihitung atau dinaikkan otomatis.
+- Evidence supports dan contradicts tetap dipertahankan bersama.
+- Parser partial hanya menggunakan role yang tersedia; parser unresolved/status tak dikenal tidak memenuhi kondisi role.
+- Modul deterministik dan tidak memutasi input.
+- Generator tidak memilih sense dan tidak menetapkan status akhir `ambiguous`/`unresolved`; keputusan itu menjadi tanggung jawab pemilih sense berikutnya.
+
+Hasil GitHub Actions:
+- Run #1: [46106453219](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46106453219), sukses; log menunjukkan **10 tes, OK**.
+- Run #2: [46106470841](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46106470841), sukses; log menunjukkan **10 tes, OK**. Run kedua terpicu karena perbaikan perintah workflow agar memakai unittest discovery; cakupan tes tetap sama dan tidak ada skenario baru.
+- Tidak dijalankan ulang regression suite penuh 450 tes atau tes Concept Layer v1.
+
+Batas yang belum dikerjakan:
+- Belum ada dataset aturan konteks linguistik yang dikurasi untuk penggunaan nyata.
+- Belum ada komponen pemilih sense kontekstual.
+- Belum ada integrasi generator atau pemilih sense ke analyzer/runtime.
+- Pilot Concept Layer tiga konsep tidak dianggap cukup untuk pemahaman konteks luas.
+
+**Titik lanjut resmi:** merancang komponen pemilih sense kontekstual yang memakai evidence generator. Rancangan pemilih harus menentukan perlakuan evidence supports/contradicts, kriteria bukti yang cukup, dan kapan mempertahankan ambiguitas atau abstention. Jangan mengubah komponen Tahap 1/2 atau resolver semantic role yang ada tanpa blocker terverifikasi dan persetujuan pengguna.
