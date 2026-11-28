@@ -1,6 +1,6 @@
 # Kontrak Representasi Konteks Terpadu v1
 
-**Status:** rancangan kerja Tahap 3.  
+**Status:** diimplementasikan dan diverifikasi pada 28 November 2026; kontrak tetap menjadi batas perilaku v1.  
 **Tujuan:** menyatukan keluaran analisis leksikal, morfologi, POS, dan parser dalam satu representasi baca-saja untuk dipakai oleh komponen pemahaman konteks berikutnya.
 
 ## 1. Posisi dan batas
@@ -84,3 +84,10 @@ Gunakan satu workflow GitHub Actions terfokus sesuai pola proyek. Jangan menjala
 Implementasi diterima jika seluruh 10 tes khusus lulus dan seluruh batas di atas dipatuhi.
 
 Pemilihan sense kontekstual, aturan `bangun`/ `jam`, integrasi entrypoint/runtime, pemahaman kalimat majemuk, konteks multi-giliran, inferensi maksud ujaran, serta perubahan parser/analyzer/POS/morfologi berada di luar cakupan v1 dan tetap menjadi pekerjaan terpisah.
+
+
+## 9. Status implementasi
+
+Modul `tools/context_snapshot.py` menyediakan `build_context_snapshot(analysis, parse_result)` dan `ContextSnapshotError`. Tepat 10 tes khusus berada di `tests/test_context_snapshot.py`. GitHub Actions Run #3 [46110525292](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46110525292) sukses dengan **10/10 tes lulus**, termasuk satu skenario pipeline nyata kamus → analyzer → POS → parser → snapshot.
+
+Verifikasi ini mencakup kontrak snapshot v1 saja. Regression suite 450 tes dan tes lama komponen lain tidak dijalankan ulang. Modul belum dipanggil oleh entrypoint/runtime aplikasi.
