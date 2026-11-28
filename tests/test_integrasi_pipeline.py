@@ -1874,7 +1874,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
 
         for sentence, surface, clitic, expected_host_pos, base_form, expected_role in cases:
-            with self.subTest(sentence=sentence, clitic=clitic, host_pos=host_pos):
+            with self.subTest(sentence=sentence, clitic=clitic, host_pos=expected_host_pos):
                 analyzed = self.analyze(sentence)
                 bound = self.token(analyzed, surface)
                 self.assertEqual(bound["status"], "unknown")
