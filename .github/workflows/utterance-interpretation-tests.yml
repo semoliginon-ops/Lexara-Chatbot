@@ -6,6 +6,7 @@ on:
     paths:
       - "tools/utterance_interpretation.py"
       - "tests/test_utterance_interpretation.py"
+      - ".github/workflows/utterance-interpretation-tests.yml"
   workflow_dispatch:
 
 permissions:
