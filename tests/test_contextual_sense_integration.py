@@ -99,14 +99,12 @@ class ContextualSenseIntegrationTests(unittest.TestCase):
             concept_layer(), [],
         )
         self.assertEqual(result["results"][0]["defer_reason"], "compound_clause_context_deferred")
-
-    def test_unresolved_parser_status_is_deferred(self):
-        result = orchestrate_contextual_senses(
+        unresolved = orchestrate_contextual_senses(
             analysis(("kata", lexical_candidate(["S1"]))),
             {"status": "unresolved", "roles": {"subject": [], "predicate": ["kata"], "object": [], "adjuncts": [], "complement": []}, "unresolved_tokens": []},
             concept_layer(), [],
         )
-        self.assertEqual(result["results"][0]["defer_reason"], "parser_status_not_usable")
+        self.assertEqual(unresolved["results"][0]["defer_reason"], "parser_status_not_usable")
 
     def test_partial_parser_uses_available_confirmed_observations(self):
         result = orchestrate_contextual_senses(
@@ -164,6 +162,8 @@ class ContextualSenseIntegrationTests(unittest.TestCase):
             expected = [rule("CE000001", "S1")]
             path.write_text(json.dumps(expected[0]) + "\n", encoding="utf-8")
             self.assertEqual(load_context_rules(path), expected)
+            path.write_text("", encoding="utf-8")
+            self.assertEqual(load_context_rules(path), [])
             path.write_text("{broken}\n", encoding="utf-8")
             with self.assertRaises(ContextRulesLoadError):
                 load_context_rules(path)
