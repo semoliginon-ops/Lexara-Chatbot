@@ -1,16 +1,5 @@
 # Token index — j-l
 # token	id	lemma	type	batch
-"jamblang"	K3326	jamblang	lemma	batch-066
-"jambu air"	K3307	jambu air	lemma	batch-066
-"jambu biji"	K3306	jambu biji	lemma	batch-066
-"jambu bol"	K3308	jambu bol	lemma	batch-066
-"kedondong"	K3309	kedondong	lemma	batch-066
-"kepel"	K3325	kepel	lemma	batch-066
-"kesemek"	K3310	kesemek	lemma	batch-066
-"kiwi"	K3314	kiwi	lemma	batch-066
-"kurma"	K3321	kurma	lemma	batch-066
-"langsat"	K3319	langsat	lemma	batch-066
-"leci"	K3320	leci	lemma	batch-066
 jabatan	K0902	jabatan	lemma	batch-019
 jabatan publik	K2917	jabatan publik	lemma	batch-059
 jack audio	K2435	jack audio	lemma	batch-049
@@ -38,6 +27,10 @@ jam	K0293	jam	lemma	batch-006
 jam dinding	K2316	jam dinding	lemma	batch-047
 jam pintar	K2399	jam pintar	lemma	batch-048
 jam tangan	K2638	jam tangan	lemma	batch-053
+"jamblang"	K3326	jamblang	lemma	batch-066
+"jambu air"	K3307	jambu air	lemma	batch-066
+"jambu biji"	K3306	jambu biji	lemma	batch-066
+"jambu bol"	K3308	jambu bol	lemma	batch-066
 jamin	K1378	jamin	lemma	batch-028
 jamu	K2032	jamu	lemma	batch-041
 jamur	K1997	jamur	lemma	batch-040
@@ -192,6 +185,7 @@ kanker	K3053	kanker	lemma	batch-061
 kano	K3333	kano	lemma	batch-067
 kantong	K0922	kantong	lemma	batch-019
 kantor	K0437	kantor	lemma	batch-009
+kantuk	K3607	kantuk	lemma	batch-072
 kapal	K1393	kapal	lemma	batch-028
 kapan	K0647	kapan	lemma	batch-013
 kapan-kapan	K0663	kapan-kapan	lemma	batch-014
@@ -269,6 +263,7 @@ kedekatan	K0090	dekat	derived_form	batch-002
 kedengaran	K0035	dengar	derived_form	batch-001
 kedip	K3435	kedip	lemma	batch-069
 kedokteran	K0183	dokter	derived_form	batch-004
+"kedondong"	K3309	kedondong	lemma	batch-066
 kedudukan	K0071	duduk	derived_form	batch-002
 kedut	K3436	kedut	lemma	batch-069
 kegabutan	K0092	gabut	derived_form	batch-002
@@ -331,6 +326,7 @@ kenalan	K0215	kenal	derived_form	batch-005
 kenapa	K0624	kenapa	lemma	batch-013
 kenapa-kenapa	K0665	kenapa-kenapa	lemma	batch-014
 kencan	K0664	kencan	lemma	batch-014
+kencang	K3582	kencang	lemma	batch-072
 kencur	K2188	kencur	lemma	batch-044
 kendali	K0937	kendali	lemma	batch-019
 kendaraan	K0399	kendaraan	lemma	batch-008
@@ -347,6 +343,7 @@ kepala putik	K3216	kepala putik	lemma	batch-064
 kepala sari	K3215	kepala sari	lemma	batch-064
 kepanasan	K0251	panas	derived_form	batch-005
 kepastian	K0235	pasti	derived_form	batch-005
+"kepel"	K3325	kepel	lemma	batch-066
 kepercayaan	K0241	percaya	derived_form	batch-005
 kepergian	K0017	pergi	derived_form	batch-001
 keperluan	K0231	perlu	derived_form	batch-005
@@ -371,6 +368,7 @@ keren	K0574	keren	lemma	batch-012
 kereta	K1397	kereta	lemma	batch-028
 kerikil	K0941	kerikil	lemma	batch-019
 kering	K0319	kering	lemma	batch-007
+keringat	K3610	keringat	lemma	batch-072
 keripik	K0942	keripik	lemma	batch-019
 kerja	K0021	kerja	lemma	batch-001
 kertas	K0295	kertas	lemma	batch-006
@@ -389,6 +387,7 @@ kesedihan	K0085	sedih	derived_form	batch-002
 kesehatan	K0179	sehat	derived_form	batch-004
 kesel	K0662	kesel	lemma	batch-014
 keselamatan	K0248	selamat	derived_form	batch-005
+"kesemek"	K3310	kesemek	lemma	batch-066
 kesempatan	K1398	kesempatan	lemma	batch-028
 kesenangan	K0084	senang	derived_form	batch-002
 kesepian	K0250	sepi	derived_form	batch-005
@@ -419,6 +418,7 @@ keyakinan	K0242	yakin	derived_form	batch-005
 keyboard komputer	K2378	keyboard komputer	lemma	batch-048
 khawatir	K0334	khawatir	lemma	batch-007
 khianat	K3554	khianat	lemma	batch-071
+khusus	K3585	khusus	lemma	batch-072
 kibas	K3447	kibas	lemma	batch-069
 kijang	K2280	kijang	lemma	batch-046
 kikil	K1921	kikil	lemma	batch-039
@@ -434,6 +434,7 @@ kirim	K0061	kirim	lemma	batch-002
 kiriman	K0061	kirim	derived_form	batch-002
 kismis	K1922	kismis	lemma	batch-039
 kita	K0005	kita	lemma	batch-001
+"kiwi"	K3314	kiwi	lemma	batch-066
 klavikula	K3093	klavikula	lemma	batch-062
 KlikGo	K2518	KlikGo	lemma	batch-051
 klorofil	K3178	klorofil	lemma	batch-064
@@ -523,6 +524,7 @@ kura-kura	K2233	kura-kura	lemma	batch-045
 kurang	K0233	kurang	lemma	batch-005
 kurir	K2469	kurir	lemma	batch-050
 Kuririo	K2514	Kuririo	lemma	batch-051
+"kurma"	K3321	kurma	lemma	batch-066
 kursi	K0253	kursi	lemma	batch-006
 kusam	K3422	kusam	lemma	batch-068
 kuskus	K2283	kuskus	lemma	batch-046
@@ -569,6 +571,7 @@ langit	K0155	langit	lemma	batch-004
 langit-langit	K0155	langit	derived_form	batch-004
 langka	K0949	langka	lemma	batch-019
 langkah	K1411	langkah	lemma	batch-029
+"langsat"	K3319	langsat	lemma	batch-066
 langsung	K0950	langsung	lemma	batch-019
 lanjut	K0226	lanjut	lemma	batch-005
 lanjutan	K0226	lanjut	derived_form	batch-005
@@ -600,11 +603,13 @@ layar	K1420	layar	lemma	batch-029
 layar LCD	K2382	layar LCD	lemma	batch-048
 layar OLED	K2383	layar OLED	lemma	batch-048
 layar sentuh	K2381	layar sentuh	lemma	batch-048
+lazim	K3584	lazim	lemma	batch-072
 lebah	K1421	lebah	lemma	batch-029
 lebah madu	K2284	lebah madu	lemma	batch-046
 lebar	K1422	lebar	lemma	batch-029
 lebay	K0097	lebay	lemma	batch-002
 lebih	K0234	lebih	lemma	batch-005
+"leci"	K3320	leci	lemma	batch-066
 lega	K0344	lega	lemma	batch-007
 legging	K2606	legging	lemma	batch-053
 legislatif	K2876	legislatif	lemma	batch-058
@@ -640,6 +645,7 @@ lesu	K1432	lesu	lemma	batch-029
 letak	K1433	letak	lemma	batch-029
 letih	K3467	letih	lemma	batch-069
 letusan gunung	K2682	letusan gunung	lemma	batch-054
+lewat	K3625	lewat	lemma	batch-072
 lezat	K1434	lezat	lemma	batch-029
 lho	K0667	lho	lemma	batch-014
 liana	K3207	liana	lemma	batch-064
@@ -654,6 +660,7 @@ limbah	K1438	limbah	lemma	batch-029
 limpa	K3096	limpa	lemma	batch-062
 limun	K1439	limun	lemma	batch-029
 lincah	K3470	lincah	lemma	batch-069
+lingkungan	K3599	lingkungan	lemma	batch-072
 Linkaran	K2511	Linkaran	lemma	batch-051
 lintah	K2285	lintah	lemma	batch-046
 lintas	K1440	lintas	lemma	batch-029
@@ -667,6 +674,7 @@ logam	K1443	logam	lemma	batch-029
 logika	K1444	logika	lemma	batch-029
 lokasi	K0368	lokasi	lemma	batch-008
 lomba	K1445	lomba	lemma	batch-029
+lompat	K3601	lompat	lemma	batch-072
 lompat galah	K3341	lompat galah	lemma	batch-067
 lompat jangkit	K3342	lompat jangkit	lemma	batch-067
 lompat tinggi	K3343	lompat tinggi	lemma	batch-067
@@ -677,6 +685,7 @@ lontong	K1977	lontong	lemma	batch-040
 lorong	K1448	lorong	lemma	batch-029
 lowongan	K1449	lowongan	lemma	batch-029
 lu	K0009	lu	lemma	batch-001
+luang	K3624	luang	lemma	batch-072
 luar	K0378	luar	lemma	batch-008
 luas	K3412	luas	lemma	batch-068
 lubang	K1450	lubang	lemma	batch-029
