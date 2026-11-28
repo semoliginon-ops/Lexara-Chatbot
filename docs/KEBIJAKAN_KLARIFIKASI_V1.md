@@ -104,3 +104,7 @@ Sebelum implementasi kebijakan dialog, pekerjaan terpisah harus menetapkan:
 5. cakupan dan jumlah tes khusus yang tetap kecil dan tidak mengulang tes v1.
 
 **Kriteria penerimaan rancangan:** setiap keputusan bertanya memiliki alasan dan sumber; tidak ada pertanyaan saat sistem hanya mengalami kegagalan internal atau status deferred; satu giliran memuat paling banyak satu fokus klarifikasi; dan beberapa penanda komunikatif tidak otomatis diperlakukan sebagai pilihan yang saling meniadakan.
+
+## 10. Status implementasi per 28 November 2026
+
+Perencana keputusan read-only telah diimplementasikan sesuai [KONTRAK_PERENCANA_KLARIFIKASI_V1.md](KONTRAK_PERENCANA_KLARIFIKASI_V1.md). Tepat 11 tes khusus lulus melalui GitHub Actions Run #1 [46117290394](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46117290394). Implementasi belum menghasilkan redaksi pertanyaan, belum mengelola jawaban/penolakan, dan belum dihubungkan ke dialog/runtime.
