@@ -1816,3 +1816,35 @@ Batas utama rancangan:
 - menunda pemetaan token berulang dan kalimat majemuk; mempertahankan status partial/unresolved.
 
 Tahap implementasi berikutnya dibatasi pada satu modul baru, tepat 10 tes khusus, dan satu workflow GitHub Actions terfokus. Belum ada implementasi kode atau tes yang dijalankan pada langkah rancangan ini.
+
+## Representasi Konteks Terpadu v1 — implementasi dan verifikasi, 28 November 2026
+
+Implementasi baca-saja telah dibuat sesuai kontrak `docs/KONTRAK_REPRESENTASI_KONTEKS_TERPADU_V1.md`.
+
+Berkas:
+- `tools/context_snapshot.py`: fungsi `build_context_snapshot(analysis, parse_result)` dan exception `ContextSnapshotError`.
+- `tests/test_context_snapshot.py`: tepat 10 metode tes.
+- `.github/workflows/context-snapshot-tests.yml`: workflow khusus yang berjalan pada perubahan modul/tes atau dispatch manual.
+
+Perilaku yang diverifikasi:
+- Mengemas kandidat leksikal, morfologi, voice, POS, evidence POS kontekstual, dan hasil parser tanpa menghapus kandidat sumber.
+- Mempertahankan urutan token dan `token_index` per kemunculan.
+- Memetakan subject, predicate, object, adjunct, dan complement hanya jika bentuk token unik dan cocok tepat satu kali.
+- Mempertahankan punctuation sebagai `not_applicable`.
+- Menandai token parser-unresolved dan token yang tidak teramati secara terpisah; ketiadaan observasi tidak dijadikan evidence negatif.
+- Menunda pemetaan token berulang, kalimat majemuk, dan status parser yang tidak didukung.
+- Menyimpan salinan keluaran parser serta sumber token, tidak memutasi input, dan menghasilkan keluaran deterministik.
+- Satu tes menjalankan pipeline nyata kamus lengkap → `analyze_text` → POS → `parse_sentence` → snapshot untuk kalimat `Aku makan nasi besok.`.
+
+GitHub Actions:
+- Run #1 [46110454120](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46110454120) gagal sebelum tes berjalan karena kesalahan sintaks pada fixture kalimat majemuk.
+- Kesalahan fixture diperbaiki; tidak ada perubahan pada modul produksi akibat kegagalan tersebut.
+- Run #2 [46110483234](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46110483234) sukses 10/10.
+- Tes pipeline nyata ditambahkan ke salah satu metode tes yang sama agar jumlah tetap tepat 10.
+- Run #3 [46110525292](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46110525292) sukses, **10/10 tes lulus**; log memuat `Ran 10 tests` dan `OK`.
+
+Batas:
+- Snapshot hanya mengemas hasil; tidak memilih sense/POS, menghasilkan evidence semantik, atau menyimpulkan semantic role.
+- Modul belum dihubungkan ke entrypoint/runtime aplikasi.
+- Tidak ada perubahan kamus, Concept Layer, aturan konteks, analyzer, POS, morfologi, parser, generator, selector, atau orchestrator.
+- Regression suite 450 tes dan tes lama komponen lain tidak dijalankan ulang.
