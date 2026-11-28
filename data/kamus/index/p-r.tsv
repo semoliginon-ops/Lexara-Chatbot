@@ -1,8 +1,5 @@
 # Token index — p-r
 # token	id	lemma	type	batch
-"persik"	K3312	persik	lemma	batch-066
-"pir"	K3311	pir	lemma	batch-066
-"plum"	K3313	plum	lemma	batch-066
 pabrik	K1501	pabrik	lemma	batch-030
 pacar	K0113	pacar	lemma	batch-003
 padahal	K0629	padahal	lemma	batch-013
@@ -28,6 +25,7 @@ pakaian olahraga	K2616	pakaian olahraga	lemma	batch-053
 paksa	K3527	paksa	lemma	batch-071
 paling	K0630	paling	lemma	batch-013
 Palmerah	K2828	Palmerah	lemma	batch-057
+palsu	K3581	palsu	lemma	batch-072
 pamer	K1504	pamer	lemma	batch-031
 pamit	K1038	pamit	lemma	batch-021
 panahan	K3329	panahan	lemma	batch-067
@@ -95,6 +93,7 @@ pegawai bank	K2488	pegawai bank	lemma	batch-050
 pegunungan	K0158	gunung	derived_form	batch-004
 pekerja	K0021	kerja	derived_form	batch-001
 pekerjaan	K0021	kerja	derived_form	batch-001
+pel	K3617	pel	lemma	batch-072
 pelabuhan	K0395	pelabuhan	lemma	batch-008
 pelajar	K0187	belajar	derived_form	batch-004
 pelaku	K2894	pelaku	lemma	batch-058
@@ -284,6 +283,7 @@ pergantian	K0221	ganti	derived_form	batch-005
 pergelangan	K3105	pergelangan	lemma	batch-062
 pergi	K0017	pergi	lemma	batch-001
 perhatian	K1045	perhatian	lemma	batch-021
+perih	K3605	perih	lemma	batch-072
 perihelion	K3156	perihelion	lemma	batch-063
 perikanan	K0168	ikan	derived_form	batch-004
 perikardium	K3106	perikardium	lemma	batch-062
@@ -307,6 +307,7 @@ persaudaraan	K0110	saudara	derived_form	batch-003
 persekolahan	K0184	sekolah	derived_form	batch-004
 persen	K1525	persen	lemma	batch-031
 persetujuan	K0244	setuju	derived_form	batch-005
+"persik"	K3312	persik	lemma	batch-066
 persusuan	K0175	susu	derived_form	batch-004
 pertama	K1526	pertama	lemma	batch-031
 pertanyaan	K0189	tanya	derived_form	batch-004
@@ -351,6 +352,7 @@ pinjam	K0410	pinjam	lemma	batch-009
 pintar	K1538	pintar	lemma	batch-031
 pintu	K0256	pintu	lemma	batch-006
 pipa	K1539	pipa	lemma	batch-031
+"pir"	K3311	pir	lemma	batch-066
 piring	K0277	piring	lemma	batch-006
 pisang	K1937	pisang	lemma	batch-039
 pisang goreng	K2039	pisang goreng	lemma	batch-041
@@ -361,10 +363,12 @@ pizza	K1938	pizza	lemma	batch-039
 planet gas	K3159	planet gas	lemma	batch-063
 planet katai	K3158	planet katai	lemma	batch-063
 planet kebumian	K3160	planet kebumian	lemma	batch-063
+"plum"	K3313	plum	lemma	batch-066
 plumula	K3221	plumula	lemma	batch-064
 pneumonia	K3062	pneumonia	lemma	batch-061
 pohon	K0159	pohon	lemma	batch-004
 pokoknya	K0631	pokoknya	lemma	batch-013
+pola	K3592	pola	lemma	batch-072
 poles	K3499	poles	lemma	batch-070
 polinasi	K3194	polinasi	lemma	batch-064
 polio	K3063	polio	lemma	batch-061
@@ -378,6 +382,7 @@ populer	K1543	populer	lemma	batch-031
 pori-pori	K3124	pori-pori	lemma	batch-062
 porsi	K0479	porsi	lemma	batch-010
 port USB	K2428	port USB	lemma	batch-049
+posisi	K3596	posisi	lemma	batch-072
 potensi	K1544	potensi	lemma	batch-031
 potong	K0471	potong	lemma	batch-010
 power bank	K2397	power bank	lemma	batch-048
@@ -436,6 +441,7 @@ radikula	K3220	radikula	lemma	batch-064
 radio	K1055	radio	lemma	batch-022
 radio mobil	K2407	radio mobil	lemma	batch-049
 radio portabel	K2408	radio portabel	lemma	batch-049
+ragam	K3590	ragam	lemma	batch-072
 ragu	K0243	ragu	lemma	batch-005
 rahang	K2596	rahang	lemma	batch-052
 rahasia	K1056	rahasia	lemma	batch-022
@@ -453,6 +459,7 @@ rambutan	K1061	rambutan	lemma	batch-022
 ramen	K1940	ramen	lemma	batch-039
 rangka	K1062	rangka	lemma	batch-022
 rangkai	K1063	rangkai	lemma	batch-022
+rangkak	K3602	rangkak	lemma	batch-072
 rangkul	K1064	rangkul	lemma	batch-022
 rantai	K1065	rantai	lemma	batch-022
 ranting	K2676	ranting	lemma	batch-054
@@ -464,6 +471,7 @@ rasanya	K1068	rasanya	lemma	batch-022
 rating	K2546	rating	lemma	batch-051
 ratus	K1069	ratus	lemma	batch-022
 rawa	K2668	rawa	lemma	batch-054
+rawan	K3577	rawan	lemma	batch-072
 rawat	K1070	rawat	lemma	batch-022
 rawon	K1987	rawon	lemma	batch-040
 rayap	K2980	rayap	lemma	batch-060
@@ -496,6 +504,7 @@ rencana	K0449	rencana	lemma	batch-009
 rendah	K1083	rendah	lemma	batch-022
 rendam	K1081	rendam	lemma	batch-022
 rendang	K1941	rendang	lemma	batch-039
+rengut	K3612	rengut	lemma	batch-072
 rentan	K1084	rentan	lemma	batch-022
 renyah	K3410	renyah	lemma	batch-068
 repeater Wi-Fi	K2393	repeater Wi-Fi	lemma	batch-048
@@ -533,6 +542,7 @@ rontok	K1098	rontok	lemma	batch-022
 roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
 router Wi-Fi	K2391	router Wi-Fi	lemma	batch-048
+ruang	K3597	ruang	lemma	batch-072
 rubah	K2293	rubah	lemma	batch-046
 rugbi	K3365	rugbi	lemma	batch-067
 rugi	K1099	rugi	lemma	batch-022
