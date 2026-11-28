@@ -11,13 +11,13 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 
 ## Snapshot proyek — 28 November 2026
 
-- **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. Tahap berikutnya pada peta proyek adalah 2.7 — Inventarisasi bukti dan evaluasi pipeline terpadu.
+- **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. **Tahap 2.7 juga selesai** pada 28 November 2026 setelah inventarisasi bukti, audit celah integrasi, dan verifikasi empat skenario end-to-end; baseline terbaru adalah GitHub Actions Run #260 (**450/450 tes lulus**). **Tahap aktif sekarang: Tahap 3 — Hubungan makna dan pemrosesan konteks.**
 - Parser saat ini **v1.9**. Ini nomor versi parser, bukan tanda bahwa seluruh Tahap 2.6 sudah selesai.
 - Kamus: **3.025 lema dalam 60 batch**; tidak ada rencana audit ulang batch secara rutin.
 - Tahap 2.5 (POS) telah ditutup berdasarkan keputusan pengguna.
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test); test split tetap tersegel.
 - Evaluasi POS kontekstual pada development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- Baseline regresi terbaru yang tercatat: GitHub Actions [Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46087530316) sukses dengan **446/446 regression tests lulus**. Hasil run terdahulu tetap menjadi bukti untuk cakupan khusus masing-masing.
+- Baseline regresi terbaru: GitHub Actions [Run #260](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46090180853) sukses dengan **450/450 regression tests lulus**. Run #257 (446/446) tetap dicatat sebagai baseline sebelum empat tes integrasi end-to-end ditambahkan. Hasil run terdahulu tetap menjadi bukti untuk cakupan khusus masing-masing.
 
 ## Aturan kerja yang harus dijaga
 
@@ -181,7 +181,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 <badge color="success">Resmi dibuka — audit representasi makna dan relasi konsep</badge>
 
-**Catatan urutan:** beberapa komponen awal Tahap 3 sudah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Ini bukan berarti gerbang Tahap 3 sudah terpenuhi. Tahap 2.6 telah ditutup atas keputusan pengguna; Tahap 2.7 berfokus pada inventarisasi bukti dan evaluasi celah, bukan mengulang seluruh pengujian sebelumnya.
+**Catatan urutan:** beberapa komponen awal Tahap 3 telah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Tahap 3 kini resmi dibuka setelah gerbang Tahap 2.7 terpenuhi, tetapi Tahap 3 sendiri masih dalam tahap awal dan belum selesai. Tahap 2.6 tetap ditutup atas keputusan pengguna; Tahap 2.7 diselesaikan melalui inventarisasi bukti dan evaluasi celah, bukan pengulangan seluruh pengujian sebelumnya.
 
 - [ ] Mengembangkan representasi makna kata dan relasi antarkonsep.
 - [x] Membuat resolver kandidat semantic role berbasis bukti konteks eksplisit; pemilihan hanya terjadi jika satu frame didukung bukti kuat dan semua alternatif disingkirkan bukti kuat. Resolver tidak membuat bukti konteks sendiri; penghasil bukti kontekstual masih menjadi pekerjaan berikutnya. Run #149: 337/337 tes regresi lulus; Run #152: guard perbandingan argument slot yang sama tervalidasi, 339/339 tes lulus.
@@ -238,6 +238,5 @@ Embedding **bukan tahap wajib dan bukan prasyarat** untuk menyelesaikan tahapan 
 
 ## Titik lanjut resmi
 
-Tahap 2.5 tetap ditutup. **Tahap 2.6 — parser v1.9 juga telah ditutup atas keputusan pengguna pada 28 November 2026.** Titik lanjut berikutnya adalah **Tahap 2.7 — inventarisasi bukti dan evaluasi pipeline terpadu**. Mulai dengan memetakan hasil pengujian yang sudah ada; jangan menjalankan ulang skenario yang telah terbukti. Pengujian tambahan hanya diusulkan untuk celah nyata, dengan cakupan dan jumlah yang disepakati sebelum CI dijalankan. Setelah gerbang Tahap 2 terpenuhi berdasarkan bukti yang tersedia, barulah Tahap 3 dapat dibuka.
+Tahap 2.5 dan Tahap 2.6 tetap ditutup. **Tahap 2.7 selesai pada 28 November 2026** setelah inventarisasi 21 berkas tes dan dua workflow, pemetaan cakupan/batas baseline, audit celah pipeline, serta verifikasi tepat empat skenario integrasi end-to-end. Baseline terakhir yang diverifikasi adalah GitHub Actions Run #260 (**450/450 tes regresi lulus**). **Titik lanjut resmi: Tahap 3 — Hubungan makna dan pemrosesan konteks**, dimulai dari item pertama: mengembangkan representasi makna kata dan relasi antarkonsep. Tahap 3 masih berjalan; audit awal representasi makna telah dicatat di dokumen status. Jangan membuka kembali Tahap 2.6, mengulang tes yang sudah terbukti, atau menambah lema tanpa persetujuan eksplisit pengguna.
 
-- [x] Pemetaan semantic role pasif konservatif tervalidasi CI: subjek permukaan → argumen OBJ valensi; agen pasif melalui objek pascaverbal atau frasa `oleh`; agen yang tidak disebutkan boleh omitted. Dukungan dibatasi pada frame valensi SUBJ+OBJ dan klausa sederhana. Run #144 sukses (323/323 tes); Run #145 menambahkan dua tes integrasi end-to-end untuk agen pascaverbal dan agen yang dilesapkan, sukses (325/325 tes); Run #147 menambahkan dua guard untuk menolak parser non-SVO atau kepala predikat yang hilang, sukses (327/327 tes); Run #148 menguji konsistensi alternatif AGENT/CAUSER pada kalimat aktif dan pasif melalui pipeline penuh, sukses (328/328 tes).
