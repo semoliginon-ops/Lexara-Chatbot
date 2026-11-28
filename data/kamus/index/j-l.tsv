@@ -1,5 +1,4 @@
 # Token index — j-l
-# token\tid\tlemma\ttype\tbatch
 "jamblang"	K3326	jamblang	lemma	batch-066
 "jambu air"	K3307	jambu air	lemma	batch-066
 "jambu biji"	K3306	jambu biji	lemma	batch-066
@@ -11,6 +10,7 @@
 "kurma"	K3321	kurma	lemma	batch-066
 "langsat"	K3319	langsat	lemma	batch-066
 "leci"	K3320	leci	lemma	batch-066
+# token\tid\tlemma\ttype\tbatch
 jabatan	K0902	jabatan	lemma	batch-019
 jabatan publik	K2917	jabatan publik	lemma	batch-059
 jack audio	K2435	jack audio	lemma	batch-049
@@ -32,6 +32,7 @@ jajanan	K0455	jajanan	lemma	batch-010
 jaket	K0271	jaket	lemma	batch-006
 jaksa	K2465	jaksa	lemma	batch-050
 jalan	K0020	jalan	lemma	batch-001
+jalan cepat	K3348	jalan cepat	lemma	batch-067
 jalanan	K0020	jalan	derived_form	batch-001
 jam	K0293	jam	lemma	batch-006
 jam dinding	K2316	jam dinding	lemma	batch-047
@@ -92,6 +93,7 @@ jorok	K0915	jorok	lemma	batch-019
 jual	K0056	jual	lemma	batch-002
 jualan	K0056	jual	derived_form	batch-002
 juara	K1387	juara	lemma	batch-028
+judo	K3353	judo	lemma	batch-067
 juga	K0150	juga	lemma	batch-003
 jujur	K0240	jujur	lemma	batch-005
 juli	K3031	juli	lemma	batch-061
@@ -179,6 +181,7 @@ kangen	K0686	kangen	lemma	batch-014
 kangkung	K1916	kangkung	lemma	batch-039
 kanguru	K2229	kanguru	lemma	batch-045
 kanker	K3053	kanker	lemma	batch-061
+kano	K3333	kano	lemma	batch-067
 kantong	K0922	kantong	lemma	batch-019
 kantor	K0437	kantor	lemma	batch-009
 kapal	K1393	kapal	lemma	batch-028
@@ -189,6 +192,7 @@ kapiler	K3092	kapiler	lemma	batch-062
 kapstok	K2341	kapstok	lemma	batch-047
 kapur	K0924	kapur	lemma	batch-019
 karang	K2660	karang	lemma	batch-054
+karate	K3354	karate	lemma	batch-067
 karcis	K0925	karcis	lemma	batch-019
 karena	K0151	karena	lemma	batch-003
 karier	K1394	karier	lemma	batch-028
@@ -455,6 +459,7 @@ Kota Administrasi Jakarta Utara	K2803	Kota Administrasi Jakarta Utara	lemma	batc
 kotiledon	K3219	kotiledon	lemma	batch-064
 kotor	K0322	kotor	lemma	batch-007
 Kramat Jati	K2843	Kramat Jati	lemma	batch-057
+kriket	K3372	kriket	lemma	batch-067
 krimer	K2100	krimer	lemma	batch-042
 kriminalitas	K2877	kriminalitas	lemma	batch-058
 kroket	K2101	kroket	lemma	batch-042
@@ -548,6 +553,8 @@ lapar	K0176	lapar	lemma	batch-004
 lapis	K1413	lapis	lemma	batch-029
 larang	K1414	larang	lemma	batch-029
 lari	K0073	lari	lemma	batch-002
+lari estafet	K3338	lari estafet	lemma	batch-067
+lari gawang	K3337	lari gawang	lemma	batch-067
 larian	K0073	lari	derived_form	batch-002
 laring	K3095	laring	lemma	batch-062
 laris	K1415	laris	lemma	batch-029
@@ -585,6 +592,9 @@ lembut	K1425	lembut	lemma	batch-029
 lemon	K1925	lemon	lemma	batch-039
 lemon tea	K2132	lemon tea	lemma	batch-043
 lempar	K1426	lempar	lemma	batch-029
+lempar cakram	K3345	lempar cakram	lemma	batch-067
+lempar lembing	K3346	lempar lembing	lemma	batch-067
+lempar martil	K3347	lempar martil	lemma	batch-067
 lengah	K0583	lengah	lemma	batch-012
 lengkap	K1427	lengkap	lemma	batch-029
 lengkuas	K2187	lengkuas	lemma	batch-044
@@ -619,7 +629,11 @@ logam	K1443	logam	lemma	batch-029
 logika	K1444	logika	lemma	batch-029
 lokasi	K0368	lokasi	lemma	batch-008
 lomba	K1445	lomba	lemma	batch-029
+lompat galah	K3341	lompat galah	lemma	batch-067
+lompat jangkit	K3342	lompat jangkit	lemma	batch-067
+lompat tinggi	K3343	lompat tinggi	lemma	batch-067
 loncat	K1446	loncat	lemma	batch-029
+loncat indah	K3360	loncat indah	lemma	batch-067
 longgar	K1447	longgar	lemma	batch-029
 lontong	K1977	lontong	lemma	batch-040
 lorong	K1448	lorong	lemma	batch-029
