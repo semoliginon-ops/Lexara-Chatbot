@@ -40,7 +40,7 @@ class ConceptLayerLoaderTests(unittest.TestCase):
         self.assertEqual(data["mappings"], [])
 
     def test_relation_hidden_if_either_endpoint_not_reviewed(self):
-        rows = self._records(self.concepts); rows[1]["status"] = "reviewed"; self._write(self.concepts, rows)
+        rows = self._records(self.concepts); rows[0]["status"] = "proposed"; rows[1]["status"] = "reviewed"; self._write(self.concepts, rows)
         rows = self._records(self.relations); rows[0]["status"] = "reviewed"; self._write(self.relations, rows)
         self.assertEqual(self._load()["relations"], [])
 
