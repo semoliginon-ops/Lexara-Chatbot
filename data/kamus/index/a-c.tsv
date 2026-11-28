@@ -1,21 +1,8 @@
 # Token index — a-c
 # token	id	lemma	type	batch
-Anterin	K2508	Anterin	lemma	batch-051
-Asia Trans	K2509	Asia Trans	lemma	batch-051
-Blu-Jek	K2530	Blu-Jek	lemma	batch-051
-Blu-ray	K2439	Blu-ray	lemma	batch-049
-Bluebird	K2506	Bluebird	lemma	batch-051
-Bonceng	K2515	Bonceng	lemma	batch-051
-Buroq	K2531	Buroq	lemma	batch-051
-CD	K2437	CD	lemma	batch-049
-Cakung	K2845	Cakung	lemma	batch-057
-Call Jack	K2526	Call Jack	lemma	batch-051
-Cempaka Putih	K2812	Cempaka Putih	lemma	batch-057
-Cengkareng	K2822	Cengkareng	lemma	batch-057
-Cilandak	K2836	Cilandak	lemma	batch-057
-Cilincing	K2819	Cilincing	lemma	batch-057
-Cipayung	K2849	Cipayung	lemma	batch-057
-Ciracas	K2848	Ciracas	lemma	batch-057
+"buah naga"	K3316	buah naga	lemma	batch-066
+"cempedak"	K3318	cempedak	lemma	batch-066
+"cermai"	K3322	cermai	lemma	batch-066
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
 abai	K3448	abai	lemma	batch-069
@@ -145,6 +132,7 @@ andalan	K0710	andalan	lemma	batch-015
 andil	K0711	andil	lemma	batch-015
 aneh	K0513	aneh	lemma	batch-011
 anemia	K3036	anemia	lemma	batch-061
+angan	K3564	angan	lemma	batch-071
 anggap	K0445	anggap	lemma	batch-009
 anggar	K3357	anggar	lemma	batch-067
 anggaran	K1832	anggaran	lemma	batch-037
@@ -174,6 +162,7 @@ antarmuka	K1838	antarmuka	lemma	batch-037
 antena	K1839	antena	lemma	batch-037
 antena parabola	K2355	antena parabola	lemma	batch-048
 antena televisi	K2406	antena televisi	lemma	batch-049
+Anterin	K2508	Anterin	lemma	batch-051
 anting	K1814	anting	lemma	batch-037
 antre	K0352	antre	lemma	batch-008
 antusias	K0713	antusias	lemma	batch-015
@@ -217,8 +206,10 @@ asam absisat	K3204	asam absisat	lemma	batch-064
 asap	K0518	asap	lemma	batch-011
 asbak	K1817	asbak	lemma	batch-037
 aset	K1844	aset	lemma	batch-037
+Asia Trans	K2509	Asia Trans	lemma	batch-051
 asin	K0459	asin	lemma	batch-010
 asinan	K2003	asinan	lemma	batch-041
+asing	K3568	asing	lemma	batch-071
 asisten	K1218	asisten	lemma	batch-025
 asli	K0715	asli	lemma	batch-015
 asma	K3037	asma	lemma	batch-061
@@ -281,6 +272,7 @@ badan	K0124	badan	lemma	batch-003
 badan eksekutif	K2907	badan eksekutif	lemma	batch-059
 badan legislatif	K2906	badan legislatif	lemma	batch-059
 badan yudikatif	K2908	badan yudikatif	lemma	batch-059
+bagi	K3549	bagi	lemma	batch-071
 bagus	K0041	bagus	lemma	batch-001
 bagusan	K0041	bagus	derived_form	batch-001
 bahan	K1223	bahan	lemma	batch-025
@@ -317,6 +309,7 @@ bandrek	K2007	bandrek	lemma	batch-041
 bangau	K2255	bangau	lemma	batch-046
 banget	K0048	banget	lemma	batch-001
 bangga	K0336	bangga	lemma	batch-007
+bangkit	K3535	bangkit	lemma	batch-071
 bangkrut	K0721	bangkrut	lemma	batch-015
 bangku	K1227	bangku	lemma	batch-025
 bangun	K0016	bangun	lemma	batch-001
@@ -324,6 +317,7 @@ bangunkan	K0016	bangun	derived_form	batch-001
 banjir	K0315	banjir	lemma	batch-007
 banjir bandang	K2709	banjir bandang	lemma	batch-055
 banjir rob	K2710	banjir rob	lemma	batch-055
+bantah	K3551	bantah	lemma	batch-071
 bantal	K0289	bantal	lemma	batch-006
 banteng	K2205	banteng	lemma	batch-045
 banting	K0722	banting	lemma	batch-015
@@ -343,6 +337,7 @@ basah	K0320	basah	lemma	batch-007
 basi	K0723	basi	lemma	batch-015
 baskom	K2304	baskom	lemma	batch-047
 batal	K0522	batal	lemma	batch-011
+batas	K3546	batas	lemma	batch-071
 baterai	K1229	baterai	lemma	batch-025
 baterai AA	K2360	baterai AA	lemma	batch-048
 baterai AAA	K2361	baterai AAA	lemma	batch-048
@@ -369,6 +364,7 @@ bayi	K0524	bayi	lemma	batch-011
 beban	K0725	beban	lemma	batch-015
 bebek	K1955	bebek	lemma	batch-040
 becak	K2552	becak	lemma	batch-052
+beda	K3566	beda	lemma	batch-071
 begadang	K0726	begadang	lemma	batch-015
 begini	K3021	begini	lemma	batch-060
 begitu	K3022	begitu	lemma	batch-060
@@ -379,6 +375,7 @@ bekerja	K0021	kerja	derived_form	batch-001
 bekicot	K2241	bekicot	lemma	batch-045
 beku	K0727	beku	lemma	batch-015
 bel	K1232	bel	lemma	batch-025
+bela	K3552	bela	lemma	batch-071
 belah	K3497	belah	lemma	batch-070
 belajar	K0187	belajar	lemma	batch-004
 belakang	K0373	belakang	lemma	batch-008
@@ -536,6 +533,9 @@ bising	K0327	bising	lemma	batch-007
 biskuit	K1958	biskuit	lemma	batch-040
 biskuit cokelat	K2066	biskuit cokelat	lemma	batch-042
 blender	K2306	blender	lemma	batch-047
+Blu-Jek	K2530	Blu-Jek	lemma	batch-051
+Blu-ray	K2439	Blu-ray	lemma	batch-049
+Bluebird	K2506	Bluebird	lemma	batch-051
 bluetooth	K2357	bluetooth	lemma	batch-048
 blus	K2649	blus	lemma	batch-053
 bocah	K0536	bocah	lemma	batch-011
@@ -553,6 +553,7 @@ boleh	K0144	boleh	lemma	batch-003
 bolos	K0740	bolos	lemma	batch-015
 bolu	K1959	bolu	lemma	batch-040
 bolu kukus	K2067	bolu kukus	lemma	batch-042
+Bonceng	K2515	Bonceng	lemma	batch-051
 boncos	K0741	boncos	lemma	batch-015
 bongkar	K3477	bongkar	lemma	batch-070
 bonus	K0538	bonus	lemma	batch-011
@@ -573,7 +574,6 @@ bros	K2642	bros	lemma	batch-053
 brosur	K1243	brosur	lemma	batch-025
 brownies	K1960	brownies	lemma	batch-040
 buah	K0162	buah	lemma	batch-004
-"buah naga"	K3316	buah naga	lemma	batch-066
 buah-buahan	K0162	buah	derived_form	batch-004
 buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
@@ -608,6 +608,7 @@ bunglon	K2242	bunglon	lemma	batch-045
 buntut	K0746	buntut	lemma	batch-015
 bupati	K2860	bupati	lemma	batch-058
 buram	K1247	buram	lemma	batch-025
+Buroq	K2531	Buroq	lemma	batch-051
 buru	K3508	buru	lemma	batch-070
 buru-buru	K0350	buru-buru	lemma	batch-007
 buruan	K0747	buruan	lemma	batch-015
@@ -640,7 +641,9 @@ cacing	K2214	cacing	lemma	batch-045
 cair	K0541	cair	lemma	batch-011
 cakram akresi	K3137	cakram akresi	lemma	batch-063
 cakrawala peristiwa	K3138	cakrawala peristiwa	lemma	batch-063
+Cakung	K2845	Cakung	lemma	batch-057
 cakwe	K2013	cakwe	lemma	batch-041
+Call Jack	K2526	Call Jack	lemma	batch-051
 calon	K2866	calon	lemma	batch-058
 camilan	K0453	camilan	lemma	batch-010
 campak	K3041	campak	lemma	batch-061
@@ -657,9 +660,11 @@ capek	K0047	capek	lemma	batch-001
 caper	K0679	caper	lemma	batch-014
 capung	K2215	capung	lemma	batch-045
 capung jarum	K2999	capung jarum	lemma	batch-060
+cara	K3544	cara	lemma	batch-071
 cardigan	K2604	cardigan	lemma	batch-053
 cari	K0063	cari	lemma	batch-002
 casing komputer	K2424	casing komputer	lemma	batch-049
+CD	K2437	CD	lemma	batch-049
 cecak	K1248	cecak	lemma	batch-025
 cecap	K3445	cecap	lemma	batch-069
 cegah	K3392	cegah	lemma	batch-068
@@ -676,9 +681,11 @@ celana pendek	K2608	celana pendek	lemma	batch-053
 celup	K3479	celup	lemma	batch-070
 cemas	K0333	cemas	lemma	batch-007
 cemburu	K0341	cemburu	lemma	batch-007
-"cempedak"	K3318	cempedak	lemma	batch-066
+cemooh	K3560	cemooh	lemma	batch-071
+Cempaka Putih	K2812	Cempaka Putih	lemma	batch-057
 cendol	K1250	cendol	lemma	batch-025
 cendrawasih	K2268	cendrawasih	lemma	batch-046
+Cengkareng	K2822	Cengkareng	lemma	batch-057
 cengkeram	K3442	cengkeram	lemma	batch-069
 cengkih	K1251	cengkih	lemma	batch-025
 cepat	K0045	cepat	lemma	batch-001
@@ -686,7 +693,6 @@ cerdas	K0754	cerdas	lemma	batch-016
 ceret	K2308	ceret	lemma	batch-047
 cerewet	K0750	cerewet	lemma	batch-015
 cerita	K0191	cerita	lemma	batch-004
-"cermai"	K3322	cermai	lemma	batch-066
 cermin	K0292	cermin	lemma	batch-006
 ceroboh	K0755	ceroboh	lemma	batch-016
 cetak	K0756	cetak	lemma	batch-016
@@ -698,9 +704,14 @@ churros	K2071	churros	lemma	batch-042
 cicak	K2216	cicak	lemma	batch-045
 cicil	K0751	cicil	lemma	batch-015
 cicip	K0476	cicip	lemma	batch-010
+Cilandak	K2836	Cilandak	lemma	batch-057
+Cilincing	K2819	Cilincing	lemma	batch-057
+cincang	K3531	cincang	lemma	batch-071
 cincau	K2015	cincau	lemma	batch-041
 cincin	K2641	cincin	lemma	batch-053
 cinta	K0114	cinta	lemma	batch-003
+Cipayung	K2849	Cipayung	lemma	batch-057
+Ciracas	K2848	Ciracas	lemma	batch-057
 cireng	K2016	cireng	lemma	batch-041
 coba	K0228	coba	lemma	batch-005
 cobek	K2336	cobek	lemma	batch-047
