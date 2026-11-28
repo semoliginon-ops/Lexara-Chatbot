@@ -164,7 +164,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memiliki dataset POS 100 kalimat / 543 token dengan development dan test split.
 - [x] Memiliki validator dataset dan evaluasi POS development.
 - [x] Memiliki regression suite lintas komponen yang dijalankan melalui GitHub Actions.
-- [ ] Menginventarisasi bukti pengujian yang sudah ada berdasarkan komponen dan jalur pipeline; gunakan hasil/run terdahulu, tanpa menjalankan ulang skenario yang sama.
+- [x] Menginventarisasi 21 berkas pengujian berdasarkan komponen dan jalur pipeline, dua workflow GitHub Actions, serta bukti CI terdahulu; Run #257 diverifikasi dari ringkasan dan log. Tidak ada skenario yang dijalankan ulang.
 - [ ] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk hasil `partial` dan `unresolved`.
 - [ ] Mengidentifikasi hanya celah pipeline end-to-end yang belum memiliki bukti memadai. Jangan membuat ulang dataset untuk kasus yang sudah tercakup.
 - [ ] Meninjau kebutuhan variasi baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks berdasarkan celah yang benar-benar ditemukan; kategori bukan kewajiban untuk diuji semua.
