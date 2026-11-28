@@ -1534,3 +1534,15 @@ Hasil ini membuktikan validator memenuhi pemeriksaan struktural yang dicakup ole
 
 
 **Status setelah verifikasi batas kasus — 28 November 2026:** seluruh 19 kasus validator Concept Layer telah terverifikasi lulus secara gabungan di Termux: 18 tes lulus pada eksekusi pertama, lalu satu tes UTF-8 yang fixture-nya diperbaiki lulus pada eksekusi terisolasi. Suite 19 tes tidak dijalankan ulang sebagai satu batch. Tidak ada CI/Actions yang dipicu dan regression suite 450 tes tidak dijalankan ulang. Checklist Tahap 3 kini menetapkan pekerjaan berikutnya: menyiapkan rancangan dataset pilot Concept Layer kecil dan terkurasi berdasarkan `sense_id` yang sudah ada, termasuk kandidat konsep, bukti, dan relasi. Belum ada data konsep runtime atau perubahan kamus/batch/indeks.
+
+
+## Pilot awal Concept Layer — 28 November 2026
+
+Dibuat tiga berkas data terpisah sesuai kontrak v1:
+- `data/concepts/concepts.jsonl`: 3 konsep (`kendaraan`, `mobil`, `roda`).
+- `data/concepts/sense_concept_map.jsonl`: 3 pemetaan, masing-masing mengacu pada sense yang sudah ada.
+- `data/concepts/concept_relations.jsonl`: 2 relasi berarah (`mobil IS_A kendaraan`; `roda PART_OF kendaraan`).
+
+Seluruh delapan record berstatus `proposed`; belum ada record yang diaktifkan sebagai pengetahuan runtime. Ketiga sense diverifikasi langsung dari sumber kamus: `K0201-S1` (mobil, batch-004), `K0399-S1` (kendaraan, batch-008), dan `K0497-S1` (roda, batch-010). Bukti setiap konsep, pemetaan, dan relasi menunjuk definisi sense yang relevan. Tidak ada perubahan pada kamus, batch, indeks, validator, atau runtime. Tidak ada tes, CI, atau GitHub Actions yang dijalankan untuk pembuatan data ini.
+
+**Titik lanjut:** jalankan validator struktural pada tiga berkas pilot dengan `--sense-index` hanya untuk batch-004, batch-008, dan batch-010. Setelah validasi struktural, lakukan tinjauan linguistik sebelum mempertimbangkan perubahan status menjadi `reviewed`. Suite 19 tes dan regression suite 450 tes tidak perlu diulang.
