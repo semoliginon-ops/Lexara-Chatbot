@@ -1783,3 +1783,12 @@ Kondisi generator `token_present` memeriksa apakah kata cue muncul dalam observa
 Dataset dan inventaris diperbarui. Tidak ada kode, kamus, parser, POS, morfologi, selector, generator, orchestrator, maupun runtime yang diubah. Tidak ada tes/Actions yang dijalankan karena perubahan hanya pada data dan dokumentasi; tidak ada klaim CI baru.
 
 **Titik lanjut resmi:** cari contoh kalimat autentik beserta sumber yang memungkinkan cue dikaitkan dengan token target secara lebih spesifik. Jika bukti tersebut tidak tersedia, biarkan aturan proposed atau hapus/tolak aturan; jangan memaksakan aktivasi. Integrasi entrypoint/runtime tetap menunggu aturan yang benar-benar layak dan batas pemetaan token yang aman.
+
+
+## Bukti contoh sense ambigu — pembaruan 28 November 2026
+
+Penelusuran dibatasi pada `bangun` dan `jam`, sesuai item checklist. Arsip KBBI daring menyediakan contoh `bangun` dalam makna kembali berdiri setelah jatuh dan terjaga pada pagi hari. Pedoman resmi Badan Bahasa (Buku *Bentuk dan Pilihan Kata*, 2019) mengonfirmasi makna `jam` sebagai durasi dan sebagai arloji/alat penunjuk waktu, dengan contoh durasi “selama delapan jam sehari”.
+
+Rincian dan tautan sumber dicatat pada `docs/INVENTARIS_SENSE_AMBIGU_DAN_KANDIDAT_ATURAN_KONTEKS.md`. Bukti ini masih berupa contoh leksikografis/pedoman, belum korpus autentik. Karena itu tiga aturan tetap `proposed`/`weak`, satu aturan `rejected`; tidak ada aturan diaktifkan. Tidak ada perubahan kode, runtime, kamus, atau tes/Actions.
+
+**Titik lanjut terbatas:** lanjutkan pencarian bukti korpus hanya untuk `bangun` dan `jam`. Jangan menambah lema, aturan, atau integrasi runtime sebelum bukti memadai.
