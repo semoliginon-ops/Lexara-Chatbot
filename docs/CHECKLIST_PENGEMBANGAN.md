@@ -60,7 +60,7 @@ Jika pekerjaan aktif menemukan kekurangan di tahap lain, catat terlebih dahulu:
 
 Temuan yang tidak memblokir target aktif tetap menjadi backlog dan tidak dikerjakan spontan. Jika benar-benar memblokir, jelaskan bukti serta dampaknya dan minta keputusan pengguna sebelum mengubah komponen lintas-tahap. Setiap perubahan harus memiliki satu tahap pemilik, satu tujuan yang jelas, dan ruang lingkup pengujian yang disepakati sebelumnya. Penambahan lema tetap memerlukan persetujuan eksplisit pengguna.
 
-**Pagar kerja Tahap 3 saat ini:** kontrak desain Concept Layer v1 telah disetujui dan didokumentasikan di [KONTRAK_REPRESENTASI_KONSEP.md](KONTRAK_REPRESENTASI_KONSEP.md). Tiga berkas data yang direncanakan adalah `concepts.jsonl`, `sense_concept_map.jsonl`, dan `concept_relations.jsonl`; hanya record `reviewed` dengan referensi yang valid yang boleh aktif. Langkah berikutnya adalah membuat validator struktural terpisah beserta fixture sintetis, tanpa mengubah kamus, indeks, morfologi/klitik, POS, parser, atau resolver. Baseline Run #260 (450/450) tetap dipertahankan; tidak ada alasan menjalankan ulang regression suite pada tahap dokumentasi/desain.
+**Pagar kerja Tahap 3 saat ini:** kontrak desain Concept Layer v1 telah disetujui dan didokumentasikan di [KONTRAK_REPRESENTASI_KONSEP.md](KONTRAK_REPRESENTASI_KONSEP.md). Validator read-only `tools/validasi_concept_layer.py`, 16 tes unit terfokus, dan fixture sintetis untuk tiga skema serta indeks sense telah ditambahkan. Validator membaca batch kamus hanya untuk menyelesaikan referensi `sense_id`; tidak mengubah data kamus. Tes terfokus belum dijalankan dan belum ada workflow/CI yang dipicu. Langkah berikutnya adalah menjalankan hanya tes validator Concept Layer, memperbaiki temuan jika ada, lalu memperbarui status berdasarkan hasil nyata. Jangan menjalankan ulang 450 tes regresi tanpa alasan teknis.
 
 ---
 
@@ -218,7 +218,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 **Catatan urutan:** beberapa komponen awal Tahap 3 telah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Tahap 3 kini resmi dibuka setelah gerbang Tahap 2.7 terpenuhi, tetapi Tahap 3 sendiri masih dalam tahap awal dan belum selesai. Tahap 2.6 tetap ditutup atas keputusan pengguna; Tahap 2.7 diselesaikan melalui inventarisasi bukti dan evaluasi celah, bukan pengulangan seluruh pengujian sebelumnya.
 
-- [ ] Mengembangkan representasi makna kata dan relasi antarkonsep.
+- [~] Mengembangkan representasi makna kata dan relasi antarkonsep: kontrak v1 disetujui; validator struktural read-only, 16 tes unit terfokus, dan fixture sintetis telah ditambahkan. Menunggu verifikasi tes terfokus sebelum item dinyatakan selesai.
 - [x] Membuat resolver kandidat semantic role berbasis bukti konteks eksplisit; pemilihan hanya terjadi jika satu frame didukung bukti kuat dan semua alternatif disingkirkan bukti kuat. Resolver tidak membuat bukti konteks sendiri; penghasil bukti kontekstual masih menjadi pekerjaan berikutnya. Run #149: 337/337 tes regresi lulus; Run #152: guard perbandingan argument slot yang sama tervalidasi, 339/339 tes lulus.
 - [ ] Menentukan cara memilih sense berdasarkan konteks kalimat.
 - [ ] Menggabungkan hasil leksikal, morfologi, POS, dan struktur kalimat.
