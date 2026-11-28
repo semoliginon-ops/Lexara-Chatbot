@@ -1,8 +1,5 @@
 # Token index — d-f
 # token	id	lemma	type	batch
-DVD	K2438	DVD	lemma	batch-049
-Draiv	K2513	Draiv	lemma	batch-051
-Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 dada	K2590	dada	lemma	batch-052
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
@@ -267,6 +264,7 @@ dosa	K0547	dosa	lemma	batch-011
 dosen	K1888	dosen	lemma	batch-038
 dosis	K1270	dosis	lemma	batch-026
 doyan	K0548	doyan	lemma	batch-011
+Draiv	K2513	Draiv	lemma	batch-051
 drama	K1271	drama	lemma	batch-026
 drastis	K1272	drastis	lemma	batch-026
 dress	K2646	dress	lemma	batch-053
@@ -287,12 +285,14 @@ duluan	K0614	duluan	lemma	batch-013
 dunia	K0789	dunia	lemma	batch-016
 duplikat	K0809	duplikat	lemma	batch-017
 durasi	K0550	durasi	lemma	batch-011
+Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 durhaka	K0807	durhaka	lemma	batch-017
 duri	K0790	duri	lemma	batch-016
 durian	K0791	durian	lemma	batch-016
 durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
+DVD	K2438	DVD	lemma	batch-049
 e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
@@ -359,6 +359,7 @@ epilepsi	K3047	epilepsi	lemma	batch-061
 episode	K1293	episode	lemma	batch-026
 equalizer	K2444	equalizer	lemma	batch-049
 era	K1294	era	lemma	batch-026
+erang	K3613	erang	lemma	batch-072
 erat	K0813	erat	lemma	batch-017
 eror	K0814	eror	lemma	batch-017
 erosi	K1295	erosi	lemma	batch-026
