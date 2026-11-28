@@ -1521,10 +1521,13 @@ Dibuat sebagai pekerjaan terpisah Tahap 3:
 - Fixture sintetis di `tests/fixtures/concept_layer/`: tiga berkas Concept Layer dan satu batch kamus sintetis untuk menguji resolusi `sense_id`.
 - Validator memakai batch kamus yang diberikan secara eksplisit melalui opsi `--sense-index`, hanya untuk membaca daftar sense dan memeriksa referensi. Batch kamus tidak dimodifikasi.
 
-Verifikasi saat pencatatan:
+Verifikasi pengujian — 28 November 2026:
 - File implementasi, tes, fixture, dan dokumentasi telah dibuat dan dibaca ulang dari repository.
-- **Tes unit belum dieksekusi**; hasil lulus/gagal belum dapat diklaim.
-- Tidak ada GitHub Actions workflow yang dipicu dan tidak ada regression suite 450 tes yang dijalankan.
+- Tes dijalankan secara lokal di Termux dengan perintah `python -m unittest discover -s tests -p "test_validasi_concept_layer.py" -v`.
+- **Hasil: 17 tes dijalankan, seluruhnya lulus (17/17), 0 gagal, 0 error, dalam 0,092 detik.**
+- Tidak ada GitHub Actions workflow yang dipicu dan tidak ada regression suite 450 tes yang dijalankan ulang.
 - Tidak ada perubahan pada data kamus utama, indeks, morfologi/klitik, POS, parser, atau resolver.
 
-**Langkah berikutnya:** jalankan hanya `python -m unittest discover -s tests -p "test_validasi_concept_layer.py" -v` pada lingkungan Python proyek. Jika seluruh tes terfokus lulus, lanjutkan tinjauan batas kasus validator; jangan jalankan 450 tes regresi kecuali ada alasan teknis baru.
+Hasil ini membuktikan validator memenuhi pemeriksaan struktural yang dicakup oleh 17 tes dan fixture sintetis; hasil tersebut tidak membuktikan kebenaran linguistik anotasi konsep atau kelengkapan pemahaman konteks.
+
+**Langkah berikutnya:** tinjau batas kasus validator sebelum memulai data konsep atau pembaca/runtime. Jangan menjalankan 450 tes regresi kecuali ada alasan teknis baru.
