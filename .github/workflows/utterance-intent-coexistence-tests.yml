@@ -1,0 +1,32 @@
+name: Utterance Intent Coexistence Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/utterance_interpretation.py"
+      - "tests/test_utterance_intent_coexistence.py"
+      - ".github/workflows/utterance-intent-coexistence-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: utterance-intent-coexistence-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Run exactly 4 intent coexistence tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exactly 4 focused tests
+        run: python -m unittest discover -s tests -p "test_utterance_intent_coexistence.py" -v
