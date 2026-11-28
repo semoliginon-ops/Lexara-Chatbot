@@ -152,11 +152,11 @@ class ConceptLayerValidationTests(unittest.TestCase):
         self.assertTrue(any("konsep tidak ditemukan" in error for error in errors))
 
     def test_sense_index_is_read_only_and_resolves_nested_senses(self):
+        original = self.sense_index.read_text(encoding="utf-8")
         sense_ids, errors = load_sense_ids([self.sense_index])
         self.assertEqual(errors, [])
         self.assertEqual(sense_ids, {"K0020-S1"})
-        self.assertEqual((FIXTURES / "sense_index.jsonl").read_text(encoding="utf-8"),
-                         json.dumps(json.loads((FIXTURES / "sense_index.jsonl").read_text(encoding="utf-8"))))
+        self.assertEqual(self.sense_index.read_text(encoding="utf-8"), original)
 
     def test_requires_sense_index(self):
         _, errors = validate_concept_layer(self.concepts, self.mappings, self.relations, [])
