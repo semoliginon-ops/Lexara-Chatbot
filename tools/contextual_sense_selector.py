@@ -70,12 +70,12 @@ def _validate_evidence(
             item.get("sense_id"), f"{label}.sense_id"
         )
         polarity = item.get("polarity")
-        if polarity not in _POLARITIES:
+        if not isinstance(polarity, str) or polarity not in _POLARITIES:
             raise ContextualSenseSelectorError(
                 f"{label}.polarity harus supports atau contradicts"
             )
         strength = item.get("strength")
-        if strength not in _STRENGTHS:
+        if not isinstance(strength, str) or strength not in _STRENGTHS:
             raise ContextualSenseSelectorError(
                 f"{label}.strength harus weak atau strong"
             )
