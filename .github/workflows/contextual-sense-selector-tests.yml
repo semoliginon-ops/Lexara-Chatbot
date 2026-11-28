@@ -1,0 +1,33 @@
+name: Contextual Sense Selector Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/contextual_sense_selector.py"
+      - "tests/test_contextual_sense_selector.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: contextual-sense-selector-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Run Contextual Sense Selector unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run focused tests only
+        run: python -m unittest discover -s tests -p "test_contextual_sense_selector.py" -v
