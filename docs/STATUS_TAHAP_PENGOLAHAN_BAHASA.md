@@ -1494,3 +1494,20 @@ Sebelum menambah atau memigrasikan anotasi, susun kontrak representasi konseptua
 - GitHub Actions Run #260 sukses dengan **450/450 tes regresi lulus**. Run ini menjadi baseline terbaru setelah empat tes integrasi tersebut ditambahkan. Tidak ada pengujian tambahan setelah Run #260 dalam pekerjaan dokumentasi ini.
 - Tahap 3 resmi dibuka. Audit awal representasi makna dan relasi konsep telah selesai; pekerjaan berikutnya adalah menyusun kontrak representasi relasi sebelum implementasi atau perubahan data.
 - Tidak ada lema, batch kamus, indeks, validator, resolver, implementasi bahasa, atau tes yang diubah dalam pembaruan dokumentasi ini.
+
+
+## Persetujuan kontrak Concept Layer v1 — 28 November 2026
+
+Pengguna menyetujui kontrak teknis representasi konsep dan relasi antarkonsep. Spesifikasi disimpan di [KONTRAK_REPRESENTASI_KONSEP.md](KONTRAK_REPRESENTASI_KONSEP.md).
+
+Keputusan desain yang dikunci:
+- Lapisan konsep terpisah dari kamus dan memakai tiga berkas JSONL: `concepts.jsonl`, `sense_concept_map.jsonl`, dan `concept_relations.jsonl`.
+- Satu sense boleh belum dipetakan, dipetakan ke satu konsep, atau ke beberapa konsep dengan bukti terpisah. Beberapa sense boleh merujuk ke konsep yang sama jika maknanya memang setara.
+- Identitas konsep memakai ID stabil `C` + minimal enam digit; relasi memakai ID stabil `R` + minimal enam digit.
+- Status `proposed`, `reviewed`, dan `rejected` berlaku pada konsep, pemetaan, dan relasi. Hanya record `reviewed` dengan seluruh referensi yang juga reviewed yang masuk ke pengetahuan aktif.
+- Relasi antarkonsep berarah, menggunakan katalog tipe tertutup v1, dan tidak menghasilkan relasi kebalikan secara otomatis.
+- Setiap record memiliki bukti berupa jenis sumber, referensi sumber opsional, dan alasan anotasi.
+
+Batas pekerjaan tetap: tidak mengubah batch kamus, indeks, relasi leksikal, morfologi/klitik, POS, parser, atau resolver yang ada. Tidak ada data konsep, validator, pembaca runtime, tes, atau workflow yang dibuat/dijalankan dalam persetujuan desain ini.
+
+**Titik lanjut:** membuat validator struktural terpisah dan fixture sintetis untuk tiga skema JSONL. Validator tidak boleh memerlukan perubahan kamus utama. Baseline regresi tetap GitHub Actions Run #260 (450/450); tidak dijalankan ulang untuk perubahan dokumentasi ini.
