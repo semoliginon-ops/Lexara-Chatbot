@@ -1358,3 +1358,43 @@ Hal-hal yang tetap menjadi batas/pekerjaan tertunda dan tidak boleh diklaim sele
 - Sejumlah konstruksi dan variasi kalimat masih menghasilkan status partial atau unresolved secara konservatif.
 
 Baseline terakhir yang diverifikasi: GitHub Actions Run #257, **446/446 regression tests lulus**. Tidak ada perubahan kamus atau penambahan lema dalam pekerjaan penutupan ini. Tahap berikutnya hanya dimulai jika pengguna mengarahkannya; jangan otomatis membuka kembali Tahap 2.6 atau memperluas tesnya.
+
+## Inventarisasi bukti awal Tahap 2.7 — 28 November 2026
+
+Audit dilakukan dengan membaca struktur 21 berkas pengujian, dua workflow GitHub Actions, riwayat run, dan log Run #257. Tidak ada tes yang dijalankan ulang dan tidak ada workflow baru yang dipicu.
+
+### Peta berkas pengujian
+
+| Kelompok | Berkas | Bukti yang tersedia |
+|---|---:|---|
+| Normalisasi, tokenisasi, pencocokan token, loader kamus | 4 | Perilaku dasar, format input, kecocokan lema/varian/bentuk turunan, preservasi kandidat, dan validasi data |
+| Morfologi | 1 | Prefiks, sufiks, konfiks, perubahan nasal, reduplikasi, bentuk leksikal yang tidak boleh dipotong, dan klitik terikat |
+| POS dan dataset | 4 | POS leksikal, resolusi konteks konservatif, ambiguitas/abstention, validasi dataset, dan evaluasi development |
+| Analisis teks dan parser | 3 | Integrasi analisis token, struktur kalimat, serta skenario pipeline kamus sampai parser |
+| Voice | 3 | Deteksi voice morfologis, penghubung ke kepala predikat, dan integrasi pipeline voice |
+| Semantic role dan valensi | 4 | Pemetaan peran aktif/pasif, resolusi berbasis bukti, integrasi pilot valensi, dan validasi struktur anotasi |
+| Indeks dan relasi leksikal | 2 | Kesesuaian indeks dengan batch sumber dan validasi struktur relasi leksikal |
+| **Total** | **21** | **Inventaris berkas, bukan hitungan skenario end-to-end** |
+
+### Bukti workflow dan baseline
+
+Workflow `.github/workflows/pos-validation.yml` menjalankan validasi relasi leksikal untuk kelompok batch terpilih, validasi kamus lengkap, validasi metadata valensi, validasi dataset POS, evaluasi development, dan seluruh regression suite. Workflow `.github/workflows/dictionary-audit.yml` merupakan audit kamus manual/read-only, terpisah dari validasi rutin.
+
+GitHub Actions [Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46087530316) diperiksa melalui ringkasan job dan log:
+- Validasi relasi leksikal untuk batch terpilih berhasil.
+- Validasi kamus lengkap memuat **60 batch / 3.025 entri** dan berhasil.
+- Validasi metadata valensi berhasil.
+- Validasi dataset POS berhasil.
+- Evaluasi hanya menggunakan split development; test split tidak dibuka.
+- Regression suite: **446 tes, seluruhnya lulus**.
+
+**Catatan konsistensi workflow:** nama langkah pada YAML masih tertulis “Validate full 3,019-lemma dictionary”, tetapi log Run #257 secara eksplisit menunjukkan 3.025 entri dimuat. Ini ketidaktepatan label tampilan, bukan kegagalan validasi. Label belum diubah dalam audit ini agar tidak memicu push workflow dan konsumsi kuota Actions hanya untuk kosmetik.
+
+### Kesimpulan inventaris awal
+
+- Inventaris 21 berkas pengujian dan dua workflow telah dilakukan.
+- Run #257 menjadi bukti baseline terbaru; hasil run khusus sebelumnya tetap relevan untuk cakupan masing-masing.
+- Jumlah berkas dan jumlah tes tidak diperlakukan sebagai ukuran kelengkapan bahasa.
+- Pemetaan rinci antara skenario yang sudah terbukti, batas `partial/unresolved`, dan kemungkinan celah pipeline masih menjadi pekerjaan berikutnya.
+- Tidak ada kebutuhan untuk mengulang seluruh 446 tes atau menjalankan CI baru hanya untuk menyelesaikan inventaris ini.
+
