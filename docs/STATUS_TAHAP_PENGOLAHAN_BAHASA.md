@@ -1792,3 +1792,12 @@ Penelusuran dibatasi pada `bangun` dan `jam`, sesuai item checklist. Arsip KBBI 
 Rincian dan tautan sumber dicatat pada `docs/INVENTARIS_SENSE_AMBIGU_DAN_KANDIDAT_ATURAN_KONTEKS.md`. Bukti ini masih berupa contoh leksikografis/pedoman, belum korpus autentik. Karena itu tiga aturan tetap `proposed`/`weak`, satu aturan `rejected`; tidak ada aturan diaktifkan. Tidak ada perubahan kode, runtime, kamus, atau tes/Actions.
 
 **Titik lanjut terbatas:** lanjutkan pencarian bukti korpus hanya untuk `bangun` dan `jam`. Jangan menambah lema, aturan, atau integrasi runtime sebelum bukti memadai.
+
+
+## Penelusuran korpus terbatas untuk bangun dan jam — 28 November 2026
+
+Mengikuti checklist, pencarian hanya dilakukan untuk dua lema same-POS yang telah dipilih. Halaman Tutur menyediakan contoh korpus Leipzig untuk `bangun`: satu contoh “... bangun tidur ...” mendukung pembacaan S1 (terjaga/bangkit dari tidur). Contoh lain yang ditampilkan tidak cukup jelas untuk membuktikan S2 (berdiri), sehingga tidak dijadikan evidence pembeda. Halaman Tutur untuk `jam` menampilkan definisi dan contoh leksikografis, tetapi tidak menampilkan kalimat korpus; frekuensi korpus saja tidak cukup sebagai bukti konteks.
+
+Rujukan dan penilaian terperinci dicatat di `docs/INVENTARIS_SENSE_AMBIGU_DAN_KANDIDAT_ATURAN_KONTEKS.md`. Hasil pencarian ini belum cukup untuk mengaktifkan aturan: tiga aturan tetap `proposed`/`weak`, satu tetap `rejected`; tidak ada status/strength yang dinaikkan. Tidak ada contoh buatan, aturan baru, perubahan kode, atau perubahan runtime. Pencarian dibatasi dan dihentikan pada sumber yang diperiksa karena belum tersedia bukti yang memadai untuk kedua sisi pembedaan sense.
+
+**Keputusan operasional:** jangan lanjut ke integrasi entrypoint/runtime berdasarkan evidence saat ini. Tahan aturan tetap nonaktif sampai tersedia contoh korpus yang benar-benar membedakan sense dan mengaitkan cue dengan token target secara aman. Tidak perlu mengulang tes atau menjalankan GitHub Actions karena hanya dokumentasi yang berubah.
