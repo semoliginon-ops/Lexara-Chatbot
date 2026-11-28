@@ -14,8 +14,8 @@ RELATION_TYPES = {
     "IS_A", "PART_OF", "HAS_PART", "CAUSES",
     "USED_FOR", "HAS_PROPERTY", "LOCATED_IN", "ASSOCIATED_WITH",
 }
-CONCEPT_ID_RE = re.compile(r"C\d{6,}")
-RELATION_ID_RE = re.compile(r"R\d{6,}")
+CONCEPT_ID_RE = re.compile(r"C[0-9]{6,}")
+RELATION_ID_RE = re.compile(r"R[0-9]{6,}")
 
 CONCEPT_FIELDS = {"concept_id", "label", "definition", "status", "evidence"}
 MAPPING_FIELDS = {"sense_id", "concept_id", "status", "evidence"}
@@ -29,8 +29,8 @@ def _read_jsonl(path: str | Path, kind: str) -> tuple[list[dict[str, Any]], list
     errors: list[str] = []
     try:
         lines = file_path.read_text(encoding="utf-8").splitlines()
-    except OSError as exc:
-        return [], [f"{file_path}: tidak dapat dibaca: {exc}"]
+    except (OSError, UnicodeError) as exc:
+        return [], [f"{file_path}: tidak dapat dibaca sebagai UTF-8: {exc}"]
 
     for line_number, raw in enumerate(lines, start=1):
         location = f"{file_path}:{line_number}"
