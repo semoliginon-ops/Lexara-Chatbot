@@ -101,7 +101,11 @@ def plan_clarification(
             or index < 0 or index >= len(items)
             or not isinstance(refs, list) or len(refs) < 2
             or any(not isinstance(ref, dict) for ref in refs)
-            or len({tuple(sorted(ref.items())) for ref in refs}) != len(refs)
+            or any(
+                ref == previous
+                for position, ref in enumerate(refs)
+                for previous in refs[:position]
+            )
             or not isinstance(material, bool)
             or not isinstance(distinguishable, bool)
             or isinstance(priority, bool) or not isinstance(priority, int)
