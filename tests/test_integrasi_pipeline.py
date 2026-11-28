@@ -1985,9 +1985,13 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         analyzed = self.analyze(sentence)
         for connector in connectors:
             token = self.token(analyzed, connector)
-            self.assertEqual(token["status"], "unknown", msg=repr(token))
+            if connector == "namun":
+                self.assertEqual(token["status"], "matched", msg=repr(token))
+                self.assertEqual(token["pos_source"], "dictionary")
+            else:
+                self.assertEqual(token["status"], "unknown", msg=repr(token))
+                self.assertEqual(token["pos_source"], "supplement")
             self.assertEqual(token["pos"], ["CONJ"])
-            self.assertEqual(token["pos_source"], "supplement")
             self.assertEqual(token["pos_status"], "identified")
             self.assertEqual(token["context_pos"], "CONJ")
             self.assertEqual(token["pos_context_status"], "unambiguous")
