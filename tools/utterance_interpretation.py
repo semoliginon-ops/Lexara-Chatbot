@@ -150,38 +150,42 @@ def _classify_intent(snapshot: dict[str, Any]) -> dict[str, Any]:
             unique.append(candidate)
             seen.add(candidate[0])
 
-    if len(unique) == 1:
-        label, field, reason = unique[0]
-        evidence = [{"source_field": field}]
+    labels = [item[0] for item in unique]
+    evidence: list[dict[str, Any]] = []
+    for label, field, _ in unique:
+        reference: dict[str, Any] = {"source_field": field}
         if field == "tokens":
+            marker = "tolong" if label == "request" else "jangan"
             token_index = next(
                 index for index, item in enumerate(snapshot["tokens"])
                 if item.get("kind", "word") == "word"
-                and item["token"].casefold() == (
-                    "tolong" if label == "request" else "jangan"
-                )
+                and item["token"].casefold() == marker
             )
-            evidence[0]["token_index"] = token_index
+            reference["token_index"] = token_index
+        evidence.append(reference)
+
+    if len(unique) == 1:
         return {
             "status": "resolved",
-            "label": label,
-            "candidates": [label],
+            "label": labels[0],
+            "labels": labels,
+            "candidates": [labels[0]],
             "evidence_refs": evidence,
-            "reason": reason,
+            "reason": unique[0][2],
         }
     if len(unique) > 1:
         return {
-            "status": "ambiguous",
+            "status": "resolved",
             "label": None,
-            "candidates": [item[0] for item in unique],
-            "evidence_refs": [
-                {"source_field": field} for _, field, _ in unique
-            ],
-            "reason": "multiple_explicit_forms",
+            "labels": labels,
+            "candidates": [],
+            "evidence_refs": evidence,
+            "reason": "multiple_coexisting_explicit_forms",
         }
     return {
         "status": "unresolved",
         "label": "unknown",
+        "labels": [],
         "candidates": [],
         "evidence_refs": [],
         "reason": "insufficient_explicit_evidence",
