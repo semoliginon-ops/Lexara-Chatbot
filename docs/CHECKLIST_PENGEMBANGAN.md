@@ -166,7 +166,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memiliki regression suite lintas komponen yang dijalankan melalui GitHub Actions.
 - [x] Menginventarisasi 21 berkas pengujian berdasarkan komponen dan jalur pipeline, dua workflow GitHub Actions, serta bukti CI terdahulu; Run #257 diverifikasi dari ringkasan dan log. Tidak ada skenario yang dijalankan ulang.
 - [x] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk perilaku `partial` dan `unresolved`; rinciannya dicatat di dokumen status.
-- [ ] Mengidentifikasi hanya celah pipeline end-to-end yang belum memiliki bukti memadai. Jangan membuat ulang dataset untuk kasus yang sudah tercakup.
+- [x] Mengidentifikasi celah pipeline end-to-end yang belum memiliki bukti memadai: integrasi dari kalimat mentah melalui kamus/POS/konteks/parser/voice hingga semantic role belum dibuktikan dalam satu jalur dengan token POS hasil pipeline nyata. Tes voice/semantic yang ada masih menyusun token parser secara manual atau memakai lexicon uji; bukti integrasi modul tersedia, tetapi belum membuktikan rangkaian penuh pada kamus aktual. Cakupan usulan dibatasi 4 skenario; belum dijalankan dan menunggu persetujuan pengguna.
 - [ ] Meninjau kebutuhan variasi baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks berdasarkan celah yang benar-benar ditemukan; kategori bukan kewajiban untuk diuji semua.
 - [ ] Menetapkan expected output hanya untuk kasus baru yang memang diperlukan atau keluaran yang belum memiliki kontrak jelas.
 - [ ] Menyusun usulan pengujian tambahan yang minimal dan tidak tumpang tindih; **jumlah dan cakupannya harus ditentukan sebelum CI dijalankan**.
