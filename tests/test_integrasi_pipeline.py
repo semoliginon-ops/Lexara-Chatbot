@@ -1903,6 +1903,77 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                     self.assertEqual(result["function_status"], "selected_by_host_pos")
                     self.assertEqual(result["nominal_phrase_role"], expected_role)
 
+
+
+    # Ten distinct full-pipeline cases for the still-untested coordinating
+    # conjunctions "atau" (alternative) and "tetapi" (contrast).
+    def _assert_two_clause_coordination(self, sentence, connector, relation):
+        parsed = parse_sentence(self.analyze(sentence))
+        self.assertEqual(parsed["status"], "parsed", msg=repr(parsed))
+        self.assertEqual(parsed["pattern"], "KLAUSA-KOORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 2)
+        self.assertIsNone(parsed["clauses"][0]["connector"])
+        self.assertEqual(parsed["clauses"][1]["connector"], connector)
+        self.assertEqual(
+            parsed["clauses"][1]["relation_to_previous"], relation
+        )
+        for clause in parsed["clauses"]:
+            self.assertIn(clause["analysis"]["status"], {"parsed", "partial"})
+            self.assertTrue(clause["analysis"]["roles"]["subject"])
+            self.assertTrue(clause["analysis"]["roles"]["predicate"])
+
+    def test_alternative_coordination_two_intransitive_clauses(self):
+        self._assert_two_clause_coordination(
+            "Aku makan atau dia minum.", "atau", "alternatif"
+        )
+
+    def test_alternative_coordination_with_formal_pronouns(self):
+        self._assert_two_clause_coordination(
+            "Saya bekerja atau Anda belajar.", "atau", "alternatif"
+        )
+
+    def test_alternative_coordination_with_plural_subjects(self):
+        self._assert_two_clause_coordination(
+            "Kami pergi atau mereka pulang.", "atau", "alternatif"
+        )
+
+    def test_alternative_coordination_with_transitive_predicates(self):
+        self._assert_two_clause_coordination(
+            "Dia membaca buku atau aku menulis surat.", "atau", "alternatif"
+        )
+
+    def test_alternative_coordination_with_mixed_clause_predicates(self):
+        self._assert_two_clause_coordination(
+            "Kamu tidur atau saya bekerja.", "atau", "alternatif"
+        )
+
+    def test_adversative_coordination_two_intransitive_clauses(self):
+        self._assert_two_clause_coordination(
+            "Aku bekerja tetapi dia tidur.", "tetapi", "pertentangan"
+        )
+
+    def test_adversative_coordination_with_plural_subjects(self):
+        self._assert_two_clause_coordination(
+            "Kami pergi tetapi mereka pulang.", "tetapi", "pertentangan"
+        )
+
+    def test_adversative_coordination_with_two_objects(self):
+        self._assert_two_clause_coordination(
+            "Dia membaca buku tetapi aku menulis surat.",
+            "tetapi", "pertentangan"
+        )
+
+    def test_adversative_coordination_with_formal_pronouns(self):
+        self._assert_two_clause_coordination(
+            "Saya makan tetapi Anda minum.", "tetapi", "pertentangan"
+        )
+
+    def test_adversative_coordination_with_different_subject_persons(self):
+        self._assert_two_clause_coordination(
+            "Kamu belajar tetapi mereka bekerja.",
+            "tetapi", "pertentangan"
+        )
+
 if __name__ == "__main__":
     unittest.main()
 
