@@ -82,16 +82,17 @@ def _check_evidence(value: Any, location: str) -> list[str]:
 
 def _check_status(record: dict[str, Any], location: str) -> list[str]:
     status = record.get("status")
-    if status not in STATUSES:
+    if not isinstance(status, str) or status not in STATUSES:
         return [f"{location}.status: harus salah satu dari {sorted(STATUSES)}"]
     return []
 
 
 def load_sense_ids(paths: Iterable[str | Path]) -> tuple[set[str], list[str]]:
     """Read dictionary batches without modifying them and collect actual sense IDs."""
+    path_list = list(paths)
     sense_ids: set[str] = set()
     errors: list[str] = []
-    for path_value in paths:
+    for path_value in path_list:
         path = Path(path_value)
         try:
             entries = load_batch(path)
@@ -115,7 +116,7 @@ def load_sense_ids(paths: Iterable[str | Path]) -> tuple[set[str], list[str]]:
                 if sense_id in sense_ids:
                     errors.append(f"{location}: sense_id duplikat {sense_id}")
                 sense_ids.add(sense_id)
-    if not list(paths):
+    if not path_list:
         errors.append("minimal satu --sense-index wajib diberikan untuk resolusi sense_id")
     return sense_ids, errors
 
@@ -189,7 +190,7 @@ def validate_records(
                 errors.append(f"{loc}.{field}: konsep tidak ditemukan: {value}")
         if source == target and isinstance(source, str):
             errors.append(f"{loc}: relasi diri sendiri tidak diizinkan pada v1")
-        if relation_type not in RELATION_TYPES:
+        if not isinstance(relation_type, str) or relation_type not in RELATION_TYPES:
             errors.append(f"{loc}.type: tipe relasi tidak dikenal: {relation_type!r}")
         key = (source, relation_type, target)
         if all(isinstance(item, str) for item in key):
