@@ -29,12 +29,14 @@ Dataset awal disimpan di `data/context_rules/context_rules.jsonl` dengan empat a
 
 - `CE000001`: `bangun` S1, cue `tidur`.
 - `CE000002`: `bangun` S2, cue `berdiri`.
-- `CE000003`: `jam` S1, cue `alarm`.
+- `CE000003`: `jam` S1, cue `alarm` — **rejected**, karena tidak cukup spesifik.
 - `CE000004`: `jam` S2, cue `menit`.
 
-Semua aturan sengaja berstatus `proposed` dan berkekuatan `weak`. Cue berasal dari definisi, istilah terkait, atau catatan penggunaan pada entri kamus yang dirujuk di field `source`. Cue tersebut hanya petunjuk awal; kehadirannya tidak membuktikan sense secara mutlak. Secara khusus, `alarm` juga dapat muncul dalam konteks pengaturan durasi, sehingga aturan untuk jam S1 perlu ditinjau hati-hati.
+CE000001, CE000002, dan CE000004 tetap `proposed` dengan strength `weak`. CE000003 (`jam` S1, cue `alarm`) telah diubah menjadi `rejected`: kata alarm juga dapat muncul dalam konteks pengaturan durasi, sehingga tidak cukup membedakan jam sebagai alat dari jam sebagai satuan waktu.
 
-Aturan proposed tidak menghasilkan evidence aktif dan tidak dapat memengaruhi selector. Tidak ada aturan `reviewed`, `strong`, atau pemilihan sense otomatis yang dibuat.
+Cue yang tersisa berasal dari definisi atau istilah terkait pada entri kamus yang dirujuk di field `source`. Semuanya masih petunjuk awal. Karena kondisi `token_present` hanya memeriksa kemunculan kata dalam observasi kalimat, cue lemah ini tidak membuktikan hubungan makna dengan target secara pasti. Selector v1 tidak menggunakan weak evidence untuk memilih sense.
+
+Aturan proposed/rejected tidak menghasilkan evidence aktif. Tidak ada aturan `reviewed` atau `strong`, dan tidak ada pemilihan sense otomatis yang diaktifkan.
 
 ## 4. Kasus yang belum diberi aturan
 
@@ -45,7 +47,7 @@ Aturan proposed tidak menghasilkan evidence aktif dan tidak dapat memengaruhi se
 ## 5. Batas dan keputusan yang diperlukan
 
 1. Inventaris ini belum merupakan validasi linguistik final.
-2. Semua aturan tetap `proposed` sampai pengguna meninjau ketepatan cue, polarity, dan alasan linguistiknya.
+2. Tiga aturan masih `proposed`; satu aturan ditolak karena cue tidak cukup spesifik. Tidak ada aturan yang diaktifkan.
 3. Tidak boleh menaikkan strength menjadi `strong` hanya karena cue tampak relevan.
 4. Belum ada integrasi entrypoint/runtime. Penentuan titik pemanggilan orchestrator merupakan pekerjaan berikutnya setelah kandidat aturan ditinjau.
 5. Tidak ada perubahan pada kamus, indeks, Concept Layer, parser, POS, morfologi, analyzer, generator, selector, atau orchestrator.
