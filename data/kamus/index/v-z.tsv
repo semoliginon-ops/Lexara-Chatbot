@@ -1,5 +1,4 @@
-# Token index — v-z
-# token\tid\tlemma\ttype\tbatch
+# token	id	lemma	type	batch
 vacuum cleaner	K2329	vacuum cleaner	lemma	batch-047
 vagina	K3176	vagina	lemma	batch-063
 vaksin	K1752	vaksin	lemma	batch-036
