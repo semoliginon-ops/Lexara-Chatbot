@@ -154,7 +154,10 @@ def record_clarification_response(
             choice for choice in result["choices"]
             if isinstance(choice, dict) and choice.get("choice_key") == key
         ]
-        if len(matching) != 1:
+        if (
+            len(matching) != 1
+            or not isinstance(matching[0].get("sense_ref"), dict)
+        ):
             result["status"] = "invalid_response"
             result["response"] = None
             return {"status": "invalid_response", "session": result}
