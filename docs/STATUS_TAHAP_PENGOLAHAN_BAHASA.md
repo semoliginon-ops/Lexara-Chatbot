@@ -1511,3 +1511,20 @@ Keputusan desain yang dikunci:
 Batas pekerjaan tetap: tidak mengubah batch kamus, indeks, relasi leksikal, morfologi/klitik, POS, parser, atau resolver yang ada. Tidak ada data konsep, validator, pembaca runtime, tes, atau workflow yang dibuat/dijalankan dalam persetujuan desain ini.
 
 **Titik lanjut:** membuat validator struktural terpisah dan fixture sintetis untuk tiga skema JSONL. Validator tidak boleh memerlukan perubahan kamus utama. Baseline regresi tetap GitHub Actions Run #260 (450/450); tidak dijalankan ulang untuk perubahan dokumentasi ini.
+
+
+## Implementasi awal validator Concept Layer v1 — 28 November 2026
+
+Dibuat sebagai pekerjaan terpisah Tahap 3:
+- `tools/validasi_concept_layer.py`: validator JSONL read-only untuk `concepts`, `sense_concept_map`, dan `concept_relations`.
+- `tests/test_validasi_concept_layer.py`: 17 tes unit terfokus untuk format JSON, field wajib/tambahan, ID, status, bukti, duplikasi, referensi silang, tipe relasi, dan perilaku baca-saja.
+- Fixture sintetis di `tests/fixtures/concept_layer/`: tiga berkas Concept Layer dan satu batch kamus sintetis untuk menguji resolusi `sense_id`.
+- Validator memakai batch kamus yang diberikan secara eksplisit melalui opsi `--sense-index`, hanya untuk membaca daftar sense dan memeriksa referensi. Batch kamus tidak dimodifikasi.
+
+Verifikasi saat pencatatan:
+- File implementasi, tes, fixture, dan dokumentasi telah dibuat dan dibaca ulang dari repository.
+- **Tes unit belum dieksekusi**; hasil lulus/gagal belum dapat diklaim.
+- Tidak ada GitHub Actions workflow yang dipicu dan tidak ada regression suite 450 tes yang dijalankan.
+- Tidak ada perubahan pada data kamus utama, indeks, morfologi/klitik, POS, parser, atau resolver.
+
+**Langkah berikutnya:** jalankan hanya `python -m unittest discover -s tests -p "test_validasi_concept_layer.py" -v` pada lingkungan Python proyek. Jika seluruh tes terfokus lulus, lanjutkan tinjauan batas kasus validator; jangan jalankan 450 tes regresi kecuali ada alasan teknis baru.
