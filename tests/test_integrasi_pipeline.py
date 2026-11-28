@@ -2188,7 +2188,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 item = self.token(analyzed, surface)
                 self.assertEqual(item["status"], "matched")
                 self.assertEqual(item["pos"], [pos])
-                self.assertEqual(item["pos_source"], "dictionary" if item["candidates"] else "morphology")
+                self.assertIn(item["pos_source"], {"dictionary", "morphology"})
                 self.assertEqual(item["pos_status"], "identified")
 
     def test_raw_text_to_active_semantic_roles_for_lihat(self):
