@@ -1869,8 +1869,8 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             ("Dia memilikiku.", "memilikiku", "ku", [], "memiliki", "unresolved"),
             ("Dia memilikimu.", "memilikimu", "mu", [], "memiliki", "unresolved"),
             ("Dia memilikinya.", "memilikinya", "nya", [], "memiliki", "unresolved"),
-            ("Perasaanku berubah.", "perasaanku", "ku", "NOUN", "perasaan", "subject"),
-            ("Perasaanmu berubah.", "perasaanmu", "mu", "NOUN", "perasaan", "subject"),
+            ("Perasaanku berubah.", "perasaanku", "ku", ["NOUN"], "perasaan", "subject"),
+            ("Perasaanmu berubah.", "perasaanmu", "mu", ["NOUN"], "perasaan", "subject"),
         )
 
         for sentence, surface, clitic, expected_host_pos, base_form, expected_role in cases:
@@ -1886,18 +1886,17 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(component["base_form"], base_form)
 
                 parsed = parse_sentence(analyzed)
-                self.assertIn(parsed["status"], {"parsed", "partial"}, msg=repr(parsed))
-                self.assertEqual(len(parsed["clitic_analysis"]), 1)
-                result = parsed["clitic_analysis"][0]
-                self.assertEqual(result["surface"], surface)
-                self.assertEqual(result["base_form"], base_form)
-                self.assertEqual(result["clitic"], clitic)
-
                 if expected_role == "unresolved":
                     self.assertEqual(parsed["status"], "unresolved")
                     self.assertEqual(parsed["clitic_analysis"], [])
                     self.assertIn(surface, parsed["unresolved_tokens"])
                 else:
+                    self.assertIn(parsed["status"], {"parsed", "partial"}, msg=repr(parsed))
+                    self.assertEqual(len(parsed["clitic_analysis"]), 1)
+                    result = parsed["clitic_analysis"][0]
+                    self.assertEqual(result["surface"], surface)
+                    self.assertEqual(result["base_form"], base_form)
+                    self.assertEqual(result["clitic"], clitic)
                     self.assertEqual(parsed["roles"]["subject"], [surface])
                     self.assertEqual(parsed["roles"]["predicate"], ["berubah"])
                     self.assertEqual(result["function"], "possessive")
