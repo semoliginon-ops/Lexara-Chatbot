@@ -1563,4 +1563,21 @@ Perubahan pada GitHub:
 
 Total **8/8 record berstatus `reviewed`**. Data tetap belum digunakan runtime karena pembaca Concept Layer belum dibuat. Tidak ada perubahan pada kamus, batch, indeks, validator, morfologi/klitik, POS, parser, atau resolver. Tidak ada tes, CI, maupun GitHub Actions yang dijalankan untuk perubahan status dan dokumentasi ini.
 
-**Titik lanjut:** buat pembaca Concept Layer baca-saja yang hanya mengekspos record `reviewed`; pemetaan hanya aktif bila konsep tujuannya `reviewed`, dan relasi hanya aktif bila kedua konsep ujungnya `reviewed`. Implementasi dibatasi pada tiga berkas Concept Layer. Tambahkan tes unit terfokus untuk aturan pemuatan/status; jangan mengulang regression suite 450 tes tanpa alasan teknis dan persetujuan ruang lingkup.
+**Titik lanjut:** jalankan dan tinjau 12 tes unit terfokus untuk pembaca Concept Layer. Setelah lulus, rancang integrasi reader ke pemilihan sense kontekstual sebagai pekerjaan terpisah; jangan mengulang regression suite 450 tes atau memicu GitHub Actions.
+
+
+## Pembaca baca-saja Concept Layer v1 — 28 November 2026
+
+Implementasi awal reader dibuat:
+- `tools/concept_layer_loader.py`: fungsi `load_concept_layer(concepts_path, mappings_path, relations_path)` memuat tiga berkas JSONL tanpa menulis atau mengubah sumber.
+- Hanya konsep berstatus `reviewed` yang diekspos.
+- Pemetaan hanya diekspos jika status pemetaan dan konsep tujuannya sama-sama `reviewed`.
+- Relasi hanya diekspos jika status relasi dan kedua konsep ujungnya sama-sama `reviewed`.
+- File kosong diperlakukan sebagai data yang berhasil dimuat dengan hasil kosong; file hilang, encoding rusak, JSON tidak valid, field/skema tidak sesuai, status tidak dikenal, referensi konsep tidak ada, dan ID/relasi duplikat ditolak melalui `ConceptLayerLoadError`.
+- Reader memvalidasi struktur dan referensi antarkonsep, tetapi tidak memvalidasi keberadaan `sense_id` di kamus; validasi referensi sense tetap tanggung jawab validator yang sudah ada.
+
+Tes terfokus ditambahkan di `tests/test_concept_layer_loader.py`: **12 kasus** untuk filter status, dependensi status konsep pada pemetaan/relasi, file kosong vs hilang, JSON rusak, referensi konsep, status tidak valid, duplikasi ID, dan sifat baca-saja.
+
+**Status verifikasi:** file reader dan tes dibuat serta diperbarui di GitHub. Tes 12 kasus belum dijalankan. Tidak ada GitHub Actions/CI yang dipicu, tidak ada regression suite 450 tes yang dijalankan, dan tidak ada perubahan pada kamus, batch, indeks, validator, parser, atau resolver.
+
+**Titik lanjut:** pengguna menjalankan tepat 12 tes baru di Termux dengan `python -m unittest discover -s tests -p "test_concept_layer_loader.py" -v`. Setelah hasilnya ditinjau, pekerjaan berikutnya adalah merancang integrasi reader ke pemilihan sense kontekstual secara terpisah.
