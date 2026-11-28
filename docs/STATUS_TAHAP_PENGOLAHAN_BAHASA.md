@@ -1709,3 +1709,38 @@ Keputusan desain:
 Tidak ada kode runtime, analyzer, parser, POS, morfologi, kamus, indeks, Concept Layer, generator, selector, atau resolver semantic-role yang diubah pada langkah persetujuan desain ini. Implementasi belum dimulai.
 
 **Titik lanjut resmi:** implementasikan orchestrator Contextual Sense v1 sesuai kontrak, lalu verifikasi tepat 10 tes integrasi khusus dengan cakupan yang disetujui.
+
+## Contextual Sense Integration v1 — orchestrator dan verifikasi, 28 November 2026
+
+Implementasi awal sesuai kontrak integrasi telah dibuat sebagai lapisan orkestrasi terpisah.
+
+Berkas:
+- `tools/contextual_sense_integration.py`: fungsi publik `orchestrate_contextual_senses(analysis, parse_result, concept_layer, context_rules)`.
+- `tools/context_rules_loader.py`: fungsi baca-saja `load_context_rules(path)` untuk JSONL; file kosong diterima sebagai himpunan aturan kosong, sedangkan baris JSON rusak atau non-object ditolak.
+- `tests/test_contextual_sense_integration.py`: tepat 10 metode tes.
+- `.github/workflows/contextual-sense-integration-tests.yml`: workflow terfokus yang hanya berjalan saat modul/loader/tes berubah atau melalui workflow_dispatch.
+
+Perilaku yang diverifikasi:
+- Memproses kandidat per token berdasarkan indeks urutan token dalam satu hasil analisis.
+- Memanggil Concept Sense Adapter, Context Evidence Generator, dan Contextual Sense Selector secara terpisah tanpa mengubah modul tersebut.
+- Mempertahankan pemetaan sense yang tidak tersedia sebagai unmapped; tidak menyimpulkan konsep dari relasi.
+- Mengisolasi kandidat dan evidence per token.
+- Menunda pemilihan pada kalimat majemuk, bentuk token berulang, pemetaan parser yang tidak aman, token target yang unresolved, dan status parser yang tidak didukung.
+- Parser partial hanya memakai observasi yang tersedia dan tidak menganggap unresolved token sebagai struktur terkonfirmasi.
+- Aturan proposed/rejected tidak menghasilkan evidence; validasi detail aturan tetap dilakukan generator.
+- Input tidak dimutasi dan hasil deterministik.
+- Satu tes menjalankan jalur nyata kamus lengkap → analyze_text → tag_pos → disambiguate_pos_context → parse_sentence → orchestrator untuk kalimat sederhana `Aku makan nasi besok.`.
+
+Hasil GitHub Actions:
+- Run #1 [46108464948](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46108464948): sukses, **10/10 tes** pada cakupan awal sintetis.
+- Run #2 [46108535931](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46108535931): gagal pada satu ekspektasi tes kapitalisasi; analyzer mengembalikan token yang telah dinormalisasi menjadi huruf kecil. Tidak ada kegagalan pada logika orchestrator yang ditunjukkan oleh assertion tersebut.
+- Ekspektasi tes diperbaiki agar sesuai kontrak keluaran analyzer yang ternormalisasi.
+- Run #3 [46108556894](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46108556894): **success, tepat 10/10 tes**. Log diverifikasi dan memuat `Ran 10 tests` serta `OK`.
+
+Batas yang masih berlaku:
+- Orchestrator tersedia sebagai modul yang menerima keluaran analyzer/POS dan parser; pemanggilan dari entrypoint/runtime aplikasi belum dilakukan.
+- Belum ada dataset aturan konteks linguistik yang dikurasi dan berstatus reviewed. Loader tersedia, tetapi tidak ada aturan buatan otomatis dan tidak ada file aturan pilot yang ditambahkan.
+- Kalimat majemuk dan kemunculan token berulang tetap ditunda sesuai kontrak.
+- Tidak dijalankan ulang regression suite 450 tes maupun tes lama generator, selector, adapter, atau parser.
+
+**Titik lanjut resmi:** inventarisasi kandidat sense ambigu yang layak diberi aturan konteks, susun rancangan aturan beserta bukti linguistiknya untuk ditinjau, lalu tentukan titik pemanggilan orchestrator pada entrypoint/runtime. Jangan menetapkan status reviewed atau strength strong tanpa review dan dasar evidence yang eksplisit.
