@@ -151,3 +151,13 @@ Setelah kontrak diimplementasikan dengan 12 tes khusus, penyaji interaksi dapat 
 Belum ada penyaji, sesi dialog, pemrosesan jawaban bebas, penyimpanan permanen, atau integrasi runtime pada kontrak ini.
 
 **Kriteria penerimaan:** dua sense dalam satu entri dapat dirujuk secara terpisah dan diverifikasi terhadap snapshot; tidak ada ID/definisi rekaan; jalur v1 tetap kompatibel; dan tepat 12 tes baru lulus melalui workflow terfokus.
+
+## 10. Hasil implementasi v1.1
+
+- Planner diperluas secara kompatibel pada tools/clarification_planner.py; jalur candidate_refs v1 tetap tersedia.
+- Jalur sense_refs memvalidasi parent candidate, token_index, candidate_index, sense_index, sense_id, dan definition nonkosong terhadap Context Snapshot.
+- Tes baru: tests/test_clarification_planner_v1_1.py, tepat 12 kasus.
+- Workflow khusus: .github/workflows/clarification-planner-v1-1-tests.yml.
+- GitHub Actions Run #2 [46118895383](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895383) sukses; log memverifikasi 12/12 tes lulus.
+- Kompatibilitas jalur lama diverifikasi ulang melalui Clarification Planner Tests Run [46118895363](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895363); 11/11 tes v1 lulus.
+- Tidak ada perubahan kamus, Context Snapshot, laporan interpretasi, penyaji interaksi, atau runtime.
