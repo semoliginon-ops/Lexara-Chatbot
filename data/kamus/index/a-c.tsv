@@ -1,8 +1,5 @@
 # Token index — a-c
 # token	id	lemma	type	batch
-"buah naga"	K3316	buah naga	lemma	batch-066
-"cempedak"	K3318	cempedak	lemma	batch-066
-"cermai"	K3322	cermai	lemma	batch-066
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
 abai	K3448	abai	lemma	batch-069
@@ -97,6 +94,7 @@ alergi	K1212	alergi	lemma	batch-025
 algoritma	K1825	algoritma	lemma	batch-037
 alhasil	K0705	alhasil	lemma	batch-015
 alibi	K0706	alibi	lemma	batch-015
+alir	K3622	alir	lemma	batch-072
 aliran	K1826	aliran	lemma	batch-037
 alis	K0511	alis	lemma	batch-011
 almarhum	K1827	almarhum	lemma	batch-037
@@ -140,6 +138,7 @@ anggaran daerah	K2905	anggaran daerah	lemma	batch-059
 anggaran negara	K2904	anggaran negara	lemma	batch-059
 anggota	K1833	anggota	lemma	batch-037
 anggota dewan	K2903	anggota dewan	lemma	batch-059
+angguk	K3614	angguk	lemma	batch-072
 anggur	K2055	anggur	lemma	batch-042
 angin	K0313	angin	lemma	batch-007
 angin darat	K2704	angin darat	lemma	batch-055
@@ -185,6 +184,7 @@ apoteker rumah sakit	K2484	apoteker rumah sakit	lemma	batch-050
 apresiasi	K1217	apresiasi	lemma	batch-025
 april	K3028	april	lemma	batch-061
 arah	K0381	arah	lemma	batch-008
+area	K3598	area	lemma	batch-072
 arem-arem	K2002	arem-arem	lemma	batch-041
 arisan	K0517	arisan	lemma	batch-011
 arloji	K2303	arloji	lemma	batch-047
@@ -329,6 +329,7 @@ barang bukti	K2934	barang bukti	lemma	batch-059
 barang curian	K2935	barang curian	lemma	batch-059
 barangkali	K0608	barangkali	lemma	batch-013
 bareng	K0552	bareng	lemma	batch-012
+baring	K3603	baring	lemma	batch-072
 baris	K1228	baris	lemma	batch-025
 barista	K2485	barista	lemma	batch-050
 baru	K3005	baru	lemma	batch-060
@@ -336,6 +337,7 @@ barusan	K0652	barusan	lemma	batch-014
 basah	K0320	basah	lemma	batch-007
 basi	K0723	basi	lemma	batch-015
 baskom	K2304	baskom	lemma	batch-047
+basuh	K3616	basuh	lemma	batch-072
 batal	K0522	batal	lemma	batch-011
 batas	K3546	batas	lemma	batch-071
 baterai	K1229	baterai	lemma	batch-025
@@ -574,6 +576,7 @@ bros	K2642	bros	lemma	batch-053
 brosur	K1243	brosur	lemma	batch-025
 brownies	K1960	brownies	lemma	batch-040
 buah	K0162	buah	lemma	batch-004
+"buah naga"	K3316	buah naga	lemma	batch-066
 buah-buahan	K0162	buah	derived_form	batch-004
 buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
@@ -667,6 +670,7 @@ casing komputer	K2424	casing komputer	lemma	batch-049
 CD	K2437	CD	lemma	batch-049
 cecak	K1248	cecak	lemma	batch-025
 cecap	K3445	cecap	lemma	batch-069
+cedera	K3604	cedera	lemma	batch-072
 cegah	K3392	cegah	lemma	batch-068
 cegat	K3505	cegat	lemma	batch-070
 ceguk	K3434	ceguk	lemma	batch-069
@@ -680,19 +684,23 @@ celana dalam	K2609	celana dalam	lemma	batch-053
 celana pendek	K2608	celana pendek	lemma	batch-053
 celup	K3479	celup	lemma	batch-070
 cemas	K0333	cemas	lemma	batch-007
+cemberut	K3611	cemberut	lemma	batch-072
 cemburu	K0341	cemburu	lemma	batch-007
 cemooh	K3560	cemooh	lemma	batch-071
 Cempaka Putih	K2812	Cempaka Putih	lemma	batch-057
+"cempedak"	K3318	cempedak	lemma	batch-066
 cendol	K1250	cendol	lemma	batch-025
 cendrawasih	K2268	cendrawasih	lemma	batch-046
 Cengkareng	K2822	Cengkareng	lemma	batch-057
 cengkeram	K3442	cengkeram	lemma	batch-069
 cengkih	K1251	cengkih	lemma	batch-025
 cepat	K0045	cepat	lemma	batch-001
+cerah	K3583	cerah	lemma	batch-072
 cerdas	K0754	cerdas	lemma	batch-016
 ceret	K2308	ceret	lemma	batch-047
 cerewet	K0750	cerewet	lemma	batch-015
 cerita	K0191	cerita	lemma	batch-004
+"cermai"	K3322	cermai	lemma	batch-066
 cermin	K0292	cermin	lemma	batch-006
 ceroboh	K0755	ceroboh	lemma	batch-016
 cetak	K0756	cetak	lemma	batch-016
@@ -722,6 +730,7 @@ cokelat panas	K2072	cokelat panas	lemma	batch-042
 colek	K3439	colek	lemma	batch-069
 colokan	K2337	colokan	lemma	batch-047
 combro	K2017	combro	lemma	batch-041
+corak	K3591	corak	lemma	batch-072
 cowok	K0655	cowok	lemma	batch-014
 cuaca	K0310	cuaca	lemma	batch-007
 cuan	K0759	cuan	lemma	batch-016
@@ -736,6 +745,7 @@ cukur	K3393	cukur	lemma	batch-068
 cuma	K0611	cuma	lemma	batch-013
 cumi	K1962	cumi	lemma	batch-040
 cumi asin	K2107	cumi asin	lemma	batch-043
+curah	K3621	curah	lemma	batch-072
 curang	K3455	curang	lemma	batch-069
 curhat	K0543	curhat	lemma	batch-011
 curi	K0758	curi	lemma	batch-016
