@@ -1,8 +1,8 @@
 # token\tid\tlemma\ttype\tbatch
-# Token index — p-r
 "persik"	K3312	persik	lemma	batch-066
 "pir"	K3311	pir	lemma	batch-066
 "plum"	K3313	plum	lemma	batch-066
+# Token index — p-r
 pabrik	K1501	pabrik	lemma	batch-030
 pacar	K0113	pacar	lemma	batch-003
 padahal	K0629	padahal	lemma	batch-013
@@ -25,6 +25,7 @@ paling	K0630	paling	lemma	batch-013
 Palmerah	K2828	Palmerah	lemma	batch-057
 pamer	K1504	pamer	lemma	batch-031
 pamit	K1038	pamit	lemma	batch-021
+panahan	K3329	panahan	lemma	batch-067
 panas	K0251	panas	lemma	batch-005
 pancake	K1983	pancake	lemma	batch-040
 panci	K0282	panci	lemma	batch-006
@@ -37,6 +38,7 @@ panggang	K0470	panggang	lemma	batch-010
 panggil	K0433	panggil	lemma	batch-009
 panggul	K3102	panggul	lemma	batch-062
 panik	K1039	panik	lemma	batch-021
+panjat tebing	K3330	panjat tebing	lemma	batch-067
 pankreas	K3101	pankreas	lemma	batch-062
 pantai	K1040	pantai	lemma	batch-021
 pantas	K0597	pantas	lemma	batch-012
@@ -158,6 +160,7 @@ penasaran	K0670	penasaran	lemma	batch-014
 penasihat hukum	K2932	penasihat hukum	lemma	batch-059
 penata rambut	K2496	penata rambut	lemma	batch-050
 penata rias	K2489	penata rias	lemma	batch-050
+pencak silat	K3356	pencak silat	lemma	batch-067
 pencari	K0063	cari	derived_form	batch-002
 pencarian	K0063	cari	derived_form	batch-002
 penceritaan	K0191	cerita	derived_form	batch-004
@@ -222,6 +225,7 @@ penolong	K0032	tolong	derived_form	batch-001
 penonton	K0075	nonton	derived_form	batch-002
 pensil	K0297	pensil	lemma	batch-006
 pensiun	K1517	pensiun	lemma	batch-031
+pentatlon	K3351	pentatlon	lemma	batch-067
 penting	K0671	penting	lemma	batch-014
 penuh	K1043	penuh	lemma	batch-021
 penulis	K0077	tulis	derived_form	batch-002
@@ -348,6 +352,8 @@ polinasi	K3194	polinasi	lemma	batch-064
 polio	K3063	polio	lemma	batch-061
 polisi	K1540	polisi	lemma	batch-031
 politik	K1541	politik	lemma	batch-031
+polo air	K3334	polo air	lemma	batch-067
+polo berkuda	K3376	polo berkuda	lemma	batch-067
 polusi	K1542	polusi	lemma	batch-031
 ponsel	K0196	ponsel	lemma	batch-004
 populer	K1543	populer	lemma	batch-031
@@ -493,6 +499,7 @@ roti	K0166	roti	lemma	batch-004
 roti-roti	K0166	roti	derived_form	batch-004
 router Wi-Fi	K2391	router Wi-Fi	lemma	batch-048
 rubah	K2293	rubah	lemma	batch-046
+rugbi	K3365	rugbi	lemma	batch-067
 rugi	K1099	rugi	lemma	batch-022
 rujak	K1942	rujak	lemma	batch-039
 rumah	K0012	rumah	lemma	batch-001
