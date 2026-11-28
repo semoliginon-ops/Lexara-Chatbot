@@ -45,7 +45,7 @@ Prinsip implementasi:
 
 ### Kamus dan indeks
 
-- Kondisi yang tercatat pada validasi terbaru: **60 batch, 3.014 lema**.
+- Kondisi yang tercatat pada validasi terbaru: **60 batch, 3.025 lema** (diverifikasi pada Run #257 dan tetap menjadi jumlah yang tercatat pada audit Run #260).
 - Indeks kamus terdiri dari delapan shard alfabet di `data/kamus/index/`.
 - Pemeriksaan keberadaan kata baru dilakukan melalui indeks terlebih dahulu.
 - Setiap penambahan lema baru wajib mendapat persetujuan eksplisit pengguna. Setelah disetujui, sumber batch dan indeks harus diperbarui bersama.
@@ -771,13 +771,13 @@ Sembilan tes menguji tanpa bukti, dukungan sepihak, bukti pembeda lengkap, bukti
 Pengamanan resolver diperketat: dukungan dan penolakan terhadap alternatif harus membandingkan `argument_id` yang sama. Bukti untuk argumen berbeda tidak boleh digabung untuk membuat keputusan frame. Dua tes tambahan memastikan bukti lintas-slot tidak menghasilkan pilihan palsu dan keputusan kuat yang saling bertentangan tetap ambiguous. GitHub Actions Run #152 sukses dengan **339/339 tes regresi**.
 
 
-### Klarifikasi urutan tahap — 27 November 2026
+### Klarifikasi urutan tahap — 27 November 2026 (catatan historis)
 
-Tahap 2.6 dan 2.7 **belum selesai** dan gerbang Tahap 2 menuju Tahap 3 belum terpenuhi. Beberapa pekerjaan semantic role dan konteks dikerjakan lebih awal sebagai fondasi teknis, sehingga secara urutan ada pekerjaan Tahap 3 yang mendahului penutupan Tahap 2. Ini tidak boleh ditafsirkan sebagai Tahap 2 telah selesai.
+Pada tanggal catatan ini dibuat, Tahap 2.6 dan 2.7 **belum selesai** dan gerbang Tahap 2 menuju Tahap 3 belum terpenuhi. Beberapa pekerjaan semantic role dan konteks dikerjakan lebih awal sebagai fondasi teknis. Pernyataan di bagian ini menggambarkan status pada 27 November 2026 dan **telah diperbarui oleh keputusan serta hasil 28 November 2026** yang dicatat di bagian akhir dokumen.
 
-Koreksi checklist: pemetaan semantic role pasif sebenarnya telah selesai dan tervalidasi melalui Run #144–148 (hingga 328/328 tes), sehingga item tersebut sekarang dicentang. Pekerjaan Tahap 2.6 yang masih terbuka mencakup perluasan pola parser terkontrol, pola inversi K-P-S, uji konstruksi lebih luas dengan pipeline nyata, dan kriteria penutupan. Tahap 2.7 masih membutuhkan dataset pipeline lengkap, variasi kalimat, expected output termasuk partial/unresolved, evaluasi terpadu dengan test split tetap tersegel, serta baseline dan kriteria kelulusan.
+Koreksi checklist pada saat itu: pemetaan semantic role pasif telah selesai dan tervalidasi melalui Run #144–148 (hingga 328/328 tes). Pekerjaan Tahap 2.6 dan 2.7 yang disebut masih terbuka di bawah ini kemudian ditutup sesuai keputusan pengguna dan bukti yang dirangkum pada catatan 28 November 2026.
 
-Resolver konteks semantic role yang dibuat pada Run #149 dan diperketat pada Run #152 adalah **fondasi awal**. Resolver menerima bukti konteks terstruktur; penghasil bukti otomatisnya belum ada. Karena itu Tahap 3 belum dinyatakan resmi dimulai.
+Resolver konteks semantic role yang dibuat pada Run #149 dan diperketat pada Run #152 merupakan **fondasi awal**. Resolver menerima bukti konteks terstruktur; penghasil bukti otomatisnya belum tersedia. Keterbatasan ini tetap relevan sebagai pekerjaan Tahap 3.
 
 
 ### Perluasan keterangan temporal pascapredikat — Run #154 (27 November 2026)
@@ -1486,3 +1486,11 @@ Gerbang Tahap 2.7 telah terpenuhi berdasarkan inventaris bukti, audit celah inte
 Sebelum menambah atau memigrasikan anotasi, susun kontrak representasi konseptual yang membedakan: (a) sumber relasi pada `sense_id`, (b) jenis relasi yang eksplisit, (c) target yang teridentifikasi sebagai lemma/sense atau tetap berupa istilah bebas, (d) arah relasi dan apakah kebalikan harus dicatat terpisah, serta (e) asal/bukti anotasi. Rancangan harus tetap kompatibel dengan data lama dan tidak menganggap string `related_terms` sebagai sinonim.
 
 **Status:** audit awal Tahap 3 selesai. Belum ada lema baru, perubahan batch, indeks, validator, resolver, atau tes baru. Langkah selanjutnya adalah menyusun dan meminta persetujuan atas kontrak representasi relasi sebelum implementasi atau perubahan data.
+
+## Pembaruan status proyek — 28 November 2026
+
+- Tahap 2.6 ditutup atas keputusan pengguna pada 28 November 2026; keterbatasan parser tetap dicatat sebagai batas baseline, bukan pekerjaan yang otomatis dibuka kembali.
+- Tahap 2.7 selesai setelah inventarisasi 21 berkas tes dan dua workflow, pemetaan cakupan/batas, audit celah integrasi, serta penambahan tepat empat skenario integrasi end-to-end.
+- GitHub Actions Run #260 sukses dengan **450/450 tes regresi lulus**. Run ini menjadi baseline terbaru setelah empat tes integrasi tersebut ditambahkan. Tidak ada pengujian tambahan setelah Run #260 dalam pekerjaan dokumentasi ini.
+- Tahap 3 resmi dibuka. Audit awal representasi makna dan relasi konsep telah selesai; pekerjaan berikutnya adalah menyusun kontrak representasi relasi sebelum implementasi atau perubahan data.
+- Tidak ada lema, batch kamus, indeks, validator, resolver, implementasi bahasa, atau tes yang diubah dalam pembaruan dokumentasi ini.
