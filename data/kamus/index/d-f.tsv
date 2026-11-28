@@ -1,5 +1,8 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
+DVD	K2438	DVD	lemma	batch-049
+Draiv	K2513	Draiv	lemma	batch-051
+Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 dada	K2590	dada	lemma	batch-052
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
@@ -14,6 +17,7 @@ daging kambing	K2075	daging kambing	lemma	batch-042
 daging sapi	K2076	daging sapi	lemma	batch-042
 dagu	K0761	dagu	lemma	batch-016
 dahaga	K0762	dahaga	lemma	batch-016
+dahi	K3083	dahi	lemma	batch-062
 dahsyat	K0763	dahsyat	lemma	batch-016
 dahulu	K1852	dahulu	lemma	batch-038
 dakwaan	K2947	dakwaan	lemma	batch-059
@@ -106,6 +110,7 @@ dewan perwakilan rakyat	K2911	dewan perwakilan rakyat	lemma	batch-059
 dewasa	K0783	dewasa	lemma	batch-016
 dia	K0004	dia	lemma	batch-001
 diabetes	K1872	diabetes	lemma	batch-038
+diafragma	K3084	diafragma	lemma	batch-062
 diagnosis	K1260	diagnosis	lemma	batch-026
 diajak	K0213	ajak	derived_form	batch-005
 diajarkan	K0188	ajar	derived_form	batch-004
@@ -256,7 +261,6 @@ dosa	K0547	dosa	lemma	batch-011
 dosen	K1888	dosen	lemma	batch-038
 dosis	K1270	dosis	lemma	batch-026
 doyan	K0548	doyan	lemma	batch-011
-Draiv	K2513	Draiv	lemma	batch-051
 drama	K1271	drama	lemma	batch-026
 drastis	K1272	drastis	lemma	batch-026
 dress	K2646	dress	lemma	batch-053
@@ -276,14 +280,12 @@ duluan	K0614	duluan	lemma	batch-013
 dunia	K0789	dunia	lemma	batch-016
 duplikat	K0809	duplikat	lemma	batch-017
 durasi	K0550	durasi	lemma	batch-011
-Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 durhaka	K0807	durhaka	lemma	batch-017
 duri	K0790	duri	lemma	batch-016
 durian	K0791	durian	lemma	batch-016
 durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
-DVD	K2438	DVD	lemma	batch-049
 e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
@@ -365,6 +367,7 @@ es susu	K2084	es susu	lemma	batch-042
 es teh	K2000	es teh	lemma	batch-040
 esai	K0816	esai	lemma	batch-017
 esensial	K1296	esensial	lemma	batch-026
+esofagus	K3085	esofagus	lemma	batch-062
 esok	K0817	esok	lemma	batch-017
 estimasi	K1297	estimasi	lemma	batch-026
 etika	K0818	etika	lemma	batch-017
@@ -380,6 +383,7 @@ familiar	K0828	familiar	lemma	batch-017
 fanatik	K0829	fanatik	lemma	batch-017
 fans	K1893	fans	lemma	batch-038
 fantasi	K0830	fantasi	lemma	batch-017
+faring	K3086	faring	lemma	batch-062
 fase	K1890	fase	lemma	batch-038
 fasih	K1894	fasih	lemma	batch-038
 fasilitas	K1298	fasilitas	lemma	batch-026
@@ -387,6 +391,7 @@ fasilitator	K1299	fasilitator	lemma	batch-026
 fatal	K1895	fatal	lemma	batch-038
 favorit	K0831	favorit	lemma	batch-017
 februari	K0832	februari	lemma	batch-017
+femur	K3087	femur	lemma	batch-062
 fenomena	K1896	fenomena	lemma	batch-038
 feri	K0833	feri	lemma	batch-017
 festival	K0834	festival	lemma	batch-017
