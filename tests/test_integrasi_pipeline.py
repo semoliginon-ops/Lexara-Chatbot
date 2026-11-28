@@ -8,6 +8,8 @@ from tools.pencocokan_kamus import build_lexicon
 from tools.pos_context import disambiguate_pos_context
 from tools.pos_tagger import tag_pos
 from tools.parser_kalimat import parse_sentence
+from tools.hubungkan_voice_predikat import connect_predicate_voice
+from tools.pemetaan_peran_semantis import map_semantic_roles
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -2172,6 +2174,128 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "Aku membeli nasi panas.",
             ["aku"], ["membeli"], ["nasi", "panas"], [],
         )
+
+    def valency_sense(self, lemma):
+        entry = next(item for item in self.entries if item["lemma"] == lemma)
+        return next(
+            sense for sense in entry["senses"]
+            if isinstance(sense.get("valency_frames"), list)
+        )
+
+    def assert_real_pipeline_pos(self, analyzed, expected):
+        for surface, pos in expected.items():
+            with self.subTest(surface=surface):
+                item = self.token(analyzed, surface)
+                self.assertEqual(item["status"], "matched")
+                self.assertEqual(item["pos"], [pos])
+                self.assertEqual(item["pos_source"], "dictionary" if item["candidates"] else "morphology")
+                self.assertEqual(item["pos_status"], "identified")
+
+    def test_raw_text_to_active_semantic_roles_for_lihat(self):
+        analyzed = self.analyze("Dia melihat burung.")
+        self.assert_real_pipeline_pos(analyzed, {
+            "Dia": "PRON", "melihat": "VERB", "burung": "NOUN",
+        })
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        voice = connect_predicate_voice(parsed, analyzed)
+        self.assertEqual(voice["status"], "identified")
+        self.assertEqual(voice["voice"], "active")
+        mapped = map_semantic_roles(
+            parsed, self.valency_sense("lihat"), voice=voice["voice"]
+        )
+        self.assertEqual(mapped["status"], "mapped")
+        arguments = mapped["candidates"][0]["arguments"]
+        self.assertEqual(
+            {item["syntactic_role"]: item["semantic_role"] for item in arguments},
+            {"SUBJ": "EXPERIENCER", "OBJ": "THEME"},
+        )
+        self.assertEqual(
+            {item["syntactic_role"]: item["value"] for item in arguments},
+            {"SUBJ": ["Dia"], "OBJ": ["burung"]},
+        )
+
+    def test_raw_text_to_active_semantic_roles_for_optional_makan_object(self):
+        analyzed = self.analyze("Dia memakan nasi.")
+        self.assert_real_pipeline_pos(analyzed, {
+            "Dia": "PRON", "memakan": "VERB", "nasi": "NOUN",
+        })
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        voice = connect_predicate_voice(parsed, analyzed)
+        self.assertEqual(voice["status"], "identified")
+        self.assertEqual(voice["voice"], "active")
+        mapped = map_semantic_roles(
+            parsed, self.valency_sense("makan"), voice=voice["voice"]
+        )
+        self.assertEqual(mapped["status"], "mapped")
+        patient = next(
+            item for item in mapped["candidates"][0]["arguments"]
+            if item["semantic_role"] == "PATIENT"
+        )
+        self.assertEqual(patient["presence"], "present")
+        self.assertEqual(patient["value"], ["nasi"])
+
+    def test_raw_text_to_passive_semantic_roles_with_postverbal_agent(self):
+        analyzed = self.analyze("Pintu dibuka dia.")
+        self.assert_real_pipeline_pos(analyzed, {
+            "Pintu": "NOUN", "dibuka": "VERB", "dia": "PRON",
+        })
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P-O")
+        voice = connect_predicate_voice(parsed, analyzed)
+        self.assertEqual(voice["status"], "identified")
+        self.assertEqual(voice["voice"], "passive")
+        mapped = map_semantic_roles(
+            parsed, self.valency_sense("buka"), voice=voice["voice"]
+        )
+        self.assertEqual(mapped["status"], "ambiguous")
+        for frame in mapped["candidates"]:
+            agent = next(
+                item for item in frame["arguments"]
+                if item["syntactic_role"] == "SUBJ"
+            )
+            patient = next(
+                item for item in frame["arguments"]
+                if item["syntactic_role"] == "OBJ"
+            )
+            self.assertEqual(agent["value"], ["dia"])
+            self.assertEqual(agent["realization"], "postverbal_agent")
+            self.assertEqual(patient["value"], ["Pintu"])
+            self.assertEqual(patient["semantic_role"], "PATIENT")
+
+    def test_raw_text_to_passive_semantic_roles_without_agent(self):
+        analyzed = self.analyze("Pintu dibuka.")
+        self.assert_real_pipeline_pos(analyzed, {
+            "Pintu": "NOUN", "dibuka": "VERB",
+        })
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed")
+        self.assertEqual(parsed["pattern"], "S-P")
+        voice = connect_predicate_voice(parsed, analyzed)
+        self.assertEqual(voice["status"], "identified")
+        self.assertEqual(voice["voice"], "passive")
+        mapped = map_semantic_roles(
+            parsed, self.valency_sense("buka"), voice=voice["voice"]
+        )
+        self.assertEqual(mapped["status"], "ambiguous")
+        for frame in mapped["candidates"]:
+            agent = next(
+                item for item in frame["arguments"]
+                if item["syntactic_role"] == "SUBJ"
+            )
+            patient = next(
+                item for item in frame["arguments"]
+                if item["syntactic_role"] == "OBJ"
+            )
+            self.assertEqual(agent["presence"], "omitted")
+            self.assertEqual(agent["value"], [])
+            self.assertEqual(patient["value"], ["Pintu"])
+            self.assertEqual(patient["semantic_role"], "PATIENT")
+
 
 if __name__ == "__main__":
     unittest.main()
