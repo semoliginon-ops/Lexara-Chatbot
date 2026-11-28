@@ -27,6 +27,41 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 - Setiap perubahan perilaku harus disertai regression test yang relevan dan pemeriksaan kompatibilitas.
 - Kelulusan tes membuktikan perilaku yang diuji, bukan bahwa seluruh bahasa Indonesia sudah tercakup.
 
+
+## Batas pekerjaan dan pencegahan tumpang tindih antar-tahap
+
+Bagian ini menjadi aturan lintas-tahap untuk mencegah pekerjaan lama dibuka kembali atau dua tahap mengerjakan tujuan yang sama. Jika ada perbedaan penafsiran, gunakan batas dan pemilik pekerjaan berikut.
+
+### Batas kepemilikan pekerjaan
+
+| Area | Pemilik utama | Batas |
+|---|---|---|
+| Data leksikal, lema, POS dasar, sense yang tercatat, dan relasi leksikal per-sense | Tahap 1 | Menyediakan dan merawat data leksikal. Tidak mengerjakan pemilihan sense berdasarkan konteks kalimat atau membangun jaringan konsep untuk penalaran. Perluasan anotasi relasi per-sense tetap pekerjaan data leksikal Tahap 1 dan tidak menjadi prasyarat untuk memulai Tahap 3. |
+| Bentuk kata, imbuhan, morfofonemik, klitik, tokenisasi, POS, dan struktur sintaksis dasar | Tahap 2 | Menyediakan analisis bentuk dan struktur. Kekurangan cakupan yang tidak menghalangi tugas aktif dicatat sebagai backlog; tidak otomatis memicu pembukaan ulang subtahap yang telah ditutup. |
+| Representasi konsep, hubungan makna, pemilihan sense kontekstual, integrasi bukti, ambiguitas, dan konteks percakapan | Tahap 3 | Menggunakan keluaran Tahap 1 dan Tahap 2 sebagai masukan. Tahap ini tidak mengambil alih perluasan kamus atau morfologi secara umum. |
+| Evaluasi lintas-sistem dan optimasi perangkat | Tahap 6 | Mengukur kualitas dan biaya sistem secara menyeluruh pada tahap evaluasi. Pengukuran lokal untuk menjawab keputusan teknis tertentu boleh dilakukan di tahap pemiliknya, tetapi tujuan dan metriknya harus berbeda serta dicatat agar tidak diduplikasi. |
+
+### Aturan khusus untuk area yang berpotensi tumpang tindih
+
+1. **Relasi leksikal per-sense vs relasi antarkonsep:** Tahap 1 mencatat relasi leksikal yang melekat pada entri/sense kamus, misalnya sinonimi atau antonimi leksikal. Tahap 3 merancang konsep sebagai unit representasi makna dan relasi konseptual yang dipakai untuk memahami atau menghubungkan makna dalam konteks. Tahap 3 boleh memakai data Tahap 1, tetapi tidak mengulang anotasi leksikal hanya dengan nama berbeda.
+2. **Morfologi dan klitik:** Tahap 2 tetap menjadi pemilik analisis bentuk kata. Variasi imbuhan, morfofonemik, pronomina informal, dan klitik yang belum tercakup dicatat sebagai backlog dengan contoh konkret. Jangan memperluas inventaris atau mengubah aturan morfologi hanya karena satu variasi ditemukan selama Tahap 3, kecuali variasi tersebut terbukti langsung memblokir alur aktif.
+3. **Resolver konteks yang sudah tersedia:** resolver kandidat semantic role berbasis bukti eksplisit adalah fondasi awal Tahap 3, bukan fitur pemahaman konteks yang lengkap. Resolver tidak menghasilkan bukti konteks sendiri. Pekerjaan baru harus berfokus pada representasi makna, penyediaan bukti kontekstual, dan pemilihan sense sesuai urutan desain; jangan membangun ulang resolver yang sudah ada tanpa temuan cacat yang terverifikasi.
+4. **Embedding vs evaluasi Tahap 6:** pengukuran pada bagian keputusan embedding hanya untuk menjawab apakah embedding memberi manfaat pada kasus yang tidak tertangani aturan, dibanding biaya tambahannya. Tahap 6 mengevaluasi performa dan optimasi sistem/perangkat secara menyeluruh. Jangan menjalankan dua evaluasi dengan tujuan, dataset, dan metrik yang sama; hasil pengukuran yang relevan dapat dirujuk kembali.
+5. **Pengujian yang sudah lulus:** hasil tes dan baseline yang tercatat tetap menjadi bukti. Tes lama tidak dijalankan ulang hanya untuk mengisi checklist atau mengulang audit. Pengujian ulang hanya diizinkan bila ada perubahan yang berisiko pada perilaku terkait, kegagalan baru yang dapat direproduksi, atau kebutuhan verifikasi yang dijelaskan secara spesifik.
+
+### Mekanisme backlog dan gerbang perubahan lintas-tahap
+
+Jika pekerjaan aktif menemukan kekurangan di tahap lain, catat terlebih dahulu:
+- contoh input atau kondisi yang menunjukkan masalah;
+- keluaran aktual dan keluaran yang diharapkan;
+- komponen serta tahap pemilik masalah;
+- apakah masalah benar-benar memblokir target aktif atau hanya perluasan cakupan;
+- usulan perubahan dan pengujian minimum yang diperlukan.
+
+Temuan yang tidak memblokir target aktif tetap menjadi backlog dan tidak dikerjakan spontan. Jika benar-benar memblokir, jelaskan bukti serta dampaknya dan minta keputusan pengguna sebelum mengubah komponen lintas-tahap. Setiap perubahan harus memiliki satu tahap pemilik, satu tujuan yang jelas, dan ruang lingkup pengujian yang disepakati sebelumnya. Penambahan lema tetap memerlukan persetujuan eksplisit pengguna.
+
+**Pagar kerja Tahap 3 saat ini:** jangan mengubah batch kamus, indeks, aturan morfologi/klitik, POS, parser, atau resolver yang sudah tersedia sebagai bagian dari pekerjaan representasi makna pertama. Mulai dengan rancangan kontrak representasi konsep dan relasinya. Implementasi, perubahan data, dan tes baru dilakukan setelah rancangan disepakati. Baseline Run #260 (450/450) dipertahankan sebagai bukti regresi yang ada; tidak ada tes yang dijalankan ulang hanya karena aturan ini ditambahkan.
+
 ---
 
 # Peta tahapan utama
