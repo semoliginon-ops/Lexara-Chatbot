@@ -1,5 +1,4 @@
 # Token index — g-i
-# token\tid\tlemma\ttype\tbatch
 "ikan baung"	K3279	ikan baung	lemma	batch-066
 "ikan betutu"	K3281	ikan betutu	lemma	batch-066
 "ikan beunteur"	K3299	ikan beunteur	lemma	batch-066
@@ -25,6 +24,7 @@
 "ikan tawes"	K3277	ikan tawes	lemma	batch-066
 "ikan toman"	K3280	ikan toman	lemma	batch-066
 "ikan uceng"	K3285	ikan uceng	lemma	batch-066
+# token\tid\tlemma\ttype\tbatch
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
 gado-gado	K1966	gado-gado	lemma	batch-040
@@ -158,6 +158,7 @@ gula batu	K2112	gula batu	lemma	batch-043
 gula merah	K2113	gula merah	lemma	batch-043
 gulai	K1912	gulai	lemma	batch-039
 gulai ayam	K2085	gulai ayam	lemma	batch-042
+gulat	K3352	gulat	lemma	batch-067
 guling	K2344	guling	lemma	batch-047
 gulir	K1325	gulir	lemma	batch-027
 guna	K1326	guna	lemma	batch-027
@@ -288,6 +289,8 @@ hipotensi	K3052	hipotensi	lemma	batch-061
 hitung	K0893	hitung	lemma	batch-018
 hiu	K2222	hiu	lemma	batch-045
 hobi	K0562	hobi	lemma	batch-012
+hoki es	K3366	hoki es	lemma	batch-067
+hoki lapangan	K3367	hoki lapangan	lemma	batch-067
 hoodie	K2602	hoodie	lemma	batch-053
 hormat	K0894	hormat	lemma	batch-018
 hotel	K0895	hotel	lemma	batch-018
