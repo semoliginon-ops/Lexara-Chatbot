@@ -28,7 +28,7 @@ Aturan keras:
 5. Satu objek kandidat yang berisi beberapa `sense_ids` tidak boleh dipecah menjadi pilihan pengguna kecuali setiap sense dapat diambil dan dipasangkan ke deskripsi otoritatifnya secara tepat.
 6. Kandidat POS/sintaksis tidak boleh diterjemahkan menjadi istilah teknis yang membingungkan. Jika perbedaan tidak dapat dijelaskan secara sederhana dan setia pada sumber, jangan tampilkan.
 
-**Kondisi sumber repo setelah audit:** definisi sense tepercaya sebenarnya tersedia di kamus proyek dan dapat ditelusuri melalui `snapshot.tokens[token_index].lexical_candidates[candidate_index].entry.senses[sense_index].definition`. Rincian jalur dan contoh entri dicatat dalam [AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md](AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md). Namun, laporan interpretasi dan planner v1 hanya menggunakan referensi tingkat objek kandidat. Satu kandidat entri dapat berisi dua sense, sehingga planner v1 tidak dapat memilih dua sense itu sebagai opsi terpisah. Sebelum penyaji dapat diimplementasikan untuk ambiguitas leksikal, planner harus memiliki kontrak versi berikutnya yang mendukung referensi sense-level dan memverifikasi kecocokannya dengan snapshot.
+**Kondisi sumber repo setelah audit:** definisi sense tepercaya sebenarnya tersedia di kamus proyek dan dapat ditelusuri melalui `snapshot.tokens[token_index].lexical_candidates[candidate_index].entry.senses[sense_index].definition`. Rincian jalur dan contoh entri dicatat dalam [AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md](AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md). Namun, laporan interpretasi dan planner v1 hanya menggunakan referensi tingkat objek kandidat. Satu kandidat entri dapat berisi dua sense, sehingga planner v1 tidak dapat memilih dua sense itu sebagai opsi terpisah. Prasyarat granularitas sense-level kini dipenuhi oleh planner v1.1 dan tes terfokusnya; lihat [KONTRAK_PERENCANA_KLARIFIKASI_V1_1.md](KONTRAK_PERENCANA_KLARIFIKASI_V1_1.md). Penyaji dapat dirancang untuk sense leksikal yang memiliki definition tervalidasi. Kasus POS/sintaksis tetap tidak boleh ditampilkan kecuali kelak tersedia deskripsi sumber yang aman.
 
 ## 3. Bentuk pertanyaan
 
@@ -139,3 +139,7 @@ Tes tidak mengulang 11 tes planner atau 11 tes interpretasi. Tidak menjalankan r
 - Mengintegrasikan klarifikasi ke entrypoint/runtime.
 
 **Kriteria penerimaan desain:** tidak ada kandidat/definisi rekaan; pilihan tampil hanya jika setiap opsi punya sumber tepercaya; jawaban bebas/parsial tidak dipaksa menjadi pilihan; penolakan/diam tidak dianggap jawaban; dan satu sesi hanya memiliki satu fokus.
+
+## 11. Status prasyarat perencana
+
+Planner v1.1 telah mendukung referensi sense-level dan memverifikasi definisi sumber terhadap snapshot. Implementasi serta 12 tes khusus lulus melalui GitHub Actions Run #2 [46118895383](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895383); kompatibilitas planner v1 diverifikasi kembali 11/11 pada Run [46118895363](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46118895363). Kontrak penyaji dan pencatatan respons tetap belum diimplementasikan atau dihubungkan ke runtime.
