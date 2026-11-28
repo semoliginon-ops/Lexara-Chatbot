@@ -176,7 +176,7 @@ class ContextualSenseIntegrationTests(unittest.TestCase):
         self.assertEqual(integrated["status"], "completed")
         self.assertEqual(
             [item["token"] for item in integrated["results"] if item["orchestration_status"] == "processed"],
-            ["Aku", "makan", "nasi", "besok"],
+            ["aku", "makan", "nasi", "besok"],
         )
 
     def test_context_rules_loader_reads_jsonl_and_rejects_invalid_rows(self):
