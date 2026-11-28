@@ -157,7 +157,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 ### 2.7 Inventarisasi bukti dan evaluasi pipeline terpadu
 
-<badge color="secondary">Berikutnya — evaluasi berbasis bukti yang sudah ada</badge>
+<badge color="info">Sedang dikerjakan — inventaris dan pemetaan awal selesai</badge>
 
 **Tujuan tahap ini bukan mengulang seluruh pengujian Tahap 2.1–2.6.** Hasil regression test, pengujian pipeline nyata, dataset, dan CI yang sudah tercatat harus diperlakukan sebagai bukti awal. Pengujian yang sudah memiliki bukti memadai tidak perlu dijalankan ulang hanya untuk mengisi checklist.
 
@@ -165,7 +165,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memiliki validator dataset dan evaluasi POS development.
 - [x] Memiliki regression suite lintas komponen yang dijalankan melalui GitHub Actions.
 - [x] Menginventarisasi 21 berkas pengujian berdasarkan komponen dan jalur pipeline, dua workflow GitHub Actions, serta bukti CI terdahulu; Run #257 diverifikasi dari ringkasan dan log. Tidak ada skenario yang dijalankan ulang.
-- [ ] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk hasil `partial` dan `unresolved`.
+- [x] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk perilaku `partial` dan `unresolved`; rinciannya dicatat di dokumen status.
 - [ ] Mengidentifikasi hanya celah pipeline end-to-end yang belum memiliki bukti memadai. Jangan membuat ulang dataset untuk kasus yang sudah tercakup.
 - [ ] Meninjau kebutuhan variasi baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks berdasarkan celah yang benar-benar ditemukan; kategori bukan kewajiban untuk diuji semua.
 - [ ] Menetapkan expected output hanya untuk kasus baru yang memang diperlukan atau keluaran yang belum memiliki kontrak jelas.
