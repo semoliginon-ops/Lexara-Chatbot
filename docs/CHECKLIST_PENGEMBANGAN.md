@@ -171,7 +171,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Menetapkan expected output empat skenario baru berdasarkan kontrak parser, bukti voice morfologis, dan frame valensi pilot yang tersedia.
 - [x] Menyusun dan menjalankan tepat empat skenario integrasi baru yang tidak mengulang tes lama secara identik; cakupan disepakati sebelum implementasi dan CI.
 - [x] Mengevaluasi celah integrasi menggunakan empat skenario baru; Run #260 sukses dengan 450/450 tes regresi. Run #258–259 sempat gagal pada ekspektasi tes dan diperbaiki sebelum Run #260; tidak ada pengulangan massal di luar CI otomatis akibat dua commit koreksi.
-- [ ] Menetapkan baseline dan kriteria kelulusan Tahap 2 berdasarkan bukti yang tersedia, keterbatasan yang terdokumentasi, dan hasil evaluasi yang diperlukan.
+- [x] Menetapkan baseline dan kriteria kelulusan Tahap 2: Run #260 lulus 450/450 regression tests; empat jalur end-to-end semantic role lulus; POS test split tetap tersegel; status `partial`/`unresolved` diterima hanya sesuai batas bukti dan kontrak yang terdokumentasi. Baseline ini berlaku untuk cakupan yang telah diuji, bukan klaim dukungan seluruh Bahasa Indonesia.
 
 **Aturan hemat kuota:** tidak ada pengujian ulang massal, tidak ada penambahan skenario demi mengejar jumlah, dan tidak ada perluasan cakupan otomatis. Jika audit menemukan celah, laporkan dahulu ruang lingkup serta jumlah pengujian yang diusulkan sebelum menjalankannya.
 
