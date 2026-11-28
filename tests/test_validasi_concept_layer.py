@@ -73,13 +73,19 @@ class ConceptLayerValidationTests(unittest.TestCase):
         self.assertTrue(any("field wajib hilang" in error for error in errors))
         self.assertTrue(any("field tidak dikenal" in error for error in errors))
 
-    def test_rejects_bad_or_duplicate_concept_id(self):
+    def test_rejects_bad_concept_id_format(self):
         records = self._read_records(self.concepts)
         records[0]["concept_id"] = "C12"
-        records[1]["concept_id"] = records[0]["concept_id"]
         self._write_records(self.concepts, records)
         _, errors = self._validate()
         self.assertTrue(any("minimal enam digit" in error for error in errors))
+
+    def test_rejects_duplicate_concept_id(self):
+        records = self._read_records(self.concepts)
+        records[1]["concept_id"] = records[0]["concept_id"]
+        self._write_records(self.concepts, records)
+        _, errors = self._validate()
+        self.assertTrue(any("concept_id: duplikat" in error for error in errors))
 
     def test_rejects_blank_label_and_definition(self):
         records = self._read_records(self.concepts)
