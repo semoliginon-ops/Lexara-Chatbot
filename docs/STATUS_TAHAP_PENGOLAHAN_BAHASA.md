@@ -1443,14 +1443,19 @@ Batas bukti yang ada:
 
 Ini adalah celah bukti integrasi, bukan klaim bahwa modul yang ada salah atau harus ditulis ulang. Tidak diperlukan pengujian ulang untuk jalur yang sudah terbukti.
 
-### Usulan verifikasi minimum — belum disetujui / belum dijalankan
+### Verifikasi integrasi minimum — selesai pada Run #260
 
-Usulan dibatasi menjadi **4 skenario integrasi independen**, memakai lema dan sense valensi yang sudah ada:
-1. Aktif, frame tunggal: `Dia melihat burung.` — jalur kamus aktual sampai semantic role EXPERIENCER/THEME (sesuai label frame yang tersimpan).
-2. Aktif, objek opsional hadir: `Dia makan nasi.` — memastikan argumen PATIENT hadir pada hasil pemetaan.
-3. Pasif dengan agen eksplisit: `Pintu dibuka oleh dia.` — memastikan voice pasif berasal dari morfologi aktual dan alternatif AGENT/CAUSER tetap dipertahankan jika frame sense memang ambigu.
-4. Pasif tanpa agen: `Pintu dibuka.` — memastikan argumen agen dicatat omitted dan pasien tetap terpetakan.
+Setelah prasyarat leksikal dan POS diverifikasi, empat skenario disesuaikan hanya pada bentuk permukaan yang diperlukan agar bukti voice benar-benar tersedia dan POS dapat dihasilkan oleh pipeline aktual. Jumlah tetap empat; tidak ada lema, batch, atau anotasi kamus yang ditambahkan.
 
-Sebelum skenario ini dapat dijalankan, setiap kata harus diverifikasi tersedia pada indeks/kamus aktual dan POS-nya benar-benar keluar dari pipeline. Jika salah satu contoh tidak memenuhi prasyarat leksikal/parser, contoh tersebut tidak boleh dipaksakan atau diganti diam-diam; usulkan pengganti dan minta persetujuan.
+1. **Aktif, frame tunggal:** `Dia melihat burung.` — kata `melihat` memberi bukti morfologi aktif; hasil memetakan SUBJ menjadi EXPERIENCER dan OBJ menjadi THEME.
+2. **Aktif, objek opsional hadir:** `Dia memakan nasi.` — bentuk `memakan` dipakai karena `makan` tanpa penanda morfologis tidak memberi bukti voice aktif yang dapat dikonfirmasi. Hasil memetakan AGENT dan PATIENT yang hadir.
+3. **Pasif dengan agen eksplisit:** `Pintu dibuka dia.` — bentuk ini memakai agen pascaverbal. Frasa `oleh` tidak dipakai karena POS-nya belum dikenali oleh pipeline aktual. Kedua alternatif frame AGENT/CAUSER tetap dipertahankan sebagai ambiguous, dengan PATIENT terpetakan.
+4. **Pasif tanpa agen:** `Pintu dibuka.` — agen dicatat omitted dan pasien dipetakan ke PATIENT pada kedua kandidat frame.
 
-**Status:** audit celah selesai untuk jalur integrasi semantic role. Empat skenario di atas hanya proposal; belum ada perubahan kode, kamus, dataset, atau tes dan belum ada CI baru. Persetujuan pengguna diperlukan sebelum menambahkan atau menjalankan skenario tersebut.
+Semua skenario menjalankan jalur nyata: `analyze_text` dengan kamus lengkap → `tag_pos` → `disambiguate_pos_context` → `parse_sentence` → `connect_predicate_voice` → `map_semantic_roles`. POS diperiksa berasal dari kamus atau analisis morfologi, bukan token parser yang dibuat manual. Sense valensi diambil dari entri kamus yang dimuat.
+
+**Lokasi tes:** empat metode baru ditambahkan ke `tests/test_integrasi_pipeline.py`. Jumlah metode pada berkas itu menjadi 127. Tidak ada tes lama yang dihapus atau diubah cakupannya.
+
+**Hasil CI:** GitHub Actions [Run #260](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46090180853) sukses; log menunjukkan **450 tes, OK**. Dua run koreksi sebelumnya (#258 dan #259) gagal pada ekspektasi tes (sumber POS dan normalisasi huruf token), bukan karena perubahan implementasi bahasa; ekspektasi diperbaiki secara terbatas, lalu Run #260 lulus. Tidak ada rerun manual atau pengujian tambahan di luar empat skenario baru dan regression suite otomatis yang dijalankan workflow.
+
+**Status:** celah integrasi semantic role yang diaudit kini memiliki bukti end-to-end pada empat konstruksi terbatas di atas. Ini tidak membuktikan semua sense, voice, atau konstruksi Bahasa Indonesia sudah didukung. Kamus, batch sumber, indeks, dataset POS, dan implementasi parser tidak diubah dalam pekerjaan ini.
