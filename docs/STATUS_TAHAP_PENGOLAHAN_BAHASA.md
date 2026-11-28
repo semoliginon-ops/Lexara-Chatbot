@@ -1766,3 +1766,20 @@ Keempat aturan berstatus **proposed** dan berkekuatan **weak**. Cue awal: `tidur
 Tidak ada perubahan pada kamus, batch, indeks, Concept Layer, analyzer, POS, morfologi, parser, generator, selector, atau orchestrator. Tidak ada tes atau GitHub Actions yang dijalankan karena perubahan ini hanya berupa inventarisasi dan data proposed; tes lama tidak perlu diulang.
 
 **Titik lanjut resmi:** pengguna meninjau empat aturan proposed beserta cue dan rationale; aturan dapat direvisi atau ditolak. Hanya setelah review linguistik yang eksplisit, status/strength dapat dipertimbangkan. Setelah aturan yang layak ditetapkan, rencanakan titik pemanggilan orchestrator pada entrypoint/runtime dengan tetap menjaga penundaan kalimat majemuk dan pemisahan per kemunculan token.
+
+
+## Tinjauan awal kandidat aturan konteks — 28 November 2026
+
+Atas arahan pengguna agar penilaian teknis/linguistik ditangani oleh asisten, dilakukan penyaringan awal terhadap empat kandidat aturan tanpa meminta pengguna mengambil keputusan teknis yang tidak perlu.
+
+Keputusan:
+- `CE000001` (`bangun` S1, cue `tidur`): dipertahankan sebagai `proposed` / `weak`. Hubungan cue dengan definisi cukup masuk akal, tetapi kemunculan kata dalam satu kalimat belum membuktikan bahwa cue tersebut menerangkan token target.
+- `CE000002` (`bangun` S2, cue `berdiri`): dipertahankan sebagai `proposed` / `weak` dengan batas yang sama.
+- `CE000003` (`jam` S1, cue `alarm`): diubah menjadi `rejected`. Alarm dapat berkaitan dengan alat penunjuk waktu maupun pengaturan durasi; cue tidak cukup spesifik untuk membedakan sense.
+- `CE000004` (`jam` S2, cue `menit`): dipertahankan sebagai `proposed` / `weak`; belum cukup untuk klaim keputusan sense tanpa konteks yang lebih terikat pada token target.
+
+Kondisi generator `token_present` memeriksa apakah kata cue muncul dalam observasi kalimat. Ia belum membuktikan relasi semantis atau kedekatan yang tepat dengan token target. Karena itu aturan weak hanya boleh menjadi catatan evidence; selector v1 tidak memakai weak evidence untuk memilih sense. Tidak ada aturan yang dinaikkan menjadi `reviewed` atau `strong`.
+
+Dataset dan inventaris diperbarui. Tidak ada kode, kamus, parser, POS, morfologi, selector, generator, orchestrator, maupun runtime yang diubah. Tidak ada tes/Actions yang dijalankan karena perubahan hanya pada data dan dokumentasi; tidak ada klaim CI baru.
+
+**Titik lanjut resmi:** cari contoh kalimat autentik beserta sumber yang memungkinkan cue dikaitkan dengan token target secara lebih spesifik. Jika bukti tersebut tidak tersedia, biarkan aturan proposed atau hapus/tolak aturan; jangan memaksakan aktivasi. Integrasi entrypoint/runtime tetap menunggu aturan yang benar-benar layak dan batas pemetaan token yang aman.
