@@ -1,9 +1,7 @@
 # Token index — m-o
 # token	id	lemma	type	batch
-"markisa"	K3305	markisa	lemma	batch-066
-"matoa"	K3323	matoa	lemma	batch-066
-"mundu"	K3324	mundu	lemma	batch-066
 maaf	K0247	maaf	lemma	batch-005
+macam	K3589	macam	lemma	batch-072
 macan	K2237	macan	lemma	batch-045
 macet	K0398	macet	lemma	batch-008
 madu	K1926	madu	lemma	batch-039
@@ -64,6 +62,7 @@ marah-marah	K1461	marah-marah	lemma	batch-030
 maraton	K3339	maraton	lemma	batch-067
 maret	K1462	maret	lemma	batch-030
 margarin	K1928	margarin	lemma	batch-039
+"markisa"	K3305	markisa	lemma	batch-066
 marmer	K0962	marmer	lemma	batch-020
 martabak	K0963	martabak	lemma	batch-020
 martabak manis	K2136	martabak manis	lemma	batch-043
@@ -89,6 +88,7 @@ matematika	K0969	matematika	lemma	batch-020
 materi	K0968	materi	lemma	batch-020
 materi gelap	K3148	materi gelap	lemma	batch-063
 mati	K1464	mati	lemma	batch-030
+"matoa"	K3323	matoa	lemma	batch-066
 Matraman	K2840	Matraman	lemma	batch-057
 mau	K0024	mau	lemma	batch-001
 Maxim	K2504	Maxim	lemma	batch-051
@@ -350,6 +350,7 @@ mudik	K1484	mudik	lemma	batch-030
 mulai	K0225	mulai	lemma	batch-005
 mulut	K0121	mulut	lemma	batch-003
 muncul	K1475	muncul	lemma	batch-030
+"mundu"	K3324	mundu	lemma	batch-066
 mundur	K1476	mundur	lemma	batch-030
 mungkin	K0142	mungkin	lemma	batch-003
 muntah	K1000	muntah	lemma	batch-020
@@ -450,6 +451,7 @@ nyaris	K0596	nyaris	lemma	batch-012
 nyata	K1021	nyata	lemma	batch-021
 nyebelin	K1022	nyebelin	lemma	batch-021
 nyeleneh	K1023	nyeleneh	lemma	batch-021
+nyeri	K3606	nyeri	lemma	batch-072
 nyolong	K1024	nyolong	lemma	batch-021
 nyusul	K1025	nyusul	lemma	batch-021
 oase	K2722	oase	lemma	batch-055
