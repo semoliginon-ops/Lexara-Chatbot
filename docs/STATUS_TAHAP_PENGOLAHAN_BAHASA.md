@@ -1286,3 +1286,19 @@ Satu percobaan awal dengan `cerita temanku` menghasilkan status parser `partial`
 GitHub Actions **Run #241 selesai dengan conclusion success**; **414/414 tes regresi lulus**. [Lihat Run #241](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46084989923).
 
 Tes ini memvalidasi penempatan klitik dalam rentang frasa nominal sederhana, bukan analisis internal inti dan pewatas. Frasa masih dilaporkan sebagai rentang datar; ambiguitas semantis `-nya` dan inventaris bentuk informal/regional tetap menjadi pekerjaan lanjutan. Tidak ada lema, batch, atau indeks kamus yang diubah.
+
+
+### Lima skenario bentuk turunan berklitik — Run #251 (28 November 2026)
+
+Ditambahkan satu kelompok integrasi berisi lima skenario melalui pipeline kamus → morfologi → POS → parser:
+- `Dia memilikiku.` — `memiliki` + `-ku`.
+- `Dia memilikimu.` — `memiliki` + `-mu`.
+- `Dia memilikinya.` — `memiliki` + `-nya`.
+- `Perasaanku berubah.` — `perasaan` + `-ku` sebagai subjek.
+- `Perasaanmu berubah.` — `perasaan` + `-mu` sebagai subjek.
+
+Tiga bentuk ber-host verbal berhasil diurai sebagai bentuk turunan berklitik pada tahap morfologi, tetapi komponen host POS belum tersedia (`host_pos` kosong). Parser tidak menebak bahwa bentuk tersebut adalah VERB dan mempertahankan hasil `unresolved`. Dua bentuk ber-host nominal dikenali sebagai NOUN dan dipakai sebagai subjek; `-ku`/`-mu` dicatat sebagai posesif. Ini mengonfirmasi batas yang ada, bukan menambah aturan parser.
+
+GitHub Actions **Run #251 selesai dengan conclusion success**; **416/416 tes regresi lulus**. [Lihat Run #251](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46085818964).
+
+Tidak ada perubahan lema, batch, indeks kamus, atau implementasi parser. Tindak lanjut yang masih terbuka: penyediaan bukti POS host untuk bentuk turunan verbal berklitik tanpa mengorbankan perilaku abstention.
