@@ -1,0 +1,2 @@
+{"concept_id":"C000001","label":"jalur","definition":"Lintasan yang dapat dilalui.","status":"reviewed","evidence":{"source_type":"lexical_definition","source_ref":"K0020-S1","rationale":"Definisi sense mendukung konsep jalur."}}
+{"concept_id":"C000002","label":"kendaraan","definition":"Alat untuk membawa orang atau barang.","status":"proposed","evidence":{"source_type":"curated_knowledge","source_ref":null,"rationale":"Contoh konsep kedua untuk pengujian."}}
