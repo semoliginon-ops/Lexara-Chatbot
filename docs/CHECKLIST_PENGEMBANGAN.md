@@ -166,11 +166,11 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 - [x] Memiliki regression suite lintas komponen yang dijalankan melalui GitHub Actions.
 - [x] Menginventarisasi 21 berkas pengujian berdasarkan komponen dan jalur pipeline, dua workflow GitHub Actions, serta bukti CI terdahulu; Run #257 diverifikasi dari ringkasan dan log. Tidak ada skenario yang dijalankan ulang.
 - [x] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk perilaku `partial` dan `unresolved`; rinciannya dicatat di dokumen status.
-- [x] Mengidentifikasi celah pipeline end-to-end yang belum memiliki bukti memadai: integrasi dari kalimat mentah melalui kamus/POS/konteks/parser/voice hingga semantic role belum dibuktikan dalam satu jalur dengan token POS hasil pipeline nyata. Tes voice/semantic yang ada masih menyusun token parser secara manual atau memakai lexicon uji; bukti integrasi modul tersedia, tetapi belum membuktikan rangkaian penuh pada kamus aktual. Cakupan usulan dibatasi 4 skenario; belum dijalankan dan menunggu persetujuan pengguna.
-- [ ] Meninjau kebutuhan variasi baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks berdasarkan celah yang benar-benar ditemukan; kategori bukan kewajiban untuk diuji semua.
-- [ ] Menetapkan expected output hanya untuk kasus baru yang memang diperlukan atau keluaran yang belum memiliki kontrak jelas.
-- [ ] Menyusun usulan pengujian tambahan yang minimal dan tidak tumpang tindih; **jumlah dan cakupannya harus ditentukan sebelum CI dijalankan**.
-- [ ] Mengevaluasi pipeline dengan memanfaatkan bukti CI yang masih relevan. Jalankan CI baru hanya jika ada perubahan kode/data atau celah nyata yang memerlukan verifikasi.
+- [x] Mengidentifikasi dan memverifikasi celah integrasi semantic role dengan empat skenario kalimat mentah → kamus aktual → POS/konteks → parser → voice → semantic role. Empat skenario baru lulus pada Run #260 (450/450 tes). Rincian dan batasannya dicatat di dokumen status.
+- [x] Meninjau variasi yang relevan dengan celah integrasi: bentuk aktif berimbuhan meN- dan pasif di-, subjek pronominal, objek nominal, agen pascaverbal, serta pasif tanpa agen. Tidak menambah skenario informal/slang/salah ketik/kata ulang karena tidak terkait celah yang sedang diverifikasi.
+- [x] Menetapkan expected output empat skenario baru berdasarkan kontrak parser, bukti voice morfologis, dan frame valensi pilot yang tersedia.
+- [x] Menyusun dan menjalankan tepat empat skenario integrasi baru yang tidak mengulang tes lama secara identik; cakupan disepakati sebelum implementasi dan CI.
+- [x] Mengevaluasi celah integrasi menggunakan empat skenario baru; Run #260 sukses dengan 450/450 tes regresi. Run #258–259 sempat gagal pada ekspektasi tes dan diperbaiki sebelum Run #260; tidak ada pengulangan massal di luar CI otomatis akibat dua commit koreksi.
 - [ ] Menetapkan baseline dan kriteria kelulusan Tahap 2 berdasarkan bukti yang tersedia, keterbatasan yang terdokumentasi, dan hasil evaluasi yang diperlukan.
 
 **Aturan hemat kuota:** tidak ada pengujian ulang massal, tidak ada penambahan skenario demi mengejar jumlah, dan tidak ada perluasan cakupan otomatis. Jika audit menemukan celah, laporkan dahulu ruang lingkup serta jumlah pengujian yang diusulkan sebelum menjalankannya.
