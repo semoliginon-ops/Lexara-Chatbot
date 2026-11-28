@@ -1332,3 +1332,16 @@ Setiap tes memeriksa tiga segmen klausa, urutan connector, label relasi ke klaus
 Dua percobaan awal (Run #253 dan #254) gagal karena ekspektasi tes terhadap sumber POS belum sesuai dengan keluaran pipeline; setelah ekspektasi diperbaiki tanpa mengubah parser atau kamus, GitHub Actions **Run #255 selesai dengan conclusion success**, **436/436 tes regresi lulus**. [Lihat Run #255](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46086966836).
 
 Tidak ada lema, batch, indeks kamus, atau implementasi parser yang diubah. Cakupan koordinasi klausa bertambah, tetapi pekerjaan konstruksi Tahap 2.6 secara keseluruhan tetap parsial.
+
+
+### Frasa nominal bernumeralia dan pewatas adjektival — Run #256–257 (28 November 2026)
+
+Ditambahkan **10 tes integrasi baru** melalui pipeline kamus → morfologi → POS → konteks → parser. Cakupan berbeda dari tes sebelumnya yang hanya memeriksa pengenalan POS atau frasa nominal tanpa numeralia pada jalur integrasi:
+- Lima frasa subjek: numeralia + nomina, termasuk konstruksi dengan pewatas adjektival (`tiga anak kecil`, `dua guru baru`, `tiga murid rajin`, `dua dokter`, `tiga ayam`).
+- Lima frasa objek: nomina + adjektiva (`surat penting`, `nasi panas`) dan numeralia + nomina (`dua roti`, `tiga buku`, `dua ikan`).
+
+Run #256 memperlihatkan batas nyata: tiga frasa objek bernumeralia diparse sebagai `partial`; kepala nomina masuk ke objek, tetapi numeralia sebelumnya tertinggal sebagai token `unresolved`. Perbaikan kecil pada parser mempertahankan batas awal wilayah objek saat mencari kepala nomina, sehingga `_phrase_span()` dapat memasukkan numeralia/pewatas yang berada tepat sebelum kepala. Perbaikan tidak menambah lema atau mengubah kamus.
+
+GitHub Actions **Run #257 selesai dengan conclusion success**; **446/446 tes regresi lulus**. [Lihat Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46087530316).
+
+Catatan: dukungan ini tetap berupa rentang frasa nominal datar; analisis internal inti dan pewatas belum dibangun. Kriteria penutupan Tahap 2.6 juga masih terbuka.
