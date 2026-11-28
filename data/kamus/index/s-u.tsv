@@ -1,5 +1,16 @@
 # token\tid\tlemma\ttype\tbatch
 # Token index — s-u
+Sawah Besar	K2809	Sawah Besar	lemma	batch-057
+Senen	K2811	Senen	lemma	batch-057
+Setiabudi	K2831	Setiabudi	lemma	batch-057
+SheJek	K2516	SheJek	lemma	batch-051
+Taman Sari	K2824	Taman Sari	lemma	batch-057
+Tambora	K2825	Tambora	lemma	batch-057
+Tanah Abang	K2814	Tanah Abang	lemma	batch-057
+Tanjung Priok	K2817	Tanjung Priok	lemma	batch-057
+Tebet	K2830	Tebet	lemma	batch-057
+TopJek	K2525	TopJek	lemma	batch-051
+Uber	K2524	Uber	lemma	batch-051
 sabana	K2697	sabana	lemma	batch-054
 sabar	K0345	sabar	lemma	batch-007
 sabun	K0273	sabun	lemma	batch-006
@@ -44,6 +55,7 @@ santap	K1567	santap	lemma	batch-032
 sapa	K0402	sapa	lemma	batch-009
 sapu	K0054	sapu	lemma	batch-002
 sapuan	K0054	sapu	derived_form	batch-002
+saraf	K3110	saraf	lemma	batch-062
 sarapan	K0452	sarapan	lemma	batch-010
 sarden	K2041	sarden	lemma	batch-041
 saringan	K1568	saringan	lemma	batch-032
@@ -55,7 +67,6 @@ satpam	K1571	satpam	lemma	batch-032
 saudara	K0110	saudara	lemma	batch-003
 saus	K1944	saus	lemma	batch-039
 sawah	K1572	sawah	lemma	batch-032
-Sawah Besar	K2809	Sawah Besar	lemma	batch-057
 sawi hijau	K2092	sawi hijau	lemma	batch-042
 saya	K0002	saya	lemma	batch-001
 sayang	K0115	sayang	lemma	batch-003
@@ -115,10 +126,10 @@ sembunyi	K1589	sembunyi	lemma	batch-032
 semoga	K0634	semoga	lemma	batch-013
 semut	K1590	semut	lemma	batch-032
 senang	K0084	senang	lemma	batch-002
+sendi	K3111	sendi	lemma	batch-062
 sendiri	K3026	sendiri	lemma	batch-060
 sendirian	K1591	sendirian	lemma	batch-032
 sendok	K0279	sendok	lemma	batch-006
-Senen	K2811	Senen	lemma	batch-057
 sengaja	K0691	sengaja	lemma	batch-014
 sengketa	K1600	sengketa	lemma	batch-032
 senja	K1650	senja	lemma	batch-033
@@ -156,7 +167,6 @@ sesuka	K1615	sesuka	lemma	batch-033
 set-top box	K2353	set-top box	lemma	batch-048
 setan	K1616	setan	lemma	batch-033
 setia	K1617	setia	lemma	batch-033
-Setiabudi	K2831	Setiabudi	lemma	batch-057
 setidaknya	K0636	setidaknya	lemma	batch-013
 setir	K1618	setir	lemma	batch-033
 setor	K1619	setor	lemma	batch-033
@@ -166,7 +176,6 @@ setuju	K0244	setuju	lemma	batch-005
 setujuan	K1621	setujuan	lemma	batch-033
 seumur	K0129	umur	derived_form	batch-003
 sewa	K0411	sewa	lemma	batch-009
-SheJek	K2516	SheJek	lemma	batch-051
 siaga	K1622	siaga	lemma	batch-033
 siang	K0132	siang	lemma	batch-003
 siaran	K1596	siaran	lemma	batch-032
@@ -256,6 +265,7 @@ sulut	K1647	sulut	lemma	batch-033
 sumbang	K1599	sumbang	lemma	batch-032
 sumber	K1120	sumber	lemma	batch-023
 sumber air	K2686	sumber air	lemma	batch-054
+sumsum tulang	K3112	sumsum tulang	lemma	batch-062
 sumur	K1648	sumur	lemma	batch-033
 sunat	K1649	sunat	lemma	batch-033
 sungai	K0157	sungai	lemma	batch-004
@@ -300,18 +310,15 @@ talak	K1661	talak	lemma	batch-034
 talas	K1662	talas	lemma	batch-034
 talenan	K2327	talenan	lemma	batch-047
 tali	K1127	tali	lemma	batch-023
-Taman Sari	K2824	Taman Sari	lemma	batch-057
 tamat	K1663	tamat	lemma	batch-034
 tambah	K1128	tambah	lemma	batch-023
 tambal	K1664	tambal	lemma	batch-034
 tambang	K1665	tambang	lemma	batch-034
-Tambora	K2825	Tambora	lemma	batch-057
 tampan	K1666	tampan	lemma	batch-034
 tampias	K1667	tampias	lemma	batch-034
 tampil	K1129	tampil	lemma	batch-023
 tampung	K1668	tampung	lemma	batch-034
 tanah	K0154	tanah	lemma	batch-004
-Tanah Abang	K2814	Tanah Abang	lemma	batch-057
 tanah gambut	K2733	tanah gambut	lemma	batch-055
 tanah liat	K2671	tanah liat	lemma	batch-054
 tanah longsor	K2670	tanah longsor	lemma	batch-054
@@ -337,7 +344,6 @@ tangkis	K1675	tangkis	lemma	batch-034
 tani	K1676	tani	lemma	batch-034
 tanjak	K1677	tanjak	lemma	batch-034
 tanjung	K1678	tanjung	lemma	batch-034
-Tanjung Priok	K2817	Tanjung Priok	lemma	batch-057
 tantang	K1134	tantang	lemma	batch-023
 tanya	K0189	tanya	lemma	batch-004
 tapak	K1679	tapak	lemma	batch-034
@@ -363,7 +369,6 @@ tawon vespa	K2957	tawon vespa	lemma	batch-060
 tawuran	K1688	tawuran	lemma	batch-034
 tebal	K1136	tebal	lemma	batch-023
 tebar	K1689	tebar	lemma	batch-034
-Tebet	K2830	Tebet	lemma	batch-057
 tebing	K1690	tebing	lemma	batch-034
 tebu	K1691	tebu	lemma	batch-034
 tega	K1692	tega	lemma	batch-034
@@ -416,6 +421,7 @@ tenggelam	K1706	tenggelam	lemma	batch-035
 tenggorok	K1707	tenggorok	lemma	batch-035
 tengik	K1708	tengik	lemma	batch-035
 tengkar	K1709	tengkar	lemma	batch-035
+tengkorak	K3113	tengkorak	lemma	batch-062
 tengkuk	K2577	tengkuk	lemma	batch-052
 tengkurap	K1710	tengkurap	lemma	batch-035
 tengok	K1711	tengok	lemma	batch-035
@@ -467,6 +473,7 @@ tertutup	K0066	tutup	derived_form	batch-002
 terumbu karang	K2727	terumbu karang	lemma	batch-055
 terus	K0640	terus	lemma	batch-013
 terutama	K1721	terutama	lemma	batch-035
+testis	K3121	testis	lemma	batch-062
 tetangga	K0440	tetangga	lemma	batch-009
 tetap	K3007	tetap	lemma	batch-060
 tewas	K1722	tewas	lemma	batch-035
@@ -511,7 +518,6 @@ tonsilitis	K3070	tonsilitis	lemma	batch-061
 tontonan	K0075	nonton	derived_form	batch-002
 top up	K2550	top up	lemma	batch-051
 topi	K0270	topi	lemma	batch-006
-TopJek	K2525	TopJek	lemma	batch-051
 trailer	K2572	trailer	lemma	batch-052
 traktor	K2571	traktor	lemma	batch-052
 tripod	K2418	tripod	lemma	batch-049
@@ -555,7 +561,6 @@ tutup	K0066	tutup	lemma	batch-002
 uang	K0022	uang	lemma	batch-001
 ubah	K0220	ubah	lemma	batch-005
 ubek-ubek	K1152	ubek-ubek	lemma	batch-024
-Uber	K2524	Uber	lemma	batch-051
 ubi	K1996	ubi	lemma	batch-040
 ubur-ubur	K1153	ubur-ubur	lemma	batch-024
 ucap	K1154	ucap	lemma	batch-024
@@ -599,6 +604,8 @@ untung	K0701	untung	lemma	batch-014
 upah	K1169	upah	lemma	batch-024
 upaya	K1170	upaya	lemma	batch-024
 update	K1171	update	lemma	batch-024
+ureter	K3117	ureter	lemma	batch-062
+uretra	K3118	uretra	lemma	batch-062
 urung	K1172	urung	lemma	batch-024
 urut	K1173	urut	lemma	batch-024
 usaha	K0229	usaha	lemma	batch-005
@@ -606,6 +613,9 @@ usai	K1174	usai	lemma	batch-024
 usang	K1175	usang	lemma	batch-024
 usik	K1176	usik	lemma	batch-024
 usir	K1177	usir	lemma	batch-024
+usus	K3114	usus	lemma	batch-062
+usus besar	K3115	usus besar	lemma	batch-062
+usus halus	K3116	usus halus	lemma	batch-062
 usut	K1178	usut	lemma	batch-024
 utang	K1179	utang	lemma	batch-024
 utuh	K1180	utuh	lemma	batch-024
