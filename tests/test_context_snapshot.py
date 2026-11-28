@@ -157,8 +157,6 @@ class ContextSnapshotTests(unittest.TestCase):
         second = build_context_snapshot(source, parser_result)
         self.assertEqual(first, second)
         self.assertEqual(json.dumps([source, parser_result], sort_keys=True), before)
-
-    def test_invalid_input_is_rejected(self):
         with self.assertRaises(ContextSnapshotError):
             build_context_snapshot({"tokens": "invalid"}, parsed())
         with self.assertRaises(ContextSnapshotError):
