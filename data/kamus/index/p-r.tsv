@@ -1,5 +1,5 @@
-# Token index — p-r
 # token\tid\tlemma\ttype\tbatch
+# Token index — p-r
 pabrik	K1501	pabrik	lemma	batch-030
 pacar	K0113	pacar	lemma	batch-003
 padahal	K0629	padahal	lemma	batch-013
@@ -41,6 +41,7 @@ papan	K1507	papan	lemma	batch-031
 parah	K0598	parah	lemma	batch-012
 pare	K1934	pare	lemma	batch-039
 parfum	K1041	parfum	lemma	batch-021
+parkinson	K3074	parkinson	lemma	batch-061
 parkir	K0397	parkir	lemma	batch-008
 parlemen	K2875	parlemen	lemma	batch-058
 partai politik	K2862	partai politik	lemma	batch-058
@@ -220,6 +221,7 @@ penurunan	K0070	turun	derived_form	batch-002
 penutup	K0066	tutup	derived_form	batch-002
 penutupan	K0066	tutup	derived_form	batch-002
 penyakit	K0180	sakit	derived_form	batch-004
+penyakit jantung	K3076	penyakit jantung	lemma	batch-061
 penyampaian	K0210	sampai	derived_form	batch-005
 penyanyi	K2478	penyanyi	lemma	batch-050
 penyelamat	K0248	selamat	derived_form	batch-005
@@ -318,8 +320,10 @@ pisang goreng	K2039	pisang goreng	lemma	batch-041
 pisau	K0281	pisau	lemma	batch-006
 piyama	K2621	piyama	lemma	batch-053
 pizza	K1938	pizza	lemma	batch-039
+pneumonia	K3062	pneumonia	lemma	batch-061
 pohon	K0159	pohon	lemma	batch-004
 pokoknya	K0631	pokoknya	lemma	batch-013
+polio	K3063	polio	lemma	batch-061
 polisi	K1540	polisi	lemma	batch-031
 politik	K1541	politik	lemma	batch-031
 polusi	K1542	polusi	lemma	batch-031
@@ -368,6 +372,7 @@ pusat	K1048	pusat	lemma	batch-021
 pusing	K1047	pusing	lemma	batch-021
 putus	K1049	putus	lemma	batch-021
 putusan	K2945	putusan	lemma	batch-059
+rabies	K3064	rabies	lemma	batch-061
 rabu	K1052	rabu	lemma	batch-022
 racun	K1053	racun	lemma	batch-022
 radar	K1054	radar	lemma	batch-022
