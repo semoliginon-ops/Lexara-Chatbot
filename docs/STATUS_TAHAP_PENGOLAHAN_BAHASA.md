@@ -1345,3 +1345,16 @@ Run #256 memperlihatkan batas nyata: tiga frasa objek bernumeralia diparse sebag
 GitHub Actions **Run #257 selesai dengan conclusion success**; **446/446 tes regresi lulus**. [Lihat Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46087530316).
 
 Catatan: dukungan ini tetap berupa rentang frasa nominal datar; analisis internal inti dan pewatas belum dibangun. Kriteria penutupan Tahap 2.6 juga masih terbuka.
+
+
+**Keputusan penutupan Tahap 2.6 — 28 November 2026**
+
+Tahap 2.6 (Analisis struktur kalimat dasar) **ditutup atas keputusan pengguna**. Tidak ada kewajiban untuk terus memperluas pengujian konstruksi pada tahap ini. Penutupan ini menetapkan baseline dan menghentikan pekerjaan tahap 2.6 untuk saat ini; bukan pernyataan bahwa parser telah mencakup seluruh struktur Bahasa Indonesia.
+
+Hal-hal yang tetap menjadi batas/pekerjaan tertunda dan tidak boleh diklaim selesai:
+- Inversi K-P-S masih terbatas pada bukti valensi yang sangat spesifik.
+- Inventaris pronomina informal/regional belum lengkap; interpretasi semantis -ku, -mu, dan terutama -nya belum tuntas.
+- Frasa nominal masih dilaporkan sebagai rentang datar; analisis internal inti dan pewatas belum tersedia.
+- Sejumlah konstruksi dan variasi kalimat masih menghasilkan status partial atau unresolved secara konservatif.
+
+Baseline terakhir yang diverifikasi: GitHub Actions Run #257, **446/446 regression tests lulus**. Tidak ada perubahan kamus atau penambahan lema dalam pekerjaan penutupan ini. Tahap berikutnya hanya dimulai jika pengguna mengarahkannya; jangan otomatis membuka kembali Tahap 2.6 atau memperluas tesnya.
