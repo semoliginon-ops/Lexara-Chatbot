@@ -193,7 +193,7 @@ Modul read-only `tools/validasi_concept_layer.py` memvalidasi tiga berkas Concep
 Contoh pemanggilan dari root repository:
 
 ```bash
-python -m unittest tests.test_validasi_concept_layer -v
+python -m unittest discover -s tests -p "test_validasi_concept_layer.py" -v
 python -m tools.validasi_concept_layer \
   --concepts data/concepts/concepts.jsonl \
   --mappings data/concepts/sense_concept_map.jsonl \
