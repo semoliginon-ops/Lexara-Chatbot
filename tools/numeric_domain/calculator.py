@@ -137,10 +137,16 @@ def calculate(expression: str) -> Decimal:
 def percent_of(percent, base) -> Decimal:
     """Return a percentage of a base value."""
     try:
-        rate = percent if isinstance(percent, Decimal) else parse_number(str(percent))
         amount = base if isinstance(base, Decimal) else parse_number(str(base))
+        if isinstance(percent, Decimal):
+            rate = percent / Decimal(100)
+        else:
+            raw_rate = str(percent).strip()
+            rate = parse_number(raw_rate)
+            if not raw_rate.endswith("%"):
+                rate /= Decimal(100)
         with localcontext() as context:
             context.prec = 28
-            return +(rate * amount / Decimal(100))
+            return +(rate * amount)
     except (NumericParseError, InvalidOperation, OverflowError) as exc:
         raise CalculationError("Nilai persentase atau nilai dasar tidak valid.") from exc
