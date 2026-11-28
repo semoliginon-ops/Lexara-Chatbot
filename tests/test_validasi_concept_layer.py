@@ -60,7 +60,7 @@ class ConceptLayerValidationTests(unittest.TestCase):
         self.assertTrue(any("JSON tidak valid" in error for error in errors))
 
     def test_rejects_invalid_utf8_without_crashing(self):
-        self.concepts.write_bytes(b"\\xff\\xfe\\xfa")
+        self.concepts.write_bytes(bytes([0xFF, 0xFE, 0xFA]))
         _, errors = self._validate()
         self.assertTrue(any("tidak dapat dibaca sebagai UTF-8" in error for error in errors))
     def test_rejects_non_object_json_line(self):
