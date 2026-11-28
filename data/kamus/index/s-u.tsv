@@ -1,5 +1,5 @@
-# Token index — s-u
 # token\tid\tlemma\ttype\tbatch
+# Token index — s-u
 sabana	K2697	sabana	lemma	batch-054
 sabar	K0345	sabar	lemma	batch-007
 sabun	K0273	sabun	lemma	batch-006
@@ -129,6 +129,7 @@ sepeda	K0199	sepeda	lemma	batch-004
 sepeda listrik	K2566	sepeda listrik	lemma	batch-052
 sepeda motor	K0400	sepeda motor	lemma	batch-008
 sepi	K0250	sepi	lemma	batch-005
+september	K3033	september	lemma	batch-061
 serabi	K1989	serabi	lemma	batch-040
 seragam	K1593	seragam	lemma	batch-032
 serai	K2186	serai	lemma	batch-044
@@ -193,6 +194,7 @@ singkat	K1105	singkat	lemma	batch-023
 singkir	K1631	singkir	lemma	batch-033
 singkong	K1106	singkong	lemma	batch-023
 singlet	K2625	singlet	lemma	batch-053
+sinusitis	K3065	sinusitis	lemma	batch-061
 sinyal	K1107	sinyal	lemma	batch-023
 siomay	K1990	siomay	lemma	batch-040
 siram	K1108	siram	lemma	batch-023
@@ -235,6 +237,7 @@ sprei	K2345	sprei	lemma	batch-047
 stasiun	K0393	stasiun	lemma	batch-008
 steker	K2349	steker	lemma	batch-047
 stopkontak	K2348	stopkontak	lemma	batch-047
+stroke	K3066	stroke	lemma	batch-061
 stylus	K2448	stylus	lemma	batch-049
 suami	K0111	suami	lemma	batch-003
 suap	K1117	suap	lemma	batch-023
@@ -473,6 +476,7 @@ tiba-tiba	K0677	tiba-tiba	lemma	batch-014
 tidak	K0028	tidak	lemma	batch-001
 tidur	K0015	tidur	lemma	batch-001
 tiduran	K0015	tidur	derived_form	batch-001
+tifus	K3067	tifus	lemma	batch-061
 tiket	K0396	tiket	lemma	batch-008
 tikus	K3013	tikus	lemma	batch-060
 timbul	K1725	timbul	lemma	batch-035
@@ -503,6 +507,7 @@ tombol	K1740	tombol	lemma	batch-035
 tonggeret	K3001	tonggeret	lemma	batch-060
 tongseng	K1994	tongseng	lemma	batch-040
 tonjol	K1741	tonjol	lemma	batch-035
+tonsilitis	K3070	tonsilitis	lemma	batch-061
 tontonan	K0075	nonton	derived_form	batch-002
 top up	K2550	top up	lemma	batch-051
 topi	K0270	topi	lemma	batch-006
@@ -513,6 +518,7 @@ tripod	K2418	tripod	lemma	batch-049
 tsunami	K2673	tsunami	lemma	batch-054
 tua	K1742	tua	lemma	batch-035
 tuang	K0474	tuang	lemma	batch-010
+tuberkulosis	K3068	tuberkulosis	lemma	batch-061
 tubuh	K1743	tubuh	lemma	batch-035
 tuduh	K1744	tuduh	lemma	batch-035
 tugas	K1745	tugas	lemma	batch-035
@@ -534,6 +540,7 @@ tumis kangkung	K2174	tumis kangkung	lemma	batch-044
 tumis sawi	K2177	tumis sawi	lemma	batch-044
 tumis tauge	K2176	tumis tauge	lemma	batch-044
 tumit	K2584	tumit	lemma	batch-052
+tumor	K3069	tumor	lemma	batch-061
 tumpah	K1749	tumpah	lemma	batch-035
 tumpang	K1750	tumpang	lemma	batch-035
 tumpuk	K1751	tumpuk	lemma	batch-035
