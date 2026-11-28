@@ -46,8 +46,17 @@ def _token_ambiguities(item: dict[str, Any], index: int) -> list[dict[str, Any]]
         lexical = []
     multiple_senses = any(
         isinstance(candidate, dict)
-        and isinstance(candidate.get("sense_ids"), list)
-        and len(candidate["sense_ids"]) > 1
+        and (
+            (
+                isinstance(candidate.get("sense_ids"), list)
+                and len(candidate["sense_ids"]) > 1
+            )
+            or (
+                isinstance(candidate.get("entry"), dict)
+                and isinstance(candidate["entry"].get("senses"), list)
+                and len(candidate["entry"]["senses"]) > 1
+            )
+        )
         for candidate in lexical
     )
     if len(lexical) > 1 or multiple_senses or item.get("lexical_status") == "ambiguous":
