@@ -1650,8 +1650,45 @@ Hasil GitHub Actions:
 
 Batas yang belum dikerjakan:
 - Belum ada dataset aturan konteks linguistik yang dikurasi untuk penggunaan nyata.
-- Belum ada komponen pemilih sense kontekstual.
+- Komponen pemilih sense kontekstual v1 kini tersedia sebagai modul terpisah dan telah lulus 12/12 tes terfokus; detail verifikasi dicatat pada bagian setelah ini.
 - Belum ada integrasi generator atau pemilih sense ke analyzer/runtime.
 - Pilot Concept Layer tiga konsep tidak dianggap cukup untuk pemahaman konteks luas.
 
-**Titik lanjut resmi:** merancang komponen pemilih sense kontekstual yang memakai evidence generator. Rancangan pemilih harus menentukan perlakuan evidence supports/contradicts, kriteria bukti yang cukup, dan kapan mempertahankan ambiguitas atau abstention. Jangan mengubah komponen Tahap 1/2 atau resolver semantic role yang ada tanpa blocker terverifikasi dan persetujuan pengguna.
+**Titik lanjut saat itu:** merancang komponen pemilih sense kontekstual. Rancangan dan implementasi v1 kini selesai; titik lanjut terbaru dicatat pada bagian Contextual Sense Selector v1 di bawah.
+
+## Contextual Sense Selector v1 — implementasi dan verifikasi, 28 November 2026
+
+Atas persetujuan pengguna terhadap rancangan, selector diimplementasikan sebagai modul terpisah tanpa integrasi ke analyzer/runtime.
+
+Perubahan:
+- Rancangan disetujui: `docs/RANCANGAN_CONTEXTUAL_SENSE_SELECTOR.md`.
+- Modul baru: `tools/contextual_sense_selector.py`, fungsi publik `select_contextual_sense(sense_candidates, evidence)`.
+- Tes baru: `tests/test_contextual_sense_selector.py`, tepat **12 metode tes unit**.
+- Workflow khusus: `.github/workflows/contextual-sense-selector-tests.yml`, hanya berjalan otomatis ketika modul atau file tes selector berubah; workflow file tidak memicu dirinya sendiri.
+
+Perilaku yang diverifikasi:
+- Keputusan hanya menggunakan evidence `strong`; evidence `weak` tetap dicatat dan tidak diagregasi.
+- `selected` hanya jika satu kandidat memiliki strong support, tidak memiliki strong contradiction, dan semua alternatif memiliki strong contradiction tanpa strong support.
+- Dua atau lebih kandidat viable tetap `ambiguous`.
+- Konflik strong support/contradiction pada sense yang sama tidak dipilih.
+- Tidak ada kandidat, seluruh kandidat tereliminasi, atau satu kandidat yang berkonflik menghasilkan `unresolved`.
+- Satu kandidat tanpa strong contradiction menghasilkan `not_needed`; selector tidak mengklaim keputusan kontekstual.
+- Evidence untuk sense di luar kelompok kandidat diabaikan dan dicatat.
+- Metadata kandidat dan evidence dipertahankan dalam audit; input tidak dimutasi dan hasil deterministik.
+- Validasi menolak kandidat duplikat dan evidence dengan nilai polarity/strength yang tidak valid.
+
+Hasil GitHub Actions:
+- Run #1 [46107613719](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46107613719): sukses, tetapi log menunjukkan 13 tes.
+- Run #2 [46107637515](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46107637515): sukses, juga 13 tes. Kedua run awal memiliki satu metode tes validasi tambahan sehingga belum sesuai jumlah tepat 12 yang disepakati.
+- Tes validasi tambahan digabungkan ke metode tes yang sudah ada; jumlah metode menjadi tepat 12.
+- Run #3 [46107671664](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46107671664): **success, 12/12 tes**. Ini hasil final yang menjadi acuan.
+- Tidak ada regression suite 450 tes, tes generator, tes Concept Layer, atau tes komponen lama yang dijalankan ulang.
+
+Batas yang belum dikerjakan:
+- Selector belum diintegrasikan ke analyzer/runtime.
+- Belum ada orkestrasi yang mengelompokkan kandidat sense dan evidence untuk setiap kemunculan token.
+- Belum ada dataset aturan konteks `reviewed` yang cukup untuk pemakaian nyata; generator dan selector baru menyediakan mekanisme.
+- Pilot Concept Layer tiga konsep tidak dianggap cukup untuk pemahaman konteks luas.
+
+**Titik lanjut resmi:** merancang batas integrasi terkontrol antara kandidat leksikal per kemunculan token, parser, Context Evidence Generator, dan Contextual Sense Selector, termasuk sumber/format aturan konteks berstatus `reviewed`. Tahap ini masih desain integrasi; jangan mengubah analyzer/runtime atau komponen Tahap 1/2 sebelum kontraknya disetujui.
+
