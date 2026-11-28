@@ -112,69 +112,106 @@ Contoh ini hanya menjelaskan pemisahan dimensi; bukan data latih, evidence atura
 
 **Kriteria penerimaan rancangan:** batas antara makna, struktur, dan maksud komunikatif jelas; setiap kandidat dapat ditelusuri ke sumber; ketidakpastian dipertahankan; dan tidak ada perubahan pada komponen Tahap 1/2 atau aturan konteks nonaktif.
 
-## 9. Skema keluaran minimal v1 (rancangan)
+## 9. Skema keluaran minimal v1 (hasil verifikasi pemetaan)
 
-Keluaran dirancang sebagai laporan baca-saja atas satu Context Snapshot. Bentuk ini belum menjadi kontrak implementasi final sampai modul dan tes khusus dibuat.
+Keluaran adalah laporan baca-saja atas satu Context Snapshot. Pemetaan berikut telah diperiksa terhadap `tools/context_snapshot.py`; field yang tidak tersedia tidak boleh direka.
 
 ```json
 {
   "schema_version": "1.0",
   "source": {
-    "snapshot_status": "assembled | partial | deferred",
-    "parser_status": "nilai asli parser atau null"
+    "snapshot_status": "assembled",
+    "parser_status": "parsed"
   },
   "ambiguity": {
-    "status": "resolved | ambiguous | unresolved | deferred",
+    "status": "ambiguous",
     "items": [
       {
-        "dimension": "lexical_sense | pos | syntax | reference | intent",
+        "dimension": "lexical_sense",
         "token_index": 0,
         "candidate_refs": [
           {
             "source_field": "lexical_candidates",
-            "candidate_id": "ID kandidat asli atau null"
+            "candidate_index": 0
           }
         ],
         "evidence_refs": [
           {
-            "source_field": "field sumber asli",
+            "source_field": "lexical_status",
             "token_index": 0
           }
         ],
         "status": "ambiguous",
-        "reason": "multiple_supported_candidates"
+        "reason": "multiple_candidates_preserved"
       }
     ]
   },
   "communicative_intent": {
-    "status": "resolved | ambiguous | unresolved | deferred",
-    "label": "question | request | directive | assertion | expressive | fragment | unknown",
-    "candidates": [],
-    "evidence_refs": [],
-    "reason": "explicit_marker | explicit_construction | insufficient_evidence"
+    "status": "resolved",
+    "label": "question",
+    "candidates": ["question"],
+    "evidence_refs": [
+      {
+        "source_field": "normalized_text"
+      }
+    ],
+    "reason": "explicit_question_mark"
   }
 }
 ```
 
-### Aturan skema
+### 9.1 Pemetaan field yang benar-benar tersedia
 
-- `source.snapshot_status` dan `source.parser_status` menyalin status sumber; jangan menormalkan atau menghapus nilai aslinya.
-- `ambiguity.items` hanya dibuat bila ada ketidakpastian yang dilaporkan sumber atau ditemukan oleh aturan v1 yang eksplisit. Jangan membuat catatan hanya karena sistem belum memiliki kemampuan menganalisis suatu dimensi.
-- `dimension` menjelaskan jenis ketidakpastian; `token_index` boleh `null` bila ketidakpastian berada pada tingkat ujaran atau tidak dapat dipetakan aman ke satu token.
-- `candidate_refs` menunjuk kandidat yang benar-benar tersedia pada snapshot atau komponen yang secara eksplisit dirujuk. Jangan menyalin lalu mengubah kandidat menjadi kandidat baru.
-- `evidence_refs` adalah rujukan ke data sumber, bukan evidence baru. Setiap rujukan harus dapat ditelusuri kembali ke snapshot.
-- `ambiguity.status` adalah ringkasan dimensi ambiguitas, bukan pengganti status per item. Jika item-item memiliki status berbeda, ringkasan mengikuti keadaan paling tidak pasti; urutan konservatif: deferred, unresolved, ambiguous, resolved.
-- `communicative_intent.label` hanya diisi satu label jika tepat satu kandidat didukung bukti eksplisit. Jika beberapa kandidat masih mungkin, `label` harus `null`, status `ambiguous`, dan kandidat tetap tercatat. Jika bukti tidak cukup, gunakan `unknown` dengan status `unresolved`; jangan menganggap semua kalimat otomatis assertion.
-- `reason` menjelaskan dasar status dan bukan skor keyakinan. Tidak ada probabilitas atau confidence score pada v1.
-- Nilai contoh di atas adalah ilustrasi tipe data, bukan daftar aturan aktif. Nama field sumber harus diverifikasi terhadap snapshot sebelum implementasi.
+| Kebutuhan | Field snapshot yang tersedia | Batas |
+|---|---|---|
+| Status snapshot | `status` | Nilai asli: `assembled`, `partial`, atau `deferred`. |
+| Status parser | `parser_status` | Nilai asli parser, dapat `null`. |
+| Kandidat sense/leksikal | `tokens[].lexical_candidates[]` | Objek kandidat memiliki bentuk sumbernya sendiri; tidak ada ID kandidat universal. Rujuk dengan `source_field` dan `candidate_index`. |
+| Status leksikal | `tokens[].lexical_status` | Status asli dari analyzer. |
+| Kandidat POS | `tokens[].pos_candidates[]` | Rujuk dengan indeks kandidat; jangan mengarang ID. |
+| Status/konteks POS | `pos`, `pos_status`, `context_pos`, `pos_context_status`, `pos_context_evidence` | Pertahankan kandidat dan evidence yang ada; jangan membuat keputusan POS baru. |
+| Status sintaksis per token | `syntactic_role`, `syntax_status`, `syntax_reason` | `mapped`, `unresolved`, `not_observed`, `deferred`, atau `not_applicable` sesuai sumber. |
+| Struktur parser lengkap | `parser_result` | Salinan hasil parser; tidak boleh dianggap sebagai struktur referensi/anaphora. |
+| Teks ujaran | `normalized_text` dan `tokens[].token` | Dapat dipakai untuk pemeriksaan bentuk komunikatif eksplisit yang dibatasi. |
 
-### Batas keputusan untuk implementasi berikutnya
+Snapshot **tidak** menyediakan kandidat resolusi referensi/pronomina yang terstruktur. Karena itu, `reference` dikeluarkan dari dimensi yang dapat menghasilkan catatan v1; bukan diberi status seolah-olah sudah dianalisis. `intent` juga tidak menjadi `ambiguity.items[].dimension`, sebab hasil maksud komunikatif sudah memiliki bagian tersendiri.
 
-Implementasi pertama hanya boleh:
-1. memvalidasi dan merujuk status/kandidat yang sudah ada pada snapshot;
-2. membuat catatan ambiguitas untuk kasus yang benar-benar dapat ditunjuk sumbernya;
-3. mengklasifikasikan bentuk komunikatif yang memiliki pola eksplisit dan telah disepakati sebagai aturan terbatas;
-4. mengembalikan unresolved/deferred bila tidak ada bukti aman.
+### 9.2 Aturan referensi dan status
 
-Implementasi pertama tidak boleh memilih sense baru, menafsirkan implikatur, menyimpulkan niat psikologis, mengeluarkan teks klarifikasi, atau mengubah komponen sumber.
+- `candidate_refs` memakai `source_field`, `token_index`, dan `candidate_index` bila relevan. Referensi harus menunjuk item yang benar-benar ada. Tidak ada `candidate_id` sintetis.
+- `evidence_refs` hanya menunjuk field snapshot yang benar-benar ada. Referensi tingkat ujaran boleh tidak memiliki `token_index`.
+- Dimensi v1 yang boleh menghasilkan catatan: `lexical_sense`, `pos`, dan `syntax`. Catatan hanya dibuat saat snapshot memiliki kandidat/status eksplisit yang menunjukkan ketidakpastian. `not_observed` tidak otomatis menjadi ambiguitas.
+- `ambiguity.status` merangkum item; urutan konservatif dari paling tidak pasti: `deferred`, `unresolved`, `ambiguous`, `resolved`. Jika tidak ada item, gunakan `resolved` hanya bila snapshot tidak melaporkan ketidakpastian pada dimensi yang diperiksa; selain itu gunakan status yang sesuai.
+- Status sumber tidak ditimpa. Status laporan v1 tidak menggantikan status analyzer, POS, parser, maupun snapshot.
+- Jika pemetaan token atau sumber tidak aman, hasil ditunda atau unresolved; jangan menebak.
+
+### 9.3 Batas klasifikasi maksud komunikatif v1
+
+Klasifikasi awal hanya mengenali bentuk yang memiliki penanda eksplisit dan dapat diuji tanpa inferensi pragmatis:
+- `question`: tanda tanya eksplisit pada `normalized_text`.
+- `request`: penanda permintaan eksplisit `tolong` pada token ujaran.
+- `directive`: penanda larangan eksplisit `jangan` pada token ujaran.
+- Selain pola tersebut, hasil `unknown` / `unresolved`.
+
+Label `assertion`, `expressive`, dan `fragment` tetap bagian dari kosakata skema, tetapi v1 tidak mengklasifikasikannya otomatis. Tanda tanya hanya membuktikan bentuk pertanyaan, bukan apakah pertanyaan itu secara pragmatis merupakan permintaan. Jika lebih dari satu pola eksplisit bertabrakan, jangan memaksakan satu label.
+
+### 9.4 Batas implementasi dan tes yang disepakati
+
+Implementasi akan menjadi modul read-only terpisah yang menerima satu snapshot dan tidak memanggil ulang analyzer/parser. Cakupan tepat **11 tes unit khusus** dalam satu berkas `tests/test_utterance_interpretation.py`:
+
+1. menolak input snapshot yang bentuk dasarnya tidak valid;
+2. mempertahankan status snapshot dan parser asli;
+3. mencatat kandidat sense jamak dengan indeks kandidat yang benar;
+4. mencatat kandidat POS jamak dengan indeks kandidat yang benar;
+5. mempertahankan status sintaksis `unresolved` tanpa menetapkan peran;
+6. mempertahankan kondisi sintaksis `deferred` tanpa menebak;
+7. tidak membuat catatan ambiguitas dari `not_observed` saja;
+8. mengenali bentuk pertanyaan dengan tanda tanya eksplisit;
+9. mengenali penanda permintaan `tolong`;
+10. mengenali penanda larangan `jangan`;
+11. mengembalikan `unknown` / `unresolved` untuk bentuk tanpa penanda yang didukung.
+
+Tes ini tidak menguji ulang Context Snapshot; ia memakai fixture snapshot kecil dan menguji kontrak modul baru. Tidak ada perubahan pada kamus, analyzer, morfologi, POS, parser, resolver, Concept Layer, generator, selector, integrasi sense, maupun runtime. Satu workflow GitHub Actions khusus hanya akan ditambahkan untuk 11 tes ini setelah implementasi. Regression suite 450 tes dan 10 tes Context Snapshot tidak dijalankan ulang tanpa alasan teknis.
+
+**Kriteria penerimaan:** seluruh referensi dapat ditelusuri ke field snapshot; tidak ada ID/kandidat/evidence rekaan; ketidakpastian sumber dipertahankan; 11 tes khusus lulus; dan tidak ada perubahan pada komponen di luar modul baru serta dokumen terkait.
 
