@@ -1,8 +1,5 @@
 # Token index — d-f
 # token\tid\tlemma\ttype\tbatch
-DVD	K2438	DVD	lemma	batch-049
-Draiv	K2513	Draiv	lemma	batch-051
-Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 dada	K2590	dada	lemma	batch-052
 dadakan	K0760	dadakan	lemma	batch-016
 dadar gulung	K2018	dadar gulung	lemma	batch-041
@@ -62,6 +59,7 @@ deg-degan	K1861	deg-degan	lemma	batch-038
 deh	K0556	deh	lemma	batch-012
 dek	K1862	dek	lemma	batch-038
 dekat	K0090	dekat	lemma	batch-002
+deklinasi	K3139	deklinasi	lemma	batch-063
 dekorasi	K1252	dekorasi	lemma	batch-026
 delapan	K0775	delapan	lemma	batch-016
 delima	K1863	delima	lemma	batch-038
@@ -261,6 +259,7 @@ dosa	K0547	dosa	lemma	batch-011
 dosen	K1888	dosen	lemma	batch-038
 dosis	K1270	dosis	lemma	batch-026
 doyan	K0548	doyan	lemma	batch-011
+Draiv	K2513	Draiv	lemma	batch-051
 drama	K1271	drama	lemma	batch-026
 drastis	K1272	drastis	lemma	batch-026
 dress	K2646	dress	lemma	batch-053
@@ -280,12 +279,14 @@ duluan	K0614	duluan	lemma	batch-013
 dunia	K0789	dunia	lemma	batch-016
 duplikat	K0809	duplikat	lemma	batch-017
 durasi	K0550	durasi	lemma	batch-011
+Duren Sawit	K2846	Duren Sawit	lemma	batch-057
 durhaka	K0807	durhaka	lemma	batch-017
 duri	K0790	duri	lemma	batch-016
 durian	K0791	durian	lemma	batch-016
 durian montong	K2079	durian montong	lemma	batch-042
 dusta	K0808	dusta	lemma	batch-017
 duta	K1273	duta	lemma	batch-026
+DVD	K2438	DVD	lemma	batch-049
 e-reader	K2451	e-reader	lemma	batch-049
 earphone	K2371	earphone	lemma	batch-048
 edisi	K1876	edisi	lemma	batch-038
@@ -296,12 +297,14 @@ efisien	K0794	efisien	lemma	batch-016
 egois	K1889	egois	lemma	batch-038
 ejaan	K1275	ejaan	lemma	batch-026
 ejek	K1276	ejek	lemma	batch-026
+ekliptika	K3141	ekliptika	lemma	batch-063
 ekologi	K1277	ekologi	lemma	batch-026
 ekonomi	K0795	ekonomi	lemma	batch-016
 ekonomis	K1278	ekonomis	lemma	batch-026
 ekor	K0796	ekor	lemma	batch-016
 eksim	K3046	eksim	lemma	batch-061
 eksis	K0797	eksis	lemma	batch-016
+eksoplanet	K3140	eksoplanet	lemma	batch-063
 ekspansi	K1281	ekspansi	lemma	batch-026
 ekspedisi	K1279	ekspedisi	lemma	batch-026
 eksperimen	K1280	eksperimen	lemma	batch-026
@@ -426,3 +429,4 @@ fresh	K1884	fresh	lemma	batch-038
 frustrasi	K0849	frustrasi	lemma	batch-017
 fundamental	K0851	fundamental	lemma	batch-017
 fungsi	K0850	fungsi	lemma	batch-017
+fusi nuklir	K3142	fusi nuklir	lemma	batch-063
