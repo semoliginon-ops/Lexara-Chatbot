@@ -1692,3 +1692,20 @@ Batas yang belum dikerjakan:
 
 **Titik lanjut resmi:** merancang batas integrasi terkontrol antara kandidat leksikal per kemunculan token, parser, Context Evidence Generator, dan Contextual Sense Selector, termasuk sumber/format aturan konteks berstatus `reviewed`. Tahap ini masih desain integrasi; jangan mengubah analyzer/runtime atau komponen Tahap 1/2 sebelum kontraknya disetujui.
 
+## Kontrak Integrasi Contextual Sense v1 — disetujui, 28 November 2026
+
+Pengguna menyetujui rancangan batas integrasi pada 28 November 2026. Kontrak resmi disimpan di `docs/KONTRAK_INTEGRASI_CONTEXTUAL_SENSE_V1.md`.
+
+Keputusan desain:
+- Orchestrator baru menghubungkan analyzer/kandidat leksikal, parser, Concept Sense Adapter, Context Evidence Generator, dan Contextual Sense Selector tanpa mengubah kontrak internal komponen tersebut.
+- Kandidat sense dikelompokkan berdasarkan kemunculan token dalam satu hasil analisis, memakai identitas sementara `token_index`. Kandidat dari token berbeda tidak boleh dicampur meskipun bentuk katanya sama.
+- Evidence dan keputusan selector hanya berlaku untuk kelompok satu kemunculan token; tidak ada pemindahan evidence lintas token.
+- Parser saat ini belum menyediakan rentang indeks token yang stabil untuk seluruh struktur. Karena itu pemilihan ditunda pada kalimat majemuk dan ketika pemetaan token berulang tidak aman. Parser partial hanya memakai observasi yang tersedia; parser unresolved tidak menghasilkan kecocokan role.
+- Dataset aturan konteks v1 direncanakan di `data/context_rules/context_rules.jsonl`, dimuat baca-saja, dan hanya aturan berstatus `reviewed` yang aktif. Isinya harus dikurasi; tidak ada penetapan reviewed otomatis.
+- Hasil orkestrasi mempertahankan kandidat, evidence/audit, status, dan alasan penundaan. Status orkestrasi tidak menggantikan status selector.
+- Batas implementasi yang disetujui: satu modul orchestrator baru, loader aturan baca-saja bila diperlukan, dataset aturan setelah ditinjau, tepat 10 tes integrasi khusus, dan workflow terfokus bila diperlukan.
+- Tes unit lama tidak diulang tanpa alasan teknis. Regression suite 450 tes tidak otomatis dijalankan ulang hanya karena modul orkestrasi baru ditambahkan.
+
+Tidak ada kode runtime, analyzer, parser, POS, morfologi, kamus, indeks, Concept Layer, generator, selector, atau resolver semantic-role yang diubah pada langkah persetujuan desain ini. Implementasi belum dimulai.
+
+**Titik lanjut resmi:** implementasikan orchestrator Contextual Sense v1 sesuai kontrak, lalu verifikasi tepat 10 tes integrasi khusus dengan cakupan yang disetujui.
