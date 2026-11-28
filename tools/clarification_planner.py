@@ -88,6 +88,8 @@ def _validate_sense_reference(
     tokens = snapshot["tokens"]
     if token_index >= len(tokens) or not isinstance(tokens[token_index], dict):
         return False
+    if tokens[token_index].get("kind", "word") != "word":
+        return False
     lexical = tokens[token_index].get("lexical_candidates")
     if not isinstance(lexical, list) or candidate_index >= len(lexical):
         return False
@@ -198,6 +200,9 @@ def plan_clarification(
                 source_item["status"] != "ambiguous"
                 or source_item.get("dimension") != "lexical_sense"
                 or not isinstance(parent_ref, dict)
+                or parent_ref.get("source_field") != "lexical_candidates"
+                or parent_ref.get("token_index") != source_item.get("token_index")
+                or not _valid_index(parent_ref.get("candidate_index"))
                 or parent_ref not in source_item["candidate_refs"]
                 or not isinstance(sense_refs, list)
                 or len(sense_refs) < 2
