@@ -1,8 +1,8 @@
 # Token index — m-o
-# token\tid\tlemma\ttype\tbatch
 "markisa"	K3305	markisa	lemma	batch-066
 "matoa"	K3323	matoa	lemma	batch-066
 "mundu"	K3324	mundu	lemma	batch-066
+# token\tid\tlemma\ttype\tbatch
 maaf	K0247	maaf	lemma	batch-005
 macan	K2237	macan	lemma	batch-045
 macet	K0398	macet	lemma	batch-008
@@ -60,6 +60,7 @@ manuskrip	K0961	manuskrip	lemma	batch-020
 map	K0301	map	lemma	batch-006
 marah	K0082	marah	lemma	batch-002
 marah-marah	K1461	marah-marah	lemma	batch-030
+maraton	K3339	maraton	lemma	batch-067
 maret	K1462	maret	lemma	batch-030
 margarin	K1928	margarin	lemma	batch-039
 marmer	K0962	marmer	lemma	batch-020
@@ -183,6 +184,7 @@ mendirikan	K0072	berdiri	derived_form	batch-002
 menduduki	K0071	duduk	derived_form	batch-002
 mendung	K2699	mendung	lemma	batch-054
 menelepon	K0195	telepon	derived_form	batch-004
+menembak	K3358	menembak	lemma	batch-067
 menerima	K0062	terima	derived_form	batch-002
 mengabari	K0193	kabar	derived_form	batch-004
 mengabarkan	K0193	kabar	derived_form	batch-004
