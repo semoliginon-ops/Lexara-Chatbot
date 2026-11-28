@@ -184,3 +184,22 @@ Di luar cakupan dokumen ini:
 ## 8. Status
 
 Kontrak desain v1 disetujui pengguna pada 28 November 2026. Dokumen ini menetapkan format dan batas desain, bukan bukti bahwa data, validator, pembaca, atau integrasi runtime sudah dibuat. Baseline regresi yang berlaku tetap GitHub Actions Run #260 (450/450); tidak ada tes atau workflow yang dijalankan untuk menyetujui kontrak ini.
+
+
+### Pemanggilan validator v1
+
+Modul read-only `tools/validasi_concept_layer.py` memvalidasi tiga berkas Concept Layer dan menyelesaikan referensi `sense_id` melalui satu atau beberapa batch kamus yang diberikan secara eksplisit. Batch kamus hanya dibaca; tidak dimodifikasi.
+
+Contoh pemanggilan dari root repository:
+
+```bash
+python -m unittest tests.test_validasi_concept_layer -v
+python -m tools.validasi_concept_layer \
+  --concepts data/concepts/concepts.jsonl \
+  --mappings data/concepts/sense_concept_map.jsonl \
+  --relations data/concepts/concept_relations.jsonl \
+  --sense-index data/kamus/batch-001.jsonl \
+  --sense-index data/kamus/batch-002.jsonl
+```
+
+Ulangi opsi `--sense-index` untuk setiap batch yang menjadi sumber sense. Jika pemetaan merujuk sense dari batch yang tidak disertakan, validator akan melaporkannya sebagai referensi yang tidak ditemukan; karena itu pemanggil harus menyediakan cakupan batch yang memang menjadi rujukan data konsep. Penggunaan batch sebagai indeks sense bukan audit ulang atau perubahan terhadap kamus.
