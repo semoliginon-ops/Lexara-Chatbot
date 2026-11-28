@@ -1600,3 +1600,22 @@ Ditambahkan 10 tes terfokus di `tests/test_concept_sense_adapter.py`, meliputi p
 **Status verifikasi:** adapter dan 10 tes telah dibuat di GitHub. Tes adapter belum dijalankan oleh pengguna. Tidak ada CI/GitHub Actions atau regression suite 450 tes yang dijalankan. Tidak ada perubahan pada analyzer, kamus, batch, indeks, morfologi, POS, parser, atau resolver.
 
 **Titik lanjut:** jalankan tepat 10 tes adapter di Termux dengan `python -m unittest discover -s tests -p "test_concept_sense_adapter.py" -v`.
+
+## Verifikasi tes adapter kandidat sense ke Concept Layer — 28 November 2026
+
+Pengguna menjalankan perintah berikut di Termux setelah mengambil perubahan terbaru dari `origin/main`:
+
+```bash
+python -m unittest discover -s tests -p "test_concept_sense_adapter.py" -v
+```
+
+**Hasil: 10 tes dijalankan, seluruhnya lulus (10/10), 0 gagal, 0 error.**
+
+Ringkasan verifikasi komponen Concept Layer yang telah dijalankan pengguna:
+- Pembaca baca-saja `tools/concept_layer_loader.py`: **12/12 tes lulus**.
+- Adapter `tools/concept_sense_adapter.py`: **10/10 tes lulus**.
+- Validator `tools/validasi_concept_layer.py`: seluruh 19 kasus telah terverifikasi lulus secara gabungan (18 lulus pada eksekusi pertama dan satu tes UTF-8 lulus setelah perbaikan fixture melalui eksekusi terisolasi; suite 19 tes tidak dijalankan ulang sebagai satu batch).
+
+Tidak ada regression suite 450 tes yang dijalankan ulang dan tidak ada GitHub Actions/CI yang dipicu untuk verifikasi adapter ini. Tidak ada perubahan pada kamus, batch, indeks, morfologi/klitik, POS, parser, resolver, atau alur analyzer/runtime.
+
+**Titik lanjut resmi:** merancang penghasil bukti konteks sebagai modul terpisah. Rancangan perlu menentukan sumber bukti dari struktur kalimat yang sudah tersedia, skema bukti, aturan penggabungan/konflik bukti, dan kondisi untuk mempertahankan hasil `ambiguous` atau `unresolved`. Tahap desain ini belum merupakan izin untuk mengubah parser, resolver, atau mengintegrasikan pemilihan sense ke runtime.
