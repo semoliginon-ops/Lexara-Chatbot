@@ -42,6 +42,7 @@ papa	K0107	papa	lemma	batch-003
 papan	K1507	papan	lemma	batch-031
 parah	K0598	parah	lemma	batch-012
 paralaks	K3154	paralaks	lemma	batch-063
+parasit tumbuhan	K3209	parasit tumbuhan	lemma	batch-064
 pare	K1934	pare	lemma	batch-039
 parfum	K1041	parfum	lemma	batch-021
 parkinson	K3074	parkinson	lemma	batch-061
@@ -249,12 +250,14 @@ perapian	K0153	api	derived_form	batch-004
 perasaan	K1044	perasaan	lemma	batch-021
 perawat	K1520	perawat	lemma	batch-031
 perban	K1521	perban	lemma	batch-031
+perbungaan	K3225	perbungaan	lemma	batch-064
 percaya	K0241	percaya	lemma	batch-005
 percaya diri	K0672	percaya diri	lemma	batch-014
 percintaan	K0114	cinta	derived_form	batch-003
 percobaan	K0228	coba	derived_form	batch-005
 perdagangan manusia	K2888	perdagangan manusia	lemma	batch-058
 perdagangan narkoba	K2941	perdagangan narkoba	lemma	batch-059
+perdu	K3206	perdu	lemma	batch-064
 pergantian	K0221	ganti	derived_form	batch-005
 pergelangan	K3105	pergelangan	lemma	batch-062
 pergi	K0017	pergi	lemma	batch-001
@@ -265,6 +268,7 @@ perikardium	K3106	perikardium	lemma	batch-062
 periksa	K0441	periksa	lemma	batch-009
 perizinan	K0246	izin	derived_form	batch-005
 perjalanan	K0020	jalan	derived_form	batch-001
+perkecambahan	K3195	perkecambahan	lemma	batch-064
 perkedel	K1986	perkedel	lemma	batch-040
 perkenalan	K0215	kenal	derived_form	batch-005
 perlu	K0231	perlu	lemma	batch-005
@@ -333,9 +337,11 @@ pizza	K1938	pizza	lemma	batch-039
 planet gas	K3159	planet gas	lemma	batch-063
 planet katai	K3158	planet katai	lemma	batch-063
 planet kebumian	K3160	planet kebumian	lemma	batch-063
+plumula	K3221	plumula	lemma	batch-064
 pneumonia	K3062	pneumonia	lemma	batch-061
 pohon	K0159	pohon	lemma	batch-004
 pokoknya	K0631	pokoknya	lemma	batch-013
+polinasi	K3194	polinasi	lemma	batch-064
 polio	K3063	polio	lemma	batch-061
 polisi	K1540	polisi	lemma	batch-031
 politik	K1541	politik	lemma	batch-031
@@ -392,6 +398,7 @@ rabies	K3064	rabies	lemma	batch-061
 rabu	K1052	rabu	lemma	batch-022
 racun	K1053	racun	lemma	batch-022
 radar	K1054	radar	lemma	batch-022
+radikula	K3220	radikula	lemma	batch-064
 radio	K1055	radio	lemma	batch-022
 radio mobil	K2407	radio mobil	lemma	batch-049
 radio portabel	K2408	radio portabel	lemma	batch-049
@@ -455,10 +462,12 @@ repot	K1085	repot	lemma	batch-022
 resah	K0700	resah	lemma	batch-014
 resep	K0481	resep	lemma	batch-010
 resmi	K1086	resmi	lemma	batch-022
+respirasi tumbuhan	K3199	respirasi tumbuhan	lemma	batch-064
 retak	K1088	retak	lemma	batch-022
 retakan tanah	K2744	retakan tanah	lemma	batch-055
 retina	K3109	retina	lemma	batch-062
 rezeki	K1089	rezeki	lemma	batch-022
+rhizobium	K3212	rhizobium	lemma	batch-064
 ribet	K0673	ribet	lemma	batch-014
 rindu	K1090	rindu	lemma	batch-022
 ringan	K1091	ringan	lemma	batch-022
@@ -468,6 +477,7 @@ risih	K1093	risih	lemma	batch-022
 risiko	K1087	risiko	lemma	batch-022
 risoles	K1988	risoles	lemma	batch-040
 riwayat	K1094	riwayat	lemma	batch-022
+rizoma	K3186	rizoma	lemma	batch-064
 robek	K1095	robek	lemma	batch-022
 roda	K0497	roda	lemma	batch-010
 rok panjang	K2613	rok panjang	lemma	batch-053
