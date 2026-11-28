@@ -1974,6 +1974,118 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             "tetapi", "pertentangan"
         )
 
+
+
+    # Ten new integration cases: mixed connectors across three clauses.
+    # Unlike the existing three-clause test (dan + dan), each case verifies
+    # an ordered pair of different coordination relations.
+    def _assert_mixed_three_clause_coordination(
+        self, sentence, connectors, relations, subjects, predicates
+    ):
+        analyzed = self.analyze(sentence)
+        for connector in connectors:
+            token = self.token(analyzed, connector)
+            self.assertEqual(token["status"], "matched", msg=repr(token))
+            self.assertEqual(token["pos"], ["CONJ"])
+            self.assertEqual(token["pos_source"], "dictionary")
+            self.assertEqual(token["pos_status"], "identified")
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed", msg=repr(parsed))
+        self.assertEqual(parsed["pattern"], "KLAUSA-KOORDINATIF")
+        self.assertEqual(len(parsed["clauses"]), 3)
+        self.assertEqual(
+            [clause["connector"] for clause in parsed["clauses"]],
+            [None, *connectors],
+        )
+        self.assertEqual(
+            [clause["relation_to_previous"] for clause in parsed["clauses"]],
+            [None, *relations],
+        )
+        self.assertEqual(
+            [clause["analysis"]["roles"]["subject"] for clause in parsed["clauses"]],
+            [[subject] for subject in subjects],
+        )
+        self.assertEqual(
+            [clause["analysis"]["roles"]["predicate"] for clause in parsed["clauses"]],
+            predicates,
+        )
+        self.assertTrue(
+            all(clause["analysis"]["status"] == "parsed" for clause in parsed["clauses"])
+        )
+
+    def test_three_clauses_mixed_additive_then_alternative(self):
+        self._assert_mixed_three_clause_coordination(
+            "Aku bekerja dan dia makan atau mereka tidur.",
+            ["dan", "atau"], ["penambahan", "alternatif"],
+            ["aku", "dia", "mereka"], [["bekerja"], ["makan"], ["tidur"]],
+        )
+
+    def test_three_clauses_mixed_alternative_then_additive(self):
+        self._assert_mixed_three_clause_coordination(
+            "Saya membaca buku atau kamu menulis surat dan beliau belajar.",
+            ["atau", "dan"], ["alternatif", "penambahan"],
+            ["saya", "kamu", "beliau"],
+            [["membaca"], ["menulis"], ["belajar"]],
+        )
+
+    def test_three_clauses_mixed_adversative_then_additive(self):
+        self._assert_mixed_three_clause_coordination(
+            "Kami pulang tetapi mereka bekerja dan aku makan.",
+            ["tetapi", "dan"], ["pertentangan", "penambahan"],
+            ["kami", "mereka", "aku"], [["pulang"], ["bekerja"], ["makan"]],
+        )
+
+    def test_three_clauses_mixed_additive_then_adversative(self):
+        self._assert_mixed_three_clause_coordination(
+            "Dia minum dan saya memasak tetapi kalian tidur.",
+            ["dan", "tetapi"], ["penambahan", "pertentangan"],
+            ["dia", "saya", "kalian"], [["minum"], ["memasak"], ["tidur"]],
+        )
+
+    def test_three_clauses_mixed_alternative_then_adversative(self):
+        self._assert_mixed_three_clause_coordination(
+            "Kamu belajar atau mereka bekerja tetapi aku pulang.",
+            ["atau", "tetapi"], ["alternatif", "pertentangan"],
+            ["kamu", "mereka", "aku"], [["belajar"], ["bekerja"], ["pulang"]],
+        )
+
+    def test_three_clauses_mixed_adversative_then_alternative(self):
+        self._assert_mixed_three_clause_coordination(
+            "Beliau membaca buku tetapi saya menulis surat atau dia tidur.",
+            ["tetapi", "atau"], ["pertentangan", "alternatif"],
+            ["beliau", "saya", "dia"],
+            [["membaca"], ["menulis"], ["tidur"]],
+        )
+
+    def test_three_clauses_mixed_namun_then_additive(self):
+        self._assert_mixed_three_clause_coordination(
+            "Aku makan namun dia minum dan mereka belajar.",
+            ["namun", "dan"], ["pertentangan", "penambahan"],
+            ["aku", "dia", "mereka"], [["makan"], ["minum"], ["belajar"]],
+        )
+
+    def test_three_clauses_mixed_additive_then_namun(self):
+        self._assert_mixed_three_clause_coordination(
+            "Mereka pulang dan kami bekerja namun kamu tidur.",
+            ["dan", "namun"], ["penambahan", "pertentangan"],
+            ["mereka", "kami", "kamu"], [["pulang"], ["bekerja"], ["tidur"]],
+        )
+
+    def test_three_clauses_mixed_namun_then_alternative(self):
+        self._assert_mixed_three_clause_coordination(
+            "Saya belajar namun kalian makan atau dia bekerja.",
+            ["namun", "atau"], ["pertentangan", "alternatif"],
+            ["saya", "kalian", "dia"], [["belajar"], ["makan"], ["bekerja"]],
+        )
+
+    def test_three_clauses_mixed_alternative_then_namun(self):
+        self._assert_mixed_three_clause_coordination(
+            "Dia menulis surat atau aku membaca buku namun kami pulang.",
+            ["atau", "namun"], ["alternatif", "pertentangan"],
+            ["dia", "aku", "kami"], [["menulis"], ["membaca"], ["pulang"]],
+        )
+
 if __name__ == "__main__":
     unittest.main()
 
