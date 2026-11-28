@@ -1,0 +1,42 @@
+name: Clarification Interaction Pipeline Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/clarification_interaction.py"
+      - "tools/clarification_planner.py"
+      - "tools/utterance_interpretation.py"
+      - "tools/context_snapshot.py"
+      - "tools/analisis_teks.py"
+      - "tools/kamus_loader.py"
+      - "tools/pencocokan_kamus.py"
+      - "tools/pos_context.py"
+      - "tools/pos_tagger.py"
+      - "tools/parser_kalimat.py"
+      - "data/kamus/**"
+      - "tests/test_clarification_interaction_pipeline.py"
+      - ".github/workflows/clarification-interaction-pipeline-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clarification-interaction-pipeline-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-test:
+    name: Run exactly 1 real-data composition test
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exactly 1 composition test
+        run: python -m unittest discover -s tests -p "test_clarification_interaction_pipeline.py" -v
