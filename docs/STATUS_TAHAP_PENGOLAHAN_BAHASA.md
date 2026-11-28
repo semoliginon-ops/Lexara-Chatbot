@@ -1581,3 +1581,22 @@ Tes terfokus ditambahkan di `tests/test_concept_layer_loader.py`: **12 kasus** u
 **Status verifikasi:** file reader dan tes dibuat serta diperbarui di GitHub. Tes 12 kasus belum dijalankan. Tidak ada GitHub Actions/CI yang dipicu, tidak ada regression suite 450 tes yang dijalankan, dan tidak ada perubahan pada kamus, batch, indeks, validator, parser, atau resolver.
 
 **Titik lanjut:** pengguna menjalankan tepat 12 tes baru di Termux dengan `python -m unittest discover -s tests -p "test_concept_layer_loader.py" -v`. Setelah hasilnya ditinjau, pekerjaan berikutnya adalah merancang integrasi reader ke pemilihan sense kontekstual secara terpisah.
+
+
+## Adapter kandidat sense ke Concept Layer — 28 November 2026
+
+Ditambahkan adapter read-only `tools/concept_sense_adapter.py` dengan fungsi `map_sense_candidates_to_concepts(candidates, concept_layer)`.
+
+Perilaku adapter:
+- Menerima kandidat leksikal dengan bentuk metadata keluaran `lookup_token()`, termasuk entri dan daftar sense-nya.
+- Menghasilkan satu hasil untuk setiap sense kandidat dan mempertahankan `entry_id`, lemma, bentuk yang cocok, tipe kecocokan, serta objek sense sumber.
+- Melampirkan nol, satu, atau beberapa konsep yang memiliki pemetaan `reviewed` dan konsep tujuan juga `reviewed`.
+- Kandidat sense yang belum dipetakan tetap dipertahankan dengan status `unmapped`.
+- Tidak memilih satu sense, tidak menghasilkan bukti konteks, tidak menggunakan relasi antarkonsep untuk membuat pemetaan baru, dan tidak mengubah analyzer atau data sumber.
+- Menolak bentuk kandidat/sense yang tidak sesuai kontrak adapter melalui `ConceptSenseAdapterError`.
+
+Ditambahkan 10 tes terfokus di `tests/test_concept_sense_adapter.py`, meliputi pemetaan reviewed, sense tanpa pemetaan, multi-pemetaan, filter status, pelestarian ambiguitas dan metadata, larangan inferensi dari relasi, input kosong, serta penolakan sense tanpa ID.
+
+**Status verifikasi:** adapter dan 10 tes telah dibuat di GitHub. Tes adapter belum dijalankan oleh pengguna. Tidak ada CI/GitHub Actions atau regression suite 450 tes yang dijalankan. Tidak ada perubahan pada analyzer, kamus, batch, indeks, morfologi, POS, parser, atau resolver.
+
+**Titik lanjut:** jalankan tepat 10 tes adapter di Termux dengan `python -m unittest discover -s tests -p "test_concept_sense_adapter.py" -v`.
