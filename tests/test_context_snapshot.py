@@ -1,6 +1,13 @@
 import json
 import unittest
+from pathlib import Path
 
+from tools.analisis_teks import analyze_text
+from tools.kamus_loader import load_dictionary_directory
+from tools.pencocokan_kamus import build_lexicon
+from tools.pos_context import disambiguate_pos_context
+from tools.pos_tagger import tag_pos
+from tools.parser_kalimat import parse_sentence
 from tools.context_snapshot import build_context_snapshot, ContextSnapshotError
 
 
@@ -161,6 +168,20 @@ class ContextSnapshotTests(unittest.TestCase):
             build_context_snapshot({"tokens": "invalid"}, parsed())
         with self.assertRaises(ContextSnapshotError):
             build_context_snapshot({"tokens": [token("aku")]}, {"status": "parsed"})
+
+        root = Path(__file__).resolve().parents[1]
+        entries = load_dictionary_directory(root / "data" / "kamus")
+        lexicon = build_lexicon(entries)
+        analyzed = analyze_text("Aku makan nasi besok.", lexicon)
+        tagged = disambiguate_pos_context(tag_pos(analyzed))
+        parser_result = parse_sentence(tagged)
+        snapshot = build_context_snapshot(tagged, parser_result)
+        self.assertEqual(parser_result["status"], "parsed")
+        self.assertEqual(snapshot["status"], "assembled")
+        self.assertEqual(
+            [item["syntactic_role"] for item in snapshot["tokens"] if item["kind"] == "word"],
+            ["subject", "predicate", "object", "adjunct"],
+        )
 
 
 if __name__ == "__main__":
