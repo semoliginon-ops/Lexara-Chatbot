@@ -107,3 +107,12 @@ Tepat **11 tes unit khusus** pada `tests/test_clarification_planner.py`:
 Tes memakai fixture laporan kecil; tidak mengulang 11 tes utterance interpretation, 10 tes Context Snapshot, atau regression suite 450 tes. Implementasi kelak hanya boleh menambah modul perencana, berkas tes tersebut, workflow khusus, dan pembaruan dokumentasi terkait. Tidak mengubah modul interpretasi, snapshot, kamus, morfologi, POS, parser, resolver, generator, selector, aturan konteks, atau runtime.
 
 **Kriteria penerimaan:** keputusan `ask` hanya muncul jika semua syarat kebijakan terbukti eksplisit dan kandidat dapat ditelusuri; satu keputusan memiliki paling banyak satu fokus; tidak ada inferensi maksud atau pertanyaan atas kegagalan internal; tepat 11 tes khusus lulus melalui workflow terfokus.
+
+## 9. Hasil implementasi v1
+
+- Modul read-only: `tools/clarification_planner.py`, fungsi publik `plan_clarification(report, opportunities=None)`.
+- Tes khusus: `tests/test_clarification_planner.py`, tepat 11 kasus sesuai cakupan kontrak.
+- Workflow: `.github/workflows/clarification-planner-tests.yml`.
+- GitHub Actions Run #1 [46117290394](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46117290394) sukses; log memverifikasi **11/11 tes lulus**.
+- Modul hanya mengembalikan keputusan dan satu referensi fokus; tidak membuat kalimat pertanyaan, tidak memproses jawaban, dan tidak terhubung ke runtime.
+- Tidak ada regression suite 450 tes, tes Context Snapshot, atau tes utterance interpretation yang dijalankan ulang.
