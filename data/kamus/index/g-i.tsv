@@ -1,5 +1,30 @@
 # Token index — g-i
 # token	id	lemma	type	batch
+"ikan baung"	K3279	ikan baung	lemma	batch-066
+"ikan betutu"	K3281	ikan betutu	lemma	batch-066
+"ikan beunteur"	K3299	ikan beunteur	lemma	batch-066
+"ikan bilih"	K3288	ikan bilih	lemma	batch-066
+"ikan bogo"	K3294	ikan bogo	lemma	batch-066
+"ikan depik"	K3289	ikan depik	lemma	batch-066
+"ikan hampala"	K3283	ikan hampala	lemma	batch-066
+"ikan jendil"	K3296	ikan jendil	lemma	batch-066
+"ikan kelabau"	K3291	ikan kelabau	lemma	batch-066
+"ikan keting"	K3287	ikan keting	lemma	batch-066
+"ikan koan"	K3298	ikan koan	lemma	batch-066
+"ikan lalawak"	K3300	ikan lalawak	lemma	batch-066
+"ikan lampan"	K3284	ikan lampan	lemma	batch-066
+"ikan lindi"	K3295	ikan lindi	lemma	batch-066
+"ikan nilem"	K3278	ikan nilem	lemma	batch-066
+"ikan paray"	K3301	ikan paray	lemma	batch-066
+"ikan payangka"	K3293	ikan payangka	lemma	batch-066
+"ikan semah"	K3292	ikan semah	lemma	batch-066
+"ikan sengkaring"	K3297	ikan sengkaring	lemma	batch-066
+"ikan sili"	K3286	ikan sili	lemma	batch-066
+"ikan tambakan"	K3282	ikan tambakan	lemma	batch-066
+"ikan tapah"	K3290	ikan tapah	lemma	batch-066
+"ikan tawes"	K3277	ikan tawes	lemma	batch-066
+"ikan toman"	K3280	ikan toman	lemma	batch-066
+"ikan uceng"	K3285	ikan uceng	lemma	batch-066
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
 gado-gado	K1966	gado-gado	lemma	batch-040
@@ -26,6 +51,7 @@ gang	K0389	gang	lemma	batch-008
 ganggu	K0854	ganggu	lemma	batch-018
 gangguan	K1308	gangguan	lemma	batch-027
 gangsir	K2979	gangsir	lemma	batch-060
+ganjal	K3646	ganjal	lemma	batch-073
 ganjil	K1309	ganjil	lemma	batch-027
 ganteng	K1310	ganteng	lemma	batch-027
 ganti	K0221	ganti	lemma	batch-005
@@ -37,6 +63,7 @@ gara-gara	K0617	gara-gara	lemma	batch-013
 garam	K0171	garam	lemma	batch-004
 garam dapur	K2110	garam dapur	lemma	batch-043
 garansi	K1311	garansi	lemma	batch-027
+garap	K3647	garap	lemma	batch-073
 garis	K0855	garis	lemma	batch-018
 garpu	K0280	garpu	lemma	batch-006
 garuk	K3437	garuk	lemma	batch-069
@@ -78,6 +105,7 @@ genting	K1319	genting	lemma	batch-027
 gentong	K2313	gentong	lemma	batch-047
 gerah	K1350	gerah	lemma	batch-027
 gerak	K0864	gerak	lemma	batch-018
+geram	K3648	geram	lemma	batch-073
 gerbang	K1320	gerbang	lemma	batch-027
 gercep	K0100	gercep	lemma	batch-002
 gereja	K1321	gereja	lemma	batch-027
@@ -107,6 +135,7 @@ gilir	K3550	gilir	lemma	batch-071
 gimana	K0618	gimana	lemma	batch-013
 gini	K0620	gini	lemma	batch-013
 ginjal	K3088	ginjal	lemma	batch-062
+giring	K3649	giring	lemma	batch-073
 gitu	K0619	gitu	lemma	batch-013
 gituan	K0660	gituan	lemma	batch-014
 gizi	K1324	gizi	lemma	batch-027
@@ -205,9 +234,11 @@ gurih	K1327	gurih	lemma	batch-027
 gurita	K2219	gurita	lemma	batch-045
 guru	K0185	guru	lemma	batch-004
 gurun	K1341	gurun	lemma	batch-027
+gusar	K3650	gusar	lemma	batch-073
 gusi	K3089	gusi	lemma	batch-062
 gutasi	K3198	gutasi	lemma	batch-064
 guys	K0621	guys	lemma	batch-013
+guyur	K3651	guyur	lemma	batch-073
 gw	K0008	gue	variant	batch-001
 habis	K0877	habis	lemma	batch-018
 hadang	K3506	hadang	lemma	batch-070
@@ -229,13 +260,16 @@ hambar	K0881	hambar	lemma	batch-018
 hambat	K1328	hambat	lemma	batch-027
 hambur	K3619	hambur	lemma	batch-072
 hamburger	K2051	hamburger	lemma	batch-041
+hampar	K3652	hampar	lemma	batch-073
 hampir	K0560	hampir	lemma	batch-012
 hamster	K2220	hamster	lemma	batch-045
 hancur	K0882	hancur	lemma	batch-018
 handuk	K0276	handuk	lemma	batch-006
 hangat	K0883	hangat	lemma	batch-018
+hantam	K3653	hantam	lemma	batch-073
 hantu	K0884	hantu	lemma	batch-018
 hanya	K0149	hanya	lemma	batch-003
+hanyut	K3654	hanyut	lemma	batch-073
 harap	K0446	harap	lemma	batch-009
 harapan	K1356	harapan	lemma	batch-028
 hard disk eksternal	K2389	hard disk eksternal	lemma	batch-048
@@ -257,6 +291,7 @@ heliosfer	K3143	heliosfer	lemma	batch-063
 helm	K0496	helm	lemma	batch-010
 hemat	K0887	hemat	lemma	batch-018
 hembus	K1358	hembus	lemma	batch-028
+hempas	K3655	hempas	lemma	batch-073
 hening	K1359	hening	lemma	batch-028
 henti	K3380	henti	lemma	batch-068
 hepatitis	K3049	hepatitis	lemma	batch-061
@@ -275,6 +310,7 @@ hijrah	K3600	hijrah	lemma	batch-072
 hikmah	K0891	hikmah	lemma	batch-018
 hilang	K0223	hilang	lemma	batch-005
 hilir	K0892	hilir	lemma	batch-018
+himpit	K3656	himpit	lemma	batch-073
 hindar	K3537	hindar	lemma	batch-071
 hinggap	K3003	hinggap	lemma	batch-060
 hipertensi	K3051	hipertensi	lemma	batch-061
@@ -301,6 +337,7 @@ hujan salju	K2714	hujan salju	lemma	batch-055
 hukum	K0896	hukum	lemma	batch-018
 hukuman	K2949	hukuman	lemma	batch-059
 humor	K1363	humor	lemma	batch-028
+hunus	K3657	hunus	lemma	batch-073
 huruf	K0897	huruf	lemma	batch-018
 hutan	K2658	hutan	lemma	batch-054
 hutan bakau	K2696	hutan bakau	lemma	batch-054
@@ -323,55 +360,41 @@ ikan bakar	K2029	ikan bakar	lemma	batch-041
 ikan bandeng presto	K2164	ikan bandeng presto	lemma	batch-044
 ikan barakuda	K3229	ikan barakuda	lemma	batch-065
 ikan baronang	K3268	ikan baronang	lemma	batch-065
-"ikan baung"	K3279	ikan baung	lemma	batch-066
 ikan bawal	K2163	ikan bawal	lemma	batch-044
 ikan belanak	K3230	ikan belanak	lemma	batch-065
 ikan belida	K3231	ikan belida	lemma	batch-065
 ikan beloso	K3269	ikan beloso	lemma	batch-065
 ikan betok	K3232	ikan betok	lemma	batch-065
-"ikan betutu"	K3281	ikan betutu	lemma	batch-066
-"ikan beunteur"	K3299	ikan beunteur	lemma	batch-066
-"ikan bilih"	K3288	ikan bilih	lemma	batch-066
-"ikan bogo"	K3294	ikan bogo	lemma	batch-066
 ikan botia	K3233	ikan botia	lemma	batch-065
 ikan buntal	K2296	ikan buntal	lemma	batch-046
 ikan cakalang	K3234	ikan cakalang	lemma	batch-065
 ikan capungan	K3235	ikan capungan	lemma	batch-065
 ikan cucut	K3270	ikan cucut	lemma	batch-065
 ikan cupang	K2272	ikan cupang	lemma	batch-046
-"ikan depik"	K3289	ikan depik	lemma	batch-066
 ikan ekor kuning	K3236	ikan ekor kuning	lemma	batch-065
 ikan gabus	K2225	ikan gabus	lemma	batch-045
 ikan gelodok	K3237	ikan gelodok	lemma	batch-065
 ikan goreng	K2030	ikan goreng	lemma	batch-041
-"ikan hampala"	K3283	ikan hampala	lemma	batch-066
 ikan hiu paus	K3267	ikan hiu paus	lemma	batch-065
 ikan jambal	K3239	ikan jambal	lemma	batch-065
 ikan jelawat	K3238	ikan jelawat	lemma	batch-065
-"ikan jendil"	K3296	ikan jendil	lemma	batch-066
 ikan julung-julung	K3240	ikan julung-julung	lemma	batch-065
 ikan kaca	K3262	ikan kaca	lemma	batch-065
 ikan kaci-kaci	K3260	ikan kaci-kaci	lemma	batch-065
 ikan kakap	K2114	ikan kakap	lemma	batch-043
 ikan kakatua	K3261	ikan kakatua	lemma	batch-065
-"ikan kelabau"	K3291	ikan kelabau	lemma	batch-066
 ikan kembung	K2115	ikan kembung	lemma	batch-043
 ikan kepala timah	K3263	ikan kepala timah	lemma	batch-065
 ikan kerapu	K2246	ikan kerapu	lemma	batch-045
-"ikan keting"	K3287	ikan keting	lemma	batch-066
-"ikan koan"	K3298	ikan koan	lemma	batch-066
 ikan koi	K2273	ikan koi	lemma	batch-046
 ikan kuah kuning	K2165	ikan kuah kuning	lemma	batch-044
 ikan kurisi	K3271	ikan kurisi	lemma	batch-065
 ikan kuwe	K3241	ikan kuwe	lemma	batch-065
 ikan kuwe gerong	K3276	ikan kuwe gerong	lemma	batch-065
 ikan lais	K3264	ikan lais	lemma	batch-065
-"ikan lalawak"	K3300	ikan lalawak	lemma	batch-066
-"ikan lampan"	K3284	ikan lampan	lemma	batch-066
 ikan layur	K3242	ikan layur	lemma	batch-065
 ikan lele	K2086	ikan lele	lemma	batch-042
 ikan lemadang	K3243	ikan lemadang	lemma	batch-065
-"ikan lindi"	K3295	ikan lindi	lemma	batch-066
 ikan louhan	K3244	ikan louhan	lemma	batch-065
 ikan mandarin	K3265	ikan mandarin	lemma	batch-065
 ikan manyung	K3272	ikan manyung	lemma	batch-065
@@ -381,14 +404,11 @@ ikan mola-mola	K3246	ikan mola-mola	lemma	batch-065
 ikan mujair	K2274	ikan mujair	lemma	batch-046
 ikan napoleon	K3247	ikan napoleon	lemma	batch-065
 ikan nila	K2118	ikan nila	lemma	batch-043
-"ikan nilem"	K3278	ikan nilem	lemma	batch-066
 ikan oscar	K3248	ikan oscar	lemma	batch-065
 ikan palmas	K3249	ikan palmas	lemma	batch-065
-"ikan paray"	K3301	ikan paray	lemma	batch-066
 ikan pari	K2224	ikan pari	lemma	batch-045
 ikan pari manta	K3266	ikan pari manta	lemma	batch-065
 ikan patin	K2116	ikan patin	lemma	batch-043
-"ikan payangka"	K3293	ikan payangka	lemma	batch-066
 ikan petek	K3273	ikan petek	lemma	batch-065
 ikan pindang	K2119	ikan pindang	lemma	batch-043
 ikan piranha	K3250	ikan piranha	lemma	batch-065
@@ -397,24 +417,16 @@ ikan rucah	K3275	ikan rucah	lemma	batch-065
 ikan salmon	K2117	ikan salmon	lemma	batch-043
 ikan sapu-sapu	K3251	ikan sapu-sapu	lemma	batch-065
 ikan selar	K3253	ikan selar	lemma	batch-065
-"ikan semah"	K3292	ikan semah	lemma	batch-066
 ikan sembilang	K3254	ikan sembilang	lemma	batch-065
-"ikan sengkaring"	K3297	ikan sengkaring	lemma	batch-066
 ikan sepat	K3252	ikan sepat	lemma	batch-065
 ikan sidat	K3255	ikan sidat	lemma	batch-065
-"ikan sili"	K3286	ikan sili	lemma	batch-066
 ikan sunglir	K3256	ikan sunglir	lemma	batch-065
-"ikan tambakan"	K3282	ikan tambakan	lemma	batch-066
-"ikan tapah"	K3290	ikan tapah	lemma	batch-066
-"ikan tawes"	K3277	ikan tawes	lemma	batch-066
 ikan tenggiri	K2275	ikan tenggiri	lemma	batch-046
 ikan teri	K2088	ikan teri	lemma	batch-042
 ikan terubuk	K3259	ikan terubuk	lemma	batch-065
 ikan todak	K3257	ikan todak	lemma	batch-065
-"ikan toman"	K3280	ikan toman	lemma	batch-066
 ikan tongkol	K2087	ikan tongkol	lemma	batch-042
 ikan tuna	K2276	ikan tuna	lemma	batch-046
-"ikan uceng"	K3285	ikan uceng	lemma	batch-066
 ikan wader	K3258	ikan wader	lemma	batch-065
 ikat	K3398	ikat	lemma	batch-068
 ikat kepala	K2628	ikat kepala	lemma	batch-053
@@ -437,6 +449,7 @@ informasi	K1373	informasi	lemma	batch-028
 ingat	K0078	ingat	lemma	batch-002
 ingatan	K0078	ingat	derived_form	batch-002
 ingin	K0025	ingin	lemma	batch-001
+ingkar	K3658	ingkar	lemma	batch-073
 ini	K3024	ini	lemma	batch-060
 insentif	K2545	insentif	lemma	batch-051
 internet	K0197	internet	lemma	batch-004
