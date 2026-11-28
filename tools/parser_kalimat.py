@@ -725,13 +725,18 @@ def parse_sentence(analysis: dict[str, Any]) -> dict[str, Any]:
     # Cari kepala nominal pertama sebelum batas klausa/frasa preposisional,
     # lalu ambil rentang frasa nominal sederhana di sekitarnya.
     object_head = None
+    object_phrase_lower = cursor
     while cursor < len(words) and words[cursor]["pos"] not in {"PREP", "CONJ", "VERB", "ADV"}:
         if words[cursor]["pos"] in _NOMINAL_POS:
             object_head = cursor
             break
         cursor += 1
     if object_head is not None:
-        object_positions = _phrase_span(words, object_head, cursor, len(words))
+        # Preserve recognized NUM/ADJ modifiers encountered before the nominal
+        # head instead of leaving them outside the object phrase as unresolved.
+        object_positions = _phrase_span(
+            words, object_head, object_phrase_lower, len(words)
+        )
         object_positions = _coordinated_phrase_span(words, object_positions, cursor, len(words))
         assigned.update(object_positions)
 
