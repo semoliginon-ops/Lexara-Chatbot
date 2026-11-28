@@ -1,8 +1,8 @@
 # Token index — a-c
-# token\tid\tlemma\ttype\tbatch
 "buah naga"	K3316	buah naga	lemma	batch-066
 "cempedak"	K3318	cempedak	lemma	batch-066
 "cermai"	K3322	cermai	lemma	batch-066
+# token\tid\tlemma\ttype\tbatch
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
 abang	K0502	abang	lemma	batch-011
@@ -130,6 +130,7 @@ andil	K0711	andil	lemma	batch-015
 aneh	K0513	aneh	lemma	batch-011
 anemia	K3036	anemia	lemma	batch-061
 anggap	K0445	anggap	lemma	batch-009
+anggar	K3357	anggar	lemma	batch-067
 anggaran	K1832	anggaran	lemma	batch-037
 anggaran daerah	K2905	anggaran daerah	lemma	batch-059
 anggaran negara	K2904	anggaran negara	lemma	batch-059
@@ -144,6 +145,8 @@ angin puting beliung	K2703	angin puting beliung	lemma	batch-055
 angin topan	K2702	angin topan	lemma	batch-055
 angka	K1834	angka	lemma	batch-037
 angkasa	K1835	angkasa	lemma	batch-037
+angkat berat	K3328	angkat berat	lemma	batch-067
+angkat besi	K3327	angkat besi	lemma	batch-067
 angkatan	K0712	angkatan	lemma	batch-015
 angkot	K0401	angkot	lemma	batch-008
 angkut	K1836	angkut	lemma	batch-037
@@ -424,6 +427,7 @@ berkaki	K0123	kaki	derived_form	batch-003
 berkali-kali	K0733	berkali-kali	lemma	batch-015
 berkat	K1236	berkat	lemma	batch-025
 berkopi	K0173	kopi	derived_form	batch-004
+berkuda	K3359	berkuda	lemma	batch-067
 berlari	K0073	lari	derived_form	batch-002
 berlebih	K0234	lebih	derived_form	batch-005
 berlebihan	K0097	lebay	derived_form	batch-002
@@ -490,6 +494,7 @@ bika ambon	K2065	bika ambon	lemma	batch-042
 bikin	K0204	bikin	lemma	batch-005
 bikinin	K0204	bikin	derived_form	batch-005
 bilang	K0610	bilang	lemma	batch-013
+biliar	K3363	biliar	lemma	batch-067
 bimbang	K0737	bimbang	lemma	batch-015
 bintang	K0535	bintang	lemma	batch-011
 bintang ganda	K3135	bintang ganda	lemma	batch-063
@@ -501,6 +506,7 @@ bintang variabel	K3136	bintang variabel	lemma	batch-063
 bintil akar	K3211	bintil akar	lemma	batch-064
 birokrasi	K2909	birokrasi	lemma	batch-059
 bisa	K0026	bisa	lemma	batch-001
+bisbol	K3371	bisbol	lemma	batch-067
 bisep	K3081	bisep	lemma	batch-062
 bisik	K0432	bisik	lemma	batch-009
 bising	K0327	bising	lemma	batch-007
@@ -520,6 +526,8 @@ boikot	K0739	boikot	lemma	batch-015
 bokek	K0095	bokek	lemma	batch-002
 bokong	K2580	bokong	lemma	batch-052
 boks	K2334	boks	lemma	batch-047
+bola tangan	K3368	bola tangan	lemma	batch-067
+bola voli pantai	K3369	bola voli pantai	lemma	batch-067
 bolak-balik	K0537	bolak-balik	lemma	batch-011
 boleh	K0144	boleh	lemma	batch-003
 bolos	K0740	bolos	lemma	batch-015
@@ -535,6 +543,7 @@ boros	K0539	boros	lemma	batch-011
 bos	K0743	bos	lemma	batch-015
 bosan	K0086	bosan	lemma	batch-002
 botol	K1241	botol	lemma	batch-025
+bowling	K3364	bowling	lemma	batch-067
 braktea	K3222	braktea	lemma	batch-064
 brankas	K1242	brankas	lemma	batch-025
 brengsek	K0540	brengsek	lemma	batch-011
