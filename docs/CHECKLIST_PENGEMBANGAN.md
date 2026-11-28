@@ -157,7 +157,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 ### 2.7 Inventarisasi bukti dan evaluasi pipeline terpadu
 
-<badge color="info">Sedang dikerjakan — inventaris dan pemetaan awal selesai</badge>
+<badge color="success">Selesai — baseline pipeline Tahap 2 tercatat</badge>
 
 **Tujuan tahap ini bukan mengulang seluruh pengujian Tahap 2.1–2.6.** Hasil regression test, pengujian pipeline nyata, dataset, dan CI yang sudah tercatat harus diperlakukan sebagai bukti awal. Pengujian yang sudah memiliki bukti memadai tidak perlu dijalankan ulang hanya untuk mengisi checklist.
 
