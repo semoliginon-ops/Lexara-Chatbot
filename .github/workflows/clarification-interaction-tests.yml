@@ -1,0 +1,32 @@
+name: Clarification Interaction Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/clarification_interaction.py"
+      - "tests/test_clarification_interaction.py"
+      - ".github/workflows/clarification-interaction-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clarification-interaction-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Run exactly 10 clarification interaction tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exactly 10 focused tests
+        run: python -m unittest discover -s tests -p "test_clarification_interaction.py" -v
