@@ -1,0 +1,2 @@
+{"relation_id":"R000001","source":"C000002","type":"IS_A","target":"C000001","status":"proposed","evidence":{"source_type":"lexical_definition","source_ref":"K0201-S1","rationale":"Definisi mobil secara eksplisit menyebut mobil sebagai kendaraan bermotor."}}
+{"relation_id":"R000002","source":"C000003","type":"PART_OF","target":"C000001","status":"proposed","evidence":{"source_type":"lexical_definition","source_ref":"K0497-S1","rationale":"Definisi roda secara eksplisit menyebut roda sebagai bagian yang membantu kendaraan bergerak."}}
