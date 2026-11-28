@@ -223,5 +223,24 @@ Tes ini tidak menguji ulang Context Snapshot; ia memakai fixture snapshot kecil 
 - Workflow: `.github/workflows/utterance-interpretation-tests.yml`.
 - GitHub Actions Run #1 [46114424670](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46114424670) sukses; log memverifikasi **11/11 tes lulus**.
 - Modul hanya membaca snapshot dan menghasilkan laporan. Tidak ada perubahan pada komponen sumber maupun integrasi runtime.
-- Klasifikasi maksud dibatasi pada tanda tanya eksplisit, token `tolong`, dan token `jangan`; pola lain tetap `unknown` / `unresolved`. Jika beberapa penanda muncul bersamaan, hasilnya `ambiguous`.
+- Klasifikasi maksud dibatasi pada tanda tanya eksplisit, token `tolong`, dan token `jangan`; pola lain tetap `unknown` / `unresolved`. Penanda yang muncul bersamaan dicatat sebagai bentuk komunikatif yang sama-sama teramati, bukan sebagai kandidat yang saling bersaing. Perbaikan kompatibel untuk hal ini dicatat pada bagian 10.1.
 - Kebijakan klarifikasi, pengenalan reference, perluasan pola intent, dan integrasi runtime tetap pekerjaan terpisah.
+
+
+## 10.1 Perbaikan representasi penanda komunikatif yang berkoeksistensi
+
+Audit implementasi menemukan bahwa tanda tanya bersama token `tolong`, atau token `tolong` bersama `jangan`, sebelumnya dilaporkan sebagai `ambiguous`. Itu tidak tepat: setiap penanda eksplisit adalah observasi bentuk komunikatif yang dapat hadir bersamaan, bukan alternatif label yang harus dipilih salah satu.
+
+Perilaku diperbaiki secara kompatibel pada `tools/utterance_interpretation.py`:
+- Field baru `labels` selalu berisi daftar label eksplisit yang teramati, mengikuti urutan tetap: `question`, `request`, `directive`.
+- Jika hanya satu label teramati, `status`, `label`, dan `candidates` mempertahankan perilaku v1; `labels` berisi satu item.
+- Jika lebih dari satu label teramati, `status` adalah `resolved`, `label` bernilai null, `labels` memuat semua penanda, dan `candidates` kosong karena tidak ada pilihan yang saling bersaing. Evidence tiap penanda tetap dirujuk ke sumber snapshot yang tepat.
+- Jika tidak ada penanda yang didukung, hasil tetap `unknown` / `unresolved` dengan `labels` kosong.
+- Ini hanya pencatatan bentuk eksplisit; tidak menyimpulkan hubungan pragmatis, tidak memilih maksud tersembunyi, dan tidak memicu klarifikasi.
+
+Verifikasi terfokus:
+- Tes baru `tests/test_utterance_intent_coexistence.py`: tepat 4 kasus (question+request, request+directive, kompatibilitas satu penanda, dan kondisi tanpa penanda).
+- Workflow `.github/workflows/utterance-intent-coexistence-tests.yml`.
+- GitHub Actions Run #1 [46120863024](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120863024): log memverifikasi **4/4 tes lulus**.
+- Suite lama `tests/test_utterance_interpretation.py) dijalankan otomatis sebagai kompatibilitas: Run [46120842200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120842200), **11/11 tes lulus**.
+- Tidak ada perubahan pada snapshot, parser, POS, kamus, planner, penyaji klarifikasi, atau runtime.
