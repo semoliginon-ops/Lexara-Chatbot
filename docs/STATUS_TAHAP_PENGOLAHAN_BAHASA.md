@@ -1459,3 +1459,30 @@ Semua skenario menjalankan jalur nyata: `analyze_text` dengan kamus lengkap → 
 **Hasil CI:** GitHub Actions [Run #260](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46090180853) sukses; log menunjukkan **450 tes, OK**. Dua run koreksi sebelumnya (#258 dan #259) gagal pada ekspektasi tes (sumber POS dan normalisasi huruf token), bukan karena perubahan implementasi bahasa; ekspektasi diperbaiki secara terbatas, lalu Run #260 lulus. Tidak ada rerun manual atau pengujian tambahan di luar empat skenario baru dan regression suite otomatis yang dijalankan workflow.
 
 **Status:** celah integrasi semantic role yang diaudit kini memiliki bukti end-to-end pada empat konstruksi terbatas di atas. Ini tidak membuktikan semua sense, voice, atau konstruksi Bahasa Indonesia sudah didukung. Kamus, batch sumber, indeks, dataset POS, dan implementasi parser tidak diubah dalam pekerjaan ini.
+
+
+## Pembukaan Tahap 3 — audit awal representasi makna dan relasi konsep
+
+Gerbang Tahap 2.7 telah terpenuhi berdasarkan inventaris bukti, audit celah integrasi, dan baseline Run #260 (450/450 tes). Tahap 3 resmi dibuka pada 28 November 2026. Pekerjaan awal dimulai dengan audit skema dan data yang sudah ada; belum ada perubahan kamus atau implementasi semantik.
+
+### Fondasi yang sudah tersedia
+
+- Setiap entri kamus memiliki satu atau lebih objek sense dengan `sense_id` dan definisi; beberapa sense juga memiliki POS khusus.
+- Field `synonyms`, `antonyms`, dan `related_terms` masih kompatibel pada tingkat entri.
+- Skema relasi per-sense sudah dirancang dan diterapkan selektif pada beberapa sense di Batch-001, terutama entri `bisa` (K0026) dan `tolong` (K0032).
+- `tools/validasi_relasi_leksikal.py` memvalidasi bentuk array, item nonkosong, duplikasi setelah normalisasi, relasi ke lemma sendiri, dan `sense_id` bila relasi ditempatkan pada sense.
+- Dokumen `docs/RELASI_LEKSIKAL_PER_SENSE.md` telah menetapkan bahwa relasi lama tingkat entri tidak boleh otomatis diwariskan ke semua sense dan relasi tidak diasumsikan timbal balik.
+
+### Celah representasi yang terlihat
+
+1. Relasi lama masih berupa string bebas. String dapat berupa lemma, frasa, atau istilah konseptual; validator belum menentukan apakah targetnya entri kamus yang ada atau istilah yang belum memiliki entri.
+2. Relasi tingkat entri tidak memiliki cakupan sense. Contoh `jalan` (K0020) memiliki sense NOUN dan VERB, tetapi sinonim `jalur`/`lintasan` masih berada di tingkat entri sehingga tidak boleh dianggap berlaku untuk kedua sense.
+3. Sebagian relasi konseptual dapat mencampur dua sense. Pada `bisa` (K0026), istilah terkait seperti `ular`/`sengat` berkaitan dengan sense racun, sedangkan `boleh`/`dapat` dekat dengan sense kemampuan; relasi per-sense belum sepenuhnya memisahkan kelompok tersebut.
+4. Validator saat ini bersifat struktural. Ia belum menyediakan pembacaan relasi, resolusi target ke ID lemma/sense, tipe relasi konseptual yang lebih rinci, atau mekanisme traversal graf.
+5. Kebenaran linguistik relasi tetap memerlukan tinjauan. Relasi sinonim tidak boleh disamakan dengan kedekatan topik, dan relasi antonim tidak boleh disimpulkan hanya dari kemunculan bersama.
+
+### Arah kerja berikutnya — belum mengubah data
+
+Sebelum menambah atau memigrasikan anotasi, susun kontrak representasi konseptual yang membedakan: (a) sumber relasi pada `sense_id`, (b) jenis relasi yang eksplisit, (c) target yang teridentifikasi sebagai lemma/sense atau tetap berupa istilah bebas, (d) arah relasi dan apakah kebalikan harus dicatat terpisah, serta (e) asal/bukti anotasi. Rancangan harus tetap kompatibel dengan data lama dan tidak menganggap string `related_terms` sebagai sinonim.
+
+**Status:** audit awal Tahap 3 selesai. Belum ada lema baru, perubahan batch, indeks, validator, resolver, atau tes baru. Langkah selanjutnya adalah menyusun dan meminta persetujuan atas kontrak representasi relasi sebelum implementasi atau perubahan data.
