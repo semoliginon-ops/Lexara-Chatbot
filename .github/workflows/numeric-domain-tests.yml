@@ -1,0 +1,32 @@
+name: Numeric Domain Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/numeric_domain/**"
+      - "tests/test_numeric_domain.py"
+      - ".github/workflows/numeric-domain-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: numeric-domain-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Numeric domain unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run numeric domain tests
+        run: python -m unittest discover -s tests -p "test_numeric_domain.py" -v
