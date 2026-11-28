@@ -1,6 +1,6 @@
 # Rancangan Penanganan Ambiguitas dan Maksud Ujaran v1
 
-**Status:** rancangan tahap awal; belum diimplementasikan dan belum terhubung ke runtime.
+**Status:** modul read-only v1 telah diimplementasikan dan diverifikasi; belum terhubung ke runtime.
 **Tahap:** 3 — Hubungan makna dan pemrosesan konteks.
 **Masukan utama:** Context Snapshot v1 (tools/context_snapshot.py).
 
@@ -215,3 +215,13 @@ Tes ini tidak menguji ulang Context Snapshot; ia memakai fixture snapshot kecil 
 
 **Kriteria penerimaan:** seluruh referensi dapat ditelusuri ke field snapshot; tidak ada ID/kandidat/evidence rekaan; ketidakpastian sumber dipertahankan; 11 tes khusus lulus; dan tidak ada perubahan pada komponen di luar modul baru serta dokumen terkait.
 
+
+## 10. Hasil implementasi v1
+
+- Modul terpisah: `tools/utterance_interpretation.py`, fungsi publik `interpret_utterance(snapshot)`.
+- Tes khusus: `tests/test_utterance_interpretation.py`, tepat 11 kasus sesuai cakupan yang disepakati.
+- Workflow: `.github/workflows/utterance-interpretation-tests.yml`.
+- GitHub Actions Run #1 [46114424670](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46114424670) sukses; log memverifikasi **11/11 tes lulus**.
+- Modul hanya membaca snapshot dan menghasilkan laporan. Tidak ada perubahan pada komponen sumber maupun integrasi runtime.
+- Klasifikasi maksud dibatasi pada tanda tanya eksplisit, token `tolong`, dan token `jangan`; pola lain tetap `unknown` / `unresolved`. Jika beberapa penanda muncul bersamaan, hasilnya `ambiguous`.
+- Kebijakan klarifikasi, pengenalan reference, perluasan pola intent, dan integrasi runtime tetap pekerjaan terpisah.
