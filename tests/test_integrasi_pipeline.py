@@ -2092,6 +2092,87 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             ["dia", "aku", "kami"], [["menulis"], ["membaca"], ["pulang"]],
         )
 
+
+
+    # Ten full-pipeline cases for numeral/adjective modifiers inside nominal
+    # phrases. Existing coverage checks these phrase spans at parser-unit level;
+    # this batch verifies real dictionary + supplementary NUM POS end to end.
+    def _assert_number_modifier_phrase(
+        self, sentence, subject, predicate, object_phrase, numerals
+    ):
+        analyzed = self.analyze(sentence)
+        for numeral in numerals:
+            item = self.token(analyzed, numeral)
+            self.assertEqual(item["pos"], ["NUM"], msg=repr(item))
+            self.assertEqual(item["pos_status"], "identified", msg=repr(item))
+
+        parsed = parse_sentence(analyzed)
+        self.assertEqual(parsed["status"], "parsed", msg=repr(parsed))
+        self.assertEqual(parsed["pattern"], "S-P-O" if object_phrase else "S-P")
+        self.assertEqual(parsed["roles"]["subject"], subject)
+        self.assertEqual(parsed["roles"]["predicate"], predicate)
+        self.assertEqual(parsed["roles"]["object"], object_phrase)
+
+    def test_number_and_adjective_inside_animal_subject_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Tiga anak kecil makan nasi.",
+            ["tiga", "anak", "kecil"], ["makan"], ["nasi"], ["tiga"],
+        )
+
+    def test_number_and_adjective_inside_teacher_subject_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Dua guru baru membaca buku.",
+            ["dua", "guru", "baru"], ["membaca"], ["buku"], ["dua"],
+        )
+
+    def test_number_and_adjective_inside_student_subject_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Tiga murid rajin membaca surat.",
+            ["tiga", "murid", "rajin"], ["membaca"], ["surat"], ["tiga"],
+        )
+
+    def test_number_inside_doctor_subject_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Dua dokter minum air.",
+            ["dua", "dokter"], ["minum"], ["air"], ["dua"],
+        )
+
+    def test_number_inside_animal_subject_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Tiga ayam makan buah.",
+            ["tiga", "ayam"], ["makan"], ["buah"], ["tiga"],
+        )
+
+    def test_adjective_modifier_inside_letter_object_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Dia membaca surat penting.",
+            ["dia"], ["membaca"], ["surat", "penting"], [],
+        )
+
+    def test_number_modifier_inside_bread_object_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Saya membeli dua roti.",
+            ["saya"], ["membeli"], ["dua", "roti"], ["dua"],
+        )
+
+    def test_number_modifier_inside_book_object_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Kamu membaca tiga buku.",
+            ["kamu"], ["membaca"], ["tiga", "buku"], ["tiga"],
+        )
+
+    def test_number_modifier_inside_fish_object_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Mereka membeli dua ikan.",
+            ["mereka"], ["membeli"], ["dua", "ikan"], ["dua"],
+        )
+
+    def test_adjective_modifier_inside_vegetable_object_phrase(self):
+        self._assert_number_modifier_phrase(
+            "Aku membeli nasi panas.",
+            ["aku"], ["membeli"], ["nasi", "panas"], [],
+        )
+
 if __name__ == "__main__":
     unittest.main()
 
