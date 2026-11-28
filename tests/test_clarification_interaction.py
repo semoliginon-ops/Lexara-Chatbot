@@ -202,6 +202,14 @@ class ClarificationInteractionTests(unittest.TestCase):
             self.assertEqual(result["status"], "invalid_response")
             self.assertIsNone(result["session"]["response"])
 
+        malformed_session = prepared_session()
+        malformed_session["choices"][0].pop("sense_ref")
+        result = record_clarification_response(
+            malformed_session, {"type": "choice", "choice_key": "option_1"}
+        )
+        self.assertEqual(result["status"], "invalid_response")
+        self.assertIsNone(result["session"]["response"])
+
 
 if __name__ == "__main__":
     unittest.main()
