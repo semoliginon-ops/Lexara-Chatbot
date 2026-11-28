@@ -111,3 +111,70 @@ Contoh ini hanya menjelaskan pemisahan dimensi; bukan data latih, evidence atura
 5. Integrasi runtime dan konteks multi-giliran tetap menjadi pekerjaan berikutnya, bukan bagian dari v1.
 
 **Kriteria penerimaan rancangan:** batas antara makna, struktur, dan maksud komunikatif jelas; setiap kandidat dapat ditelusuri ke sumber; ketidakpastian dipertahankan; dan tidak ada perubahan pada komponen Tahap 1/2 atau aturan konteks nonaktif.
+
+## 9. Skema keluaran minimal v1 (rancangan)
+
+Keluaran dirancang sebagai laporan baca-saja atas satu Context Snapshot. Bentuk ini belum menjadi kontrak implementasi final sampai modul dan tes khusus dibuat.
+
+```json
+{
+  "schema_version": "1.0",
+  "source": {
+    "snapshot_status": "assembled | partial | deferred",
+    "parser_status": "nilai asli parser atau null"
+  },
+  "ambiguity": {
+    "status": "resolved | ambiguous | unresolved | deferred",
+    "items": [
+      {
+        "dimension": "lexical_sense | pos | syntax | reference | intent",
+        "token_index": 0,
+        "candidate_refs": [
+          {
+            "source_field": "lexical_candidates",
+            "candidate_id": "ID kandidat asli atau null"
+          }
+        ],
+        "evidence_refs": [
+          {
+            "source_field": "field sumber asli",
+            "token_index": 0
+          }
+        ],
+        "status": "ambiguous",
+        "reason": "multiple_supported_candidates"
+      }
+    ]
+  },
+  "communicative_intent": {
+    "status": "resolved | ambiguous | unresolved | deferred",
+    "label": "question | request | directive | assertion | expressive | fragment | unknown",
+    "candidates": [],
+    "evidence_refs": [],
+    "reason": "explicit_marker | explicit_construction | insufficient_evidence"
+  }
+}
+```
+
+### Aturan skema
+
+- `source.snapshot_status` dan `source.parser_status` menyalin status sumber; jangan menormalkan atau menghapus nilai aslinya.
+- `ambiguity.items` hanya dibuat bila ada ketidakpastian yang dilaporkan sumber atau ditemukan oleh aturan v1 yang eksplisit. Jangan membuat catatan hanya karena sistem belum memiliki kemampuan menganalisis suatu dimensi.
+- `dimension` menjelaskan jenis ketidakpastian; `token_index` boleh `null` bila ketidakpastian berada pada tingkat ujaran atau tidak dapat dipetakan aman ke satu token.
+- `candidate_refs` menunjuk kandidat yang benar-benar tersedia pada snapshot atau komponen yang secara eksplisit dirujuk. Jangan menyalin lalu mengubah kandidat menjadi kandidat baru.
+- `evidence_refs` adalah rujukan ke data sumber, bukan evidence baru. Setiap rujukan harus dapat ditelusuri kembali ke snapshot.
+- `ambiguity.status` adalah ringkasan dimensi ambiguitas, bukan pengganti status per item. Jika item-item memiliki status berbeda, ringkasan mengikuti keadaan paling tidak pasti; urutan konservatif: deferred, unresolved, ambiguous, resolved.
+- `communicative_intent.label` hanya diisi satu label jika tepat satu kandidat didukung bukti eksplisit. Jika beberapa kandidat masih mungkin, `label` harus `null`, status `ambiguous`, dan kandidat tetap tercatat. Jika bukti tidak cukup, gunakan `unknown` dengan status `unresolved`; jangan menganggap semua kalimat otomatis assertion.
+- `reason` menjelaskan dasar status dan bukan skor keyakinan. Tidak ada probabilitas atau confidence score pada v1.
+- Nilai contoh di atas adalah ilustrasi tipe data, bukan daftar aturan aktif. Nama field sumber harus diverifikasi terhadap snapshot sebelum implementasi.
+
+### Batas keputusan untuk implementasi berikutnya
+
+Implementasi pertama hanya boleh:
+1. memvalidasi dan merujuk status/kandidat yang sudah ada pada snapshot;
+2. membuat catatan ambiguitas untuk kasus yang benar-benar dapat ditunjuk sumbernya;
+3. mengklasifikasikan bentuk komunikatif yang memiliki pola eksplisit dan telah disepakati sebagai aturan terbatas;
+4. mengembalikan unresolved/deferred bila tidak ada bukti aman.
+
+Implementasi pertama tidak boleh memilih sense baru, menafsirkan implikatur, menyimpulkan niat psikologis, mengeluarkan teks klarifikasi, atau mengubah komponen sumber.
+
