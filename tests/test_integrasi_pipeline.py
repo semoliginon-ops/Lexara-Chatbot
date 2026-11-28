@@ -1863,6 +1863,49 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 else:
                     self.assertEqual(result["function"], "possessive")
 
+
+    def test_five_derived_hosts_with_bound_clitics_use_real_pipeline(self):
+        cases = (
+            ("Dia memilikiku.", "memilikiku", "ku", "VERB", "memiliki", "predicate"),
+            ("Dia memilikimu.", "memilikimu", "mu", "VERB", "memiliki", "predicate"),
+            ("Dia memilikinya.", "memilikinya", "nya", "VERB", "memiliki", "predicate"),
+            ("Perasaanku berubah.", "perasaanku", "ku", "NOUN", "perasaan", "subject"),
+            ("Perasaanmu berubah.", "perasaanmu", "mu", "NOUN", "perasaan", "subject"),
+        )
+
+        for sentence, surface, clitic, host_pos, base_form, expected_role in cases:
+            with self.subTest(sentence=sentence, clitic=clitic, host_pos=host_pos):
+                analyzed = self.analyze(sentence)
+                bound = self.token(analyzed, surface)
+                self.assertEqual(bound["status"], "unknown")
+                self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
+                component = bound["clitic_pos_candidates"][0]
+                self.assertEqual(component["clitic"], clitic)
+                self.assertEqual(component["host_pos"], [host_pos])
+                self.assertEqual(component["clitic_pos"], ["PRON"])
+                self.assertEqual(component["base_form"], base_form)
+
+                parsed = parse_sentence(analyzed)
+                self.assertIn(parsed["status"], {"parsed", "partial"}, msg=repr(parsed))
+                self.assertEqual(len(parsed["clitic_analysis"]), 1)
+                result = parsed["clitic_analysis"][0]
+                self.assertEqual(result["surface"], surface)
+                self.assertEqual(result["base_form"], base_form)
+                self.assertEqual(result["clitic"], clitic)
+
+                if host_pos == "VERB":
+                    self.assertEqual(parsed["roles"]["subject"], ["dia"])
+                    self.assertEqual(parsed["roles"]["predicate"], [surface])
+                    self.assertEqual(result["function"], "object")
+                    self.assertEqual(result["function_status"], "selected_by_verbal_host")
+                    self.assertEqual(result["host_role"], "predicate")
+                else:
+                    self.assertEqual(parsed["roles"]["subject"], [surface])
+                    self.assertEqual(parsed["roles"]["predicate"], ["berubah"])
+                    self.assertEqual(result["function"], "possessive")
+                    self.assertEqual(result["function_status"], "selected_by_host_pos")
+                    self.assertEqual(result["nominal_phrase_role"], expected_role)
+
 if __name__ == "__main__":
     unittest.main()
 
