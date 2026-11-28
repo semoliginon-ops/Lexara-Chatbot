@@ -1398,3 +1398,24 @@ GitHub Actions [Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/acti
 - Pemetaan rinci antara skenario yang sudah terbukti, batas `partial/unresolved`, dan kemungkinan celah pipeline masih menjadi pekerjaan berikutnya.
 - Tidak ada kebutuhan untuk mengulang seluruh 446 tes atau menjalankan CI baru hanya untuk menyelesaikan inventaris ini.
 
+## Pemetaan cakupan dan batas baseline Tahap 2.7 — 28 November 2026
+
+Pemetaan ini merangkum bukti yang telah ada; bukan klaim bahwa seluruh variasi Bahasa Indonesia telah tercakup.
+
+| Komponen / jalur | Cakupan yang telah memiliki bukti | Batas yang tetap berlaku |
+|---|---|---|
+| Normalisasi, tokenisasi, pencocokan, dan loader kamus | Normalisasi Unicode/kapitalisasi/spasi, pemisahan tanda baca, angka, apostrof/tanda hubung, pencocokan lema/varian/bentuk turunan, preservasi kandidat ambigu, dan validasi batch. | Kelengkapan kamus tetap dibatasi 3.025 lema yang tersedia; tidak mewakili seluruh kosakata Bahasa Indonesia. |
+| Morfologi | Sejumlah prefiks, sufiks, konfiks, perubahan nasal, reduplikasi identik, perlindungan lema leksikal, bentuk turunan, dan deteksi klitik `-ku/-mu/-nya`. | Inventaris imbuhan dan perubahan morfofonemik belum lengkap; pengenalan bentuk klitik tidak otomatis menyelesaikan fungsi sintaksis/semantisnya. |
+| POS dan dataset | Dataset 100 kalimat / 543 token; evaluasi development 60 kalimat, 250/255 token dikenali, coverage/accuracy 98,0%, selective accuracy 100,0%. Test split 40 kalimat tetap tersegel. Pronomina persona baku dan beberapa bentuk informal telah diuji pada konteks subjek/objek. | Nama orang masih di-abstain; inventaris informal/regional belum lengkap; hasil development bukan estimasi final pada seluruh bahasa atau test split. |
+| Parser dan integrasi kalimat | Bukti untuk pola S-P/S-P-O, frasa nominal sederhana, negasi, modalitas, keterangan, koordinasi, subordinasi, dan beberapa konstruksi melalui pipeline kamus/POS nyata. | Cakupan konstruksi terpilih, bukan tata bahasa lengkap. Inversi K-P-S hanya untuk bukti lema/sense/frame valensi yang unik dan syarat SUBJ NP wajib; kasus lain tetap unresolved. Frasa nominal masih rentang datar, belum memiliki struktur internal kepala-pewatas. |
+| Voice | Deteksi aktif/pasif morfologis dan aliran bukti ke kepala predikat serta pemetaan peran pada konstruksi yang memenuhi syarat. | Bentuk `ter-` dan `ber-` tidak otomatis diputuskan; voice tanpa bukti tunggal tetap unresolved. |
+| Semantic role dan valensi | Pemetaan aktif/pasif dan validasi struktur frame; pilot anotasi untuk sense `muncul`, `lihat`, `buka`, dan `makan`; resolver hanya memilih jika bukti mendukung satu frame dan menyingkirkan alternatif. | Pilot beberapa sense bukan inventaris valensi luas. Ambiguitas frame dipertahankan; pemilihan sense kontekstual dan pembentukan bukti konteks yang lebih luas belum tersedia. |
+| Status keluaran | Sistem memiliki perilaku konservatif untuk mempertahankan `partial`, `unresolved`, kandidat ambigu, dan abstention saat bukti tidak cukup. | `partial/unresolved` bukan otomatis bug; evaluasi harus menilai apakah abstention sesuai kontrak dan bukti yang tersedia, bukan memaksa semua kalimat menjadi parse penuh. |
+
+### Kesimpulan pemetaan
+
+- Cakupan yang telah diuji dapat dipakai sebagai baseline komponen dan contoh konstruksi yang disebutkan; jangan digeneralisasi di luar batas masing-masing.
+- Keterbatasan yang paling jelas terdokumentasi adalah inventaris morfologi/pronomina yang belum lengkap, interpretasi semantis klitik (terutama `-nya`), struktur internal frasa nominal yang belum tersedia, inversi K-P-S yang sangat terbatas, dan cakupan valensi/sense yang masih pilot.
+- Test split POS tetap tersegel; audit ini tidak membukanya.
+- Tahap berikutnya adalah membandingkan kebutuhan pipeline end-to-end dengan bukti yang sudah ada. Belum ada alasan untuk menjalankan tes massal atau membuka kembali Tahap 2.6.
+
