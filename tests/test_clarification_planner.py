@@ -140,11 +140,16 @@ class ClarificationPlannerTests(unittest.TestCase):
         refs = [ref(candidate_index=0), ref(candidate_index=1)]
         bad_index = opportunity(index=4, refs=refs)
         bad_ref = opportunity(refs=[ref(candidate_index=0), ref(candidate_index=9)])
+        malformed_ref = {**ref(candidate_index=9), "extra": []}
+        bad_nested_ref = opportunity(refs=[ref(candidate_index=0), malformed_ref])
         self.assertEqual(
             plan_clarification(report(), [bad_index])["decision"], "abstain"
         )
         self.assertEqual(
             plan_clarification(report(), [bad_ref])["decision"], "abstain"
+        )
+        self.assertEqual(
+            plan_clarification(report(), [bad_nested_ref])["decision"], "abstain"
         )
 
 
