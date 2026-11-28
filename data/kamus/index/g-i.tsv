@@ -6,6 +6,7 @@ gado-gado	K1966	gado-gado	lemma	batch-040
 gagah	K1302	gagah	lemma	batch-027
 gagak	K2218	gagak	lemma	batch-045
 gagal	K0423	gagal	lemma	batch-009
+gagal ginjal	K3075	gagal ginjal	lemma	batch-061
 gairah	K1303	gairah	lemma	batch-027
 gajah	K2217	gajah	lemma	batch-045
 gaje	K0680	gaje	lemma	batch-014
@@ -36,6 +37,7 @@ garansi	K1311	garansi	lemma	batch-027
 garis	K0855	garis	lemma	batch-018
 garpu	K0280	garpu	lemma	batch-006
 gas	K0856	gas	lemma	batch-018
+gastritis	K3048	gastritis	lemma	batch-061
 gatal	K0857	gatal	lemma	batch-018
 gaun	K2647	gaun	lemma	batch-053
 gawat	K0858	gawat	lemma	batch-018
@@ -100,6 +102,7 @@ gizi	K1324	gizi	lemma	batch-027
 gletser	K2720	gletser	lemma	batch-055
 Gojek	K2502	Gojek	lemma	batch-051
 gokil	K0681	gokil	lemma	batch-014
+gondongan	K3071	gondongan	lemma	batch-061
 gorden	K1343	gorden	lemma	batch-027
 goreng	K0465	goreng	lemma	batch-010
 gorengan	K1342	gorengan	lemma	batch-027
@@ -233,7 +236,9 @@ helm	K0496	helm	lemma	batch-010
 hemat	K0887	hemat	lemma	batch-018
 hembus	K1358	hembus	lemma	batch-028
 hening	K1359	hening	lemma	batch-028
+hepatitis	K3049	hepatitis	lemma	batch-061
 heran	K0338	heran	lemma	batch-007
+herpes	K3050	herpes	lemma	batch-061
 hewan	K1360	hewan	lemma	batch-028
 hias	K1361	hias	lemma	batch-028
 hibur	K0888	hibur	lemma	batch-018
@@ -245,6 +250,8 @@ hikmah	K0891	hikmah	lemma	batch-018
 hilang	K0223	hilang	lemma	batch-005
 hilir	K0892	hilir	lemma	batch-018
 hinggap	K3003	hinggap	lemma	batch-060
+hipertensi	K3051	hipertensi	lemma	batch-061
+hipotensi	K3052	hipotensi	lemma	batch-061
 hitung	K0893	hitung	lemma	batch-018
 hiu	K2222	hiu	lemma	batch-045
 hobi	K0562	hobi	lemma	batch-012
