@@ -28,7 +28,7 @@ Aturan keras:
 5. Satu objek kandidat yang berisi beberapa `sense_ids` tidak boleh dipecah menjadi pilihan pengguna kecuali setiap sense dapat diambil dan dipasangkan ke deskripsi otoritatifnya secara tepat.
 6. Kandidat POS/sintaksis tidak boleh diterjemahkan menjadi istilah teknis yang membingungkan. Jika perbedaan tidak dapat dijelaskan secara sederhana dan setia pada sumber, jangan tampilkan.
 
-**Konsekuensi untuk kondisi repo saat ini:** laporan interpretasi hanya menyimpan referensi indeks kandidat, bukan salinan definisi/label pengguna. Fixture yang ada menunjukkan kandidat leksikal dapat memuat beberapa `sense_ids` dalam satu objek. Karena itu, implementasi penyaji harus menunggu tersedianya lookup deskripsi sense/kandidat yang tepercaya; jangan menganggap planner v1 sudah menyediakan teks pilihan.
+**Kondisi sumber repo setelah audit:** definisi sense tepercaya sebenarnya tersedia di kamus proyek dan dapat ditelusuri melalui `snapshot.tokens[token_index].lexical_candidates[candidate_index].entry.senses[sense_index].definition`. Rincian jalur dan contoh entri dicatat dalam [AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md](AUDIT_SUMBER_DESKRIPSI_KANDIDAT_KLARIFIKASI.md). Namun, laporan interpretasi dan planner v1 hanya menggunakan referensi tingkat objek kandidat. Satu kandidat entri dapat berisi dua sense, sehingga planner v1 tidak dapat memilih dua sense itu sebagai opsi terpisah. Sebelum penyaji dapat diimplementasikan untuk ambiguitas leksikal, planner harus memiliki kontrak versi berikutnya yang mendukung referensi sense-level dan memverifikasi kecocokannya dengan snapshot.
 
 ## 3. Bentuk pertanyaan
 
