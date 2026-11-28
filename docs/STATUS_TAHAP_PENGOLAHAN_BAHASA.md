@@ -1801,3 +1801,18 @@ Mengikuti checklist, pencarian hanya dilakukan untuk dua lema same-POS yang tela
 Rujukan dan penilaian terperinci dicatat di `docs/INVENTARIS_SENSE_AMBIGU_DAN_KANDIDAT_ATURAN_KONTEKS.md`. Hasil pencarian ini belum cukup untuk mengaktifkan aturan: tiga aturan tetap `proposed`/`weak`, satu tetap `rejected`; tidak ada status/strength yang dinaikkan. Tidak ada contoh buatan, aturan baru, perubahan kode, atau perubahan runtime. Pencarian dibatasi dan dihentikan pada sumber yang diperiksa karena belum tersedia bukti yang memadai untuk kedua sisi pembedaan sense.
 
 **Keputusan operasional:** jangan lanjut ke integrasi entrypoint/runtime berdasarkan evidence saat ini. Tahan aturan tetap nonaktif sampai tersedia contoh korpus yang benar-benar membedakan sense dan mengaitkan cue dengan token target secara aman. Tidak perlu mengulang tes atau menjalankan GitHub Actions karena hanya dokumentasi yang berubah.
+
+## Representasi Konteks Terpadu v1 — rancangan independen Tahap 3
+
+Setelah penelusuran korpus terbatas, aktivasi aturan untuk `bangun` dan `jam` diparkir sementara karena evidence belum memadai. Keputusan ini hanya menahan aturan sense tersebut; tidak menghentikan pekerjaan Tahap 3 lainnya.
+
+Pekerjaan independen berikutnya ditetapkan sebagai Representasi Konteks Terpadu v1. Rancangannya berada di `docs/KONTRAK_REPRESENTASI_KONTEKS_TERPADU_V1.md`. Komponen ini akan mengemas keluaran analyzer leksikal/morfologi, POS dan evidence POS kontekstual, serta struktur parser ke satu snapshot baca-saja per kalimat dan per kemunculan token.
+
+Batas utama rancangan:
+- tidak menjalankan ulang atau mengubah analyzer, morfologi, POS, parser, kamus, Concept Layer, generator, selector, maupun orchestrator;
+- tidak memilih sense, membuat evidence semantik, atau menyimpulkan semantic role;
+- mempertahankan semua kandidat dan status sumber;
+- memetakan peran parser hanya bila kecocokan token unik dan aman;
+- menunda pemetaan token berulang dan kalimat majemuk; mempertahankan status partial/unresolved.
+
+Tahap implementasi berikutnya dibatasi pada satu modul baru, tepat 10 tes khusus, dan satu workflow GitHub Actions terfokus. Belum ada implementasi kode atau tes yang dijalankan pada langkah rancangan ini.
