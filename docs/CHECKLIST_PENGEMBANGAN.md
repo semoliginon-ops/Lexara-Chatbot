@@ -11,13 +11,13 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 
 ## Snapshot proyek — 28 November 2026
 
-- **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. Tahap berikutnya pada peta proyek adalah 2.7 — Dataset dan pengujian terpadu.
+- **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. Tahap berikutnya pada peta proyek adalah 2.7 — Inventarisasi bukti dan evaluasi pipeline terpadu.
 - Parser saat ini **v1.9**. Ini nomor versi parser, bukan tanda bahwa seluruh Tahap 2.6 sudah selesai.
 - Kamus: **3.025 lema dalam 60 batch**; tidak ada rencana audit ulang batch secara rutin.
 - Tahap 2.5 (POS) telah ditutup berdasarkan keputusan pengguna.
 - Dataset POS: 100 kalimat / 543 token (60 development, 40 test); test split tetap tersegel.
 - Evaluasi POS kontekstual pada development: 250/255 dikenali; coverage 98,0%, accuracy 98,0%, selective accuracy 100,0%. Lima abstention berupa nama orang ditunda ke tahap pengenalan nama/konteks.
-- GitHub Actions [Run #203](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46034097778) sukses: validasi kamus 3.025 lema, valensi, dataset POS, evaluasi development, dan **378/378 regression tests lulus**.
+- Baseline regresi terbaru yang tercatat: GitHub Actions [Run #257](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46087530316) sukses dengan **446/446 regression tests lulus**. Hasil run terdahulu tetap menjadi bukti untuk cakupan khusus masing-masing.
 
 ## Aturan kerja yang harus dijaga
 
