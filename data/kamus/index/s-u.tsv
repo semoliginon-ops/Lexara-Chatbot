@@ -1,10 +1,10 @@
 # token\tid\tlemma\ttype\tbatch
-# Token index — s-u
 "salak"	K3302	salak	lemma	batch-066
 "sawo"	K3303	sawo	lemma	batch-066
 "sirsak"	K3304	sirsak	lemma	batch-066
 "stroberi"	K3315	stroberi	lemma	batch-066
 "sukun"	K3317	sukun	lemma	batch-066
+# Token index — s-u
 penumbra	K3170	penumbra	lemma	batch-063
 sabana	K2697	sabana	lemma	batch-054
 sabar	K0345	sabar	lemma	batch-007
@@ -105,7 +105,11 @@ sekretaris	K1585	sekretaris	lemma	batch-032
 selada	K1946	selada	lemma	batch-039
 selai	K1945	selai	lemma	batch-039
 selalu	K0140	selalu	lemma	batch-003
+selam	K3361	selam	lemma	batch-067
+selam bebas	K3362	selam bebas	lemma	batch-067
 selamat	K0248	selamat	lemma	batch-005
+selancar	K3331	selancar	lemma	batch-067
+selancar angin	K3332	selancar angin	lemma	batch-067
 selasar	K1609	selasar	lemma	batch-033
 selat	K2724	selat	lemma	batch-055
 seleksi	K1586	seleksi	lemma	batch-032
@@ -122,6 +126,8 @@ sembuh	K1588	sembuh	lemma	batch-032
 sembunyi	K1589	sembunyi	lemma	batch-032
 semoga	K0634	semoga	lemma	batch-013
 semut	K1590	semut	lemma	batch-032
+senam artistik	K3335	senam artistik	lemma	batch-067
+senam ritmik	K3336	senam ritmik	lemma	batch-067
 senang	K0084	senang	lemma	batch-002
 sendi	K3111	sendi	lemma	batch-062
 sendiri	K3026	sendiri	lemma	batch-060
@@ -133,6 +139,7 @@ sengketa	K1600	sengketa	lemma	batch-032
 senja	K1650	senja	lemma	batch-033
 sentuh	K1592	sentuh	lemma	batch-032
 senyum	K0428	senyum	lemma	batch-009
+sepak takraw	K3374	sepak takraw	lemma	batch-067
 sepatu	K0268	sepatu	lemma	batch-006
 sepeda	K0199	sepeda	lemma	batch-004
 sepeda listrik	K2566	sepeda listrik	lemma	batch-052
@@ -218,12 +225,14 @@ sistem	K1110	sistem	lemma	batch-023
 siswa	K3009	siswa	lemma	batch-060
 sitokinin	K3202	sitokinin	lemma	batch-064
 situasi	K1111	situasi	lemma	batch-023
+ski air	K3375	ski air	lemma	batch-067
 skuter	K2563	skuter	lemma	batch-052
 slogan	K1634	slogan	lemma	batch-033
 soalnya	K0637	soalnya	lemma	batch-013
 sobek	K1635	sobek	lemma	batch-033
 soda	K1948	soda	lemma	batch-039
 sodok	K1636	sodok	lemma	batch-033
+softbol	K3370	softbol	lemma	batch-067
 sogok	K1637	sogok	lemma	batch-033
 sok	K0676	sok	lemma	batch-014
 sokong	K1638	sokong	lemma	batch-033
@@ -299,6 +308,7 @@ tablet gambar	K2450	tablet gambar	lemma	batch-049
 tabrak	K1124	tabrak	lemma	batch-023
 tabung	K1652	tabung	lemma	batch-034
 tadi	K0139	tadi	lemma	batch-003
+taekwondo	K3355	taekwondo	lemma	batch-067
 tagih	K1653	tagih	lemma	batch-034
 tahap	K1125	tahap	lemma	batch-023
 tahu	K0039	tahu	lemma	batch-001
@@ -523,6 +533,7 @@ titip	K0412	titip	lemma	batch-009
 toh	K0641	toh	lemma	batch-013
 toko	K0361	toko	lemma	batch-008
 tolak	K0245	tolak	lemma	batch-005
+tolak peluru	K3344	tolak peluru	lemma	batch-067
 tolong	K0032	tolong	lemma	batch-001
 tomat	K0485	tomat	lemma	batch-010
 tombak	K1739	tombak	lemma	batch-035
@@ -539,6 +550,7 @@ trailer	K2572	trailer	lemma	batch-052
 traktor	K2571	traktor	lemma	batch-052
 transit planet	K3167	transit planet	lemma	batch-063
 transpirasi	K3197	transpirasi	lemma	batch-064
+triatlon	K3350	triatlon	lemma	batch-067
 tripod	K2418	tripod	lemma	batch-049
 tsunami	K2673	tsunami	lemma	batch-054
 tua	K1742	tua	lemma	batch-035
@@ -606,6 +618,7 @@ ulat sutra	K2992	ulat sutra	lemma	batch-060
 ulat tanah	K2994	ulat tanah	lemma	batch-060
 ulek	K1157	ulek	lemma	batch-024
 ulir	K1159	ulir	lemma	batch-024
+ultramaraton	K3340	ultramaraton	lemma	batch-067
 umbi akar	K3190	umbi akar	lemma	batch-064
 umbi batang	K3189	umbi batang	lemma	batch-064
 umbi lapis	K3188	umbi lapis	lemma	batch-064
