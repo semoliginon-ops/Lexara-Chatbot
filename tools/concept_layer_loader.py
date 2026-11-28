@@ -46,7 +46,7 @@ def _validate(record: dict, kind: str, location: str) -> None:
             raise ConceptLayerLoadError(f"{location}.relation_id: format ID tidak valid")
         _text(record.get("source"), "source", location)
         _text(record.get("target"), "target", location)
-        if record.get("type") not in RELATION_TYPES:
+        if not isinstance(record.get("type"), str) or record["type"] not in RELATION_TYPES:
             raise ConceptLayerLoadError(f"{location}.type: tipe relasi tidak dikenal")
         if record["source"] == record["target"]:
             raise ConceptLayerLoadError(f"{location}: relasi diri sendiri tidak diizinkan")
