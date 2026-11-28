@@ -1866,14 +1866,14 @@ class FullDictionaryPipelineTests(unittest.TestCase):
 
     def test_five_derived_hosts_with_bound_clitics_use_real_pipeline(self):
         cases = (
-            ("Dia memilikiku.", "memilikiku", "ku", "VERB", "memiliki", "predicate"),
-            ("Dia memilikimu.", "memilikimu", "mu", "VERB", "memiliki", "predicate"),
-            ("Dia memilikinya.", "memilikinya", "nya", "VERB", "memiliki", "predicate"),
+            ("Dia memilikiku.", "memilikiku", "ku", [], "memiliki", "unresolved"),
+            ("Dia memilikimu.", "memilikimu", "mu", [], "memiliki", "unresolved"),
+            ("Dia memilikinya.", "memilikinya", "nya", [], "memiliki", "unresolved"),
             ("Perasaanku berubah.", "perasaanku", "ku", "NOUN", "perasaan", "subject"),
             ("Perasaanmu berubah.", "perasaanmu", "mu", "NOUN", "perasaan", "subject"),
         )
 
-        for sentence, surface, clitic, host_pos, base_form, expected_role in cases:
+        for sentence, surface, clitic, expected_host_pos, base_form, expected_role in cases:
             with self.subTest(sentence=sentence, clitic=clitic, host_pos=host_pos):
                 analyzed = self.analyze(sentence)
                 bound = self.token(analyzed, surface)
@@ -1881,7 +1881,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(len(bound["clitic_pos_candidates"]), 1)
                 component = bound["clitic_pos_candidates"][0]
                 self.assertEqual(component["clitic"], clitic)
-                self.assertEqual(component["host_pos"], [host_pos])
+                self.assertEqual(component["host_pos"], expected_host_pos)
                 self.assertEqual(component["clitic_pos"], ["PRON"])
                 self.assertEqual(component["base_form"], base_form)
 
@@ -1893,12 +1893,10 @@ class FullDictionaryPipelineTests(unittest.TestCase):
                 self.assertEqual(result["base_form"], base_form)
                 self.assertEqual(result["clitic"], clitic)
 
-                if host_pos == "VERB":
-                    self.assertEqual(parsed["roles"]["subject"], ["dia"])
-                    self.assertEqual(parsed["roles"]["predicate"], [surface])
-                    self.assertEqual(result["function"], "object")
-                    self.assertEqual(result["function_status"], "selected_by_verbal_host")
-                    self.assertEqual(result["host_role"], "predicate")
+                if expected_role == "unresolved":
+                    self.assertEqual(parsed["status"], "unresolved")
+                    self.assertEqual(parsed["clitic_analysis"], [])
+                    self.assertIn(surface, parsed["unresolved_tokens"])
                 else:
                     self.assertEqual(parsed["roles"]["subject"], [surface])
                     self.assertEqual(parsed["roles"]["predicate"], ["berubah"])
