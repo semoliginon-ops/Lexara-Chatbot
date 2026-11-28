@@ -1,0 +1,32 @@
+name: Clarification Planner v1.1 Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/clarification_planner.py"
+      - "tests/test_clarification_planner_v1_1.py"
+      - ".github/workflows/clarification-planner-v1-1-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: clarification-planner-v1-1-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Run exactly 12 sense-level clarification tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exactly 12 focused tests
+        run: python -m unittest discover -s tests -p "test_clarification_planner_v1_1.py" -v
