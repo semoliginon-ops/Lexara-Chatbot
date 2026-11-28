@@ -1314,3 +1314,21 @@ Setiap skenario memastikan kedua segmen diproses sebagai klausa, pola keseluruha
 GitHub Actions **Run #252 selesai dengan conclusion success**; **426/426 tes regresi lulus**. [Lihat Run #252](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46086503469).
 
 Tidak ada perubahan implementasi parser, batch, atau indeks kamus. Ini merupakan perluasan cakupan tes koordinasi klausa, bukan penutupan Tahap 2.6.
+
+
+### Koordinasi tiga klausa dengan relasi campuran — Run #253–255 (28 November 2026)
+
+Menambahkan **10 tes integrasi baru** untuk rangkaian tiga klausa yang memakai dua konjungsi berbeda. Ini merupakan celah yang belum disentuh oleh tes koordinasi dua klausa Run #252 maupun tes tiga klausa sebelumnya yang hanya mengulang `dan`.
+
+Sepuluh kombinasi urutan relasi yang diuji:
+- `dan` → `atau`; `atau` → `dan`.
+- `tetapi` → `dan`; `dan` → `tetapi`.
+- `atau` → `tetapi`; `tetapi` → `atau`.
+- `namun` → `dan`; `dan` → `namun`.
+- `namun` → `atau`; `atau` → `namun`.
+
+Setiap tes memeriksa tiga segmen klausa, urutan connector, label relasi ke klausa sebelumnya, serta subjek dan predikat setiap klausa. Tes juga mengikuti kontrak sumber POS yang sebenarnya: `namun` dikenali dari kamus, sedangkan `dan`, `atau`, dan `tetapi` pada cakupan ini mendapat POS CONJ dari supplement; parser tetap hanya membagi klausa ketika bukti POS CONJ eksplisit tersedia.
+
+Dua percobaan awal (Run #253 dan #254) gagal karena ekspektasi tes terhadap sumber POS belum sesuai dengan keluaran pipeline; setelah ekspektasi diperbaiki tanpa mengubah parser atau kamus, GitHub Actions **Run #255 selesai dengan conclusion success**, **436/436 tes regresi lulus**. [Lihat Run #255](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46086966836).
+
+Tidak ada lema, batch, indeks kamus, atau implementasi parser yang diubah. Cakupan koordinasi klausa bertambah, tetapi pekerjaan konstruksi Tahap 2.6 secara keseluruhan tetap parsial.
