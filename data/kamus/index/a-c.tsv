@@ -1,7 +1,11 @@
 # Token index — a-c
 # token	id	lemma	type	batch
+"buah naga"	K3316	buah naga	lemma	batch-066
+"cempedak"	K3318	cempedak	lemma	batch-066
+"cermai"	K3322	cermai	lemma	batch-066
 abad	K1802	abad	lemma	batch-037
 abadi	K1803	abadi	lemma	batch-037
+abai	K3448	abai	lemma	batch-069
 abang	K0502	abang	lemma	batch-011
 abdi	K1804	abdi	lemma	batch-037
 abdomen	K3077	abdomen	lemma	batch-062
@@ -12,6 +16,7 @@ abstain	K2902	abstain	lemma	batch-059
 abu	K0504	abu	lemma	batch-011
 abu vulkanik	K2737	abu vulkanik	lemma	batch-055
 acak	K1806	acak	lemma	batch-037
+acap	K3472	acap	lemma	batch-069
 acar	K1902	acar	lemma	batch-039
 acara	K0450	acara	lemma	batch-009
 access point	K2431	access point	lemma	batch-049
@@ -40,7 +45,6 @@ agresif	K1205	agresif	lemma	batch-025
 agustus	K3032	agustus	lemma	batch-061
 ahli	K1815	ahli	lemma	batch-037
 air	K0152	air	lemma	batch-004
-berair	K0152	air	derived_form	batch-004
 air fryer	K2302	air fryer	lemma	batch-047
 air hujan	K2690	air hujan	lemma	batch-054
 air jahe	K2052	air jahe	lemma	batch-042
@@ -117,7 +121,6 @@ anai-anai	K2239	anai-anai	lemma	batch-045
 anak	K0102	anak	lemma	batch-003
 anak-anak	K0102	anak	derived_form	batch-003
 anakan	K0102	anak	derived_form	batch-003
-beranak	K0102	anak	derived_form	batch-003
 anakonda	K2247	anakonda	lemma	batch-045
 analisis	K1216	analisis	lemma	batch-025
 ancam	K0709	ancam	lemma	batch-015
@@ -171,7 +174,6 @@ apel	K1905	apel	lemma	batch-039
 apem	K2056	apem	lemma	batch-042
 aphelion	K3157	aphelion	lemma	batch-063
 api	K0153	api	lemma	batch-004
-berapi	K0153	api	derived_form	batch-004
 aplikasi driver	K2549	aplikasi driver	lemma	batch-051
 aplikator	K2551	aplikator	lemma	batch-051
 apotek	K0516	apotek	lemma	batch-011
@@ -237,7 +239,6 @@ awas	K0520	awas	lemma	batch-011
 awet	K1222	awet	lemma	batch-025
 ayah	K0105	ayah	lemma	batch-003
 ayam	K0169	ayam	lemma	batch-004
-ayam-ayam	K0169	ayam	derived_form	batch-004
 ayam bakar	K2057	ayam bakar	lemma	batch-042
 ayam betutu	K2058	ayam betutu	lemma	batch-042
 ayam geprek	K2059	ayam geprek	lemma	batch-042
@@ -250,6 +251,7 @@ ayam panggang	K2162	ayam panggang	lemma	batch-044
 ayam penyet	K2061	ayam penyet	lemma	batch-042
 ayam rica-rica	K2157	ayam rica-rica	lemma	batch-044
 ayam woku	K2158	ayam woku	lemma	batch-044
+ayam-ayam	K0169	ayam	derived_form	batch-004
 ayunan	K1851	ayunan	lemma	batch-037
 babat	K2004	babat	lemma	batch-041
 babi	K0521	babi	lemma	batch-011
@@ -262,7 +264,6 @@ badai pasir	K2708	badai pasir	lemma	batch-055
 badai tropis	K2707	badai tropis	lemma	batch-055
 badak	K2204	badak	lemma	batch-045
 badan	K0124	badan	lemma	batch-003
-berbadan	K0124	badan	derived_form	batch-003
 badan eksekutif	K2907	badan eksekutif	lemma	batch-059
 badan legislatif	K2906	badan legislatif	lemma	batch-059
 badan yudikatif	K2908	badan yudikatif	lemma	batch-059
@@ -360,6 +361,7 @@ begitu	K3022	begitu	lemma	batch-060
 bekal	K0525	bekal	lemma	batch-011
 bekantan	K2256	bekantan	lemma	batch-046
 bekas	K1231	bekas	lemma	batch-025
+bekerja	K0021	kerja	derived_form	batch-001
 bekicot	K2241	bekicot	lemma	batch-045
 beku	K0727	beku	lemma	batch-015
 bel	K1232	bel	lemma	batch-025
@@ -382,7 +384,6 @@ belibis	K2257	belibis	lemma	batch-046
 belimbing	K1956	belimbing	lemma	batch-040
 belok	K0211	belok	lemma	batch-005
 belokan	K0211	belok	derived_form	batch-005
-berbelok	K0211	belok	derived_form	batch-005
 belot	K0731	belot	lemma	batch-015
 belum	K0147	belum	lemma	batch-003
 belut	K2240	belut	lemma	batch-045
@@ -391,34 +392,96 @@ benar	K0236	benar	lemma	batch-005
 benci	K0526	benci	lemma	batch-011
 bengkel	K0500	bengkel	lemma	batch-010
 bensin	K0495	bensin	lemma	batch-010
+bepergian	K0017	pergi	derived_form	batch-001
+berair	K0152	air	derived_form	batch-004
+berambut	K0126	rambut	derived_form	batch-003
+beranak	K0102	anak	derived_form	batch-003
 beranda	K1235	beranda	lemma	batch-025
 berangkat	K0208	berangkat	lemma	batch-005
 berani	K0527	berani	lemma	batch-011
 berantakan	K0324	berantakan	lemma	batch-007
+berapi	K0153	api	derived_form	batch-004
 beras	K0165	beras	lemma	batch-004
 berat	K0529	berat	lemma	batch-011
+berbadan	K0124	badan	derived_form	batch-003
+berbelok	K0211	belok	derived_form	batch-005
+berbicara	K0036	bicara	derived_form	batch-001
+berbohong	K0239	bohong	derived_form	batch-005
+berbuah	K0162	buah	derived_form	batch-004
+berbunga	K0160	bunga	derived_form	batch-004
+berbunga-bunga	K0160	bunga	derived_form	batch-004
+bercerita	K0191	cerita	derived_form	batch-004
+berdaging	K0170	daging	derived_form	batch-004
+berdaun	K0161	daun	derived_form	batch-004
+berdemam	K0181	demam	derived_form	batch-004
 berdiri	K0072	berdiri	lemma	batch-002
 berdirinya	K0072	berdiri	derived_form	batch-002
 beres	K0528	beres	lemma	batch-011
+bergula	K0172	gula	derived_form	batch-004
+bergunung	K0158	gunung	derived_form	batch-004
+berhari-hari	K0130	hari	derived_form	batch-003
+berhati	K0116	hati	derived_form	batch-003
 berhenti	K0209	berhenti	lemma	batch-005
+berhidung	K0120	hidung	derived_form	batch-003
 beri	K0409	beri	lemma	batch-009
 berisik	K0530	berisik	lemma	batch-011
+beristri	K0112	istri	derived_form	batch-003
 berita	K0192	berita	lemma	batch-004
+berjalan	K0020	jalan	derived_form	batch-001
 berkah	K0732	berkah	lemma	batch-015
+berkaki	K0123	kaki	derived_form	batch-003
 berkali-kali	K0733	berkali-kali	lemma	batch-015
 berkat	K1236	berkat	lemma	batch-025
+berkopi	K0173	kopi	derived_form	batch-004
 berkuda	K3359	berkuda	lemma	batch-067
+berlari	K0073	lari	derived_form	batch-002
+berlebih	K0234	lebih	derived_form	batch-005
+berlebihan	K0097	lebay	derived_form	batch-002
+bermain	K0074	main	derived_form	batch-002
+bermalam	K0134	malam	derived_form	batch-003
+bermandi	K0051	mandi	derived_form	batch-002
+bermata	K0118	mata	derived_form	batch-003
+bermobil	K0201	mobil	derived_form	batch-004
+bermotor	K0200	motor	derived_form	batch-004
+bermulut	K0121	mulut	derived_form	batch-003
+bernama	K0128	nama	derived_form	batch-003
+berpacaran	K0113	pacar	derived_form	batch-003
+berperut	K0125	perut	derived_form	batch-003
+berpesan	K0194	pesan	derived_form	batch-004
+berpikir	K0080	pikir	derived_form	batch-002
+berpindah	K0207	pindah	derived_form	batch-005
+bersalah	K0237	salah	derived_form	batch-005
+bersaudara	K0110	saudara	derived_form	batch-003
+bersedih	K0085	sedih	derived_form	batch-002
+bersekolah	K0184	sekolah	derived_form	batch-004
+bersenang-senang	K0084	senang	derived_form	batch-002
+bersepeda	K0199	sepeda	derived_form	batch-004
 bersih	K0321	bersih	lemma	batch-007
 bersin	K0531	bersin	lemma	batch-011
+bersuami	K0111	suami	derived_form	batch-003
+bersungai	K0157	sungai	derived_form	batch-004
+bertanah	K0154	tanah	derived_form	batch-004
+bertanya	K0189	tanya	derived_form	batch-004
 berteduh	K3004	berteduh	lemma	batch-060
+bertelinga	K0119	telinga	derived_form	batch-003
+bertelur	K0167	telur	derived_form	batch-004
+berteman	K0011	teman	derived_form	batch-001
+bertemu	K0216	ketemu	derived_form	batch-005
 beruang	K2207	beruang	lemma	batch-045
+berubah	K0220	ubah	derived_form	batch-005
+berulang	K0227	ulang	derived_form	batch-005
+berumah	K0012	rumah	derived_form	batch-001
+berumur	K0129	umur	derived_form	batch-003
 beruntung	K0734	beruntung	lemma	batch-015
+berusaha	K0229	usaha	derived_form	batch-005
+berwajah	K0127	wajah	derived_form	batch-003
 besar	K0043	besar	lemma	batch-001
 besaran	K0043	besar	derived_form	batch-001
 beserta	K0609	beserta	lemma	batch-013
 besi	K1237	besi	lemma	batch-025
 besok	K0138	besok	lemma	batch-003
 betah	K0532	betah	lemma	batch-011
+betapa	K3474	betapa	lemma	batch-069
 bete	K0533	bete	lemma	batch-011
 betis	K2583	betis	lemma	batch-052
 beton	K1238	beton	lemma	batch-025
@@ -429,7 +492,6 @@ biasa	K0534	biasa	lemma	batch-011
 biawak	K2208	biawak	lemma	batch-045
 biaya	K0354	biaya	lemma	batch-008
 bibir	K1239	bibir	lemma	batch-025
-berbicara	K0036	bicara	derived_form	batch-001
 bicara	K0036	bicara	lemma	batch-001
 bidan	K2458	bidan	lemma	batch-050
 bihun	K1957	bihun	lemma	batch-040
@@ -439,6 +501,7 @@ bika ambon	K2065	bika ambon	lemma	batch-042
 bikin	K0204	bikin	lemma	batch-005
 bikinin	K0204	bikin	derived_form	batch-005
 bilang	K0610	bilang	lemma	batch-013
+bilas	K3427	bilas	lemma	batch-069
 biliar	K3363	biliar	lemma	batch-067
 bimbang	K0737	bimbang	lemma	batch-015
 bintang	K0535	bintang	lemma	batch-011
@@ -466,7 +529,6 @@ blus	K2649	blus	lemma	batch-053
 bocah	K0536	bocah	lemma	batch-011
 bocor	K0738	bocor	lemma	batch-015
 bohlam LED	K2358	bohlam LED	lemma	batch-048
-berbohong	K0239	bohong	derived_form	batch-005
 bohong	K0239	bohong	lemma	batch-005
 boikot	K0739	boikot	lemma	batch-015
 bokek	K0095	bokek	lemma	batch-002
@@ -498,10 +560,8 @@ bronkus	K3082	bronkus	lemma	batch-062
 bros	K2642	bros	lemma	batch-053
 brosur	K1243	brosur	lemma	batch-025
 brownies	K1960	brownies	lemma	batch-040
-berbuah	K0162	buah	derived_form	batch-004
 buah	K0162	buah	lemma	batch-004
 buah-buahan	K0162	buah	derived_form	batch-004
-"buah naga"	K3316	buah naga	lemma	batch-066
 buang	K0414	buang	lemma	batch-009
 buat	K0205	buat	lemma	batch-005
 buatan	K0205	buat	derived_form	batch-005
@@ -513,6 +573,7 @@ bubur ayam	K2011	bubur ayam	lemma	batch-041
 bubur kacang hijau	K2012	bubur kacang hijau	lemma	batch-041
 bucin	K0099	bucin	lemma	batch-002
 budaya	K1244	budaya	lemma	batch-025
+bugar	K3469	bugar	lemma	batch-069
 bujet	K1245	bujet	lemma	batch-025
 bujuk	K0745	bujuk	lemma	batch-015
 buka	K0065	buka	lemma	batch-002
@@ -528,8 +589,6 @@ bumbu kacang	K2068	bumbu kacang	lemma	batch-042
 bumbu rendang	K2069	bumbu rendang	lemma	batch-042
 bumi	K2657	bumi	lemma	batch-054
 buncis	K1909	buncis	lemma	batch-039
-berbunga	K0160	bunga	derived_form	batch-004
-berbunga-bunga	K0160	bunga	derived_form	batch-004
 bunga	K0160	bunga	lemma	batch-004
 bungkus	K1246	bungkus	lemma	batch-025
 bunglon	K2242	bunglon	lemma	batch-045
@@ -592,7 +651,9 @@ cari	K0063	cari	lemma	batch-002
 casing komputer	K2424	casing komputer	lemma	batch-049
 CD	K2437	CD	lemma	batch-049
 cecak	K1248	cecak	lemma	batch-025
+cecap	K3445	cecap	lemma	batch-069
 cegah	K3392	cegah	lemma	batch-068
+ceguk	K3434	ceguk	lemma	batch-069
 cek	K0442	cek	lemma	batch-009
 cekatan	K1249	cekatan	lemma	batch-025
 ceker	K1961	ceker	lemma	batch-040
@@ -602,18 +663,16 @@ celana pendek	K2608	celana pendek	lemma	batch-053
 cemas	K0333	cemas	lemma	batch-007
 cemburu	K0341	cemburu	lemma	batch-007
 Cempaka Putih	K2812	Cempaka Putih	lemma	batch-057
-"cempedak"	K3318	cempedak	lemma	batch-066
 cendol	K1250	cendol	lemma	batch-025
 cendrawasih	K2268	cendrawasih	lemma	batch-046
 Cengkareng	K2822	Cengkareng	lemma	batch-057
+cengkeram	K3442	cengkeram	lemma	batch-069
 cengkih	K1251	cengkih	lemma	batch-025
 cepat	K0045	cepat	lemma	batch-001
 cerdas	K0754	cerdas	lemma	batch-016
 ceret	K2308	ceret	lemma	batch-047
 cerewet	K0750	cerewet	lemma	batch-015
-bercerita	K0191	cerita	derived_form	batch-004
 cerita	K0191	cerita	lemma	batch-004
-"cermai"	K3322	cermai	lemma	batch-066
 cermin	K0292	cermin	lemma	batch-006
 ceroboh	K0755	ceroboh	lemma	batch-016
 cetak	K0756	cetak	lemma	batch-016
@@ -639,11 +698,13 @@ cocok	K0554	cocok	lemma	batch-012
 cokelat	K1910	cokelat	lemma	batch-039
 cokelat bubuk	K2073	cokelat bubuk	lemma	batch-042
 cokelat panas	K2072	cokelat panas	lemma	batch-042
+colek	K3439	colek	lemma	batch-069
 colokan	K2337	colokan	lemma	batch-047
 combro	K2017	combro	lemma	batch-041
 cowok	K0655	cowok	lemma	batch-014
 cuaca	K0310	cuaca	lemma	batch-007
 cuan	K0759	cuan	lemma	batch-016
+cubit	K3438	cubit	lemma	batch-069
 cuci	K0053	cuci	lemma	batch-002
 cucian	K0053	cuci	derived_form	batch-002
 cuek	K0695	cuek	lemma	batch-014
@@ -653,57 +714,7 @@ cukur	K3393	cukur	lemma	batch-068
 cuma	K0611	cuma	lemma	batch-013
 cumi	K1962	cumi	lemma	batch-040
 cumi asin	K2107	cumi asin	lemma	batch-043
+curang	K3455	curang	lemma	batch-069
 curhat	K0543	curhat	lemma	batch-011
 curi	K0758	curi	lemma	batch-016
 curiga	K0555	curiga	lemma	batch-012
-berdaging	K0170	daging	derived_form	batch-004
-berdaun	K0161	daun	derived_form	batch-004
-berdemam	K0181	demam	derived_form	batch-004
-bergula	K0172	gula	derived_form	batch-004
-bergunung	K0158	gunung	derived_form	batch-004
-berhari-hari	K0130	hari	derived_form	batch-003
-berhati	K0116	hati	derived_form	batch-003
-berhidung	K0120	hidung	derived_form	batch-003
-beristri	K0112	istri	derived_form	batch-003
-berjalan	K0020	jalan	derived_form	batch-001
-berkaki	K0123	kaki	derived_form	batch-003
-bekerja	K0021	kerja	derived_form	batch-001
-bertemu	K0216	ketemu	derived_form	batch-005
-berkopi	K0173	kopi	derived_form	batch-004
-berlari	K0073	lari	derived_form	batch-002
-berlebihan	K0097	lebay	derived_form	batch-002
-berlebih	K0234	lebih	derived_form	batch-005
-bermain	K0074	main	derived_form	batch-002
-bermalam	K0134	malam	derived_form	batch-003
-bermandi	K0051	mandi	derived_form	batch-002
-bermata	K0118	mata	derived_form	batch-003
-bermobil	K0201	mobil	derived_form	batch-004
-bermotor	K0200	motor	derived_form	batch-004
-bermulut	K0121	mulut	derived_form	batch-003
-bernama	K0128	nama	derived_form	batch-003
-berpacaran	K0113	pacar	derived_form	batch-003
-bepergian	K0017	pergi	derived_form	batch-001
-berperut	K0125	perut	derived_form	batch-003
-berpesan	K0194	pesan	derived_form	batch-004
-berpikir	K0080	pikir	derived_form	batch-002
-berpindah	K0207	pindah	derived_form	batch-005
-berambut	K0126	rambut	derived_form	batch-003
-berumah	K0012	rumah	derived_form	batch-001
-bersalah	K0237	salah	derived_form	batch-005
-bersaudara	K0110	saudara	derived_form	batch-003
-bersedih	K0085	sedih	derived_form	batch-002
-bersekolah	K0184	sekolah	derived_form	batch-004
-bersenang-senang	K0084	senang	derived_form	batch-002
-bersepeda	K0199	sepeda	derived_form	batch-004
-bersuami	K0111	suami	derived_form	batch-003
-bersungai	K0157	sungai	derived_form	batch-004
-bertanah	K0154	tanah	derived_form	batch-004
-bertanya	K0189	tanya	derived_form	batch-004
-bertelinga	K0119	telinga	derived_form	batch-003
-bertelur	K0167	telur	derived_form	batch-004
-berteman	K0011	teman	derived_form	batch-001
-berubah	K0220	ubah	derived_form	batch-005
-berulang	K0227	ulang	derived_form	batch-005
-berumur	K0129	umur	derived_form	batch-003
-berusaha	K0229	usaha	derived_form	batch-005
-berwajah	K0127	wajah	derived_form	batch-003
