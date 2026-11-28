@@ -1,0 +1,31 @@
+name: Context Snapshot Tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "tools/context_snapshot.py"
+      - "tests/test_context_snapshot.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: context-snapshot-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  focused-tests:
+    name: Run exactly 10 context snapshot tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run exactly 10 focused tests
+        run: python -m unittest discover -s tests -p "test_context_snapshot.py" -v
