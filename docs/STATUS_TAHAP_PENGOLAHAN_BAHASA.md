@@ -1302,3 +1302,15 @@ Tiga bentuk ber-host verbal berhasil diurai sebagai bentuk turunan berklitik pad
 GitHub Actions **Run #251 selesai dengan conclusion success**; **416/416 tes regresi lulus**. [Lihat Run #251](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46085818964).
 
 Tidak ada perubahan lema, batch, indeks kamus, atau implementasi parser. Tindak lanjut yang masih terbuka: penyediaan bukti POS host untuk bentuk turunan verbal berklitik tanpa mengorbankan perilaku abstention.
+
+### Koordinasi klausa alternatif dan pertentangan — Run #252 (28 November 2026)
+
+Menambahkan **10 skenario integrasi independen** melalui pipeline kamus → morfologi → POS → konteks → parser untuk dua konjungsi koordinatif yang sebelumnya belum memiliki cakupan tes khusus:
+- Lima skenario `atau` dengan relasi `alternatif`, meliputi variasi pronomina, subjek jamak, klausa intransitif, dan klausa dengan objek.
+- Lima skenario `tetapi` dengan relasi `pertentangan`, meliputi variasi persona subjek, klausa intransitif, dan klausa dengan objek.
+
+Setiap skenario memastikan kedua segmen diproses sebagai klausa, pola keseluruhan `KLAUSA-KOORDINATIF`, subjek dan predikat masing-masing klausa tetap teridentifikasi, serta label relasi konjungsi sesuai pemetaan eksplisit. Pengujian memakai kata yang telah tersedia; tidak ada penambahan lema.
+
+GitHub Actions **Run #252 selesai dengan conclusion success**; **426/426 tes regresi lulus**. [Lihat Run #252](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46086503469).
+
+Tidak ada perubahan implementasi parser, batch, atau indeks kamus. Ini merupakan perluasan cakupan tes koordinasi klausa, bukan penutupan Tahap 2.6.
