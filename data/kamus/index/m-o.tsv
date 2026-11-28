@@ -1,8 +1,17 @@
 # Token index — m-o
 # token	id	lemma	type	batch
-"markisa"	K3305	markisa	lemma	batch-066
-"matoa"	K3323	matoa	lemma	batch-066
-"mundu"	K3324	mundu	lemma	batch-066
+Makasar	K2847	Makasar	lemma	batch-057
+Mampang Prapatan	K2832	Mampang Prapatan	lemma	batch-057
+Matraman	K2840	Matraman	lemma	batch-057
+Maxim	K2504	Maxim	lemma	batch-051
+Menteng	K2813	Menteng	lemma	batch-057
+Move App	K2517	Move App	lemma	batch-051
+Nujek	K2512	Nujek	lemma	batch-051
+Ojek Argo	K2519	Ojek Argo	lemma	batch-051
+OjekKoe	K2527	OjekKoe	lemma	batch-051
+Ojesy	K2529	Ojesy	lemma	batch-051
+Okejek	K2510	Okejek	lemma	batch-051
+Omega	K2532	Omega	lemma	batch-051
 maaf	K0247	maaf	lemma	batch-005
 macan	K2237	macan	lemma	batch-045
 macet	K0398	macet	lemma	batch-008
@@ -22,7 +31,6 @@ makanan	K0013	makan	derived_form	batch-001
 makanya	K0626	makanya	lemma	batch-013
 makaroni	K1927	makaroni	lemma	batch-039
 makaroni goreng	K2134	makaroni goreng	lemma	batch-043
-Makasar	K2847	Makasar	lemma	batch-057
 makasih	K0406	makasih	lemma	batch-009
 makhluk	K1455	makhluk	lemma	batch-030
 makna	K1456	makna	lemma	batch-030
@@ -34,7 +42,6 @@ malaria	K3058	malaria	lemma	batch-061
 malas	K0587	malas	lemma	batch-012
 malu	K0337	malu	lemma	batch-007
 mama	K0106	mama	lemma	batch-003
-Mampang Prapatan	K2832	Mampang Prapatan	lemma	batch-057
 mampir	K0419	mampir	lemma	batch-009
 mampu	K1457	mampu	lemma	batch-030
 manajer	K0956	manajer	lemma	batch-020
@@ -63,6 +70,7 @@ marah-marah	K1461	marah-marah	lemma	batch-030
 maraton	K3339	maraton	lemma	batch-067
 maret	K1462	maret	lemma	batch-030
 margarin	K1928	margarin	lemma	batch-039
+"markisa"	K3305	markisa	lemma	batch-066
 marmer	K0962	marmer	lemma	batch-020
 martabak	K0963	martabak	lemma	batch-020
 martabak manis	K2136	martabak manis	lemma	batch-043
@@ -88,9 +96,8 @@ matematika	K0969	matematika	lemma	batch-020
 materi	K0968	materi	lemma	batch-020
 materi gelap	K3148	materi gelap	lemma	batch-063
 mati	K1464	mati	lemma	batch-030
-Matraman	K2840	Matraman	lemma	batch-057
+"matoa"	K3323	matoa	lemma	batch-066
 mau	K0024	mau	lemma	batch-001
-Maxim	K2504	Maxim	lemma	batch-051
 mayones	K1929	mayones	lemma	batch-039
 medali	K0970	medali	lemma	batch-020
 medan	K0971	medan	lemma	batch-020
@@ -239,7 +246,6 @@ menseriusi	K0238	serius	derived_form	batch-005
 mentah	K0464	mentah	lemma	batch-010
 mental	K0978	mental	lemma	batch-020
 mentega	K2043	mentega	lemma	batch-041
-Menteng	K2813	Menteng	lemma	batch-057
 menteri	K2857	menteri	lemma	batch-058
 menu	K0480	menu	lemma	batch-010
 menulis	K0077	tulis	derived_form	batch-002
@@ -337,7 +343,6 @@ motor	K0200	motor	lemma	batch-004
 motor listrik	K2567	motor listrik	lemma	batch-052
 motoris	K0200	motor	derived_form	batch-004
 mouse komputer	K2379	mouse komputer	lemma	batch-048
-Move App	K2517	Move App	lemma	batch-051
 mual	K1480	mual	lemma	batch-030
 muara	K2721	muara	lemma	batch-055
 muat	K1481	muat	lemma	batch-030
@@ -348,6 +353,7 @@ mudik	K1484	mudik	lemma	batch-030
 mulai	K0225	mulai	lemma	batch-005
 mulut	K0121	mulut	lemma	batch-003
 muncul	K1475	muncul	lemma	batch-030
+"mundu"	K3324	mundu	lemma	batch-066
 mundur	K1476	mundur	lemma	batch-030
 mungkin	K0142	mungkin	lemma	batch-003
 muntah	K1000	muntah	lemma	batch-020
@@ -436,7 +442,6 @@ nova	K3150	nova	lemma	batch-063
 novel	K1497	novel	lemma	batch-030
 november	K3035	november	lemma	batch-061
 nugget	K2040	nugget	lemma	batch-041
-Nujek	K2512	Nujek	lemma	batch-051
 numpang	K0417	numpang	lemma	batch-009
 nyala	K1018	nyala	lemma	batch-021
 nyaman	K0329	nyaman	lemma	batch-007
@@ -457,22 +462,18 @@ objek	K1498	objek	lemma	batch-030
 obrolan	K0038	ngobrol	derived_form	batch-001
 observatorium	K3151	observatorium	lemma	batch-063
 ogah	K0699	ogah	lemma	batch-014
-Ojek Argo	K2519	Ojek Argo	lemma	batch-051
 ojek online	K2535	ojek online	lemma	batch-051
-OjekKoe	K2527	OjekKoe	lemma	batch-051
-Ojesy	K2529	Ojesy	lemma	batch-051
 ojol	K2534	ojol	lemma	batch-051
 ok	K0031	oke	variant	batch-001
 okay	K0031	oke	variant	batch-001
 oke	K0031	oke	lemma	batch-001
-Okejek	K2510	Okejek	lemma	batch-051
 oktober	K3034	oktober	lemma	batch-061
 okultasi	K3152	okultasi	lemma	batch-063
 olah	K1026	olah	lemma	batch-021
 olahraga	K1027	olahraga	lemma	batch-021
 oleh-oleh	K1028	oleh-oleh	lemma	batch-021
+oles	K3487	oles	lemma	batch-070
 ombak	K1499	ombak	lemma	batch-030
-Omega	K2532	Omega	lemma	batch-051
 omong	K0037	omong	lemma	batch-001
 omongan	K0037	omong	derived_form	batch-001
 oncom	K1980	oncom	lemma	batch-040
