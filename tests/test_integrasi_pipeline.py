@@ -2194,7 +2194,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
     def test_raw_text_to_active_semantic_roles_for_lihat(self):
         analyzed = self.analyze("Dia melihat burung.")
         self.assert_real_pipeline_pos(analyzed, {
-            "Dia": "PRON", "melihat": "VERB", "burung": "NOUN",
+            "dia": "PRON", "melihat": "VERB", "burung": "NOUN",
         })
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
@@ -2213,13 +2213,13 @@ class FullDictionaryPipelineTests(unittest.TestCase):
         )
         self.assertEqual(
             {item["syntactic_role"]: item["value"] for item in arguments},
-            {"SUBJ": ["Dia"], "OBJ": ["burung"]},
+            {"SUBJ": ["dia"], "OBJ": ["burung"]},
         )
 
     def test_raw_text_to_active_semantic_roles_for_optional_makan_object(self):
         analyzed = self.analyze("Dia memakan nasi.")
         self.assert_real_pipeline_pos(analyzed, {
-            "Dia": "PRON", "memakan": "VERB", "nasi": "NOUN",
+            "dia": "PRON", "memakan": "VERB", "nasi": "NOUN",
         })
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
@@ -2241,7 +2241,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
     def test_raw_text_to_passive_semantic_roles_with_postverbal_agent(self):
         analyzed = self.analyze("Pintu dibuka dia.")
         self.assert_real_pipeline_pos(analyzed, {
-            "Pintu": "NOUN", "dibuka": "VERB", "dia": "PRON",
+            "pintu": "NOUN", "dibuka": "VERB", "dia": "PRON",
         })
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
@@ -2264,13 +2264,13 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             )
             self.assertEqual(agent["value"], ["dia"])
             self.assertEqual(agent["realization"], "postverbal_agent")
-            self.assertEqual(patient["value"], ["Pintu"])
+            self.assertEqual(patient["value"], ["pintu"])
             self.assertEqual(patient["semantic_role"], "PATIENT")
 
     def test_raw_text_to_passive_semantic_roles_without_agent(self):
         analyzed = self.analyze("Pintu dibuka.")
         self.assert_real_pipeline_pos(analyzed, {
-            "Pintu": "NOUN", "dibuka": "VERB",
+            "pintu": "NOUN", "dibuka": "VERB",
         })
         parsed = parse_sentence(analyzed)
         self.assertEqual(parsed["status"], "parsed")
@@ -2293,7 +2293,7 @@ class FullDictionaryPipelineTests(unittest.TestCase):
             )
             self.assertEqual(agent["presence"], "omitted")
             self.assertEqual(agent["value"], [])
-            self.assertEqual(patient["value"], ["Pintu"])
+            self.assertEqual(patient["value"], ["pintu"])
             self.assertEqual(patient["semantic_role"], "PATIENT")
 
 
