@@ -113,6 +113,6 @@ Tes memakai fixture laporan kecil; tidak mengulang 11 tes utterance interpretati
 - Modul read-only: `tools/clarification_planner.py`, fungsi publik `plan_clarification(report, opportunities=None)`.
 - Tes khusus: `tests/test_clarification_planner.py`, tepat 11 kasus sesuai cakupan kontrak.
 - Workflow: `.github/workflows/clarification-planner-tests.yml`.
-- GitHub Actions Run #1 [46117290394](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46117290394) sukses; log memverifikasi **11/11 tes lulus**.
+- GitHub Actions Run #3 [46117392802](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46117392802) sukses; log memverifikasi **11/11 tes lulus**.
 - Modul hanya mengembalikan keputusan dan satu referensi fokus; tidak membuat kalimat pertanyaan, tidak memproses jawaban, dan tidak terhubung ke runtime.
 - Tidak ada regression suite 450 tes, tes Context Snapshot, atau tes utterance interpretation yang dijalankan ulang.
