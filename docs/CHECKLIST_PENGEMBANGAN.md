@@ -179,7 +179,7 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
-<badge color="info">Fondasi awal dikerjakan lebih awal — belum resmi dibuka</badge>
+<badge color="success">Resmi dibuka — audit representasi makna dan relasi konsep</badge>
 
 **Catatan urutan:** beberapa komponen awal Tahap 3 sudah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Ini bukan berarti gerbang Tahap 3 sudah terpenuhi. Tahap 2.6 telah ditutup atas keputusan pengguna; Tahap 2.7 berfokus pada inventarisasi bukti dan evaluasi celah, bukan mengulang seluruh pengujian sebelumnya.
 
