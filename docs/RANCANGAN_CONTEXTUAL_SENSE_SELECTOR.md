@@ -1,6 +1,6 @@
 # Rancangan Contextual Sense Selector v1 — Lexara
 
-**Status:** Draf untuk ditinjau; belum disetujui dan belum diimplementasikan.
+**Status:** Disetujui pengguna pada 28 November 2026; implementasi v1 selesai dan terverifikasi.
 **Tahap:** 3 — Hubungan makna dan pemrosesan konteks.
 **Prasyarat:** Context Evidence Generator v1 tersedia.
 **Tujuan:** Memilih satu sense hanya jika evidence kontekstual benar-benar membedakan sense tersebut dari seluruh alternatif; selain itu mempertahankan ambiguitas atau abstention.
@@ -146,4 +146,4 @@ Tes tidak menjalankan ulang tes generator atau Concept Layer yang telah lulus. W
 - Integrasi per kemunculan token memerlukan orkestrasi yang memastikan kandidat dan evidence berasal dari token yang sama; hal itu tidak boleh diasumsikan dari daftar kandidat satu kalimat.
 - Selepas desain disetujui, implementasi dilakukan sebagai modul terpisah dengan 12 tes terfokus. Checklist dan dokumen status baru diperbarui setelah implementasi dan verifikasi benar-benar selesai.
 
-**Keputusan pengguna:** belum ada. Draf menunggu tinjauan dan persetujuan.
+**Keputusan pengguna:** disetujui pada 28 November 2026. Implementasi v1 tersedia pada `tools/contextual_sense_selector.py`; tepat 12 tes khusus lulus melalui GitHub Actions Run #3. Integrasi runtime tetap di luar cakupan.
