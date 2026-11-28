@@ -195,26 +195,17 @@ class ContextualSenseSelectorTests(unittest.TestCase):
         self.assertEqual((candidates, evidence), before)
         self.assertEqual(first, second)
 
-    def test_duplicate_candidates_and_invalid_evidence_are_rejected(self):
         with self.assertRaises(ContextualSenseSelectorError):
             select_contextual_sense(
                 [candidate("K0001-S1"), candidate("K0001-S1")], []
             )
-        with self.assertRaises(ContextualSenseSelectorError):
-            select_contextual_sense(
-                [candidate("K0001-S1")],
-                [{"sense_id": "K0001-S1", "polarity": "maybe", "strength": "strong"}],
-            )
-        with self.assertRaises(ContextualSenseSelectorError):
-            select_contextual_sense(
-                [candidate("K0001-S1")],
-                [{"sense_id": "K0001-S1", "polarity": [], "strength": "strong"}],
-            )
-        with self.assertRaises(ContextualSenseSelectorError):
-            select_contextual_sense(
-                [candidate("K0001-S1")],
-                [{"sense_id": "K0001-S1", "polarity": "supports", "strength": []}],
-            )
+        for malformed in (
+            {"sense_id": "K0001-S1", "polarity": "maybe", "strength": "strong"},
+            {"sense_id": "K0001-S1", "polarity": [], "strength": "strong"},
+            {"sense_id": "K0001-S1", "polarity": "supports", "strength": []},
+        ):
+            with self.assertRaises(ContextualSenseSelectorError):
+                select_contextual_sense([candidate("K0001-S1")], [malformed])
 
 
 if __name__ == "__main__":
