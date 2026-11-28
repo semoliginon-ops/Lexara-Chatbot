@@ -76,3 +76,29 @@ Penilaian: sumber resmi menguatkan bahwa kedua makna dalam entri proyek memang p
 ### Kesimpulan bukti
 
 Bukti rujukan kamus dan pedoman resmi sudah ditemukan untuk mengonfirmasi perbedaan makna dasar. Bukti ini belum memenuhi standar korpus autentik dan belum cukup untuk mengaktifkan aturan. Tidak ada aturan baru, perubahan kode, atau perubahan runtime pada langkah ini.
+
+
+## 7. Penelusuran korpus terbatas — 28 November 2026
+
+Penelusuran lanjutan tetap dibatasi pada `bangun` dan `jam`. Sumber yang diperiksa adalah halaman Tutur yang menampilkan contoh dari korpus Leipzig `ind_mixed_2013`; Tutur menyatakan halaman `bangun` memuat 2.467 kalimat korpus dari satu juta kalimat.
+
+### bangun
+
+Halaman [Tutur — bangun](https://tutur.taratsa.id/kata/bangun/) menampilkan contoh korpus:
+- “00 ini pria tak usah bangun tidur agar produksi hormon testosteronnya tak terganggu.” — konteksnya mendukung makna bangkit/terjaga dari tidur (S1).
+- “Hakikat tauhid adalah membaca Al Qur’an dengan merenungi artinya dan bangun malam.” — konteks malam tidak cukup untuk memastikan apakah yang dimaksud terjaga atau tetap tidak tidur; tidak dipakai sebagai bukti pembeda.
+- Contoh korpus lain yang ditampilkan tidak memberikan contoh jelas untuk makna berdiri setelah jatuh (S2).
+
+Penilaian: ada satu contoh korpus yang relevan untuk S1, tetapi contoh yang tersedia belum memberi pasangan bukti yang seimbang untuk S1 dan S2. Cue `tidur` tetap hanya `proposed`/`weak`; cue `berdiri` belum didukung contoh korpus yang cukup. Jangan mengaktifkan salah satu aturan.
+
+### jam
+
+Halaman [Tutur — jam](https://tutur.taratsa.id/kata/jam/) memuat definisi dan contoh leksikografis, tetapi tidak menampilkan bagian “Contoh dari korpus” atau kalimat korpus yang dapat diperiksa. Angka frekuensi korpus pada halaman itu bukan bukti konteks per kalimat. Karena itu penelusuran ini belum menemukan contoh korpus yang dapat membedakan `jam` sebagai alat penunjuk waktu (S1) dari `jam` sebagai durasi (S2).
+
+Penilaian: cue `menit` tetap `proposed`/`weak`, tanpa bukti korpus spesifik yang mengaitkannya dengan token target. Cue `alarm` tetap `rejected`.
+
+### Kesimpulan dan batas berhenti
+
+Penelusuran terbatas ini menambah satu contoh korpus yang relevan untuk `bangun` S1, tetapi belum menemukan bukti pasangan yang memadai untuk `bangun` S2 maupun contoh korpus kontekstual untuk `jam`. Bukti belum memenuhi syarat untuk mengubah status atau strength aturan. Tiga aturan tetap `proposed`/`weak`, satu tetap `rejected`; tidak ada aturan `reviewed` atau `strong`.
+
+Pencarian dihentikan pada batas sumber yang diperiksa. Tidak dilakukan perluasan ke lema lain, tidak dibuat contoh buatan, dan tidak dilakukan perubahan kode, dataset aturan, kamus, parser, POS, atau runtime.
