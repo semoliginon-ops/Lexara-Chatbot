@@ -11,7 +11,7 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 
 ## Snapshot proyek — 27 November 2026
 
-- **Tahap aktif: 2.6 — Analisis struktur kalimat dasar.**
+- **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. Tahap berikutnya pada peta proyek adalah 2.7 — Dataset dan pengujian terpadu.
 - Parser saat ini **v1.9**. Ini nomor versi parser, bukan tanda bahwa seluruh Tahap 2.6 sudah selesai.
 - Kamus: **3.025 lema dalam 60 batch**; tidak ada rencana audit ulang batch secara rutin.
 - Tahap 2.5 (POS) telah ditutup berdasarkan keputusan pengguna.
