@@ -131,7 +131,7 @@ class ContextSnapshotTests(unittest.TestCase):
         result = build_context_snapshot(
             source,
             parsed({"subject": [], "predicate": [], "object": [], "adjuncts": [], "complement": []},
-                   clauses=[{"analysis": {"roles": {"subject": ["aku"], "predicate": ["pergi"]}}]}),
+                   clauses=[{"analysis": {"roles": {"subject": ["aku"], "predicate": ["pergi"]}}}]),
         )
         self.assertEqual([item["syntax_status"] for item in result["tokens"]], ["deferred", "deferred"])
         self.assertEqual(result["status"], "deferred")
