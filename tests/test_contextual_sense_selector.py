@@ -205,6 +205,16 @@ class ContextualSenseSelectorTests(unittest.TestCase):
                 [candidate("K0001-S1")],
                 [{"sense_id": "K0001-S1", "polarity": "maybe", "strength": "strong"}],
             )
+        with self.assertRaises(ContextualSenseSelectorError):
+            select_contextual_sense(
+                [candidate("K0001-S1")],
+                [{"sense_id": "K0001-S1", "polarity": [], "strength": "strong"}],
+            )
+        with self.assertRaises(ContextualSenseSelectorError):
+            select_contextual_sense(
+                [candidate("K0001-S1")],
+                [{"sense_id": "K0001-S1", "polarity": "supports", "strength": []}],
+            )
 
 
 if __name__ == "__main__":
