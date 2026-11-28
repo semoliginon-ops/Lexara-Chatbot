@@ -1744,3 +1744,25 @@ Batas yang masih berlaku:
 - Tidak dijalankan ulang regression suite 450 tes maupun tes lama generator, selector, adapter, atau parser.
 
 **Titik lanjut resmi:** inventarisasi kandidat sense ambigu yang layak diberi aturan konteks, susun rancangan aturan beserta bukti linguistiknya untuk ditinjau, lalu tentukan titik pemanggilan orchestrator pada entrypoint/runtime. Jangan menetapkan status reviewed atau strength strong tanpa review dan dasar evidence yang eksplisit.
+
+
+## Inventaris sense ambigu dan kandidat aturan konteks — 28 November 2026
+
+Pemeriksaan baca-saja dilakukan mengikuti titik lanjut checklist. Indeks kamus diperiksa lebih dahulu untuk navigasi batch, kemudian seluruh 60 batch dibaca dan dihitung berdasarkan jumlah sense pada setiap entri.
+
+Hasil inventaris:
+- **3.025 entri / 60 batch diperiksa**.
+- Ditemukan **9 lema multi-sense**: `bangun` (K0016), `jalan` (K0020), `bisa` (K0026), `tolong` (K0032), `cerita` (K0191), `pesan` (K0194), `jam` (K0293), `disiplin` (K0788), dan `tetap` (K3007).
+- Kandidat yang memiliki beberapa sense dalam POS yang sama dan paling layak ditinjau lebih dahulu adalah `bangun` (dua VERB) dan `jam` (dua NOUN).
+- `tolong` juga memiliki dua pengertian dalam entri VERB, tetapi perbedaan tindakan membantu vs ungkapan permintaan belum memiliki cue yang cukup aman; belum dibuat aturan.
+- Enam lema lain memiliki perbedaan POS antarsense; tidak dibuat aturan khusus untuk mengulang penyaringan yang menjadi tugas POS.
+
+Artefak yang ditambahkan:
+- `docs/INVENTARIS_SENSE_AMBIGU_DAN_KANDIDAT_ATURAN_KONTEKS.md`: rincian sembilan lema, klasifikasi prioritas, sumber, dan batas cue.
+- `data/context_rules/context_rules.jsonl`: empat aturan awal `CE000001`–`CE000004` untuk `bangun` dan `jam`.
+
+Keempat aturan berstatus **proposed** dan berkekuatan **weak**. Cue awal: `tidur` untuk bangun-S1, `berdiri` untuk bangun-S2, `alarm` untuk jam-S1, dan `menit` untuk jam-S2. Cue `alarm` secara khusus belum eksklusif pada sense alat penunjuk waktu. Semua aturan belum aktif, belum menjadi evidence runtime, dan tidak dapat memengaruhi selector. Tidak ada aturan reviewed/strong yang dibuat.
+
+Tidak ada perubahan pada kamus, batch, indeks, Concept Layer, analyzer, POS, morfologi, parser, generator, selector, atau orchestrator. Tidak ada tes atau GitHub Actions yang dijalankan karena perubahan ini hanya berupa inventarisasi dan data proposed; tes lama tidak perlu diulang.
+
+**Titik lanjut resmi:** pengguna meninjau empat aturan proposed beserta cue dan rationale; aturan dapat direvisi atau ditolak. Hanya setelah review linguistik yang eksplisit, status/strength dapat dipertimbangkan. Setelah aturan yang layak ditetapkan, rencanakan titik pemanggilan orchestrator pada entrypoint/runtime dengan tetap menjaga penundaan kalimat majemuk dan pemisahan per kemunculan token.
