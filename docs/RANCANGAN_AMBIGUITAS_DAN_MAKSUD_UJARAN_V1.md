@@ -242,5 +242,5 @@ Verifikasi terfokus:
 - Tes baru `tests/test_utterance_intent_coexistence.py`: tepat 4 kasus (question+request, request+directive, kompatibilitas satu penanda, dan kondisi tanpa penanda).
 - Workflow `.github/workflows/utterance-intent-coexistence-tests.yml`.
 - GitHub Actions Run #1 [46120863024](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120863024): log memverifikasi **4/4 tes lulus**.
-- Suite lama `tests/test_utterance_interpretation.py) dijalankan otomatis sebagai kompatibilitas: Run [46120842200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120842200), **11/11 tes lulus**.
+- Suite lama `tests/test_utterance_interpretation.py` dijalankan otomatis sebagai kompatibilitas: Run [46120842200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120842200), **11/11 tes lulus**.
 - Tidak ada perubahan pada snapshot, parser, POS, kamus, planner, penyaji klarifikasi, atau runtime.
