@@ -25,59 +25,10 @@
 "ikan tawes"	K3277	ikan tawes	lemma	batch-066
 "ikan toman"	K3280	ikan toman	lemma	batch-066
 "ikan uceng"	K3285	ikan uceng	lemma	batch-066
-Gambir	K2808	Gambir	lemma	batch-057
-Get Indonesia	K2520	Get Indonesia	lemma	batch-051
-Gojek	K2502	Gojek	lemma	batch-051
-Grab	K2503	Grab	lemma	batch-051
-Green SM Bike	K2507	Green SM Bike	lemma	batch-051
-Grogol Petamburan	K2823	Grogol Petamburan	lemma	batch-057
-Gunung Agung	K2770	Gunung Agung	lemma	batch-056
-Gunung Argopuro	K2772	Gunung Argopuro	lemma	batch-056
-Gunung Arjuno	K2765	Gunung Arjuno	lemma	batch-056
-Gunung Batok	K2788	Gunung Batok	lemma	batch-056
-Gunung Bawakaraeng	K2782	Gunung Bawakaraeng	lemma	batch-056
-Gunung Binaiya	K2774	Gunung Binaiya	lemma	batch-056
-Gunung Bismo	K2793	Gunung Bismo	lemma	batch-056
-Gunung Bromo	K2794	Gunung Bromo	lemma	batch-056
-Gunung Cikuray	K2783	Gunung Cikuray	lemma	batch-056
-Gunung Ciremai	K2773	Gunung Ciremai	lemma	batch-056
-Gunung Dempo	K2767	Gunung Dempo	lemma	batch-056
-Gunung Galunggung	K2799	Gunung Galunggung	lemma	batch-056
-Gunung Gede	K2776	Gunung Gede	lemma	batch-056
-Gunung Guntur	K2795	Gunung Guntur	lemma	batch-056
-Gunung Inerie	K2796	Gunung Inerie	lemma	batch-056
-Gunung Kawi	K2787	Gunung Kawi	lemma	batch-056
-Gunung Kelud	K2801	Gunung Kelud	lemma	batch-056
-Gunung Kerinci	K2757	Gunung Kerinci	lemma	batch-056
-Gunung Latimojong	K2760	Gunung Latimojong	lemma	batch-056
-Gunung Lawu	K2766	Gunung Lawu	lemma	batch-056
-Gunung Leuser	K2762	Gunung Leuser	lemma	batch-056
-Gunung Marapi	K2779	Gunung Marapi	lemma	batch-056
-Gunung Merapi	K2777	Gunung Merapi	lemma	batch-056
-Gunung Merbabu	K2769	Gunung Merbabu	lemma	batch-056
-Gunung Mutis	K2791	Gunung Mutis	lemma	batch-056
-Gunung Pangrango	K2775	Gunung Pangrango	lemma	batch-056
-Gunung Papandayan	K2784	Gunung Papandayan	lemma	batch-056
-Gunung Patuha	K2790	Gunung Patuha	lemma	batch-056
-Gunung Prau	K2785	Gunung Prau	lemma	batch-056
-Gunung Raung	K2764	Gunung Raung	lemma	batch-056
-Gunung Rinjani	K2758	Gunung Rinjani	lemma	batch-056
-Gunung Salak	K2798	Gunung Salak	lemma	batch-056
-Gunung Semeru	K2759	Gunung Semeru	lemma	batch-056
-Gunung Sibayak	K2797	Gunung Sibayak	lemma	batch-056
-Gunung Sinabung	K2789	Gunung Sinabung	lemma	batch-056
-Gunung Sindoro	K2771	Gunung Sindoro	lemma	batch-056
-Gunung Singgalang	K2780	Gunung Singgalang	lemma	batch-056
-Gunung Slamet	K2761	Gunung Slamet	lemma	batch-056
-Gunung Sumbing	K2763	Gunung Sumbing	lemma	batch-056
-Gunung Talamau	K2778	Gunung Talamau	lemma	batch-056
-Gunung Tambora	K2781	Gunung Tambora	lemma	batch-056
-Gunung Tangkuban Parahu	K2800	Gunung Tangkuban Parahu	lemma	batch-056
-Gunung Welirang	K2768	Gunung Welirang	lemma	batch-056
-Gunung Wilis	K2786	Gunung Wilis	lemma	batch-056
 ga	K0029	enggak	variant	batch-001
 gabut	K0092	gabut	lemma	batch-002
 gado-gado	K1966	gado-gado	lemma	batch-040
+gaduh	K3569	gaduh	lemma	batch-071
 gagah	K1302	gagah	lemma	batch-027
 gagak	K2218	gagak	lemma	batch-045
 gagal	K0423	gagal	lemma	batch-009
@@ -92,6 +43,7 @@ galau	K0853	galau	lemma	batch-018
 galeri	K1305	galeri	lemma	batch-027
 gali	K1306	gali	lemma	batch-027
 gambaran	K1307	gambaran	lemma	batch-027
+Gambir	K2808	Gambir	lemma	batch-057
 gametofit	K3192	gametofit	lemma	batch-064
 gampang	K0559	gampang	lemma	batch-012
 gandum	K1911	gandum	lemma	batch-039
@@ -162,6 +114,7 @@ gesek	K3504	gesek	lemma	batch-070
 geser	K0865	geser	lemma	batch-018
 gesit	K1333	gesit	lemma	batch-027
 gesper	K2636	gesper	lemma	batch-053
+Get Indonesia	K2520	Get Indonesia	lemma	batch-051
 getah	K1322	getah	lemma	batch-027
 getar	K0866	getar	lemma	batch-018
 getas	K3458	getas	lemma	batch-069
@@ -173,6 +126,7 @@ gigi	K0868	gigi	lemma	batch-018
 gigih	K1323	gigih	lemma	batch-027
 gila	K0869	gila	lemma	batch-018
 giling	K0870	giling	lemma	batch-018
+gilir	K3550	gilir	lemma	batch-071
 gimana	K0618	gimana	lemma	batch-013
 gini	K0620	gini	lemma	batch-013
 ginjal	K3088	ginjal	lemma	batch-062
@@ -181,6 +135,7 @@ gituan	K0660	gituan	lemma	batch-014
 gizi	K1324	gizi	lemma	batch-027
 gletser	K2720	gletser	lemma	batch-055
 goda	K3526	goda	lemma	batch-070
+Gojek	K2502	Gojek	lemma	batch-051
 gokil	K0681	gokil	lemma	batch-014
 gondongan	K3071	gondongan	lemma	batch-061
 gorden	K1343	gorden	lemma	batch-027
@@ -190,10 +145,13 @@ gosok	K3396	gosok	lemma	batch-068
 gotong-royong	K0872	gotong-royong	lemma	batch-018
 goyah	K1335	goyah	lemma	batch-027
 goyang	K1336	goyang	lemma	batch-027
+Grab	K2503	Grab	lemma	batch-051
 grasi	K2951	grasi	lemma	batch-059
 gratifikasi	K2890	gratifikasi	lemma	batch-058
 gratis	K0358	gratis	lemma	batch-008
+Green SM Bike	K2507	Green SM Bike	lemma	batch-051
 grill	K2315	grill	lemma	batch-047
+Grogol Petamburan	K2823	Grogol Petamburan	lemma	batch-057
 gua	K0008	gue	variant	batch-001
 gubernur	K2859	gubernur	lemma	batch-058
 gubuk	K1337	gubuk	lemma	batch-027
@@ -212,14 +170,59 @@ gulat	K3352	gulat	lemma	batch-067
 guling	K2344	guling	lemma	batch-047
 gulir	K1325	gulir	lemma	batch-027
 gulung	K3429	gulung	lemma	batch-069
+gumam	K3555	gumam	lemma	batch-071
 guna	K1326	guna	lemma	batch-027
 gundah	K1339	gundah	lemma	batch-027
 gundul	K0875	gundul	lemma	batch-018
 gunjing	K1340	gunjing	lemma	batch-027
 gunting	K0876	gunting	lemma	batch-018
 gunung	K0158	gunung	lemma	batch-004
+Gunung Agung	K2770	Gunung Agung	lemma	batch-056
+Gunung Argopuro	K2772	Gunung Argopuro	lemma	batch-056
+Gunung Arjuno	K2765	Gunung Arjuno	lemma	batch-056
+Gunung Batok	K2788	Gunung Batok	lemma	batch-056
+Gunung Bawakaraeng	K2782	Gunung Bawakaraeng	lemma	batch-056
 gunung berapi	K2683	gunung berapi	lemma	batch-054
+Gunung Binaiya	K2774	Gunung Binaiya	lemma	batch-056
+Gunung Bismo	K2793	Gunung Bismo	lemma	batch-056
+Gunung Bromo	K2794	Gunung Bromo	lemma	batch-056
+Gunung Cikuray	K2783	Gunung Cikuray	lemma	batch-056
+Gunung Ciremai	K2773	Gunung Ciremai	lemma	batch-056
+Gunung Dempo	K2767	Gunung Dempo	lemma	batch-056
 gunung es	K2728	gunung es	lemma	batch-055
+Gunung Galunggung	K2799	Gunung Galunggung	lemma	batch-056
+Gunung Gede	K2776	Gunung Gede	lemma	batch-056
+Gunung Guntur	K2795	Gunung Guntur	lemma	batch-056
+Gunung Inerie	K2796	Gunung Inerie	lemma	batch-056
+Gunung Kawi	K2787	Gunung Kawi	lemma	batch-056
+Gunung Kelud	K2801	Gunung Kelud	lemma	batch-056
+Gunung Kerinci	K2757	Gunung Kerinci	lemma	batch-056
+Gunung Latimojong	K2760	Gunung Latimojong	lemma	batch-056
+Gunung Lawu	K2766	Gunung Lawu	lemma	batch-056
+Gunung Leuser	K2762	Gunung Leuser	lemma	batch-056
+Gunung Marapi	K2779	Gunung Marapi	lemma	batch-056
+Gunung Merapi	K2777	Gunung Merapi	lemma	batch-056
+Gunung Merbabu	K2769	Gunung Merbabu	lemma	batch-056
+Gunung Mutis	K2791	Gunung Mutis	lemma	batch-056
+Gunung Pangrango	K2775	Gunung Pangrango	lemma	batch-056
+Gunung Papandayan	K2784	Gunung Papandayan	lemma	batch-056
+Gunung Patuha	K2790	Gunung Patuha	lemma	batch-056
+Gunung Prau	K2785	Gunung Prau	lemma	batch-056
+Gunung Raung	K2764	Gunung Raung	lemma	batch-056
+Gunung Rinjani	K2758	Gunung Rinjani	lemma	batch-056
+Gunung Salak	K2798	Gunung Salak	lemma	batch-056
+Gunung Semeru	K2759	Gunung Semeru	lemma	batch-056
+Gunung Sibayak	K2797	Gunung Sibayak	lemma	batch-056
+Gunung Sinabung	K2789	Gunung Sinabung	lemma	batch-056
+Gunung Sindoro	K2771	Gunung Sindoro	lemma	batch-056
+Gunung Singgalang	K2780	Gunung Singgalang	lemma	batch-056
+Gunung Slamet	K2761	Gunung Slamet	lemma	batch-056
+Gunung Sumbing	K2763	Gunung Sumbing	lemma	batch-056
+Gunung Talamau	K2778	Gunung Talamau	lemma	batch-056
+Gunung Tambora	K2781	Gunung Tambora	lemma	batch-056
+Gunung Tangkuban Parahu	K2800	Gunung Tangkuban Parahu	lemma	batch-056
+Gunung Welirang	K2768	Gunung Welirang	lemma	batch-056
+Gunung Wilis	K2786	Gunung Wilis	lemma	batch-056
 gurame	K1968	gurame	lemma	batch-040
 gurih	K1327	gurih	lemma	batch-027
 gurita	K2219	gurita	lemma	batch-045
@@ -235,6 +238,7 @@ hadap	K1352	hadap	lemma	batch-028
 hadiah	K0878	hadiah	lemma	batch-018
 hadir	K1348	hadir	lemma	batch-027
 hafal	K0879	hafal	lemma	batch-018
+hak	K3543	hak	lemma	batch-071
 hak pilih	K2914	hak pilih	lemma	batch-059
 hak politik	K2915	hak politik	lemma	batch-059
 hakim	K2464	hakim	lemma	batch-050
@@ -292,6 +296,7 @@ hijau	K0890	hijau	lemma	batch-018
 hikmah	K0891	hikmah	lemma	batch-018
 hilang	K0223	hilang	lemma	batch-005
 hilir	K0892	hilir	lemma	batch-018
+hindar	K3537	hindar	lemma	batch-071
 hinggap	K3003	hinggap	lemma	batch-060
 hipertensi	K3051	hipertensi	lemma	batch-061
 hipotensi	K3052	hipotensi	lemma	batch-061
@@ -322,6 +327,7 @@ hutan	K2658	hutan	lemma	batch-054
 hutan bakau	K2696	hutan bakau	lemma	batch-054
 hutan hujan	K2695	hutan hujan	lemma	batch-054
 ia	K3019	ia	lemma	batch-060
+iba	K3540	iba	lemma	batch-071
 ibadah	K0898	ibadah	lemma	batch-018
 ibarat	K0563	ibarat	lemma	batch-012
 ibu	K0104	ibu	lemma	batch-003
@@ -420,8 +426,8 @@ imajinasi	K1368	imajinasi	lemma	batch-028
 imbang	K0564	imbang	lemma	batch-012
 imbas	K1369	imbas	lemma	batch-028
 impor	K1370	impor	lemma	batch-028
-inDrive	K2505	inDrive	lemma	batch-051
 indah	K1371	indah	lemma	batch-028
+inDrive	K2505	inDrive	lemma	batch-051
 induk	K1372	induk	lemma	batch-028
 informasi	K1373	informasi	lemma	batch-028
 ingat	K0078	ingat	lemma	batch-002
