@@ -9,7 +9,7 @@ Dokumen ini adalah **peta tahapan dan status pekerjaan proyek**. Checklist menun
 - [ ] Belum dikerjakan.
 - [!] Terhambat atau perlu keputusan.
 
-## Snapshot proyek — 27 November 2026
+## Snapshot proyek — 28 November 2026
 
 - **Tahap 2.6 ditutup:** 28 November 2026 atas keputusan pengguna. Tahap berikutnya pada peta proyek adalah 2.7 — Dataset dan pengujian terpadu.
 - Parser saat ini **v1.9**. Ini nomor versi parser, bukan tanda bahwa seluruh Tahap 2.6 sudah selesai.
@@ -155,26 +155,33 @@ Tahap ini membangun alur dari teks mentah sampai struktur kalimat. Subtahap dike
 
 **Batas saat ini:** inversi hanya dikenali jika kandidat predikat memiliki satu lema, satu sense, dan satu frame valensi dengan satu argumen SUBJ NP wajib. `Di rumah terdengar suara.` tetap menghasilkan subjek kosong dan `suara` unresolved karena bukti sense/frame yang tersedia belum memenuhi syarat; inversi K-P-S umum, subjek tersirat, serta pembedaan argumen dan adjung pada konstruksi yang lebih luas belum ditangani.
 
-### 2.7 Dataset dan pengujian terpadu
+### 2.7 Inventarisasi bukti dan evaluasi pipeline terpadu
 
-<badge color="secondary">Berikutnya — fondasi sebagian tersedia</badge>
+<badge color="secondary">Berikutnya — evaluasi berbasis bukti yang sudah ada</badge>
+
+**Tujuan tahap ini bukan mengulang seluruh pengujian Tahap 2.1–2.6.** Hasil regression test, pengujian pipeline nyata, dataset, dan CI yang sudah tercatat harus diperlakukan sebagai bukti awal. Pengujian yang sudah memiliki bukti memadai tidak perlu dijalankan ulang hanya untuk mengisi checklist.
 
 - [x] Memiliki dataset POS 100 kalimat / 543 token dengan development dan test split.
 - [x] Memiliki validator dataset dan evaluasi POS development.
 - [x] Memiliki regression suite lintas komponen yang dijalankan melalui GitHub Actions.
-- [ ] Menyusun dataset khusus untuk menguji alur lengkap normalisasi → tokenisasi → kamus → morfologi → POS → parser.
-- [ ] Memperluas variasi kalimat: baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks.
-- [ ] Menetapkan expected output untuk hasil parser, termasuk partial dan unresolved.
-- [ ] Menjalankan evaluasi terpadu tanpa membuka test split untuk penyetelan.
-- [ ] Menetapkan baseline dan kriteria kelulusan Tahap 2 secara keseluruhan.
+- [ ] Menginventarisasi bukti pengujian yang sudah ada berdasarkan komponen dan jalur pipeline; gunakan hasil/run terdahulu, tanpa menjalankan ulang skenario yang sama.
+- [ ] Memetakan cakupan yang telah diuji dan batas yang masih diketahui, termasuk hasil `partial` dan `unresolved`.
+- [ ] Mengidentifikasi hanya celah pipeline end-to-end yang belum memiliki bukti memadai. Jangan membuat ulang dataset untuk kasus yang sudah tercakup.
+- [ ] Meninjau kebutuhan variasi baku, informal, slang, salah ketik, imbuhan, kata ulang, dan struktur kompleks berdasarkan celah yang benar-benar ditemukan; kategori bukan kewajiban untuk diuji semua.
+- [ ] Menetapkan expected output hanya untuk kasus baru yang memang diperlukan atau keluaran yang belum memiliki kontrak jelas.
+- [ ] Menyusun usulan pengujian tambahan yang minimal dan tidak tumpang tindih; **jumlah dan cakupannya harus ditentukan sebelum CI dijalankan**.
+- [ ] Mengevaluasi pipeline dengan memanfaatkan bukti CI yang masih relevan. Jalankan CI baru hanya jika ada perubahan kode/data atau celah nyata yang memerlukan verifikasi.
+- [ ] Menetapkan baseline dan kriteria kelulusan Tahap 2 berdasarkan bukti yang tersedia, keterbatasan yang terdokumentasi, dan hasil evaluasi yang diperlukan.
 
-**Gerbang menuju Tahap 3:** Tahap 2.6 dan 2.7 harus memiliki cakupan serta batas yang terdokumentasi dan lolos evaluasi terpadu. Tidak perlu menunggu parser memahami semua kemungkinan kalimat.
+**Aturan hemat kuota:** tidak ada pengujian ulang massal, tidak ada penambahan skenario demi mengejar jumlah, dan tidak ada perluasan cakupan otomatis. Jika audit menemukan celah, laporkan dahulu ruang lingkup serta jumlah pengujian yang diusulkan sebelum menjalankannya.
+
+**Gerbang menuju Tahap 3:** bukti Tahap 2.1–2.6 telah diinventarisasi, celah pipeline yang relevan telah dinilai, dan baseline serta batas kemampuan Tahap 2 terdokumentasi. Tahap 2.6 tetap ditutup; keterbatasan teknisnya dicatat sebagai batas baseline, bukan alasan untuk membuka kembali tahap tersebut.
 
 ## Tahap 3 — Hubungan makna dan pemrosesan konteks
 
 <badge color="info">Fondasi awal dikerjakan lebih awal — belum resmi dibuka</badge>
 
-**Catatan urutan:** beberapa komponen awal Tahap 3 sudah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Ini bukan berarti Tahap 2 selesai atau gerbang Tahap 3 sudah terpenuhi. Tahap 2.6 dan 2.7 tetap harus diselesaikan dan dievaluasi.
+**Catatan urutan:** beberapa komponen awal Tahap 3 sudah dibuat lebih dahulu untuk mendukung pengembangan semantic role. Ini bukan berarti gerbang Tahap 3 sudah terpenuhi. Tahap 2.6 telah ditutup atas keputusan pengguna; Tahap 2.7 berfokus pada inventarisasi bukti dan evaluasi celah, bukan mengulang seluruh pengujian sebelumnya.
 
 - [ ] Mengembangkan representasi makna kata dan relasi antarkonsep.
 - [x] Membuat resolver kandidat semantic role berbasis bukti konteks eksplisit; pemilihan hanya terjadi jika satu frame didukung bukti kuat dan semua alternatif disingkirkan bukti kuat. Resolver tidak membuat bukti konteks sendiri; penghasil bukti kontekstual masih menjadi pekerjaan berikutnya. Run #149: 337/337 tes regresi lulus; Run #152: guard perbandingan argument slot yang sama tervalidasi, 339/339 tes lulus.
@@ -231,6 +238,6 @@ Embedding **bukan tahap wajib dan bukan prasyarat** untuk menyelesaikan tahapan 
 
 ## Titik lanjut resmi
 
-Pekerjaan dilanjutkan dari **Tahap 2.6 — parser v1.9**. Tahap 2.5 tetap ditutup. Setelah cakupan parser cukup stabil, lanjutkan ke Tahap 2.7 untuk evaluasi pipeline terpadu; setelah gerbang Tahap 2 terpenuhi, barulah masuk ke Tahap 3.
+Tahap 2.5 tetap ditutup. **Tahap 2.6 — parser v1.9 juga telah ditutup atas keputusan pengguna pada 28 November 2026.** Titik lanjut berikutnya adalah **Tahap 2.7 — inventarisasi bukti dan evaluasi pipeline terpadu**. Mulai dengan memetakan hasil pengujian yang sudah ada; jangan menjalankan ulang skenario yang telah terbukti. Pengujian tambahan hanya diusulkan untuk celah nyata, dengan cakupan dan jumlah yang disepakati sebelum CI dijalankan. Setelah gerbang Tahap 2 terpenuhi berdasarkan bukti yang tersedia, barulah Tahap 3 dapat dibuka.
 
 - [x] Pemetaan semantic role pasif konservatif tervalidasi CI: subjek permukaan → argumen OBJ valensi; agen pasif melalui objek pascaverbal atau frasa `oleh`; agen yang tidak disebutkan boleh omitted. Dukungan dibatasi pada frame valensi SUBJ+OBJ dan klausa sederhana. Run #144 sukses (323/323 tes); Run #145 menambahkan dua tes integrasi end-to-end untuk agen pascaverbal dan agen yang dilesapkan, sukses (325/325 tes); Run #147 menambahkan dua guard untuk menolak parser non-SVO atau kepala predikat yang hilang, sukses (327/327 tes); Run #148 menguji konsistensi alternatif AGENT/CAUSER pada kalimat aktif dan pasif melalui pipeline penuh, sukses (328/328 tes).
