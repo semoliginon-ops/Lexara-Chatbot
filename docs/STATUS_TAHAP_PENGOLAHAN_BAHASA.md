@@ -1848,3 +1848,27 @@ Batas:
 - Modul belum dihubungkan ke entrypoint/runtime aplikasi.
 - Tidak ada perubahan kamus, Concept Layer, aturan konteks, analyzer, POS, morfologi, parser, generator, selector, atau orchestrator.
 - Regression suite 450 tes dan tes lama komponen lain tidak dijalankan ulang.
+
+
+## Perbaikan representasi penanda komunikatif yang berkoeksistensi — 28 November 2026
+
+Audit terhadap `tools/utterance_interpretation.py` menemukan bahwa beberapa penanda eksplisit (misalnya tanda tanya bersama `tolong`, atau `tolong` bersama `jangan`) sebelumnya dilaporkan sebagai `ambiguous`. Ini tidak sesuai dengan keputusan desain bahwa penanda komunikatif dapat hadir bersamaan dan bukan otomatis kandidat yang saling bersaing.
+
+Perbaikan:
+- Laporan kini memiliki field `labels` untuk semua bentuk komunikatif eksplisit yang teramati, dengan urutan deterministik `question`, `request`, `directive`.
+- Satu penanda mempertahankan `status`, `label`, dan `candidates` v1; `labels` berisi satu item.
+- Beberapa penanda menghasilkan `status: resolved`, `label: null`, daftar `labels`, dan `candidates: []`. Evidence masing-masing tetap menunjuk ke sumber snapshot yang sesuai.
+- Tanpa penanda, hasil tetap `unknown/unresolved`; tidak ada inferensi pragmatis atau klarifikasi otomatis.
+
+Berkas:
+- Modul diperbarui: `tools/utterance_interpretation.py`.
+- Tepat 4 tes baru: `tests/test_utterance_intent_coexistence.py`.
+- Workflow terfokus: `.github/workflows/utterance-intent-coexistence-tests.yml`.
+- Rancangan diperbarui: `docs/RANCANGAN_AMBIGUITAS_DAN_MAKSUD_UJARAN_V1.md`.
+
+Verifikasi GitHub Actions:
+- Run #1 [46120863024](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120863024): **4/4 tes lulus**; log diperiksa.
+- Workflow kompatibilitas lama Run [46120842200](https://github.com/semoliginon-ops/Lexara-Chatbot/actions/runs/46120842200): **11/11 tes lulus**; log diperiksa.
+- Tidak menjalankan ulang regression suite 450 tes, Context Snapshot, planner, atau penyaji klarifikasi karena tidak ada perubahan pada komponen tersebut.
+
+Tidak ada perubahan pada kamus/batch/indeks, Context Snapshot, POS, morfologi, parser, Concept Layer, planner, penyaji klarifikasi, atau runtime. Perubahan tetap pada pelaporan bentuk komunikatif eksplisit.
