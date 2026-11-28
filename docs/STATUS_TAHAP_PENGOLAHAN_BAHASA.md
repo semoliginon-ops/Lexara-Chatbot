@@ -1546,3 +1546,21 @@ Dibuat tiga berkas data terpisah sesuai kontrak v1:
 Seluruh delapan record berstatus `proposed`; belum ada record yang diaktifkan sebagai pengetahuan runtime. Ketiga sense diverifikasi langsung dari sumber kamus: `K0201-S1` (mobil, batch-004), `K0399-S1` (kendaraan, batch-008), dan `K0497-S1` (roda, batch-010). Bukti setiap konsep, pemetaan, dan relasi menunjuk definisi sense yang relevan. Tidak ada perubahan pada kamus, batch, indeks, validator, atau runtime. Tidak ada tes, CI, atau GitHub Actions yang dijalankan untuk pembuatan data ini.
 
 **Titik lanjut:** jalankan validator struktural pada tiga berkas pilot dengan `--sense-index` hanya untuk batch-004, batch-008, dan batch-010. Setelah validasi struktural, lakukan tinjauan linguistik sebelum mempertimbangkan perubahan status menjadi `reviewed`. Suite 19 tes dan regression suite 450 tes tidak perlu diulang.
+
+## Review linguistik dan persetujuan pilot Concept Layer — 28 November 2026
+
+Pengguna menyetujui hasil review linguistik dan perubahan status seluruh delapan record pilot menjadi `reviewed`.
+
+Hasil review:
+- **Konsep (3):** `C000001` kendaraan, `C000002` mobil, dan `C000003` roda. Definisi masing-masing konsisten dengan sense sumber `K0399-S1`, `K0201-S1`, dan `K0497-S1`.
+- **Pemetaan sense (3):** `K0399-S1 → C000001`, `K0201-S1 → C000002`, dan `K0497-S1 → C000003`; masing-masing merepresentasikan makna sense yang dirujuk.
+- **Relasi (2):** `C000002 IS_A C000001` (mobil merupakan jenis kendaraan) dan `C000003 PART_OF C000001` (roda merupakan bagian kendaraan). Relasi roda dibatasi oleh definisi konsep roda sebagai komponen yang membantu kendaraan bergerak.
+
+Perubahan pada GitHub:
+- `data/concepts/concepts.jsonl`: ketiga konsep menjadi `reviewed`.
+- `data/concepts/sense_concept_map.jsonl`: ketiga pemetaan menjadi `reviewed`.
+- `data/concepts/concept_relations.jsonl`: kedua relasi menjadi `reviewed`.
+
+Total **8/8 record berstatus `reviewed`**. Data tetap belum digunakan runtime karena pembaca Concept Layer belum dibuat. Tidak ada perubahan pada kamus, batch, indeks, validator, morfologi/klitik, POS, parser, atau resolver. Tidak ada tes, CI, maupun GitHub Actions yang dijalankan untuk perubahan status dan dokumentasi ini.
+
+**Titik lanjut:** buat pembaca Concept Layer baca-saja yang hanya mengekspos record `reviewed`; pemetaan hanya aktif bila konsep tujuannya `reviewed`, dan relasi hanya aktif bila kedua konsep ujungnya `reviewed`. Implementasi dibatasi pada tiga berkas Concept Layer. Tambahkan tes unit terfokus untuk aturan pemuatan/status; jangan mengulang regression suite 450 tes tanpa alasan teknis dan persetujuan ruang lingkup.
